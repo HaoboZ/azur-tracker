@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import type { TableInstance } from 'react-table';
+import { useThrottle } from 'rooks';
 import useEventListener from '../../hooks/useEventListener';
-import useThrottle from '../../hooks/useThrottle';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';

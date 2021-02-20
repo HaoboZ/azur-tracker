@@ -4,9 +4,8 @@ import hashSum from 'hash-sum';
 import { pick } from 'lodash-es';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import useAfterEffect from '../../hooks/useAfterEffect';
+import { useDebounce, useDidUpdate } from 'rooks';
 import useAsyncEffect from '../../hooks/useAsyncEffect';
-import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useAuth } from '../../providers/auth';
@@ -45,7 +44,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	
 	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	
-	useAfterEffect( () => {
+	useDidUpdate( () => {
 		if ( loading ) return;
 		setSaving( true );
 		debouncedSetTimestamp();

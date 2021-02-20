@@ -59,6 +59,7 @@
 		"redux"                           : "^4.2.0",
 		"redux-persist"                   : "^6.0.0",
 		"redux-persist-transform-compress": "^4.2.0",
+		"rooks"                           : "^6.4.3",
 		"safe-stable-stringify"           : "^2.3.1",
 		"sass"                            : "^1.54.4",
 		"sortablejs"                      : "^1.15.0"

@@ -77,7 +77,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			return;
 		
 		const shipEquip = cloneDeep( info.ship.equip );
-		shipEquip[ info.index ] = equip ? [ equip?.id, override, 6 ] : [];
+		shipEquip[ info.index ] = equip ? [ equip?.id, override, 6 ] : [] as any;
 		getTier( equippableData, equipTierData, fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
 		info.ship.equip = shipEquip;

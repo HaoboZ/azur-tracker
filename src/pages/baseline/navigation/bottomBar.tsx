@@ -8,7 +8,7 @@ import {
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import usePageHeight from '../../../hooks/usePageHeight';
+import { useWindowSize } from 'rooks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
@@ -24,7 +24,7 @@ export default function BottomBar( { children } ) {
 	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
 	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const height = usePageHeight();
+	const { innerHeight } = useWindowSize();
 	
 	const index = useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
@@ -45,7 +45,7 @@ export default function BottomBar( { children } ) {
 			<Box
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
+				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${innerHeight}px)`}>
 				{children}
 			</Box>
 			<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>

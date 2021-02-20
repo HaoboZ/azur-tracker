@@ -2,10 +2,10 @@ import { Box, Link, Typography } from '@mui/material';
 import { differenceInDays } from 'date-fns';
 import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
+import { useIntervalWhen } from 'rooks';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
-import useInterval from '../../hooks/useInterval';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_newEvent } from '../../store/reducers/eventReducer';
@@ -25,7 +25,6 @@ export default function Event() {
 		if ( event.name !== eventData.name )
 			dispatch( event_newEvent( {
 				...event,
-				timestamp       : new Date().toISOString(),
 				name            : eventData.name,
 				shopExpectedCost: eventShopData.reduce( ( total, item ) =>
 					total + item.cost * Math.min( item.amount, event.shop[ item.name ] || 0 ), 0 ),
@@ -33,7 +32,7 @@ export default function Event() {
 			} ) );
 	}, [] );
 	
-	useInterval( () => setTime( new Date() ), { ms: 15 * 1000 }, [] );
+	useIntervalWhen( () => setTime( new Date() ), 15 * 1000 );
 	
 	if ( event.name !== eventData.name )
 		return null;

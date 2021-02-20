@@ -1,8 +1,8 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
+import { useWindowSize } from 'rooks';
 import { PageLinkComponent } from '../../../components/page/link';
-import usePageHeight from '../../../hooks/usePageHeight';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
@@ -30,7 +30,7 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 }
 
 export default function TitleBar( { children } ) {
-	const height = usePageHeight();
+	const { innerHeight } = useWindowSize();
 	
 	return (
 		<Box>
@@ -59,7 +59,7 @@ export default function TitleBar( { children } ) {
 			<Box
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
+				minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${innerHeight}px)`}>
 				{children}
 			</Box>
 		</Box>
