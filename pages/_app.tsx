@@ -16,7 +16,7 @@ function MyApp( { Component, pageProps } ) {
 				<meta name='viewport' content='initial-scale=1.0, width=device-width'/>
 			</Head>
 			<TitleBar/>
-				<Component { ...pageProps }/>
+			<Component { ...pageProps }/>
 		</PersistGate>
 	</Provider>;
 }
