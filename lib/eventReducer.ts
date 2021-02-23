@@ -80,7 +80,7 @@ type State = {
 
 const initState: State = {
 	name:             '',
-	endDate:          moment().startOf( 'day' ).format( 'YYYY-MM-DD' ),
+	endDate:          moment().endOf( 'day' ).format( 'YYYY-MM-DDTHH:mm' ),
 	shop:             [],
 	shopExpectedCost: 0,
 	daily:            [],
@@ -88,6 +88,42 @@ const initState: State = {
 	points:           0,
 	farming:          []
 };
+
+initState.name = 'Khorovod of Dawn\'s Rime';
+initState.endDate = '2021-03-11T11:59';
+initState.shop = [
+	{ name: 'Primary Ship', cost: 8000, amount: 5, buy: 1 },
+	{ name: 'Secondary Ship', cost: 2000, amount: 5, buy: 1 },
+	{ name: 'Gear Skin Box', cost: 2000, amount: 10, buy: 0 },
+	{ name: 'Eagle Tech Box', cost: 300, amount: 4, buy: 0 },
+	{ name: 'Royal Tech Box', cost: 300, amount: 4, buy: 0 },
+	{ name: 'Sakura Tech Box', cost: 300, amount: 4, buy: 0 },
+	{ name: 'Ironblood Tech Box', cost: 300, amount: 4, buy: 0 },
+	{ name: 'Cognitive Chips', cost: 300, amount: 10, buy: 0 },
+	{ name: 'Rare Cat Box', cost: 250, amount: 10, buy: 0 },
+	{ name: 'Elite Cat Box', cost: 500, amount: 5, buy: 0 },
+	{ name: 'Super Rare Cat Box', cost: 3000, amount: 2, buy: 0 },
+	{ name: 'Strengthening Unit', cost: 500, amount: 30, buy: 30 },
+	{ name: 'Special Strengthening Unit', cost: 1000, amount: 10, buy: 10 },
+	{ name: 'General Part', cost: 30, amount: 30, buy: 0 },
+	{ name: 'Main Gun Part', cost: 30, amount: 30, buy: 0 },
+	{ name: 'Torpedo Part', cost: 30, amount: 30, buy: 0 },
+	{ name: 'Anti-Air Part', cost: 30, amount: 30, buy: 0 },
+	{ name: 'Aircraft Part', cost: 30, amount: 30, buy: 0 },
+	{ name: 'Coins', cost: 500, amount: 5, buy: 5 },
+	{ name: 'Oil', cost: 450, amount: 5, buy: 5 },
+	{ name: 'Oxy-cola', cost: 15, amount: 100, buy: 0 }
+];
+initState.shopExpectedCost = 39750;
+initState.daily = [
+	{ name: 'Build 3 ships', amount: 300 },
+	{ name: 'Sortie and obtain 15 victories', amount: 300 },
+	{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 }
+];
+initState.dailyExpected = 750;
+initState.farming = [
+	{ points: 180, oil: 10 + 25 * 6 + 40 }
+];
 
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
