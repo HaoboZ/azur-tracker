@@ -36,7 +36,7 @@ export default function EventDailyModal( { status, closeModal } ) {
 	
 	return <Modal show={ status } onHide={ closeModal } dialogClassName={ styles.modalWidth }>
 		<Modal.Header closeButton>
-			<Modal.Title>Shop Items</Modal.Title>
+			<Modal.Title>Daily Points</Modal.Title>
 		</Modal.Header>
 		<Modal.Body>
 			<h5>Daily Points: { dailyTotal }</h5>
