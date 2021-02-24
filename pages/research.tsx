@@ -70,7 +70,7 @@ export default function Research() {
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ], { devStage: parseInt( e.currentTarget.value ) } ) ) }/>
 										<InputGroup.Append>
-											<InputGroup.Text>/{ devLevel[ 0 ] * 10 }</InputGroup.Text>
+											<InputGroup.Text>/{ devLevel[ item[ 1 ] * 2 ] * 10 }</InputGroup.Text>
 										</InputGroup.Append>
 									</InputGroup>
 								</td>
