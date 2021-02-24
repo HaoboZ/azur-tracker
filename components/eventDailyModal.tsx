@@ -39,12 +39,12 @@ export default function EventDailyModal( { status, closeModal } ) {
 			<Modal.Title>Daily Points</Modal.Title>
 		</Modal.Header>
 		<Modal.Body>
-			<h5>Daily Points: { dailyTotal }</h5>
-			<Table>
+			<h5>Amount: { dailyTotal }</h5>
+			<Table size='sm'>
 				<thead>
 				<tr>
 					<th colSpan={ 2 }/>
-					<th>Name</th>
+					<th style={ { minWidth: 250 } }>Name</th>
 					<th>Amount</th>
 				</tr>
 				</thead>

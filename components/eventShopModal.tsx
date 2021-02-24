@@ -50,11 +50,11 @@ export default function EventShopModal( { status, closeModal } ) {
 				<Col><h5>Buyout Price: { buyoutCost }</h5></Col>
 				<Col><h5>Expected Price: { expectedCost }</h5></Col>
 			</Row>
-			<Table responsive style={ { minWidth: 600 } }>
+			<Table responsive size='sm' style={ { minWidth: 600 } }>
 				<thead>
 				<tr>
 					<th colSpan={ 2 }/>
-					<th>Name</th>
+					<th style={ { minWidth: 250 } }>Name</th>
 					<th>Cost</th>
 					<th>Amount</th>
 					<th>Wanted</th>
