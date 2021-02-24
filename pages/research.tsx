@@ -39,16 +39,17 @@ export default function Research() {
 							const ship = research.ships[ item[ 0 ] ] || {} as any;
 							const devLevel  = devLevels[ Math.min( Math.max( ship.devLevel || 0, 0 ), 30 ) ],
 							      fateLevel = fateLevels[ Math.min( Math.max( ship.fateLevel || 0, 0 ), 5 ) ];
-							const devPrints  = Math.floor( devLevels[ 30 ][ item[ 1 ] * 2 + 1 ]
-								- devLevel[ item[ 1 ] * 2 + 1 ]
-								- ( ship.devStage || 0 ) / 10 ),
-							      fatePrints = Math.floor( fateLevels[ 5 ][ 1 ]
-								      - fateLevel[ 1 ]
-								      - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) );
+							const devPrints  = Math.max( Math.floor(
+								devLevels[ 30 ][ item[ 1 ] * 2 + 1 ]
+								- devLevel[ item[ 1 ] * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
+								0 ),
+							      fatePrints = Math.max( Math.floor(
+								      fateLevels[ 5 ][ 1 ]
+								      - fateLevel[ 1 ] - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
+								      0 );
 							if ( item[ 1 ] ) {
 								totalDR += devPrints;
 							} else {
-								console.log( key, devPrints );
 								totalPRDev += devPrints;
 								if ( item[ 2 ] ) totalPRFate += fatePrints;
 							}

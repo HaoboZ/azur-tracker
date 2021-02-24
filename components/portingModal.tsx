@@ -20,7 +20,7 @@ export default function PortingModal( { status, type, closeModal } ) {
 				e.preventDefault();
 				if ( type ) {
 					try {
-						const data = JSON.parse( atob( e.currentTarget.exportArea.value ) );
+						const data = JSON.parse( decodeURIComponent( atob( e.currentTarget.exportArea.value ) ) );
 						dispatch( { type: 'import', data } );
 					} catch ( e ) {
 						alert( e.message );
@@ -32,7 +32,7 @@ export default function PortingModal( { status, type, closeModal } ) {
 					if ( e.currentTarget.researchExport.checked )
 						data.research = store.research;
 					
-					const encoded = btoa( JSON.stringify( data ) );
+					const encoded = btoa( encodeURIComponent( JSON.stringify( data ) ) );
 					setExportedData( encoded );
 					e.currentTarget.exportArea.value = encoded;
 					e.currentTarget.exportArea.select();

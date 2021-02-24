@@ -9,9 +9,9 @@ export default function Home() {
 			</p>
 		</Row>
 		<Row>
-			<Link href='/event' passHref>Event Tracker - calculates number of runs for any stage until
+			<Link href='/event' passHref>Event Tracker - calculates farming runs for any stage until
 				you reach your target points</Link>
-		</Row>
+		</Row>con
 		<Row>
 			<Link href='/research' passHref>Research Tracker - calculates number of strengthing units
 				for pr ships until max</Link>
