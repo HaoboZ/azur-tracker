@@ -19,7 +19,7 @@ export default function Event() {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
-	const remainingDays = Math.max( moment( event.endDate ).diff( moment() ) / 86400000, 0 );
+	const remainingDays = Math.max( moment( event.endDate ).diff( moment(), 'day', true ), 0 );
 	
 	const [ shopModal, setShopModal ] = React.useState( false );
 	const [ dailyModal, setDailyModal ] = React.useState( false );
@@ -64,7 +64,7 @@ export default function Event() {
 						type='text'
 						plaintext
 						readOnly
-						value={ Math.floor( remainingDays ) }/>
+						value={ Math.ceil( remainingDays ) }/>
 				</Form.Group>
 			</Form.Row>
 			
