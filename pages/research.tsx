@@ -10,8 +10,6 @@ export default function Research() {
 	const research = useTypedSelector( store => store.research ),
 	      dispatch = useDispatch();
 	
-	let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
-	
 	return <Container>
 		<h3 className='d-flex justify-content-between'>
 			Research Tracker <Button onClick={ () => dispatch( research_reset() ) }>Reset</Button>
@@ -21,8 +19,9 @@ export default function Research() {
 			onSelect={ ( k ) => {
 				dispatch( research_setLastTab( k ) );
 			} }>
-			{ Object.keys( ships ).map( ( key ) =>
-				<Tab key={ key } eventKey={ key } title={ key }>
+			{ Object.keys( ships ).map( ( key ) => {
+				let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
+				return <Tab key={ key } eventKey={ key } title={ key }>
 					<Table responsive style={ { minWidth: 680 } }>
 						<thead>
 						<tr>
@@ -49,8 +48,9 @@ export default function Research() {
 							if ( item[ 1 ] ) {
 								totalDR += devPrints;
 							} else {
+								console.log( key, devPrints );
 								totalPRDev += devPrints;
-								totalPRFate += fatePrints;
+								if ( item[ 2 ] ) totalPRFate += fatePrints;
 							}
 							return <tr key={ index }>
 								<td>{ item[ 0 ] }</td>
@@ -107,7 +107,8 @@ export default function Research() {
 						</tr>
 						</tbody>
 					</Table>
-				</Tab> ) }
+				</Tab>;
+			} ) }
 		
 		</Tabs>
 	</Container>;
