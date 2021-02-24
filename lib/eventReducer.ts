@@ -119,9 +119,11 @@ initState.daily = [
 	{ name: 'Build 3 ships', amount: 300 },
 	{ name: 'Sortie and obtain 15 victories', amount: 300 },
 	{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
-	{ name: 'SP Level', amount: 800 }
+	{ name: 'SP Level', amount: 800 },
+	{ name: '3x Points', amount: 990 },
+	{ name: '2x Points', amount: 1500 }
 ];
-initState.dailyExpected = 750;
+initState.dailyExpected = 2490;
 initState.farming = [
 	{ points: 180, oil: 10 + 25 * 6 + 40 }
 ];
