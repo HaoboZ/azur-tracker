@@ -63,11 +63,16 @@ export default function Research() {
 											dispatch( research_modifyShip( item[ 0 ], { devLevel: parseInt( e.currentTarget.value ) } ) ) }/>
 								</td>
 								<td>
-									<Form.Control
-										type='number'
-										value={ ship.devStage || 0 }
-										onChange={ ( e ) =>
-											dispatch( research_modifyShip( item[ 0 ], { devStage: parseInt( e.currentTarget.value ) } ) ) }/>
+									<InputGroup className='mb-2'>
+										<Form.Control
+											type='number'
+											value={ ship.devStage || 0 }
+											onChange={ ( e ) =>
+												dispatch( research_modifyShip( item[ 0 ], { devStage: parseInt( e.currentTarget.value ) } ) ) }/>
+										<InputGroup.Append>
+											<InputGroup.Text>/{ devLevel[ 0 ] * 10 }</InputGroup.Text>
+										</InputGroup.Append>
+									</InputGroup>
 								</td>
 								<td>{ devPrints }</td>
 								{
