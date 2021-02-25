@@ -37,7 +37,8 @@ export default function Event() {
 	
 	return <Container>
 		<h3 className='d-flex justify-content-between'>
-			Event Tracker <Button onClick={ () => dispatch( event_reset() ) }>Reset</Button>
+			Event Tracker
+			<Button onClick={ () => dispatch( event_reset() ) }>Reset</Button>
 		</h3>
 		<div className='text-center'>
 			<Image src='/eventIcons/Khorovod_of_Dawns_Rime.jpg' fluid/>

@@ -12,7 +12,8 @@ export default function Research() {
 	
 	return <Container>
 		<h3 className='d-flex justify-content-between'>
-			Research Tracker <Button onClick={ () => dispatch( research_reset() ) }>Reset</Button>
+			Research Tracker
+			<Button onClick={ () => dispatch( research_reset() ) }>Reset</Button>
 		</h3>
 		<Tabs
 			activeKey={ research.lastTab }
@@ -72,7 +73,7 @@ export default function Research() {
 										} }/>
 								</td>
 								<td>
-									<InputGroup className='mb-2'>
+									<InputGroup>
 										<Form.Control
 											type='number'
 											value={ ship.devStage || 0 }
@@ -101,7 +102,7 @@ export default function Research() {
 												} }/>
 										</td>
 										<td>
-											<InputGroup className='mb-2'>
+											<InputGroup>
 												<Form.Control
 													type='number'
 													value={ ship.fateStage || 0 }
