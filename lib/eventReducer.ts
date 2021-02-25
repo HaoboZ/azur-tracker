@@ -1,4 +1,3 @@
-import moment from 'moment';
 import eventRef from './eventRef';
 
 const RESET         = 'event/reset',

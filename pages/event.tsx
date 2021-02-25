@@ -68,7 +68,7 @@ export default function Event() {
 						type='text'
 						plaintext
 						readOnly
-						value={ Math.ceil( remainingDays ) }/>
+						value={ Math.floor( remainingDays ) }/>
 				</Form.Group>
 			</Form.Row>
 			
