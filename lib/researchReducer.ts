@@ -3,9 +3,7 @@ const RESET      = 'research/reset',
       MODIFYSHIP = 'research/modifyShip';
 
 export function research_reset() {
-	return {
-		type: RESET
-	};
+	return { type: RESET };
 }
 
 export function research_setLastTab( lastTab: string ) {

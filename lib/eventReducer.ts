@@ -10,9 +10,7 @@ const RESET         = 'event/reset',
       MODIFYFARMING = 'event/modifyFarming';
 
 export function event_reset() {
-	return {
-		type: RESET
-	};
+	return { type: RESET };
 }
 
 export function event_newEvent() {
@@ -104,7 +102,7 @@ initState.daily = [
 	{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
 	{ name: 'SP Level', amount: 800 }
 ];
-initState.dailyExpected = 2540;
+initState.dailyExpected = 1550;
 initState.farming = [
 	{ points: 180, oil: 10 + 25 * 6 + 40 }
 ];
