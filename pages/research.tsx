@@ -22,7 +22,7 @@ export default function Research() {
 			{ Object.keys( ships ).map( ( key ) => {
 				let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
 				return <Tab key={ key } eventKey={ key } title={ key }>
-					<Table responsive striped style={ { minWidth: 680 } }>
+					<Table responsive striped style={ { minWidth: 680 } } size='sm'>
 						<thead>
 						<tr>
 							<th>Name</th>
@@ -56,7 +56,8 @@ export default function Research() {
 							
 							return <tr key={ index }>
 								<td className='text-center'>
-									<Image src={ item[ 3 ] } rounded width={ 80 }/><p>{ item[ 0 ] }</p>
+									<Image src={ item[ 3 ] } rounded width={ 60 }/>
+									<p className='mb-0'>{ item[ 0 ] }</p>
 								</td>
 								<td>
 									<Form.Control
