@@ -97,7 +97,7 @@ export default function Event() {
 			</Form.Row>
 			
 			<h5>Farming</h5>
-			<Table>
+			<Table striped>
 				<thead>
 				<tr>
 					<th colSpan={ 2 }/>
@@ -109,8 +109,8 @@ export default function Event() {
 				</thead>
 				<tbody>
 				{ event.farming.map( ( item, index ) => {
-					const plays = remainingPoints ? remainingPoints / item.points : 0,
-					      oil   = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ) * item.oil;
+					const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
+					      oil   = plays * item.oil;
 					return <tr key={ index }>
 						<td><Button onClick={ () => dispatch( event_addFarming( index ) ) }>+</Button>
 						</td>
@@ -122,14 +122,18 @@ export default function Event() {
 								type='number'
 								value={ item.points }
 								onChange={ ( e ) =>
-									dispatch( event_modifyFarming( index, { points: parseInt( e.currentTarget.value ) || 0 } ) ) }/>
+									dispatch( event_modifyFarming( index, {
+										points: Math.max( parseInt( e.currentTarget.value ) || 0, 0 )
+									} ) ) }/>
 						</td>
 						<td>
 							<Form.Control
 								type='number'
 								value={ item.oil }
 								onChange={ ( e ) =>
-									dispatch( event_modifyFarming( index, { oil: parseInt( e.currentTarget.value ) || 0 } ) ) }/>
+									dispatch( event_modifyFarming( index, {
+										oil: Math.max( parseInt( e.currentTarget.value ) || 0, 0 )
+									} ) ) }/>
 						</td>
 						<td>{ plays }</td>
 						<td>{ isFinite( oil ) ? oil : Infinity }</td>

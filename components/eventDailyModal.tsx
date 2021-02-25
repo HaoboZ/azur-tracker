@@ -40,7 +40,7 @@ export default function EventDailyModal( { status, closeModal } ) {
 		</Modal.Header>
 		<Modal.Body>
 			<h5>Total: { dailyTotal }</h5>
-			<Table size='sm'>
+			<Table size='sm' striped>
 				<thead>
 				<tr>
 					<th colSpan={ 2 }/>
@@ -64,7 +64,7 @@ export default function EventDailyModal( { status, closeModal } ) {
 							type='number'
 							value={ item.amount }
 							onChange={ ( e ) =>
-								modifyItem( index, { amount: parseInt( e.currentTarget.value ) || 0 } ) }/>
+								modifyItem( index, { amount: Math.max( parseInt( e.currentTarget.value ) || 0, 0 ) } ) }/>
 					</td>
 				</tr> ) }
 				<tr>

@@ -1,5 +1,5 @@
 export const ships = {
-	'R1': [
+	'PR1': [
 		[ 'Neptune', 0, true ],
 		[ 'Monarch', 0, true ],
 		[ 'Ibuki', 0, true ],
@@ -7,7 +7,7 @@ export const ships = {
 		[ 'Roon', 0, true ],
 		[ 'Saint Louis', 0, true ]
 	],
-	'R2': [
+	'PR2': [
 		[ 'Seattle', 0, true ],
 		[ 'Georgia', 0, true ],
 		[ 'Kitakaze', 0, true ],
@@ -15,7 +15,7 @@ export const ships = {
 		[ 'Friedrich der Groβe', 1, false ],
 		[ 'Gascogne', 0, true ]
 	],
-	'R3': [
+	'PR3': [
 		[ 'Cheshire', 0, false ],
 		[ 'Drake', 1, false ],
 		[ 'Mainz', 0, false ],

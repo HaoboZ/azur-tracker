@@ -50,7 +50,7 @@ export default function EventShopModal( { status, closeModal } ) {
 				<Col><h5>Buyout Price: { buyoutCost }</h5></Col>
 				<Col><h5>Expected Price: { expectedCost }</h5></Col>
 			</Row>
-			<Table responsive size='sm' style={ { minWidth: 600 } }>
+			<Table responsive size='sm' striped style={ { minWidth: 600 } }>
 				<thead>
 				<tr>
 					<th colSpan={ 2 }/>
@@ -68,27 +68,29 @@ export default function EventShopModal( { status, closeModal } ) {
 						<Form.Control
 							type='text'
 							value={ item.name }
-							onChange={ ( e ) => modifyItem( index, { name: e.currentTarget.value } ) }/>
+							onChange={ ( e ) =>
+								modifyItem( index, { name: e.currentTarget.value } ) }/>
 					</td>
 					<td>
 						<Form.Control
 							type='number'
 							value={ item.cost }
-							onChange={ ( e ) => modifyItem( index, { cost: parseInt( e.currentTarget.value ) || 0 } ) }/>
+							onChange={ ( e ) =>
+								modifyItem( index, { cost: Math.max( parseInt( e.currentTarget.value ) || 0, 0 ) } ) }/>
 					</td>
 					<td>
 						<Form.Control
 							type='number'
 							value={ item.amount }
 							onChange={ ( e ) =>
-								modifyItem( index, { amount: parseInt( e.currentTarget.value ) || 0 } ) }/>
+								modifyItem( index, { amount: Math.max( parseInt( e.currentTarget.value ) || 0, 0 ) } ) }/>
 					</td>
 					<td>
 						<Form.Control
 							type='number'
 							value={ item.buy }
 							onChange={ ( e ) =>
-								modifyItem( index, { buy: parseInt( e.currentTarget.value ) || 0 } ) }/>
+								modifyItem( index, { buy: Math.min( Math.max( parseInt( e.currentTarget.value ) || 0, 0 ), item.amount ) } ) }/>
 					</td>
 				</tr> ) }
 				<tr>

@@ -22,7 +22,7 @@ export default function Research() {
 			{ Object.keys( ships ).map( ( key ) => {
 				let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
 				return <Tab key={ key } eventKey={ key } title={ key }>
-					<Table responsive style={ { minWidth: 680 } }>
+					<Table responsive striped style={ { minWidth: 680 } }>
 						<thead>
 						<tr>
 							<th>Name</th>
@@ -59,8 +59,13 @@ export default function Research() {
 									<Form.Control
 										type='number'
 										value={ ship.devLevel || 0 }
-										onChange={ ( e ) =>
-											dispatch( research_modifyShip( item[ 0 ], { devLevel: parseInt( e.currentTarget.value ) } ) ) }/>
+										onChange={ ( e ) => {
+											const devLevel = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 30 );
+											dispatch( research_modifyShip( item[ 0 ], {
+												devLevel,
+												devStage: devLevel != 30 ? ship.devStage : 0
+											} ) );
+										} }/>
 								</td>
 								<td>
 									<InputGroup className='mb-2'>
@@ -68,7 +73,9 @@ export default function Research() {
 											type='number'
 											value={ ship.devStage || 0 }
 											onChange={ ( e ) =>
-												dispatch( research_modifyShip( item[ 0 ], { devStage: parseInt( e.currentTarget.value ) } ) ) }/>
+												dispatch( research_modifyShip( item[ 0 ], {
+													devStage: Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), devLevel[ item[ 1 ] * 2 ] * 10 )
+												} ) ) }/>
 										<InputGroup.Append>
 											<InputGroup.Text>/{ devLevel[ item[ 1 ] * 2 ] * 10 }</InputGroup.Text>
 										</InputGroup.Append>
@@ -81,8 +88,13 @@ export default function Research() {
 											<Form.Control
 												type='number'
 												value={ ship.fateLevel || 0 }
-												onChange={ ( e ) =>
-													dispatch( research_modifyShip( item[ 0 ], { fateLevel: parseInt( e.currentTarget.value ) } ) ) }/>
+												onChange={ ( e ) => {
+													const fateLevel = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 5 );
+													dispatch( research_modifyShip( item[ 0 ], {
+														fateLevel,
+														fateStage: fateLevel != 5 ? ship.fateStage : 0
+													} ) );
+												} }/>
 										</td>
 										<td>
 											<InputGroup className='mb-2'>
@@ -90,7 +102,9 @@ export default function Research() {
 													type='number'
 													value={ ship.fateStage || 0 }
 													onChange={ ( e ) =>
-														dispatch( research_modifyShip( item[ 0 ], { fateStage: parseInt( e.currentTarget.value ) } ) ) }/>
+														dispatch( research_modifyShip( item[ 0 ], {
+															fateStage: Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 100 )
+														} ) ) }/>
 												<InputGroup.Append>
 													<InputGroup.Text>%</InputGroup.Text>
 												</InputGroup.Append>

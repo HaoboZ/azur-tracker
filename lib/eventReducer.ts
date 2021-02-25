@@ -89,7 +89,7 @@ const initState: State = {
 	farming:          []
 };
 
-initState.name = 'Khorovod of Dawn\'s Rime';
+initState.name = 'Event Name';
 initState.endDate = '2021-03-11T11:59';
 initState.shop = [
 	{ name: 'Primary Ship', cost: 8000, amount: 5, buy: 1 },
