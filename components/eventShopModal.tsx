@@ -17,6 +17,10 @@ export default function EventShopModal( { status, closeModal } ) {
 		() => Object.values( eventRef.shop ).reduce( ( total, item ) =>
 			total + item.cost * item.amount, 0 ) );
 	
+	React.useEffect( () => {
+		if ( status ) setShop( event.shop );
+	}, [ status ] );
+	
 	function calcTotalCost() {
 		let [ totalCost, buyoutCost ] = Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
 			const item = eventRef.shop[ itemName ];

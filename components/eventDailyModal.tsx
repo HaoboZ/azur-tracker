@@ -13,6 +13,10 @@ export default function EventDailyModal( { status, closeModal } ) {
 	const [ daily, setDaily ] = React.useState( event.daily );
 	const [ dailyTotal, setDailyTotal ] = React.useState( event.dailyExpected );
 	
+	React.useEffect( () => {
+		if ( status ) setDaily( event.daily );
+	}, [ status ] );
+	
 	function calcDailyTotal() {
 		setDailyTotal( daily.reduce( ( total, item ) => total + item.amount, 0 ) );
 	}
@@ -68,7 +72,7 @@ export default function EventDailyModal( { status, closeModal } ) {
 					</td>
 				</tr> ) }
 				<tr>
-					<td><Button onClick={ () => addItem( daily.length ) }>+</Button></td>
+					<td colSpan={ 4 }><Button onClick={ () => addItem( daily.length ) }>+</Button></td>
 				</tr>
 				</tbody>
 			</Table>

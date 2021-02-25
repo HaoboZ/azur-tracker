@@ -144,7 +144,7 @@ export default function Event() {
 					</tr>;
 				} ) }
 				<tr>
-					<td>
+					<td colSpan={ 6 }>
 						<Button onClick={ () => dispatch( event_addFarming( event.farming.length ) ) }>
 							+
 						</Button>
