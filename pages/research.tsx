@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Form, InputGroup, Tab, Table, Tabs } from 'react-bootstrap';
+import { Button, Container, Form, Image, InputGroup, Tab, Table, Tabs } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 import { research_modifyShip, research_reset, research_setLastTab } from '../lib/researchReducer';
@@ -53,8 +53,11 @@ export default function Research() {
 								totalPRDev += devPrints;
 								if ( item[ 2 ] ) totalPRFate += fatePrints;
 							}
+							
 							return <tr key={ index }>
-								<td>{ item[ 0 ] }</td>
+								<td className='text-center'>
+									<Image src={ item[ 3 ] } rounded width={ 80 }/><p>{ item[ 0 ] }</p>
+								</td>
 								<td>
 									<Form.Control
 										type='number'
