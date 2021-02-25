@@ -39,9 +39,11 @@ export default function Event() {
 		<h3 className='d-flex justify-content-between'>
 			Event Tracker <Button onClick={ () => dispatch( event_reset() ) }>Reset</Button>
 		</h3>
-		<Image src='/eventIcons/Khorovod_of_Dawns_Rime.jpg' fluid/>
-		<Form noValidate>
+		<div className='text-center'>
+			<Image src='/eventIcons/Khorovod_of_Dawns_Rime.jpg' fluid/>
 			<h5 className='m-3'>{ eventRef.name }</h5>
+		</div>
+		<Form noValidate>
 			<Form.Row>
 				<Form.Group as={ Col } md={ 4 }>
 					<Form.Label>Current Date</Form.Label>
