@@ -11,7 +11,11 @@ export default function EventDailyModal( { status, closeModal } ) {
 	const dispatch = useDispatch();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
-	const [ dailyTotal, setDailyTotal ] = React.useState( event.dailyExpected );
+	const [ dailyTotal, setDailyTotal ] = React.useState( 0 );
+	
+	React.useEffect( () => {
+		calcDailyTotal();
+	}, [] );
 	
 	React.useEffect( () => {
 		if ( status ) setDaily( event.daily );
@@ -79,7 +83,7 @@ export default function EventDailyModal( { status, closeModal } ) {
 		</Modal.Body>
 		<Modal.Footer>
 			<Button variant='primary' onClick={ () => {
-				dispatch( event_setDaily( daily ) );
+				dispatch( event_setDaily( daily, dailyTotal ) );
 				closeModal();
 			} }>
 				Save

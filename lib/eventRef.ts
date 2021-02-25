@@ -1,6 +1,6 @@
 export default {
 	name:    'Khorovod of Dawn\'s Rime',
-	endDate: '2021-03-11T11:59-19:00',
+	endDate: '2021-03-11T23:59-07',
 	shop:    {
 		'Tallinn':                              { cost: 8000, amount: 5 },
 		'Twin 130mm Main Gun (B-2LM)':          { cost: 2000, amount: 1 },

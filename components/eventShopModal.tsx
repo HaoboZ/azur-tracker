@@ -12,10 +12,12 @@ export default function EventShopModal( { status, closeModal } ) {
 	const dispatch = useDispatch();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
-	const [ expectedCost, setExpectedCost ] = React.useState( event.shopExpectedCost );
-	const [ buyoutCost, setBuyoutCost ] = React.useState(
-		() => Object.values( eventRef.shop ).reduce( ( total, item ) =>
-			total + item.cost * item.amount, 0 ) );
+	const [ expectedCost, setExpectedCost ] = React.useState( 0 );
+	const [ buyoutCost, setBuyoutCost ] = React.useState( 0 );
+	
+	React.useEffect( () => {
+		calcTotalCost();
+	} );
 	
 	React.useEffect( () => {
 		if ( status ) setShop( event.shop );
@@ -93,7 +95,7 @@ export default function EventShopModal( { status, closeModal } ) {
 		</Modal.Body>
 		<Modal.Footer>
 			<Button variant='primary' onClick={ () => {
-				dispatch( event_setShop( shop ) );
+				dispatch( event_setShop( shop, expectedCost ) );
 				closeModal();
 			} }>
 				Save

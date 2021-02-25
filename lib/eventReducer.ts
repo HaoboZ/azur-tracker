@@ -16,17 +16,19 @@ export function event_newEvent() {
 	return { type: NEWEVENT };
 }
 
-export function event_setShop( shop: { [ item: string ]: number } ) {
+export function event_setShop( shop: { [ item: string ]: number }, total: number ) {
 	return {
 		type: SETSHOP,
-		shop
+		shop,
+		total
 	};
 }
 
-export function event_setDaily( daily: { name: string, amount: number }[] ) {
+export function event_setDaily( daily: { name: string, amount: number }[], total: number ) {
 	return {
 		type: SETDAILY,
-		daily
+		daily,
+		total
 	};
 }
 
@@ -108,13 +110,6 @@ initState.farming = [
 	{ points: 180, oil: 10 + 25 * 6 + 40 }
 ];
 
-function calcShop( shop ) {
-	return Object.keys( eventRef.shop ).reduce(
-		( total, item ) => total
-			+ eventRef.shop[ item ].cost * Math.min( eventRef.shop[ item ].amount, shop[ item ] || 0 )
-		, 0 );
-}
-
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
@@ -129,19 +124,22 @@ export default function eventReducer( state = initState, action ): State {
 		return {
 			...state,
 			name:             eventRef.name,
-			shopExpectedCost: calcShop( state.shop )
+			shopExpectedCost: Object.keys( eventRef.shop ).reduce(
+				( total, item ) => total
+					+ eventRef.shop[ item ].cost * Math.min( eventRef.shop[ item ].amount, state.shop[ item ] || 0 )
+				, 0 )
 		};
 	case SETSHOP:
 		return {
 			...state,
 			shop:             action.shop,
-			shopExpectedCost: calcShop( action.shop )
+			shopExpectedCost: action.total
 		};
 	case SETDAILY:
 		return {
 			...state,
 			daily:         action.daily,
-			dailyExpected: action.daily.reduce( ( total, item ) => total + item.amount, 0 )
+			dailyExpected: action.total
 		};
 	case SETPOINTS:
 		return { ...state, points: action.points };
