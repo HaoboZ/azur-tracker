@@ -27,10 +27,10 @@ export default function Research() {
 						<tr>
 							<th>Name</th>
 							<th>Dev Level</th>
-							<th>Dev Stage</th>
+							<th style={ { minWidth: 120 } }>Dev Stage</th>
 							<th>Required Prints</th>
 							<th>Fate Level</th>
-							<th>Fate Stage</th>
+							<th style={ { minWidth: 120 } }>Fate Stage</th>
 							<th>Required Prints</th>
 						</tr>
 						</thead>

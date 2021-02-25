@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { Button, Col, Container, Form, InputGroup, Table } from 'react-bootstrap';
+import { Button, Col, Container, Form, Image, InputGroup, Table } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 import EventDailyModal from '../components/eventDailyModal';
@@ -8,21 +8,29 @@ import EventShopModal from '../components/eventShopModal';
 import {
 	event_addFarming,
 	event_modifyFarming,
+	event_newEvent,
 	event_reset,
-	event_setEndDate,
-	event_setName,
 	event_setPoints
 } from '../lib/eventReducer';
+import eventRef from '../lib/eventRef';
 import { useTypedSelector } from '../lib/store';
 
 export default function Event() {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
-	const remainingDays = Math.max( moment( event.endDate ).diff( moment(), 'day', true ), 0 );
-	
 	const [ shopModal, setShopModal ] = React.useState( false );
 	const [ dailyModal, setDailyModal ] = React.useState( false );
+	
+	React.useEffect( () => {
+		if ( event.name != eventRef.name )
+			dispatch( event_newEvent() );
+	}, [] );
+	
+	if ( event.name != eventRef.name )
+		return null;
+	
+	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( moment(), 'day', true ), 0 );
 	
 	const neededPoints = event.shopExpectedCost - Math.floor( remainingDays ) * event.dailyExpected;
 	const remainingPoints = Math.max( neededPoints - event.points, 0 );
@@ -31,17 +39,9 @@ export default function Event() {
 		<h3 className='d-flex justify-content-between'>
 			Event Tracker <Button onClick={ () => dispatch( event_reset() ) }>Reset</Button>
 		</h3>
+		<Image src='/eventIcons/Khorovod_of_Dawns_Rime.jpg' fluid/>
 		<Form noValidate>
-			<Form.Row>
-				<Form.Group as={ Col }>
-					<Form.Control
-						type='text'
-						placeholder='Event Name'
-						value={ event.name }
-						onChange={ ( e ) => dispatch( event_setName( e.currentTarget.value ) ) }/>
-				</Form.Group>
-			</Form.Row>
-			
+			<h5 className='m-3'>{ eventRef.name }</h5>
 			<Form.Row>
 				<Form.Group as={ Col } md={ 4 }>
 					<Form.Label>Current Date</Form.Label>
@@ -55,8 +55,9 @@ export default function Event() {
 					<Form.Label>End Date</Form.Label>
 					<Form.Control
 						type='datetime-local'
-						value={ moment( event.endDate ).format( 'YYYY-MM-DDTHH:mm' ) }
-						onChange={ ( e ) => dispatch( event_setEndDate( e.currentTarget.value ) ) }/>
+						plaintext
+						readOnly
+						defaultValue={ moment( eventRef.endDate ).format( 'YYYY-MM-DDTHH:mm' ) }/>
 				</Form.Group>
 				<Form.Group as={ Col } md={ 4 }>
 					<Form.Label>Days Remaining</Form.Label>

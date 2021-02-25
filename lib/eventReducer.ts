@@ -1,8 +1,8 @@
 import moment from 'moment';
+import eventRef from './eventRef';
 
 const RESET         = 'event/reset',
-      SETNAME       = 'event/setName',
-      SETENDDATE    = 'event/setEndDate',
+      NEWEVENT      = 'event/newEvent',
       SETSHOP       = 'event/setShop',
       SETDAILY      = 'event/setDaily',
       SETPOINTS     = 'event/setPoints',
@@ -15,21 +15,11 @@ export function event_reset() {
 	};
 }
 
-export function event_setName( name: string ) {
-	return {
-		type: SETNAME,
-		name
-	};
+export function event_newEvent() {
+	return { type: NEWEVENT };
 }
 
-export function event_setEndDate( endDate: string ) {
-	return {
-		type: SETENDDATE,
-		endDate
-	};
-}
-
-export function event_setShop( shop: { name: string, cost: number, amount: number, buy: number }[] ) {
+export function event_setShop( shop: { [ item: string ]: number } ) {
 	return {
 		type: SETSHOP,
 		shop
@@ -69,8 +59,7 @@ export function event_modifyFarming( index: number, item: { points?: number, oil
 
 type State = {
 	name: string
-	endDate: string
-	shop: { name: string, cost: number, amount: number, buy: number }[]
+	shop: { [ item: string ]: number }
 	shopExpectedCost: number
 	daily: { name: string, amount: number }[]
 	dailyExpected: number
@@ -80,8 +69,7 @@ type State = {
 
 const initState: State = {
 	name:             '',
-	endDate:          moment().endOf( 'day' ).format( 'YYYY-MM-DDTHH:mm' ),
-	shop:             [],
+	shop:             {},
 	shopExpectedCost: 0,
 	daily:            [],
 	dailyExpected:    0,
@@ -89,44 +77,44 @@ const initState: State = {
 	farming:          []
 };
 
-initState.name = 'Event Name';
-initState.endDate = '2021-03-11T11:59';
-initState.shop = [
-	{ name: 'Primary Ship', cost: 8000, amount: 5, buy: 1 },
-	{ name: 'Secondary Ship', cost: 2000, amount: 5, buy: 1 },
-	{ name: 'Gear Skin Box', cost: 2000, amount: 10, buy: 0 },
-	{ name: 'Eagle Tech Box', cost: 300, amount: 4, buy: 0 },
-	{ name: 'Royal Tech Box', cost: 300, amount: 4, buy: 0 },
-	{ name: 'Sakura Tech Box', cost: 300, amount: 4, buy: 0 },
-	{ name: 'Ironblood Tech Box', cost: 300, amount: 4, buy: 0 },
-	{ name: 'Cognitive Chips', cost: 300, amount: 10, buy: 0 },
-	{ name: 'Rare Cat Box', cost: 250, amount: 10, buy: 0 },
-	{ name: 'Elite Cat Box', cost: 500, amount: 5, buy: 0 },
-	{ name: 'Super Rare Cat Box', cost: 3000, amount: 2, buy: 0 },
-	{ name: 'Strengthening Unit', cost: 500, amount: 30, buy: 30 },
-	{ name: 'Special Strengthening Unit', cost: 1000, amount: 10, buy: 10 },
-	{ name: 'General Part', cost: 30, amount: 30, buy: 0 },
-	{ name: 'Main Gun Part', cost: 30, amount: 30, buy: 0 },
-	{ name: 'Torpedo Part', cost: 30, amount: 30, buy: 0 },
-	{ name: 'Anti-Air Part', cost: 30, amount: 30, buy: 0 },
-	{ name: 'Aircraft Part', cost: 30, amount: 30, buy: 0 },
-	{ name: 'Coins', cost: 500, amount: 5, buy: 5 },
-	{ name: 'Oil', cost: 450, amount: 5, buy: 5 },
-	{ name: 'Oxy-cola', cost: 15, amount: 100, buy: 0 }
-];
-initState.shopExpectedCost = 39750;
+initState.shop = {
+	'Gear Skin Box':              0,
+	'Eagle Tech Box':             0,
+	'Royal Tech Box':             0,
+	'Sakura Tech Box':            0,
+	'Ironblood Tech Box':         0,
+	'Cognitive Chips':            0,
+	'Rare Cat Box':               0,
+	'Elite Cat Box':              0,
+	'Super Rare Cat Box':         2,
+	'Strengthening Unit':         30,
+	'Special Strengthening Unit': 10,
+	'General Part':               0,
+	'Main Gun Part':              0,
+	'Torpedo Part':               0,
+	'Anti-Air Part':              0,
+	'Aircraft Part':              0,
+	'Coins':                      5,
+	'Oil':                        5,
+	'Oxy-cola':                   0
+};
 initState.daily = [
 	{ name: 'Build 3 ships', amount: 300 },
 	{ name: 'Sortie and obtain 15 victories', amount: 300 },
 	{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
-	{ name: 'SP Level', amount: 800 },
-	{ name: '3x Points', amount: 990 },
-	{ name: '2x Points', amount: 1500 }
+	{ name: 'SP Level', amount: 800 }
 ];
-initState.dailyExpected = 2490;
+initState.dailyExpected = 2540;
 initState.farming = [
 	{ points: 180, oil: 10 + 25 * 6 + 40 }
 ];
+
+function calcShop( shop ) {
+	return Object.keys( eventRef.shop ).reduce(
+		( total, item ) => total
+			+ eventRef.shop[ item ].cost * Math.min( eventRef.shop[ item ].amount, shop[ item ] || 0 )
+		, 0 );
+}
 
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
@@ -136,18 +124,19 @@ export default function eventReducer( state = initState, action ): State {
 		}
 		break;
 	case RESET:
-		return initState;
-	case SETNAME:
-		return { ...state, name: action.name };
-	case SETENDDATE:
-		return { ...state, endDate: action.endDate };
+		state = initState;
+		// noinspection FallThroughInSwitchStatementJS
+	case NEWEVENT:
+		return {
+			...state,
+			name:             eventRef.name,
+			shopExpectedCost: calcShop( state.shop )
+		};
 	case SETSHOP:
 		return {
 			...state,
 			shop:             action.shop,
-			shopExpectedCost: action.shop.reduce(
-				( total, item ) => total + item.cost * Math.min( item.amount, item.buy )
-				, 0 )
+			shopExpectedCost: calcShop( action.shop )
 		};
 	case SETDAILY:
 		return {

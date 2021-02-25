@@ -3,6 +3,7 @@ import { Button, Col, Form, Modal, Row, Table } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 import { event_setShop } from '../lib/eventReducer';
+import eventRef from '../lib/eventRef';
 import { useTypedSelector } from '../lib/store';
 import styles from '../styles/modal.module.css';
 
@@ -13,32 +14,19 @@ export default function EventShopModal( { status, closeModal } ) {
 	const [ shop, setShop ] = React.useState( event.shop );
 	const [ expectedCost, setExpectedCost ] = React.useState( event.shopExpectedCost );
 	const [ buyoutCost, setBuyoutCost ] = React.useState(
-		() => shop.reduce( ( total, item ) => total + item.cost * item.amount, 0 ) );
+		() => Object.values( eventRef.shop ).reduce( ( total, item ) =>
+			total + item.cost * item.amount, 0 ) );
 	
 	function calcTotalCost() {
-		let [ totalCost, buyoutCost ] = shop.reduce( ( total, item ) => [
-			total[ 0 ] + item.cost * Math.min( item.amount, item.buy ),
-			total[ 1 ] + item.cost * item.amount
-		], [ 0, 0 ] );
+		let [ totalCost, buyoutCost ] = Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
+			const item = eventRef.shop[ itemName ];
+			return [
+				total[ 0 ] + item.cost * Math.min( item.amount, shop[ itemName ] || 0 ),
+				total[ 1 ] + item.cost * item.amount
+			];
+		}, [ 0, 0 ] );
 		setExpectedCost( totalCost );
 		setBuyoutCost( buyoutCost );
-	}
-	
-	function addItem( index: number, remove?: boolean ) {
-		if ( !remove && shop.length >= index ) {
-			shop.splice( index, 0, { name: '', cost: 0, amount: 0, buy: 0 } );
-			setShop( [ ...shop ] );
-		} else if ( shop.length > index ) {
-			shop.splice( index, 1 );
-			setShop( [ ...shop ] );
-			calcTotalCost();
-		}
-	}
-	
-	function modifyItem( index: number, item: { name?: string, cost?: number, amount?: number, buy?: number } ) {
-		shop[ index ] = { ...shop[ index ], ...item };
-		setShop( [ ...shop ] );
-		calcTotalCost();
 	}
 	
 	return <Modal show={ status } onHide={ closeModal } dialogClassName={ styles.modalWidth }>
@@ -53,7 +41,6 @@ export default function EventShopModal( { status, closeModal } ) {
 			<Table responsive size='sm' striped style={ { minWidth: 600 } }>
 				<thead>
 				<tr>
-					<th colSpan={ 2 }/>
 					<th style={ { minWidth: 250 } }>Name</th>
 					<th>Cost</th>
 					<th>Amount</th>
@@ -61,41 +48,42 @@ export default function EventShopModal( { status, closeModal } ) {
 				</tr>
 				</thead>
 				<tbody>
-				{ shop.map( ( item, index ) => <tr key={ index }>
-					<td><Button onClick={ () => addItem( index ) }>+</Button></td>
-					<td><Button onClick={ () => addItem( index, true ) }>−</Button></td>
-					<td>
-						<Form.Control
-							type='text'
-							value={ item.name }
-							onChange={ ( e ) =>
-								modifyItem( index, { name: e.currentTarget.value } ) }/>
-					</td>
-					<td>
-						<Form.Control
-							type='number'
-							value={ item.cost }
-							onChange={ ( e ) =>
-								modifyItem( index, { cost: Math.max( parseInt( e.currentTarget.value ) || 0, 0 ) } ) }/>
-					</td>
-					<td>
-						<Form.Control
-							type='number'
-							value={ item.amount }
-							onChange={ ( e ) =>
-								modifyItem( index, { amount: Math.max( parseInt( e.currentTarget.value ) || 0, 0 ) } ) }/>
-					</td>
-					<td>
-						<Form.Control
-							type='number'
-							value={ item.buy }
-							onChange={ ( e ) =>
-								modifyItem( index, { buy: Math.min( Math.max( parseInt( e.currentTarget.value ) || 0, 0 ), item.amount ) } ) }/>
-					</td>
-				</tr> ) }
-				<tr>
-					<td><Button onClick={ () => addItem( shop.length ) }>+</Button></td>
-				</tr>
+				{ Object.keys( eventRef.shop ).map( ( itemName, index ) => {
+					const item = eventRef.shop[ itemName ];
+					return <tr key={ index }>
+						<td>
+							<Form.Control
+								type='text'
+								plaintext
+								readOnly
+								defaultValue={ itemName }/>
+						</td>
+						<td>
+							<Form.Control
+								type='number'
+								plaintext
+								readOnly
+								defaultValue={ item.cost }/>
+						</td>
+						<td>
+							<Form.Control
+								type='number'
+								plaintext
+								readOnly
+								defaultValue={ item.amount }/>
+						</td>
+						<td>
+							<Form.Control
+								type='number'
+								value={ shop[ itemName ] || 0 }
+								onChange={ ( e ) => {
+									shop[ itemName ] = Math.min( Math.max( parseInt( e.currentTarget.value ) || 0, 0 ), item.amount );
+									setShop( { ...shop } );
+									calcTotalCost();
+								} }/>
+						</td>
+					</tr>;
+				} ) }
 				</tbody>
 			</Table>
 		</Modal.Body>
