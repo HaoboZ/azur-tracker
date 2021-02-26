@@ -1,5 +1,6 @@
 export default {
 	name:    'Khorovod of Dawn\'s Rime',
+	image:   '/images/events/Khorovod_of_Dawns_Rime.jpg',
 	endDate: '2021-03-11T23:59-07',
 	shop:    {
 		'Tallinn':                              { cost: 8000, amount: 5 },

@@ -1,26 +1,26 @@
 export const ships = {
 	'PR1': [
-		[ 'Neptune', 0, true, '/shipIcons/HMS_Neptune.png' ],
-		[ 'Monarch', 0, true, '/shipIcons/Monarch.png' ],
-		[ 'Ibuki', 0, true, '/shipIcons/Ibuki.png' ],
-		[ 'Izumo', 0, true, '/shipIcons/Izumo.png' ],
-		[ 'Roon', 0, true, '/shipIcons/Roon.png' ],
-		[ 'Saint Louis', 0, true, '/shipIcons/Saint_Louis.png' ]
+		[ 'Neptune', 0, true, 'HMS_Neptune' ],
+		[ 'Monarch', 0, true, 'Monarch' ],
+		[ 'Ibuki', 0, true, 'Ibuki' ],
+		[ 'Izumo', 0, true, 'Izumo' ],
+		[ 'Roon', 0, true, 'Roon' ],
+		[ 'Saint Louis', 0, true, 'Saint_Louis' ]
 	],
 	'PR2': [
-		[ 'Seattle', 0, true, '/shipIcons/Seattle.png' ],
-		[ 'Georgia', 0, true, '/shipIcons/Georgia.png' ],
-		[ 'Kitakaze', 0, true, '/shipIcons/Kitakaze.png' ],
-		[ 'Azuma', 1, false, '/shipIcons/Azuma.png' ],
-		[ 'Friedrich der Groβe', 1, false, '/shipIcons/Friedrich_der_Grosse.png' ],
-		[ 'Gascogne', 0, true, '/shipIcons/Gascogne.png' ]
+		[ 'Seattle', 0, true, 'Seattle' ],
+		[ 'Georgia', 0, true, 'Georgia' ],
+		[ 'Kitakaze', 0, true, 'Kitakaze' ],
+		[ 'Azuma', 1, false, 'Azuma' ],
+		[ 'Friedrich der Groβe', 1, false, 'Friedrich_der_Grosse' ],
+		[ 'Gascogne', 0, true, 'Gascogne' ]
 	],
 	'PR3': [
-		[ 'Cheshire', 0, false, '/shipIcons/Cheshire.png' ],
-		[ 'Drake', 1, false, '/shipIcons/Drake.png' ],
-		[ 'Mainz', 0, false, '/shipIcons/Mainz.png' ],
-		[ 'Odin', 0, false, '/shipIcons/Odin.png' ],
-		[ 'Champagne', 0, false, '/shipIcons/Champagne.png' ]
+		[ 'Cheshire', 0, false, 'Cheshire' ],
+		[ 'Drake', 1, false, 'Drake' ],
+		[ 'Mainz', 0, false, 'Mainz' ],
+		[ 'Odin', 0, false, 'Odin' ],
+		[ 'Champagne', 0, false, 'Champagne' ]
 	]
 };
 

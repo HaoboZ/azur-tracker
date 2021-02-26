@@ -57,27 +57,9 @@ export default function EventShopModal( { status, closeModal } ) {
 				{ Object.keys( eventRef.shop ).map( ( itemName, index ) => {
 					const item = eventRef.shop[ itemName ];
 					return <tr key={ index }>
-						<td>
-							<Form.Control
-								type='text'
-								plaintext
-								readOnly
-								defaultValue={ itemName }/>
-						</td>
-						<td>
-							<Form.Control
-								type='number'
-								plaintext
-								readOnly
-								defaultValue={ item.cost }/>
-						</td>
-						<td>
-							<Form.Control
-								type='number'
-								plaintext
-								readOnly
-								defaultValue={ item.amount }/>
-						</td>
+						<td>{ itemName }</td>
+						<td>{ item.cost }</td>
+						<td>{ item.amount }</td>
 						<td>
 							<Form.Control
 								type='number'

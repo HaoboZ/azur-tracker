@@ -57,7 +57,7 @@ export default function Research() {
 							
 							return <tr key={ index }>
 								<td className='text-center'>
-									<Image src={ item[ 3 ] } rounded width={ 60 }/>
+									<Image src={ `/images/ships/${ item[ 3 ] }.png` } rounded width={ 60 }/>
 									<p className='mb-0'>{ item[ 0 ] }</p>
 								</td>
 								<td>
@@ -65,10 +65,10 @@ export default function Research() {
 										type='number'
 										value={ ship.devLevel || 0 }
 										onChange={ ( e ) => {
-											const devLevel = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 30 );
+											const level = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 30 );
 											dispatch( research_modifyShip( item[ 0 ], {
-												devLevel,
-												devStage: devLevel != 30 ? ship.devStage : 0
+												devLevel: level,
+												devStage: level != 30 ? ship.devStage : 0
 											} ) );
 										} }/>
 								</td>
@@ -94,10 +94,10 @@ export default function Research() {
 												type='number'
 												value={ ship.fateLevel || 0 }
 												onChange={ ( e ) => {
-													const fateLevel = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 5 );
+													const level = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 5 );
 													dispatch( research_modifyShip( item[ 0 ], {
-														fateLevel,
-														fateStage: fateLevel != 5 ? ship.fateStage : 0
+														fateLevel: level,
+														fateStage: level != 5 ? ship.fateStage : 0
 													} ) );
 												} }/>
 										</td>

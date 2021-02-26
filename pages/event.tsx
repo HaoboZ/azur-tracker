@@ -41,7 +41,7 @@ export default function Event() {
 			<Button onClick={ () => dispatch( event_reset() ) }>Reset</Button>
 		</h3>
 		<div className='text-center'>
-			<Image src='/eventIcons/Khorovod_of_Dawns_Rime.jpg' fluid/>
+			<Image src={ eventRef.image } fluid/>
 			<h5 className='m-3'>{ eventRef.name }</h5>
 		</div>
 		<Form noValidate>
@@ -64,11 +64,7 @@ export default function Event() {
 				</Form.Group>
 				<Form.Group as={ Col } md={ 4 }>
 					<Form.Label>Days Remaining</Form.Label>
-					<Form.Control
-						type='text'
-						plaintext
-						readOnly
-						value={ Math.floor( remainingDays ) }/>
+					<div className='my-2'>{ Math.floor( remainingDays ) }</div>
 				</Form.Group>
 			</Form.Row>
 			
