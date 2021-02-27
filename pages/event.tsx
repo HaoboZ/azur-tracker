@@ -102,13 +102,11 @@ export default function Event() {
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='Current Date'
-				inputProps={ { className: classes.rightItems } }
 				defaultValue={ moment().format( 'l LT' ) }/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='End Date'
-				inputProps={ { className: classes.rightItems } }
 				defaultValue={ moment( eventRef.endDate ).format( 'l LT' ) }/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
