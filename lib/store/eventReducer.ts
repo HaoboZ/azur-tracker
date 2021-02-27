@@ -1,4 +1,4 @@
-import eventRef from './eventRef';
+import eventRef from '../eventRef';
 
 const RESET         = 'event/reset',
       NEWEVENT      = 'event/newEvent',
@@ -34,8 +34,8 @@ export function event_setDaily( daily: { name: string, amount: number }[], total
 
 export function event_setPoints( points: number ) {
 	return {
-		type: SETPOINTS,
-		points
+		type:   SETPOINTS,
+		points: Math.max( points || 0, 0 )
 	};
 }
 
@@ -49,6 +49,8 @@ export function event_addFarming( index: number, remove?: boolean ) {
 }
 
 export function event_modifyFarming( index: number, item: { points?: number, oil?: number } ) {
+	if ( 'points' in item ) item.points = Math.max( item.points || 0, 0 );
+	if ( 'oil' in item ) item.oil = Math.max( item.oil || 0, 0 );
 	return {
 		type: MODIFYFARMING,
 		index,

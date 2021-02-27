@@ -1,39 +1,109 @@
+import {
+	AppBar,
+	Box, IconButton,
+	Link as MuiLink,
+	makeStyles,
+	Menu,
+	MenuItem,
+	Toolbar
+} from '@material-ui/core';
+import {
+	Brightness3 as Brightness3Icon,
+	BrightnessHigh as BrightnessHighIcon
+} from '@material-ui/icons';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 
-import PortingModal from './portingModal';
+import { useTypedSelector } from '../lib/store';
+import { setTheme } from '../lib/store/mainReducer';
+import PortingDialog from './portingDialog';
+
+const useStyles = makeStyles( ( theme ) => ( {
+	title:     {
+		marginRight: theme.spacing( 3 )
+	},
+	links:     {
+		marginRight: theme.spacing( 2 )
+	},
+	separator: {
+		flexGrow: 1
+	}
+} ) );
 
 export default function TitleBar() {
-	const router = useRouter();
+	const main     = useTypedSelector( store => store.main ),
+	      dispatch = useDispatch();
 	
-	const [ portingModal, setPortingModal ] = React.useState( false ),
+	const classes = useStyles();
+	
+	const [ anchorEl, setAnchorEl ]         = React.useState<null | HTMLElement>( null ),
+	      [ portingModal, setPortingModal ] = React.useState( false ),
 	      [ portingType, setPortingType ]   = React.useState( 0 );
 	
-	return <Navbar bg='light' expand='md'>
-		<Link href='/' passHref><Navbar.Brand href='/'>Azur Lane Tracker</Navbar.Brand></Link>
-		<Navbar.Toggle aria-controls='navbar-nav'/>
-		<Navbar.Collapse id='navbar-nav'>
-			<Nav className='mr-auto' activeKey={ router.pathname }>
-				{/*<Link href='/ships' passHref><Nav.Link>Ships</Nav.Link></Link>*/ }
-				{/*<Link href='/equipment' passHref><Nav.Link>Equipment</Nav.Link></Link>*/ }
-				<Link href='/event' passHref><Nav.Link>Event</Nav.Link></Link>
-				<Link href='/research' passHref><Nav.Link>Research</Nav.Link></Link>
-				<NavDropdown title='More' id='navbar-more'>
-					<NavDropdown.Item onClick={ () => {
-						setPortingType( 0 );
-						setPortingModal( true );
-					} }>Export</NavDropdown.Item>
-					<NavDropdown.Item onClick={ () => {
-						setPortingType( 1 );
-						setPortingModal( true );
-					} }>Import</NavDropdown.Item>
-					<PortingModal
-						status={ portingModal } type={ portingType }
-						closeModal={ () => setPortingModal( false ) }/>
-				</NavDropdown>
-			</Nav>
-		</Navbar.Collapse>
-	</Navbar>;
+	return <AppBar position='static'>
+		<Toolbar>
+			<Link href='/' passHref>
+				<MuiLink
+					variant='h6' color='inherit' underline='none'
+					className={ classes.title }>
+					Azur Lane Tracker
+				</MuiLink>
+			</Link>
+			{/*<Link href='/ships' passHref>*/}
+			{/*	<MuiLink*/}
+			{/*		variant='subtitle1' color='inherit' underline='none'*/}
+			{/*		className={ classes.links }>*/}
+			{/*		<Box fontWeight='fontWeightMedium'>Ships</Box>*/}
+			{/*	</MuiLink>*/}
+			{/*</Link>*/}
+			<Link href='/event' passHref>
+				<MuiLink
+					variant='subtitle1' color='inherit' underline='none'
+					className={ classes.links }>
+					Event
+				</MuiLink>
+			</Link>
+			<Link href='/research' passHref>
+				<MuiLink
+					variant='subtitle1' color='inherit' underline='none'
+					className={ classes.links }>
+					Research
+				</MuiLink>
+			</Link>
+			<MuiLink
+				variant='subtitle1' color='inherit' underline='none' href=''
+				onClick={ ( e ) => {
+					e.preventDefault();
+					setAnchorEl( e.currentTarget );
+				} }>
+				More ▼
+			</MuiLink>
+			<div className={ classes.separator }/>
+			<IconButton
+				color='inherit'
+				onClick={ () => dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) ) }>
+				{ main.theme === 'light' ? <BrightnessHighIcon/> : <Brightness3Icon/> }
+			</IconButton>
+			<Menu
+				anchorEl={ anchorEl }
+				keepMounted
+				open={ !!anchorEl }
+				onClose={ () => setAnchorEl( null ) }>
+				<MenuItem onClick={ () => {
+					setAnchorEl( null );
+					setPortingType( 0 );
+					setPortingModal( true );
+				} }>Export</MenuItem>
+				<MenuItem onClick={ () => {
+					setAnchorEl( null );
+					setPortingType( 1 );
+					setPortingModal( true );
+				} }>Import</MenuItem>
+			</Menu>
+			<PortingDialog
+				status={ portingModal } type={ portingType }
+				closeModal={ () => setPortingModal( false ) }/>
+		</Toolbar>
+	</AppBar>;
 }

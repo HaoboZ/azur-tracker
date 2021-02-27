@@ -1,140 +1,181 @@
+import {
+	Button,
+	Grid,
+	InputAdornment,
+	makeStyles,
+	Paper,
+	Tab,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	Tabs,
+	TextField,
+	Typography
+} from '@material-ui/core';
 import React from 'react';
-import { Button, Container, Form, Image, InputGroup, Tab, Table, Tabs } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-
-import { research_modifyShip, research_reset, research_setLastTab } from '../lib/researchReducer';
 import { devLevels, fateLevels, ships } from '../lib/researchRef';
 import { useTypedSelector } from '../lib/store';
+
+import {
+	research_modifyShip,
+	research_reset,
+	research_setLastTab
+} from '../lib/store/researchReducer';
+
+const useStyles = makeStyles( ( theme ) => ( {
+	spacedTitle: {
+		justifyContent: 'space-between'
+	},
+	table:       {
+		'& tr:nth-of-type(odd),& th': {
+			backgroundColor: theme.palette.type === 'dark'
+				                 ? theme.palette.action.hover : theme.palette.action.focus
+		}
+	},
+	rightItems:  {
+		textAlign: 'right'
+	}
+} ) );
 
 export default function Research() {
 	const research = useTypedSelector( store => store.research ),
 	      dispatch = useDispatch();
 	
-	return <Container>
-		<h3 className='d-flex justify-content-between'>
-			Research Tracker
-			<Button onClick={ () => dispatch( research_reset() ) }>Reset</Button>
-		</h3>
-		<Tabs
-			activeKey={ research.lastTab }
-			onSelect={ ( k ) => {
-				dispatch( research_setLastTab( k ) );
-			} }>
-			{ Object.keys( ships ).map( ( key ) => {
-				let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
-				return <Tab key={ key } eventKey={ key } title={ key }>
-					<Table responsive striped style={ { minWidth: 680 } } size='sm'>
-						<thead>
-						<tr>
-							<th>Name</th>
-							<th>Dev Level</th>
-							<th style={ { minWidth: 120 } }>Dev Stage</th>
-							<th>Required Prints</th>
-							<th>Fate Level</th>
-							<th style={ { minWidth: 120 } }>Fate Stage</th>
-							<th>Required Prints</th>
-						</tr>
-						</thead>
-						<tbody>
-						{ ships[ key ].map( ( item, index ) => {
-							const ship = research.ships[ item[ 0 ] ] || {} as any;
-							const devLevel  = devLevels[ Math.min( Math.max( ship.devLevel || 0, 0 ), 30 ) ],
-							      fateLevel = fateLevels[ Math.min( Math.max( ship.fateLevel || 0, 0 ), 5 ) ];
-							const devPrints  = Math.max( Math.floor(
-								devLevels[ 30 ][ item[ 1 ] * 2 + 1 ]
-								- devLevel[ item[ 1 ] * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
-								0 ),
-							      fatePrints = Math.max( Math.floor(
-								      fateLevels[ 5 ][ 1 ]
-								      - fateLevel[ 1 ] - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
-								      0 );
-							if ( item[ 1 ] ) {
-								totalDR += devPrints;
-							} else {
-								totalPRDev += devPrints;
-								if ( item[ 2 ] ) totalPRFate += fatePrints;
-							}
-							
-							return <tr key={ index }>
-								<td className='text-center'>
-									<Image src={ `/images/ships/${ item[ 3 ] }.png` } rounded width={ 60 }/>
-									<p className='mb-0'>{ item[ 0 ] }</p>
-								</td>
-								<td>
-									<Form.Control
-										type='number'
-										value={ ship.devLevel || 0 }
-										onChange={ ( e ) => {
-											const level = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 30 );
-											dispatch( research_modifyShip( item[ 0 ], {
-												devLevel: level,
-												devStage: level != 30 ? ship.devStage : 0
-											} ) );
-										} }/>
-								</td>
-								<td>
-									<InputGroup>
-										<Form.Control
+	const classes = useStyles();
+	
+	return <Grid container spacing={ 2 }>
+		<Grid item xs={ 12 } container className={ classes.spacedTitle }>
+			<Typography variant='h5'>
+				Research Tracker
+			</Typography>
+			<Button
+				variant='contained' color='secondary'
+				onClick={ () => dispatch( research_reset() ) }>Reset</Button>
+		</Grid>
+		<Grid item xs={ 12 }>
+			<Tabs
+				value={ research.lastTab }
+				onChange={ ( e, value ) => {
+					dispatch( research_setLastTab( value ) );
+				} }>
+				{ Object.keys( ships ).map( ( key ) => <Tab key={ key } label={ key }/> ) }
+			</Tabs>
+		</Grid>
+		{ Object.keys( ships ).map( ( key, index ) => {
+			let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
+			return <div key={ key } hidden={ index !== research.lastTab }>
+				<TableContainer component={ Paper }>
+					<Table size='small'>
+						<TableHead>
+							<TableRow>
+								<TableCell>Name</TableCell>
+								<TableCell>Dev Level</TableCell>
+								<TableCell>Dev Stage</TableCell>
+								<TableCell>Required Prints</TableCell>
+								<TableCell>Fate Level</TableCell>
+								<TableCell>Fate Stage</TableCell>
+								<TableCell>Required Prints</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{ ships[ key ].map( ( item, index ) => {
+								const ship = research.ships[ item[ 0 ] ] || {} as any;
+								const devLevel  = devLevels[ ship.devLevel || 0 ],
+								      fateLevel = fateLevels[ ship.fateLevel || 0 ];
+								const devPrints  = Math.max( Math.floor(
+									devLevels[ 30 ][ item[ 1 ] * 2 + 1 ]
+									- devLevel[ item[ 1 ] * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
+									0 ),
+								      fatePrints = Math.max( Math.floor(
+									      fateLevels[ 5 ][ 1 ]
+									      - fateLevel[ 1 ] - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
+									      0 );
+								if ( item[ 1 ] ) {
+									totalDR += devPrints;
+								} else {
+									totalPRDev += devPrints;
+									if ( item[ 2 ] ) totalPRFate += fatePrints;
+								}
+								
+								return <TableRow key={ index }>
+									<TableCell className='text-center'>
+										<img
+											src={ `/images/ships/${ item[ 3 ] }.png` } alt={ item[ 0 ] }
+											width={ 60 }/>
+										<Typography>{ item[ 0 ] }</Typography>
+									</TableCell>
+									<TableCell>
+										<TextField
 											type='number'
+											value={ ship.devLevel || 0 }
+											onChange={ ( e ) =>
+												dispatch( research_modifyShip( item[ 0 ],
+													{ devLevel: parseInt( e.currentTarget.value ) } ) ) }/>
+									</TableCell>
+									<TableCell>
+										<TextField
+											type='number'
+											InputProps={ {
+												endAdornment:
+													<InputAdornment position='end'>
+														/{ devLevel[ item[ 1 ] * 2 ] * 10 }
+													</InputAdornment>
+											} }
+											inputProps={ { className: classes.rightItems } }
 											value={ ship.devStage || 0 }
 											onChange={ ( e ) =>
-												dispatch( research_modifyShip( item[ 0 ], {
-													devStage: Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), devLevel[ item[ 1 ] * 2 ] * 10 )
-												} ) ) }/>
-										<InputGroup.Append>
-											<InputGroup.Text>/{ devLevel[ item[ 1 ] * 2 ] * 10 }</InputGroup.Text>
-										</InputGroup.Append>
-									</InputGroup>
-								</td>
-								<td>{ devPrints }</td>
-								{
-									item[ 2 ] && <>
-										<td>
-											<Form.Control
-												type='number'
-												value={ ship.fateLevel || 0 }
-												onChange={ ( e ) => {
-													const level = Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 5 );
-													dispatch( research_modifyShip( item[ 0 ], {
-														fateLevel: level,
-														fateStage: level != 5 ? ship.fateStage : 0
-													} ) );
-												} }/>
-										</td>
-										<td>
-											<InputGroup>
-												<Form.Control
+												dispatch( research_modifyShip( item[ 0 ],
+													{ devStage: parseInt( e.currentTarget.value ) },
+													devLevel[ item[ 1 ] * 2 ] * 10 ) ) }/>
+									</TableCell>
+									<TableCell>{ devPrints }</TableCell>
+									{
+										item[ 2 ] && <>
+											<TableCell>
+												<TextField
 													type='number'
+													value={ ship.fateLevel || 0 }
+													onChange={ ( e ) => {
+														dispatch( research_modifyShip( item[ 0 ],
+															{ fateLevel: parseInt( e.currentTarget.value ) } ) );
+													} }/>
+											</TableCell>
+											<TableCell>
+												<TextField
+													type='number'
+													InputProps={ {
+														endAdornment:
+															<InputAdornment position='end'>%</InputAdornment>
+													} }
+													inputProps={ { className: classes.rightItems } }
 													value={ ship.fateStage || 0 }
 													onChange={ ( e ) =>
-														dispatch( research_modifyShip( item[ 0 ], {
-															fateStage: Math.min( Math.max( parseInt( e.currentTarget.value ), 0 ), 100 )
-														} ) ) }/>
-												<InputGroup.Append>
-													<InputGroup.Text>%</InputGroup.Text>
-												</InputGroup.Append>
-											</InputGroup>
-										</td>
-										<td>{ fatePrints }</td>
-									</>
-								}
-							</tr>;
-						} ) }
-						<tr>
-							<td colSpan={ 3 }>Priority Prints Total</td>
-							<td>{ totalPRDev }</td>
-							<td colSpan={ 2 }/>
-							<td>{ totalPRFate }</td>
-						</tr>
-						<tr>
-							<td colSpan={ 3 }>Decisive Prints Total</td>
-							<td>{ totalDR }</td>
-						</tr>
-						</tbody>
+														dispatch( research_modifyShip( item[ 0 ],
+															{ fateStage: parseInt( e.currentTarget.value ) } ) ) }/>
+											</TableCell>
+											<TableCell>{ fatePrints }</TableCell>
+										</>
+									}
+								</TableRow>;
+							} ) }
+							<TableRow>
+								<TableCell colSpan={ 3 }>Priority Prints Total</TableCell>
+								<TableCell>{ totalPRDev }</TableCell>
+								<TableCell colSpan={ 2 }/>
+								<TableCell>{ totalPRFate }</TableCell>
+							</TableRow>
+							<TableRow>
+								<TableCell colSpan={ 3 }>Decisive Prints Total</TableCell>
+								<TableCell>{ totalDR }</TableCell>
+							</TableRow>
+						</TableBody>
 					</Table>
-				</Tab>;
-			} ) }
-		
-		</Tabs>
-	</Container>;
+				</TableContainer>
+			</div>;
+		} ) }
+	</Grid>;
 }
