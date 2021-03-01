@@ -77,7 +77,7 @@ export default function Ship() {
 					{
 						field:      'name',
 						headerName: 'Name',
-						width:      150,
+						width:      130,
 						renderCell: ( { value, row } ) =>
 							            <Link
 								            href={ row.link } target='_blank' color='textPrimary'>
@@ -95,13 +95,13 @@ export default function Ship() {
 					{
 						field:         'nation',
 						headerName:    'Nation',
-						width:         150,
+						width:         130,
 						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
 					},
 					{
 						field:         'type',
 						headerName:    'Type',
-						width:         150,
+						width:         130,
 						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
 					},
 					{
@@ -117,7 +117,7 @@ export default function Ship() {
 						field:         'love',
 						type:          'number',
 						headerName:    'Love',
-						description:   '♡ (1) for 100 affinity, 💍 for married, 💍♡ for 200 affinity',
+						description:   '♡ (1) for 100 affinity, 💍 (2) for married, 💍♡ (3) for 200 affinity',
 						width:         90,
 						align:         'center',
 						hideSortIcons: true,
@@ -185,7 +185,12 @@ export default function Ship() {
 				// 		console.log( row );
 				// 	}
 				// } }
-				sortModel={ [ { field: 'tier', sort: 'asc' } ] }/>
+				sortModel={ [ { field: 'tier', sort: 'asc' } ] }
+				sortingOrder={ undefined }
+				columnTypes={ undefined }
+				headerHeight={ undefined }
+				localeText={ undefined }
+				rowHeight={ undefined }/>
 		</Grid>
 	</Grid>;
 }
