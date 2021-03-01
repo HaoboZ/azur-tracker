@@ -68,7 +68,7 @@ export default function researchReducer( state = initState, action ): State {
 		return { ...state, lastTab: action.lastTab };
 	case MODIFYSHIP:
 		state.ships[ action.ship ] = { ...state.ships[ action.ship ], ...action.item };
-		return { ...state, ...state.ships };
+		return { ...state, ships: { ...state.ships } };
 	}
 	return state;
 }
