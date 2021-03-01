@@ -5,7 +5,7 @@ export function ship_reset() {
 	return { type: RESET };
 }
 
-export function ship_setShip( name: string, ship ) {
+export function ship_setShip( name: string, ship: { lvl?: number, love?: number, equip?: number[ ] } ) {
 	return {
 		type: SETSHIP,
 		name,
@@ -14,7 +14,7 @@ export function ship_setShip( name: string, ship ) {
 }
 
 type State = {
-	ships: { [ name: string ]: { lvl: number, equip: number[] } }
+	ships: { [ name: string ]: { lvl: number, love: number, equip: number[] } }
 }
 
 const initState: State = {
@@ -31,7 +31,7 @@ export default function shipReducer( state = initState, action ): State {
 	case RESET:
 		return initState;
 	case SETSHIP:
-		state.ships;
+		state.ships[ action.name ] = { ...state.ships[ action.name ], ...action.ship };
 		return { ...state };
 	}
 	return state;

@@ -154,7 +154,7 @@ export default function Event() {
 				} }
 				value={ event.points }
 				onChange={ ( e ) =>
-					dispatch( event_setPoints( parseInt( e.currentTarget.value ) ) ) }/>
+					dispatch( event_setPoints( parseInt( e.target.value ) ) ) }/>
 		</Grid>
 		<Grid item xs={ 12 }>
 			<Typography variant='h6'>Farming</Typography>
@@ -197,7 +197,7 @@ export default function Event() {
 										value={ item.points }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,
-												{ points: parseInt( e.currentTarget.value ) } ) ) }/>
+												{ points: parseInt( e.target.value ) } ) ) }/>
 								</TableCell>
 								<TableCell>
 									<TextField
@@ -206,7 +206,7 @@ export default function Event() {
 										value={ item.oil }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,
-												{ oil: parseInt( e.currentTarget.value ) } ) ) }/>
+												{ oil: parseInt( e.target.value ) } ) ) }/>
 								</TableCell>
 								<TableCell><Typography>{ plays }</Typography></TableCell>
 								<TableCell><Typography>{ isFinite( oil ) ? oil : Infinity }</Typography></TableCell>

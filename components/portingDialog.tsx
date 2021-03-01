@@ -48,6 +48,8 @@ export default function PortingDialog( { status, type, closeModal } ) {
 					data.event = store.event;
 				if ( e.currentTarget.researchExport.checked )
 					data.research = store.research;
+				if ( e.currentTarget.shipExport.checked )
+					data.ship = store.ship;
 				
 				try {
 					const encoded = btoa( encodeURIComponent( JSON.stringify( data ) ) );
@@ -75,6 +77,11 @@ export default function PortingDialog( { status, type, closeModal } ) {
 						<FormControlLabel
 							control={ <Switch defaultChecked name='researchExport'/> }
 							label='Research'/>
+					</FormGroup>
+					<FormGroup row>
+						<FormControlLabel
+							control={ <Switch defaultChecked name='shipExport'/> }
+							label='Ship'/>
 					</FormGroup>
 					<TextField
 						multiline rows={ 4 } fullWidth

@@ -119,7 +119,7 @@ export default function Research() {
 											value={ ship.devLevel || 0 }
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ],
-													{ devLevel: parseInt( e.currentTarget.value ) } ) ) }/>
+													{ devLevel: parseInt( e.target.value ) } ) ) }/>
 									</TableCell>
 									<TableCell>
 										<TextField
@@ -134,7 +134,7 @@ export default function Research() {
 											value={ ship.devStage || 0 }
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ],
-													{ devStage: parseInt( e.currentTarget.value ) },
+													{ devStage: parseInt( e.target.value ) },
 													devLevel[ item[ 1 ] * 2 ] * 10 ) ) }/>
 									</TableCell>
 									<TableCell>{ devPrints }</TableCell>
@@ -146,7 +146,7 @@ export default function Research() {
 													value={ ship.fateLevel || 0 }
 													onChange={ ( e ) => {
 														dispatch( research_modifyShip( item[ 0 ],
-															{ fateLevel: parseInt( e.currentTarget.value ) } ) );
+															{ fateLevel: parseInt( e.target.value ) } ) );
 													} }/>
 											</TableCell>
 											<TableCell>
@@ -160,7 +160,7 @@ export default function Research() {
 													value={ ship.fateStage || 0 }
 													onChange={ ( e ) =>
 														dispatch( research_modifyShip( item[ 0 ],
-															{ fateStage: parseInt( e.currentTarget.value ) } ) ) }/>
+															{ fateStage: parseInt( e.target.value ) } ) ) }/>
 											</TableCell>
 											<TableCell>{ fatePrints }</TableCell>
 										</>

@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 
 import shipRef, { mappedColors } from '../lib/reference/shipRef';
 import { useTypedSelector } from '../lib/store';
-import { ship_reset } from '../lib/store/shipReducer';
+import { ship_reset, ship_setShip } from '../lib/store/shipReducer';
 
 const useStyles = makeStyles( () => ( {
 	noPadding:     { padding: 0 },
@@ -43,7 +43,7 @@ const useStyles = makeStyles( () => ( {
 } ) );
 
 export default function Ship() {
-	const ships    = useTypedSelector( store => store.ship ),
+	const ship     = useTypedSelector( store => store.ship ),
 	      dispatch = useDispatch();
 	
 	const classes = useStyles();
@@ -56,6 +56,10 @@ export default function Ship() {
 	      
 	      #__next > .MuiContainer-root {
 	         height: 90%;
+	      }
+	      
+	      .MuiDataGrid-root .MuiDataGrid-cell {
+	         padding: 0 8px !important;
 	      }
     ` }</style>
 		<Grid item xs={ 12 } container component={ Box } justifyContent='space-between'>
@@ -75,7 +79,12 @@ export default function Ship() {
 						headerName: 'Name',
 						width:      150,
 						renderCell: ( { value, row } ) =>
-							            <Link href={ row.link } target='_blank'>{ value }</Link>
+							            <Link
+								            href={ row.link } target='_blank' color='textPrimary'>
+								            <Box overflow='hidden'>
+									            { value }
+								            </Box>
+							            </Link>
 					},
 					{
 						field:         'rarity',
@@ -95,37 +104,87 @@ export default function Ship() {
 						width:         150,
 						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
 					},
-					{ field: 'tier', headerName: 'Tier', width: 80 },
 					{
-						field:      'level',
-						headerName: 'Mx Lvl',
-						width:      100,
-						renderCell: ( { getValue, row } ) => <Box mx='auto'>
-							<Select
-								value={ 9 }
-								onChange={ () => null }>
-								<MenuItem value={ 0 }>70</MenuItem>
-								<MenuItem value={ 1 }>80</MenuItem>
-								<MenuItem value={ 2 }>90</MenuItem>
-								<MenuItem value={ 3 }>100</MenuItem>
-								<MenuItem value={ 5 }>105</MenuItem>
-								<MenuItem value={ 6 }>110</MenuItem>
-								<MenuItem value={ 7 }>115</MenuItem>
-								<MenuItem value={ 8 }>120</MenuItem>
-								<MenuItem value={ 9 }>✰</MenuItem>
-							</Select>
-						</Box>
+						field:          'tier',
+						type:           'number',
+						headerName:     'Tier',
+						description:    'From ENCTL',
+						width:          80,
+						hideSortIcons:  true,
+						valueFormatter: ( { value } ) => value === 3 ? 'N' : value
 					},
 					{
-						field:         'equip',
-						headerName:    'Equips',
-						width:         150,
-						cellClassName: classes.noPadding
+						field:         'love',
+						type:          'number',
+						headerName:    'Love',
+						description:   '♡ (1) for 100 affinity, 💍 for married, 💍♡ for 200 affinity',
+						width:         90,
+						align:         'center',
+						hideSortIcons: true,
+						valueGetter:   ( { row } ) => {
+							let _ship = ship.ships[ row.id ];
+							return ( _ship && _ship.love ) || 0;
+						},
+						renderCell:    ( { field, getValue, row } ) => {
+							const val = getValue( field ) as number;
+							return <Select
+								fullWidth
+								value={ val }
+								onChange={ ( e ) =>
+									dispatch( ship_setShip( row.id as string, { love: e.target.value as number } ) ) }>
+								<MenuItem value={ 0 }>-</MenuItem>
+								<MenuItem value={ 1 }>♡</MenuItem>
+								<MenuItem value={ 2 }>💍</MenuItem>
+								<MenuItem value={ 3 }>💍♡</MenuItem>
+							</Select>;
+						}
+					},
+					{
+						field:         'level',
+						type:          'number',
+						headerName:    'MxLvl',
+						description:   'Maximum level that is possible, ✰ for lvl 120 (121)',
+						width:         90,
+						align:         'center',
+						hideSortIcons: true,
+						valueGetter:   ( { row } ) => {
+							let _ship = ship.ships[ row.id ];
+							return ( _ship && _ship.lvl ) || 70;
+						},
+						renderCell:    ( { field, getValue, row } ) => {
+							const val = getValue( field ) as number;
+							return <Select
+								fullWidth
+								value={ val }
+								onChange={ ( e ) =>
+									dispatch( ship_setShip( row.id as string, { lvl: e.target.value as number } ) ) }>
+								<MenuItem value={ 70 }>70</MenuItem>
+								<MenuItem value={ 80 }>80</MenuItem>
+								<MenuItem value={ 90 }>90</MenuItem>
+								<MenuItem value={ 100 }>100</MenuItem>
+								<MenuItem value={ 105 }>105</MenuItem>
+								<MenuItem value={ 110 }>110</MenuItem>
+								<MenuItem value={ 115 }>115</MenuItem>
+								<MenuItem value={ 120 }>120</MenuItem>
+								<MenuItem value={ 121 }>✰</MenuItem>
+							</Select>;
+						}
 					}
+					// {
+					// 	field:         'equip',
+					// 	headerName:    'Equips',
+					// 	width:         150,
+					// 	cellClassName: classes.noPadding,
+					// 	valueGetter:   () => 'test'
+					// }
 				] }
 				density='compact'
 				columnBuffer={ 2 }
-				columnTypes={ undefined }
+				// onCellClick={ ( { field, row } ) => {
+				// 	if ( field === 'equip' ) {
+				// 		console.log( row );
+				// 	}
+				// } }
 				sortModel={ [ { field: 'tier', sort: 'asc' } ] }/>
 		</Grid>
 	</Grid>;

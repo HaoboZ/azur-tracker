@@ -116,7 +116,7 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 									type='text' fullWidth
 									value={ item.name }
 									onChange={ ( e ) =>
-										modifyItem( index, { name: e.currentTarget.value } ) }/>
+										modifyItem( index, { name: e.target.value } ) }/>
 							</TableCell>
 							<TableCell align='right'>
 								<TextField
@@ -124,7 +124,7 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 									inputProps={ { className: classes.numberInput } }
 									value={ item.amount }
 									onChange={ ( e ) =>
-										modifyItem( index, { amount: parseInt( e.currentTarget.value ) } ) }/>
+										modifyItem( index, { amount: parseInt( e.target.value ) } ) }/>
 							</TableCell>
 						</TableRow> ) }
 						<TableRow>

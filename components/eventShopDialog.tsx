@@ -107,7 +107,7 @@ export default function EventShopDialog( { status, closeDialog } ) {
 										inputProps={ { className: classes.numberInput } }
 										value={ shop[ itemName ] || 0 }
 										onChange={ ( e ) => {
-											shop[ itemName ] = Math.min( Math.max( parseInt( e.currentTarget.value ) || 0, 0 ), item.amount );
+											shop[ itemName ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
 											setShop( { ...shop } );
 										} }/>
 								</TableCell>

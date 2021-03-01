@@ -73,7 +73,7 @@ export default function TitleBar() {
 				variant='subtitle1' color='inherit' underline='none' href=''
 				onClick={ ( e ) => {
 					e.preventDefault();
-					setAnchorEl( e.currentTarget );
+					setAnchorEl( e.target );
 				} }>
 				More ▼
 			</MuiLink>
