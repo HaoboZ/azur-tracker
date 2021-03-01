@@ -1,4 +1,5 @@
 import {
+	Box,
 	Button,
 	Grid,
 	InputAdornment,
@@ -17,7 +18,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { devLevels, fateLevels, ships } from '../lib/researchRef';
+import { devLevels, fateLevels, ships } from '../lib/reference/researchRef';
 import { useTypedSelector } from '../lib/store';
 
 import {
@@ -27,17 +28,21 @@ import {
 } from '../lib/store/researchReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	spacedTitle: {
-		justifyContent: 'space-between'
-	},
 	table:       {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.type === 'dark'
 				                 ? theme.palette.action.hover : theme.palette.action.focus
 		}
 	},
-	rightItems:  {
-		textAlign: 'right'
+	numberInput: {
+		textAlign:                                                    'right',
+		'&[type=number]':                                             {
+			'-moz-appearance': 'textfield'
+		},
+		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+			'-webkit-appearance': 'none',
+			margin:               0
+		}
 	}
 } ) );
 
@@ -48,7 +53,7 @@ export default function Research() {
 	const classes = useStyles();
 	
 	return <Grid container spacing={ 2 }>
-		<Grid item xs={ 12 } container className={ classes.spacedTitle }>
+		<Grid item xs={ 12 } container component={ Box } justifyContent='space-between'>
 			<Typography variant='h5'>
 				Research Tracker
 			</Typography>
@@ -125,7 +130,7 @@ export default function Research() {
 														/{ devLevel[ item[ 1 ] * 2 ] * 10 }
 													</InputAdornment>
 											} }
-											inputProps={ { className: classes.rightItems } }
+											inputProps={ { className: classes.numberInput } }
 											value={ ship.devStage || 0 }
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ],
@@ -151,7 +156,7 @@ export default function Research() {
 														endAdornment:
 															<InputAdornment position='end'>%</InputAdornment>
 													} }
-													inputProps={ { className: classes.rightItems } }
+													inputProps={ { className: classes.numberInput } }
 													value={ ship.fateStage || 0 }
 													onChange={ ( e ) =>
 														dispatch( research_modifyShip( item[ 0 ],

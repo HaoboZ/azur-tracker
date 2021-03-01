@@ -7,15 +7,6 @@ export default function Home() {
 		<Typography>
 			All data is saved client side so export to transfer data
 		</Typography>
-		{/*<Typography>*/}
-		{/*	<Link href='/ships' passHref>*/}
-		{/*		<MuiLink variant='subtitle1' color='textSecondary' underline='always'>*/}
-		{/*			Ship Tracker*/}
-		{/*		</MuiLink>*/}
-		{/*	</Link>*/}
-		{/*	{ ' ' }- tracks ship levels and their equips (for those who want to collect/level every*/}
-		{/*	ship by tier or all ships to have good equips)*/}
-		{/*</Typography>*/}
 		<Typography>
 			<Link href='/event' passHref>
 				<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
@@ -31,6 +22,15 @@ export default function Home() {
 				</MuiLink>
 			</Link>
 			{ ' ' }- calculates number of strengthing units for pr ships until max
+		</Typography>
+		<Typography>
+			<Link href='/ship' passHref>
+				<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
+					Ship Tracker
+				</MuiLink>
+			</Link>
+			{ ' ' }- tracks ship levels and their equips (for those who want to collect/level/fully
+			equip every ship, preferrably by tier (ENCTL))
 		</Typography>
 	</>;
 }

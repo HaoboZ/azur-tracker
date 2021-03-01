@@ -1,4 +1,5 @@
 import {
+	Box,
 	Button,
 	Grid,
 	InputAdornment,
@@ -20,7 +21,7 @@ import { useDispatch } from 'react-redux';
 
 import EventDailyDialog from '../components/eventDailyDialog';
 import EventShopDialog from '../components/eventShopDialog';
-import eventRef from '../lib/eventRef';
+import eventRef from '../lib/reference/eventRef';
 import { useTypedSelector } from '../lib/store';
 import {
 	event_addFarming,
@@ -31,13 +32,7 @@ import {
 } from '../lib/store/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	spacedTitle:   {
-		justifyContent: 'space-between'
-	},
-	centerItems:   {
-		textAlign: 'center'
-	},
-	rightItems:    {
+	rightInput:    {
 		textAlign: 'right'
 	},
 	disabledInput: {
@@ -51,8 +46,16 @@ const useStyles = makeStyles( ( theme ) => ( {
 			borderBottomStyle: 'none'
 		}
 	},
-	shopInput:     { textAlign: 'right' },
-	table:         {
+	numberInput:   {
+		'&[type=number]':                                             {
+			'-moz-appearance': 'textfield'
+		},
+		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+			'-webkit-appearance': 'none',
+			margin:               0
+		}
+	},
+	table: {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.type === 'dark'
 				                 ? theme.palette.action.hover : theme.palette.action.focus
@@ -83,7 +86,7 @@ export default function Event() {
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <Grid container spacing={ 2 }>
-		<Grid item xs={ 12 } container className={ classes.spacedTitle }>
+		<Grid item xs={ 12 } container component={ Box } justifyContent='space-between'>
 			<Typography variant='h5'>
 				Event Tracker
 			</Typography>
@@ -91,12 +94,12 @@ export default function Event() {
 				variant='contained' color='secondary'
 				onClick={ () => dispatch( event_reset() ) }>Reset</Button>
 		</Grid>
-		<Grid item xs={ 12 } className={ classes.centerItems }>
+		<Grid item xs={ 12 } component={ Box } mx='auto'>
 			<img
 				src={ eventRef.image } alt='event banner'
 				style={ { width: '100%', maxWidth: 700, display: 'block', margin: 'auto' } }/>
 		</Grid>
-		<Grid item xs={ 12 } className={ classes.centerItems }>
+		<Grid item xs={ 12 } component={ Box } textAlign='center'>
 			<Typography variant='h6'>{ eventRef.name }</Typography>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
@@ -115,7 +118,7 @@ export default function Event() {
 				InputProps={ {
 					endAdornment: <InputAdornment position='end'>Days</InputAdornment>
 				} }
-				inputProps={ { className: classes.rightItems } }
+				inputProps={ { className: classes.rightInput } }
 				defaultValue={ Math.floor( remainingDays ) }/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
@@ -125,7 +128,7 @@ export default function Event() {
 					startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
 					endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
 				} }
-				inputProps={ { className: classes.rightItems } }
+				inputProps={ { className: classes.rightInput } }
 				value={ event.shopExpectedCost }
 				onClick={ () => setShopDialog( true ) }/>
 			<EventShopDialog status={ shopDialog } closeDialog={ () => setShopDialog( false ) }/>
@@ -136,15 +139,16 @@ export default function Event() {
 				InputProps={ {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				} }
-				inputProps={ { className: classes.rightItems } }
+				inputProps={ { className: classes.rightInput } }
 				value={ event.dailyExpected }
 				onClick={ () => setDailyDialog( true ) }/>
 			<EventDailyDialog status={ dailyDialog } closeDialog={ () => setDailyDialog( false ) }/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
-				type='number' label='Current Points'
-				inputProps={ { className: classes.rightItems } }
+				type='number'
+				label='Current Points'
+				inputProps={ { className: `${ classes.numberInput } ${ classes.rightInput }` } }
 				InputProps={ {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				} }
@@ -189,6 +193,7 @@ export default function Event() {
 								<TableCell>
 									<TextField
 										type='number'
+										inputProps={ { className: classes.numberInput } }
 										value={ item.points }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,
@@ -197,6 +202,7 @@ export default function Event() {
 								<TableCell>
 									<TextField
 										type='number'
+										inputProps={ { className: classes.numberInput } }
 										value={ item.oil }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,

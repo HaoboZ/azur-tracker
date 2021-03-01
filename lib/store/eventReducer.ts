@@ -1,4 +1,4 @@
-import eventRef from '../eventRef';
+import eventRef from '../reference/eventRef';
 
 const RESET         = 'event/reset',
       NEWEVENT      = 'event/newEvent',

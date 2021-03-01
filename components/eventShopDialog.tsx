@@ -1,9 +1,9 @@
 import {
+	Box,
 	Button,
 	Dialog,
 	DialogActions,
 	DialogContent,
-	DialogContentText,
 	DialogTitle,
 	Grid,
 	makeStyles,
@@ -14,24 +14,32 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
-	TextField
+	TextField,
+	Typography
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import eventRef from '../lib/eventRef';
+import eventRef from '../lib/reference/eventRef';
 import { useTypedSelector } from '../lib/store';
 import { event_setShop } from '../lib/store/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	table:      {
+	table:       {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.type === 'dark'
 				                 ? theme.palette.action.hover : theme.palette.action.focus
 		}
 	},
-	rightItems: {
-		textAlign: 'right'
+	numberInput: {
+		textAlign:                                                    'right',
+		'&[type=number]':                                             {
+			'-moz-appearance': 'textfield'
+		},
+		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+			'-webkit-appearance': 'none',
+			margin:               0
+		}
 	}
 } ) );
 
@@ -42,28 +50,19 @@ export default function EventShopDialog( { status, closeDialog } ) {
 	const classes = useStyles();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
-	const [ expectedCost, setExpectedCost ] = React.useState( 0 );
-	const [ buyoutCost, setBuyoutCost ] = React.useState( 0 );
 	
-	function calcTotalCost() {
-		let [ totalCost, buyoutCost ] = Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
+	React.useEffect( () => {
+		if ( status ) setShop( event.shop );
+	}, [ status ] );
+	
+	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
+		Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
 			const item = eventRef.shop[ itemName ];
 			return [
 				total[ 0 ] + item.cost * Math.min( item.amount, shop[ itemName ] || 0 ),
 				total[ 1 ] + item.cost * item.amount
 			];
-		}, [ 0, 0 ] );
-		setExpectedCost( totalCost );
-		setBuyoutCost( buyoutCost );
-	}
-	
-	React.useEffect( () => {
-		calcTotalCost();
-	} );
-	
-	React.useEffect( () => {
-		if ( status ) setShop( event.shop );
-	}, [ status ] );
+		}, [ 0, 0 ] ), [ shop ] );
 	
 	return <Dialog
 		open={ status }
@@ -76,16 +75,15 @@ export default function EventShopDialog( { status, closeDialog } ) {
 		closeAfterTransition>
 		<DialogTitle>Shop Items</DialogTitle>
 		<DialogContent>
-			<DialogContentText>
-				<Grid container spacing={ 2 }>
-					<Grid item xs={ 6 }>
-						Buyout Price: { buyoutCost }
-					</Grid>
-					<Grid item xs={ 6 }>
-						Expected Price: { expectedCost }
-					</Grid>
+			<Grid container spacing={ 2 }>
+				<Grid item xs={ 6 }>
+					<Typography>Buyout Price: { buyoutCost }</Typography>
 				</Grid>
-			</DialogContentText>
+				<Grid item xs={ 6 }>
+					<Typography>Expected Price: { expectedCost }</Typography>
+				</Grid>
+			</Grid>
+			<Box margin={ 2 }/>
 			<TableContainer component={ Paper }>
 				<Table size='small' className={ classes.table }>
 					<TableHead>
@@ -106,12 +104,11 @@ export default function EventShopDialog( { status, closeDialog } ) {
 								<TableCell align='right'>
 									<TextField
 										type='number'
-										inputProps={ { className: classes.rightItems } }
+										inputProps={ { className: classes.numberInput } }
 										value={ shop[ itemName ] || 0 }
 										onChange={ ( e ) => {
 											shop[ itemName ] = Math.min( Math.max( parseInt( e.currentTarget.value ) || 0, 0 ), item.amount );
 											setShop( { ...shop } );
-											calcTotalCost();
 										} }/>
 								</TableCell>
 							</TableRow>;

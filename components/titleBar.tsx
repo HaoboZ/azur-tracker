@@ -1,6 +1,7 @@
 import {
 	AppBar,
-	Box, IconButton,
+	Box,
+	IconButton,
 	Link as MuiLink,
 	makeStyles,
 	Menu,
@@ -20,14 +21,11 @@ import { setTheme } from '../lib/store/mainReducer';
 import PortingDialog from './portingDialog';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	title:     {
+	title: {
 		marginRight: theme.spacing( 3 )
 	},
-	links:     {
+	links: {
 		marginRight: theme.spacing( 2 )
-	},
-	separator: {
-		flexGrow: 1
 	}
 } ) );
 
@@ -50,13 +48,6 @@ export default function TitleBar() {
 					Azur Lane Tracker
 				</MuiLink>
 			</Link>
-			{/*<Link href='/ships' passHref>*/}
-			{/*	<MuiLink*/}
-			{/*		variant='subtitle1' color='inherit' underline='none'*/}
-			{/*		className={ classes.links }>*/}
-			{/*		<Box fontWeight='fontWeightMedium'>Ships</Box>*/}
-			{/*	</MuiLink>*/}
-			{/*</Link>*/}
 			<Link href='/event' passHref>
 				<MuiLink
 					variant='subtitle1' color='inherit' underline='none'
@@ -71,6 +62,13 @@ export default function TitleBar() {
 					Research
 				</MuiLink>
 			</Link>
+			<Link href='/ship' passHref>
+				<MuiLink
+					variant='subtitle1' color='inherit' underline='none'
+					className={ classes.links }>
+					Ship
+				</MuiLink>
+			</Link>
 			<MuiLink
 				variant='subtitle1' color='inherit' underline='none' href=''
 				onClick={ ( e ) => {
@@ -79,7 +77,7 @@ export default function TitleBar() {
 				} }>
 				More ▼
 			</MuiLink>
-			<div className={ classes.separator }/>
+			<Box flexGrow={ 1 }/>
 			<IconButton
 				color='inherit'
 				onClick={ () => dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) ) }>

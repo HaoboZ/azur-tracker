@@ -23,14 +23,21 @@ import { useTypedSelector } from '../lib/store';
 import { event_setDaily } from '../lib/store/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	table:      {
+	table:       {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.type === 'dark'
 				                 ? theme.palette.action.hover : theme.palette.action.focus
 		}
 	},
-	rightItems: {
-		textAlign: 'right'
+	numberInput: {
+		textAlign:                                                    'right',
+		'&[type=number]':                                             {
+			'-moz-appearance': 'textfield'
+		},
+		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+			'-webkit-appearance': 'none',
+			margin:               0
+		}
 	}
 } ) );
 
@@ -41,19 +48,13 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 	const classes = useStyles();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
-	const [ dailyTotal, setDailyTotal ] = React.useState( 0 );
-	
-	React.useEffect( () => {
-		calcDailyTotal();
-	}, [] );
 	
 	React.useEffect( () => {
 		if ( status ) setDaily( event.daily );
 	}, [ status ] );
 	
-	function calcDailyTotal() {
-		setDailyTotal( daily.reduce( ( total, item ) => total + item.amount, 0 ) );
-	}
+	const dailyTotal = React.useMemo( () =>
+		daily.reduce( ( total, item ) => total + item.amount, 0 ), [ daily ] );
 	
 	function addItem( index: number, remove?: boolean ) {
 		if ( !remove && daily.length >= index ) {
@@ -62,7 +63,6 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 		} else if ( daily.length > index ) {
 			daily.splice( index, 1 );
 			setDaily( [ ...daily ] );
-			calcDailyTotal();
 		}
 	}
 	
@@ -70,7 +70,6 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 		if ( 'amount' in item ) item.amount = Math.max( item.amount || 0, 0 );
 		daily[ index ] = { ...daily[ index ], ...item };
 		setDaily( [ ...daily ] );
-		calcDailyTotal();
 	}
 	
 	return <Dialog
@@ -122,7 +121,7 @@ export default function eventDailyDialog( { status, closeDialog } ) {
 							<TableCell align='right'>
 								<TextField
 									type='number'
-									inputProps={ { className: classes.rightItems } }
+									inputProps={ { className: classes.numberInput } }
 									value={ item.amount }
 									onChange={ ( e ) =>
 										modifyItem( index, { amount: parseInt( e.currentTarget.value ) } ) }/>
