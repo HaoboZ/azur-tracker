@@ -24,13 +24,12 @@ export default function Home() {
 			{ ' ' }- calculates number of strengthing units for pr ships until max
 		</Typography>
 		<Typography>
-			<Link href='/ship' passHref>
+			<Link href='/armada' passHref>
 				<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
-					Ship Tracker
+					Armada Tracker
 				</MuiLink>
 			</Link>
-			{ ' ' }- tracks ship levels and their equips (for those who want to collect/level/fully
-			equip every ship, preferrably by tier (ENCTL))
+			{ ' ' }- for those who want a fully leveled, fully equipped fleet, rise my glorious armada
 		</Typography>
 	</>;
 }

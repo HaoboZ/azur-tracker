@@ -19,8 +19,8 @@ import { Add as AddIcon, Remove as RemoveIcon } from '@material-ui/icons';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { useTypedSelector } from '../lib/store';
-import { event_setDaily } from '../lib/store/eventReducer';
+import { useTypedSelector } from '../../lib/store';
+import { event_setDaily } from '../../lib/store/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	table:       {
@@ -41,7 +41,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function eventDailyDialog( { status, closeDialog } ) {
+export default function DailyDialog( { status, closeDialog } ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	

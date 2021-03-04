@@ -20,9 +20,9 @@ import {
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import eventRef from '../lib/reference/eventRef';
-import { useTypedSelector } from '../lib/store';
-import { event_setShop } from '../lib/store/eventReducer';
+import eventRef from '../../lib/reference/eventRef';
+import { useTypedSelector } from '../../lib/store';
+import { event_setShop } from '../../lib/store/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	table:       {
@@ -43,7 +43,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function EventShopDialog( { status, closeDialog } ) {
+export default function ShopDialog( { status, closeDialog } ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	

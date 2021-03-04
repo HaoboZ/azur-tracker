@@ -81,7 +81,7 @@ export default function PortingDialog( { status, type, closeModal } ) {
 					<FormGroup row>
 						<FormControlLabel
 							control={ <Switch defaultChecked name='shipExport'/> }
-							label='Ship'/>
+							label='Armada'/>
 					</FormGroup>
 					<TextField
 						multiline rows={ 4 } fullWidth

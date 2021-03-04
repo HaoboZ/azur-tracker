@@ -1,54 +1,32 @@
-import {
-	Box,
-	Button,
-	Grid,
-	Link,
-	makeStyles,
-	MenuItem,
-	Select,
-	Typography
-} from '@material-ui/core';
+import { Box, Grid, Link, makeStyles, MenuItem, Select, Typography } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import shipRef, { mappedColors } from '../lib/reference/shipRef';
+import Filter from '../components/armada/filter';
+import PageTitleReset from '../components/pageTitleReset';
+import {
+	mappedColorClasses,
+	nationColors,
+	rarityColors,
+	typeColors
+} from '../lib/reference/colors';
+import shipRef from '../lib/reference/shipRef';
 import { useTypedSelector } from '../lib/store';
 import { ship_reset, ship_setShip } from '../lib/store/shipReducer';
 
 const useStyles = makeStyles( () => ( {
-	noPadding:     { padding: 0 },
-	rainbow:       {
-		background: 'linear-gradient(120deg, lightgoldenrodyellow, aquamarine, lightblue, plum)',
-		color:      'black'
-	},
-	palegoldenrod: { backgroundColor: 'palegoldenrod', color: 'black' },
-	plum:          { backgroundColor: 'plum', color: 'black' },
-	lightblue:     { backgroundColor: 'lightblue', color: 'black' },
-	lightgray:     { backgroundColor: 'lightgray', color: 'black' },
-	wheat:         { backgroundColor: 'wheat', color: 'black' },
-	darksalmon:    { backgroundColor: 'darksalmon', color: 'black' },
-	lightpink:     { backgroundColor: 'lightpink', color: 'black' },
-	lightgreen:    { backgroundColor: 'lightgreen', color: 'black' },
-	paleturquoise: { backgroundColor: 'paleturquoise', color: 'black' },
-	royalblue:     { backgroundColor: 'royalblue', color: 'black' },
-	lavenderblush: { backgroundColor: 'lavenderblush', color: 'black' },
-	whitesmoke:    { backgroundColor: 'whitesmoke', color: 'black' },
-	goldenrod:     { backgroundColor: 'goldenrod', color: 'black' },
-	indianred:     { backgroundColor: 'indianred', color: 'black' },
-	mediumpurple:  { backgroundColor: 'mediumpurple', color: 'black' },
-	pink:          { backgroundColor: 'pink', color: 'black' },
-	thistle:       { backgroundColor: 'thistle', color: 'black' },
-	dimgray:       { backgroundColor: 'dimgray', color: 'white' }
+	noPadding: { padding: 0 },
+	...mappedColorClasses
 } ) );
 
-export default function Ship() {
+export default function Armada() {
 	const ship     = useTypedSelector( store => store.ship ),
 	      dispatch = useDispatch();
 	
 	const classes = useStyles();
 	
-	return <Grid container spacing={ 2 } style={ { height: '100%' } }>
+	return <Grid container spacing={ 2 } component={ Box } height='100%'>
 		<style global jsx>{ `
 	      html, body, #__next {
 	        height: 100%;
@@ -62,14 +40,8 @@ export default function Ship() {
 	         padding: 0 8px !important;
 	      }
     ` }</style>
-		<Grid item xs={ 12 } container component={ Box } justifyContent='space-between'>
-			<Typography variant='h5'>
-				Ship Tracker
-			</Typography>
-			<Button
-				variant='contained' color='secondary'
-				onClick={ () => dispatch( ship_reset() ) }>Reset</Button>
-		</Grid>
+		<PageTitleReset name='Armada Tracker' reset={ ship_reset }/>
+		<Filter/>
 		<Grid item xs={ 12 } component={ Box } height='100%'>
 			<DataGrid
 				rows={ shipRef }
@@ -77,7 +49,7 @@ export default function Ship() {
 					{
 						field:      'name',
 						headerName: 'Name',
-						width:      130,
+						width:      150,
 						renderCell: ( { value, row } ) =>
 							            <Link
 								            href={ row.link } target='_blank' color='textPrimary'>
@@ -90,19 +62,19 @@ export default function Ship() {
 						field:         'rarity',
 						headerName:    'Rarity',
 						width:         110,
-						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
+						cellClassName: ( { value } ) => classes[ rarityColors[ value as string ] ]
 					},
 					{
 						field:         'nation',
 						headerName:    'Nation',
 						width:         130,
-						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
+						cellClassName: ( { value } ) => classes[ nationColors[ value as string ] ]
 					},
 					{
 						field:         'type',
 						headerName:    'Type',
 						width:         130,
-						cellClassName: ( { value } ) => classes[ mappedColors[ value as string ] ]
+						cellClassName: ( { value } ) => classes[ typeColors[ value as string ] ]
 					},
 					{
 						field:          'tier',
@@ -117,7 +89,7 @@ export default function Ship() {
 						field:         'love',
 						type:          'number',
 						headerName:    'Love',
-						description:   '♡ (1) for 100 affinity, 💍 (2) for married, 💍♡ (3) for 200 affinity',
+						description:   '♥ (1) for 100 affinity, 💍 (2) for married, 💍♥ (3) for 200 affinity',
 						width:         90,
 						align:         'center',
 						hideSortIcons: true,
@@ -132,10 +104,10 @@ export default function Ship() {
 								value={ val }
 								onChange={ ( e ) =>
 									dispatch( ship_setShip( row.id as string, { love: e.target.value as number } ) ) }>
-								<MenuItem value={ 0 }>-</MenuItem>
-								<MenuItem value={ 1 }>♡</MenuItem>
+								<MenuItem value={ 0 }>♡</MenuItem>
+								<MenuItem value={ 1 }>♥</MenuItem>
 								<MenuItem value={ 2 }>💍</MenuItem>
-								<MenuItem value={ 3 }>💍♡</MenuItem>
+								<MenuItem value={ 3 }>💍♥</MenuItem>
 							</Select>;
 						}
 					},
@@ -166,25 +138,25 @@ export default function Ship() {
 								<MenuItem value={ 110 }>110</MenuItem>
 								<MenuItem value={ 115 }>115</MenuItem>
 								<MenuItem value={ 120 }>120</MenuItem>
-								<MenuItem value={ 121 }>✰</MenuItem>
+								<MenuItem value={ 121 }>★</MenuItem>
 							</Select>;
 						}
+					},
+					{
+						field:         'equip',
+						headerName:    'Equips',
+						width:         110,
+						cellClassName: classes.noPadding,
+						renderCell:    ( { row } ) => <Typography variant='h6'>★✮☆✦✧⊝</Typography>
 					}
-					// {
-					// 	field:         'equip',
-					// 	headerName:    'Equips',
-					// 	width:         150,
-					// 	cellClassName: classes.noPadding,
-					// 	valueGetter:   () => 'test'
-					// }
 				] }
 				density='compact'
 				columnBuffer={ 2 }
-				// onCellClick={ ( { field, row } ) => {
-				// 	if ( field === 'equip' ) {
-				// 		console.log( row );
-				// 	}
-				// } }
+				onCellClick={ ( { field, row } ) => {
+					if ( field === 'equip' ) {
+						console.log( row );
+					}
+				} }
 				sortModel={ [ { field: 'tier', sort: 'asc' } ] }
 				sortingOrder={ undefined }
 				columnTypes={ undefined }

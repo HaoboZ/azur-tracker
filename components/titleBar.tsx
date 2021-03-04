@@ -62,11 +62,11 @@ export default function TitleBar() {
 					Research
 				</MuiLink>
 			</Link>
-			<Link href='/ship' passHref>
+			<Link href='/armada' passHref>
 				<MuiLink
 					variant='subtitle1' color='inherit' underline='none'
 					className={ classes.links }>
-					Ship
+					Armada
 				</MuiLink>
 			</Link>
 			<MuiLink

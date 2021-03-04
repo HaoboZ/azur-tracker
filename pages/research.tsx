@@ -1,6 +1,4 @@
 import {
-	Box,
-	Button,
 	Grid,
 	InputAdornment,
 	makeStyles,
@@ -18,6 +16,8 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
+import PageTitleReset from '../components/pageTitleReset';
 import { devLevels, fateLevels, ships } from '../lib/reference/researchRef';
 import { useTypedSelector } from '../lib/store';
 
@@ -53,14 +53,7 @@ export default function Research() {
 	const classes = useStyles();
 	
 	return <Grid container spacing={ 2 }>
-		<Grid item xs={ 12 } container component={ Box } justifyContent='space-between'>
-			<Typography variant='h5'>
-				Research Tracker
-			</Typography>
-			<Button
-				variant='contained' color='secondary'
-				onClick={ () => dispatch( research_reset() ) }>Reset</Button>
-		</Grid>
+		<PageTitleReset name='Research Tracker' reset={ research_reset }/>
 		<Grid item xs={ 12 }>
 			<Tabs
 				value={ research.lastTab }
