@@ -14,11 +14,12 @@ import {
 	TextField,
 	Typography
 } from '@material-ui/core';
+import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import PageTitleReset from '../components/pageTitleReset';
-import { devLevels, fateLevels, ships } from '../lib/reference/researchRef';
+import { devLevels, fateLevels, researchShips } from '../lib/reference/researchRef';
 import { useTypedSelector } from '../lib/store';
 
 import {
@@ -60,10 +61,10 @@ export default function Research() {
 				onChange={ ( e, value ) => {
 					dispatch( research_setLastTab( value ) );
 				} }>
-				{ Object.keys( ships ).map( ( key ) => <Tab key={ key } label={ key }/> ) }
+				{ Object.keys( researchShips ).map( ( key ) => <Tab key={ key } label={ key }/> ) }
 			</Tabs>
 		</Grid>
-		{ Object.keys( ships ).map( ( key, index ) => {
+		{ Object.keys( researchShips ).map( ( key, index ) => {
 			let totalPRDev = 0, totalPRFate = 0, totalDR = 0;
 			return <div key={ key } hidden={ index !== research.lastTab }>
 				<TableContainer component={ Paper }>
@@ -80,7 +81,7 @@ export default function Research() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{ ships[ key ].map( ( item, index ) => {
+							{ researchShips[ key ].map( ( item, index ) => {
 								const ship = research.ships[ item[ 0 ] ] || {} as any;
 								const devLevel  = devLevels[ ship.devLevel || 0 ],
 								      fateLevel = fateLevels[ ship.fateLevel || 0 ];
@@ -101,8 +102,10 @@ export default function Research() {
 								
 								return <TableRow key={ index }>
 									<TableCell className='text-center'>
-										<img
-											src={ `/images/ships/${ item[ 3 ] }.png` } alt={ item[ 0 ] }
+										<Image
+											src={ `/images/ships/${ item[ 3 ] }.png` }
+											alt={ item[ 0 ] }
+											height={ 60 }
 											width={ 60 }/>
 										<Typography>{ item[ 0 ] }</Typography>
 									</TableCell>

@@ -35,7 +35,10 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function Fields( { remainingDays } ) {
+export default function EventFields( { remainingDays, neededPoints }: {
+	remainingDays: number
+	neededPoints: number
+} ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
@@ -72,7 +75,7 @@ export default function Fields( { remainingDays } ) {
 				inputProps={ { className: classes.rightInput } }
 				defaultValue={ Math.floor( remainingDays ) }/>
 		</Grid>
-		<Grid item sm={ 4 } xs={ 6 }>
+		<Grid item sm={ 3 } xs={ 6 }>
 			<TextField
 				type='text' label='Shop'
 				InputProps={ {
@@ -84,7 +87,7 @@ export default function Fields( { remainingDays } ) {
 				onClick={ () => setShopDialog( true ) }/>
 			<ShopDialog status={ shopDialog } closeDialog={ () => setShopDialog( false ) }/>
 		</Grid>
-		<Grid item sm={ 4 } xs={ 6 }>
+		<Grid item sm={ 3 } xs={ 4 }>
 			<TextField
 				type='text' label='Daily Points'
 				InputProps={ {
@@ -95,7 +98,16 @@ export default function Fields( { remainingDays } ) {
 				onClick={ () => setDailyDialog( true ) }/>
 			<DailyDialog status={ dailyDialog } closeDialog={ () => setDailyDialog( false ) }/>
 		</Grid>
-		<Grid item sm={ 4 } xs={ 6 }>
+		<Grid item sm={ 3 } xs={ 4 }>
+			<TextField
+				type='text' disabled className={ classes.disabledInput } label='Required Points'
+				InputProps={ {
+					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
+				} }
+				inputProps={ { className: classes.rightInput } }
+				defaultValue={ neededPoints }/>
+		</Grid>
+		<Grid item sm={ 3 } xs={ 4 }>
 			<TextField
 				type='number'
 				label='Current Points'

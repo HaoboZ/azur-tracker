@@ -1,0 +1,465 @@
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26
+Universal_Bulin,Universal Bulin,Elite,Universal,Destroyer,3,[],DD,AA/Speed,AA/Speed,A/DD1,A/DD2,100,Light,35,232,23,23,23,116,23,3,116,33,0,116
+Prototype_Bulin_MKII,Prototype Bulin MKII,Super Rare,Universal,Destroyer,3,[],DD,AA/Speed,AA/Speed,A/DD1,A/DD2,100,Light,35,232,23,23,23,116,23,3,116,33,0,116
+Specialized_Bulin_Custom_MKIII,Specialized Bulin Custom MKIII,Ultra Rare,Universal,Destroyer,3,[],DD,AA/Speed,AA/Speed,A/DD1,A/DD2,100,Light,35,232,23,23,23,116,23,3,116,33,0,116
+Cassin,Cassin,Rare,Eagle Union,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,66,Light,47,1900,101,168,293,187,0,7,210,181,0,182
+Downes,Downes,Rare,Eagle Union,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,63,Light,47,1900,101,168,293,187,0,7,210,181,0,182
+Gridley,Gridley,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,46,1810,73,174,438,163,0,8,201,201,0,194
+Dewey,Dewey,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,44,1647,74,185,279,162,0,8,189,184,0,173
+Aylwin,Aylwin,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,83,Light,44,1679,81,182,279,162,0,8,199,197,0,173
+Craven,Craven,Normal,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,46,1774,72,171,429,163,0,8,196,192,0,194
+McCall,McCall,Normal,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,69,Light,43,1724,72,171,429,162,0,8,196,192,0,194
+Maury,Maury,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,69,Light,43,1809,76,178,448,198,0,9,207,202,0,194
+Sims,Sims,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,45,Light,45,2025,111,262,286,160,0,8,219,208,0,178
+Hammann,Hammann,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,47,Light,45,2025,96,262,286,160,0,8,224,208,0,178
+Benson,Benson,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,45,1826,87,172,320,163,0,8,204,193,0,184
+Laffey,Laffey,Super Rare,Eagle Union,Destroyer,0.5,[],DD,T,AA,A/DD1,A/DD2,18,Light,45,2145,161,176,342,203,0,9,220,199,0,205
+Bailey,Bailey,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,70,Light,47,2036,102,262,320,162,0,8,224,192,0,184
+Hobby,Hobby,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,68,Light,45,1826,87,172,320,163,0,8,204,212,0,184
+Kalk,Kalk,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,75,Light,45,1826,87,172,320,163,0,8,204,193,0,184
+Fletcher,Fletcher,Rare,Eagle Union,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,73,Light,43,2077,85,172,283,160,0,8,196,206,0,189
+Radford,Radford,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,80,Light,45,2054,85,172,283,163,0,8,201,206,0,197
+Jenkins,Jenkins,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,81,Light,43,2080,85,172,283,161,0,8,201,206,0,197
+Nicholas,Nicholas,Super Rare,Eagle Union,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,80,Light,42,2280,132,233,356,160,0,9,207,222,0,197
+Bache,Bache,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,78,Light,43,2095,76,194,283,161,0,8,196,187,0,186
+Stanly,Stanly,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,90,Light,42,2095,85,172,283,160,0,8,204,206,0,197
+Foote,Foote,Normal,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,67,Light,42,1998,82,171,279,158,0,7,196,202,0,197
+Spence,Spence,Normal,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,20,Light,42,1998,82,171,279,158,0,7,196,202,0,197
+Thatcher,Thatcher,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,65,Light,42,2037,85,172,283,158,0,8,209,206,0,197
+Kimberly,Kimberly,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,77,Light,42,2054,82,182,283,160,0,8,201,206,0,199
+Mullany,Mullany,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,89,Light,42,2115,90,172,291,160,0,9,206,212,0,197
+Bush,Bush,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,34,Light,42,2054,85,189,282,160,0,8,201,206,0,199
+Hazelwood,Hazelwood,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,75,Light,42,2054,85,172,283,160,0,8,196,218,0,197
+Smalley,Smalley,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,65,Light,42,2095,87,189,283,160,0,8,203,210,0,197
+Aulick,Aulick,Normal,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,62,Light,42,1998,82,171,279,158,0,7,204,202,0,197
+Charles_Ausburne,Charles Ausburne,Elite,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,82,Light,42,2112,87,178,291,158,0,9,215,212,0,207
+Halsey_Powell,Halsey Powell,Rare,Eagle Union,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,55,Light,42,2095,81,220,281,160,0,9,203,214,0,198
+Cooper,Cooper,Elite,Eagle Union,Destroyer,2,[0/0/0/1/1],DD,T,AA,A/DD1,A/DD2,22,Light,40,2190,126,200,360,179,0,9,220,215,0,202
+Eldridge,Eldridge,Super Rare,Eagle Union,Destroyer,1.5,[],DD/Speed,T,AA,A/DD1,A/DD2,75,Light,25,1720,81,183,381,211,0,10,231,226,0,194
+Omaha,Omaha,Normal,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,35,3237,142,281,207,101,0,8,182,80,0,151
+Raleigh,Raleigh,Normal,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,82,Light,35,3237,142,281,207,101,0,8,182,80,0,151
+Richmond,Richmond,Normal,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,69,Light,35,3237,142,281,207,101,0,8,182,92,0,151
+Concord,Concord,Rare,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,35,3301,146,295,215,101,0,9,185,82,0,151
+Marblehead,Marblehead,Rare,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,55,Light,35,3301,135,286,245,101,0,9,185,82,0,151
+Memphis,Memphis,Rare,Eagle Union,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,35,3301,146,295,212,101,0,9,185,82,0,151
+Brooklyn,Brooklyn,Rare,Eagle Union,Light Cruiser,1.5,[],CL,DD/Aux,AA/Speed,A/CL1,A/CL2,55,Light,32,3470,164,307,0,90,0,9,181,99,0,158
+Phoenix,Phoenix,Rare,Eagle Union,Light Cruiser,1,[],CL,DD/Aux,AA/Speed,A/CL1,A/CL2,88,Light,32,3470,164,307,0,90,0,9,181,95,0,158
+Honolulu,Honolulu,Rare,Eagle Union,Light Cruiser,2,[],CL,DD/Aux,AA/Speed,A/CL1,A/CL2,50,Light,32,3470,164,307,0,90,0,9,181,99,0,158
+St._Louis,St. Louis,Elite,Eagle Union,Light Cruiser,1.5,[],CL,DD/Aux,AA/Speed,A/CL1,A/CL2,65,Light,32,3604,171,316,0,90,0,10,185,101,0,166
+Helena,Helena,Super Rare,Eagle Union,Light Cruiser,0,[0/0/0/1/1],CL,DD/Aux,AA,A/CL1,A/CL2,33,Light,32,3844,181,406,0,90,0,10,190,109,0,190
+Lena,Lena,Elite,Eagle Union,Light Cruiser,3,[],CL,DD/Aux,AA/Speed,A/CL1,A/CL2,33,Light,32,3246,167,316,0,91,0,10,185,107,0,172
+Atlanta,Atlanta,Rare,Eagle Union,Light Cruiser,3,[],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,12,Light,32,3517,129,422,157,95,0,9,179,187,0,168
+Juneau,Juneau,Rare,Eagle Union,Light Cruiser,3,[],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,18,Light,32,3517,129,422,157,95,0,9,179,187,0,168
+San_Diego,San Diego,Ultra Rare,Eagle Union,Light Cruiser,0,[],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,85,Light,32,3995,182,559,168,95,0,11,210,201,0,168
+San_Juan,San Juan,Rare,Eagle Union,Light Cruiser,3,[],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,77,Light,32,3517,129,429,157,95,0,9,179,186,0,168
+Reno,Reno,Super Rare,Eagle Union,Light Cruiser,1,[],CL/DD/Speed,T,AA/Damage,A/CL1/T,A/CL2/T,52,Light,32,3755,148,479,196,95,0,11,190,203,0,168
+Li%27l_Sandy,Li\'l Sandy,Elite,Eagle Union,Light Cruiser,3,[],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,85,Light,32,3226,131,434,161,95,0,10,182,192,0,168
+Cleveland,Cleveland,Elite,Eagle Union,Light Cruiser,1.5,[],CL,DD/Aux,AA,A/CL1,A/CL2,71,Light,32,4307,165,323,0,92,0,10,189,100,0,163
+Columbia,Columbia,Elite,Eagle Union,Light Cruiser,1.5,[],CL,DD/Aux,AA,A/CL1,A/CL2,70,Light,32,4307,168,323,0,92,0,10,187,100,0,163
+Montpelier,Montpelier,Super Rare,Eagle Union,Light Cruiser,1,[],CL,DD/Aux,AA,A/CL1,A/CL2,72,Light,32,4361,170,333,0,92,0,11,193,104,0,163
+Denver,Denver,Elite,Eagle Union,Light Cruiser,1.5,[],CL,DD/Aux,AA,A/CL1,A/CL2,69,Light,32,4307,157,321,0,92,0,10,185,100,0,161
+Birmingham,Birmingham,Elite,Eagle Union,Light Cruiser,1,[],CL,DD/Aux,AA,A/CL1,A/CL2,48,Light,32,4189,165,321,0,96,0,10,185,99,0,168
+Biloxi,Biloxi,Elite,Eagle Union,Light Cruiser,1,[0/1],CL,DD/Aux,AA,A/CL1,A/CL2,68,Light,33,4308,151,323,0,96,0,11,187,101,0,169
+Clevelad,Clevelad,Elite,Eagle Union,Light Cruiser,3,[],CL,DD/Aux,AA,A/CL1,A/CL2,71,Light,32,3601,162,323,0,94,0,10,181,100,0,158
+Cleveland_µ,Cleveland μ,Elite,Eagle Union,Light Cruiser,2,[],CL,DD/Aux,AA,A/CL1,A/CL2,71,Light,32,3837,162,323,0,96,0,10,189,100,0,163
+Pensacola,Pensacola,Normal,Eagle Union,Heavy Cruiser,3,[],CA,DD/Aux,AA,A/CA1,A/CA2,75,Light,26,3290,232,198,0,55,0,9,160,0,0,118
+Salt_Lake_City,Salt Lake City,Normal,Eagle Union,Heavy Cruiser,3,[],CA,DD/Aux,AA,A/CA1,A/CA2,71,Light,26,3290,232,198,0,55,0,9,160,0,0,118
+Northampton,Northampton,Rare,Eagle Union,Heavy Cruiser,2,[],CA,DD/Aux,AA,A/CA1,A/CA2,27,Light,26,3346,240,204,0,53,0,10,167,0,0,121
+Chicago,Chicago,Rare,Eagle Union,Heavy Cruiser,1.5,[],CA,DD/Aux,AA,A/CA1,A/CA2,32,Light,26,3393,240,204,0,53,0,10,167,0,0,121
+Houston,Houston,Elite,Eagle Union,Heavy Cruiser,2,[],CA,DD/Aux,AA,A/CA1,A/CA2,49,Light,26,3445,246,210,0,53,0,11,171,0,0,121
+Portland,Portland,Elite,Eagle Union,Heavy Cruiser,0.5,[],CA,DD/Aux,AA,A/CA1,A/CA2,78,Medium,26,5355,234,260,0,78,0,10,170,0,0,125
+Indianapolis,Indianapolis,Elite,Eagle Union,Heavy Cruiser,2,[],CA,DD/Aux,AA,A/CA1,A/CA2,23,Medium,26,4734,210,252,0,58,0,11,174,0,0,125
+Astoria,Astoria,Elite,Eagle Union,Heavy Cruiser,3,[],CA,DD/Aux,AA,A/CA1,A/CA2,15,Medium,26,3881,218,226,0,57,0,11,161,0,0,122
+Minneapolis,Minneapolis,Super Rare,Eagle Union,Heavy Cruiser,0,[],CA,DD/Aux,AA,A/CA1,A/CA2,76,Medium,26,4152,258,248,0,57,0,12,182,0,0,128
+Quincy,Quincy,Elite,Eagle Union,Heavy Cruiser,3,[],CA,DD/Aux,AA,A/CA1,A/CA2,9,Medium,26,4015,218,230,0,57,0,11,161,0,0,125
+Vincennes,Vincennes,Elite,Eagle Union,Heavy Cruiser,3,[],CA,DD/Aux,AA,A/CA1,A/CA2,12,Medium,26,4015,218,230,0,57,0,11,161,0,0,122
+Wichita,Wichita,Elite,Eagle Union,Heavy Cruiser,1,[],CA,DD/Aux,AA,A/CA1,A/CA2,70,Light,26,3709,267,222,0,50,0,11,179,0,0,131
+Baltimore,Baltimore,Super Rare,Eagle Union,Heavy Cruiser,0,[],CA,DD/Aux,AA,A/CA1,A/CA2,56,Medium,26,4591,270,260,0,57,0,12,184,0,0,136
+Bremerton,Bremerton,Super Rare,Eagle Union,Heavy Cruiser,0.5,[],CA,DD/Aux,AA/Damage,A/CA1,A/CA2,55,Medium,26,4828,267,266,0,57,0,12,184,0,0,136
+Baltimore_µ,Baltimore μ,Elite,Eagle Union,Heavy Cruiser,1,[],CA,DD/Aux,AA,A/CA1,A/CA2,56,Medium,26,4646,261,251,0,57,0,11,178,0,0,136
+Nevada,Nevada,Rare,Eagle Union,Battleship,2,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,75,Heavy,20,7214,388,242,0,26,0,12,152,0,0,83
+Oklahoma,Oklahoma,Rare,Eagle Union,Battleship,2,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,38,Heavy,20,7196,388,247,0,26,0,12,152,0,0,78
+Pennsylvania,Pennsylvania,Rare,Eagle Union,Battleship,1.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,72,Heavy,21,7194,390,212,0,27,0,13,137,0,0,70
+Arizona,Arizona,Elite,Eagle Union,Battleship,1.5,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,17,Heavy,21,7137,399,219,0,27,0,14,139,0,0,70
+Tennessee,Tennessee,Rare,Eagle Union,Battleship,3,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,51,Heavy,21,7385,391,211,0,28,0,13,139,0,0,69
+California,California,Rare,Eagle Union,Battleship,3,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,36,Heavy,21,7385,391,211,0,28,0,13,139,0,0,69
+Colorado,Colorado,Elite,Eagle Union,Battleship,3,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,67,Heavy,21,7456,409,216,0,30,0,14,149,0,0,69
+Maryland,Maryland,Elite,Eagle Union,Battleship,3,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,70,Heavy,21,7514,405,216,0,30,0,14,146,0,0,64
+West_Virginia,West Virginia,Elite,Eagle Union,Battleship,3,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,61,Heavy,21,7456,409,216,0,30,0,14,149,0,0,70
+North_Carolina,North Carolina,Super Rare,Eagle Union,Battleship,1.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,81,Heavy,28,7852,421,400,0,33,0,15,159,0,0,70
+Washington,Washington,Super Rare,Eagle Union,Battleship,1,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,89,Heavy,28,8080,421,400,0,33,0,15,159,0,0,70
+South_Dakota,South Dakota,Super Rare,Eagle Union,Battleship,1.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,76,Heavy,27,8031,414,400,0,33,0,15,159,0,0,71
+Massachusetts,Massachusetts,Super Rare,Eagle Union,Battleship,1,[1/1],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,82,Heavy,27,7783,414,400,0,33,0,15,156,0,0,74
+Alabama,Alabama,Super Rare,Eagle Union,Battleship,0.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,86,Heavy,27,7783,418,408,0,33,0,15,154,0,0,64
+Long_Island,Long Island,Elite,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA,A/CV1,A/CV2,68,Medium,16,4901,0,292,0,66,340,10,187,100,0,86
+Bogue,Bogue,Rare,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA,A/CV1,A/CV2,78,Medium,18,4163,0,287,0,67,339,9,184,148,0,86
+Casablanca,Casablanca,Rare,Eagle Union,Light Aircraft Carrier,0.5,[],F,TB,AA,A/CV1,A/CV2,65,Medium,19,4707,0,258,0,62,286,10,193,117,0,73
+Langley,Langley,Rare,Eagle Union,Light Aircraft Carrier,2,[],F,F,DB,A/CV1,A/CV2,32,Medium,15,4700,0,280,0,80,264,9,128,95,0,81
+Lexington,Lexington,Elite,Eagle Union,Aircraft Carrier,2,[],F,DB,DB,A/CV1,A/CV2,35,Medium,33,6912,0,303,0,57,397,12,110,0,0,92
+Saratoga,Saratoga,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,DB,A/CV1,A/CV2,66,Medium,33,7122,0,353,0,57,442,12,130,0,0,92
+Ranger,Ranger,Rare,Eagle Union,Light Aircraft Carrier,1.5,[],TB,DB,DB,A/CV1,A/CV2,71,Medium,29,5019,0,283,0,73,300,9,136,107,0,89
+Yorktown,Yorktown,Elite,Eagle Union,Aircraft Carrier,2,[],F,DB,TB,A/CV1,A/CV2,39,Medium,32,5797,0,317,0,54,395,12,121,0,0,96
+Enterprise,Enterprise,Super Rare,Eagle Union,Aircraft Carrier,0,[],F,DB,TB,A/CV1,A/CV2,93,Medium,32,6193,0,329,0,62,429,13,132,0,0,107
+Wasp,Wasp,Rare,Eagle Union,Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,20,Medium,29,4894,0,272,0,51,330,11,117,0,0,88
+Hornet,Hornet,Elite,Eagle Union,Aircraft Carrier,1.5,[],F,DB,TB,A/CV1,A/CV2,15,Medium,32,5823,0,307,0,54,401,12,121,0,0,96
+Essex,Essex,Super Rare,Eagle Union,Aircraft Carrier,0,[],F,DB,TB,A/CV1,A/CV2,90,Medium,33,6647,0,331,0,54,433,13,131,0,0,88
+Intrepid,Intrepid,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,68,Medium,33,6634,0,331,0,54,430,13,131,0,0,85
+Bunker_Hill,Bunker Hill,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,35,Medium,33,6610,0,309,0,54,425,13,131,0,0,82
+Bataan,Bataan,Elite,Eagle Union,Light Aircraft Carrier,1,[1],F,TB,AA,A/CV1,A/CV2,65,Medium,31,5008,0,276,0,83,347,11,199,72,0,79
+Shangri-La,Shangri-La,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,TB,DB,A/CV1,A/CV2,83,Medium,33,6647,0,331,0,54,430,13,131,0,0,91
+Independence,Independence,Elite,Eagle Union,Light Aircraft Carrier,1.5,[1/1],F,TB,AA,A/CV1,A/CV2,35,Medium,33,6610,0,309,0,54,425,13,131,0,0,82
+Princeton,Princeton,Elite,Eagle Union,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,49,Medium,31,4791,0,255,0,85,340,11,181,99,0,89
+Albacore,Albacore,Super Rare,Eagle Union,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,79,Light,16,1924,61,0,526,41,0,7,95,0,243,193
+Bluegill,Bluegill,Elite,Eagle Union,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,65,Light,16,1692,71,0,499,41,0,6,87,0,243,175
+Cavalla,Cavalla,Super Rare,Eagle Union,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,78,Light,16,1899,65,0,524,41,0,7,93,0,243,192
+Dace,Dace,Elite,Eagle Union,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,68,Light,16,1692,71,0,503,41,0,6,90,0,243,178
+Albacore_µ,Albacore μ,Elite,Eagle Union,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,79,Light,16,1843,59,0,507,41,0,6,92,0,0,193
+Vestal,Vestal,Elite,Eagle Union,Repair Ship,0,[],A/AR,AA,AA,A/AR1,A/AR2,79,Light,16,4624,50,152,0,43,0,10,168,0,0,108
+Vampire,Vampire,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,42,Light,40,1314,71,156,376,195,0,9,196,207,0,167
+Amazon,Amazon,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,47,1535,65,194,360,231,0,8,192,216,0,186
+Acasta,Acasta,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,43,Light,45,1535,68,169,400,244,0,8,193,173,0,172
+Ardent,Ardent,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,35,Light,45,1535,68,169,400,244,0,8,193,173,0,172
+Beagle,Beagle,Normal,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,71,Light,42,1349,65,150,354,209,0,7,190,192,0,175
+Bulldog,Bulldog,Normal,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,65,Light,42,1349,65,150,354,209,0,7,190,197,0,175
+Comet,Comet,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,54,Light,46,1524,68,165,385,245,0,7,195,206,0,178
+Crescent,Crescent,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,35,Light,46,1524,108,165,350,240,0,7,190,206,0,183
+Cygnet,Cygnet,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,72,Light,46,1524,98,165,350,255,0,7,190,210,0,178
+Echo,Echo,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,65,Light,42,1400,73,152,360,209,0,8,193,207,0,178
+Foxhound,Foxhound,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,68,Light,45,1538,106,165,350,249,0,7,192,213,0,180
+Fortune,Fortune,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,68,Light,45,1567,107,169,357,249,0,8,195,218,0,180
+Grenville,Grenville,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,32,Light,43,1518,85,164,364,210,0,9,201,215,0,184
+Glowworm,Glowworm,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,36,Light,43,1412,79,164,370,210,0,9,201,215,0,186
+Hardy,Hardy,Elite,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,40,Light,43,1518,81,157,374,210,0,9,201,192,0,197
+Hunter,Hunter,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,24,Light,43,1370,76,156,356,210,0,8,196,187,0,191
+Icarus,Icarus,Elite,Royal Navy,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,70,Light,42,1669,79,157,376,210,0,9,207,213,0,194
+Javelin,Javelin,Super Rare,Royal Navy,Destroyer,0.5,[],DD/Speed,T,AA,A/DD1,A/DD2,65,Light,46,1746,90,160,429,250,0,9,207,215,0,194
+Juno,Juno,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,40,Light,43,1536,76,156,364,210,0,8,201,210,0,194
+Jupiter,Jupiter,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,52,Light,43,1536,76,156,364,210,0,8,201,210,0,194
+Jersey,Jersey,Rare,Royal Navy,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,20,Light,43,1536,76,156,364,210,0,8,201,210,0,194
+Matchless,Matchless,Elite,Royal Navy,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,76,Light,43,1683,76,157,394,210,0,9,201,223,0,180
+Musketeer,Musketeer,Elite,Royal Navy,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,67,Light,43,1683,76,156,400,210,0,9,201,223,0,178
+Eskimo,Eskimo,Elite,Royal Navy,Destroyer,1.5,[],DD,T,AA/Speed,A/DD1,A/DD2,72,Light,43,1657,87,156,350,211,0,9,212,193,0,188
+Curacoa,Curacoa,Elite,Royal Navy,Light Cruiser,1.5,[],CL,AA/Speed,AA/Speed,A/CL1,A/CL2,24,Light,29,3221,174,199,0,92,0,9,182,53,0,173
+Curlew,Curlew,Elite,Royal Navy,Light Cruiser,1,[],CL,AA/Speed,AA/Speed,A/CL1,A/CL2,45,Light,29,3029,168,223,0,92,0,9,190,53,0,171
+Leander,Leander,Rare,Royal Navy,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,44,Light,32,3486,196,321,305,102,0,8,176,125,0,145
+Achilles,Achilles,Elite,Royal Navy,Light Cruiser,1.5,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,54,Light,32,3214,213,295,359,97,0,9,180,128,0,148
+Ajax,Ajax,Elite,Royal Navy,Light Cruiser,1.5,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,74,Light,32,3214,213,295,359,97,0,9,180,128,0,148
+Arethusa,Arethusa,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,69,Light,32,2830,156,324,270,100,0,9,187,115,0,170
+Galatea,Galatea,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,26,Light,32,2830,156,324,270,100,0,9,187,92,0,170
+Penelope,Penelope,Elite,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,52,Light,32,2914,159,333,279,100,0,10,193,117,0,170
+Aurora,Aurora,Elite,Royal Navy,Light Cruiser,0.5,[],CL,T,AA,A/CL1/T,A/CL2/T,84,Light,32,2914,162,333,279,100,0,10,195,109,0,172
+Southampton,Southampton,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,32,Light,32,3688,151,307,273,100,0,9,171,103,0,157
+Newcastle,Newcastle,Elite,Royal Navy,Light Cruiser,1,[],CL,T,AA/Damage,A/CL1/T,A/CL2/T,78,Light,32,3928,175,387,285,100,0,9,194,84,0,165
+Sheffield,Sheffield,Elite,Royal Navy,Light Cruiser,1.5,[],CL,T,AA,A/CL1/T,A/CL2/T,78,Light,32,3796,156,351,295,100,0,10,182,87,0,160
+Glasgow,Glasgow,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,81,Light,32,3688,151,344,273,100,0,9,171,99,0,157
+Gloucester,Gloucester,Elite,Royal Navy,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,45,Light,32,3789,156,317,281,101,0,11,176,142,0,157
+Edinburgh,Edinburgh,Elite,Royal Navy,Light Cruiser,2,[],CL/AP,T,AA/Speed,A/CL1/T,A/CL2/T,37,Light,32,4486,157,313,280,100,0,10,176,101,0,160
+Belfast,Belfast,Super Rare,Royal Navy,Light Cruiser,1.5,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,88,Light,32,3970,179,293,340,96,0,11,182,144,0,160
+Little_Bel,Little Bel,Elite,Royal Navy,Light Cruiser,1.5,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,89,Light,32,3231,159,282,324,96,0,10,185,147,0,160
+Sheffield_µ,Sheffield μ,Elite,Royal Navy,Light Cruiser,1.5,[],CL,T,AA,A/CL1/T,A/CL2/T,78,Light,32,3559,153,351,295,100,0,10,182,87,0,160
+Dido,Dido,Super Rare,Royal Navy,Light Cruiser,1,[],CL/DD/Speed,T,AA,A/CL1/T,A/CL2/T,85,Light,32,3745,158,388,178,97,0,12,194,169,0,160
+Hermione,Hermione,Super Rare,Royal Navy,Light Cruiser,2,[],CL/DD/Speed,T,AA,A/CL1/T,A/CL2/T,58,Light,32,3744,159,381,173,96,0,11,193,187,0,160
+Sirius,Sirius,Super Rare,Royal Navy,Light Cruiser,1,[],CL/DD/Speed,T,AA,A/CL1/T,A/CL2/T,70,Light,32,3744,151,385,161,97,0,11,182,164,0,169
+Black_Prince,Black Prince,Elite,Royal Navy,Light Cruiser,2,[],CL/DD,T,AA,A/CL1/T,A/CL2/T,58,Light,32,3608,142,377,153,98,0,10,179,148,0,169
+Dido_µ,Dido μ,Super Rare,Royal Navy,Light Cruiser,1,[],CL/DD/Speed,T,AA/Damage,A/CL1/T,A/CL2/T,85,Light,32,3921,148,424,178,97,0,11,193,168,0,166
+Fiji,Fiji,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,11,Light,32,3586,159,255,268,100,0,9,182,117,0,172
+Jamaica,Jamaica,Rare,Royal Navy,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,32,3636,157,329,269,100,0,9,182,123,0,170
+Swiftsure,Swiftsure,Super Rare,Royal Navy,Light Cruiser,0.5,[],CL,T,AA,A/CL1/T,A/CL2/T,44,Light,32,3796,163,304,364,96,0,11,190,148,0,163
+London,London,Super Rare,Royal Navy,Heavy Cruiser,0.5,[],CA,T/DD,AA,A/CA1,A/CA2,62,Light,25,3841,233,297,223,82,0,11,165,0,0,136
+Shropshire,Shropshire,Rare,Royal Navy,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,75,Light,25,3461,218,208,215,67,0,10,160,0,0,116
+Kent,Kent,Rare,Royal Navy,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,71,Light,25,3508,218,208,215,65,0,10,160,0,0,116
+Suffolk,Suffolk,Elite,Royal Navy,Heavy Cruiser,2,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,72,Light,25,3754,273,208,245,65,0,10,165,0,0,116
+Norfolk,Norfolk,Rare,Royal Navy,Heavy Cruiser,3,[],CA,T,AA,A/CA1/T,A/CA2/T,69,Medium,25,4621,178,241,141,68,0,10,160,0,0,116
+Dorsetshire,Dorsetshire,Elite,Royal Navy,Heavy Cruiser,3,[],CA,T,AA,A/CA1/T,A/CA2/T,33,Medium,25,4755,182,249,245,68,0,10,165,0,0,116
+York,York,Super Rare,Royal Navy,Heavy Cruiser,2,[],CA,T,AA,A/CA1/T,A/CA2/T,15,Medium,25,3916,286,258,193,92,0,11,191,0,0,130
+Exeter,Exeter,Super Rare,Royal Navy,Heavy Cruiser,2,[],CA,T,AA,A/CA1/T,A/CA2/T,49,Medium,25,3945,266,258,193,72,0,11,191,0,0,150
+Sussex,Sussex,Rare,Royal Navy,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,68,Light,25,3461,203,255,215,71,0,10,160,0,0,116
+Renown,Renown,Elite,Royal Navy,Battlecruiser,3,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,85,Medium,32,6207,376,276,0,37,0,13,156,0,0,72
+Repulse,Repulse,Rare,Royal Navy,Battlecruiser,3,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,28,Medium,31,6032,354,268,0,35,0,12,152,0,0,68
+Little_Renown,Little Renown,Elite,Royal Navy,Battlecruiser,1.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,85,Medium,32,6318,344,303,0,41,0,13,153,0,0,68
+Hood,Hood,Super Rare,Royal Navy,Battlecruiser,1,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,38,Medium,31,8445,343,323,0,37,0,14,159,0,0,68
+Queen_Elizabeth,Queen Elizabeth,Elite,Royal Navy,Battleship,1,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,25,Heavy,24,7512,403,212,0,33,0,14,145,0,0,68
+Warspite,Warspite,Ultra Rare,Royal Navy,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,90,Heavy,24,8023,446,290,0,33,0,15,179,97,0,100
+Valiant,Valiant,Elite,Royal Navy,Battleship,2,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,72,Heavy,24,7467,407,212,0,31,0,14,150,0,0,70
+Nelson,Nelson,Elite,Royal Navy,Battleship,3,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,66,Heavy,23,7654,407,219,0,33,0,14,149,0,0,70
+Rodney,Rodney,Elite,Royal Navy,Battleship,3,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,81,Heavy,23,7630,407,219,0,31,0,14,149,0,0,70
+King_George_V,King George V,Super Rare,Royal Navy,Battleship,1,[1],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,77,Heavy,28,7970,423,264,0,35,0,15,156,0,0,70
+Prince_of_Wales,Prince of Wales,Super Rare,Royal Navy,Battleship,1,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,19,Heavy,28,7967,422,230,0,35,0,15,156,0,0,69
+Duke_of_York,Duke of York,Super Rare,Royal Navy,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,73,Heavy,28,7967,421,225,0,35,0,15,153,0,0,70
+Howe,Howe,Super Rare,Royal Navy,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,83,Heavy,28,7967,418,258,0,35,0,15,159,0,0,70
+Hermes,Hermes,Rare,Royal Navy,Light Aircraft Carrier,1.5,[],TB,TB,AA,A/CV1,A/CV2,41,Medium,25,4367,0,297,0,66,300,9,193,104,0,81
+Unicorn,Unicorn,Elite,Royal Navy,Light Aircraft Carrier,0.5,[],F,TB,AA,A/CV1,A/CV2,78,Medium,24,5337,0,268,0,66,307,11,181,109,0,84
+Chaser,Chaser,Elite,Royal Navy,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,82,Medium,18,4707,0,257,0,62,299,11,185,144,0,86
+Perseus,Perseus,Super Rare,Royal Navy,Light Aircraft Carrier,0,[],F,TB,AA,A/CV1,A/CV2,82,Medium,25,5540,0,264,0,71,327,12,168,144,0,87
+Centaur,Centaur,Super Rare,Royal Navy,Light Aircraft Carrier,0,[],F,F,TB,A/CV1,A/CV2,73,Medium,28,6626,0,268,0,70,421,13,160,126,0,95
+Eagle,Eagle,Elite,Royal Navy,Aircraft Carrier,1.5,[],F,TB,CL/DB,A/CV1,A/CV2,40,Medium,24,6193,215,307,0,47,370,12,112,0,0,89
+Ark_Royal,Ark Royal,Elite,Royal Navy,Aircraft Carrier,1,[],TB,TB,DB,A/CV1,A/CV2,87,Medium,31,6107,0,307,0,53,400,12,117,0,0,102
+Illustrious,Illustrious,Super Rare,Royal Navy,Aircraft Carrier,0.5,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,6561,0,296,0,53,400,13,117,0,0,91
+Victorious,Victorious,Super Rare,Royal Navy,Aircraft Carrier,2,[],F,DB,TB,A/CV1,A/CV2,82,Heavy,30,6262,0,289,0,53,410,13,104,0,0,90
+Formidable,Formidable,Super Rare,Royal Navy,Aircraft Carrier,0,[0/1/1],DB,TB,TB,A/CV1,A/CV2,75,Heavy,30,6481,0,289,0,51,413,13,117,0,0,90
+Glorious,Glorious,Elite,Royal Navy,Aircraft Carrier,3,[],F,TB,TB,A/CV1,A/CV2,32,Medium,30,6313,0,292,0,51,360,12,109,0,0,88
+Little_Illustrious,Little Illustrious,Elite,Royal Navy,Aircraft Carrier,3,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,5946,0,266,0,53,380,12,110,0,0,85
+Illustrious_µ,Illustrious μ,Super Rare,Royal Navy,Aircraft Carrier,0.5,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,6513,0,293,0,53,407,13,117,0,0,91
+Erebus,Erebus,Elite,Royal Navy,Monitor,2,[],BB/Damage,DD/Main,AA/Main,A/BM1,A/BM2,91,Light,12,3642,282,171,0,61,0,10,145,0,0,81
+Terror,Terror,Elite,Royal Navy,Monitor,3,[],BB/Damage,DD/Main,AA/Main,A/BM1,A/BM2,19,Light,12,3642,282,171,0,61,0,10,145,0,0,81
+Abercrombie,Abercrombie,Elite,Royal Navy,Monitor,3,[],BB/Damage,DD/Main,AA/Main,A/BM1,A/BM2,38,Light,12,3777,286,182,0,61,0,10,148,0,0,81
+Kamikaze,Kamikaze,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,86,Light,47,1726,60,179,414,193,0,7,229,202,0,193
+Matsukaze,Matsukaze,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,45,Light,47,1726,59,170,414,190,0,7,223,186,0,193
+Hatakaze,Hatakaze,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,87,Light,44,1561,60,139,404,193,0,7,203,189,0,183
+Mutsuki,Mutsuki,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,35,Light,47,1652,59,173,462,193,0,7,216,181,0,178
+Kisaragi,Kisaragi,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,15,Light,47,1652,59,173,462,193,0,7,216,179,0,178
+Uzuki,Uzuki,Normal,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,37,Light,44,1487,59,138,427,193,0,7,196,181,0,178
+Minazuki,Minazuki,Normal,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,45,Light,44,1487,59,138,427,193,0,7,196,168,0,178
+Fumizuki,Fumizuki,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,27,Light,44,1516,60,128,438,193,0,8,201,184,0,178
+Nagatsuki,Nagatsuki,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,35,Light,44,1516,60,128,438,193,0,8,201,187,0,178
+Mikazuki,Mikazuki,Normal,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,40,Light,44,1487,59,138,427,193,0,7,196,182,0,178
+Fubuki,Fubuki,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,34,Light,45,1798,62,146,509,191,0,9,213,195,0,183
+Uranami,Uranami,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,75,Light,46,1798,65,146,504,195,0,10,208,195,0,189
+Ayanami,Ayanami,Super Rare,Sakura Empire,Destroyer,0,[],DD/SSSpeed,T,AA/Speed,A/DD1/T,A/DD2/T,36,Light,48,1963,75,146,569,214,0,9,228,203,0,183
+Akatsuki,Akatsuki,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,45,Light,45,1747,60,150,493,194,0,8,210,190,0,178
+Hibiki,Hibiki,Elite,Sakura Empire,Destroyer,2,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,88,Light,45,1798,62,154,524,194,0,9,215,195,0,178
+Ikazuchi,Ikazuchi,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,52,Light,45,1747,60,150,493,194,0,8,210,170,0,178
+Inazuma,Inazuma,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,57,Light,45,1747,60,150,493,194,0,8,210,170,0,178
+Hatsuharu,Hatsuharu,Elite,Sakura Empire,Destroyer,1.5,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,45,Light,46,1938,59,175,518,212,0,8,196,189,0,180
+Wakaba,Wakaba,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,36,Light,43,1770,59,145,478,192,0,8,196,189,0,180
+Hatsushimo,Hatsushimo,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,51,Light,43,1773,59,145,478,192,0,8,196,189,0,180
+Ariake,Ariake,Elite,Sakura Empire,Destroyer,1.5,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,34,Light,46,1938,59,175,518,212,0,8,196,189,0,180
+Yuugure,Yuugure,Elite,Sakura Empire,Destroyer,2,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,32,Light,47,1784,59,175,518,213,0,8,196,189,0,180
+Shiratsuyu,Shiratsuyu,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,41,Light,40,1712,65,150,509,190,0,8,196,165,0,182
+Shigure,Shigure,Super Rare,Sakura Empire,Destroyer,1,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,84,Light,40,1928,85,150,589,210,0,9,212,201,0,182
+Yuudachi,Yuudachi,Super Rare,Sakura Empire,Destroyer,1,[],DD/SSpeed,T,AA/Speed,A/DD1/T,A/DD2/T,32,Light,40,1828,70,157,545,190,0,10,226,200,0,191
+Kawakaze,Kawakaze,Super Rare,Sakura Empire,Destroyer,1,[],DD/SSpeed,T,AA/Speed,A/DD1/T,A/DD2/T,38,Light,40,1830,69,161,545,190,0,10,217,200,0,191
+Asashio,Asashio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,32,Light,42,1937,62,149,508,191,0,8,196,189,0,182
+Ooshio,Ooshio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,40,Light,42,1937,62,150,509,191,0,8,196,171,0,183
+Michishio,Michishio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,48,Light,42,1964,62,150,509,191,0,8,196,189,0,184
+Arashio,Arashio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,32,Light,42,1937,62,149,509,191,0,8,196,187,0,183
+Kasumi,Kasumi,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,70,Light,42,1999,65,156,526,191,0,9,201,192,0,183
+Kagerou,Kagerou,Elite,Sakura Empire,Destroyer,1,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,25,Light,45,2050,75,150,552,192,0,8,221,209,0,184
+Shiranui,Shiranui,Rare,Sakura Empire,Destroyer,2,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,25,Light,45,1908,73,145,562,212,0,7,196,173,0,184
+Kuroshio,Kuroshio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,34,Light,42,2083,65,150,512,191,0,8,201,189,0,184
+Oyashio,Oyashio,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,34,Light,42,2083,65,150,512,191,0,8,201,189,0,184
+Yukikaze,Yukikaze,Super Rare,Sakura Empire,Destroyer,0.5,[],DD/SSpeed,T,AA/Speed,A/DD1/T,A/DD2/T,93,Light,42,2226,68,161,526,192,0,10,223,210,0,195
+Urakaze,Urakaze,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,27,Light,42,2083,63,149,502,191,0,8,201,165,0,183
+Isokaze,Isokaze,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,18,Light,42,2083,65,149,502,191,0,8,201,198,0,183
+Hamakaze,Hamakaze,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,58,Light,45,2143,75,150,572,211,0,8,201,187,0,184
+Tanikaze,Tanikaze,Elite,Sakura Empire,Destroyer,2,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,52,Light,45,2143,75,154,572,211,0,8,196,165,0,184
+Nowaki,Nowaki,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,72,Light,42,2145,65,154,526,191,0,9,210,192,0,191
+Makinami,Makinami,Elite,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,40,Light,42,2157,70,156,526,191,0,9,215,193,0,189
+Kiyonami,Kiyonami,Rare,Sakura Empire,Destroyer,3,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,46,Light,42,2055,59,138,497,191,0,8,210,184,0,194
+Naganami,Naganami,Elite,Sakura Empire,Destroyer,1,[],DD/Speed,T,AA/Speed,A/DD1/T,A/DD2/T,55,Light,42,2157,65,156,530,191,0,9,215,192,0,189
+Suzutsuki,Suzutsuki,Super Rare,Sakura Empire,Destroyer,0,[],DD,T,AA/Damage,A/DD1,A/DD2,72,Light,39,2538,81,205,384,179,0,10,218,207,0,180
+Niizuki,Niizuki,Elite,Sakura Empire,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,32,Light,39,2445,76,193,370,179,0,9,210,200,0,184
+Harutsuki,Harutsuki,Elite,Sakura Empire,Destroyer,1,[],DD,T,AA,A/DD1,A/DD2,61,Light,39,2445,74,194,363,179,0,9,210,207,0,189
+Yoizuki,Yoizuki,Elite,Sakura Empire,Destroyer,1,[],DD,T,AA,A/DD1,A/DD2,61,Light,39,2445,74,199,363,179,0,9,210,200,0,188
+Hanazuki,Hanazuki,Elite,Sakura Empire,Destroyer,1,[],DD,T,AA,A/DD1,A/DD2,65,Light,39,2445,76,199,370,179,0,9,210,200,0,180
+Nagara,Nagara,Normal,Sakura Empire,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,36,Light,36,2891,140,278,279,105,0,8,173,84,0,145
+Isuzu,Isuzu,Elite,Sakura Empire,Light Cruiser,1,[1],CL/DD,T,AA/Damage,A/CL1/T,A/CL2/T,33,Light,36,3454,120,393,230,100,0,9,176,99,0,160
+Kinu,Kinu,Super Rare,Sakura Empire,Light Cruiser,1.5,[],CL,T,AA,A/CL1/T,A/CL2/T,52,Light,36,3126,158,319,354,105,0,10,186,123,0,150
+Abukuma,Abukuma,Rare,Sakura Empire,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,43,Light,36,3131,160,278,344,105,0,8,178,92,0,145
+Yuubari,Yuubari,Super Rare,Sakura Empire,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,53,Light,35,2177,131,307,276,105,0,8,182,84,0,140
+Sendai,Sendai,Elite,Sakura Empire,Light Cruiser,1.5,[],CL,T,AA,A/CL1/T,A/CL2/T,42,Light,35,2780,170,276,391,108,0,9,190,107,0,151
+Jintsuu,Jintsuu,Super Rare,Sakura Empire,Light Cruiser,0.5,[],CL,T,AA,A/CL1/T,A/CL2/T,38,Light,35,2855,176,300,402,108,0,10,197,99,0,151
+Naka,Naka,Rare,Sakura Empire,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,53,Light,35,2540,151,286,337,108,0,9,185,104,0,151
+Mogami,Mogami,Super Rare,Sakura Empire,Heavy Cruiser,1,[],CA,T,AA,A/CA1/T,A/CA2/T,14,Medium,28,4623,264,233,202,80,0,11,188,0,0,129
+Mikuma,Mikuma,Elite,Sakura Empire,Light Cruiser,3,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,13,Medium,29,4015,201,186,187,82,0,11,189,45,0,149
+Agano,Agano,Elite,Sakura Empire,Light Cruiser,3,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,21,Light,35,3159,148,323,353,104,0,10,168,79,0,148
+Noshiro,Noshiro,Super Rare,Sakura Empire,Light Cruiser,0,[],CL,T,AA,A/CL1/T,A/CL2/T,55,Light,35,3278,175,333,373,104,0,11,181,97,0,171
+Furutaka,Furutaka,Rare,Sakura Empire,Heavy Cruiser,3,[],CA,T,AA,A/CA1/T,A/CA2/T,34,Medium,31,3719,245,176,235,75,0,9,168,0,0,111
+Kako,Kako,Rare,Sakura Empire,Heavy Cruiser,3,[],CA,T,AA,A/CA1/T,A/CA2/T,34,Medium,31,3719,245,176,235,75,0,9,168,0,0,111
+Aoba,Aoba,Normal,Sakura Empire,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,52,Medium,32,3527,215,167,190,76,0,9,163,0,0,111
+Kinugasa,Kinugasa,Normal,Sakura Empire,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,65,Medium,32,3527,215,167,190,76,0,9,163,0,0,111
+Myoukou,Myoukou,Rare,Sakura Empire,Heavy Cruiser,2,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,62,Medium,32,5220,196,193,150,78,0,10,163,0,0,125
+Nachi,Nachi,Rare,Sakura Empire,Heavy Cruiser,2,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,58,Medium,32,5220,196,193,150,78,0,10,163,0,0,125
+Ashigara,Ashigara,Elite,Sakura Empire,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,60,Medium,28,4162,234,171,223,75,0,11,168,0,0,125
+Takao,Takao,Super Rare,Sakura Empire,Heavy Cruiser,1,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,65,Medium,31,4295,270,178,245,79,0,12,175,0,0,134
+Atago,Atago,Super Rare,Sakura Empire,Heavy Cruiser,1,[],CA/HE,T,AA/Speed,A/CA1/T,A/CA2/T,48,Medium,31,4295,270,178,245,79,0,12,175,0,0,134
+Maya,Maya,Super Rare,Sakura Empire,Heavy Cruiser,1.5,[],CA,T,AA,A/CA1/T,A/CA2/T,48,Medium,31,4295,270,178,245,79,0,12,175,0,0,134
+Choukai,Choukai,Super Rare,Sakura Empire,Heavy Cruiser,1.5,[],CA,T,AA,A/CA1/T,A/CA2/T,50,Medium,31,4295,261,178,221,79,0,12,175,0,0,134
+Suzuya,Suzuya,Elite,Sakura Empire,Heavy Cruiser,2,[],CA/CL,T,AA,A/CA1/T,A/CA2/T,15,Medium,28,4176,237,209,212,80,0,11,179,0,0,129
+Kumano,Kumano,Elite,Sakura Empire,Heavy Cruiser,2,[],CA/CL,T,AA,A/CA1/T,A/CA2/T,10,Medium,27,4141,237,215,212,82,0,11,185,0,0,129
+Kongou,Kongou,Elite,Sakura Empire,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,43,Medium,30,6604,367,273,0,37,0,14,159,0,0,70
+Hiei,Hiei,Elite,Sakura Empire,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,37,Medium,30,6604,367,273,0,37,0,14,160,0,0,68
+Haruna,Haruna,Elite,Sakura Empire,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,47,Medium,30,6604,360,273,0,37,0,14,159,0,0,68
+Kirishima,Kirishima,Elite,Sakura Empire,Battlecruiser,3,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,37,Medium,30,6604,367,273,0,37,0,14,160,0,0,68
+Hiei-chan,Hiei-chan,Elite,Sakura Empire,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,37,Medium,30,6454,363,247,168,40,0,14,160,0,0,68
+Amagi,Amagi,Super Rare,Sakura Empire,Battlecruiser,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,23,Medium,30,7654,421,187,213,41,0,15,148,0,0,68
+Mikasa,Mikasa,Super Rare,Sakura Empire,Battleship,2,[0/0/0/1/1],BB/Speed,CL/DD/Main,DD/Main,A/BB1,A/BB2,95,Heavy,18,5372,334,172,0,25,0,14,163,0,0,72
+Fusou,Fusou,Elite,Sakura Empire,Aviation Battleship,2,[],BB/Damage,SP,AA/Main,A/BBV1,A/BBV2,13,Heavy,23,7266,390,303,0,31,202,13,134,0,0,77
+Yamashiro,Yamashiro,Elite,Sakura Empire,Aviation Battleship,2,[],BB/Damage,SP,AA/Main,A/BBV1,A/BBV2,14,Heavy,23,7657,390,303,0,31,202,13,134,0,0,77
+Ise,Ise,Elite,Sakura Empire,Aviation Battleship,1.5,[],BB/Damage,SP,AA/Main,A/BBV1,A/BBV2,60,Heavy,23,7243,389,373,0,31,275,13,132,0,0,87
+Hyuuga,Hyuuga,Elite,Sakura Empire,Aviation Battleship,1,[],BB/Damage,SP,AA/Main,A/BBV1,A/BBV2,60,Heavy,23,7243,389,373,0,31,275,13,132,0,0,87
+Nagato,Nagato,Super Rare,Sakura Empire,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,71,Heavy,25,8117,419,182,0,37,0,15,146,0,0,70
+Mutsu,Mutsu,Elite,Sakura Empire,Battleship,2,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,34,Heavy,25,7896,409,185,0,34,0,14,145,0,0,71
+Kaga_(Battleship),Kaga (Battleship),Super Rare,Sakura Empire,Battleship,1,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,42,Heavy,26,8303,423,187,217,39,0,15,149,0,0,71
+Tosa,Tosa,Super Rare,Sakura Empire,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,12,Heavy,26,8056,423,199,217,36,0,15,145,0,0,71
+Kii,Kii,Super Rare,Sakura Empire,Battleship,0.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,39,Heavy,28,7945,421,367,283,37,0,15,145,0,0,71
+Suruga,Suruga,Super Rare,Sakura Empire,Battleship,1,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,37,Heavy,28,8229,421,215,213,37,0,15,139,0,0,68
+Hiyou,Hiyou,Rare,Sakura Empire,Light Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,43,Medium,25,5204,0,247,0,68,279,11,157,80,0,78
+Junyou,Junyou,Rare,Sakura Empire,Light Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,80,Medium,25,5204,0,247,0,68,279,11,157,79,0,78
+Houshou,Houshou,Elite,Sakura Empire,Light Aircraft Carrier,3,[],CL,F,TB,A/CV1,A/CV2,79,Medium,25,3621,0,257,0,66,286,11,176,92,0,81
+Shouhou,Shouhou,Elite,Sakura Empire,Light Aircraft Carrier,0.5,[],DB,TB,AA,A/CV1,A/CV2,24,Medium,28,4523,0,283,0,70,339,10,183,84,0,78
+Ryuujou,Ryuujou,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,42,Medium,28,4278,0,252,0,82,347,11,179,72,0,89
+Ryuuhou,Ryuuhou,Super Rare,Sakura Empire,Light Aircraft Carrier,0,[],F,TB,AA,A/CV1,A/CV2,70,Medium,26,4986,0,276,0,69,317,12,189,112,0,84
+Chitose,Chitose,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,57,Medium,29,4398,0,261,0,72,347,11,185,90,0,81
+Chiyoda,Chiyoda,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,57,Medium,29,4847,0,261,0,72,347,11,179,90,0,81
+Akagi,Akagi,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,42,Medium,31,6588,0,323,0,54,409,13,131,0,0,90
+Kaga,Kaga,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,42,Medium,28,6771,0,323,0,49,408,13,131,0,0,90
+Akagi-chan,Akagi-chan,Elite,Sakura Empire,Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,42,Medium,31,6250,0,311,0,54,394,12,124,0,0,90
+Akagi_µ,Akagi μ,Super Rare,Sakura Empire,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,42,Medium,31,6541,0,323,0,54,408,13,131,0,0,90
+Souryuu,Souryuu,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,36,Medium,34,5456,0,363,0,66,425,12,141,0,0,85
+Hiryuu,Hiryuu,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,36,Medium,34,5678,0,361,0,66,426,12,141,0,0,85
+Shoukaku,Shoukaku,Super Rare,Sakura Empire,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,49,Medium,34,6729,0,349,0,56,412,13,120,0,0,87
+Zuikaku,Zuikaku,Super Rare,Sakura Empire,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,73,Medium,34,7193,0,323,0,57,414,13,120,0,0,87
+Taihou,Taihou,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,36,Heavy,33,7310,0,319,0,54,399,13,120,0,0,82
+Taihou_µ,Taihou μ,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,36,Heavy,33,7195,0,309,0,54,400,13,120,0,0,76
+Shinano,Shinano,Ultra Rare,Sakura Empire,Aircraft Carrier,0,[],P,DB,TB,A/CV1,A/CV2,32,Heavy,28,8616,0,317,0,49,437,15,126,0,0,78
+I-19,I-19,Super Rare,Sakura Empire,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,19,Light,18,2165,59,0,549,45,0,7,110,0,200,170
+I-25,I-25,Elite,Sakura Empire,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,25,Light,18,1946,65,0,514,45,0,6,70,0,218,178
+I-26,I-26,Elite,Sakura Empire,Submarine,2,[],ST,ST,DD/Sub,A/SS1,A/SS2,26,Light,18,2067,61,0,520,45,0,6,109,0,218,164
+I-56,I-56,Elite,Sakura Empire,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,46,Light,14,2080,59,0,502,37,0,6,62,0,248,166
+I-58,I-58,Elite,Sakura Empire,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,58,Light,14,2080,59,0,503,37,0,6,79,0,268,168
+I-168,I-168,Super Rare,Sakura Empire,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,22,Light,18,1993,65,0,539,43,0,7,115,0,195,172
+I-13,I-13,Super Rare,Sakura Empire,Submarine Carrier,0.5,[],ST,ST,SSP,A/SS1,A/SS2,20,Light,13,2657,50,0,514,36,252,7,109,0,198,172
+Akashi,Akashi,Super Rare,Sakura Empire,Repair Ship,0,[1],A/AR,AA,AA,A/AR1,A/AR2,53,Light,19,4125,44,160,0,45,0,11,181,0,0,107
+Kashino,Kashino,Elite,Sakura Empire,Munition Ship,1.5,[],DD/Speed,AA/Speed,C,A/AE1,A/AE2,58,Light,14,4980,73,134,0,51,0,10,204,0,0,212
+Z1,Z1,Super Rare,Ironblood,Destroyer,1,[],DD,T,AA/Speed,A/DD1,A/DD2,40,Light,41,2218,85,229,490,153,0,9,207,207,0,173
+Z2,Z2,Elite,Ironblood,Destroyer,3,[],DD/AP,T,AA/Speed,A/DD1,A/DD2,44,Light,43,2053,84,154,433,148,0,9,206,197,0,175
+Z18,Z18,Rare,Ironblood,Destroyer,3,[],DD/AP,T,AA/Speed,A/DD1,A/DD2,38,Light,43,2033,68,149,440,148,0,8,201,192,0,182
+Z19,Z19,Rare,Ironblood,Destroyer,3,[],DD/AP,T,AA/Speed,A/DD1,A/DD2,39,Light,43,2033,68,149,440,148,0,8,201,192,0,182
+Z20,Z20,Normal,Ironblood,Destroyer,3,[],DD/AP,T,AA/Speed,A/DD1,A/DD2,71,Light,43,1993,65,145,433,148,0,7,196,189,0,182
+Z21,Z21,Normal,Ironblood,Destroyer,3,[],DD/AP,T,AA/Speed,A/DD1,A/DD2,42,Light,43,1993,65,145,433,148,0,7,196,190,0,182
+Z23,Z23,Super Rare,Ironblood,Destroyer,0.5,[],CL/DD/Speed,T,AA/Speed,A/DD1,A/DD2,65,Light,42,2290,170,215,347,162,0,9,199,221,0,175
+Z24,Z24,Elite,Ironblood,Destroyer,1,[],CL/DD,T,AA/Speed,A/DD1,A/DD2,56,Light,43,2125,120,150,327,157,0,9,199,201,0,175
+Z25,Z25,Elite,Ironblood,Destroyer,2,[],CL/DD,T,AA/Speed,A/DD1,A/DD2,72,Light,43,2116,120,154,327,156,0,9,190,201,0,169
+Z26,Z26,Elite,Ironblood,Destroyer,2,[],CL/DD,T,AA/Speed,A/DD1,A/DD2,43,Light,43,2116,120,154,327,156,0,9,190,201,0,169
+Z28,Z28,Elite,Ironblood,Destroyer,1,[],CL/DD,T,AA/Speed,A/DD1,A/DD2,45,Light,43,2123,76,143,423,156,0,9,207,197,0,167
+Z35,Z35,Elite,Ironblood,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,35,Light,43,2092,80,182,440,159,0,9,201,202,0,181
+Z36,Z36,Elite,Ironblood,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,36,Light,43,2092,82,178,437,159,0,9,209,200,0,186
+Z46,Z46,Super Rare,Ironblood,Destroyer,0.5,[],DD/AP/Speed,T,AA/Damage,A/DD1,A/DD2,63,Light,43,2595,90,255,452,151,0,10,212,210,0,180
+Konigsberg,Königsberg,Normal,Ironblood,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,42,Light,32,3372,152,333,273,100,0,8,175,104,0,153
+Karlsruhe,Karlsruhe,Rare,Ironblood,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,39,Light,32,3612,172,348,318,100,0,8,180,87,0,153
+Koln,Köln,Rare,Ironblood,Light Cruiser,3,[0/0/0/1/1],CL,T,AA,A/CL1/T,A/CL2/T,62,Light,32,3612,172,348,318,100,0,8,180,105,0,153
+Leipzig,Leipzig,Elite,Ironblood,Light Cruiser,1,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,32,3734,168,387,325,102,0,9,190,99,0,158
+Nurnberg,Nürnberg,Elite,Ironblood,Light Cruiser,1.5,[],CL,T,AA/Damage,A/CL1/T,A/CL2/T,80,Light,32,3811,176,403,304,98,0,10,192,101,0,158
+Deutschland,Deutschland,Elite,Ironblood,Heavy Cruiser,1.5,[],CA/BB,T,AA/Speed,A/CA1/T,A/CA2/T,72,Medium,22,4018,301,154,220,53,0,11,176,0,0,131
+Admiral_Graf_Spee,Admiral Graf Spee,Elite,Ironblood,Heavy Cruiser,1.5,[],CA/BB,T,AA/Speed,A/CA1/T,A/CA2/T,36,Medium,22,4361,298,154,216,54,0,11,174,0,0,125
+Admiral_Hipper,Admiral Hipper,Elite,Ironblood,Heavy Cruiser,2,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,66,Medium,25,4970,251,189,190,61,0,11,176,0,0,128
+Prinz_Eugen,Prinz Eugen,Super Rare,Ironblood,Heavy Cruiser,1.5,[],CA,T,AA,A/CA1/T,A/CA2/T,78,Medium,25,6252,226,205,153,62,0,12,182,0,0,128
+Admiral_Hipper_µ,Admiral Hipper μ,Elite,Ironblood,Heavy Cruiser,2,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,66,Medium,25,4844,251,189,185,61,0,11,176,0,0,128
+Roon_µ,Roon μ,Super Rare,Ironblood,Heavy Cruiser,0,[],CA,T,AA,A/CA1/T,A/CA2/T,0,Medium,26,6055,283,233,215,78,0,12,171,0,0,125
+Prinz_Heinrich,Prinz Heinrich,Super Rare,Ironblood,Heavy Cruiser,0,[],CA/BB,T,AA/Speed,A/CA1/T,A/CA2/T,50,Medium,26,5946,310,219,245,66,0,12,182,0,0,132
+Scharnhorst,Scharnhorst,Elite,Ironblood,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,43,Medium,31,7455,366,248,154,38,0,13,157,0,0,66
+Gneisenau,Gneisenau,Elite,Ironblood,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,64,Medium,31,7455,366,248,154,38,0,13,157,0,0,66
+Bismarck,Bismarck,Super Rare,Ironblood,Battleship,1,[0/1/0/1/1],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,32,Heavy,30,8762,423,208,0,33,0,15,152,0,0,73
+Tirpitz,Tirpitz,Super Rare,Ironblood,Battleship,1.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,45,Heavy,30,8401,423,208,217,33,0,15,150,0,0,67
+Weser,Weser,Elite,Ironblood,Light Aircraft Carrier,2,[],F,DB,AA,A/CV1,A/CV2,30,Medium,32,4759,0,264,0,75,323,11,179,72,0,87
+Graf_Zeppelin,Graf Zeppelin,Super Rare,Ironblood,Aircraft Carrier,0.5,[1/1/1],F,DB,DB/TB,A/CV1,A/CV2,45,Medium,33,7488,0,319,0,50,400,13,115,0,0,87
+Peter_Strasser,Peter Strasser,Super Rare,Ironblood,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,45,Medium,33,7488,0,309,0,50,423,13,139,0,0,101
+Zeppy,Zeppy,Elite,Ironblood,Aircraft Carrier,2,[],F,DB,CL/DB,A/CV1,A/CV2,45,Medium,33,6983,174,307,0,56,376,12,110,0,0,85
+U-37,U-37,Super Rare,Ironblood,Submarine,0,[],ST,ST,DD/Sub,A/SS1,A/SS2,72,Light,14,1552,45,0,540,37,0,7,110,0,0,178
+U-47,U-47,Super Rare,Ironblood,Submarine,0,[],ST,ST,DD/Sub,A/SS1,A/SS2,32,Light,14,1297,48,0,530,37,0,7,110,0,193,178
+U-73,U-73,Elite,Ironblood,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,35,Light,14,1250,45,0,523,37,0,6,84,0,188,167
+U-81,U-81,Super Rare,Ironblood,Submarine,0,[],ST,ST,DD/Sub,A/SS1,A/SS2,23,Light,14,1309,50,0,555,37,0,7,109,0,188,174
+U-96,U-96,Super Rare,Ironblood,Submarine,0,[],ST,ST,DD/Sub,A/SS1,A/SS2,62,Light,14,1306,52,0,536,37,0,7,109,0,188,183
+U-101,U-101,Super Rare,Ironblood,Submarine,0.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,68,Light,14,1297,48,0,530,37,0,7,110,0,190,175
+U-110,U-110,Elite,Ironblood,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,28,Light,14,1463,48,0,499,37,0,6,82,0,208,178
+U-410,U-410,Elite,Ironblood,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,50,Light,14,1261,43,0,503,37,0,6,84,0,188,172
+U-522,U-522,Elite,Ironblood,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,28,Light,14,1463,48,0,499,37,0,6,82,0,208,178
+U-556,U-556,Elite,Ironblood,Submarine,1.5,[0/0/0/1/1],ST,ST,DD/Sub,A/SS1,A/SS2,45,Light,14,1261,39,0,499,37,0,6,84,0,188,178
+U-557,U-557,Elite,Ironblood,Submarine,2,[],ST,ST,DD/Sub,A/SS1,A/SS2,18,Light,14,1261,44,0,499,37,0,6,84,0,188,166
+An_Shan,An Shan,Elite,Dragon Empery,Destroyer,1.5,[0/0/0/1/1],DD,T,AA,A/DD1,A/DD2,81,Light,45,2277,131,172,228,165,0,9,201,200,0,188
+Fu_Shun,Fu Shun,Elite,Dragon Empery,Destroyer,1.5,[0/0/0/1/1],DD,T,AA,A/DD1,A/DD2,51,Light,45,2277,128,174,231,165,0,9,201,200,0,186
+Chang_Chun,Chang Chun,Elite,Dragon Empery,Destroyer,1.5,[0/0/0/1/1],DD,T,AA,A/DD1,A/DD2,61,Light,45,2277,131,172,228,165,0,9,199,200,0,184
+Tai_Yuan,Tai Yuan,Elite,Dragon Empery,Destroyer,1.5,[0/0/0/1/1],DD,T,AA,A/DD1,A/DD2,71,Light,45,2277,128,174,229,165,0,9,199,200,0,186
+Ying_Swei,Ying Swei,Elite,Dragon Empery,Light Cruiser,2,[],CL,DD,T,A/CL1,A/CL2,20,Medium,20,2443,70,130,232,70,0,9,139,72,0,155
+Chao_Ho,Chao Ho,Elite,Dragon Empery,Light Cruiser,2,[],CL,DD,T,A/CL1,A/CL2,20,Medium,20,2538,70,128,232,70,0,9,139,72,0,155
+Yat_Sen,Yat Sen,Elite,Dragon Empery,Light Cruiser,1,[],CL,CL,AA/Speed,A/CL1,A/CL2,64,Light,19,1884,120,347,0,79,0,10,182,55,0,146
+Ning_Hai,Ning Hai,Super Rare,Dragon Empery,Light Cruiser,1,[],CL,T,AA,A/CL1/T,A/CL2/T,51,Light,23,2192,201,304,234,110,0,10,187,75,0,152
+Ping_Hai,Ping Hai,Super Rare,Dragon Empery,Light Cruiser,1,[],CL,T,AA,A/CL1/T,A/CL2/T,47,Light,21,2160,201,272,234,107,0,10,187,75,0,155
+Carabiniere,Carabiniere,Elite,Sardegna Empire,Destroyer,2,[],DD,T,AA/Speed,A/DD1,A/DD2,65,Light,45,1788,126,160,267,214,0,9,201,204,0,189
+Vincenzo_Gioberti,Vincenzo Gioberti,Elite,Sardegna Empire,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,44,Light,45,1846,113,154,289,212,0,9,209,215,0,200
+Trento,Trento,Rare,Sardegna Empire,Heavy Cruiser,3,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,42,Light,28,3544,232,186,184,71,0,10,160,0,0,118
+Zara,Zara,Super Rare,Sardegna Empire,Heavy Cruiser,1,[1],CA,DD/Aux,AA/Speed,A/CA1,A/CA2,75,Medium,26,4941,252,229,0,57,0,12,182,0,0,118
+Pola,Pola,Super Rare,Sardegna Empire,Heavy Cruiser,0.5,[],CA,DD/Aux,AA/Speed,A/CA1,A/CA2,75,Medium,26,4941,252,243,0,57,0,12,182,0,0,118
+Littorio,Littorio,Super Rare,Sardegna Empire,Battleship,1.5,[1],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,79,Heavy,30,8367,421,243,0,35,0,15,154,0,0,58
+Conte_di_Cavour,Conte di Cavour,Rare,Sardegna Empire,Battleship,3,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,45,Heavy,27,6831,337,175,146,36,0,13,138,0,0,62
+Giulio_Cesare,Giulio Cesare,Elite,Sardegna Empire,Battleship,3,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,65,Heavy,27,7030,347,186,151,36,0,14,149,0,0,64
+Gromky,Gromky,Elite,Northern Parliament,Destroyer,1.5,[],DD,T,AA,A/DD1,A/DD2,45,Light,45,2277,131,167,235,175,0,9,199,204,0,183
+Gremyashchy,Gremyashchy,Elite,Northern Parliament,Destroyer,1.5,[],DD,T,AA,A/DD1,A/DD2,70,Light,45,2165,142,150,279,165,0,9,199,199,0,183
+Grozny,Grozny,Elite,Northern Parliament,Destroyer,3,[],DD,T,AA,A/DD1,A/DD2,60,Light,46,2496,125,204,179,166,0,10,200,200,0,184
+Stremitelny,Stremitelny,Elite,Northern Parliament,Destroyer,2,[],DD,T,AA,A/DD1,A/DD2,42,Light,45,2468,131,178,231,175,0,9,199,199,0,183
+Minsk,Minsk,Elite,Northern Parliament,Destroyer,2,[],DD,T,AA/Speed,A/DD1,A/DD2,58,Light,48,2612,145,172,228,177,0,10,201,203,0,184
+Tashkent,Tashkent,Super Rare,Northern Parliament,Destroyer,0,[1],DD,T,AA,A/DD1,A/DD2,86,Light,51,2649,180,176,279,179,0,11,205,208,0,187
+Tashkent_µ,Tashkent μ,Super Rare,Northern Parliament,Destroyer,0.5,[],DD/Speed,T,AA,A/DD1,A/DD2,86,Light,51,2648,148,154,309,179,0,10,212,208,0,186
+Avrora,Avrora,Super Rare,Northern Parliament,Light Cruiser,1,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,55,Medium,19,3372,104,160,223,79,0,11,150,57,0,130
+Pamiat_Merkuria,Pamiat\' Merkuria,Super Rare,Northern Parliament,Light Cruiser,0.5,[],DD,T,AA/Speed,A/CL1/T,A/CL2/T,88,Medium,23,3300,127,195,162,87,0,10,139,55,0,146
+Murmansk,Murmansk,Elite,Northern Parliament,Light Cruiser,3,[1],CL,T,AA,A/CL1/T,A/CL2/T,65,Light,35,3396,157,293,261,101,0,10,190,128,0,151
+Kirov,Kirov,Super Rare,Northern Parliament,Light Cruiser,1,[],CL,T,AA,A/CL1/T,A/CL2/T,52,Light,36,4075,182,343,296,110,0,11,187,154,0,158
+Chapayev,Chapayev,Super Rare,Northern Parliament,Light Cruiser,0.5,[],CL,DD/Aux,AA,A/CL1,A/CL2,68,Light,34,4352,172,334,0,94,0,12,195,148,0,164
+Tallinn,Tallinn,Super Rare,Northern Parliament,Heavy Cruiser,0.5,[1],CA/CL,T,AA,A/CA1/T,A/CA2/T,80,Medium,25,5614,261,221,196,61,0,12,182,0,0,148
+Gangut,Gangut,Elite,Northern Parliament,Battleship,1.5,[1],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,85,Heavy,24,6491,324,174,0,34,0,15,150,0,0,61
+Sovetskaya_Belorussiya,Sovetskaya Belorussiya,Super Rare,Northern Parliament,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,46,Heavy,28,8262,429,215,0,35,0,15,156,0,0,76
+Sovetskaya_Rossiya,Sovetskaya Rossiya,Super Rare,Northern Parliament,Battleship,1,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,46,Heavy,28,8324,428,248,0,35,0,16,139,0,0,59
+Forbin,Forbin,Elite,Iris Libre,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,69,Light,42,1436,89,168,439,200,0,8,193,219,0,186
+Le_Temeraire,Le Téméraire,Elite,Iris Libre,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,41,Light,42,1571,93,172,394,189,0,9,192,187,0,189
+L%27Opiniatre,L\'Opiniâtre,Elite,Iris Libre,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,45,Light,42,1772,103,204,370,178,0,9,196,193,0,194
+Le_Triomphant,Le Triomphant,Super Rare,Iris Libre,Destroyer,1.5,[],DD/Speed,T,AA/Damage,A/DD1,A/DD2,77,Light,54,2021,131,167,267,213,0,10,207,207,0,186
+Emile_Bertin,Émile Bertin,Super Rare,Iris Libre,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,67,Light,34,3425,191,327,298,117,0,10,178,144,0,175
+Jeanne_d%27Arc,Jeanne d\'Arc,Super Rare,Iris Libre,Light Cruiser,0.5,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,83,Light,25,3223,152,276,264,79,0,11,182,148,0,178
+Richelieu,Richelieu,Super Rare,Iris Libre,Battleship,0,[1],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,19,Heavy,32,8428,447,293,0,42,0,15,167,0,0,66
+Bearn,Béarn,Elite,Iris Libre,Aircraft Carrier,1.5,[],F,TB,CL/DB,A/CV1,A/CV2,42,Medium,21,6261,174,307,255,36,376,12,110,0,0,85
+Surcouf,Surcouf,Elite,Iris Libre,Submarine,2,[],ST,ST,SS,A/SS1,A/SS2,60,Light,14,2819,139,0,509,22,0,6,76,0,180,164
+Le_Mars,Le Mars,Elite,Vichya Dominion,Destroyer,2,[],DD,T,AA/Speed,A/DD1,A/DD2,24,Light,42,1436,89,183,439,200,0,8,193,202,0,186
+Tartu,Tartu,Elite,Vichya Dominion,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,45,Light,43,1868,120,141,273,212,0,9,204,208,0,183
+Le_Malin,Le Malin,Super Rare,Vichya Dominion,Destroyer,1.5,[],DD/Speed,T,AA,A/DD1,A/DD2,51,Light,54,2021,137,138,273,213,0,10,206,192,0,186
+Le_Malin_µ,Le Malin μ,Super Rare,Vichya Dominion,Destroyer,0.5,[],DD/Speed,T,AA,A/DD1,A/DD2,51,Light,54,2021,139,135,274,213,0,10,206,192,0,183
+Vauquelin,Vauquelin,Elite,Vichya Dominion,Destroyer,3,[],DD,T,AA/Speed,A/DD1,A/DD2,48,Light,43,1868,113,143,279,212,0,9,206,207,0,191
+La_Galissonniere,La Galissonnière,Elite,Vichya Dominion,Light Cruiser,3,[],CL,T,AA/Speed,A/CL1/T,A/CL2/T,35,Light,31,3484,171,309,279,114,0,10,176,146,0,172
+Algerie,Algérie,Super Rare,Vichya Dominion,Heavy Cruiser,1.5,[],CA,T,AA/Speed,A/CA1/T,A/CA2/T,50,Medium,24,5021,279,244,223,66,0,12,195,0,0,137
+Dunkerque,Dunkerque,Elite,Vichya Dominion,Battlecruiser,2,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,35,Medium,31,6788,357,227,0,41,0,13,163,0,0,71
+Jean_Bart,Jean Bart,Super Rare,Vichya Dominion,Battleship,1,[1],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,17,Heavy,32,8036,419,241,0,42,0,15,179,0,0,66
+Gascogne_µ,Gascogne μ,Super Rare,Vichya Dominion,Battleship,1,[],BB/Modified,CL/DD/Main,AA/Main,A/BB1,A/BB2,0,Heavy,32,7851,429,237,0,37,0,15,168,0,0,71
+HDN_Neptune,HDN Neptune,Elite,Neptunia,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,73,Light,31,3430,153,303,289,100,0,10,171,122,0,154
+Noire,Noire,Elite,Neptunia,Heavy Cruiser,3,[],CA,T,AA,A/CA1/T,A/CA2/T,83,Medium,27,3828,237,178,199,65,0,11,165,0,0,126
+Blanc,Blanc,Elite,Neptunia,Destroyer,3,[],DD/Speed,T,AA,A/DD1/T,A/DD2/T,71,Light,45,1800,70,149,439,175,0,9,207,199,0,189
+Vert,Vert,Elite,Neptunia,Aircraft Carrier,3,[],F,DB,DB,A/CV1,A/CV2,93,Medium,28,5523,0,288,0,48,377,12,112,0,0,86
+Purple_Heart,Purple Heart,Super Rare,Neptunia,Light Cruiser,3,[],CL,T,AA,A/CL1/T,A/CL2/T,87,Light,31,3695,167,313,310,102,0,11,179,128,0,155
+Black_Heart,Black Heart,Super Rare,Neptunia,Heavy Cruiser,3,[],CA/Modified,T,AA,A/CA1/T,A/CA2/T,83,Medium,27,4062,251,193,218,68,0,12,170,0,0,126
+White_Heart,White Heart,Super Rare,Neptunia,Destroyer,3,[],DD/Speed,T,AA,A/DD1/T,A/DD2/T,73,Light,45,1947,74,154,476,178,0,10,215,206,0,189
+Green_Heart,Green Heart,Super Rare,Neptunia,Aircraft Carrier,3,[],F,DB,DB,A/CV1,A/CV2,95,Medium,28,5781,0,298,0,55,395,13,115,0,0,86
+Kizuna_AI,Kizuna AI,Elite,KizunaAI,Destroyer,3,[],DD/Speed,T,AA,A/DD1/T,A/DD2/T,66,Light,42,1768,74,167,473,194,0,9,201,223,0,180
+Elegant_Kizuna_AI,Elegant Kizuna AI,Super Rare,KizunaAI,Heavy Cruiser,1,[],CA,DD/Aux,AA,A/CA1,A/CA2,66,Medium,28,5020,255,225,0,53,0,12,175,0,0,131
+Anniversary_Kizuna_AI,Anniversary Kizuna AI,Super Rare,KizunaAI,Aircraft Carrier,1.5,[],F,DB,TB,A/CV1,A/CV2,66,Medium,32,6626,0,323,0,37,410,13,120,0,0,86
+Super_Gamer_Kizuna_AI,Super Gamer Kizuna AI,Super Rare,KizunaAI,Battleship,2,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,66,Heavy,26,7648,409,199,212,30,0,15,142,0,0,55
+Shirakami_Fubuki,Shirakami Fubuki,Super Rare,Hololive,Destroyer,1,[],DD,T,DB,A/DD1/T,A/DD2/T,69,Light,40,1830,76,178,484,191,201,11,217,200,0,191
+Tokino_Sora,Tokino Sora,Super Rare,Hololive,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,46,Medium,28,6614,0,337,0,49,419,13,123,0,0,100
+Minato_Aqua,Minato Aqua,Super Rare,Hololive,Submarine,0.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,64,Light,40,1681,65,0,539,45,0,7,109,0,268,175
+Natsuiro_Matsuri,Natsuiro Matsuri,Elite,Hololive,Destroyer,3,[],DD/Speed,T,AA,A/DD1/T,A/DD2/T,87,Light,40,1763,70,165,468,190,0,10,207,207,0,189
+Nakiri_Ayame,Nakiri Ayame,Elite,Hololive,Heavy Cruiser,2,[],CA,DD/Aux,AA,A/CA1,A/CA2,65,Light,26,4168,234,197,0,50,0,11,174,0,0,106
+Murasaki_Shion,Murasaki Shion,Elite,Hololive,Light Aircraft Carrier,3,[],F,TB,AA,A/CV1,A/CV2,85,Medium,26,5178,0,255,0,68,311,11,174,72,0,81
+Ookami_Mio,Ookami Mio,Elite,Hololive,Aircraft Carrier,1.5,[],F,DB,TB,A/CV1,A/CV2,53,Medium,26,6373,0,288,0,47,374,12,117,0,0,100
+Marie_Rose,Marie Rose,Super Rare,Venus Vacation,Destroyer,0.5,[],DD,T,AA,A/DD1/T,A/DD2/T,78,Light,42,2042,91,178,508,192,0,10,223,210,0,195
+Honoka,Honoka,Super Rare,Venus Vacation,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,91,Heavy,26,7903,404,216,0,18,0,15,145,0,0,55
+Kasumi_(DOA),Kasumi (DOA),Super Rare,Venus Vacation,Heavy Cruiser,0.5,[],CA,T,AA,A/CA1/T,A/CA2/T,70,Light,42,1999,65,156,526,191,0,9,201,192,0,183
+Misaki,Misaki,Super Rare,Venus Vacation,Light Cruiser,0.5,[],CL,DD/Aux,AA,A/CL1,A/CL2,89,Light,33,3883,168,327,0,92,0,11,195,154,0,163
+Nagisa,Nagisa,Elite,Venus Vacation,Battleship,1.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,87,Heavy,30,7510,384,174,0,40,0,14,149,0,0,65
+Nyotengu,Nyotengu,Elite,Venus Vacation,Aircraft Carrier,2,[],F,DB,TB,A/CV1,A/CV2,88,Medium,32,6646,0,309,0,54,374,12,116,0,0,87
+Monica,Monica,Elite,Venus Vacation,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,88,Light,32,3775,148,357,292,100,0,10,182,87,0,160
+Hiryuu_META,Hiryuu META,Super Rare,META,Aircraft Carrier,0,[1/1/1],F,DB,TB,A/CV1,A/CV2,36,Medium,34,4721,0,250,0,47,340,14,100,0,0,65
+HMS_Neptune,HMS Neptune,Priority,Royal Navy,Light Cruiser,0.5,[],CL/AP,T,AA,A/CL1/T,A/CL2/T,15,Light,33,4637,172,363,352,98,0,12,164,152,0,158
+Monarch,Monarch,Priority,Royal Navy,Battleship,0,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,15,Heavy,28,7967,423,230,0,35,0,16,168,0,0,66
+Ibuki,Ibuki,Priority,Sakura Empire,Heavy Cruiser,0.5,[],CA,T,AA,A/CA1/T,A/CA2/T,15,Medium,28,4793,270,194,289,86,0,13,187,0,0,136
+Izumo,Izumo,Priority,Sakura Empire,Battleship,0.5,[],BB/Speed,T,AA/Main,A/BB1,A/BB2,15,Heavy,28,8607,428,237,0,37,0,16,146,0,0,66
+Roon,Roon,Priority,Ironblood,Heavy Cruiser,0,[],CA/Modified,T,AA,A/CA1/T,A/CA2/T,15,Medium,26,5920,283,233,215,78,0,13,171,0,0,125
+Saint_Louis,Saint Louis,Priority,Iris Libre,Heavy Cruiser,0.5,[],CA/HE,T,AA,A/CA1/T,A/CA2/T,15,Medium,26,5363,276,248,226,80,0,13,190,0,0,137
+Seattle,Seattle,Priority,Eagle Union,Light Cruiser,0,[],CL,CL/AA,AA,A/CL1,A/CL2,0,Light,33,5257,178,365,0,97,0,12,156,154,0,157
+Georgia,Georgia,Priority,Eagle Union,Battleship,0,[],BB/Speed,DD/Main,AA/Main,A/BB1,A/BB2,0,Heavy,33,8297,436,409,0,30,0,16,163,0,0,73
+Kitakaze,Kitakaze,Priority,Sakura Empire,Destroyer,0,[1],DD/Speed,T,AA,A/DD1,A/DD2,0,Light,44,2641,86,197,393,197,0,11,223,122,0,208
+Azuma,Azuma,Decisive,Sakura Empire,Large Cruiser,0,[],CA/CB,DD/Aux,AA,A/CB1,A/CB2,0,Medium,27,7541,307,226,0,50,0,16,170,0,0,123
+Friedrich_der_Grosse,Friedrich der Groβe,Decisive,Ironblood,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,0,Heavy,30,9886,449,241,0,27,0,19,157,0,0,65
+Gascogne,Gascogne,Priority,Vichya Dominion,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,0,Heavy,32,7863,430,241,0,36,0,16,168,0,0,71
+Cheshire,Cheshire,Priority,Royal Navy,Heavy Cruiser,0,[],CA,T,AA,A/CA1/T,A/CA2/T,0,Medium,27,5141,282,409,208,76,0,13,156,0,0,130
+Drake,Drake,Decisive,Royal Navy,Heavy Cruiser,0,[],CA,T,AA,A/CA1/T,A/CA2/T,0,Medium,26,5668,289,289,245,75,0,15,139,0,0,145
+Mainz,Mainz,Priority,Ironblood,Light Cruiser,0,[],CL,T,AA,A/CL1/T,A/CL2/T,0,Medium,25,5262,168,354,193,75,0,12,182,120,0,128
+Odin,Odin,Priority,Ironblood,Battlecruiser,0.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,0,Heavy,30,7126,361,337,241,36,0,16,171,0,0,62
+Champagne,Champagne,Priority,Iris Libre,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,0,Medium,32,6896,454,241,0,36,0,16,181,0,0,77

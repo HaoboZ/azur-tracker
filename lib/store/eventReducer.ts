@@ -16,7 +16,7 @@ export function event_newEvent() {
 	return { type: NEWEVENT };
 }
 
-export function event_setShop( shop: { [ item: string ]: number }, total: number ) {
+export function event_setShop( shop: Record<string, number>, total: number ) {
 	return {
 		type: SETSHOP,
 		shop,
@@ -60,7 +60,7 @@ export function event_modifyFarming( index: number, item: { points?: number, oil
 
 type State = {
 	name: string
-	shop: { [ item: string ]: number }
+	shop: Record<string, number>
 	shopExpectedCost: number
 	daily: { name: string, amount: number }[]
 	dailyExpected: number
@@ -115,9 +115,8 @@ initState.farming = [
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( 'event' in action.data ) {
+		if ( 'event' in action.data )
 			return action.data.event;
-		}
 		break;
 	case RESET:
 		state = initState;

@@ -43,7 +43,10 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function ShopDialog( { status, closeDialog } ) {
+export default function ShopDialog( { status, closeDialog }: {
+	status: boolean
+	closeDialog: () => void
+} ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	

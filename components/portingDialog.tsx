@@ -15,7 +15,11 @@ import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from '../lib/store';
 
-export default function PortingDialog( { status, type, closeModal } ) {
+export default function PortingDialog( { status, type, closeModal }: {
+	status: boolean
+	type: boolean
+	closeModal: () => void
+} ) {
 	const store    = useTypedSelector( store => store ),
 	      dispatch = useDispatch();
 	
@@ -90,6 +94,9 @@ export default function PortingDialog( { status, type, closeModal } ) {
 			</DialogContent>
 			
 			<DialogActions>
+				<Button variant='contained' color='secondary' onClick={ closeModal }>
+					Close
+				</Button>
 				<Tooltip
 					placement='bottom'
 					open={ !!tooltip }
@@ -101,9 +108,6 @@ export default function PortingDialog( { status, type, closeModal } ) {
 						{ type ? 'Import' : ' Export' }
 					</Button>
 				</Tooltip>
-				<Button variant='contained' color='secondary' onClick={ closeModal }>
-					Close
-				</Button>
 			</DialogActions>
 		</form>
 	</Dialog>;

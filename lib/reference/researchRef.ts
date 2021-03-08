@@ -1,4 +1,4 @@
-export const ships = {
+export const researchShips = {
 	'PR1': [
 		[ 'Neptune', 0, true, 'HMS_Neptune' ],
 		[ 'Monarch', 0, true, 'Monarch' ],

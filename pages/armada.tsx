@@ -1,9 +1,10 @@
-import { Box, Grid, Link, makeStyles, MenuItem, Select, Typography } from '@material-ui/core';
-import { DataGrid } from '@material-ui/data-grid';
+import { Box, Grid, makeStyles, Typography } from '@material-ui/core';
+import MaterialTable from 'material-table';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
-import Filter from '../components/armada/filter';
+import DetailPanel from '../components/armada/detailPanel';
+import EquipDialog from '../components/armada/equipDialog';
+import EquipFilter from '../components/armada/equipFilter';
 import PageTitleReset from '../components/pageTitleReset';
 import {
 	mappedColorClasses,
@@ -11,158 +12,170 @@ import {
 	rarityColors,
 	typeColors
 } from '../lib/reference/colors';
+import { equips } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
 import { useTypedSelector } from '../lib/store';
-import { ship_reset, ship_setShip } from '../lib/store/shipReducer';
+import { ship_reset } from '../lib/store/shipReducer';
+import tableIcons from '../lib/tableIcons';
 
-const useStyles = makeStyles( () => ( {
-	noPadding: { padding: 0 },
-	...mappedColorClasses
-} ) );
+const useStyles = makeStyles( () => mappedColorClasses );
 
 export default function Armada() {
-	const ship     = useTypedSelector( store => store.ship ),
-	      dispatch = useDispatch();
+	const ship = useTypedSelector( store => store.ship );
 	
 	const classes = useStyles();
 	
-	return <Grid container spacing={ 2 } component={ Box } height='100%'>
+	const [ equipment, setEquipment ] = React.useState<typeof equips[number]>( null ),
+	      [ equipOpen, setEquipOpen ] = React.useState( false ),
+	      [ equipInfo, setEquipInfo ] = React.useState<{ rowData, index }>( null );
+	
+	const shipList = React.useMemo( () => Object.values( shipRef ).map( ( shipData ) => {
+		const _ship = ship.ships[ shipData.id ];
+		shipData.love = _ship?.love || 0;
+		shipData.lvl = _ship?.lvl || 70;
+		shipData.equipped = _ship?.equip || new Array( 5 ).fill( 0 );
+		shipData.equipTier = _ship?.tier || '—————';
+		return shipData;
+	} ), [ ship ] );
+	const equipShipList = React.useMemo( () => {
+		if ( !equipment ) return shipList;
+		// TODO
+		return shipList;
+	}, [ equipment ] );
+	
+	return <Grid container spacing={ 2 }>
+		{ /*language=css*/ }
 		<style global jsx>{ `
-	      html, body, #__next {
-	        height: 100%;
-	      }
-	      
-	      #__next > .MuiContainer-root {
-	         height: 90%;
-	      }
-	      
-	      .MuiDataGrid-root .MuiDataGrid-cell {
-	         padding: 0 8px !important;
-	      }
-    ` }</style>
+          .MuiTableCell-sizeSmall {
+              padding: 4px 8px 4px 8px;
+          }
+
+          .MuiTableCell-paddingNone:last-child {
+              padding: 4px 16px 4px 8px;
+          }
+		` }</style>
 		<PageTitleReset name='Armada Tracker' reset={ ship_reset }/>
-		<Filter/>
-		<Grid item xs={ 12 } component={ Box } height='100%'>
-			<DataGrid
-				rows={ shipRef }
+		<Grid item xs={ 12 }>
+			<MaterialTable
+				title={ <Box
+					display='flex' justifyContent='space-between' alignItems='center'
+					width={ 450 }>
+					<Typography variant='h6'>Ship List</Typography>
+					<Box width={ 300 }>
+						<EquipFilter
+							equipList={ equips }
+							colors={ classes }
+							value={ equipment }
+							setValue={ setEquipment }/>
+					</Box>
+				</Box> }
+				icons={ tableIcons }
 				columns={ [
 					{
-						field:      'name',
-						headerName: 'Name',
-						width:      150,
-						renderCell: ( { value, row } ) =>
-							            <Link
-								            href={ row.link } target='_blank' color='textPrimary'>
-								            <Box overflow='hidden'>
-									            { value }
-								            </Box>
-							            </Link>
-					},
-					{
-						field:         'rarity',
-						headerName:    'Rarity',
-						width:         110,
-						cellClassName: ( { value } ) => classes[ rarityColors[ value as string ] ]
-					},
-					{
-						field:         'nation',
-						headerName:    'Nation',
-						width:         130,
-						cellClassName: ( { value } ) => classes[ nationColors[ value as string ] ]
-					},
-					{
-						field:         'type',
-						headerName:    'Type',
-						width:         130,
-						cellClassName: ( { value } ) => classes[ typeColors[ value as string ] ]
-					},
-					{
-						field:          'tier',
-						type:           'number',
-						headerName:     'Tier',
-						description:    'From ENCTL',
-						width:          80,
-						hideSortIcons:  true,
-						valueFormatter: ( { value } ) => value === 3 ? 'N' : value
-					},
-					{
-						field:         'love',
-						type:          'number',
-						headerName:    'Love',
-						description:   '♥ (1) for 100 affinity, 💍 (2) for married, 💍♥ (3) for 200 affinity',
-						width:         90,
-						align:         'center',
-						hideSortIcons: true,
-						valueGetter:   ( { row } ) => {
-							let _ship = ship.ships[ row.id ];
-							return ( _ship && _ship.love ) || 0;
+						title:                 'Name',
+						field:                 'name',
+						[ 'minWidth' as any ]: 150,
+						customFilterAndSearch( term, rowData ) {
+							return new RegExp( term, 'i' )
+								.test( rowData.name.normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) );
 						},
-						renderCell:    ( { field, getValue, row } ) => {
-							const val = getValue( field ) as number;
-							return <Select
-								fullWidth
-								value={ val }
-								onChange={ ( e ) =>
-									dispatch( ship_setShip( row.id as string, { love: e.target.value as number } ) ) }>
-								<MenuItem value={ 0 }>♡</MenuItem>
-								<MenuItem value={ 1 }>♥</MenuItem>
-								<MenuItem value={ 2 }>💍</MenuItem>
-								<MenuItem value={ 3 }>💍♥</MenuItem>
-							</Select>;
+						customSort( a, b ) {
+							return a.name.localeCompare( b.name );
+						},
+						grouping: false
+					},
+					{
+						title:                 'Rarity',
+						field:                 'rarity',
+						[ 'minWidth' as any ]: 100,
+						cellStyle( _, data ) {
+							return mappedColorClasses[ rarityColors[ data?.rarity ] ];
 						}
 					},
 					{
-						field:         'level',
-						type:          'number',
-						headerName:    'MxLvl',
-						description:   'Maximum level that is possible, ✰ for lvl 120 (121)',
-						width:         90,
-						align:         'center',
-						hideSortIcons: true,
-						valueGetter:   ( { row } ) => {
-							let _ship = ship.ships[ row.id ];
-							return ( _ship && _ship.lvl ) || 70;
-						},
-						renderCell:    ( { field, getValue, row } ) => {
-							const val = getValue( field ) as number;
-							return <Select
-								fullWidth
-								value={ val }
-								onChange={ ( e ) =>
-									dispatch( ship_setShip( row.id as string, { lvl: e.target.value as number } ) ) }>
-								<MenuItem value={ 70 }>70</MenuItem>
-								<MenuItem value={ 80 }>80</MenuItem>
-								<MenuItem value={ 90 }>90</MenuItem>
-								<MenuItem value={ 100 }>100</MenuItem>
-								<MenuItem value={ 105 }>105</MenuItem>
-								<MenuItem value={ 110 }>110</MenuItem>
-								<MenuItem value={ 115 }>115</MenuItem>
-								<MenuItem value={ 120 }>120</MenuItem>
-								<MenuItem value={ 121 }>★</MenuItem>
-							</Select>;
+						title:                 'Nation',
+						field:                 'nation',
+						[ 'minWidth' as any ]: 150,
+						cellStyle( _, data ) {
+							return mappedColorClasses[ nationColors[ data?.nation ] ];
 						}
 					},
 					{
-						field:         'equip',
-						headerName:    'Equips',
-						width:         110,
-						cellClassName: classes.noPadding,
-						renderCell:    ( { row } ) => <Typography variant='h6'>★✮☆✦✧⊝</Typography>
+						title:                 'Type',
+						field:                 'type',
+						[ 'minWidth' as any ]: 150,
+						cellStyle( _, data ) {
+							return mappedColorClasses[ typeColors[ data?.type ] ];
+						}
+					},
+					{
+						title:                 'Tier',
+						field:                 'tier',
+						defaultSort:           'asc',
+						type:                  'numeric',
+						align:                 'left',
+						[ 'minWidth' as any ]: 50,
+						render( data, type ) {
+							const val: number = type === 'group' ? data as any : data.tier;
+							return val === 3 ? 'N' : val;
+						}
+					},
+					{
+						title: 'Love',
+						field: 'love',
+						type:  'numeric',
+						align: 'left',
+						// description:   '♥ (1) for 100 affinity, 💍 (2) for married, 💍♥ (3) for 200 affinity',
+						[ 'minWidth' as any ]: 50,
+						render( data, type ) {
+							const val: number = type === 'group' ? data as any : data.love;
+							return [ '♡', '♥', '💍', '💍♥' ][ val ];
+						}
+					},
+					{
+						title: 'Max Level',
+						field: 'lvl',
+						type:  'numeric',
+						align: 'left',
+						// description:   'Maximum level that is possible, ✰ for lvl 120 (121)',
+						[ 'minWidth' as any ]: 50,
+						render( data, type ) {
+							const val: number = type === 'group' ? data as any : data.lvl;
+							return val === 121 ? '★' : val;
+						}
+					},
+					{
+						title:                 'Equips',
+						field:                 'equipTier',
+						[ 'minWidth' as any ]: 50,
+						grouping:              false
 					}
 				] }
-				density='compact'
-				columnBuffer={ 2 }
-				onCellClick={ ( { field, row } ) => {
-					if ( field === 'equip' ) {
-						console.log( row );
-					}
-				} }
-				sortModel={ [ { field: 'tier', sort: 'asc' } ] }
-				sortingOrder={ undefined }
-				columnTypes={ undefined }
-				headerHeight={ undefined }
-				localeText={ undefined }
-				rowHeight={ undefined }/>
+				data={ equipShipList }
+				detailPanel={ ( rowData ) => <DetailPanel
+					rowData={ rowData }
+					colors={ classes }
+					equipClick={ ( rowData, index ) => {
+						setEquipInfo( { rowData, index } );
+						setEquipOpen( true );
+						// rowData.equipped[ index ] = rowData.equipped[ index ] ? 0 : 45203;
+						// dispatch( ship_setShip( rowData.id, { equip: rowData.equipped } ) );
+					} }/> }
+				onRowClick={ ( e, rowData, togglePanel ) => togglePanel() }
+				options={ {
+					doubleHorizontalScroll: true,
+					emptyRowsWhenPaging:    false,
+					grouping:               true,
+					padding:                'dense',
+					pageSize:               50,
+					pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
+				} }/>
 		</Grid>
+		<EquipDialog
+			open={ equipOpen }
+			onClose={ () => setEquipOpen( false ) }
+			colors={ classes }
+			info={ equipInfo }
+			selectedEquip={ equipment }/>
 	</Grid>;
 }

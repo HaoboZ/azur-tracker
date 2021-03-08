@@ -2,9 +2,9 @@ import { Grid } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import EventFields from '../components/event/eventFields';
 
 import FarmingTable from '../components/event/farmingTable';
-import Fields from '../components/event/fields';
 import PageTitleReset from '../components/pageTitleReset';
 import eventRef from '../lib/reference/eventRef';
 import { useTypedSelector } from '../lib/store';
@@ -29,7 +29,7 @@ export default function Event() {
 	
 	return <Grid container spacing={ 2 }>
 		<PageTitleReset name='Event Tracker' reset={ event_reset }/>
-		<Fields remainingDays={ remainingDays }/>
+		<EventFields remainingDays={ remainingDays } neededPoints={ neededPoints }/>
 		<FarmingTable remainingPoints={ remainingPoints }/>
 	</Grid>;
 }

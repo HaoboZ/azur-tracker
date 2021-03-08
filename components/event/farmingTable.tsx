@@ -37,7 +37,9 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function FarmingTable({remainingPoints}) {
+export default function FarmingTable( { remainingPoints }: {
+	remainingPoints: number
+} ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	

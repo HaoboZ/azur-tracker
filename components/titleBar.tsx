@@ -37,7 +37,7 @@ export default function TitleBar() {
 	
 	const [ anchorEl, setAnchorEl ]         = React.useState<null | HTMLElement>( null ),
 	      [ portingModal, setPortingModal ] = React.useState( false ),
-	      [ portingType, setPortingType ]   = React.useState( 0 );
+	      [ portingType, setPortingType ]   = React.useState( false );
 	
 	return <AppBar position='static'>
 		<Toolbar>
@@ -90,17 +90,18 @@ export default function TitleBar() {
 				onClose={ () => setAnchorEl( null ) }>
 				<MenuItem onClick={ () => {
 					setAnchorEl( null );
-					setPortingType( 0 );
+					setPortingType( false );
 					setPortingModal( true );
 				} }>Export</MenuItem>
 				<MenuItem onClick={ () => {
 					setAnchorEl( null );
-					setPortingType( 1 );
+					setPortingType( true );
 					setPortingModal( true );
 				} }>Import</MenuItem>
 			</Menu>
 			<PortingDialog
-				status={ portingModal } type={ portingType }
+				status={ portingModal }
+				type={ portingType }
 				closeModal={ () => setPortingModal( false ) }/>
 		</Toolbar>
 	</AppBar>;

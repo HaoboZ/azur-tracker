@@ -41,7 +41,10 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function DailyDialog( { status, closeDialog } ) {
+export default function DailyDialog( { status, closeDialog }: {
+	status: boolean
+	closeDialog: () => void
+} ) {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
