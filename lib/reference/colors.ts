@@ -45,7 +45,14 @@ export const
 		'Hololive':            'aqua',
 		'Venus Vacation':      'thistle',
 		'META':                'dimgray'
-	};
+	},
+	tierColors   = [
+		'rainbow',
+		'palegoldenrod',
+		'plum',
+		'lightblue',
+		'lightgray'
+	];
 
 export const mappedColorClasses = {
 	rainbow:       {

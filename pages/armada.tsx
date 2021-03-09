@@ -5,7 +5,7 @@ import React from 'react';
 import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
 import EquipFilter from '../components/armada/equipFilter';
-import tableColumns from '../components/armada/tableColumns';
+import TableColumns from '../components/armada/tableColumns';
 import PageTitleReset from '../components/pageTitleReset';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
@@ -31,35 +31,42 @@ export default function Armada() {
 			const _ship = ship.ships[ shipData.id ];
 			shipData.love = _ship?.love || 0;
 			shipData.lvl = _ship?.lvl || 70;
-			shipData.equipped = _ship?.equip || new Array( 5 ).fill( [ 0 ] );
 			shipData.equipTier = _ship?.tier || '—————';
+			shipData.equipped = _ship?.equip || new Array( 5 ).fill( [ 0 ] );
+			shipData.equipBetter = [];
 			return shipData;
 		} ), [ ship ] );
 	
 	// filtered ships that can equip equipment and tier is lower
 	const equipShipList = React.useMemo( () => {
 		if ( !( equip?.id ) ) return shipList;
-		return shipList.filter( ( ship, i ) => {
-			return ship.equipped.some( ( predicate, index ) => {
+		return shipList.filter( ( shipData ) => {
+			shipData.equipBetter = shipData.equipped.map( ( value, index ) => {
 				// ships that can equip the equipment
-				if ( !equippable[ ship.equip[ index ] ].includes( equip.type ) ) return false;
+				if ( !equippable[ shipData.equip[ index ] ].includes( equip.type ) ) return 0;
+				const tierList = equipTier[ shipData.equip[ index ] ];
+				// equip not in tier list
+				if ( !tierList[ equip.id ] ) return 0;
+				const tier = tierList[ equip.id ]?.[ 0 ] + 1;
 				// none equipped
-				if ( !predicate?.[ 0 ] ) return true;
+				if ( !value?.[ 0 ] ) return tier;
 				// forced BiS
-				if ( predicate[ 1 ] ) return false;
+				if ( value[ 1 ] ) return 0;
+				// current equip not in tier list
+				if ( !tierList[ value[ 0 ] ] ) return tier;
 				// remove those that have higher tier
-				const tierList = equipTier[ ship.equip[ index ] ];
-				if ( !tierList[ predicate[ 0 ] ] ) return true;
-				return tierList[ predicate[ 0 ] ][ 1 ] < tierList[ equip.id ][ 1 ];
+				if ( tierList[ value[ 0 ] ][ 1 ] <= tierList[ equip.id ][ 1 ] ) return 0;
+				return tier;
 			} );
+			return shipData.equipBetter.some( val => val );
 		} );
-	}, [ equip ] );
+	}, [ ship, equip ] );
 	
 	return <Grid container spacing={ 2 }>
 		{ /*language=css*/ }
 		<style global jsx>{ `
           .MuiTableCell-sizeSmall {
-              padding: 4px 8px 4px 8px;
+              padding: 4px 8px 4px 8px !important;
           }
 
           .MuiTableCell-paddingNone:last-child {
@@ -80,7 +87,7 @@ export default function Armada() {
 			<MaterialTable
 				title='Ship List'
 				icons={ tableIcons }
-				columns={ tableColumns }
+				columns={ TableColumns() }
 				data={ equipShipList }
 				detailPanel={ ( rowData ) => <DetailPanel
 					colors={ classes }

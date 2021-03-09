@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { rarityColors } from '../../lib/reference/colors';
+import { rarityColors, tierColors } from '../../lib/reference/colors';
 import { equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/shipReducer';
@@ -34,7 +34,7 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 						value={ rowData.love }
 						SelectDisplayProps={ { style: { textAlign: 'center' } } }
 						onChange={ ( e ) =>
-							dispatch( ship_setShip( rowData.id as string, { love: e.target.value as number } ) ) }>
+							dispatch( ship_setShip( rowData.id, { love: e.target.value as number } ) ) }>
 						<MenuItem value={ 0 }>♡</MenuItem>
 						<MenuItem value={ 1 }>♥</MenuItem>
 						<MenuItem value={ 2 }>💍</MenuItem>
@@ -64,12 +64,13 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 				</FormControl>
 			</Grid>
 		</Grid>
-		<Grid item xs={ 8 } container spacing={ 1 }>
+		<Grid item xs={ 8 } container spacing={ 1 } alignItems='center' justify='center'>
 			{ rowData.equipped.map( ( val, index ) => {
 				const equip = equipsIndex[ val[ 0 ] || 0 ];
 				return <Grid
 					key={ index }
 					item xs
+					className={ colors[ tierColors[ rowData.equipBetter?.[ index ] - 1 ] ] }
 					onClick={ () => equipClick( rowData, index ) }>
 					<Image
 						src={ `/images/equips/${ equip.image }` }

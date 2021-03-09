@@ -82,7 +82,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 		setOverride( info?.rowData.equipped[ info.index ]?.[ 1 ] || false );
 	}, [ info ] );
 	
-	const [ anchorEl, setAnchorEl ] = React.useState<null | HTMLElement>( null );
+	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	
 	if ( !( equip.id in equipListIndex ) ) return null;
 	

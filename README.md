@@ -35,8 +35,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## TODO
 
-* filter ships when equipment set
-* fix header for mobile view
 * zip the export (lz-string)
 * update all tier fields when equip tier list updated
 
