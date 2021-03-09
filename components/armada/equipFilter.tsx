@@ -9,12 +9,12 @@ import { equips, typeNames } from '../../lib/reference/equipRef';
 
 const useStyles = makeStyles( () => ( {
 	autoComplete: { paddingRight: 10 },
-	popper:       { width: '300px !important' }
+	popper:       { width: '350px !important' }
 } ) );
 
-export default function EquipFilter( { equipList, colors, value, setValue }: {
-	equipList: typeof equips
+export default function EquipFilter( { colors, equipList, value, setValue }: {
 	colors: Record<string, string>
+	equipList: typeof equips
 	value: typeof equips[number]
 	setValue: ( value: typeof equips[number] ) => void
 } ) {

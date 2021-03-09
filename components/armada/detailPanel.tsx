@@ -8,9 +8,9 @@ import { equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/shipReducer';
 
-export default function DetailPanel( { rowData, colors, equipClick }: {
-	rowData: typeof shipRef[string]
+export default function DetailPanel( { colors, rowData, equipClick }: {
 	colors: Record<string, string>
+	rowData: typeof shipRef[string]
 	equipClick: ( rowData, index ) => void
 } ) {
 	const dispatch = useDispatch();
@@ -66,7 +66,7 @@ export default function DetailPanel( { rowData, colors, equipClick }: {
 		</Grid>
 		<Grid item xs={ 8 } container spacing={ 1 }>
 			{ rowData.equipped.map( ( val, index ) => {
-				const equip = equipsIndex[ val || 0 ];
+				const equip = equipsIndex[ val[ 0 ] || 0 ];
 				return <Grid
 					key={ index }
 					item xs

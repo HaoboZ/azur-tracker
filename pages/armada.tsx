@@ -29,18 +29,21 @@ export default function Armada() {
 	      [ equipOpen, setEquipOpen ] = React.useState( false ),
 	      [ equipInfo, setEquipInfo ] = React.useState<{ rowData, index }>( null );
 	
-	const shipList = React.useMemo( () => Object.values( shipRef ).map( ( shipData ) => {
-		const _ship = ship.ships[ shipData.id ];
-		shipData.love = _ship?.love || 0;
-		shipData.lvl = _ship?.lvl || 70;
-		shipData.equipped = _ship?.equip || new Array( 5 ).fill( 0 );
-		shipData.equipTier = _ship?.tier || '—————';
-		return shipData;
-	} ), [ ship ] );
+	const shipList = React.useMemo( () => Object.values( shipRef )
+		.map( ( shipData ) => {
+			const _ship = ship.ships[ shipData.id ];
+			shipData.love = _ship?.love || 0;
+			shipData.lvl = _ship?.lvl || 70;
+			shipData.equipped = _ship?.equip || new Array( 5 ).fill( [ 0 ] );
+			shipData.equipTier = _ship?.tier || '—————';
+			return shipData;
+		} ), [ ship ] );
+	
 	const equipShipList = React.useMemo( () => {
 		if ( !equipment ) return shipList;
-		// TODO
-		return shipList;
+		return shipList.filter( ( ship ) => {
+			return true;
+		} );
 	}, [ equipment ] );
 	
 	return <Grid container spacing={ 2 }>
@@ -63,8 +66,8 @@ export default function Armada() {
 					<Typography variant='h6'>Ship List</Typography>
 					<Box width={ 300 }>
 						<EquipFilter
-							equipList={ equips }
 							colors={ classes }
+							equipList={ equips }
 							value={ equipment }
 							setValue={ setEquipment }/>
 					</Box>
@@ -130,7 +133,8 @@ export default function Armada() {
 						render( data, type ) {
 							const val: number = type === 'group' ? data as any : data.love;
 							return [ '♡', '♥', '💍', '💍♥' ][ val ];
-						}
+						},
+						searchable: false
 					},
 					{
 						title: 'Max Level',
@@ -142,24 +146,24 @@ export default function Armada() {
 						render( data, type ) {
 							const val: number = type === 'group' ? data as any : data.lvl;
 							return val === 121 ? '★' : val;
-						}
+						},
+						searchable: false
 					},
 					{
 						title:                 'Equips',
 						field:                 'equipTier',
 						[ 'minWidth' as any ]: 50,
-						grouping:              false
+						grouping:              false,
+						searchable:            false
 					}
 				] }
 				data={ equipShipList }
 				detailPanel={ ( rowData ) => <DetailPanel
-					rowData={ rowData }
 					colors={ classes }
+					rowData={ rowData }
 					equipClick={ ( rowData, index ) => {
 						setEquipInfo( { rowData, index } );
 						setEquipOpen( true );
-						// rowData.equipped[ index ] = rowData.equipped[ index ] ? 0 : 45203;
-						// dispatch( ship_setShip( rowData.id, { equip: rowData.equipped } ) );
 					} }/> }
 				onRowClick={ ( e, rowData, togglePanel ) => togglePanel() }
 				options={ {
@@ -172,9 +176,9 @@ export default function Armada() {
 				} }/>
 		</Grid>
 		<EquipDialog
+			colors={ classes }
 			open={ equipOpen }
 			onClose={ () => setEquipOpen( false ) }
-			colors={ classes }
 			info={ equipInfo }
 			selectedEquip={ equipment }/>
 	</Grid>;

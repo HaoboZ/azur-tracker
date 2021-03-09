@@ -5,12 +5,15 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
+	FormControlLabel,
 	Grid,
 	Paper,
+	Switch,
 	Typography,
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
+import { Alert } from '@material-ui/lab';
 import Image from 'next/image';
 import React from 'react';
 import Draggable from 'react-draggable';
@@ -27,10 +30,10 @@ const Transition = React.forwardRef( (
 	ref: React.Ref<unknown>
 ) => <Zoom ref={ ref } { ...props }/> );
 
-export default function EquipDialog( { open, onClose, colors, info, selectedEquip }: {
+export default function EquipDialog( { colors, open, onClose, info, selectedEquip }: {
+	colors: Record<string, string>
 	open: boolean
 	onClose: () => void
-	colors: Record<string, string>
 	info: { rowData: typeof shipRef[string], index: number }
 	selectedEquip: typeof equips[number]
 } ) {
@@ -47,18 +50,27 @@ export default function EquipDialog( { open, onClose, colors, info, selectedEqui
 		}, {} as typeof equipsIndex ) ];
 	}, [ info ] );
 	
+	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ][ 0 ] || 0 ];
+	
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
 	React.useEffect( () => {
 		if ( equipListIndex[ selectedEquip?.id ] )
 			setEquip( selectedEquip );
+		else if ( currentEquip?.id )
+			setEquip( currentEquip );
 		else
 			setEquip( equips[ 0 ] );
 	}, [ info, selectedEquip ] );
 	
-	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ] || 0 ];
+	const [ override, setOverride ] = React.useState( false );
+	React.useEffect( () => {
+		setOverride( info?.rowData.equipped[ info.index ]?.[ 1 ] || false );
+	}, [ info ] );
+	
+	if ( !( equip.id in equipListIndex ) ) return null;
 	
 	function confirmEquip() {
-		info.rowData.equipped[ info.index ] = equip?.id;
+		info.rowData.equipped[ info.index ] = [ equip.id, override ];
 		dispatch( ship_setShip( info.rowData.id, { equip: info.rowData.equipped } ) );
 	}
 	
@@ -79,6 +91,12 @@ export default function EquipDialog( { open, onClose, colors, info, selectedEqui
 		<DialogTitle>Switch Equipment?</DialogTitle>
 		<DialogContent>
 			<Grid container>
+				{ info?.rowData.special[ info.index ] ?
+					<Grid item xs={ 12 } component={ Box } pb={ 2 }>
+						<Alert severity='warning' variant='filled'>
+							Special Equip Slot (Check Skills & Equipment)
+						</Alert>
+					</Grid> : undefined }
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
 					<Image
 						src={ `/images/equips/${ currentEquip.image }` }
@@ -105,16 +123,26 @@ export default function EquipDialog( { open, onClose, colors, info, selectedEqui
 				</Grid>
 				<Grid item xs={ 2 }/>
 				<Grid item xs={ 5 }>
+					<Typography align='center'>{ equip.name }</Typography>
+				</Grid>
+				<Grid item xs={ 12 }>
 					<EquipFilter
-						equipList={ equipList }
 						colors={ colors }
+						equipList={ equipList }
 						value={ equip }
 						setValue={ setEquip }/>
-					<Typography align='center'>{ equip.name }</Typography>
 				</Grid>
 			</Grid>
 		</DialogContent>
 		<DialogActions>
+			<FormControlLabel
+				control={ <Switch
+					color='primary'
+					checked={ override }
+					onChange={ ( e ) =>
+						setOverride( e.target.checked ) }/> }
+				label='Force BiS'
+				labelPlacement='start'/>
 			<Button variant='contained' color='secondary' onClick={ onClose }>
 				Cancel
 			</Button>

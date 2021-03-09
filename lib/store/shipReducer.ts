@@ -11,15 +11,16 @@ export function ship_reset() {
 export function ship_setShip( name: string, ship: {
 	lvl?: number
 	love?: number
-	equip?: number[]
+	equip?: [ number, boolean? ][]
 	tier?: string
 } ) {
 	const tier = ship.equip?.map( ( eq, i ) => {
-		if ( !eq ) return '—';
+		if ( !eq?.[ 0 ] ) return '—';
+		if ( eq[ 1 ] ) return '✷';
 		const _ship = shipRef[ name ];
 		const _tier = equipTier[ _ship.equip[ i ] ];
-		if ( eq in _tier ) {
-			return '✷★☆✦✧'[ _tier[ eq ][ 0 ] ];
+		if ( eq[ 0 ] in _tier ) {
+			return '✷★☆✦✧'[ _tier[ eq[ 0 ] ][ 0 ] ];
 		} else {
 			return '🞅';
 		}
@@ -38,7 +39,7 @@ type State = {
 		[ name: string ]: {
 			lvl: number
 			love: number
-			equip: number[]
+			equip: [ number, boolean? ][]
 			tier: string
 		}
 	}

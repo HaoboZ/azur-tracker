@@ -35,36 +35,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## TODO
 
-ships
-    named search
-    type search, grids and click on each to filter by ship type or nation
-        bb/bc
-        monitor
-        dd
-        cl
-        ca
-        cv/cvl
-        repair
-        aviation battleship
-        munition
-        sub
-        sub cv
-    nation search
-        sakura
-        eagle
-        iron
-        dragon
-        northern
-        sardegna
-        iris
-        vichya
-        other
+* filter ships when equipment set
+* fix header for mobile view
+* zip the export (lz-string)
+* update all tier fields when equip tier list updated
 
-equipment
-    show all of current storage
-    have an image list of what you should keep (for lab?)
-
-event tracker
-    button for each run add to total
-
-research tracker
