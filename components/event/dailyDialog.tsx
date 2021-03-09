@@ -51,11 +51,11 @@ export default function DailyDialog( { status, closeDialog }: {
 	const classes = useStyles();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
-	
 	React.useEffect( () => {
 		if ( status ) setDaily( event.daily );
 	}, [ status ] );
 	
+	// total points gained daily
 	const dailyTotal = React.useMemo( () =>
 		daily.reduce( ( total, item ) => total + item.amount, 0 ), [ daily ] );
 	

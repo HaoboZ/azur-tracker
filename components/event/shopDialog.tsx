@@ -53,11 +53,11 @@ export default function ShopDialog( { status, closeDialog }: {
 	const classes = useStyles();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
-	
 	React.useEffect( () => {
 		if ( status ) setShop( event.shop );
 	}, [ status ] );
 	
+	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
 		Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
 			const item = eventRef.shop[ itemName ];

@@ -38,6 +38,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 } ) {
 	const dispatch = useDispatch();
 	
+	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
 		const equipType = equippable[ info?.rowData.equip[ info.index ] ];
 		const equipList = equipType ? equips
@@ -62,8 +63,10 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 		];
 	}, [ info ] );
 	
+	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ][ 0 ] || 0 ];
 	
+	// equipment that will go in slot
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
 	React.useEffect( () => {
 		if ( equipListIndex[ selectedEquip?.id ] )

@@ -22,9 +22,12 @@ export default function Event() {
 	if ( event.name != eventRef.name )
 		return null;
 	
+	// number of days until end of event
 	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( moment(), 'day', true ), 0 );
 	
+	// number of points needed until only dailies are enough
 	const neededPoints    = event.shopExpectedCost - Math.floor( remainingDays ) * event.dailyExpected,
+	      // points still needed to be farmed
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <Grid container spacing={ 2 }>

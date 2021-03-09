@@ -5,14 +5,10 @@ import React from 'react';
 import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
 import EquipFilter from '../components/armada/equipFilter';
+import tableColumns from '../components/armada/tableColumns';
 import PageTitleReset from '../components/pageTitleReset';
-import {
-	mappedColorClasses,
-	nationColors,
-	rarityColors,
-	typeColors
-} from '../lib/reference/colors';
-import { equips } from '../lib/reference/equipRef';
+import { mappedColorClasses } from '../lib/reference/colors';
+import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
 import { useTypedSelector } from '../lib/store';
 import { ship_reset } from '../lib/store/shipReducer';
@@ -25,10 +21,11 @@ export default function Armada() {
 	
 	const classes = useStyles();
 	
-	const [ equipment, setEquipment ] = React.useState<typeof equips[number]>( null ),
+	const [ equip, setEquip ]         = React.useState<typeof equips[number]>( null ),
 	      [ equipOpen, setEquipOpen ] = React.useState( false ),
 	      [ equipInfo, setEquipInfo ] = React.useState<{ rowData, index }>( null );
 	
+	// list of ships with the local data loaded
 	const shipList = React.useMemo( () => Object.values( shipRef )
 		.map( ( shipData ) => {
 			const _ship = ship.ships[ shipData.id ];
@@ -39,12 +36,25 @@ export default function Armada() {
 			return shipData;
 		} ), [ ship ] );
 	
+	// filtered ships that can equip equipment and tier is lower
 	const equipShipList = React.useMemo( () => {
-		if ( !equipment ) return shipList;
-		return shipList.filter( ( ship ) => {
-			return true;
+		if ( !( equip?.id ) ) return shipList;
+		return shipList.filter( ( ship, i ) => {
+			console.log( i );
+			return ship.equipped.some( ( predicate, index ) => {
+				// ships that can equip the equipment
+				if ( !equippable[ ship.equip[ index ] ].includes( equip.type ) ) return false;
+				// none equipped
+				if ( !predicate?.[ 0 ] ) return true;
+				// forced BiS
+				if ( predicate[ 1 ] ) return false;
+				// remove those that have higher tier
+				const tierList = equipTier[ ship.equip[ index ] ];
+				if ( !tierList[ predicate[ 0 ] ] ) return true;
+				return tierList[ predicate[ 0 ] ][ 1 ] < tierList[ equip.id ][ 1 ];
+			} );
 		} );
-	}, [ equipment ] );
+	}, [ equip ] );
 	
 	return <Grid container spacing={ 2 }>
 		{ /*language=css*/ }
@@ -63,98 +73,15 @@ export default function Armada() {
 			<EquipFilter
 				colors={ classes }
 				equipList={ equips }
-				value={ equipment }
-				setValue={ setEquipment }
+				value={ equip }
+				setValue={ setEquip }
 			/>
 		</Grid>
 		<Grid item xs={ 12 }>
 			<MaterialTable
 				title='Ship List'
 				icons={ tableIcons }
-				columns={ [
-					{
-						title:                 'Name',
-						field:                 'name',
-						[ 'minWidth' as any ]: 150,
-						customFilterAndSearch( term, rowData ) {
-							return new RegExp( term, 'i' )
-								.test( rowData.name.normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) );
-						},
-						customSort( a, b ) {
-							return a.name.localeCompare( b.name );
-						},
-						grouping: false
-					},
-					{
-						title:                 'Rarity',
-						field:                 'rarity',
-						[ 'minWidth' as any ]: 100,
-						cellStyle( _, data ) {
-							return mappedColorClasses[ rarityColors[ data?.rarity ] ];
-						}
-					},
-					{
-						title:                 'Nation',
-						field:                 'nation',
-						[ 'minWidth' as any ]: 150,
-						cellStyle( _, data ) {
-							return mappedColorClasses[ nationColors[ data?.nation ] ];
-						}
-					},
-					{
-						title:                 'Type',
-						field:                 'type',
-						[ 'minWidth' as any ]: 150,
-						cellStyle( _, data ) {
-							return mappedColorClasses[ typeColors[ data?.type ] ];
-						}
-					},
-					{
-						title:                 'Tier',
-						field:                 'tier',
-						defaultSort:           'asc',
-						type:                  'numeric',
-						align:                 'left',
-						[ 'minWidth' as any ]: 50,
-						render( data, type ) {
-							const val: number = type === 'group' ? data as any : data.tier;
-							return val === 3 ? 'N' : val;
-						}
-					},
-					{
-						title: 'Love',
-						field: 'love',
-						type:  'numeric',
-						align: 'left',
-						// description:   '♥ (1) for 100 affinity, 💍 (2) for married, 💍♥ (3) for 200 affinity',
-						[ 'minWidth' as any ]: 50,
-						render( data, type ) {
-							const val: number = type === 'group' ? data as any : data.love;
-							return [ '♡', '♥', '💍', '💍♥' ][ val ];
-						},
-						searchable: false
-					},
-					{
-						title: 'Max Level',
-						field: 'lvl',
-						type:  'numeric',
-						align: 'left',
-						// description:   'Maximum level that is possible, ✰ for lvl 120 (121)',
-						[ 'minWidth' as any ]: 50,
-						render( data, type ) {
-							const val: number = type === 'group' ? data as any : data.lvl;
-							return val === 121 ? '★' : val;
-						},
-						searchable: false
-					},
-					{
-						title:                 'Equips',
-						field:                 'equipTier',
-						[ 'minWidth' as any ]: 50,
-						grouping:              false,
-						searchable:            false
-					}
-				] }
+				columns={ tableColumns }
 				data={ equipShipList }
 				detailPanel={ ( rowData ) => <DetailPanel
 					colors={ classes }
@@ -179,7 +106,7 @@ export default function Armada() {
 			open={ equipOpen }
 			onClose={ () => setEquipOpen( false ) }
 			info={ equipInfo }
-			selectedEquip={ equipment }
+			selectedEquip={ equip }
 		/>
 	</Grid>;
 }

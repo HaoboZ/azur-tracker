@@ -42,6 +42,7 @@ enum rarity {
 	N  = 'N'
 }
 
+// list of equips sorted by type
 export const equips      = [
 	       {
 		       id:     0,
@@ -1448,6 +1449,7 @@ export const equips      = [
 	       //endregion
 	       // { name: '', image: '', type: type., rarity: rarity.SR },
        ],
+             // dictionary of equips to reference by id
              equipsIndex = equips.reduce( ( obj, item ) => {
 	             obj[ item.id ] = item;
 	             return obj;
@@ -1460,7 +1462,8 @@ const map = equips.reduce( ( obj, item ) => {
 
 //✷★☆✦✧⊝–
 let a;
-export const equipTier = {
+// tiers of equipment by slot
+export const equipTier: Record<string, Record<number, number[]>> = {
 	'T':         {
 		[ map[ 'Quintuple 533mm Magnetic Torpedo/UR' ] ]:   [ 0, a = 0 ],
 		[ map[ 'Quadruple 533mm Magnetic Torpedo/SR' ] ]:   [ 1, ++a ],
@@ -2012,6 +2015,7 @@ export const equipTier = {
 	// [ map[ '/SR' ] ]: [0, ++a],
 };
 
+// type of weapon that can be equipped at each slot
 export const equippable = {
 	'T':         [ type.T ],
 	'AA/Damage': [ type.AA ],
