@@ -112,7 +112,8 @@ export default function ShopDialog( { status, closeDialog }: {
 										onChange={ ( e ) => {
 											shop[ itemName ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
 											setShop( { ...shop } );
-										} }/>
+										} }
+									/>
 								</TableCell>
 							</TableRow>;
 						} ) }

@@ -30,28 +30,28 @@ export default function EquipFilter( { colors, equipList, value, setValue }: {
 		onChange={ ( e, newValue ) =>
 			setValue( newValue as any || equips[ 0 ] ) }
 		renderOption={ ( option ) => <>
-			<div>
+			<Box pr={ 1 }>
 				<Image
 					src={ `/images/equips/${ option.image }` }
 					alt={ option.name }
 					layout='fixed'
 					height={ 50 }
 					width={ 50 }
-					className={ colors[ rarityColors[ option.rarity ] ] }/>
-			</div>
-			<Typography component={ Box } pl={ 1 }>{ option.name }</Typography>
+					className={ colors[ rarityColors[ option.rarity ] ] }
+				/>
+			</Box>
+			<Typography>{ option.name }</Typography>
 		</> }
 		groupBy={ ( option ) => typeNames[ option.type ] }
-		renderInput={ ( params ) => {
-			return <TextField
-				{ ...params }
-				margin='normal'
-				placeholder='Equipment'
-				InputProps={ {
-					...params.InputProps,
-					startAdornment: <><SearchIcon/>{ params.InputProps.startAdornment }</>,
-					type:           'search'
-				} }
-			/>;
-		} }/>;
+		renderInput={ ( params ) => <TextField
+			{ ...params }
+			margin='normal'
+			label='Equipment'
+			InputProps={ {
+				...params.InputProps,
+				startAdornment: <><SearchIcon/>{ params.InputProps.startAdornment }</>,
+				type:           'search'
+			} }
+		/> }
+	/>;
 }

@@ -87,7 +87,8 @@ export default function FarmingTable( { remainingPoints }: {
 										value={ item.points }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,
-												{ points: parseInt( e.target.value ) } ) ) }/>
+												{ points: parseInt( e.target.value ) } ) ) }
+									/>
 								</TableCell>
 								<TableCell>
 									<TextField
@@ -96,7 +97,8 @@ export default function FarmingTable( { remainingPoints }: {
 										value={ item.oil }
 										onChange={ ( e ) =>
 											dispatch( event_modifyFarming( index,
-												{ oil: parseInt( e.target.value ) } ) ) }/>
+												{ oil: parseInt( e.target.value ) } ) ) }
+									/>
 								</TableCell>
 								<TableCell><Typography>{ plays }</Typography></TableCell>
 								<TableCell><Typography>{ isFinite( oil ) ? oil : Infinity }</Typography></TableCell>

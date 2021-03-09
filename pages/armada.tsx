@@ -1,4 +1,4 @@
-import { Box, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import React from 'react';
 
@@ -58,20 +58,18 @@ export default function Armada() {
           }
 		` }</style>
 		<PageTitleReset name='Armada Tracker' reset={ ship_reset }/>
+		<Grid item sm={ 8 } xs={ 12 }/>
+		<Grid item xs>
+			<EquipFilter
+				colors={ classes }
+				equipList={ equips }
+				value={ equipment }
+				setValue={ setEquipment }
+			/>
+		</Grid>
 		<Grid item xs={ 12 }>
 			<MaterialTable
-				title={ <Box
-					display='flex' justifyContent='space-between' alignItems='center'
-					width={ 450 }>
-					<Typography variant='h6'>Ship List</Typography>
-					<Box width={ 300 }>
-						<EquipFilter
-							colors={ classes }
-							equipList={ equips }
-							value={ equipment }
-							setValue={ setEquipment }/>
-					</Box>
-				</Box> }
+				title='Ship List'
 				icons={ tableIcons }
 				columns={ [
 					{
@@ -173,13 +171,15 @@ export default function Armada() {
 					padding:                'dense',
 					pageSize:               50,
 					pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
-				} }/>
+				} }
+			/>
 		</Grid>
 		<EquipDialog
 			colors={ classes }
 			open={ equipOpen }
 			onClose={ () => setEquipOpen( false ) }
 			info={ equipInfo }
-			selectedEquip={ equipment }/>
+			selectedEquip={ equipment }
+		/>
 	</Grid>;
 }

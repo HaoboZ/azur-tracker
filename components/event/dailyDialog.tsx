@@ -119,7 +119,8 @@ export default function DailyDialog( { status, closeDialog }: {
 									type='text' fullWidth
 									value={ item.name }
 									onChange={ ( e ) =>
-										modifyItem( index, { name: e.target.value } ) }/>
+										modifyItem( index, { name: e.target.value } ) }
+								/>
 							</TableCell>
 							<TableCell align='right'>
 								<TextField
@@ -127,7 +128,8 @@ export default function DailyDialog( { status, closeDialog }: {
 									inputProps={ { className: classes.numberInput } }
 									value={ item.amount }
 									onChange={ ( e ) =>
-										modifyItem( index, { amount: parseInt( e.target.value ) } ) }/>
+										modifyItem( index, { amount: parseInt( e.target.value ) } ) }
+								/>
 							</TableCell>
 						</TableRow> ) }
 						<TableRow>

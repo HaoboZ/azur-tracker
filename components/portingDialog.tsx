@@ -75,21 +75,25 @@ export default function PortingDialog( { status, type, closeModal }: {
 					<FormGroup row>
 						<FormControlLabel
 							control={ <Switch defaultChecked name='eventExport'/> }
-							label='Event'/>
+							label='Event'
+						/>
 					</FormGroup>
 					<FormGroup row>
 						<FormControlLabel
 							control={ <Switch defaultChecked name='researchExport'/> }
-							label='Research'/>
+							label='Research'
+						/>
 					</FormGroup>
 					<FormGroup row>
 						<FormControlLabel
 							control={ <Switch defaultChecked name='shipExport'/> }
-							label='Armada'/>
+							label='Armada'
+						/>
 					</FormGroup>
 					<TextField
 						multiline rows={ 4 } fullWidth
-						name='exportArea' value={ exportedData }/>
+						name='exportArea' value={ exportedData }
+					/>
 				</> }
 			</DialogContent>
 			

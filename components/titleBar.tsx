@@ -102,7 +102,8 @@ export default function TitleBar() {
 			<PortingDialog
 				status={ portingModal }
 				type={ portingType }
-				closeModal={ () => setPortingModal( false ) }/>
+				closeModal={ () => setPortingModal( false ) }
+			/>
 		</Toolbar>
 	</AppBar>;
 }

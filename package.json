@@ -10,7 +10,6 @@
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",
-		"@material-ui/data-grid": "^4.0.0-alpha.21",
 		"@material-ui/icons": "^4.11.2",
 		"@material-ui/lab": "^4.0.0-alpha.57",
 		"@next/bundle-analyzer": "^10.0.7",
@@ -25,9 +24,7 @@
 		"next": "10.0.7",
 		"react": "17.0.1",
 		"react-dom": "17.0.1",
-		"react-draggable": "^4.4.3",
 		"react-redux": "^7.2.2",
-		"react-window": "^1.8.6",
 		"redux": "^4.0.5",
 		"redux-persist": "^6.0.0",
 		"sass": "^1.32.8",

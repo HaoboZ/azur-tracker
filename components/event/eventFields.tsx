@@ -51,20 +51,23 @@ export default function EventFields( { remainingDays, neededPoints }: {
 		<Grid item xs={ 12 } component={ Box } mx='auto'>
 			<img
 				src={ eventRef.image } alt='event banner'
-				style={ { width: '100%', maxWidth: 700, display: 'block', margin: 'auto' } }/>
+				style={ { width: '100%', maxWidth: 700, display: 'block', margin: 'auto' } }
+			/>
 		</Grid>
-		<Grid item xs={ 12 } component={ Box } textAlign='center'>
-			<Typography variant='h6'>{ eventRef.name }</Typography>
+		<Grid item xs={ 12 }>
+			<Typography variant='h6' align='center'>{ eventRef.name }</Typography>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='Current Date'
-				defaultValue={ moment().format( 'l LT' ) }/>
+				defaultValue={ moment().format( 'l LT' ) }
+			/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='End Date'
-				defaultValue={ moment( eventRef.endDate ).format( 'l LT' ) }/>
+				defaultValue={ moment( eventRef.endDate ).format( 'l LT' ) }
+			/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
@@ -73,7 +76,8 @@ export default function EventFields( { remainingDays, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Days</InputAdornment>
 				} }
 				inputProps={ { className: classes.rightInput } }
-				defaultValue={ Math.floor( remainingDays ) }/>
+				defaultValue={ Math.floor( remainingDays ) }
+			/>
 		</Grid>
 		<Grid item sm={ 3 } xs={ 6 }>
 			<TextField
@@ -84,7 +88,8 @@ export default function EventFields( { remainingDays, neededPoints }: {
 				} }
 				inputProps={ { className: classes.rightInput } }
 				value={ event.shopExpectedCost }
-				onClick={ () => setShopDialog( true ) }/>
+				onClick={ () => setShopDialog( true ) }
+			/>
 			<ShopDialog status={ shopDialog } closeDialog={ () => setShopDialog( false ) }/>
 		</Grid>
 		<Grid item sm={ 3 } xs={ 4 }>
@@ -95,7 +100,8 @@ export default function EventFields( { remainingDays, neededPoints }: {
 				} }
 				inputProps={ { className: classes.rightInput } }
 				value={ event.dailyExpected }
-				onClick={ () => setDailyDialog( true ) }/>
+				onClick={ () => setDailyDialog( true ) }
+			/>
 			<DailyDialog status={ dailyDialog } closeDialog={ () => setDailyDialog( false ) }/>
 		</Grid>
 		<Grid item sm={ 3 } xs={ 4 }>
@@ -105,7 +111,8 @@ export default function EventFields( { remainingDays, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				} }
 				inputProps={ { className: classes.rightInput } }
-				defaultValue={ neededPoints }/>
+				defaultValue={ neededPoints }
+			/>
 		</Grid>
 		<Grid item sm={ 3 } xs={ 4 }>
 			<TextField
@@ -117,7 +124,8 @@ export default function EventFields( { remainingDays, neededPoints }: {
 				} }
 				value={ event.points }
 				onChange={ ( e ) =>
-					dispatch( event_setPoints( parseInt( e.target.value ) ) ) }/>
+					dispatch( event_setPoints( parseInt( e.target.value ) ) ) }
+			/>
 		</Grid>
 	</>;
 }

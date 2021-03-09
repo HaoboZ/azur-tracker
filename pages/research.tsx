@@ -106,7 +106,8 @@ export default function Research() {
 											src={ `/images/ships/${ item[ 3 ] }.png` }
 											alt={ item[ 0 ] }
 											height={ 60 }
-											width={ 60 }/>
+											width={ 60 }
+										/>
 										<Typography>{ item[ 0 ] }</Typography>
 									</TableCell>
 									<TableCell>
@@ -115,7 +116,8 @@ export default function Research() {
 											value={ ship.devLevel || 0 }
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ],
-													{ devLevel: parseInt( e.target.value ) } ) ) }/>
+													{ devLevel: parseInt( e.target.value ) } ) ) }
+										/>
 									</TableCell>
 									<TableCell>
 										<TextField
@@ -131,7 +133,8 @@ export default function Research() {
 											onChange={ ( e ) =>
 												dispatch( research_modifyShip( item[ 0 ],
 													{ devStage: parseInt( e.target.value ) },
-													devLevel[ item[ 1 ] * 2 ] * 10 ) ) }/>
+													devLevel[ item[ 1 ] * 2 ] * 10 ) ) }
+										/>
 									</TableCell>
 									<TableCell>{ devPrints }</TableCell>
 									{
@@ -143,7 +146,8 @@ export default function Research() {
 													onChange={ ( e ) => {
 														dispatch( research_modifyShip( item[ 0 ],
 															{ fateLevel: parseInt( e.target.value ) } ) );
-													} }/>
+													} }
+												/>
 											</TableCell>
 											<TableCell>
 												<TextField
@@ -155,8 +159,8 @@ export default function Research() {
 													inputProps={ { className: classes.numberInput } }
 													value={ ship.fateStage || 0 }
 													onChange={ ( e ) =>
-														dispatch( research_modifyShip( item[ 0 ],
-															{ fateStage: parseInt( e.target.value ) } ) ) }/>
+														dispatch( research_modifyShip( item[ 0 ], { fateStage: parseInt( e.target.value ) } ) ) }
+												/>
 											</TableCell>
 											<TableCell>{ fatePrints }</TableCell>
 										</>

@@ -50,7 +50,7 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 						value={ rowData.lvl }
 						SelectDisplayProps={ { style: { textAlign: 'center' } } }
 						onChange={ ( e ) =>
-							dispatch( ship_setShip( rowData.id as string, { lvl: e.target.value as number } ) ) }>
+							dispatch( ship_setShip( rowData.id, { lvl: e.target.value as number } ) ) }>
 						<MenuItem value={ 70 }>70</MenuItem>
 						<MenuItem value={ 80 }>80</MenuItem>
 						<MenuItem value={ 90 }>90</MenuItem>
@@ -76,7 +76,8 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 						alt={ equip.name }
 						height={ 128 }
 						width={ 128 }
-						className={ colors[ rarityColors[ equip.rarity ] ] }/>
+						className={ colors[ rarityColors[ equip.rarity ] ] }
+					/>
 				</Grid>;
 			} ) }
 		</Grid>

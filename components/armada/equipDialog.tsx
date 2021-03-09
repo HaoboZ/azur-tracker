@@ -7,7 +7,6 @@ import {
 	DialogTitle,
 	FormControlLabel,
 	Grid,
-	Paper,
 	Switch,
 	Typography,
 	Zoom
@@ -16,14 +15,14 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import { Alert } from '@material-ui/lab';
 import Image from 'next/image';
 import React from 'react';
-import Draggable from 'react-draggable';
 import { useDispatch } from 'react-redux';
 
 import { rarityColors } from '../../lib/reference/colors';
-import { equippable, equips, equipsIndex } from '../../lib/reference/equipRef';
+import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/shipReducer';
 import EquipFilter from './equipFilter';
+import EquipSelector from './equipSelector';
 
 const Transition = React.forwardRef( (
 	props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -39,15 +38,28 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 } ) {
 	const dispatch = useDispatch();
 	
-	const [ equipList, equipListIndex ] = React.useMemo( () => {
+	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
 		const equipType = equippable[ info?.rowData.equip[ info.index ] ];
 		const equipList = equipType ? equips
 			.filter( ( item ) => equipType.includes( item.type ) ) : [];
 		equipList.unshift( equips[ 0 ] );
-		return [ equipList, equipList.reduce( ( res, item ) => {
-			res[ item.id ] = item;
-			return res;
-		}, {} as typeof equipsIndex ) ];
+		
+		const tierList = equipType ? equipTier[ info?.rowData.equip[ info.index ] ] : [];
+		
+		return [
+			equipList,
+			equipList.reduce( ( res, item ) => {
+				res[ item.id ] = item;
+				return res;
+			}, {} as typeof equipsIndex ),
+			Object.keys( tierList ).reduce( ( arr, key ) => {
+				arr[ tierList[ key ][ 1 ] ] = {
+					...equipsIndex[ key ],
+					tier: '✷★☆✦✧'[ tierList[ key ][ 0 ] ]
+				};
+				return arr;
+			}, [] as ( typeof equips[number] & { tier?: number } )[] )
+		];
 	}, [ info ] );
 	
 	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ][ 0 ] || 0 ];
@@ -67,6 +79,8 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 		setOverride( info?.rowData.equipped[ info.index ]?.[ 1 ] || false );
 	}, [ info ] );
 	
+	const [ anchorEl, setAnchorEl ] = React.useState<null | HTMLElement>( null );
+	
 	if ( !( equip.id in equipListIndex ) ) return null;
 	
 	function confirmEquip() {
@@ -76,21 +90,18 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 	
 	return <Dialog
 		open={ open }
+		onClose={ onClose }
 		TransitionComponent={ Transition }
-		PaperComponent={ ( props ) => <Draggable handle='.MuiDialogTitle-root'>
-			<Paper { ...props }/>
-		</Draggable> }
 		keepMounted
 		maxWidth='xs'
 		fullWidth
-		onClose={ onClose }
 		onKeyPress={ ( e ) => {
 			if ( e.key === 'Enter' )
 				confirmEquip();
 		} }>
 		<DialogTitle>Switch Equipment?</DialogTitle>
 		<DialogContent>
-			<Grid container>
+			<Grid container alignItems='center' justify='center'>
 				{ info?.rowData.special[ info.index ] ?
 					<Grid item xs={ 12 } component={ Box } pb={ 2 }>
 						<Alert severity='warning' variant='filled'>
@@ -103,12 +114,11 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 						alt={ currentEquip.name }
 						height={ 128 }
 						width={ 128 }
-						className={ colors[ rarityColors[ currentEquip.rarity ] ] }/>
+						className={ colors[ rarityColors[ currentEquip.rarity ] ] }
+					/>
 				</Grid>
 				<Grid item xs={ 2 }>
-					<Box alignItems='center' height='100%' display='flex' justifyContent='center'>
-						<Typography variant='h2'>⇒</Typography>
-					</Box>
+					<Typography variant='h2' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
 					<Image
@@ -116,7 +126,8 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 						alt={ equip.name }
 						height={ 128 }
 						width={ 128 }
-						className={ colors[ rarityColors[ equip.rarity ] ] }/>
+						className={ colors[ rarityColors[ equip.rarity ] ] }
+					/>
 				</Grid>
 				<Grid item xs={ 5 }>
 					<Typography align='center'>{ currentEquip.name }</Typography>
@@ -125,12 +136,28 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 				<Grid item xs={ 5 }>
 					<Typography align='center'>{ equip.name }</Typography>
 				</Grid>
-				<Grid item xs={ 12 }>
+				<Grid item xs={ 5 } component={ Box } textAlign='center'>
+					<Button
+						variant='outlined'
+						onClick={ ( e ) => setAnchorEl( e.currentTarget ) }>
+						Equipment Tier
+					</Button>
+					<EquipSelector
+						anchorEl={ anchorEl }
+						closeAnchor={ () => setAnchorEl( null ) }
+						colors={ colors }
+						equipList={ tierList }
+						setEquip={ ( id ) => setEquip( equipListIndex[ id ] ) }
+					/>
+				</Grid>
+				<Grid item xs={ 1 }/>
+				<Grid item xs={ 6 }>
 					<EquipFilter
 						colors={ colors }
 						equipList={ equipList }
 						value={ equip }
-						setValue={ setEquip }/>
+						setValue={ setEquip }
+					/>
 				</Grid>
 			</Grid>
 		</DialogContent>
@@ -139,8 +166,8 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 				control={ <Switch
 					color='primary'
 					checked={ override }
-					onChange={ ( e ) =>
-						setOverride( e.target.checked ) }/> }
+					onChange={ ( e ) => setOverride( e.target.checked ) }
+				/> }
 				label='Force BiS'
 				labelPlacement='start'/>
 			<Button variant='contained' color='secondary' onClick={ onClose }>
