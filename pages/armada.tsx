@@ -40,7 +40,6 @@ export default function Armada() {
 	const equipShipList = React.useMemo( () => {
 		if ( !( equip?.id ) ) return shipList;
 		return shipList.filter( ( ship, i ) => {
-			console.log( i );
 			return ship.equipped.some( ( predicate, index ) => {
 				// ships that can equip the equipment
 				if ( !equippable[ ship.equip[ index ] ].includes( equip.type ) ) return false;
