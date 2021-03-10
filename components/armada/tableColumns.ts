@@ -12,9 +12,9 @@ import shipRef from '../../lib/reference/shipRef';
 export default function TableColumns() {
 	return [
 		{
-			title:    'Name',
-			field:    'name',
-			minWidth: 150,
+			title: 'Name',
+			field: 'name',
+			width: '15%',
 			customFilterAndSearch( term, rowData ) {
 				return new RegExp( term, 'i' )
 					.test( rowData.name.normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) );
@@ -25,25 +25,25 @@ export default function TableColumns() {
 			grouping: false
 		},
 		{
-			title:    'Rarity',
-			field:    'rarity',
-			minWidth: 100,
+			title: 'Rarity',
+			field: 'rarity',
+			width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ rarityColors[ rowData?.rarity ] ];
 			}
 		},
 		{
-			title:    'Nation',
-			field:    'nation',
-			minWidth: 150,
+			title: 'Nation',
+			field: 'nation',
+			width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ nationColors[ rowData?.nation ] ];
 			}
 		},
 		{
-			title:    'Type',
-			field:    'type',
-			minWidth: 150,
+			title: 'Type',
+			field: 'type',
+			width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ typeColors[ rowData?.type ] ];
 			}
@@ -54,7 +54,7 @@ export default function TableColumns() {
 			defaultSort: 'asc',
 			type:        'numeric',
 			align:       'left',
-			minWidth:    50,
+			width:       '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.tier;
 				return val === 3 ? 'N' : val;
@@ -65,8 +65,7 @@ export default function TableColumns() {
 			field: 'love',
 			type:  'numeric',
 			align: 'left',
-			// description:   '♥ (1) for 100 affinity, 💍 (2) for married, 💍♥ (3) for 200 affinity',
-			minWidth: 50,
+			width: '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.love;
 				return [ '♡', '♥', '💍', '💍♥' ][ val ];
@@ -78,8 +77,7 @@ export default function TableColumns() {
 			field: 'lvl',
 			type:  'numeric',
 			align: 'left',
-			// description:   'Maximum level that is possible, ✰ for lvl 120 (121)',
-			minWidth: 50,
+			width: '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.lvl;
 				return val === 121 ? '★' : val;
@@ -90,7 +88,7 @@ export default function TableColumns() {
 			title:      'Equips',
 			field:      'equipTier',
 			align:      'center',
-			minWidth:   50,
+			width:      '10%',
 			grouping:   false,
 			searchable: false,
 			sorting:    false,
