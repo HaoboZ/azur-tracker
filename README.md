@@ -37,4 +37,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 * zip the export (lz-string)
 * update all tier fields when equip tier list updated
-
