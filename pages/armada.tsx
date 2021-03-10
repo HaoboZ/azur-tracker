@@ -14,7 +14,7 @@ import { useTypedSelector } from '../lib/store';
 import { ship_reset } from '../lib/store/shipReducer';
 import tableIcons from '../lib/tableIcons';
 
-const useStyles = makeStyles( () => mappedColorClasses );
+const useStyles = makeStyles( () => mappedColorClasses as any );
 
 export default function Armada() {
 	const ship = useTypedSelector( store => store.ship );
