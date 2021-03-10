@@ -91,17 +91,23 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 		dispatch( ship_setShip( info.rowData.id, { equip: info.rowData.equipped } ) );
 	}
 	
+	const close = () => {
+		setAnchorEl( null );
+		onClose();
+	};
+	
 	return <Dialog
 		open={ open }
-		onClose={ onClose }
+		onClose={ close }
 		TransitionComponent={ Transition }
 		keepMounted
 		maxWidth='xs'
 		fullWidth
 		onKeyPress={ ( e ) => {
 			if ( e.key === 'Enter' ) {
+				e.preventDefault();
 				confirmEquip();
-				onClose();
+				close();
 			}
 		} }>
 		<DialogTitle>Switch Equipment?</DialogTitle>
@@ -175,12 +181,12 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 				/> }
 				label='Force BiS'
 				labelPlacement='start'/>
-			<Button variant='contained' color='secondary' onClick={ onClose }>
+			<Button variant='contained' color='secondary' onClick={ close }>
 				Cancel
 			</Button>
 			<Button variant='contained' color='primary' onClick={ () => {
 				confirmEquip();
-				onClose();
+				close();
 			} }>
 				Confirm
 			</Button>
