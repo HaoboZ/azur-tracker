@@ -454,7 +454,7 @@ const ships = {
 	'HMS_Neptune':                    [ 'HMS Neptune', 'Priority', 'Royal Navy', 'Light Cruiser', 0.5, [], 'CL/AP', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 15, 'Light', 33, 4637, 172, 363, 352, 98, 0, 12, 164, 152, 0, 158 ],
 	'Monarch':                        [ 'Monarch', 'Priority', 'Royal Navy', 'Battleship', 0, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 28, 7967, 423, 230, 0, 35, 0, 16, 168, 0, 0, 66 ],
 	'Ibuki':                          [ 'Ibuki', 'Priority', 'Sakura Empire', 'Heavy Cruiser', 0.5, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 28, 4793, 270, 194, 289, 86, 0, 13, 187, 0, 0, 136 ],
-	'Izumo':                          [ 'Izumo', 'Priority', 'Sakura Empire', 'Battleship', 0.5, [], 'BB/Speed', 'T', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 28, 8607, 428, 237, 0, 37, 0, 16, 146, 0, 0, 66 ],
+	'Izumo':                          [ 'Izumo', 'Priority', 'Sakura Empire', 'Battleship', 0.5, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 28, 8607, 428, 237, 0, 37, 0, 16, 146, 0, 0, 66 ],
 	'Roon':                           [ 'Roon', 'Priority', 'Ironblood', 'Heavy Cruiser', 0, [], 'CA/Modified', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 26, 5920, 283, 233, 215, 78, 0, 13, 171, 0, 0, 125 ],
 	'Saint_Louis':                    [ 'Saint Louis', 'Priority', 'Iris Libre', 'Heavy Cruiser', 0.5, [], 'CA/HE', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 26, 5363, 276, 248, 226, 80, 0, 13, 190, 0, 0, 137 ],
 	'Seattle':                        [ 'Seattle', 'Priority', 'Eagle Union', 'Light Cruiser', 0, [], 'CL', 'CL/AA', 'AA', 'A/CL1', 'A/CL2', 0, 'Light', 33, 5257, 178, 365, 0, 97, 0, 12, 156, 154, 0, 157 ],
@@ -466,7 +466,7 @@ const ships = {
 	'Cheshire':                       [ 'Cheshire', 'Priority', 'Royal Navy', 'Heavy Cruiser', 0, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 0, 'Medium', 27, 5141, 282, 409, 208, 76, 0, 13, 156, 0, 0, 130 ],
 	'Drake':                          [ 'Drake', 'Decisive', 'Royal Navy', 'Heavy Cruiser', 0, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 0, 'Medium', 26, 5668, 289, 289, 245, 75, 0, 15, 139, 0, 0, 145 ],
 	'Mainz':                          [ 'Mainz', 'Priority', 'Ironblood', 'Light Cruiser', 0, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 0, 'Medium', 25, 5262, 168, 354, 193, 75, 0, 12, 182, 120, 0, 128 ],
-	'Odin':                           [ 'Odin', 'Priority', 'Ironblood', 'Battlecruiser', 0.5, [], 'BB/Damage', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 7126, 361, 337, 241, 36, 0, 16, 171, 0, 0, 62 ],
+	'Odin':                           [ 'Odin', 'Priority', 'Ironblood', 'Battlecruiser', 0.5, [], 'BB/Damage', 'T', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 7126, 361, 337, 241, 36, 0, 16, 171, 0, 0, 62 ],
 	'Champagne':                      [ 'Champagne', 'Priority', 'Iris Libre', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Medium', 32, 6896, 454, 241, 0, 36, 0, 16, 181, 0, 0, 77 ]
 };
 

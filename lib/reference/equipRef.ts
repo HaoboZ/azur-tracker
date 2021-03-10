@@ -1133,6 +1133,13 @@ export const equips      = [
 	       },
 	       { id: 89260, name: 'Heart Key', image: 'Heart_Key.png', type: type.A, rarity: rarity.SR },
 	       {
+		       id:     25800,
+		       name:   '"Hedgehog" Anti-Submarine Mortar',
+		       image:  'Hedgehog_Anti-Submarine_Mortar.png',
+		       type:   type.A,
+		       rarity: rarity.SR
+	       },
+	       {
 		       id:     1160,
 		       name:   'High Performance Air Radar',
 		       image:  'High_Performance_Air_Radar.png',
@@ -1609,10 +1616,10 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 2, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Twin 127mm MK12 Dual Gun/SR' ] ]:                     [ 2, ++a ],
+		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 4, ++a ],
 		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/E' ] ]:            [ 3, ++a ],
 		[ map[ 'Twin 127mm MK12 Dual Gun/E' ] ]:                      [ 3, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 4, ++a ],
-		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 4, ++a ]
+		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 4, ++a ]
 	},
 	'DD/Main': {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],

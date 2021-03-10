@@ -69,7 +69,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 	// equipment that will go in slot
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
 	React.useEffect( () => {
-		if ( selectedEquip?.id )
+		if ( equipListIndex[ selectedEquip?.id ] )
 			setEquip( selectedEquip );
 		else if ( currentEquip?.id )
 			setEquip( currentEquip );
