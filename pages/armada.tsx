@@ -30,7 +30,7 @@ export default function Armada() {
 		.map( ( shipData ) => {
 			const _ship = ship.ships[ shipData.id ];
 			shipData.love = _ship?.love || 0;
-			shipData.lvl = _ship?.lvl || 70;
+			shipData.lvl = _ship?.lvl || 0;
 			shipData.equipTier = _ship?.tier || '—————';
 			shipData.equipped = _ship?.equip || new Array( 5 ).fill( [ 0 ] );
 			shipData.equipBetter = [];

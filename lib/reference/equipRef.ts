@@ -1657,7 +1657,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'CL' ];
 	},
 	get 'CL/DB'() {
-		return this[ 'CL' ];
+		return this[ 'CL/DD/Main' ];
 	},
 	
 	'CA':          {
@@ -1898,6 +1898,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'A/CA2/T': {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
+		[ map[ 'Cosmic Kicks/SR' ] ]:                             [ 0, ++a ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
 		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
 		[ map[ 'SG Radar/SR' ] ]:                                 [ 2, ++a ],
@@ -1911,50 +1912,35 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Fuel Filter/E' ] ]:        [ 2, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 3, ++a ]
 	},
-	'A/CB2':   {
-		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
-		[ map[ 'Cosmic Kicks/SR' ] ]:                             [ 0, ++a ],
-		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
-		[ map[ 'SG Radar/SR' ] ]:                                 [ 2, ++a ],
-		[ map[ 'SG Radar/E' ] ]:                                  [ 2, ++a ],
-		[ map[ 'Fire Control Radar/E' ] ]:                        [ 2, ++a ],
-		[ map[ 'Gyroscope/E' ] ]:                                 [ 3, ++a ]
+	get 'A/CB2'() {
+		return this[ 'A/CA2' ];
 	},
-	'A/BB1':   {
+	'A/BB1': {
 		[ map[ 'Type 1 Piercing Shell/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'SG Radar/SR' ] ]:              [ 1, ++a ],
-		[ map[ 'Type 91 Piercing Shell/E' ] ]: [ 2, ++a ],
-		[ map[ 'SG Radar/E' ] ]:               [ 3, ++a ]
+		[ map[ 'Type 91 Piercing Shell/E' ] ]: [ 1, ++a ]
 	},
-	'A/BB2':   {
+	'A/BB2': {
 		[ map[ 'Super Heavy Shell/SR' ] ]:                [ 0, a = 0 ],
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Nelson\'s Pennant of Victory/SR' ] ]:     [ 2, ++a ],
+		[ map[ 'SG Radar/SR' ] ]:                         [ 2, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                [ 3, ++a ],
+		[ map[ 'SG Radar/E' ] ]:                          [ 3, ++a ],
 		[ map[ 'Fire Suppressor/R' ] ]:                   [ 4, ++a ]
 	},
-	'A/BBV1':  {
-		[ map[ 'Type 1 Piercing Shell/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'SG Radar/SR' ] ]:              [ 1, ++a ],
-		[ map[ 'Type 91 Piercing Shell/E' ] ]: [ 2, ++a ],
-		[ map[ 'SG Radar/E' ] ]:               [ 3, ++a ]
+	get 'A/BBV1'() {
+		return this[ 'A/BB1' ];
 	},
-	'A/BBV2':  {
-		[ map[ 'Super Heavy Shell/SR' ] ]:                [ 0, a = 0 ],
-		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Nelson\'s Pennant of Victory/SR' ] ]:     [ 2, ++a ],
-		[ map[ 'Fire Control Radar/E' ] ]:                [ 3, ++a ],
-		[ map[ 'Fire Suppressor/R' ] ]:                   [ 4, ++a ]
+	get 'A/BBV2'() {
+		return this[ 'A/BB2' ];
 	},
-	'A/CV1':   {
+	'A/CV1': {
 		[ map[ 'Steam Catapult/SR' ] ]:   [ 0, a = 0 ],
 		[ map[ 'Aviation Oil Tank/E' ] ]: [ 1, ++a ],
 		[ map[ 'Steam Catapult/E' ] ]:    [ 1, ++a ]
 		
 	},
-	'A/CV2':   {
+	'A/CV2': {
 		[ map[ 'Steam Catapult/SR' ] ]:       [ 0, a = 0 ],
 		[ map[ 'Frontier Medal/SR' ] ]:       [ 0, ++a ],
 		[ map[ 'Homing Beacon/E' ] ]:         [ 1, ++a ],
@@ -1962,47 +1948,47 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ '100/150 Aviation Fuel/E' ] ]: [ 2, ++a ],
 		[ map[ 'Steam Catapult/E' ] ]:        [ 2, ++a ]
 	},
-	'A/SS1':   {
+	'A/SS1': {
 		[ map[ 'Improved Snorkel/SR' ] ]:            [ 0, a = 0 ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]:                  [ 1, ++a ]
 	},
-	'A/SS2':   {
+	'A/SS2': {
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]:   [ 0, a = 0 ],
 		[ map[ 'Pressure-Resistant Hull Design/E' ] ]: [ 0, ++a ],
 		[ map[ 'Autoloader/E' ] ]:                     [ 1, ++a ]
 	},
-	'A/AR':    {
+	'A/AR':  {
 		[ map[ 'High Performance Air Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Repair Toolkit/SR' ] ]:             [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]:                 [ 1, ++a ]
 	},
-	'A/AR1':   {
+	'A/AR1': {
 		[ map[ 'High Performance Air Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Air Radar/E' ] ]:                   [ 1, ++a ]
 	},
-	'A/AR2':   {
+	'A/AR2': {
 		[ map[ 'High Performance Air Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Air Radar/E' ] ]:                   [ 1, ++a ]
 	},
-	'A/BM1':   {
+	'A/BM1': {
 		[ map[ 'Repair Tools/E' ] ]:                      [ 0, a = 0 ],
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                [ 2, ++a ]
 	},
-	'A/BM2':   {
+	'A/BM2': {
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'SG Radar/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                [ 1, ++a ],
 		[ map[ 'Repair Tools/E' ] ]:                      [ 1, ++a ],
-		[ map[ 'Fire Suppressor/R' ] ]:                   [ 2, ++a ],
-		[ map[ 'SG Radar/E' ] ]:                          [ 3, ++a ]
+		[ map[ 'SG Radar/E' ] ]:                          [ 2, ++a ],
+		[ map[ 'Fire Suppressor/R' ] ]:                   [ 3, ++a ]
 	},
-	'A/AE1':   {
+	'A/AE1': {
 		[ map[ 'Beaver Squad Tag/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Fuel Filter/E' ] ]:       [ 1, ++a ]
 	},
-	'A/AE2':   {
+	'A/AE2': {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
 		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ]
