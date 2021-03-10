@@ -49,7 +49,6 @@ export default function Armada() {
 		return shipList.filter( ( shipData ) => {
 			shipData.equipBetter = shipData.equipped.map( ( value, index ) => {
 				// ships that can equip the equipment
-				console.log( shipData.equip,index)
 				if ( !equippable[ shipData.equip[ index ] ].includes( equip.type ) ) return 0;
 				const tierList = equipTier[ shipData.equip[ index ] ];
 				// is equipped already
