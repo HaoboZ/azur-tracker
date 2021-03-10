@@ -1782,6 +1782,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Swordfish (818 Squad)/SR' ] ]:          [ 4, ++a ],
 		[ map[ 'Fairey Albacore/E' ] ]:                 [ 4, ++a ]
 	},
+	get 'F/DB'() {
+		return this[ 'F' ];
+	},
 	get 'DB/TB'() {
 		return this[ 'DB' ];
 	},
@@ -2056,6 +2059,7 @@ export const equippable = {
 	'F':     [ type.F ],
 	'DB':    [ type.DB ],
 	'TB':    [ type.TB ],
+	'F/DB':  [ type.F, type.DB ],
 	'DB/TB': [ type.DB, type.TB ],
 	'P':     [ type.F, type.DB, type.TB ],
 	

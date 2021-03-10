@@ -196,7 +196,7 @@ Eagle,Eagle,Elite,Royal Navy,Aircraft Carrier,1.5,[],F,TB,CL/DB,A/CV1,A/CV2,40,M
 Ark_Royal,Ark Royal,Elite,Royal Navy,Aircraft Carrier,1,[],TB,TB,DB,A/CV1,A/CV2,87,Medium,31,6107,0,307,0,53,400,12,117,0,0,102
 Illustrious,Illustrious,Super Rare,Royal Navy,Aircraft Carrier,0.5,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,6561,0,296,0,53,400,13,117,0,0,91
 Victorious,Victorious,Super Rare,Royal Navy,Aircraft Carrier,2,[],F,DB,TB,A/CV1,A/CV2,82,Heavy,30,6262,0,289,0,53,410,13,104,0,0,90
-Formidable,Formidable,Super Rare,Royal Navy,Aircraft Carrier,0,[0/1/1],DB,TB,TB,A/CV1,A/CV2,75,Heavy,30,6481,0,289,0,51,413,13,117,0,0,90
+Formidable,Formidable,Super Rare,Royal Navy,Aircraft Carrier,0,[0/1/1],F/DB,TB,TB,A/CV1,A/CV2,75,Heavy,30,6481,0,289,0,51,413,13,117,0,0,90
 Glorious,Glorious,Elite,Royal Navy,Aircraft Carrier,3,[],F,TB,TB,A/CV1,A/CV2,32,Medium,30,6313,0,292,0,51,360,12,109,0,0,88
 Little_Illustrious,Little Illustrious,Elite,Royal Navy,Aircraft Carrier,3,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,5946,0,266,0,53,380,12,110,0,0,85
 Illustrious_µ,Illustrious μ,Super Rare,Royal Navy,Aircraft Carrier,0.5,[],F,F,TB,A/CV1,A/CV2,44,Heavy,30,6513,0,293,0,53,407,13,117,0,0,91
