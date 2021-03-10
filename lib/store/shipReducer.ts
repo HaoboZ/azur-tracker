@@ -1,11 +1,16 @@
 import { equipTier } from '../reference/equipRef';
 import shipRef from '../reference/shipRef';
 
-const RESET   = 'ship/reset',
-      SETSHIP = 'ship/setShip';
+const RESET        = 'ship/reset',
+      CHECKVERSION = 'ship/checkVersion',
+      SETSHIP      = 'ship/setShip';
 
 export function ship_reset() {
 	return { type: RESET };
+}
+
+export function ship_checkVersion() {
+	return { type: CHECKVERSION };
 }
 
 export function ship_setShip( name: string, ship: {
@@ -14,17 +19,7 @@ export function ship_setShip( name: string, ship: {
 	equip?: [ number, boolean? ][]
 	tier?: string
 } ) {
-	const tier = ship.equip?.map( ( eq, i ) => {
-		if ( !eq?.[ 0 ] ) return '—';
-		if ( eq[ 1 ] ) return '✷';
-		const _ship = shipRef[ name ];
-		const _tier = equipTier[ _ship.equip[ i ] ];
-		if ( eq[ 0 ] in _tier ) {
-			return '✷★☆✦✧'[ _tier[ eq[ 0 ] ][ 0 ] ];
-		} else {
-			return '🞅';
-		}
-	} ).join( '' );
+	const tier = getTier( shipRef[ name ], ship.equip );
 	if ( tier ) ship.tier = tier;
 	
 	return {
@@ -32,6 +27,19 @@ export function ship_setShip( name: string, ship: {
 		name,
 		ship
 	};
+}
+
+function getTier( ship: { equip: string[] }, equip: [ number, boolean? ][] ) {
+	return equip?.map( ( eq, i ) => {
+		if ( !eq?.[ 0 ] ) return '—';
+		if ( eq[ 1 ] ) return '✹';
+		const tier = equipTier[ ship.equip[ i ] ];
+		if ( eq[ 0 ] in tier ) {
+			return '✷★☆✦✧'[ tier[ eq[ 0 ] ][ 0 ] ];
+		} else {
+			return '🞅';
+		}
+	} ).join( '' );
 }
 
 type State = {
@@ -42,11 +50,13 @@ type State = {
 			equip: [ number, boolean? ][]
 			tier: string
 		}
-	}
+	},
+	version: string
 }
 
 const initState: State = {
-	ships: {}
+	ships:   {},
+	version: '2021-03-10'
 };
 
 export default function shipReducer( state = initState, action ): State {
@@ -54,6 +64,17 @@ export default function shipReducer( state = initState, action ): State {
 	case 'import':
 		if ( 'ship' in action.data )
 			return action.data.ship;
+		break;
+	case CHECKVERSION:
+		if ( state.version !== initState.version ) {
+			for ( const name in state.ships ) {
+				const ship = state.ships[ name ];
+				const tier = getTier( shipRef[ name ], ship.equip );
+				if ( tier ) ship.tier = tier;
+			}
+			
+			return { ...state, version: initState.version };
+		}
 		break;
 	case RESET:
 		return initState;

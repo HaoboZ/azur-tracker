@@ -1,6 +1,7 @@
 import { Grid, makeStyles } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
@@ -11,15 +12,20 @@ import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
 import { useTypedSelector } from '../lib/store';
-import { ship_reset } from '../lib/store/shipReducer';
+import { ship_checkVersion, ship_reset } from '../lib/store/shipReducer';
 import tableIcons from '../lib/tableIcons';
 
 const useStyles = makeStyles( () => mappedColorClasses as any );
 
 export default function Armada() {
-	const ship = useTypedSelector( store => store.ship );
+	const ship     = useTypedSelector( store => store.ship ),
+	      dispatch = useDispatch();
 	
 	const classes = useStyles();
+	
+	React.useEffect( () => {
+		dispatch( ship_checkVersion() );
+	}, [] );
 	
 	const [ equip, setEquip ]         = React.useState<typeof equips[number]>( null ),
 	      [ equipOpen, setEquipOpen ] = React.useState( false ),
@@ -43,8 +49,11 @@ export default function Armada() {
 		return shipList.filter( ( shipData ) => {
 			shipData.equipBetter = shipData.equipped.map( ( value, index ) => {
 				// ships that can equip the equipment
+				console.log( shipData.equip,index)
 				if ( !equippable[ shipData.equip[ index ] ].includes( equip.type ) ) return 0;
 				const tierList = equipTier[ shipData.equip[ index ] ];
+				// is equipped already
+				if ( value?.[ 0 ] === equip.id ) return 6;
 				// equip not in tier list
 				if ( !tierList[ equip.id ] ) return 0;
 				const tier = tierList[ equip.id ]?.[ 0 ] + 1;
@@ -102,7 +111,7 @@ export default function Armada() {
 					emptyRowsWhenPaging:    false,
 					grouping:               true,
 					padding:                'dense',
-					pageSize:               50,
+					pageSize:               100,
 					pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
 				} }
 			/>

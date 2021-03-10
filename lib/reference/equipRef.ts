@@ -1133,13 +1133,6 @@ export const equips      = [
 	       },
 	       { id: 89260, name: 'Heart Key', image: 'Heart_Key.png', type: type.A, rarity: rarity.SR },
 	       {
-		       id:     25800,
-		       name:   '"Hedgehog" Anti-Submarine Mortar',
-		       image:  'Hedgehog_Anti-Submarine_Mortar.png',
-		       type:   type.A,
-		       rarity: rarity.SR
-	       },
-	       {
 		       id:     1160,
 		       name:   'High Performance Air Radar',
 		       image:  'High_Performance_Air_Radar.png',
@@ -1424,6 +1417,51 @@ export const equips      = [
 		       rarity: rarity.R
 	       },
 	       //endregion
+	       //region ASW Auxilliary
+	       {
+		       id:     25800,
+		       name:   '"Hedgehog" Anti-Submarine Mortar',
+		       image:  'Hedgehog_Anti-Submarine_Mortar.png',
+		       type:   type.A,
+		       rarity: rarity.SR
+	       },
+	       {
+		       id:     3003,
+		       name:   'Advanced Sonar',
+		       image:  'Advanced_Sonar.png',
+		       type:   type.A,
+		       rarity: rarity.SR
+	       },
+	       { id: 2902, name: 'Basic Sonar', image: 'Basic_Sonar.png', type: type.A, rarity: rarity.E },
+	       {
+		       id:     740,
+		       name:   'Fl 282 Helicopter',
+		       image:  'Fl_282_Helicopter.png',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       {
+		       id:     4302,
+		       name:   'TBM-3 Avenger (Anti-Sub)',
+		       image:  'TBM-3_Avenger_Anti-Sub.png',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       {
+		       id:     4102,
+		       name:   'Improved Depth Charge Projector',
+		       image:  'Improved_Depth_Charge_Projector.png',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       {
+		       id:     3002,
+		       name:   'Advanced Sonar',
+		       image:  'Advanced_Sonar.png',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       //endregion
 	       //region Cargo
 	       {
 		       id:     3400,
@@ -1483,9 +1521,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ '533mm Quadruple Torpedo Mount Mk17/E' ] ]:  [ 3, ++a ],
 		[ map[ 'Quadruple 533mm Torpedo/E' ] ]:             [ 3, ++a ],
 		[ map[ 'Quadruple 533mm Magnetic Torpedo/E' ] ]:    [ 3, ++a ],
-		[ map[ 'Quintuple 533mm Magnetic Torpedo/E' ] ]:    [ 3, ++a ],
+		[ map[ 'Quintuple 533mm Torpedo/E' ] ]:             [ 3, ++a ],
+		[ map[ 'Quintuple 533mm Magnetic Torpedo/E' ] ]:    [ 4, ++a ],
 		[ map[ '533mm Quadruple Torpedo Mount MkIX/E' ] ]:  [ 4, ++a ],
-		[ map[ 'Quintuple 533mm Torpedo/E' ] ]:             [ 4, ++a ],
 		[ map[ 'Quadruple 610mm Torpedo/E' ] ]:             [ 4, ++a ]
 	},
 	'AA/Damage': {
@@ -1635,7 +1673,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 100mm (Type 98) AA Gun/E' ] ]:  [ 2, ++a ]
 	},
 	
-	'CL':         {
+	'CL':      {
 		[ map[ 'Prototype Triple 152mm Main Gun (DP MK17)/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 152mm Main Gun (B-38 MK5)/SR' ] ]:          [ 0, ++a ],
 		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]:           [ 1, ++a ],
@@ -1646,12 +1684,12 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 155mm Mounted Gun/E' ] ]:                   [ 4, ++a ],
 		[ map[ 'Single 150mm Main Gun (SK C/28)/E' ] ]:            [ 4, ++a ]
 	},
-	'CL/AP':      {
+	'CL/AP':   {
 		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Twin 150mm Main Gun (TbtsK C/36)/E' ] ]: [ 1, ++a ],
 		[ map[ 'Single 150mm Main Gun (SK C/28)/E' ] ]:  [ 2, ++a ]
 	},
-	'CL/DD/Main': {
+	'CL/Main': {
 		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]:  [ 0, a = 0 ],
 		[ map[ 'Twin 152mm Main Gun/E' ] ]:               [ 0, ++a ],
 		[ map[ 'Twin 150mm Main Gun (TbtsK C/36)/E' ] ]:  [ 1, ++a ],
@@ -1660,11 +1698,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 155mm Mounted Gun/SR' ] ]:         [ 2, ++a ],
 		[ map[ 'Triple 152mm Main Gun/E' ] ]:             [ 3, ++a ]
 	},
+	get 'CL/DD/Main'() {
+		return this[ 'CL/Main' ];
+	},
 	get 'CL/AA'() {
 		return this[ 'CL' ];
 	},
 	get 'CL/DB'() {
-		return this[ 'CL/DD/Main' ];
+		return this[ 'CL/Main' ];
 	},
 	
 	'CA':          {
@@ -1773,21 +1814,21 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Fairey Barracuda (831 Squadron)/SR' ] ]:   [ 3, ++a ]
 	},
 	'TB': {
-		[ map[ 'Wyvern/UR' ] ]:                         [ 0, a = 0 ],
-		[ map[ 'XBT2D-1 Destroyer II/SR' ] ]:           [ 0, ++a ],
-		[ map[ 'Aichi B7A Ryusei/SR' ] ]:               [ 0, ++a ],
-		[ map[ 'Ju-87 D-4/SR' ] ]:                      [ 0, ++a ],
-		[ map[ 'Barracuda/SR' ] ]:                      [ 1, ++a ],
-		[ map[ 'Firecrest/SR' ] ]:                      [ 1, ++a ],
-		[ map[ 'Blackburn Firebrand/SR' ] ]:            [ 1, ++a ],
-		[ map[ 'Tenzan Kai/E' ] ]:                      [ 1, ++a ],
+		[ map[ 'Wyvern/UR' ] ]:               [ 0, a = 0 ],
+		[ map[ 'XBT2D-1 Destroyer II/SR' ] ]: [ 0, ++a ],
+		// [ map[ 'Aichi B7A Ryusei/SR' ] ]:               [ 0, ++a ],
+		// [ map[ 'Ju-87 D-4/SR' ] ]:                      [ 0, ++a ],
+		[ map[ 'Barracuda/SR' ] ]:           [ 1, ++a ],
+		[ map[ 'Firecrest/SR' ] ]:           [ 1, ++a ],
+		[ map[ 'Blackburn Firebrand/SR' ] ]: [ 1, ++a ],
+		// [ map[ 'Tenzan Kai/E' ] ]:                      [ 1, ++a ],
 		[ map[ 'TBM Avenger (VT-18 Squadron)/SR' ] ]:   [ 2, ++a ],
 		[ map[ 'TBD Devastator (VT-8 Squadron)/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Barracuda/E' ] ]:                       [ 3, ++a ],
-		[ map[ 'Aichi B7A Ryusei/E' ] ]:                [ 3, ++a ],
-		[ map[ 'Nakajima B6N Tenzan/E' ] ]:             [ 3, ++a ],
-		[ map[ 'Swordfish (818 Squad)/SR' ] ]:          [ 4, ++a ],
-		[ map[ 'Fairey Albacore/E' ] ]:                 [ 4, ++a ]
+		// [ map[ 'Aichi B7A Ryusei/E' ] ]:                [ 3, ++a ],
+		// [ map[ 'Nakajima B6N Tenzan/E' ] ]:             [ 3, ++a ],
+		[ map[ 'Swordfish (818 Squad)/SR' ] ]: [ 4, ++a ],
+		[ map[ 'Fairey Albacore/E' ] ]:        [ 4, ++a ]
 	},
 	get 'F/DB'() {
 		return this[ 'F' ];
@@ -1861,9 +1902,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'High Performance Air Radar/SR' ] ]:               [ 0, ++a ],
-		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
-		[ map[ 'Air Radar/E' ] ]:                                 [ 2, ++a ]
+		[ map[ 'Air Radar/E' ] ]:                                 [ 1, ++a ],
+		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 2, ++a ],
+		[ map[ 'Navy Camouflage/R' ] ]:                           [ 2, ++a ]
 	},
 	'A/CL1/T': {
 		[ map[ 'Repair Tools/E' ] ]:                 [ 0, a = 0 ],
@@ -1875,9 +1916,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'High Performance Air Radar/SR' ] ]:               [ 0, ++a ],
-		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
-		[ map[ 'Air Radar/E' ] ]:                                 [ 2, ++a ],
+		[ map[ 'Air Radar/E' ] ]:                                 [ 1, ++a ],
+		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 2, ++a ],
+		[ map[ 'Navy Camouflage/R' ] ]:                           [ 2, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]:              [ 3, ++a ]
 	},
 	'A/CA1':   {
@@ -2034,6 +2075,7 @@ export const equippable = {
 	
 	'CL':         [ type.CL ],
 	'CL/AP':      [ type.CL ],
+	'CL/Main':    [ type.CL ],
 	'CL/DD/Main': [ type.CL ],
 	'CL/AA':      [ type.CL, type.AA ],
 	'CL/DB':      [ type.CL, type.DB ],
