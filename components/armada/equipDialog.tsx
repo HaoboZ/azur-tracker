@@ -99,8 +99,10 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 		maxWidth='xs'
 		fullWidth
 		onKeyPress={ ( e ) => {
-			if ( e.key === 'Enter' )
+			if ( e.key === 'Enter' ) {
 				confirmEquip();
+				onClose();
+			}
 		} }>
 		<DialogTitle>Switch Equipment?</DialogTitle>
 		<DialogContent>
