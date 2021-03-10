@@ -91,9 +91,9 @@ Washington,Washington,Super Rare,Eagle Union,Battleship,1,[],BB/Damage,DD/Main,A
 South_Dakota,South Dakota,Super Rare,Eagle Union,Battleship,1.5,[],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,76,Heavy,27,8031,414,400,0,33,0,15,159,0,0,71
 Massachusetts,Massachusetts,Super Rare,Eagle Union,Battleship,1,[1/1],BB/Damage,DD/Main,AA/Main,A/BB1,A/BB2,82,Heavy,27,7783,414,400,0,33,0,15,156,0,0,74
 Alabama,Alabama,Super Rare,Eagle Union,Battleship,0.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,86,Heavy,27,7783,418,408,0,33,0,15,154,0,0,64
-Long_Island,Long Island,Elite,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA,A/CV1,A/CV2,68,Medium,16,4901,0,292,0,66,340,10,187,100,0,86
-Bogue,Bogue,Rare,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA,A/CV1,A/CV2,78,Medium,18,4163,0,287,0,67,339,9,184,148,0,86
-Casablanca,Casablanca,Rare,Eagle Union,Light Aircraft Carrier,0.5,[],F,TB,AA,A/CV1,A/CV2,65,Medium,19,4707,0,258,0,62,286,10,193,117,0,73
+Long_Island,Long Island,Elite,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA/Main,A/CV1,A/CV2,68,Medium,16,4901,0,292,0,66,340,10,187,100,0,86
+Bogue,Bogue,Rare,Eagle Union,Light Aircraft Carrier,3,[],F,DB,AA/Main,A/CV1,A/CV2,78,Medium,18,4163,0,287,0,67,339,9,184,148,0,86
+Casablanca,Casablanca,Rare,Eagle Union,Light Aircraft Carrier,0.5,[],F,TB,AA/Main,A/CV1,A/CV2,65,Medium,19,4707,0,258,0,62,286,10,193,117,0,73
 Langley,Langley,Rare,Eagle Union,Light Aircraft Carrier,2,[],F,F,DB,A/CV1,A/CV2,32,Medium,15,4700,0,280,0,80,264,9,128,95,0,81
 Lexington,Lexington,Elite,Eagle Union,Aircraft Carrier,2,[],F,DB,DB,A/CV1,A/CV2,35,Medium,33,6912,0,303,0,57,397,12,110,0,0,92
 Saratoga,Saratoga,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,DB,A/CV1,A/CV2,66,Medium,33,7122,0,353,0,57,442,12,130,0,0,92
@@ -105,10 +105,10 @@ Hornet,Hornet,Elite,Eagle Union,Aircraft Carrier,1.5,[],F,DB,TB,A/CV1,A/CV2,15,M
 Essex,Essex,Super Rare,Eagle Union,Aircraft Carrier,0,[],F,DB,TB,A/CV1,A/CV2,90,Medium,33,6647,0,331,0,54,433,13,131,0,0,88
 Intrepid,Intrepid,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,68,Medium,33,6634,0,331,0,54,430,13,131,0,0,85
 Bunker_Hill,Bunker Hill,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,DB,TB,A/CV1,A/CV2,35,Medium,33,6610,0,309,0,54,425,13,131,0,0,82
-Bataan,Bataan,Elite,Eagle Union,Light Aircraft Carrier,1,[1],F,TB,AA,A/CV1,A/CV2,65,Medium,31,5008,0,276,0,83,347,11,199,72,0,79
+Bataan,Bataan,Elite,Eagle Union,Light Aircraft Carrier,1,[1],F,TB,AA/Main,A/CV1,A/CV2,65,Medium,31,5008,0,276,0,83,347,11,199,72,0,79
 Shangri-La,Shangri-La,Super Rare,Eagle Union,Aircraft Carrier,0.5,[],F,TB,DB,A/CV1,A/CV2,83,Medium,33,6647,0,331,0,54,430,13,131,0,0,91
-Independence,Independence,Elite,Eagle Union,Light Aircraft Carrier,1.5,[1/1],F,TB,AA,A/CV1,A/CV2,35,Medium,33,6610,0,309,0,54,425,13,131,0,0,82
-Princeton,Princeton,Elite,Eagle Union,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,49,Medium,31,4791,0,255,0,85,340,11,181,99,0,89
+Independence,Independence,Elite,Eagle Union,Light Aircraft Carrier,1.5,[1/1],F,TB,AA/Main,A/CV1,A/CV2,35,Medium,33,6610,0,309,0,54,425,13,131,0,0,82
+Princeton,Princeton,Elite,Eagle Union,Light Aircraft Carrier,2,[],F,TB,AA/Main,A/CV1,A/CV2,49,Medium,31,4791,0,255,0,85,340,11,181,99,0,89
 Albacore,Albacore,Super Rare,Eagle Union,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,79,Light,16,1924,61,0,526,41,0,7,95,0,243,193
 Bluegill,Bluegill,Elite,Eagle Union,Submarine,1.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,65,Light,16,1692,71,0,499,41,0,6,87,0,243,175
 Cavalla,Cavalla,Super Rare,Eagle Union,Submarine,1,[],ST,ST,DD/Sub,A/SS1,A/SS2,78,Light,16,1899,65,0,524,41,0,7,93,0,243,192
@@ -187,10 +187,10 @@ King_George_V,King George V,Super Rare,Royal Navy,Battleship,1,[1],BB/Damage,CL/
 Prince_of_Wales,Prince of Wales,Super Rare,Royal Navy,Battleship,1,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,19,Heavy,28,7967,422,230,0,35,0,15,156,0,0,69
 Duke_of_York,Duke of York,Super Rare,Royal Navy,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,73,Heavy,28,7967,421,225,0,35,0,15,153,0,0,70
 Howe,Howe,Super Rare,Royal Navy,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,83,Heavy,28,7967,418,258,0,35,0,15,159,0,0,70
-Hermes,Hermes,Rare,Royal Navy,Light Aircraft Carrier,1.5,[],TB,TB,AA,A/CV1,A/CV2,41,Medium,25,4367,0,297,0,66,300,9,193,104,0,81
-Unicorn,Unicorn,Elite,Royal Navy,Light Aircraft Carrier,0.5,[],F,TB,AA,A/CV1,A/CV2,78,Medium,24,5337,0,268,0,66,307,11,181,109,0,84
-Chaser,Chaser,Elite,Royal Navy,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,82,Medium,18,4707,0,257,0,62,299,11,185,144,0,86
-Perseus,Perseus,Super Rare,Royal Navy,Light Aircraft Carrier,0,[],F,TB,AA,A/CV1,A/CV2,82,Medium,25,5540,0,264,0,71,327,12,168,144,0,87
+Hermes,Hermes,Rare,Royal Navy,Light Aircraft Carrier,1.5,[],TB,TB,AA/Main,A/CV1,A/CV2,41,Medium,25,4367,0,297,0,66,300,9,193,104,0,81
+Unicorn,Unicorn,Elite,Royal Navy,Light Aircraft Carrier,0.5,[],F,TB,AA/Main,A/CV1,A/CV2,78,Medium,24,5337,0,268,0,66,307,11,181,109,0,84
+Chaser,Chaser,Elite,Royal Navy,Light Aircraft Carrier,2,[],F,TB,AA/Main,A/CV1,A/CV2,82,Medium,18,4707,0,257,0,62,299,11,185,144,0,86
+Perseus,Perseus,Super Rare,Royal Navy,Light Aircraft Carrier,0,[],F,TB,AA/Main,A/CV1,A/CV2,82,Medium,25,5540,0,264,0,71,327,12,168,144,0,87
 Centaur,Centaur,Super Rare,Royal Navy,Light Aircraft Carrier,0,[],F,F,TB,A/CV1,A/CV2,73,Medium,28,6626,0,268,0,70,421,13,160,126,0,95
 Eagle,Eagle,Elite,Royal Navy,Aircraft Carrier,1.5,[],F,TB,CL/DB,A/CV1,A/CV2,40,Medium,24,6193,215,307,0,47,370,12,112,0,0,89
 Ark_Royal,Ark Royal,Elite,Royal Navy,Aircraft Carrier,1,[],TB,TB,DB,A/CV1,A/CV2,87,Medium,31,6107,0,307,0,53,400,12,117,0,0,102
@@ -297,11 +297,11 @@ Suruga,Suruga,Super Rare,Sakura Empire,Battleship,1,[],BB/Damage,CL/DD/Main,AA/M
 Hiyou,Hiyou,Rare,Sakura Empire,Light Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,43,Medium,25,5204,0,247,0,68,279,11,157,80,0,78
 Junyou,Junyou,Rare,Sakura Empire,Light Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,80,Medium,25,5204,0,247,0,68,279,11,157,79,0,78
 Houshou,Houshou,Elite,Sakura Empire,Light Aircraft Carrier,3,[],CL,F,TB,A/CV1,A/CV2,79,Medium,25,3621,0,257,0,66,286,11,176,92,0,81
-Shouhou,Shouhou,Elite,Sakura Empire,Light Aircraft Carrier,0.5,[],DB,TB,AA,A/CV1,A/CV2,24,Medium,28,4523,0,283,0,70,339,10,183,84,0,78
-Ryuujou,Ryuujou,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,42,Medium,28,4278,0,252,0,82,347,11,179,72,0,89
-Ryuuhou,Ryuuhou,Super Rare,Sakura Empire,Light Aircraft Carrier,0,[],F,TB,AA,A/CV1,A/CV2,70,Medium,26,4986,0,276,0,69,317,12,189,112,0,84
-Chitose,Chitose,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,57,Medium,29,4398,0,261,0,72,347,11,185,90,0,81
-Chiyoda,Chiyoda,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA,A/CV1,A/CV2,57,Medium,29,4847,0,261,0,72,347,11,179,90,0,81
+Shouhou,Shouhou,Elite,Sakura Empire,Light Aircraft Carrier,0.5,[],DB,TB,AA/Main,A/CV1,A/CV2,24,Medium,28,4523,0,283,0,70,339,10,183,84,0,78
+Ryuujou,Ryuujou,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA/Main,A/CV1,A/CV2,42,Medium,28,4278,0,252,0,82,347,11,179,72,0,89
+Ryuuhou,Ryuuhou,Super Rare,Sakura Empire,Light Aircraft Carrier,0,[],F,TB,AA/Main,A/CV1,A/CV2,70,Medium,26,4986,0,276,0,69,317,12,189,112,0,84
+Chitose,Chitose,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA/Main,A/CV1,A/CV2,57,Medium,29,4398,0,261,0,72,347,11,185,90,0,81
+Chiyoda,Chiyoda,Elite,Sakura Empire,Light Aircraft Carrier,2,[],F,TB,AA/Main,A/CV1,A/CV2,57,Medium,29,4847,0,261,0,72,347,11,179,90,0,81
 Akagi,Akagi,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,42,Medium,31,6588,0,323,0,54,409,13,131,0,0,90
 Kaga,Kaga,Super Rare,Sakura Empire,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,42,Medium,28,6771,0,323,0,49,408,13,131,0,0,90
 Akagi-chan,Akagi-chan,Elite,Sakura Empire,Aircraft Carrier,3,[],F,DB,TB,A/CV1,A/CV2,42,Medium,31,6250,0,311,0,54,394,12,124,0,0,90
@@ -352,7 +352,7 @@ Scharnhorst,Scharnhorst,Elite,Ironblood,Battlecruiser,3,[],BB/Damage,CL/DD/Main,
 Gneisenau,Gneisenau,Elite,Ironblood,Battlecruiser,3,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,64,Medium,31,7455,366,248,154,38,0,13,157,0,0,66
 Bismarck,Bismarck,Super Rare,Ironblood,Battleship,1,[0/1/0/1/1],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,32,Heavy,30,8762,423,208,0,33,0,15,152,0,0,73
 Tirpitz,Tirpitz,Super Rare,Ironblood,Battleship,1.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,45,Heavy,30,8401,423,208,217,33,0,15,150,0,0,67
-Weser,Weser,Elite,Ironblood,Light Aircraft Carrier,2,[],F,DB,AA,A/CV1,A/CV2,30,Medium,32,4759,0,264,0,75,323,11,179,72,0,87
+Weser,Weser,Elite,Ironblood,Light Aircraft Carrier,2,[],F,DB,AA/Main,A/CV1,A/CV2,30,Medium,32,4759,0,264,0,75,323,11,179,72,0,87
 Graf_Zeppelin,Graf Zeppelin,Super Rare,Ironblood,Aircraft Carrier,0.5,[1/1/1],F,DB,DB/TB,A/CV1,A/CV2,45,Medium,33,7488,0,319,0,50,400,13,115,0,0,87
 Peter_Strasser,Peter Strasser,Super Rare,Ironblood,Aircraft Carrier,1,[],F,DB,TB,A/CV1,A/CV2,45,Medium,33,7488,0,309,0,50,423,13,139,0,0,101
 Zeppy,Zeppy,Elite,Ironblood,Aircraft Carrier,2,[],F,DB,CL/DB,A/CV1,A/CV2,45,Medium,33,6983,174,307,0,56,376,12,110,0,0,85
@@ -436,7 +436,7 @@ Tokino_Sora,Tokino Sora,Super Rare,Hololive,Aircraft Carrier,1,[],F,DB,TB,A/CV1,
 Minato_Aqua,Minato Aqua,Super Rare,Hololive,Submarine,0.5,[],ST,ST,DD/Sub,A/SS1,A/SS2,64,Light,40,1681,65,0,539,45,0,7,109,0,268,175
 Natsuiro_Matsuri,Natsuiro Matsuri,Elite,Hololive,Destroyer,3,[],DD/Speed,T,AA,A/DD1/T,A/DD2/T,87,Light,40,1763,70,165,468,190,0,10,207,207,0,189
 Nakiri_Ayame,Nakiri Ayame,Elite,Hololive,Heavy Cruiser,2,[],CA,DD/Aux,AA,A/CA1,A/CA2,65,Light,26,4168,234,197,0,50,0,11,174,0,0,106
-Murasaki_Shion,Murasaki Shion,Elite,Hololive,Light Aircraft Carrier,3,[],F,TB,AA,A/CV1,A/CV2,85,Medium,26,5178,0,255,0,68,311,11,174,72,0,81
+Murasaki_Shion,Murasaki Shion,Elite,Hololive,Light Aircraft Carrier,3,[],F,TB,AA/Main,A/CV1,A/CV2,85,Medium,26,5178,0,255,0,68,311,11,174,72,0,81
 Ookami_Mio,Ookami Mio,Elite,Hololive,Aircraft Carrier,1.5,[],F,DB,TB,A/CV1,A/CV2,53,Medium,26,6373,0,288,0,47,374,12,117,0,0,100
 Marie_Rose,Marie Rose,Super Rare,Venus Vacation,Destroyer,0.5,[],DD,T,AA,A/DD1/T,A/DD2/T,78,Light,42,2042,91,178,508,192,0,10,223,210,0,195
 Honoka,Honoka,Super Rare,Venus Vacation,Battleship,0.5,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,91,Heavy,26,7903,404,216,0,18,0,15,145,0,0,55
