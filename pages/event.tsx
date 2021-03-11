@@ -14,16 +14,21 @@ export default function Event() {
 	const event    = useTypedSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
+	const [ time, setTime ] = React.useState( moment() );
+	
 	React.useEffect( () => {
 		if ( event.name != eventRef.name )
 			dispatch( event_newEvent() );
+		
+		const interval = setInterval( () => setTime( moment() ), 1000 * 30 );
+		return () => clearInterval( interval );
 	}, [] );
 	
 	if ( event.name != eventRef.name )
 		return null;
 	
 	// number of days until end of event
-	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( moment(), 'day', true ), 0 );
+	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( time, 'day', true ), 0 );
 	
 	// number of points needed until only dailies are enough
 	const neededPoints    = event.shopExpectedCost - Math.floor( remainingDays ) * event.dailyExpected,
@@ -32,7 +37,11 @@ export default function Event() {
 	
 	return <Grid container spacing={ 2 }>
 		<PageTitleReset name='Event Tracker' reset={ event_reset }/>
-		<EventFields remainingDays={ remainingDays } neededPoints={ neededPoints }/>
+		<EventFields
+			time={ time }
+			remainingDays={ remainingDays }
+			neededPoints={ neededPoints }/>
 		<FarmingTable remainingPoints={ remainingPoints }/>
 	</Grid>;
 }
+3;

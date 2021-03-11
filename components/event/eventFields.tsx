@@ -35,7 +35,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function EventFields( { remainingDays, neededPoints }: {
+export default function EventFields( { time, remainingDays, neededPoints }: {
+	time: moment.Moment
 	remainingDays: number
 	neededPoints: number
 } ) {
@@ -60,7 +61,7 @@ export default function EventFields( { remainingDays, neededPoints }: {
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='Current Date'
-				defaultValue={ moment().format( 'l LT' ) }
+				defaultValue={ time.format( 'l LT' ) }
 			/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>

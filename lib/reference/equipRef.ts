@@ -1768,7 +1768,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'BB/Speed':    {
 		[ map[ 'Prototype Twin 406mm Main Gun (SK C/34)/SR' ] ]:   [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 305mm Main Gun (SK C/39)/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 0, ++a ],
+		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 1, ++a ],
 		[ map[ 'Twin 381mm Advanced Main Gun/SR' ] ]:              [ 1, ++a ],
 		[ map[ '410mm Mounted Gun/E' ] ]:                          [ 2, ++a ],
 		[ map[ 'Twin 380mm Main Gun (SK C)/SR' ] ]:                [ 3, ++a ],
@@ -1776,8 +1776,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'BB/Modified': {
 		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 406mm/50 Main Gun/SR' ] ]:        [ 0, ++a ],
 		[ map[ 'Triple 406mm Main Gun/SR' ] ]:                     [ 1, ++a ],
+		[ map[ 'Prototype Triple 406mm/50 Main Gun/SR' ] ]:        [ 1, ++a ],
 		[ map[ 'Prototype Triple 410mm Mounted Gun/SR' ] ]:        [ 2, ++a ],
 		[ map[ 'Prototype Triple 406mm Main Gun Mount MkD/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Triple 406mm MK6 Main Gun/E' ] ]:                  [ 3, ++a ]

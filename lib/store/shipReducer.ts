@@ -56,7 +56,7 @@ type State = {
 
 const initState: State = {
 	ships:   {},
-	version: '2021-03-10'
+	version: '2021-03-11'
 };
 
 export default function shipReducer( state = initState, action ): State {
