@@ -29,7 +29,7 @@ export default function Event() {
 	
 	// number of days until end of event
 	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( time, 'day', true ), 0 );
-	console.log( time.format( 'l LT' ) );
+	
 	// number of points needed until only dailies are enough
 	const neededPoints    = event.shopExpectedCost - Math.floor( remainingDays ) * event.dailyExpected,
 	      // points still needed to be farmed
