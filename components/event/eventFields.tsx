@@ -61,7 +61,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
 				type='text' disabled className={ classes.disabledInput } label='Current Date'
-				defaultValue={ time.format( 'l LT' ) }
+				value={ time.format( 'l LT' ) }
 			/>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
