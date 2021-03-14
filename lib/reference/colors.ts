@@ -12,7 +12,7 @@ export const
 		'E':          'purple',
 		'Rare':       'blue',
 		'R':          'blue',
-		'Normal':     'gray',
+		'Common':     'gray',
 		'N':          'gray'
 	},
 	typeColors   = {
