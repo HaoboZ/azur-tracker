@@ -74,11 +74,11 @@ export default function Armada() {
 		{ /*language=css*/ }
 		<style global jsx>{ `
           .MuiTableCell-sizeSmall {
-              padding: 4px 8px 4px 8px !important;
+              padding: 0 8px !important;
           }
 
           .MuiTableCell-paddingNone:last-child {
-              padding: 4px 16px 4px 8px;
+              padding: 4px 8px 0 !important;
           }
 		` }</style>
 		<PageTitleReset name='Armada Tracker' reset={ ship_reset }/>
