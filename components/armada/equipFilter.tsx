@@ -32,7 +32,7 @@ export default function EquipFilter( { colors, equipList, value, setValue }: {
 		renderOption={ ( option ) => <>
 			<Box pr={ 1 }>
 				<Image
-					src={ `/images/equips/${ option.image }` }
+					src={ `/images/equips/${ option.image }.png` }
 					alt={ option.name }
 					layout='fixed'
 					height={ 50 }

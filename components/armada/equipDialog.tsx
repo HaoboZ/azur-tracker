@@ -7,6 +7,7 @@ import {
 	DialogTitle,
 	FormControlLabel,
 	Grid,
+	Link,
 	Switch,
 	Typography,
 	Zoom
@@ -120,25 +121,31 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 						</Alert>
 					</Grid> : undefined }
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
-					<Image
-						src={ `/images/equips/${ currentEquip.image }` }
-						alt={ currentEquip.name }
-						height={ 128 }
-						width={ 128 }
-						className={ colors[ rarityColors[ currentEquip.rarity ] ] }
-					/>
+					<Link href={ `https://azurlane.koumakan.jp/${
+						unescape( currentEquip.image.replace( '$', '%' ) ) }` }>
+						<Image
+							src={ `/images/equips/${ currentEquip.image }.png` }
+							alt={ currentEquip.name }
+							height={ 128 }
+							width={ 128 }
+							className={ colors[ rarityColors[ currentEquip.rarity ] ] }
+						/>
+					</Link>
 				</Grid>
 				<Grid item xs={ 2 }>
 					<Typography variant='h2' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
-					<Image
-						src={ `/images/equips/${ equip.image }` }
-						alt={ equip.name }
-						height={ 128 }
-						width={ 128 }
-						className={ colors[ rarityColors[ equip.rarity ] ] }
-					/>
+					<Link href={ `https://azurlane.koumakan.jp/${
+						unescape( equip.image.replace( '$', '%' ) ) }` }>
+						<Image
+							src={ `/images/equips/${ equip.image }.png` }
+							alt={ equip.name }
+							height={ 128 }
+							width={ 128 }
+							className={ colors[ rarityColors[ equip.rarity ] ] }
+						/>
+					</Link>
 				</Grid>
 				<Grid item xs={ 5 }>
 					<Typography align='center'>{ currentEquip.name }</Typography>

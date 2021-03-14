@@ -38,7 +38,7 @@ export default function EquipSelector( { anchorEl, closeAnchor, colors, equipLis
 			{ equip.tier && <Typography>{ equip.tier }</Typography> }
 			<Box px={ 1 }>
 				<Image
-					src={ `/images/equips/${ equip.image }` }
+					src={ `/images/equips/${ equip.image }.png` }
 					alt={ equip.name }
 					layout='fixed'
 					height={ 50 }

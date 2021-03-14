@@ -47,7 +47,7 @@ export const equips      = [
 	       {
 		       id:     0,
 		       name:   '',
-		       image:  'empty.png',
+		       image:  'Azur_Lane_Wiki',
 		       type:   '' as any as type,
 		       rarity: '' as any as rarity
 	       },
@@ -55,112 +55,112 @@ export const equips      = [
 	       {
 		       id:     25040,
 		       name:   '533mm Quintuple Torpedo Mount MkIX',
-		       image:  '533mm_Quintuple_Torpedo_Mount_MkIX.png',
+		       image:  '533mm_Quintuple_Torpedo_Mount_Mk_IX',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15240,
 		       name:   '533mm Quintuple Torpedo Mount Mk17',
-		       image:  '533mm_Quintuple_Torpedo_Mount_Mk17.png',
+		       image:  '533mm_Quintuple_Torpedo_Mount_Mk_17',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     35260,
 		       name:   '610mm Quadruple Torpedo Mount Kai',
-		       image:  '610mm_Quadruple_Torpedo_Mount_Kai.png',
+		       image:  '610mm_Quadruple_Torpedo_Mount_Kai',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     5203,
 		       name:   'Quintuple 533mm Torpedo',
-		       image:  'Quintuple_533mm_Torpedo.png',
+		       image:  '533mm_Quintuple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     35203,
 		       name:   'Quadruple 610mm Torpedo',
-		       image:  'Quadruple_610mm_Torpedo.png',
+		       image:  '610mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15220,
 		       name:   '533mm Quadruple Torpedo Mount Mk17',
-		       image:  '533mm_Quadruple_Torpedo_Mount_Mk17.png',
+		       image:  '533mm_Quadruple_Torpedo_Mount_Mk_17',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     25020,
 		       name:   '533mm Quadruple Torpedo Mount MkIX',
-		       image:  '533mm_Quadruple_Torpedo_Mount_MkIX.png',
+		       image:  '533mm_Quadruple_Torpedo_Mount_Mk_IX',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     5103,
 		       name:   'Quadruple 533mm Torpedo',
-		       image:  'Quadruple_533mm_Torpedo.png',
+		       image:  '533mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     5202,
 		       name:   'Quintuple 533mm Torpedo',
-		       image:  'Quintuple_533mm_Torpedo.png',
+		       image:  '533mm_Quintuple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     45203,
 		       name:   'Quintuple 533mm Magnetic Torpedo',
-		       image:  'Quintuple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.UR
 	       },
 	       {
 		       id:     35202,
 		       name:   'Quadruple 610mm Torpedo',
-		       image:  'Quadruple_610mm_Torpedo.png',
+		       image:  '610mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     45103,
 		       name:   'Quadruple 533mm Magnetic Torpedo',
-		       image:  'Quadruple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Quadruple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     45202,
 		       name:   'Quintuple 533mm Magnetic Torpedo',
-		       image:  'Quintuple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     45102,
 		       name:   'Quadruple 533mm Magnetic Torpedo',
-		       image:  'Quadruple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Quadruple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     45201,
 		       name:   'Quintuple 533mm Magnetic Torpedo',
-		       image:  'Quintuple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     45003,
 		       name:   'Triple 533mm Magnetic Torpedo',
-		       image:  'Triple_533mm_Magnetic_Torpedo.png',
+		       image:  '533mm_Triple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
@@ -169,126 +169,126 @@ export const equips      = [
 	       {
 		       id:     26660,
 		       name:   'Sextuple Bofors 40mm AA Gun',
-		       image:  'Sextuple_Bofors_40mm_AA_Gun.png',
+		       image:  'Sextuple_40mm_Bofors',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     16403,
 		       name:   'Quadruple 40mm Bofors Gun',
-		       image:  'Quadruple_40mm_Bofors_Gun.png',
+		       image:  'Quadruple_40mm_Bofors_(Mk_2_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     16080,
 		       name:   'Twin 76mm Rapid Fire Gun Mount Mk27',
-		       image:  'Twin_76mm_Rapid_Fire_Gun_Mount_Mk27.png',
+		       image:  'Twin_76mm_AA_(Mk_27_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26203,
 		       name:   'Octuple 40mm Pom Pom Gun',
-		       image:  'Octuple_40mm_Pom_Pom_Gun.png',
+		       image:  'Octuple_40mm_Pom-Pom',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     46360,
 		       name:   'Twin 105mm SK C/33 na Anti-Air Gun Mount',
-		       image:  'Twin_105mm_SK_C33_na_Anti-Air_Gun_Mount.png',
+		       image:  'Twin_105mm_AA_(SK_C$2F33_na)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26600,
 		       name:   'Twin 40mm Bofors STAAG',
-		       image:  'Twin_40mm_Bofors_STAAG.png',
+		       image:  'Twin_40mm_Bofors_STAAG',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     36700,
 		       name:   'Prototype 40mm AA Gun (Type 5)',
-		       image:  'Prototype_40mm_AA_Gun_Type 5.png',
+		       image:  'Twin_40mm_Bofors_(Type_5)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     36560,
 		       name:   '100mm Mounted AA Gun',
-		       image:  '100mm_Mounted_AA_Gun.png',
+		       image:  'Twin_100mm_AA_(Type_98)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     46303,
 		       name:   'Twin 105mm AA Gun (SK C)',
-		       image:  'Twin_105mm_AA_Gun_SK_C.png',
+		       image:  'Twin_105mm_AA_(SK_C$2F33)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26620,
 		       name:   'Twin 40mm Bofors "Hazemeyer" AA Gun',
-		       image:  'Twin_40mm_Bofors_Hazemeyer_AA_Gun.png',
+		       image:  'Twin_40mm_Bofors_Hazemeyer',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     55103,
 		       name:   'Single 90mm High-Angle Gun (M1939)',
-		       image:  'Single_90mm_High-Angle_Gun_M1939.png',
+		       image:  'Single_90mm_AA_(Model_1939)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26503,
 		       name:   'Twin 113mm AA Gun',
-		       image:  'Twin_113mm_AA_Gun.png',
+		       image:  'Twin_113mm_AA_(QF_Mark_I)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     16402,
 		       name:   'Quadruple 40mm Bofors Gun',
-		       image:  'Quadruple_40mm_Bofors_Gun.png',
+		       image:  'Quadruple_40mm_Bofors_(Mk_2_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     36360,
 		       name:   '25mm Type 96 Triple AT/AA Gun',
-		       image:  '25mm_Type_96_Triple_ATAA_Gun.png',
+		       image:  'Triple_25mm_AA_(Type_96_Blast_Shield)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26202,
 		       name:   'Octuple 40mm Pom Pom Gun',
-		       image:  'Octuple_40mm_Pom_Pom_Gun.png',
+		       image:  'Octuple_40mm_Pom-Pom',
 		       type:   type.AA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     50600,
 		       name:   'Twin 37mm AA Gun (Mle 1936)',
-		       image:  'Twin_37mm_AA_Gun_Mle_1936.png',
+		       image:  'Twin_37mm_ACAD_(Mle_1936)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     36660,
 		       name:   '127mm Type 89 High-Angle Gun',
-		       image:  '127mm_Type_89_High-Angle_Gun.png',
+		       image:  'Twin_127mm_AA_(Type_89_A1_Mod_2)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     21500,
 		       name:   '134mm Twin High-Angle Gun',
-		       image:  '134mm_Twin_High-Angle_Gun.png',
+		       image:  'Twin_134mm_AA_(QF_Mark_I)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
@@ -297,127 +297,133 @@ export const equips      = [
 	       {
 		       id:     85003,
 		       name:   'Twin 130mm Main Gun (B-2LM)',
-		       image:  'Twin_130mm_Main_Gun_B-2LM.png',
+		       image:  'Twin_130mm_(B-2LM)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     21600,
 		       name:   'Twin 114mm DP (4.5" MK IV)',
-		       image:  'Twin_114mm_DP_45_MK_IV.png',
+		       image:  'Twin_114mm_(QF_Mk_IV_Prototype)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     21460,
 		       name:   'Twin 120mm Dual-Purpose Gun Mount MkXI',
-		       image:  'Twin_120mm_Dual-Purpose_Gun_Mount_MkXI.png',
+		       image:  'Twin_120mm_(QF_Mark_XI)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     50703,
 		       name:   'Single 138.6mm Main Gun (Mle 1927)',
-		       image:  'Single_1386mm_Main_Gun_Mle_1927.png',
+		       image:  'Single_138.6mm_(Mle_1927)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     21403,
 		       name:   'Twin 120mm Main Gun',
-		       image:  'Twin_120mm_Main_Gun.png',
+		       image:  'Twin_120mm_(QF_Mark_XII)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     55403,
 		       name:   'Twin 120mm Main Gun (M1936)',
-		       image:  'Twin_120mm_Main_Gun_M1936.png',
+		       image:  'Twin_120mm_(Model_1936)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     41160,
 		       name:   'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount',
-		       image:  'Twin_128mm45_SK_C41_Dual-Purpose_Gun_Mount.png',
+		       image:  'Twin_128mm$2F45_SK_C$2F41',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     50103,
 		       name:   'Single 138.6mm Main Gun (Mle 1929)',
-		       image:  'Single_1386mm_Main_Gun_Mle_1929.png',
+		       image:  'Single_138.6mm_(Mle_1929)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     31003,
 		       name:   'Twin 100mm (Type 98) AA Gun',
-		       image:  'Twin_100mm_Type_98_AA_Gun.png',
+		       image:  'Twin_100mm_(Type_98)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     7203,
 		       name:   'Single 130mm Main Gun',
-		       image:  'Single_130mm_Main_Gun.png',
+		       image:  'Single_130mm_(B13_Pattern_1936)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     11160,
 		       name:   'Twin 127mm Secondary Gun Mount',
-		       image:  'Twin_127mm_Secondary_Gun_Mount.png',
+		       image:  'Twin_127mm_(5$22$2F38_Mk_32)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     50102,
 		       name:   'Single 138.6mm Main Gun (Mle 1929)',
-		       image:  'Single_1386mm_Main_Gun_Mle_1929.png',
+		       image:  'Single_138.6mm_(Mle_1929)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     31002,
 		       name:   'Twin 100mm (Type 98) AA Gun',
-		       image:  'Twin_100mm_Type_98_AA_Gun.png',
+		       image:  'Twin_100mm_(Type_98)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     11203,
 		       name:   'Twin 127mm MK12 Dual Gun',
-		       image:  'Twin_127mm_MK12_Dual_Gun.png',
+		       image:  'Twin_127mm_(5$22$2F38_Mk_38)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     11103,
 		       name:   'Single 127mm Main Gun',
-		       image:  'Single_127mm_Main_Gun.png',
+		       image:  'Single_127mm_(5$22$2F38_Mk_30)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     11202,
 		       name:   'Twin 127mm MK12 Dual Gun',
-		       image:  'Twin_127mm_MK12_Dual_Gun.png',
+		       image:  'Twin_127mm_(5$22$2F38_Mk_38)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     41103,
 		       name:   'Twin 128mm Dual Gun (SK C/41)',
-		       image:  'Twin_128mm_Dual_Gun_SK_C41.png',
+		       image:  'Twin_128mm_(SK_C$2F41)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
-	       { id: 11003, name: '76mm AA Gun', image: '76mm_AA_Gun.png', type: type.DD, rarity: rarity.R },
+	       {
+		       id:     11003,
+		       name:   '76mm AA Gun',
+		       image:  'Single_76mm_(3$22$2F50_caliber_gun)',
+		       type:   type.DD,
+		       rarity: rarity.R
+	       },
 	       {
 		       id:     21302,
 		       name:   'Single 120mm Main Gun',
-		       image:  'Single_120mm_Main_Gun.png',
+		       image:  'Single_120mm_(QF_Mark_IX)',
 		       type:   type.DD,
 		       rarity: rarity.R
 	       },
@@ -426,91 +432,91 @@ export const equips      = [
 	       {
 		       id:     22203,
 		       name:   'Triple 152mm Main Gun2',
-		       image:  'Triple_152mm_Main_Gun2.png',
+		       image:  'Triple_152mm_(BL_6$22_Mk_XXIII)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     22103,
 		       name:   'Twin 152mm Main Gun',
-		       image:  'Twin_152mm_Main_Gun.png',
+		       image:  'Twin_152mm_(BL_6$22_Mk_XXIII)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     42203,
 		       name:   'Twin 150mm Main Gun (TbtsK C/36)',
-		       image:  'Twin_150mm_Main_Gun_TbtsK_C36.png',
+		       image:  'Twin_150mm_(TbtsK_C$2F36)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     42060,
 		       name:   'Twin 150mm SK C/28 Secondary Gun Mount',
-		       image:  'Twin_150mm_SK_C28_Secondary_Gun_Mount.png',
+		       image:  'Twin_150mm_(SK_C$2F28)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     12200,
 		       name:   'Prototype Triple 152mm Main Gun (DP MK17)',
-		       image:  'Prototype_Triple_152mm_Main_Gun_DP_MK17.png',
+		       image:  'Triple_152mm_(6$22$2F47_Mk_17_DP_Prototype)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     85123,
 		       name:   'Triple 152mm Main Gun (B-38 MK5)',
-		       image:  'Triple_152mm_Main_Gun_B-38_MK5.png',
+		       image:  'Triple_152mm_(MK-5)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     12160,
 		       name:   'Triple 152mm Main Gun Mount Mk16',
-		       image:  'Triple_152mm_Main_Gun_Mount_Mk16.png',
+		       image:  'Triple_152mm_(6$22$2F47_Mk_16)_Mod_1',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     32203,
 		       name:   'Triple 155mm Mounted Gun',
-		       image:  'Triple_155mm_Mounted_Gun.png',
+		       image:  'Triple_155mm_(3rd_Year_Type)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     12103,
 		       name:   'Triple 152mm Main Gun',
-		       image:  'Triple_152mm_Main_Gun.png',
+		       image:  'Triple_152mm_(6$22$2F47_Mk_16)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     22260,
 		       name:   'Prototype Triple 152mm Main Gun',
-		       image:  'Prototype_Triple_152mm_Main_Gun.png',
+		       image:  'Triple_152mm_(BL_6$22_Mk_XXV_Prototype)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     85122,
 		       name:   'Triple 152mm Main Gun (B-38 MK5)',
-		       image:  'Triple_152mm_Main_Gun_B-38_MK5.png',
+		       image:  'Triple_152mm_(MK-5)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     32202,
 		       name:   'Triple 155mm Mounted Gun',
-		       image:  'Triple_155mm_Mounted_Gun.png',
+		       image:  'Triple_155mm_(3rd_Year_Type)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     42003,
 		       name:   'Single 150mm Main Gun (SK C/28)',
-		       image:  'Single_150mm_Main_Gun_SK_C28.png',
+		       image:  'Single_150mm_(SK_C$2F28)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
@@ -519,119 +525,119 @@ export const equips      = [
 	       {
 		       id:     23120,
 		       name:   'Prototype Triple 234mm Main Gun (9.2" MK XII)',
-		       image:  'Prototype_Triple_234mm_Main_Gun_92_MK_XII.png',
+		       image:  'Triple_234mm_(BL_9.2$22_Mk_XII_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.UR
 	       },
 	       {
 		       id:     43060,
 		       name:   'Prototype Triple 203mm Main Gun (SK C)',
-		       image:  'Prototype_Triple_203mm_Main_Gun_SK_C.png',
+		       image:  'Triple_203mm_(SK_C$2F34_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     13160,
 		       name:   'Triple 203mm Main Gun Mount Mk15',
-		       image:  'Triple_203mm_Main_Gun_Mount_Mk15.png',
+		       image:  'Triple_203mm_(8$22$2F55_Mk_15)_T0',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     55203,
 		       name:   'Twin 203mm Main Gun (M1927)',
-		       image:  'Twin_203mm_Main_Gun_M1927.png',
+		       image:  'Twin_203mm_(Model_1927)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     43103,
 		       name:   'Triple 283mm Main Gun (SK C/28)',
-		       image:  'Triple_283mm_Main_Gun_SK_C.png',
+		       image:  'Triple_283mm_(SK_C$2F28)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     7340,
 		       name:   'Submarine-mounted Twin 203mm Cannon (Mle 1924)',
-		       image:  'Submarine-mounted_Twin_203mm_Cannon_Mle_1924.png',
+		       image:  'Twin_203mm_(Mle_1924_Submarine-mount)',
 		       type:   type.SS,
 		       rarity: rarity.R
 	       },
 	       {
 		       id:     43003,
 		       name:   'Twin 203mm Main Gun (SK C)',
-		       image:  'Twin_203mm_Main_Gun_SK_C.png',
+		       image:  'Twin_203mm_(SK_C$2F34)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     23100,
 		       name:   'Prototype Twin 234mm Main Gun (9.2" MK XII)',
-		       image:  'Prototype_Twin_234mm_Main_Gun_92_MK_XII.png',
+		       image:  'Twin_234mm_(BL_9.2$22_Mk_XII_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     43002,
 		       name:   'Twin 203mm Main Gun (SK C)',
-		       image:  'Twin_203mm_Main_Gun_SK_C.png',
+		       image:  'Twin_203mm_(SK_C$2F34)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     23200,
 		       name:   'Prototype Triple 203mm Main Gun Mount Mk IX',
-		       image:  'Prototype_Triple_203mm_Main_Gun_Mount_Mk_IX.png',
+		       image:  'Triple_203mm_(BL_Mk_IX_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     7300,
 		       name:   'Prototype Triple 203mm AA Gun',
-		       image:  'Prototype_Triple_203mm_AA_Gun.png',
+		       image:  'Triple_203mm_(Mle_1934_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     50863,
 		       name:   'Twin 203mm Main Gun (Mle 1924)',
-		       image:  'Twin_203mm_Main_Gun_Mle_1924.png',
+		       image:  'Twin_203mm_(Mle_1924)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     33100,
 		       name:   'Prototype Triple 310mm Main Gun (Type 0)',
-		       image:  'Prototype_Triple_310mm_Main_Gun_Type_0.png',
+		       image:  'Triple_310mm_(Type_0_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     33060,
 		       name:   'Prototype 203mm (Type 3) Mounted Gun',
-		       image:  'Prototype_203mm_Type_3_Mounted_Gun.png',
+		       image:  'Twin_203mm_(3rd_Year_Type_No._3_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     55202,
 		       name:   'Twin 203mm Main Gun (M1927)',
-		       image:  'Twin_203mm_Main_Gun_M1927.png',
+		       image:  'Twin_203mm_(Model_1927)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     33003,
 		       name:   '203mm Mounted Gun',
-		       image:  '203mm_Mounted_Gun.png',
+		       image:  'Twin_203mm_(3rd_Year_Type)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     50862,
 		       name:   'Twin 203mm Main Gun (Mle 1924)',
-		       image:  'Twin_203mm_Main_Gun_Mle_1924.png',
+		       image:  'Twin_203mm_(Mle_1924)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
@@ -640,204 +646,246 @@ export const equips      = [
 	       {
 		       id:     34100,
 		       name:   '410mm Mounted Gun (Type 3 Shell)',
-		       image:  '410mm_Mounted_Gun.png',
+		       image:  'Twin_410mm_(3rd_Year_Type)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     14500,
 		       name:   'Prototype Twin 457mm Main Gun (18" MKA)',
-		       image:  'Prototype_Twin_457mm_Main_Gun_18_MKA.png',
+		       image:  'Twin_457mm_(Mark_A_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.UR
 	       },
 	       {
 		       id:     51000,
 		       name:   'Prototype Triple 406mm/50 Main Gun',
-		       image:  'Prototype_Triple_406mm50_Main_Gun.png',
+		       image:  'Triple_406mm_(Mle_1938_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     14303,
 		       name:   'Triple 406mm MK6 Main Gun',
-		       image:  'Triple_406mm_MK6_Main_Gun.png',
+		       image:  'Triple_406mm_(16$22$2F45_Mk_6)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     24203,
 		       name:   'Triple 406mm Main Gun',
-		       image:  'Triple_406mm_Main_Gun.png',
+		       image:  'Triple_406mm_(BL_16$22_Mk_I)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     34180,
 		       name:   'Prototype Triple 410mm Mounted Gun',
-		       image:  'Prototype_Triple_410mm_Mounted_Gun.png',
+		       image:  'Triple_410mm_(10th_Year_Type_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     14360,
 		       name:   'Prototype Triple 406mm Main Gun Mount MkD',
-		       image:  'Prototype_Triple_406mm_Main_Gun_Mount_MkD.png',
+		       image:  'Triple_406mm_(16$22$2F50_Mark_D_Mod_0_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     24160,
 		       name:   'Prototype Triple 381mm AA Gun',
-		       image:  'Prototype_Triple_381mm_AA_Gun.png',
+		       image:  'Triple_381mm_(BL_15$22_Mk_III_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     50403,
 		       name:   'Quadruple 380mm Main Gun (Mle 1935)',
-		       image:  'Quadruple_380mm_Main_Gun_Mle_1935.png',
+		       image:  'Quadruple_380mm_(Mle_1935)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     55003,
 		       name:   'Triple 381mm Main Gun (M1934)',
-		       image:  'Triple_381mm_Main_Gun_M1934.png',
+		       image:  'Triple_381mm_(Model_1934)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     85302,
 		       name:   'Triple 406mm Main Gun (B-37 MK1)',
-		       image:  'Triple_406mm_Main_Gun_B-37_MK1.png',
+		       image:  'Triple_406mm_(MK-1)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     24202,
 		       name:   'Triple 406mm Main Gun',
-		       image:  'Triple_406mm_Main_Gun.png',
+		       image:  'Triple_406mm_(BL_16$22_Mk_I)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     44200,
 		       name:   'Prototype Twin 406mm Main Gun (SK C/34)',
-		       image:  'Prototype_Twin_406mm_Main_Gun_SK_C34.png',
+		       image:  'Twin_406mm_(SK_C$2F34_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     44300,
 		       name:   'Prototype Triple 305mm Main Gun (SK C/39)',
-		       image:  'Prototype_Triple_305mm_Main_Gun_SK_C39.png',
+		       image:  'Triple_305mm_(SK_C$2F39_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     34300,
 		       name:   '410mm Breech-Loading Naval Gun Kai',
-		       image:  '410mm_Breech-Loading_Naval_Gun_Kai.png',
+		       image:  'Twin_410mm_(3rd_Year_Type)_Kai',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     14380,
 		       name:   'Triple 406mm Main Gun Mount Mk2',
-		       image:  'Triple_406mm_Main_Gun_Mount_Mk2.png',
+		       image:  'Triple_406mm_(16$22$2F50_Mk_2)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     14260,
 		       name:   'Twin 406mm Main Gun Mount Mk8',
-		       image:  'Twin_406mm_Main_Gun_Mount_Mk8.png',
+		       image:  'Twin_406mm_(16$22$2F45_Mk_8)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     34103,
 		       name:   '410mm Mounted Gun',
-		       image:  '410mm_Mounted_Gun.png',
+		       image:  'Twin_410mm_(3rd_Year_Type)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     43108,
 		       name:   'Triple 283mm Main Gun (SK C/34)',
-		       image:  'Triple_283mm_Main_Gun_SK_C.png',
+		       image:  'Triple_283mm_(SK_C$2F34)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     24300,
 		       name:   'Twin 381mm Advanced Main Gun',
-		       image:  'Twin_381mm_Advanced_Main_Gun.png',
+		       image:  'Twin_381mm_(BL_15$22_Mk_II)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     44103,
 		       name:   'Twin 380mm Main Gun (SK C)',
-		       image:  'Twin_380mm_Main_Gun_SK_C.png',
+		       image:  'Twin_380mm_(SK_C$2F34)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     24003,
 		       name:   'Quadruple 356mm Main Gun',
-		       image:  'Quadruple_356mm_Main_Gun.png',
+		       image:  'Quadruple_356mm_(BL_14$22_Mk_VII)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     85423,
 		       name:   'Triple 305mm Main Gun (M1907)',
-		       image:  'Triple_305mm_Main_Gun_M1907.png',
+		       image:  'Triple_305mm_(Pattern_1907)',
 		       type:   type.BB,
 		       rarity: rarity.R
 	       },
 	       //endregion
 	       //region Fighter
-	       { id: 27320, name: 'Sea Hornet', image: 'Sea_Hornet.png', type: type.F, rarity: rarity.SR },
-	       { id: 17360, name: 'F7F Tigercat', image: 'F7F_Tigercat.png', type: type.F, rarity: rarity.SR },
+	       {
+		       id:     27320,
+		       name:   'Sea Hornet',
+		       image:  'De_Havilland_Sea_Hornet',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
+	       {
+		       id:     17360,
+		       name:   'F7F Tigercat',
+		       image:  'Grumman_F7F_Tigercat',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
 	       {
 		       id:     17260,
 		       name:   'F4U (VF-17 "Pirate" Squad)',
-		       image:  'F4U_VF-17_Pirate_Squad.png',
+		       image:  'Vought_F4U_Corsair_(VF-17_Squadron)',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
-	       { id: 37303, name: 'A7M Reppuu', image: 'A7M_Reppuu.png', type: type.F, rarity: rarity.SR },
-	       { id: 27103, name: 'Seafang', image: 'Seafang.png', type: type.F, rarity: rarity.SR },
-	       { id: 27300, name: 'Sea Fury', image: 'Sea_Fury.png', type: type.F, rarity: rarity.SR },
+	       {
+		       id:     37303,
+		       name:   'A7M Reppuu',
+		       image:  'Mitsubishi_A7M_Reppuu',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
+	       { id: 27103, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.SR },
+	       { id: 27300, name: 'Sea Fury', image: 'Hawker_Sea_Fury', type: type.F, rarity: rarity.SR },
 	       {
 		       id:     37400,
 		       name:   'Kawanishi N1K3-A Shiden Kai 2',
-		       image:  'Kawanishi_N1K3-A_Shiden_Kai_2.png',
+		       image:  'Kawanishi_N1K3-A_Shiden_Kai_2',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
-	       { id: 17303, name: 'F6F Hellcat', image: 'F6F_Hellcat.png', type: type.F, rarity: rarity.SR },
-	       { id: 17203, name: 'F4U Corsair', image: 'F4U_Corsair.png', type: type.F, rarity: rarity.E },
-	       { id: 37302, name: 'A7M Reppuu', image: 'A7M_Reppuu.png', type: type.F, rarity: rarity.E },
-	       { id: 27102, name: 'Seafang', image: 'Seafang.png', type: type.F, rarity: rarity.E },
-	       { id: 17302, name: 'F6F Hellcat', image: 'F6F_Hellcat.png', type: type.F, rarity: rarity.E },
-	       { id: 17380, name: 'F8F Bearcat', image: 'F8F_Bearcat.png', type: type.F, rarity: rarity.SR },
-	       { id: 37203, name: 'A6M5 Zero', image: 'A6M5_Zero.png', type: type.F, rarity: rarity.SR },
-	       { id: 27060, name: 'Seafire FR.47', image: 'Seafire_FR47.png', type: type.F, rarity: rarity.SR },
+	       {
+		       id:     17303,
+		       name:   'F6F Hellcat',
+		       image:  'Grumman_F6F_Hellcat',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
+	       { id: 17203, name: 'F4U Corsair', image: 'Vought_F4U_Corsair', type: type.F, rarity: rarity.E },
+	       {
+		       id:     37302,
+		       name:   'A7M Reppuu',
+		       image:  'Mitsubishi_A7M_Reppuu',
+		       type:   type.F,
+		       rarity: rarity.E
+	       },
+	       { id: 27102, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.E },
+	       { id: 17302, name: 'F6F Hellcat', image: 'Grumman_F6F_Hellcat', type: type.F, rarity: rarity.E },
+	       {
+		       id:     17380,
+		       name:   'F8F Bearcat',
+		       image:  'Grumman_F8F_Bearcat',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
+	       { id: 37203, name: 'A6M5 Zero', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
+	       {
+		       id:     27060,
+		       name:   'Seafire FR.47',
+		       image:  'Supermarine_Seafire_FR_Mk_47',
+		       type:   type.F,
+		       rarity: rarity.SR
+	       },
 	       {
 		       id:     17060,
 		       name:   'Brewster F2A Buffalo (Thach Squadron)',
-		       image:  'Brewster_F2A_Buffalo_Thach_Squadron.png',
+		       image:  'Brewster_F2A_Buffalo_(Thach_Squadron)',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     47103,
 		       name:   'Messerschmitt Me-155A',
-		       image:  'Messerschmitt_Me-155A.png',
+		       image:  'Messerschmitt_Me-155A',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
@@ -846,128 +894,134 @@ export const equips      = [
 	       {
 		       id:     49003,
 		       name:   'Ju-87C Dive Bomber',
-		       image:  'Ju-87C_Dive_Bomber.png',
+		       image:  'Junkers_Ju-87C',
 		       type:   type.DB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     19103,
 		       name:   'SB2C Helldiver',
-		       image:  'SB2C_Helldiver.png',
+		       image:  'Curtiss_SB2C_Helldiver',
 		       type:   type.DB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     19160,
 		       name:   'Experimental XSB3C-1',
-		       image:  'Experimental_XSB3C-1.png',
+		       image:  'Curtiss_XSB3C_(Experimental)',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     39160,
 		       name:   'Suisei Model 12A',
-		       image:  'Suisei_Model_12A.png',
+		       image:  'Yokosuka_Suisei_Model_12A',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     29200,
 		       name:   'Fairey Firefly',
-		       image:  'Fairey_Firefly.png',
+		       image:  'Fairey_Firefly',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
-	       { id: 39103, name: 'Comet', image: 'Comet.png', type: type.DB, rarity: rarity.SR },
+	       { id: 39103, name: 'Comet', image: 'Yokosuka_D4Y_Suisei', type: type.DB, rarity: rarity.SR },
 	       {
 		       id:     19203,
 		       name:   'BTD-1 Destroyer',
-		       image:  'BTD-1_Destroyer.png',
+		       image:  'Douglas_BTD-1_Destroyer',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     19060,
 		       name:   'SBD Dauntless (McClusky Division)',
-		       image:  'SBD_Dauntless_McClusky_Division.png',
+		       image:  'Douglas_SBD_Dauntless_(McClusky)',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     29300,
 		       name:   'Fairey Barracuda (831 Squadron)',
-		       image:  'Fairey_Barracuda_831_Squadron.png',
+		       image:  'Fairey_Barracuda_(831_Squadron)',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
 	       //endregion
 	       //region Torpedo Bomber
-	       { id: 28400, name: 'Wyvern', image: 'Wyvern.png', type: type.TB, rarity: rarity.UR },
+	       { id: 28400, name: 'Wyvern', image: 'Westland_Wyvern', type: type.TB, rarity: rarity.UR },
 	       {
 		       id:     18220,
 		       name:   'XBT2D-1 Destroyer II',
-		       image:  'XBT2D-1_Destroyer_II.png',
+		       image:  'Douglas_XTB2D-1_Skypirate',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     18180,
 		       name:   'TBM Avenger (VT-18 Squadron)',
-		       image:  'TBM_Avenger_VT-18_Squadron.png',
+		       image:  'TBM_Avenger_(VT-18_Squadron)',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
-	       { id: 28103, name: 'Barracuda', image: 'Barracuda.png', type: type.TB, rarity: rarity.SR },
-	       { id: 28220, name: 'Firecrest', image: 'Firecrest.png', type: type.TB, rarity: rarity.SR },
+	       { id: 28103, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.SR },
+	       { id: 28220, name: 'Firecrest', image: 'Blackburn_Firecrest', type: type.TB, rarity: rarity.SR },
 	       {
 		       id:     28200,
 		       name:   'Blackburn Firebrand',
-		       image:  'Blackburn_Firebrand.png',
+		       image:  'Blackburn_Firebrand',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     28060,
 		       name:   'Swordfish (818 Squad)',
-		       image:  'Swordfish_818_Squad.png',
+		       image:  'Fairey_Swordfish_(818_Squadron)',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
-	       { id: 28102, name: 'Barracuda', image: 'Barracuda.png', type: type.TB, rarity: rarity.E },
+	       { id: 28102, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.E },
 	       {
 		       id:     38203,
 		       name:   'Aichi B7A Ryusei',
-		       image:  'Aichi_B7A_Ryusei.png',
+		       image:  'Aichi_B7A_Ryusei',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
-	       { id: 38160, name: 'Tenzan Kai', image: 'Tenzan_Kai.png', type: type.TB, rarity: rarity.E },
-	       { id: 48040, name: 'Ju-87 D-4', image: 'Ju-87_D-4.png', type: type.TB, rarity: rarity.SR },
+	       {
+		       id:     38160,
+		       name:   'Tenzan Kai',
+		       image:  'Nakajima_B6N2_Tenzan_Model_12A',
+		       type:   type.TB,
+		       rarity: rarity.E
+	       },
+	       { id: 48040, name: 'Ju-87 D-4', image: 'Junkers_Ju-87_D-4', type: type.TB, rarity: rarity.SR },
 	       {
 		       id:     38103,
 		       name:   'Nakajima B6N Tenzan',
-		       image:  'Nakajima_B6N_Tenzan.png',
+		       image:  'Nakajima_B6N_Tenzan',
 		       type:   type.TB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     38202,
 		       name:   'Aichi B7A Ryusei',
-		       image:  'Aichi_B7A_Ryusei.png',
+		       image:  'Aichi_B7A_Ryusei',
 		       type:   type.TB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     28303,
 		       name:   'Fairey Albacore',
-		       image:  'Fairey_Albacore.png',
+		       image:  'Fairey_Albacore',
 		       type:   type.TB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     18060,
 		       name:   'TBD Devastator (VT-8 Squadron)',
-		       image:  'TBD_Devastator_VT-8_Squadron.png',
+		       image:  'Torpedo_Squadron_8_(VT-8)',
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
@@ -976,23 +1030,29 @@ export const equips      = [
 	       {
 		       id:     39320,
 		       name:   'Suisei Model 21',
-		       image:  'Suisei_Model_21.png',
+		       image:  'Yokosuka_Suisei_Model_21',
 		       type:   type.SP,
 		       rarity: rarity.SR
 	       },
-	       { id: 37440, name: 'N1K1 Kyoufuu', image: 'N1K1_Kyoufuu.png', type: type.SP, rarity: rarity.E },
-	       { id: 39300, name: 'Seiran', image: 'Seiran.png', type: type.SSP, rarity: rarity.E },
+	       {
+		       id:     37440,
+		       name:   'N1K1 Kyoufuu',
+		       image:  'Kawanishi_N1K1_Kyoufuu',
+		       type:   type.SP,
+		       rarity: rarity.E
+	       },
+	       { id: 39300, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SSP, rarity: rarity.E },
 	       {
 		       id:     39203,
 		       name:   'Aichi E16A Zuiun',
-		       image:  'Aichi_E16A_Zuiun.png',
+		       image:  'Aichi_E16A_Zuiun',
 		       type:   type.SSP,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     37420,
 		       name:   'Type 2 Seaplane Fighter',
-		       image:  'Type_2_Seaplane_Fighter.png',
+		       image:  'Nakajima_A6M2-N',
 		       type:   type.SP,
 		       rarity: rarity.E
 	       },
@@ -1001,77 +1061,77 @@ export const equips      = [
 	       {
 		       id:     35563,
 		       name:   'Type 96 Submarine Torpedo',
-		       image:  'Type_96_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Type_96_Oxygen_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     45403,
 		       name:   'G7e Acoustic Guided Torpedo',
-		       image:  'G7e_Acoustic_Guided_Torpedo.png',
+		       image:  'Submarine-mounted_G7e_Acoustic_Homing_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15160,
 		       name:   'Mark 28 Submarine Torpedo',
-		       image:  'Mark_28_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Mark_28_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     35503,
 		       name:   'Type 95 Submarine Torpedo',
-		       image:  'Type_9x_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Type_95_Oxygen_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     25200,
 		       name:   'Mark 12 "Ferry" Submarine Torpedo',
-		       image:  'Mark_12_Ferry_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Mark_12_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15103,
 		       name:   'Mark 16 Submarine Torpedo',
-		       image:  'Mark_16_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Mark_16_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     25300,
 		       name:   'Mark 20 "Bidder" Submarine Torpedo',
-		       image:  'Mark_20_Bidder_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Mark_20S_$22Bidder$22_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     45303,
 		       name:   'G7a Submarine Torpedo',
-		       image:  'G7a_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_G7a_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     45402,
 		       name:   'G7e Acoustic Guided Torpedo',
-		       image:  'G7e_Acoustic_Guided_Torpedo.png',
+		       image:  'Submarine-mounted_G7e_Acoustic_Homing_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     35502,
 		       name:   'Type 95 Submarine Torpedo',
-		       image:  'Type_9x_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Type_95_Oxygen_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     15102,
 		       name:   'Mark 16 Submarine Torpedo',
-		       image:  'Mark_16_Submarine_Torpedo.png',
+		       image:  'Submarine-mounted_Mark_16_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
@@ -1080,339 +1140,339 @@ export const equips      = [
 	       {
 		       id:     2600,
 		       name:   'Type 93 Pure Oxygen Torpedo',
-		       image:  'Type_9x_Submarine_Torpedo.png',
+		       image:  'Type_93_Pure_Oxygen_Torpedo',
 		       type:   type.A,
 		       rarity: rarity.UR
 	       },
-	       { id: 640, name: 'Z Flag', image: 'Z_Flag.png', type: type.A, rarity: rarity.UR },
+	       { id: 640, name: 'Z Flag', image: 'Z_Flag', type: type.A, rarity: rarity.UR },
 	       {
 		       id:     2700,
 		       name:   '533mm Acoustic Torpedo',
-		       image:  '533mm_Acoustic_Torpedo.png',
+		       image:  '533mm_Magnetic_Torpedo',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 89120, name: 'Ankimo', image: 'Ankimo.png', type: type.A, rarity: rarity.SR },
+	       { id: 89120, name: 'Ankimo', image: 'Ankimo', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     89240,
 		       name:   'Awakening Pearl',
-		       image:  'Awakening_Pearl.png',
+		       image:  'Awakening_Pearl',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     89220,
 		       name:   'Celestial Body',
-		       image:  'Celestial_Body.png',
+		       image:  'Celestial_Body',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 89100, name: 'Corn Lantern', image: 'Corn_Lantern.png', type: type.A, rarity: rarity.SR },
-	       { id: 89200, name: 'Cosmic Kicks', image: 'Cosmic_Kicks.png', type: type.A, rarity: rarity.SR },
+	       { id: 89100, name: 'Corn Lantern', image: 'Corn_Lantern', type: type.A, rarity: rarity.SR },
+	       { id: 89200, name: 'Cosmic Kicks', image: 'Cosmic_Kicks', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     840,
 		       name:   'Eagle Union Elite Damage Control',
-		       image:  'Eagle_Union_Elite_Damage_Control.png',
+		       image:  'Eagle_Union_Elite_Damage_Control',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     820,
 		       name:   'Frontier Medal',
-		       image:  'Frontier_Medal.png',
+		       image:  'Frontier_Medal',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 89080, name: 'Gamers Mark', image: 'Gamers_Mark.png', type: type.A, rarity: rarity.SR },
+	       { id: 89080, name: 'Gamers Mark', image: 'Gamers_Mark', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     540,
 		       name:   'Healing Cat\'s Paw',
-		       image:  'Healing_Cats_Paw.png',
+		       image:  'Healing_Cat\'s_Paw',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 89260, name: 'Heart Key', image: 'Heart_Key.png', type: type.A, rarity: rarity.SR },
+	       { id: 89260, name: 'Heart Key', image: 'Heart_Key', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     1160,
 		       name:   'High Performance Air Radar',
-		       image:  'High_Performance_Air_Radar.png',
+		       image:  'High_Performance_Anti-Air_Radar',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     1260,
 		       name:   'High Standard Fire-Control Radar',
-		       image:  'High_Standard_Fire-Control_Radar.png',
+		       image:  'High_Performance_Fire_Control_Radar',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     1760,
 		       name:   'High Performance Hydraulic Steering Gear',
-		       image:  'High_Performance_Hydraulic_Steering_Gear.png',
+		       image:  'Improved_Hydraulic_Rudder',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3120,
 		       name:   'Improved Snorkel',
-		       image:  'Improved_Snorkel.png',
+		       image:  'Improved_Snorkel',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3140,
 		       name:   'Improved Storage Battery',
-		       image:  'Improved_Storage_Battery.png',
+		       image:  'Improved_Storage_Battery',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     89040,
 		       name:   'Intelligence Chip',
-		       image:  'Intelligence_Chip.png',
+		       image:  'Intelligence_Chip',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     500,
 		       name:   'Beaver Squad Tag',
-		       image:  'Beaver_Squad_Tag.png',
+		       image:  'Little_Beaver_Squadron_Tag',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     880,
 		       name:   'Nelson\'s Pennant of Victory',
-		       image:  'Nelsons_Pennant_of_Victory.png',
+		       image:  'Nelson\'s_Pennant_of_Victory',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 520, name: 'Pearl\'s Tears', image: 'Pearls_Tears.png', type: type.A, rarity: rarity.SR },
-	       { id: 89020, name: 'Pyoko-Pyoko', image: 'Pyoko-Pyoko.png', type: type.A, rarity: rarity.SR },
+	       { id: 520, name: 'Pearl\'s Tears', image: 'Pearl_Tears', type: type.A, rarity: rarity.SR },
+	       { id: 89020, name: 'Pyoko-Pyoko', image: 'Pyoko-Pyoko', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     89000,
 		       name:   'Random Word Generator',
-		       image:  'Random_Word_Generator.png',
+		       image:  'Random_Word_Generator',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     89180,
 		       name:   'Resplendent Astrum',
-		       image:  'Resplendent_Astrum.png',
+		       image:  'Resplendent_Astrum',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     89160,
 		       name:   'Sacred Lumière',
-		       image:  'Sacred_Lumiere.png',
+		       image:  'Sacred_Lumière',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3300,
 		       name:   'Seal of the Four Gods',
-		       image:  'Seal_of_the_Four_Gods.png',
+		       image:  'Seal_of_the_Four_Gods',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 1503, name: 'SG Radar', image: 'SG_Radar.png', type: type.A, rarity: rarity.SR },
+	       { id: 1503, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     1003,
 		       name:   'Repair Toolkit',
-		       image:  'Repair_Toolkit.png',
+		       image:  'Ship_Maintenance_Crane',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     1403,
 		       name:   'Steam Catapult',
-		       image:  'Steam_Catapult.png',
+		       image:  'Steam_Catapult',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     620,
 		       name:   'Super Heavy Shell',
-		       image:  'Super_Heavy_Shell.png',
+		       image:  'Super_Heavy_Shell',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 89060, name: 'Team Emblem', image: 'Team_Emblem.png', type: type.A, rarity: rarity.SR },
+	       { id: 89060, name: 'Team Emblem', image: 'Team_Emblem', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     600,
 		       name:   'Type 1 Piercing Shell',
-		       image:  'Type_1_Piercing_Shell.png',
+		       image:  'Type_1_Armor_Piercing_Shell',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     720,
 		       name:   'Certificate of Sponsorship',
-		       image:  'Certificate_of_Sponsorship.png',
+		       image:  'Unfulfilled_Promise',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3200,
 		       name:   'VH Armor Plating',
-		       image:  'VH_Armor_Plating.png',
+		       image:  'VH_Armor_Plating',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     860,
 		       name:   'Washington Naval Treaty',
-		       image:  'Washington_Naval_Treaty.png',
+		       image:  'Washington_Naval_Treaty',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     89140,
 		       name:   'White-Hot Verheerender',
-		       image:  'White-Hot_Verheerender.png',
+		       image:  'White-Hot_Verheerender',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     660,
 		       name:   '100/150 Aviation Fuel',
-		       image:  '100150_Aviation_Fuel.png',
+		       image:  '100$2F150_Aviation_Gasoline',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 1102, name: 'Air Radar', image: 'Air_Radar.png', type: type.A, rarity: rarity.E },
+	       { id: 1102, name: 'Air Radar', image: 'Air_Radar', type: type.A, rarity: rarity.E },
 	       {
 		       id:     1302,
 		       name:   'Anti-Torpedo Bulge',
-		       image:  'Anti-Torpedo_Bulge.png',
+		       image:  'Anti-Torpedo_Bulge',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2202, name: 'Autoloader', image: 'Autoloader.png', type: type.A, rarity: rarity.E },
+	       { id: 2202, name: 'Autoloader', image: 'Autoloader', type: type.A, rarity: rarity.E },
 	       {
 		       id:     3100,
 		       name:   'Compressed Oxygen Cylinder',
-		       image:  'Compressed_Oxygen_Cylinder.png',
+		       image:  'Compressed_Oxygen_Cylinder',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     15500,
 		       name:   'PBY-5A Catalina',
-		       image:  'PBY-5A_Catalina.png',
+		       image:  'Consolidated_PBY-5A_Catalina',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     2102,
 		       name:   'Aviation Oil Tank',
-		       image:  'Aviation_Oil_Tank.png',
+		       image:  'Drop_Tank',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     1202,
 		       name:   'Fire Control Radar',
-		       image:  'Fire_Control_Radar.png',
+		       image:  'Fire_Control_Radar',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2002, name: 'Fuel Filter', image: 'Fuel_Filter.png', type: type.A, rarity: rarity.E },
-	       { id: 2302, name: 'Gyroscope', image: 'Gyroscope.png', type: type.A, rarity: rarity.E },
-	       { id: 680, name: 'Homing Beacon', image: 'Homing_Beacon.png', type: type.A, rarity: rarity.E },
+	       { id: 2002, name: 'Fuel Filter', image: 'Fuel_Filter', type: type.A, rarity: rarity.E },
+	       { id: 2302, name: 'Gyroscope', image: 'Gyroscope', type: type.A, rarity: rarity.E },
+	       { id: 680, name: 'Homing Beacon', image: 'Homing_Beacon', type: type.A, rarity: rarity.E },
 	       {
 		       id:     1802,
 		       name:   'Advanced Boiler',
-		       image:  'Advanced_Boiler.png',
+		       image:  'Improved_Boiler',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     780,
 		       name:   'Intel Report - Arctic Stronghold',
-		       image:  'Intel_Report_-_Arctic_Stronghold.png',
+		       image:  'Intel_Report_-_Arctic_Stronghold',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     760,
 		       name:   'NY City Coast Recon Report',
-		       image:  'NY_City_Coast_Recon_Report.png',
+		       image:  'NY_City_Coast_Recon_Report',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     1960,
 		       name:   'Marinière Camouflage',
-		       image:  'Mariniere_Camouflage.png',
+		       image:  'Ocean_Soul_Camouflage',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     800,
 		       name:   'Pressure-Resistant Hull Design',
-		       image:  'Pressure-Resistant_Hull_Design.png',
+		       image:  'Pressure-Resistant_Hull_Design',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2402, name: 'Repair Tools', image: 'Repair_Tools.png', type: type.A, rarity: rarity.E },
-	       { id: 1502, name: 'SG Radar', image: 'SG_Radar.png', type: type.A, rarity: rarity.E },
+	       { id: 2402, name: 'Repair Tools', image: 'Repair_Toolkit', type: type.A, rarity: rarity.E },
+	       { id: 1502, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.E },
 	       {
 		       id:     1402,
 		       name:   'Steam Catapult',
-		       image:  'Steam_Catapult.png',
+		       image:  'Steam_Catapult',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     580,
 		       name:   'Type 91 Piercing Shell',
-		       image:  'Type_91_Piercing_Shell.png',
+		       image:  'Type_91_Armor_Piercing_Shell',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     2800,
 		       name:   'Type 94 AA Device',
-		       image:  'Type_94_AA_Device.png',
+		       image:  'Type_94_High_Angle_Director',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     700,
 		       name:   'Type 98 Delayed Firing Device',
-		       image:  'Type_98_Delayed_Firing_Device.png',
+		       image:  'Type_98_Delayed_Firing_Device',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     3220,
 		       name:   'VC Armor Plating',
-		       image:  'VC_Armor_Plating.png',
+		       image:  'VC_Armor_Plating',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     2501,
 		       name:   'Fire Suppressor',
-		       image:  'Fire_Suppressor.png',
+		       image:  'Fire_Extinguisher',
 		       type:   type.A,
 		       rarity: rarity.R
 	       },
 	       {
 		       id:     1701,
 		       name:   'Hydraulic Steering Gear',
-		       image:  'Hydraulic_Steering_Gear.png',
+		       image:  'Hydraulic_Steering_Gear',
 		       type:   type.A,
 		       rarity: rarity.R
 	       },
 	       {
 		       id:     1901,
 		       name:   'Navy Camouflage',
-		       image:  'Navy_Camouflage.png',
+		       image:  'Naval_Camouflage',
 		       type:   type.A,
 		       rarity: rarity.R
 	       },
@@ -1421,43 +1481,43 @@ export const equips      = [
 	       {
 		       id:     25800,
 		       name:   '"Hedgehog" Anti-Submarine Mortar',
-		       image:  'Hedgehog_Anti-Submarine_Mortar.png',
+		       image:  'Hedgehog',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3003,
 		       name:   'Advanced Sonar',
-		       image:  'Advanced_Sonar.png',
+		       image:  'Improved_Sonar',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 2902, name: 'Basic Sonar', image: 'Basic_Sonar.png', type: type.A, rarity: rarity.E },
+	       { id: 2902, name: 'Basic Sonar', image: 'Basic_Sonar', type: type.A, rarity: rarity.E },
 	       {
 		       id:     740,
 		       name:   'Fl 282 Helicopter',
-		       image:  'Fl_282_Helicopter.png',
+		       image:  'Flettner_Fl_282_Kolibri',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     4302,
 		       name:   'TBM-3 Avenger (Anti-Sub)',
-		       image:  'TBM-3_Avenger_Anti-Sub.png',
+		       image:  'General_Motors_TBM-3_Avenger_(ASW)',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     4102,
 		       name:   'Improved Depth Charge Projector',
-		       image:  'Improved_Depth_Charge_Projector.png',
+		       image:  'Improved_Depth_Charge',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     3002,
 		       name:   'Advanced Sonar',
-		       image:  'Advanced_Sonar.png',
+		       image:  'Improved_Sonar',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
@@ -1466,28 +1526,28 @@ export const equips      = [
 	       {
 		       id:     3400,
 		       name:   '40cm Type 94 Naval Gun Parts (Cargo)',
-		       image:  '40cm_Type_94_Naval_Gun_Parts_Cargo.png',
+		       image:  '40cm_Type_94_Naval_Gun_Parts_(Cargo)',
 		       type:   type.C,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     3500,
 		       name:   'Aviation Materials (Cargo)',
-		       image:  'Aviation_Materials_Cargo.png',
+		       image:  'Aviation_Materials_(Cargo)',
 		       type:   type.C,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     3520,
 		       name:   'Small-Caliber Naval Gun Parts (Cargo)',
-		       image:  'Small-Caliber_Naval_Gun_Parts_Cargo.png',
+		       image:  'Small-Caliber_Naval_Gun_Parts_(Cargo)',
 		       type:   type.C,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     3540,
 		       name:   'Torpedo Materials (Cargo)',
-		       image:  'Torpedo_Materials_Cargo.png',
+		       image:  'Torpedo_Materials_(Cargo)',
 		       type:   type.C,
 		       rarity: rarity.E
 	       }

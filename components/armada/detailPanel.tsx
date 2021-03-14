@@ -74,7 +74,7 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 					className={ colors[ tierColors[ rowData.equipBetter?.[ index ] - 1 ] ] }
 					onClick={ () => equipClick( rowData, index ) }>
 					<Image
-						src={ `/images/equips/${ equip.image }` }
+						src={ `/images/equips/${ equip.image }.png` }
 						alt={ equip.name }
 						height={ 128 }
 						width={ 128 }

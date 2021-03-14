@@ -79,8 +79,6 @@ const initState: State = {
 };
 
 initState.shop = {
-	'Tallinn':                              1,
-	'Twin 130mm Main Gun (B-2LM)':          1,
 	'Gear Skin Box':                        0,
 	'T4 Eagle Tech Box':                    0,
 	'T4 Royal Tech Box':                    0,
