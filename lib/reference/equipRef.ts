@@ -953,7 +953,7 @@ export const equips      = [
 	       { id: 28400, name: 'Wyvern', image: 'Westland_Wyvern', type: type.TB, rarity: rarity.UR },
 	       {
 		       id:     18220,
-		       name:   'XBT2D-1 Destroyer II',
+		       name:   'XTB2D-1 Skypirate',
 		       image:  'Douglas_XTB2D-1_Skypirate',
 		       type:   type.TB,
 		       rarity: rarity.SR
@@ -1874,8 +1874,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Fairey Barracuda (831 Squadron)/SR' ] ]:   [ 3, ++a ]
 	},
 	'TB': {
-		[ map[ 'Wyvern/UR' ] ]:               [ 0, a = 0 ],
-		[ map[ 'XBT2D-1 Destroyer II/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Wyvern/UR' ] ]:            [ 0, a = 0 ],
+		[ map[ 'XTB2D-1 Skypirate/SR' ] ]: [ 0, ++a ],
 		// [ map[ 'Aichi B7A Ryusei/SR' ] ]:               [ 0, ++a ],
 		// [ map[ 'Ju-87 D-4/SR' ] ]:                      [ 0, ++a ],
 		[ map[ 'Barracuda/SR' ] ]:           [ 1, ++a ],
