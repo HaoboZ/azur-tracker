@@ -121,7 +121,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 						</Alert>
 					</Grid> : undefined }
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
-					<Link href={ `https://azurlane.koumakan.jp/${
+					<Link target='_blank' href={ `https://azurlane.koumakan.jp/${
 						unescape( currentEquip.image.replace( '$', '%' ) ) }` }>
 						<Image
 							src={ `/images/equips/${ currentEquip.image }.png` }
@@ -136,7 +136,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 					<Typography variant='h2' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item xs={ 5 } component={ Box } textAlign='center'>
-					<Link href={ `https://azurlane.koumakan.jp/${
+					<Link target='_blank' href={ `https://azurlane.koumakan.jp/${
 						unescape( equip.image.replace( '$', '%' ) ) }` }>
 						<Image
 							src={ `/images/equips/${ equip.image }.png` }
