@@ -75,6 +75,7 @@ export default function Armada() {
 		<style global jsx>{ `
           .MuiTableCell-sizeSmall {
               padding: 0 8px !important;
+              white-space: nowrap;
           }
 
           .MuiTableCell-paddingNone:last-child {
