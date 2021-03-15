@@ -16,8 +16,16 @@ export default function TableColumns() {
 			field: 'name',
 			// width: '15%',
 			customFilterAndSearch( term, rowData ) {
-				return new RegExp( term, 'i' )
-					.test( rowData.name.normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) );
+				let regex: RegExp;
+				let isValid = true;
+				try {
+					regex = new RegExp( term, 'i' );
+				} catch ( e ) {
+					isValid = false;
+				}
+				if ( !isValid ) return false;
+				return regex.test( rowData.name.normalize( 'NFD' )
+					.replace( /[\u0300-\u036f]/g, '' ) );
 			},
 			customSort( a, b ) {
 				return a.name.localeCompare( b.name );
@@ -85,9 +93,9 @@ export default function TableColumns() {
 			searchable: false
 		},
 		{
-			title:      'Equips',
-			field:      'equipTier',
-			align:      'center',
+			title: 'Equips',
+			field: 'equipTier',
+			align: 'center',
 			// width:      '10%',
 			grouping:   false,
 			searchable: false,
