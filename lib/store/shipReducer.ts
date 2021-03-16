@@ -3,7 +3,8 @@ import shipRef from '../reference/shipRef';
 
 const RESET        = 'ship/reset',
       CHECKVERSION = 'ship/checkVersion',
-      SETSHIP      = 'ship/setShip';
+      SETSHIP      = 'ship/setShip',
+      SETFILTER    = 'ship/setFilter';
 
 export function ship_reset() {
 	return { type: RESET };
@@ -29,10 +30,17 @@ export function ship_setShip( name: string, ship: {
 	};
 }
 
+export function ship_setFilter( filter: { levelMax?: boolean, equipMax?: boolean, level0?: boolean } ) {
+	return {
+		type: SETFILTER,
+		filter
+	};
+}
+
 function getTier( ship: { equip: string[] }, equip: [ number, boolean? ][] ) {
 	return equip?.map( ( eq, i ) => {
 		if ( !eq?.[ 0 ] ) return '—';
-		if ( eq[ 1 ] ) return '✹';
+		if ( eq[ 1 ] ) return '✷'; //✹
 		const tier = equipTier[ ship.equip[ i ] ];
 		if ( eq[ 0 ] in tier ) {
 			return '✷★☆✦✧'[ tier[ eq[ 0 ] ][ 0 ] ];
@@ -51,12 +59,22 @@ type State = {
 			tier: string
 		}
 	},
+	filter: {
+		levelMax: boolean
+		equipMax: boolean
+		level0: boolean
+	}
 	version: string
 }
 
 const initState: State = {
 	ships:   {},
-	version: '2021-03-11'
+	filter:  {
+		levelMax: true,
+		equipMax: true,
+		level0:   true
+	},
+	version: '2021-03-15'
 };
 
 export default function shipReducer( state = initState, action ): State {
@@ -81,6 +99,8 @@ export default function shipReducer( state = initState, action ): State {
 	case SETSHIP:
 		state.ships[ action.name ] = { ...state.ships[ action.name ], ...action.ship };
 		return { ...state };
+	case SETFILTER:
+		return { ...state, filter: { ...state.filter, ...action.filter } };
 	}
 	return state;
 }
