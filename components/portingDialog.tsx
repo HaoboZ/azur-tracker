@@ -60,7 +60,7 @@ export default function PortingDialog( { status, type, closeModal }: {
 					setExportedData( encoded );
 					e.currentTarget.exportArea.value = encoded;
 					e.currentTarget.exportArea.select();
-					e.currentTarget.exportArea.setSelectionRange( 0, 99999 );
+					e.currentTarget.exportArea.setSelectionRange( 0, encoded.length );
 					document.execCommand( 'copy' );
 					setTooltip( 'Text copied to clipboard' );
 				} catch ( e ) {

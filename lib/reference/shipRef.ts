@@ -497,6 +497,6 @@ export default Object.fromEntries(
 	love?: number
 	lvl?: number
 	equipTier?: string
-	equipped?: [ number, boolean? ][]
+	equipped?: [ number, 0 | 1 ][]
 	equipBetter?: number[]
 }>;

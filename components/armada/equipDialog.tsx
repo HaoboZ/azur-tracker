@@ -78,9 +78,9 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 			setEquip( equips[ 0 ] );
 	}, [ info, selectedEquip ] );
 	
-	const [ override, setOverride ] = React.useState( false );
+	const [ override, setOverride ] = React.useState<0 | 1>( 0 );
 	React.useEffect( () => {
-		setOverride( info?.rowData.equipped[ info.index ]?.[ 1 ] || false );
+		setOverride( info?.rowData.equipped[ info.index ]?.[ 1 ] || 0 );
 	}, [ info ] );
 	
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
@@ -183,8 +183,8 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 			<FormControlLabel
 				control={ <Switch
 					color='primary'
-					checked={ override }
-					onChange={ ( e ) => setOverride( e.target.checked ) }
+					checked={ !!override }
+					onChange={ ( e ) => setOverride( +e.target.checked as any ) }
 				/> }
 				label='Force BiS'
 				labelPlacement='start'/>

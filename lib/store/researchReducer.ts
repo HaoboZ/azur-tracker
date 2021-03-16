@@ -40,14 +40,12 @@ export function research_modifyShip( ship: string, item: {
 
 type State = {
 	lastTab: number
-	ships: {
-		[ ship: string ]: {
-			devLevel?: number
-			devStage?: number
-			fateLevel?: number
-			fateStage?: number
-		}
-	}
+	ships: Record<string, {
+		devLevel?: number
+		devStage?: number
+		fateLevel?: number
+		fateStage?: number
+	}>
 }
 
 const initState: State = {
