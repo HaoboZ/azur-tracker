@@ -445,7 +445,6 @@ Misaki,Misaki,Super Rare,Venus Vacation,Light Cruiser,0.5,[],CL,DD/Aux,AA,A/CL1,
 Nagisa,Nagisa,Elite,Venus Vacation,Battleship,1.5,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,87,Heavy,30,7510,384,174,0,40,0,14,149,0,0,65
 Nyotengu,Nyotengu,Elite,Venus Vacation,Aircraft Carrier,2,[],F,DB,TB,A/CV1,A/CV2,88,Medium,32,6646,0,309,0,54,374,12,116,0,0,87
 Monica,Monica,Elite,Venus Vacation,Light Cruiser,2,[],CL,T,AA,A/CL1/T,A/CL2/T,88,Light,32,3775,148,357,292,100,0,10,182,87,0,160
-Hiryuu_META,Hiryuu META,Super Rare,META,Aircraft Carrier,0,[1/1/1],F,DB,TB,A/CV1,A/CV2,36,Medium,34,4721,0,250,0,47,340,14,100,0,0,65
 HMS_Neptune,HMS Neptune,Priority,Royal Navy,Light Cruiser,0.5,[],CL/AP,T,AA,A/CL1/T,A/CL2/T,15,Light,33,4637,172,363,352,98,0,12,164,152,0,158
 Monarch,Monarch,Priority,Royal Navy,Battleship,0,[],BB/Speed,CL/DD/Main,AA/Main,A/BB1,A/BB2,15,Heavy,28,7967,423,230,0,35,0,16,168,0,0,66
 Ibuki,Ibuki,Priority,Sakura Empire,Heavy Cruiser,0.5,[],CA,T,AA,A/CA1/T,A/CA2/T,15,Medium,28,4793,270,194,289,86,0,13,187,0,0,136
@@ -463,3 +462,5 @@ Drake,Drake,Decisive,Royal Navy,Heavy Cruiser,0,[],CA,T,AA,A/CA1/T,A/CA2/T,0,Med
 Mainz,Mainz,Priority,Ironblood,Light Cruiser,0,[],CL,T,AA,A/CL1/T,A/CL2/T,0,Medium,25,5262,168,354,193,75,0,12,182,120,0,128
 Odin,Odin,Priority,Ironblood,Battlecruiser,0.5,[],BB/Damage,T,AA/Main,A/BB1,A/BB2,0,Heavy,30,7126,361,337,241,36,0,16,171,0,0,62
 Champagne,Champagne,Priority,Iris Libre,Battleship,0,[],BB/Damage,CL/DD/Main,AA/Main,A/BB1,A/BB2,0,Medium,32,6896,454,241,0,36,0,16,181,0,0,77
+Hiryuu_META,Hiryuu META,Super Rare,META,Aircraft Carrier,0,[1/1/1],F,DB,TB,A/CV1,A/CV2,36,Medium,34,4721,0,250,0,47,340,14,100,0,0,65
+Ark_Royal_META,Ark Royal META,Super Rare,META,Aircraft Carrier,,[1/1/1],TB,TB,DB,A/CV1,A/CV2,87,Medium,31,6338,0,320,0,52,419,14,115,0,0,103

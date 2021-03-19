@@ -65,7 +65,14 @@ export default function TableColumns() {
 			// width:       '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.tier;
-				return val === 3 ? 'N' : val;
+				switch ( val ) {
+				case undefined:
+					return '';
+				case 3:
+					return 'N';
+				default:
+					return val;
+				}
 			}
 		},
 		{

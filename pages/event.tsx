@@ -44,4 +44,3 @@ export default function Event() {
 		<FarmingTable remainingPoints={ remainingPoints }/>
 	</Grid>;
 }
-3;
