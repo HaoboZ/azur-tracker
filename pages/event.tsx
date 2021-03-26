@@ -2,8 +2,8 @@ import { Grid } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import EventFields from '../components/event/eventFields';
 
+import EventFields from '../components/event/eventFields';
 import FarmingTable from '../components/event/farmingTable';
 import PageTitleReset from '../components/pageTitleReset';
 import eventRef from '../lib/reference/eventRef';

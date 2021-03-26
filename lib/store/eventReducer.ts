@@ -70,45 +70,40 @@ type State = {
 
 const initState: State = {
 	name:             '',
-	shop:             {},
+	shop:             {
+		'Gear Skin Box':                        0,
+		'T4 Eagle Tech Box':                    0,
+		'T4 Royal Tech Box':                    0,
+		'T4 Sakura Tech Box':                   0,
+		'T4 Ironblood Tech Box':                0,
+		'Cognitive Chips':                      0,
+		'Rare Cat Box':                         0,
+		'Elite Cat Box':                        0,
+		'Super Rare Cat Box':                   2,
+		'General Blueprint - Series 3':         30,
+		'Special General Blueprint - Series 3': 10,
+		'T3 General Part':                      0,
+		'T3 Main Gun Part':                     0,
+		'T3 Torpedo Part':                      0,
+		'T3 Anti-Air Part':                     0,
+		'T3 Aircraft Part':                     0,
+		'Coins':                                5,
+		'Oil':                                  5,
+		'Oxy-cola':                             0
+	},
 	shopExpectedCost: 0,
-	daily:            [],
-	dailyExpected:    0,
+	daily:            [
+		{ name: 'Build 3 ships', amount: 300 },
+		{ name: 'Sortie and obtain 15 victories', amount: 300 },
+		{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
+		{ name: 'SP Stage', amount: 800 }
+	],
+	dailyExpected:    1550,
 	points:           0,
-	farming:          []
+	farming:          [
+		{ points: 180, oil: 10 + 25 * 6 + 40 }
+	]
 };
-
-initState.shop = {
-	'Gear Skin Box':                        0,
-	'T4 Eagle Tech Box':                    0,
-	'T4 Royal Tech Box':                    0,
-	'T4 Sakura Tech Box':                   0,
-	'T4 Ironblood Tech Box':                0,
-	'Cognitive Chips':                      0,
-	'Rare Cat Box':                         0,
-	'Elite Cat Box':                        0,
-	'Super Rare Cat Box':                   2,
-	'General Blueprint - Series 3':         30,
-	'Special General Blueprint - Series 3': 10,
-	'T3 General Part':                      0,
-	'T3 Main Gun Part':                     0,
-	'T3 Torpedo Part':                      0,
-	'T3 Anti-Air Part':                     0,
-	'T3 Aircraft Part':                     0,
-	'Coins':                                5,
-	'Oil':                                  5,
-	'Oxy-cola':                             0
-};
-initState.daily = [
-	{ name: 'Build 3 ships', amount: 300 },
-	{ name: 'Sortie and obtain 15 victories', amount: 300 },
-	{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
-	{ name: 'SP Stage', amount: 800 }
-];
-initState.dailyExpected = 1550;
-initState.farming = [
-	{ points: 180, oil: 10 + 25 * 6 + 40 }
-];
 
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
@@ -126,7 +121,8 @@ export default function eventReducer( state = initState, action ): State {
 			shopExpectedCost: Object.keys( eventRef.shop ).reduce(
 				( total, item ) => total
 					+ eventRef.shop[ item ].cost * Math.min( eventRef.shop[ item ].amount, state.shop[ item ] || 0 )
-				, 0 )
+				, 0 ),
+			points:           0
 		};
 	case SETSHOP:
 		return {

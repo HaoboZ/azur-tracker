@@ -1,9 +1,10 @@
 export default {
 	name:    'Ashen Simulacrum Rerun',
-	image:   '/images/events/Ashen_Simulacrum_Rerun.png',
+	image:   'Ashen_Simulacrum_Rerun.png',
+	link:    'Ashen_Simulacrum',
 	endDate: '2021-04-07T23:59-07',
 	shop:    {
-		'Cavalla':                              { cost: 8000, amount: 5 },
+		'Cavalla': { cost: 8000, amount: 5 },
 		// 'Twin 130mm Main Gun (B-2LM)':          { cost: 2000, amount: 1 },
 		// 'Gear Skin Box':                        { cost: 2000, amount: 10 },
 		'T4 Eagle Tech Box':                    { cost: 300, amount: 4 },

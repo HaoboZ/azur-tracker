@@ -1,4 +1,12 @@
-import { Box, Grid, InputAdornment, makeStyles, TextField, Typography } from '@material-ui/core';
+import {
+	Box,
+	Grid,
+	InputAdornment,
+	Link,
+	makeStyles,
+	TextField,
+	Typography
+} from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -51,12 +59,18 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 	return <>
 		<Grid item xs={ 12 } component={ Box } mx='auto'>
 			<img
-				src={ eventRef.image } alt='event banner'
+				src={ `/images/events/${ eventRef.image }` } alt='event banner'
 				style={ { width: '100%', maxWidth: 700, display: 'block', margin: 'auto' } }
 			/>
 		</Grid>
-		<Grid item xs={ 12 }>
-			<Typography variant='h6' align='center'>{ eventRef.name }</Typography>
+		<Grid item xs={ 12 } component={ Box } textAlign='center'>
+			<Link
+				href={ `https://azurlane.koumakan.jp/${ eventRef.link }` }
+				target='_blank'
+				variant='h6'
+				color='textPrimary'>
+				{ eventRef.name }
+			</Link>
 		</Grid>
 		<Grid item sm={ 4 } xs={ 6 }>
 			<TextField
