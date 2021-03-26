@@ -1,11 +1,11 @@
 export default {
-	name:    'Khorovod of Dawn\'s Rime',
-	image:   '/images/events/Khorovod_of_Dawns_Rime.jpg',
-	endDate: '2021-03-11T23:59-07',
+	name:    'Ashen Simulacrum Rerun',
+	image:   '/images/events/Ashen_Simulacrum_Rerun.png',
+	endDate: '2021-04-07T23:59-07',
 	shop:    {
-		'Tallinn':                              { cost: 8000, amount: 5 },
-		'Twin 130mm Main Gun (B-2LM)':          { cost: 2000, amount: 1 },
-		'Gear Skin Box':                        { cost: 2000, amount: 10 },
+		'Cavalla':                              { cost: 8000, amount: 5 },
+		// 'Twin 130mm Main Gun (B-2LM)':          { cost: 2000, amount: 1 },
+		// 'Gear Skin Box':                        { cost: 2000, amount: 10 },
 		'T4 Eagle Tech Box':                    { cost: 300, amount: 4 },
 		'T4 Royal Tech Box':                    { cost: 300, amount: 4 },
 		'T4 Sakura Tech Box':                   { cost: 300, amount: 4 },
