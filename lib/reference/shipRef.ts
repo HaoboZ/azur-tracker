@@ -35,12 +35,12 @@ const ships = {
 	'Mullany':                        [ 'Mullany', 'Elite', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 89, 'Light', 42, 2115, 90, 172, 291, 160, 0, 9, 206, 212, 0, 197 ],
 	'Bush':                           [ 'Bush', 'Rare', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 34, 'Light', 42, 2054, 85, 189, 282, 160, 0, 8, 201, 206, 0, 199 ],
 	'Hazelwood':                      [ 'Hazelwood', 'Rare', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 75, 'Light', 42, 2054, 85, 172, 283, 160, 0, 8, 196, 218, 0, 197 ],
-	'Stephen_Potter':                 [ 'Stephen Potter', 'Elite', 'Eagle Union', 'Destroyer', , [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 70, 'Light', 42, 2156, 90, 182, 292, 160, 0, 9, 204, 212, 0, 197 ],
+	'Stephen_Potter':                 [ 'Stephen Potter', 'Elite', 'Eagle Union', 'Destroyer', 4, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 70, 'Light', 42, 2156, 90, 182, 292, 160, 0, 9, 204, 212, 0, 197 ],
 	'Smalley':                        [ 'Smalley', 'Rare', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 65, 'Light', 42, 2095, 87, 189, 283, 160, 0, 8, 203, 210, 0, 197 ],
 	'Aulick':                         [ 'Aulick', 'Common', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 62, 'Light', 42, 1998, 82, 171, 279, 158, 0, 7, 204, 202, 0, 197 ],
 	'Charles_Ausburne':               [ 'Charles Ausburne', 'Elite', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 82, 'Light', 42, 2112, 87, 178, 291, 158, 0, 9, 215, 212, 0, 207 ],
 	'Halsey_Powell':                  [ 'Halsey Powell', 'Rare', 'Eagle Union', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 55, 'Light', 42, 2095, 81, 220, 281, 160, 0, 9, 203, 214, 0, 198 ],
-	'Allen_M._Sumner':                [ 'Allen M. Sumner', 'Super Rare', 'Eagle Union', 'Destroyer', , [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 80, 'Light', 40, 2526, 140, 233, 373, 179, 0, 10, 229, 221, 0, 208 ],
+	'Allen_M._Sumner':                [ 'Allen M. Sumner', 'Super Rare', 'Eagle Union', 'Destroyer', 4, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 80, 'Light', 40, 2526, 140, 233, 373, 179, 0, 10, 229, 221, 0, 208 ],
 	'Cooper':                         [ 'Cooper', 'Elite', 'Eagle Union', 'Destroyer', 2, [ 0, 0, 0, 1, 1 ], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 22, 'Light', 40, 2190, 126, 200, 360, 179, 0, 9, 220, 215, 0, 202 ],
 	'Eldridge':                       [ 'Eldridge', 'Super Rare', 'Eagle Union', 'Destroyer', 1.5, [], 'DD/Speed', 'T', 'AA', 'A/DD1', 'A/DD2', 75, 'Light', 25, 1720, 81, 183, 381, 211, 0, 10, 231, 226, 0, 194 ],
 	'Omaha':                          [ 'Omaha', 'Common', 'Eagle Union', 'Light Cruiser', 3, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 67, 'Light', 35, 3237, 142, 281, 207, 101, 0, 8, 182, 80, 0, 151 ],
@@ -470,7 +470,7 @@ const ships = {
 	'Odin':                           [ 'Odin', 'Priority', 'Ironblood', 'Battlecruiser', 0.5, [], 'BB/Damage', 'T', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 7126, 361, 337, 241, 36, 0, 16, 171, 0, 0, 62 ],
 	'Champagne':                      [ 'Champagne', 'Priority', 'Iris Libre', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Medium', 32, 6896, 454, 241, 0, 36, 0, 16, 181, 0, 0, 77 ],
 	'Hiryuu_META':                    [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 0, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
-	'Ark_Royal_META':                 [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', , [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
+	'Ark_Royal_META':                 [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 4, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
 };
 
 export default Object.fromEntries(
