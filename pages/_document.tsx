@@ -28,6 +28,8 @@ export default class MyDocument extends Document {
 		return <Html lang='en'>
 			<Head>
 				<link rel='manifest' href='manifest.json'/>
+				<script src="https://accounts.google.com/gsi/client" async defer/>
+				
 				<link
 					rel='stylesheet'
 					href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
@@ -35,6 +37,11 @@ export default class MyDocument extends Document {
 				<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'/>
 			</Head>
 			<body>
+			<div
+				id='g_id_onload'
+				data-client_id={ process.env.GOOGLE_ID }
+				data-login_uri={ process.env.LOGIN_URI }
+			/>
 			<Main/>
 			<NextScript/>
 			</body>
