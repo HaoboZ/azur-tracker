@@ -19,7 +19,7 @@ export default function TableColumns() {
 				let isValid = true;
 				try {
 					regex = new RegExp( term, 'i' );
-				} catch ( e ) {
+				} catch {
 					isValid = false;
 				}
 				if ( !isValid ) return false;

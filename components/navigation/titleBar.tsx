@@ -30,7 +30,6 @@ const LinkItem = ( { children, href } ) => {
 export default function TitleBar() {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
-	
 	const classes = useStyles();
 	
 	return <AppBar position='static'>

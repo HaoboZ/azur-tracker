@@ -48,7 +48,6 @@ export default function ShopDialog( { status, closeDialog }: {
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	
 	const classes = useStyles();
 	
 	const [ shop, setShop ] = React.useState( event.shop );

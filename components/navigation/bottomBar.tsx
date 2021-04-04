@@ -23,7 +23,6 @@ const items = [
 export default function BottomBar() {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
-	
 	const router = useRouter();
 	
 	const index = React.useMemo( () => {

@@ -19,7 +19,6 @@ const useStyles = makeStyles( () => mappedColorClasses as any );
 export default function Armada() {
 	const ship     = useSelector( store => store.ship ),
 	      dispatch = useDispatch();
-	
 	const classes = useStyles();
 	
 	React.useEffect( () => {

@@ -10,7 +10,7 @@ export default createTransform(
 		if ( typeof state !== 'string' ) return state;
 		try {
 			return JSON.parse( LZ.decompressFromUTF16( state ) );
-		} catch ( err ) {
+		} catch {
 			return null;
 		}
 	}
