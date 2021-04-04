@@ -23,30 +23,30 @@ export default function EquipSelector( { anchorEl, closeAnchor, colors, equipLis
 	const classes = useStyles();
 	
 	return <Menu
-		anchorEl={ anchorEl }
+		anchorEl={anchorEl}
 		keepMounted
-		open={ !!anchorEl }
-		onClose={ closeAnchor }
-		PaperProps={ { className: classes.menu } }>
-		{ equipList.map( ( equip ) => <MenuItem
-			key={ equip.id }
-			classes={ { root: classes.wrap } }
-			onClick={ () => {
+		open={!!anchorEl}
+		onClose={closeAnchor}
+		PaperProps={{ className: classes.menu }}>
+		{equipList.map( ( equip ) => <MenuItem
+			key={equip.id}
+			classes={{ root: classes.wrap }}
+			onClick={() => {
 				setEquip( equip.id );
 				closeAnchor();
-			} }>
-			{ equip.tier && <Typography>{ equip.tier }</Typography> }
-			<Box px={ 1 }>
+			}}>
+			{equip.tier && <Typography>{equip.tier}</Typography>}
+			<Box px={1}>
 				<Image
-					src={ `/images/equips/${ equip.image }.png` }
-					alt={ equip.name }
+					src={`/images/equips/${equip.image}.png`}
+					alt={equip.name}
 					layout='fixed'
-					height={ 50 }
-					width={ 50 }
-					className={ colors[ rarityColors[ equip.rarity ] ] }
+					height={50}
+					width={50}
+					className={colors[ rarityColors[ equip.rarity ] ]}
 				/>
 			</Box>
-			<Typography>{ equip.name }</Typography>
-		</MenuItem> ) }
+			<Typography>{equip.name}</Typography>
+		</MenuItem> )}
 	</Menu>;
 }

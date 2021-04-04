@@ -1,22 +1,13 @@
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, Store } from 'redux';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
+import authMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
+import { isBrowser } from '../helpers';
 import { rootReducer } from './reducers';
+import stableCompressTransform from './stableCompressTransform';
 
 const migrations = {
-	1: ( state: RootState ) => ( {
-		...state,
-		ship: {
-			...state.ship,
-			filter: {
-				levelMax: true,
-				equipMax: true,
-				level0:   true
-			}
-		}
-	} ),
 	2: ( state: RootState ) => ( {
 		...state,
 		ship: {
@@ -34,18 +25,24 @@ const migrations = {
 			}, {} )
 		}
 	} )
-} as Record<string | number, ( state: RootState ) => RootState>;
+} as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
-	key:     'root',
-	version: 2,
+	key:             'root',
+	version:         2,
 	storage,
-	migrate: createMigrate( migrations as any, { debug: false } )
+	stateReconciler: authMergeLevel2,
+	migrate:         createMigrate( migrations as any, { debug: false } ),
+	transforms:      [ stableCompressTransform ]
 }, rootReducer );
 
-const store = createStore( persistedReducer );
-export default store;
-export const persistor = persistStore( store );
-
 export type RootState = ReturnType<typeof rootReducer>;
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export const store: Store<RootState> = createStore( persistedReducer );
+export const persistor = isBrowser ? persistStore( store ) : undefined;
+
+declare module 'react-redux' {
+	interface DefaultRootState extends RootState {
+	}
+}
+

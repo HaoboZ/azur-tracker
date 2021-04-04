@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, Grid, makeStyles } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
@@ -11,14 +11,13 @@ import PageTitleReset from '../components/pageTitleReset';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
-import { useTypedSelector } from '../lib/store';
-import { ship_checkVersion, ship_reset, ship_setFilter } from '../lib/store/shipReducer';
+import { ship_checkVersion, ship_reset, ship_setFilter } from '../lib/store/reducers/shipReducer';
 import tableIcons from '../lib/tableIcons';
 
 const useStyles = makeStyles( () => mappedColorClasses as any );
 
 export default function Armada() {
-	const ship     = useTypedSelector( store => store.ship ),
+	const ship     = useSelector( store => store.ship ),
 	      dispatch = useDispatch();
 	
 	const classes = useStyles();
@@ -72,9 +71,9 @@ export default function Armada() {
 		return shipData.equipBetter.some( val => val );
 	} ), [ ship, equip ] );
 	
-	return <Grid container spacing={ 2 }>
-		{ /*language=css*/ }
-		<style global jsx>{ `
+	return <Grid container spacing={2}>
+		{ /*language=css*/}
+		<style global jsx>{`
           .MuiTableCell-sizeSmall {
               padding: 0 8px !important;
               max-width: 180px;
@@ -84,70 +83,70 @@ export default function Armada() {
           .MuiTableCell-paddingNone:last-child {
               padding: 4px 8px 0 !important;
           }
-		` }</style>
-		<PageTitleReset name='Armada Tracker' reset={ ship_reset }/>
+		`}</style>
+		<PageTitleReset name='Armada Tracker' reset={ship_reset}/>
 		<Grid item xs>
 			<FormControlLabel
-				control={ <Checkbox
-					checked={ ship.filter.levelMax }
-					onChange={ ( e ) =>
-						dispatch( ship_setFilter( { levelMax: e.target.checked } ) ) }/> }
+				control={<Checkbox
+					checked={ship.filter.levelMax}
+					onChange={( e ) =>
+						dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}/>}
 				label='Maxed Level'/>
 		</Grid>
 		<Grid item xs>
 			<FormControlLabel
-				control={ <Checkbox
-					checked={ ship.filter.equipMax }
-					onChange={ ( e ) =>
-						dispatch( ship_setFilter( { equipMax: e.target.checked } ) ) }/> }
+				control={<Checkbox
+					checked={ship.filter.equipMax}
+					onChange={( e ) =>
+						dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}/>}
 				label='Maxed Equip'/>
 		</Grid>
 		<Grid item xs>
 			<FormControlLabel
-				control={ <Checkbox
-					checked={ ship.filter.level0 }
-					onChange={ ( e ) =>
-						dispatch( ship_setFilter( { level0: e.target.checked } ) ) }/> }
+				control={<Checkbox
+					checked={ship.filter.level0}
+					onChange={( e ) =>
+						dispatch( ship_setFilter( { level0: e.target.checked } ) )}/>}
 				label='0 Level'/>
 		</Grid>
-		<Grid item sm={ 4 } xs={ 12 }>
+		<Grid item sm={4} xs={12}>
 			<EquipFilter
-				colors={ classes }
-				equipList={ equips }
-				value={ equip }
-				setValue={ setEquip }
+				colors={classes}
+				equipList={equips}
+				value={equip}
+				setValue={setEquip}
 			/>
 		</Grid>
-		<Grid item xs={ 12 }>
+		<Grid item xs={12}>
 			<MaterialTable
 				title='Ship List'
-				icons={ tableIcons }
-				columns={ TableColumns() }
-				data={ filteredShipList }
-				detailPanel={ ( rowData ) => <DetailPanel
-					colors={ classes }
-					rowData={ rowData }
-					equipClick={ ( rowData, index ) => {
+				icons={tableIcons}
+				columns={TableColumns()}
+				data={filteredShipList}
+				detailPanel={( rowData ) => <DetailPanel
+					colors={classes}
+					rowData={rowData}
+					equipClick={( rowData, index ) => {
 						setEquipInfo( { rowData, index } );
 						setEquipOpen( true );
-					} }/> }
-				onRowClick={ ( e, rowData, togglePanel ) => togglePanel() }
-				options={ {
+					}}/>}
+				onRowClick={( e, rowData, togglePanel ) => togglePanel()}
+				options={{
 					doubleHorizontalScroll: true,
 					emptyRowsWhenPaging:    false,
 					grouping:               true,
 					padding:                'dense',
 					pageSize:               100,
 					pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
-				} }
+				}}
 			/>
 		</Grid>
 		<EquipDialog
-			colors={ classes }
-			open={ equipOpen }
-			onClose={ () => setEquipOpen( false ) }
-			info={ equipInfo }
-			selectedEquip={ equip }
+			colors={classes}
+			open={equipOpen}
+			onClose={() => setEquipOpen( false )}
+			info={equipInfo}
+			selectedEquip={equip}
 		/>
 	</Grid>;
 }

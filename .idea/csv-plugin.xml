@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="C:\Users\haobo\AppData\Roaming\JetBrains\IntelliJIdea2020.3\scratches\scratch.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="&#9;" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\components\baseline.tsx">
+          <value>
+            <Attribute>
+              <option name="separator" value="&#9;" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\lib\reference\shipRef.csv">
           <value>
             <Attribute>
@@ -10,7 +24,21 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\pages\_document.tsx">
+        <entry key="\lib\reference\shipRef.ts">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\lib\store\backupCompressTransform.ts">
+          <value>
+            <Attribute>
+              <option name="separator" value="&#9;" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\pages\index.tsx">
           <value>
             <Attribute>
               <option name="separator" value="&#9;" />

@@ -46,17 +46,19 @@ type State = {
 		fateLevel?: number
 		fateStage?: number
 	}>
+	lastModified: number
 }
 
 const initState: State = {
-	lastTab: 0,
-	ships:   {}
+	lastTab:      0,
+	ships:        {},
+	lastModified: 0
 };
 
 export default function researchReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( 'research' in action.data )
+		if ( action.data.research )
 			return action.data.research;
 		break;
 	case RESET:

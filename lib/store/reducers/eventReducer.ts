@@ -1,4 +1,4 @@
-import eventRef from '../reference/eventRef';
+import eventRef from '../../reference/eventRef';
 
 const RESET         = 'event/reset',
       NEWEVENT      = 'event/newEvent',
@@ -66,6 +66,7 @@ type State = {
 	dailyExpected: number
 	points: number
 	farming: { points: number, oil: number }[]
+	lastModified: number
 }
 
 const initState: State = {
@@ -102,13 +103,14 @@ const initState: State = {
 	points:           0,
 	farming:          [
 		{ points: 180, oil: 10 + 25 * 6 + 40 }
-	]
+	],
+	lastModified:     0
 };
 
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( 'event' in action.data )
+		if ( action.data.event )
 			return action.data.event;
 		break;
 	case RESET:
@@ -146,7 +148,7 @@ export default function eventReducer( state = initState, action ): State {
 			state.farming.splice( action.index, 1 );
 			return { ...state, farming: [ ...state.farming ] };
 		}
-		return state;
+		break;
 	case MODIFYFARMING:
 		state.farming[ action.index ] = { ...state.farming[ action.index ], ...action.item };
 		return { ...state, farming: state.farming };

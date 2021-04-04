@@ -17,10 +17,9 @@ import {
 } from '@material-ui/core';
 import { Add as AddIcon, Remove as RemoveIcon } from '@material-ui/icons';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useTypedSelector } from '../../lib/store';
-import { event_setDaily } from '../../lib/store/eventReducer';
+import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	table:       {
@@ -45,7 +44,7 @@ export default function DailyDialog( { status, closeDialog }: {
 	status: boolean
 	closeDialog: () => void
 } ) {
-	const event    = useTypedSelector( store => store.event ),
+	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
 	const classes = useStyles();
@@ -76,8 +75,8 @@ export default function DailyDialog( { status, closeDialog }: {
 	}
 	
 	return <Dialog
-		open={ status }
-		onClose={ closeDialog }
+		open={status}
+		onClose={closeDialog}
 		maxWidth='md'
 		fullWidth
 		disablePortal
@@ -87,56 +86,56 @@ export default function DailyDialog( { status, closeDialog }: {
 		<DialogTitle>Daily Points</DialogTitle>
 		<DialogContent>
 			<DialogContentText>
-				Total Daily: { dailyTotal }
+				Total Daily: {dailyTotal}
 			</DialogContentText>
-			<TableContainer component={ Paper }>
-				<Table size='small' className={ classes.table }>
+			<TableContainer component={Paper}>
+				<Table size='small' className={classes.table}>
 					<TableHead>
 						<TableRow>
-							<TableCell colSpan={ 2 }/>
-							<TableCell width={ 400 }>Name</TableCell>
+							<TableCell colSpan={2}/>
+							<TableCell width={400}>Name</TableCell>
 							<TableCell align='right'>Amount</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{ daily.map( ( item, index ) => <TableRow key={ index }>
+						{daily.map( ( item, index ) => <TableRow key={index}>
 							<TableCell>
 								<Button
 									variant='contained'
-									onClick={ () => addItem( index ) }>
+									onClick={() => addItem( index )}>
 									<AddIcon/>
 								</Button>
 							</TableCell>
 							<TableCell>
 								<Button
 									variant='contained'
-									onClick={ () => addItem( index, true ) }>
+									onClick={() => addItem( index, true )}>
 									<RemoveIcon/>
 								</Button>
 							</TableCell>
 							<TableCell>
 								<TextField
 									type='text' fullWidth
-									value={ item.name }
-									onChange={ ( e ) =>
-										modifyItem( index, { name: e.target.value } ) }
+									value={item.name}
+									onChange={( e ) =>
+										modifyItem( index, { name: e.target.value } )}
 								/>
 							</TableCell>
 							<TableCell align='right'>
 								<TextField
 									type='number'
-									inputProps={ { className: classes.numberInput } }
-									value={ item.amount }
-									onChange={ ( e ) =>
-										modifyItem( index, { amount: parseInt( e.target.value ) } ) }
+									inputProps={{ className: classes.numberInput }}
+									value={item.amount}
+									onChange={( e ) =>
+										modifyItem( index, { amount: parseInt( e.target.value ) } )}
 								/>
 							</TableCell>
-						</TableRow> ) }
+						</TableRow> )}
 						<TableRow>
-							<TableCell colSpan={ 4 }>
+							<TableCell colSpan={4}>
 								<Button
 									variant='contained'
-									onClick={ () => addItem( daily.length ) }>
+									onClick={() => addItem( daily.length )}>
 									<AddIcon/>
 								</Button>
 							</TableCell>
@@ -146,13 +145,13 @@ export default function DailyDialog( { status, closeDialog }: {
 			</TableContainer>
 		</DialogContent>
 		<DialogActions>
-			<Button variant='contained' color='primary' onClick={ () => {
+			<Button variant='contained' color='primary' onClick={() => {
 				dispatch( event_setDaily( daily, dailyTotal ) );
 				closeDialog();
-			} }>
+			}}>
 				Save
 			</Button>
-			<Button variant='contained' color='secondary' onClick={ closeDialog }>
+			<Button variant='contained' color='secondary' onClick={closeDialog}>
 				Cancel
 			</Button>
 		</DialogActions>

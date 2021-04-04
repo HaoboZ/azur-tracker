@@ -1,6 +1,13 @@
-const SETTHEME = 'setTheme';
+const SETTHEME = 'main/setTheme';
 
-export function setTheme( theme: String ) {
+export function importBackup( data: any ) {
+	return {
+		type: 'import',
+		data
+	};
+}
+
+export function setTheme( theme: string ) {
 	return {
 		type: SETTHEME,
 		theme

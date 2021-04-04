@@ -21,37 +21,37 @@ export default function EquipFilter( { colors, equipList, value, setValue }: {
 	const classes = useStyles();
 	
 	return <Autocomplete
-		options={ equipList }
-		className={ classes.autoComplete }
-		getOptionLabel={ ( option ) => option.name }
+		options={equipList}
+		className={classes.autoComplete}
+		getOptionLabel={( option ) => option.name}
 		fullWidth
-		classes={ { popper: classes.popper } }
-		value={ value }
-		onChange={ ( e, newValue ) =>
-			setValue( newValue as any || equips[ 0 ] ) }
-		renderOption={ ( option ) => <>
-			<Box pr={ 1 }>
+		classes={{ popper: classes.popper }}
+		value={value}
+		onChange={( e, newValue ) =>
+			setValue( newValue as any || equips[ 0 ] )}
+		renderOption={( option ) => <>
+			<Box pr={1}>
 				<Image
-					src={ `/images/equips/${ option.image }.png` }
-					alt={ option.name }
+					src={`/images/equips/${option.image}.png`}
+					alt={option.name}
 					layout='fixed'
-					height={ 50 }
-					width={ 50 }
-					className={ colors[ rarityColors[ option.rarity ] ] }
+					height={50}
+					width={50}
+					className={colors[ rarityColors[ option.rarity ] ]}
 				/>
 			</Box>
-			<Typography>{ option.name }</Typography>
-		</> }
-		groupBy={ ( option ) => typeNames[ option.type ] }
-		renderInput={ ( params ) => <TextField
-			{ ...params }
+			<Typography>{option.name}</Typography>
+		</>}
+		groupBy={( option ) => typeNames[ option.type ]}
+		renderInput={( params ) => <TextField
+			{...params}
 			margin='normal'
 			label='Equipment'
-			InputProps={ {
+			InputProps={{
 				...params.InputProps,
-				startAdornment: <><SearchIcon/>{ params.InputProps.startAdornment }</>,
+				startAdornment: <><SearchIcon/>{params.InputProps.startAdornment}</>,
 				type:           'search'
-			} }
-		/> }
+			}}
+		/>}
 	/>;
 }

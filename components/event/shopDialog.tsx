@@ -18,11 +18,10 @@ import {
 	Typography
 } from '@material-ui/core';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import eventRef from '../../lib/reference/eventRef';
-import { useTypedSelector } from '../../lib/store';
-import { event_setShop } from '../../lib/store/eventReducer';
+import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	table:       {
@@ -47,7 +46,7 @@ export default function ShopDialog( { status, closeDialog }: {
 	status: boolean
 	closeDialog: () => void
 } ) {
-	const event    = useTypedSelector( store => store.event ),
+	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
 	const classes = useStyles();
@@ -68,8 +67,8 @@ export default function ShopDialog( { status, closeDialog }: {
 		}, [ 0, 0 ] ), [ shop ] );
 	
 	return <Dialog
-		open={ status }
-		onClose={ closeDialog }
+		open={status}
+		onClose={closeDialog}
 		maxWidth='md'
 		fullWidth
 		disablePortal
@@ -78,17 +77,17 @@ export default function ShopDialog( { status, closeDialog }: {
 		closeAfterTransition>
 		<DialogTitle>Shop Items</DialogTitle>
 		<DialogContent>
-			<Grid container spacing={ 2 }>
-				<Grid item xs={ 6 }>
-					<Typography>Buyout Price: { buyoutCost }</Typography>
+			<Grid container spacing={2}>
+				<Grid item xs={6}>
+					<Typography>Buyout Price: {buyoutCost}</Typography>
 				</Grid>
-				<Grid item xs={ 6 }>
-					<Typography>Expected Price: { expectedCost }</Typography>
+				<Grid item xs={6}>
+					<Typography>Expected Price: {expectedCost}</Typography>
 				</Grid>
 			</Grid>
-			<Box margin={ 2 }/>
-			<TableContainer component={ Paper }>
-				<Table size='small' className={ classes.table }>
+			<Box margin={2}/>
+			<TableContainer component={Paper}>
+				<Table size='small' className={classes.table}>
 					<TableHead>
 						<TableRow>
 							<TableCell>Name</TableCell>
@@ -98,37 +97,37 @@ export default function ShopDialog( { status, closeDialog }: {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{ Object.keys( eventRef.shop ).map( ( itemName, index ) => {
+						{Object.keys( eventRef.shop ).map( ( itemName, index ) => {
 							const item = eventRef.shop[ itemName ];
-							return <TableRow key={ index }>
-								<TableCell>{ itemName }</TableCell>
-								<TableCell>{ item.cost }</TableCell>
-								<TableCell align='right'>{ item.amount }</TableCell>
+							return <TableRow key={index}>
+								<TableCell>{itemName}</TableCell>
+								<TableCell>{item.cost}</TableCell>
+								<TableCell align='right'>{item.amount}</TableCell>
 								<TableCell align='right'>
 									<TextField
 										type='number'
-										inputProps={ { className: classes.numberInput } }
-										value={ shop[ itemName ] || 0 }
-										onChange={ ( e ) => {
+										inputProps={{ className: classes.numberInput }}
+										value={shop[ itemName ] || 0}
+										onChange={( e ) => {
 											shop[ itemName ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
 											setShop( { ...shop } );
-										} }
+										}}
 									/>
 								</TableCell>
 							</TableRow>;
-						} ) }
+						} )}
 					</TableBody>
 				</Table>
 			</TableContainer>
 		</DialogContent>
 		<DialogActions>
-			<Button variant='contained' color='primary' onClick={ () => {
+			<Button variant='contained' color='primary' onClick={() => {
 				dispatch( event_setShop( shop, expectedCost ) );
 				closeDialog();
-			} }>
+			}}>
 				Save
 			</Button>
-			<Button variant='contained' color='secondary' onClick={ closeDialog }>
+			<Button variant='contained' color='secondary' onClick={closeDialog}>
 				Cancel
 			</Button>
 		</DialogActions>

@@ -8,10 +8,10 @@ export default function PageTitleReset( { name, reset }: {
 } ) {
 	const dispatch = useDispatch();
 	
-	return <Grid item xs={ 12 } container justify='space-between'>
-		<Typography variant='h5'>{ name }</Typography>
+	return <Grid item xs={12} container justify='space-between'>
+		<Typography variant='h5'>{name}</Typography>
 		<Button
 			variant='contained' color='secondary'
-			onClick={ () => dispatch( reset() ) }>Reset</Button>
+			onClick={() => dispatch( reset() )}>Reset</Button>
 	</Grid>;
 }

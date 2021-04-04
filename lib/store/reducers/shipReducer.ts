@@ -1,5 +1,5 @@
-import { equipTier } from '../reference/equipRef';
-import shipRef from '../reference/shipRef';
+import { equipTier } from '../../reference/equipRef';
+import shipRef from '../../reference/shipRef';
 
 const RESET        = 'ship/reset',
       CHECKVERSION = 'ship/checkVersion',
@@ -63,32 +63,34 @@ type State = {
 		level0: boolean
 	}
 	version: string
+	lastModified: number
 }
 
 const initState: State = {
-	ships:   {},
-	filter:  {
+	ships:        {},
+	filter:       {
 		levelMax: true,
 		equipMax: true,
 		level0:   true
 	},
-	version: '2021-03-15'
+	version:      '2021-03-15',
+	lastModified: 0
 };
 
 export default function shipReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( 'ship' in action.data )
+		if ( action.data.ship )
 			return action.data.ship;
 		break;
 	case CHECKVERSION:
 		if ( state.version !== initState.version ) {
+			// recalculate equipment tiers
 			for ( const name in state.ships ) {
 				const ship = state.ships[ name ];
 				const tier = getTier( shipRef[ name ], ship.equip );
 				if ( tier ) ship.tier = tier;
 			}
-			
 			return { ...state, version: initState.version };
 		}
 		break;
