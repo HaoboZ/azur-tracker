@@ -47,7 +47,7 @@ export default function SnackbarProvider( { children } ) {
 			}}
 			onExited={() => setSnack( undefined )}>
 			<Alert
-				variant='outlined'
+				variant='filled'
 				color={snack?.type}
 				onClose={() => setOpen( false )}>
 				{snack?.message}
