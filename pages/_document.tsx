@@ -26,7 +26,10 @@ export default class _Document extends Document {
 		return <Html lang='en'>
 			<Head>
 				<link rel='manifest' href='manifest.json'/>
-				{/*<script src='https://accounts.google.com/gsi/client' async defer/>*/}
+				<link rel="apple-touch-icon" href="icon-192x192.png"/>
+				<link rel="apple-touch-icon" sizes="256x256" href="icon-256x256.png"/>
+				<link rel="apple-touch-icon" sizes="384x384" href="icon-384x384.png"/>
+				<link rel="apple-touch-icon" sizes="512x512" href="icon-512x512.png"/>
 				
 				<link
 					rel='stylesheet'
