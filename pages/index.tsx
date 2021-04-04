@@ -25,7 +25,7 @@ export default function Home() {
 	return <List>
 		{!session ? <ListItem>
 			<ListItemText>
-				Sign in for cloud.
+				Sign in for Cloud Save
 			</ListItemText>
 			<ListItemSecondaryAction>
 				<Button

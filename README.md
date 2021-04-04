@@ -11,3 +11,8 @@ yarn dev
 ```
 
 Open [localhost](http://localhost:3000) with your browser to see the result.
+
+## TODO
+
+* display error toasts on bad load
+* auto save and load

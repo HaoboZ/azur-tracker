@@ -14,7 +14,6 @@ export default function TableColumns() {
 		{
 			title: 'Name',
 			field: 'name',
-			// width: '15%',
 			customFilterAndSearch( term, rowData ) {
 				let regex: RegExp;
 				let isValid = true;
@@ -35,7 +34,6 @@ export default function TableColumns() {
 		{
 			title: 'Rarity',
 			field: 'rarity',
-			// width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ rarityColors[ rowData?.rarity ] ];
 			}
@@ -43,7 +41,6 @@ export default function TableColumns() {
 		{
 			title: 'Nation',
 			field: 'nation',
-			// width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ nationColors[ rowData?.nation ] ];
 			}
@@ -51,7 +48,6 @@ export default function TableColumns() {
 		{
 			title: 'Type',
 			field: 'type',
-			// width: '15%',
 			cellStyle( _, rowData ) {
 				return mappedColorClasses[ typeColors[ rowData?.type ] ];
 			}
@@ -62,7 +58,6 @@ export default function TableColumns() {
 			defaultSort: 'asc',
 			type:        'numeric',
 			align:       'left',
-			// width:       '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.tier;
 				switch ( val ) {
@@ -80,7 +75,6 @@ export default function TableColumns() {
 			field: 'love',
 			type:  'numeric',
 			align: 'left',
-			// width: '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.love;
 				return [ '♡', '♥', '💍', '💍♥' ][ val ];
@@ -92,7 +86,6 @@ export default function TableColumns() {
 			field: 'lvl',
 			type:  'numeric',
 			align: 'left',
-			// width: '10%',
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.lvl;
 				return val === 121 ? '★' : val;
@@ -100,10 +93,9 @@ export default function TableColumns() {
 			searchable: false
 		},
 		{
-			title: 'Equips',
-			field: 'equipTier',
-			align: 'center',
-			// width:      '10%',
+			title:      'Equips',
+			field:      'equipTier',
+			align:      'center',
 			grouping:   false,
 			searchable: false,
 			sorting:    false,
