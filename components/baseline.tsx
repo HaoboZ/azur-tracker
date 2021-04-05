@@ -15,7 +15,7 @@ export default function Baseline( { children }: {
 	const [ session ] = useSession();
 	
 	React.useEffect( () => {
-		if ( main.autoBackup && session ) setTimeout( setBackup, 500 );
+		if ( main.autoBackup && session ) setBackup().then();
 		const interval = setInterval( () => {
 			if ( main.autoBackup && session ) getBackup().then();
 		}, 15 * 1000 );
