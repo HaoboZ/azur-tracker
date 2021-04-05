@@ -1,4 +1,5 @@
 import { Box, Container, CssBaseline, ThemeProvider } from '@material-ui/core';
+import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -11,11 +12,12 @@ export default function Baseline( { children }: {
 	children?: React.ReactElement<any, any>
 } ) {
 	const { main, ...store } = useSelector( store => store );
+	const [ session ] = useSession();
 	
 	React.useEffect( () => {
-		if ( main.autoBackup ) setTimeout( setBackup, 500 );
+		if ( main.autoBackup && session ) setTimeout( setBackup, 500 );
 		const interval = setInterval( () => {
-			if ( main.autoBackup ) getBackup().then();
+			if ( main.autoBackup && session ) getBackup().then();
 		}, 15 * 1000 );
 		return () => clearInterval( interval );
 	}, Object.values( store ) );
