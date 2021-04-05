@@ -1,38 +1,48 @@
 import { md5 } from 'hash-wasm';
+import stringify from 'json-stable-stringify';
 import LZ from 'lz-string';
 
 import { store } from './store';
-import { importBackup } from './store/reducers/mainReducer';
+import { importBackup, setLastSaved } from './store/reducers/mainReducer';
 
-async function getChecksum() {
-	const state = localStorage.getItem( 'persist:root' );
-	const { main, ...subState } = JSON.parse( state );
-	const body = JSON.stringify( subState );
-	return [ await md5( body ), body ];
+async function checkDataIntegrity() {
+	const { main, ...state } = store.getState();
+	const body = LZ.compressToUTF16( stringify( state ) );
+	const checksum = await md5( body );
+	
+	const res = await fetch( `/api/checkData?${new URLSearchParams( {
+		checksum,
+		lastSaved: main.lastSaved
+	} )}` );
+	let valid = await res.json();
+	return { valid, body };
 }
 
 export async function setBackup() {
 	if ( !navigator.onLine ) return;
-	const [ checksum, body ] = await getChecksum();
-	await fetch( `/api/setData?${new URLSearchParams( {
-		checksum
-	} )}`, {
+	const { valid, body } = await checkDataIntegrity();
+	if ( !valid ) return;
+	if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
+		await getBackup( false );
+		return;
+	}
+	const res = await fetch( '/api/setData', {
 		method: 'POST',
 		body
 	} );
+	const data = await res.json();
+	store.dispatch( setLastSaved( data.lastSaved ) );
 }
 
-export async function getBackup() {
+export async function getBackup( check = true ) {
 	if ( !navigator.onLine ) return;
-	const [ checksum ] = await getChecksum();
-	const res = await fetch( `/api/getData?${new URLSearchParams( {
-		checksum
-	} )}` );
+	if ( check ) {
+		const { valid } = await checkDataIntegrity();
+		if ( !valid ) return;
+	}
+	const res = await fetch( '/api/getData' );
 	const data = await res.json();
-	if ( !data || !Object.keys( data ).length ) return;
-	const state = Object.fromEntries( Object.entries( data )
-		.map( ( [ key, item ] ) =>
-			[ key, JSON.parse( LZ.decompressFromUTF16( JSON.parse( item as string ) ) ) ]
-		) );
+	const state = JSON.parse( LZ.decompressFromUTF16( data.data ) );
+	store.dispatch( setLastSaved( data.lastSaved ) );
 	store.dispatch( importBackup( state ) );
 }

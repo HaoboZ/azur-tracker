@@ -1,5 +1,6 @@
 const SETTHEME      = 'main/setTheme',
-      SETAUTOBACKUP = 'main/setAutoBackup';
+      SETAUTOBACKUP = 'main/setAutoBackup',
+      SETLASTSAVED  = 'main/setLastSaved';
 
 export function importBackup( data: any ) {
 	return {
@@ -8,7 +9,7 @@ export function importBackup( data: any ) {
 	};
 }
 
-export function setTheme( theme: string ) {
+export function setTheme( theme: 'light' | 'dark' ) {
 	return {
 		type: SETTHEME,
 		theme
@@ -22,14 +23,23 @@ export function setAutoBackup( autoBackup: boolean ) {
 	};
 }
 
+export function setLastSaved( lastSaved: string ) {
+	return {
+		type: SETLASTSAVED,
+		lastSaved
+	};
+}
+
 type State = {
 	theme: string
 	autoBackup: boolean
+	lastSaved: string
 }
 
 const initState: State = {
 	theme:      'light',
-	autoBackup: true
+	autoBackup: true,
+	lastSaved:  new Date( 0 ).toISOString()
 };
 
 export default function mainReducer( state = initState, action ): State {
@@ -38,7 +48,8 @@ export default function mainReducer( state = initState, action ): State {
 		return { ...state, theme: action.theme };
 	case SETAUTOBACKUP:
 		return { ...state, autoBackup: action.autoBackup };
-		
+	case SETLASTSAVED:
+		return { ...state, lastSaved: action.lastSaved };
 	}
 	return state;
 }

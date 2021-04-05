@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getBackup, setBackup } from '../lib/backup';
 import { useSnackBar } from '../lib/provider/snackbarProvider';
-import { setAutoBackup } from '../lib/store/reducers/mainReducer';
+import { setAutoBackup, setTheme } from '../lib/store/reducers/mainReducer';
 
 export default function Home() {
 	const main     = useSelector( store => store.main ),
@@ -48,7 +48,7 @@ export default function Home() {
 		</ListItem> : <>
 			<ListItem>
 				<ListItemText>
-					Google: {session.user.name}
+					Account: {session.user.email}
 				</ListItemText>
 				<ListItemSecondaryAction>
 					<Button
@@ -104,6 +104,16 @@ export default function Home() {
 				</ListItemSecondaryAction>
 			</ListItem>
 		</>}
+		<ListItem>
+			<ListItemText>Dark Mode</ListItemText>
+			<ListItemSecondaryAction>
+				<Switch
+					checked={main.theme === 'dark'}
+					onChange={( e, checked ) =>
+						dispatch( setTheme( checked ? 'dark' : 'light' ) )}
+				/>
+			</ListItemSecondaryAction>
+		</ListItem>
 		<ListItem>
 			<Typography>
 				<Link href='/event' passHref>

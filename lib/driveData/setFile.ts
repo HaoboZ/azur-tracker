@@ -1,10 +1,11 @@
 import { drive_v3 } from 'googleapis';
 
-export default async function writeData(
+export default async function setFile(
 	drive: drive_v3.Drive,
 	file: drive_v3.Schema$File,
 	data: string
 ) {
+	const modifiedTime = new Date().toISOString();
 	try {
 		const media = {
 			mimeType: 'application/json',
@@ -15,16 +16,14 @@ export default async function writeData(
 			await drive.files.update( {
 				fileId:      file.id,
 				media,
-				requestBody: {
-					modifiedTime: new Date().toISOString()
-				}
+				requestBody: { modifiedTime }
 			} as drive_v3.Params$Resource$Files$Update );
 		} else {
 			await drive.files.create( {
 				resource: {
-					name:         file.name,
-					parents:      [ 'appDataFolder' ],
-					modifiedTime: new Date().toISOString()
+					name:    file.name,
+					parents: [ 'appDataFolder' ],
+					modifiedTime
 				},
 				media
 			} as drive_v3.Params$Resource$Files$Create );
@@ -32,4 +31,5 @@ export default async function writeData(
 	} catch ( e ) {
 		throw e;
 	}
+	return modifiedTime;
 };

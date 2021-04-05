@@ -1,7 +1,5 @@
 import { AppBar, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import {
-	Brightness3 as Brightness3Icon,
-	BrightnessHigh as BrightnessHighIcon,
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
 	Event as EventIcon,
@@ -48,10 +46,6 @@ export default function BottomBar() {
 			}}>
 			{items.map( ( item, index ) =>
 				<BottomNavigationAction key={index} label={item.label} icon={item.icon}/> )}
-			<BottomNavigationAction
-				label='Theme'
-				icon={main.theme === 'light' ? <BrightnessHighIcon/> : <Brightness3Icon/>}
-			/>
 		</BottomNavigation>
 	</AppBar>;
 }

@@ -2,14 +2,20 @@ import { NextApiHandler } from 'next';
 
 import getDrive from '../../lib/driveData/getDrive';
 import getInfo from '../../lib/driveData/getInfo';
-import setFile from '../../lib/driveData/setFile';
 
 export default ( async function( req, res ) {
 	try {
+		const { checksum, lastSaved } = req.query;
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
-		const lastSaved = await setFile( drive, file, req.body );
-		res.json( { lastSaved } );
+		if ( checksum !== file.md5Checksum ) {
+			if ( lastSaved < file.modifiedTime )
+				res.json( '"prompt"' );
+			else
+				res.json( true );
+		} else {
+			res.json( false );
+		}
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );
 	}

@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\lib\backup.ts">
+          <value>
+            <Attribute>
+              <option name="separator" value="&#9;" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\lib\reference\shipRef.csv">
           <value>
             <Attribute>

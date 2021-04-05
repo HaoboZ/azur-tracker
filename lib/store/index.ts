@@ -1,11 +1,11 @@
 import { createStore, Store } from 'redux';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
+import createCompressor from 'redux-persist-transform-compress';
 import authMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
 import { isBrowser } from '../helpers';
 import { rootReducer } from './reducers';
-import stableCompressTransform from './stableCompressTransform';
 
 const migrations = {
 	2: ( state: RootState ) => ( {
@@ -33,7 +33,7 @@ const persistedReducer = persistReducer( {
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate:         createMigrate( migrations as any, { debug: false } ),
-	transforms:      [ stableCompressTransform ]
+	transforms:      [ createCompressor() ]
 }, rootReducer );
 
 export type RootState = ReturnType<typeof rootReducer>;
