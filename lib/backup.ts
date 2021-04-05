@@ -8,10 +8,8 @@ import { importBackup, setLastSaved } from './store/reducers/mainReducer';
 async function checkDataIntegrity() {
 	const { main, ...state } = store.getState();
 	const body = LZ.compressToUTF16( stringify( state ) );
-	const checksum = await md5( body );
-	
 	const res = await fetch( `/api/checkData?${new URLSearchParams( {
-		checksum,
+		checksum:  await md5( body ),
 		lastSaved: main.lastSaved
 	} )}` );
 	let valid = await res.json();
@@ -30,8 +28,8 @@ export async function setBackup() {
 		method: 'POST',
 		body
 	} );
-	const data = await res.json();
-	store.dispatch( setLastSaved( data.lastSaved ) );
+	const { lastSaved } = await res.json();
+	store.dispatch( setLastSaved( lastSaved ) );
 }
 
 export async function getBackup( check = true ) {
@@ -41,8 +39,8 @@ export async function getBackup( check = true ) {
 		if ( !valid ) return;
 	}
 	const res = await fetch( '/api/getData' );
-	const data = await res.json();
-	const state = JSON.parse( LZ.decompressFromUTF16( data.data ) );
-	store.dispatch( setLastSaved( data.lastSaved ) );
+	const { data, lastSaved } = await res.json();
+	const state = JSON.parse( LZ.decompressFromUTF16( data ) );
+	store.dispatch( setLastSaved( lastSaved ) );
 	store.dispatch( importBackup( state ) );
 }
