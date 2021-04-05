@@ -24,12 +24,14 @@ export async function setBackup() {
 		await getBackup( false );
 		return;
 	}
-	const res = await fetch( '/api/setData', {
+	const modifiedTime = new Date().toISOString();
+	store.dispatch( setLastSaved( modifiedTime ) );
+	await fetch( `/api/setData?${new URLSearchParams( {
+		modifiedTime
+	} )}`, {
 		method: 'POST',
 		body
 	} );
-	const { lastSaved } = await res.json();
-	store.dispatch( setLastSaved( lastSaved ) );
 }
 
 export async function getBackup( check = true ) {
@@ -37,6 +39,10 @@ export async function getBackup( check = true ) {
 	if ( check ) {
 		const { valid } = await checkDataIntegrity();
 		if ( !valid ) return;
+		if ( valid === 'old' ) {
+			await setBackup();
+			return;
+		}
 	}
 	const res = await fetch( '/api/getData' );
 	const { data, lastSaved } = await res.json();

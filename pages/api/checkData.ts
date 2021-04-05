@@ -11,6 +11,8 @@ export default ( async function( req, res ) {
 		if ( checksum !== file.md5Checksum ) {
 			if ( lastSaved < file.modifiedTime )
 				res.json( '"prompt"' );
+			else if ( lastSaved > file.modifiedTime )
+				res.json( '"old"' );
 			else
 				res.json( true );
 		} else {

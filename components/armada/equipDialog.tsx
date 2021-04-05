@@ -26,7 +26,7 @@ import EquipFilter from './equipFilter';
 import EquipSelector from './equipSelector';
 
 const Transition = React.forwardRef( (
-	props: TransitionProps & { children?: React.ReactElement<any, any> },
+	props: TransitionProps & { children?: React.ReactElement },
 	ref: React.Ref<unknown>
 ) => <Zoom ref={ref} {...props}/> );
 

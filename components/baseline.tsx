@@ -9,7 +9,7 @@ import themes from '../lib/theme';
 import Navigation from './navigation';
 
 export default function Baseline( { children }: {
-	children?: React.ReactElement<any, any>
+	children?: React.ReactElement
 } ) {
 	const { main, ...store } = useSelector( store => store );
 	const [ session ] = useSession();

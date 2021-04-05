@@ -3,9 +3,9 @@ import { drive_v3 } from 'googleapis';
 export default async function setFile(
 	drive: drive_v3.Drive,
 	file: drive_v3.Schema$File,
-	data: string
+	data: string,
+	modifiedTime: string = new Date().toISOString()
 ) {
-	const modifiedTime = new Date().toISOString();
 	try {
 		const media = {
 			mimeType: 'application/json',
