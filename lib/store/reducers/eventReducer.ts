@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import eventRef from '../../reference/eventRef';
 
 const RESET         = 'event/reset',
@@ -120,10 +122,9 @@ export default function eventReducer( state = initState, action ): State {
 		return {
 			...state,
 			name:             eventRef.name,
-			shopExpectedCost: Object.keys( eventRef.shop ).reduce(
-				( total, item ) => total
-					+ eventRef.shop[ item ].cost * Math.min( eventRef.shop[ item ].amount, state.shop[ item ] || 0 )
-				, 0 ),
+			shopExpectedCost: _.reduce( eventRef.shop, ( total, item, itemName ) =>
+				total + item.cost * Math.min( item.amount, state.shop[ itemName ] || 0 ),
+				0 ),
 			points:           0
 		};
 	case SETSHOP:

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 //([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*)\n
 //'$1':['$2','$3','$4','$5',$6,$7,'$8','$9','$10','$11','$12',$13,'$14',$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26],\n
 //([01])/([01])
@@ -473,20 +475,17 @@ const ships = {
 	'Ark_Royal_META':                 [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 0.5, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
 };
 
-export default Object.fromEntries(
-	Object.entries( ships )
-		.map( ( [ key, val ] ) =>
-			[ key, {
-				id:      key,
-				name:    val[ 0 ],
-				link:    `https://azurlane.koumakan.jp/${key}`,
-				rarity:  val[ 1 ],
-				nation:  val[ 2 ],
-				type:    val[ 3 ],
-				tier:    val[ 4 ],
-				special: val[ 5 ],
-				equip:   [ val[ 6 ], val[ 7 ], val[ 8 ], val[ 9 ], val[ 10 ] ]
-			} ] ) ) as Record<string, {
+export default _.mapValues( ships, ( val, key ) => ( {
+	id:      key,
+	name:    val[ 0 ],
+	link:    `https://azurlane.koumakan.jp/${key}`,
+	rarity:  val[ 1 ],
+	nation:  val[ 2 ],
+	type:    val[ 3 ],
+	tier:    val[ 4 ],
+	special: val[ 5 ],
+	equip:   [ val[ 6 ], val[ 7 ], val[ 8 ], val[ 9 ], val[ 10 ] ]
+} ) ) as Record<string, {
 	id: string
 	name: string
 	link: string

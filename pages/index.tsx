@@ -45,65 +45,70 @@ export default function Home() {
 					Sign In
 				</Button>
 			</ListItemSecondaryAction>
-		</ListItem> : <>
-			<ListItem>
-				<ListItemText>
-					Account: {session.user.email}
-				</ListItemText>
-				<ListItemSecondaryAction>
+		</ListItem> : <ListItem>
+			<ListItemText>
+				Account: {session.user.email}
+			</ListItemText>
+			<ListItemSecondaryAction>
+				<Button
+					variant='outlined'
+					color='inherit'
+					onClick={() => signOut()}>
+					Sign Out
+				</Button>
+			</ListItemSecondaryAction>
+		</ListItem>}
+		<ListItem>
+			<ListItemText>Auto Backup</ListItemText>
+			<ListItemSecondaryAction>
+				<Switch
+					checked={main.autoBackup}
+					onChange={( e, checked ) => {
+						dispatch( setAutoBackup( checked ) );
+						if ( checked && session ) getBackup().then();
+					}}
+				/>
+			</ListItemSecondaryAction>
+		</ListItem>
+		<ListItem>
+			<ListItemText>Manual Backup</ListItemText>
+			<ListItemSecondaryAction>
+				<ButtonGroup>
 					<Button
 						variant='outlined'
 						color='inherit'
-						onClick={() => signOut()}>
-						Sign Out
-					</Button>
-				</ListItemSecondaryAction>
-			</ListItem>
-			<ListItem>
-				<ListItemText>Auto Backup</ListItemText>
-				<ListItemSecondaryAction>
-					<Switch
-						checked={main.autoBackup}
-						onChange={( e, checked ) => {
-							dispatch( setAutoBackup( checked ) );
-						}}
-					/>
-				</ListItemSecondaryAction>
-			</ListItem>
-			<ListItem>
-				<ListItemText>Manual Backup</ListItemText>
-				<ListItemSecondaryAction>
-					<ButtonGroup>
-						<Button
-							variant='outlined'
-							color='inherit'
-							onClick={async () => {
-								try {
+						onClick={async () => {
+							try {
+								if ( session ) {
 									await setBackup();
 									snackbar.showMessage( 'Data Successfully Saved' );
-								} catch ( e ) {
-									snackbar.showMessage( String( e ), 'error' );
-								}
-							}}>
-							Save
-						</Button>
-						<Button
-							variant='outlined'
-							color='inherit'
-							onClick={async () => {
-								try {
+								} else
+									snackbar.showMessage( 'Sign In to Save', 'info' );
+							} catch ( e ) {
+								snackbar.showMessage( String( e ), 'error' );
+							}
+						}}>
+						Save
+					</Button>
+					<Button
+						variant='outlined'
+						color='inherit'
+						onClick={async () => {
+							try {
+								if ( session ) {
 									await getBackup();
 									snackbar.showMessage( 'Data Successfully Loaded' );
-								} catch ( e ) {
-									snackbar.showMessage( String( e ), 'error' );
-								}
-							}}>
-							Load
-						</Button>
-					</ButtonGroup>
-				</ListItemSecondaryAction>
-			</ListItem>
-		</>}
+								} else
+									snackbar.showMessage( 'Sign In to Load', 'info' );
+							} catch ( e ) {
+								snackbar.showMessage( String( e ), 'error' );
+							}
+						}}>
+						Load
+					</Button>
+				</ButtonGroup>
+			</ListItemSecondaryAction>
+		</ListItem>
 		<ListItem>
 			<ListItemText>Dark Mode</ListItemText>
 			<ListItemSecondaryAction>

@@ -17,6 +17,7 @@ import {
 	TextField,
 	Typography
 } from '@material-ui/core';
+import _ from 'lodash';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -57,13 +58,10 @@ export default function ShopDialog( { status, closeDialog }: {
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
-		Object.keys( eventRef.shop ).reduce( ( total, itemName ) => {
-			const item = eventRef.shop[ itemName ];
-			return [
-				total[ 0 ] + item.cost * Math.min( item.amount, shop[ itemName ] || 0 ),
-				total[ 1 ] + item.cost * item.amount
-			];
-		}, [ 0, 0 ] ), [ shop ] );
+		_.reduce( eventRef.shop, ( total, item, itemName ) => [
+			total[ 0 ] + item.cost * Math.min( item.amount, shop[ itemName ] || 0 ),
+			total[ 1 ] + item.cost * item.amount
+		], [ 0, 0 ] ), [ shop ] );
 	
 	return <Dialog
 		open={status}
@@ -96,9 +94,8 @@ export default function ShopDialog( { status, closeDialog }: {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{Object.keys( eventRef.shop ).map( ( itemName, index ) => {
-							const item = eventRef.shop[ itemName ];
-							return <TableRow key={index}>
+						{_.map( eventRef.shop, ( item, itemName ) => {
+							return <TableRow key={itemName}>
 								<TableCell>{itemName}</TableCell>
 								<TableCell>{item.cost}</TableCell>
 								<TableCell align='right'>{item.amount}</TableCell>

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { createStore, Store } from 'redux';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
@@ -12,17 +13,15 @@ const migrations = {
 		...state,
 		ship: {
 			...state.ship,
-			ships: Object.keys( state.ship.ships ).reduce( ( ships, name ) => {
-				const ship = state.ship.ships[ name ];
+			ships: _.mapValues( state.ship.ships, ( ship ) => {
 				if ( ship?.equip )
 					ship.equip = ship.equip.map( ( val ) => {
 						if ( val.length > 1 )
 							val[ 1 ] = +val[ 1 ] as any;
 						return val;
 					} );
-				ships[ name ] = ship;
-				return ships;
-			}, {} )
+				return ship;
+			} )
 		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
