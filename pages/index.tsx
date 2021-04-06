@@ -81,7 +81,7 @@ export default function Home() {
 			<ListItemSecondaryAction style={{ width: '40%' }}>
 				<Slider
 					value={main.autoSaveInterval}
-					onChangeCommitted={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
+					onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
 					valueLabelDisplay='auto'
 					valueLabelFormat={( value ) => value / 1000}
 					step={500}
@@ -96,7 +96,7 @@ export default function Home() {
 			<ListItemSecondaryAction style={{ width: '40%' }}>
 				<Slider
 					value={main.autoLoadInterval}
-					onChangeCommitted={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
+					onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
 					valueLabelDisplay='auto'
 					valueLabelFormat={( value ) => value / 1000}
 					step={2500}
