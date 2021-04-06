@@ -1,11 +1,20 @@
-const SETTHEME      = 'main/setTheme',
-      SETAUTOBACKUP = 'main/setAutoBackup',
-      SETLASTSAVED  = 'main/setLastSaved';
+const SETTHEME            = 'main/setTheme',
+      SETAUTOBACKUP       = 'main/setAutoBackup',
+      SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
+      SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval',
+      SETLASTSAVED        = 'main/setLastSaved';
 
 export function importBackup( data: any ) {
 	return {
 		type: 'import',
 		data
+	};
+}
+
+export function setLastSaved( lastSaved: string ) {
+	return {
+		type: SETLASTSAVED,
+		lastSaved
 	};
 }
 
@@ -23,33 +32,48 @@ export function setAutoBackup( autoBackup: boolean ) {
 	};
 }
 
-export function setLastSaved( lastSaved: string ) {
+export function setAutoSaveInterval( interval: number ) {
 	return {
-		type: SETLASTSAVED,
-		lastSaved
+		type: SETAUTOSAVEINTERVAL,
+		interval
+	};
+}
+
+export function setAutoLoadInterval( interval: number ) {
+	return {
+		type: SETAUTOLOADINTERVAL,
+		interval
 	};
 }
 
 type State = {
+	lastSaved: string
 	theme: string
 	autoBackup: boolean
-	lastSaved: string
+	autoSaveInterval: number
+	autoLoadInterval: number
 }
 
 const initState: State = {
-	theme:      'light',
-	autoBackup: true,
-	lastSaved:  new Date( 0 ).toISOString()
+	lastSaved:        new Date( 0 ).toISOString(),
+	theme:            'light',
+	autoBackup:       true,
+	autoSaveInterval: 2 * 1000,
+	autoLoadInterval: 15 * 1000
 };
 
 export default function mainReducer( state = initState, action ): State {
 	switch ( action.type ) {
+	case SETLASTSAVED:
+		return { ...state, lastSaved: action.lastSaved };
 	case SETTHEME:
 		return { ...state, theme: action.theme };
 	case SETAUTOBACKUP:
 		return { ...state, autoBackup: action.autoBackup };
-	case SETLASTSAVED:
-		return { ...state, lastSaved: action.lastSaved };
+	case SETAUTOSAVEINTERVAL:
+		return { ...state, autoSaveInterval: action.interval };
+	case SETAUTOLOADINTERVAL:
+		return { ...state, autoLoadInterval: action.interval };
 	}
 	return state;
 }

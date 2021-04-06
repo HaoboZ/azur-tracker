@@ -15,13 +15,13 @@ export default function Baseline( { children }: {
 	const { main, ...store } = useSelector( store => store );
 	const [ session ] = useSession();
 	
-	const delayedSetBackup = React.useRef( _.debounce( setBackup, 2000 ) );
+	const delayedSetBackup = React.useRef( _.debounce( setBackup, main.autoSaveInterval ) ).current;
 	
 	React.useEffect( () => {
-		if ( main.autoBackup && session ) delayedSetBackup.current();
+		if ( main.autoBackup && session ) delayedSetBackup();
 		const interval = setInterval( () => {
 			if ( main.autoBackup && session ) getBackup().then();
-		}, 15 * 1000 );
+		}, main.autoLoadInterval );
 		return () => clearInterval( interval );
 	}, Object.values( store ) );
 	

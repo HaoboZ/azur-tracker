@@ -8,6 +8,7 @@ import {
 	ListItem,
 	ListItemSecondaryAction,
 	ListItemText,
+	Slider,
 	Switch,
 	Typography
 } from '@material-ui/core';
@@ -18,7 +19,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getBackup, setBackup } from '../lib/backup';
 import { useSnackBar } from '../lib/provider/snackbarProvider';
-import { setAutoBackup, setTheme } from '../lib/store/reducers/mainReducer';
+import {
+	setAutoBackup,
+	setAutoLoadInterval,
+	setAutoSaveInterval,
+	setTheme
+} from '../lib/store/reducers/mainReducer';
 
 export default function Home() {
 	const main     = useSelector( store => store.main ),
@@ -67,6 +73,36 @@ export default function Home() {
 						dispatch( setAutoBackup( checked ) );
 						if ( checked && session ) getBackup().then();
 					}}
+				/>
+			</ListItemSecondaryAction>
+		</ListItem>
+		<ListItem>
+			<ListItemText>Auto Save Interval</ListItemText>
+			<ListItemSecondaryAction style={{ width: '40%' }}>
+				<Slider
+					value={main.autoSaveInterval}
+					onChangeCommitted={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
+					valueLabelDisplay='auto'
+					valueLabelFormat={( value ) => value / 1000}
+					step={500}
+					marks
+					min={500}
+					max={5000}
+				/>
+			</ListItemSecondaryAction>
+		</ListItem>
+		<ListItem>
+			<ListItemText>Auto Load Interval (secs)</ListItemText>
+			<ListItemSecondaryAction style={{ width: '40%' }}>
+				<Slider
+					value={main.autoLoadInterval}
+					onChangeCommitted={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
+					valueLabelDisplay='auto'
+					valueLabelFormat={( value ) => value / 1000}
+					step={2500}
+					marks
+					min={5000}
+					max={30000}
 				/>
 			</ListItemSecondaryAction>
 		</ListItem>
