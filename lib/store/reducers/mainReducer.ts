@@ -59,7 +59,7 @@ const initState: State = {
 	theme:            'light',
 	autoBackup:       true,
 	autoSaveInterval: 2 * 1000,
-	autoLoadInterval: 15 * 1000
+	autoLoadInterval: 20 * 1000
 };
 
 export default function mainReducer( state = initState, action ): State {

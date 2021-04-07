@@ -15,15 +15,20 @@ export default function Baseline( { children }: {
 	const { main, ...store } = useSelector( store => store );
 	const [ session ] = useSession();
 	
-	const delayedSetBackup = React.useRef( _.debounce( setBackup, main.autoSaveInterval ) ).current;
+	const delayedSetBackup = React.useMemo( () => {
+		return _.debounce( setBackup, main.autoSaveInterval );
+	}, [ main.autoSaveInterval ] );
 	
 	React.useEffect( () => {
 		if ( main.autoBackup && session ) delayedSetBackup();
+	}, Object.values( store ) );
+	
+	React.useEffect( () => {
 		const interval = setInterval( () => {
 			if ( main.autoBackup && session ) getBackup().then();
 		}, main.autoLoadInterval );
 		return () => clearInterval( interval );
-	}, Object.values( store ) );
+	}, [ main.autoLoadInterval ] );
 	
 	return <ThemeProvider theme={themes[ main.theme ]}>
 		<SnackbarProvider>
