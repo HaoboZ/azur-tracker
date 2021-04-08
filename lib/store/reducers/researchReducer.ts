@@ -46,13 +46,11 @@ type State = {
 		fateLevel?: number
 		fateStage?: number
 	}>
-	lastModified: number
 }
 
 const initState: State = {
-	lastTab:      0,
-	ships:        {},
-	lastModified: 0
+	lastTab: 0,
+	ships:   {}
 };
 
 export default function researchReducer( state = initState, action ): State {

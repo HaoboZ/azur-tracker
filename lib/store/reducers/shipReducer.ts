@@ -63,18 +63,16 @@ type State = {
 		level0: boolean
 	}
 	version: string
-	lastModified: number
 }
 
 const initState: State = {
-	ships:        {},
-	filter:       {
+	ships:   {},
+	filter:  {
 		levelMax: true,
 		equipMax: true,
 		level0:   true
 	},
-	version:      '2021-03-15',
-	lastModified: 0
+	version: '2021-03-15'
 };
 
 export default function shipReducer( state = initState, action ): State {

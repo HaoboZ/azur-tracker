@@ -20,8 +20,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBackup, setBackup } from '../lib/backup';
 import { useSnackBar } from '../lib/provider/snackbarProvider';
 import {
-	setAutoBackup,
+	setAutoLoad,
 	setAutoLoadInterval,
+	setAutoSave,
 	setAutoSaveInterval,
 	setTheme
 } from '../lib/store/reducers/mainReducer';
@@ -67,15 +68,27 @@ export default function Home() {
 		<ListItem>
 			<ListItemText>Auto Backup</ListItemText>
 			<ListItemSecondaryAction>
-				<Switch
-					checked={main.autoBackup}
-					onChange={( e, checked ) => {
-						dispatch( setAutoBackup( checked ) );
-						if ( checked && session ) getBackup().then();
-					}}
-				/>
+				<ButtonGroup>
+					<Button
+						color={main.autoSave ? 'primary' : 'default'}
+						variant={main.autoSave ? 'contained' : 'outlined'}
+						onClick={() => {
+							dispatch( setAutoSave( !main.autoSave ) );
+						}}>
+						Save
+					</Button>
+					<Button
+						color={main.autoLoad ? 'primary' : 'default'}
+						variant={main.autoLoad ? 'contained' : 'outlined'}
+						onClick={() => {
+							dispatch( setAutoLoad( !main.autoLoad ) );
+						}}>
+						Load
+					</Button>
+				</ButtonGroup>
 			</ListItemSecondaryAction>
 		</ListItem>
+		
 		<ListItem>
 			<ListItemText>Auto Save Interval</ListItemText>
 			<ListItemSecondaryAction style={{ width: '40%' }}>

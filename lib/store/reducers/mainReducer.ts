@@ -1,5 +1,6 @@
 const SETTHEME            = 'main/setTheme',
-      SETAUTOBACKUP       = 'main/setAutoBackup',
+      SETAUTOSAVE         = 'main/setAutoSave',
+      SETAUTOLOAD         = 'main/setAutoLoad',
       SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
       SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval',
       SETLASTSAVED        = 'main/setLastSaved';
@@ -25,10 +26,17 @@ export function setTheme( theme: 'light' | 'dark' ) {
 	};
 }
 
-export function setAutoBackup( autoBackup: boolean ) {
+export function setAutoSave( autoSave: boolean ) {
 	return {
-		type: SETAUTOBACKUP,
-		autoBackup
+		type: SETAUTOSAVE,
+		autoSave
+	};
+}
+
+export function setAutoLoad( autoLoad: boolean ) {
+	return {
+		type: SETAUTOLOAD,
+		autoLoad
 	};
 }
 
@@ -49,7 +57,8 @@ export function setAutoLoadInterval( interval: number ) {
 type State = {
 	lastSaved: string
 	theme: string
-	autoBackup: boolean
+	autoSave: boolean
+	autoLoad: boolean
 	autoSaveInterval: number
 	autoLoadInterval: number
 }
@@ -57,7 +66,8 @@ type State = {
 const initState: State = {
 	lastSaved:        new Date( 0 ).toISOString(),
 	theme:            'light',
-	autoBackup:       true,
+	autoSave:         true,
+	autoLoad:         true,
 	autoSaveInterval: 2 * 1000,
 	autoLoadInterval: 20 * 1000
 };
@@ -68,8 +78,10 @@ export default function mainReducer( state = initState, action ): State {
 		return { ...state, lastSaved: action.lastSaved };
 	case SETTHEME:
 		return { ...state, theme: action.theme };
-	case SETAUTOBACKUP:
-		return { ...state, autoBackup: action.autoBackup };
+	case SETAUTOSAVE:
+		return { ...state, autoSave: action.autoSave };
+	case SETAUTOLOAD:
+		return { ...state, autoLoad: action.autoLoad };
 	case SETAUTOSAVEINTERVAL:
 		return { ...state, autoSaveInterval: action.interval };
 	case SETAUTOLOADINTERVAL:

@@ -20,12 +20,12 @@ export default function Baseline( { children }: {
 	}, [ main.autoSaveInterval ] );
 	
 	React.useEffect( () => {
-		if ( main.autoBackup && session ) delayedSetBackup();
+		if ( main.autoSave && session ) delayedSetBackup();
 	}, Object.values( store ) );
 	
 	React.useEffect( () => {
 		const interval = setInterval( () => {
-			if ( main.autoBackup && session ) getBackup().then();
+			if ( main.autoLoad && session ) getBackup().then();
 		}, main.autoLoadInterval );
 		return () => clearInterval( interval );
 	}, [ main.autoLoadInterval ] );

@@ -68,7 +68,6 @@ type State = {
 	dailyExpected: number
 	points: number
 	farming: { points: number, oil: number }[]
-	lastModified: number
 }
 
 const initState: State = {
@@ -105,8 +104,7 @@ const initState: State = {
 	points:           0,
 	farming:          [
 		{ points: 180, oil: 10 + 25 * 6 + 40 }
-	],
-	lastModified:     0
+	]
 };
 
 export default function eventReducer( state = initState, action ): State {

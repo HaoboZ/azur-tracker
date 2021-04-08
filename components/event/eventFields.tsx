@@ -57,19 +57,19 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 	
 	return <>
 		<Grid item xs={12} component={Box} mx='auto'>
-			<img
-				src={`/images/events/${eventRef.image}`} alt='event banner'
-				style={{ width: '100%', maxWidth: 700, display: 'block', margin: 'auto' }}
-			/>
-		</Grid>
-		<Grid item xs={12} component={Box} textAlign='center'>
 			<Link
 				href={`https://azurlane.koumakan.jp/${eventRef.link}`}
-				target='_blank'
-				variant='h6'
-				color='textPrimary'>
-				{eventRef.name}
+				target='_blank'>
+				<img
+					src={`/images/events/${eventRef.image}`} alt='event banner'
+					style={{ width: '100%', maxWidth: 700, display: 'block', margin: 'auto' }}
+				/>
 			</Link>
+		</Grid>
+		<Grid item xs={12} component={Box} textAlign='center'>
+			<Typography variant='h6' color='textPrimary'>
+				{eventRef.name}
+			</Typography>
 		</Grid>
 		<Grid item sm={4} xs={6}>
 			<TextField
