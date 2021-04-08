@@ -18,7 +18,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	title: {
+	appBar: {
+		paddingTop:   'env(safe-area-inset-top)',
+		paddingLeft:  'env(safe-area-inset-left)',
+		paddingRight: 'env(safe-area-inset-right)'
+	},
+	title:  {
 		paddingRight: theme.spacing( 3 )
 	}
 } ) );
@@ -32,7 +37,7 @@ export default function TitleBar() {
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
-	return <AppBar position='static'>
+	return <AppBar position='static' className={classes.appBar}>
 		<Toolbar>
 			<Link key='index' href='/' passHref>
 				<MuiLink

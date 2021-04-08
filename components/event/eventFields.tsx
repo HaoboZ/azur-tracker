@@ -17,6 +17,12 @@ import DailyDialog from './dailyDialog';
 import ShopDialog from './shopDialog';
 
 const useStyles = makeStyles( ( theme ) => ( {
+	banner:        {
+		width:    '100%',
+		maxWidth: 700,
+		display:  'block',
+		margin:   'auto'
+	},
 	rightInput:    {
 		textAlign: 'right'
 	},
@@ -62,7 +68,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				target='_blank'>
 				<img
 					src={`/images/events/${eventRef.image}`} alt='event banner'
-					style={{ width: '100%', maxWidth: 700, display: 'block', margin: 'auto' }}
+					className={classes.banner}
 				/>
 			</Link>
 		</Grid>

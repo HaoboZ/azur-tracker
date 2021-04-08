@@ -1,4 +1,4 @@
-import { AppBar, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { AppBar, BottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
@@ -11,6 +11,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setTheme } from '../../lib/store/reducers/mainReducer';
 
+const useStyles = makeStyles( () => ( {
+	footer: {
+		height: 56
+	},
+	appBar: {
+		top:           'auto',
+		bottom:        0,
+		paddingLeft:   'env(safe-area-inset-left)',
+		paddingRight:  'env(safe-area-inset-right)',
+		paddingBottom: 'env(safe-area-inset-bottom)'
+	}
+} ) );
+
 const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
 	{ label: 'Event', icon: <EventIcon/>, link: '/event' },
@@ -22,6 +35,7 @@ export default function BottomBar() {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
 	const router = useRouter();
+	const classes = useStyles();
 	
 	const index = React.useMemo( () => {
 		for ( let i = 0; i < items.length; ++i ) {
@@ -30,22 +44,24 @@ export default function BottomBar() {
 		}
 	}, [ router.asPath ] );
 	
-	return <AppBar position='fixed' style={{ top: 'auto', bottom: 0 }}>
-		<BottomNavigation
-			showLabels
-			value={index}
-			onChange={( e, value ) => {
-				switch ( value ) {
-				case 4:
-					dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) );
-					break;
-				default:
-					router.push( items[ value ].link ).then();
-					break;
-				}
-			}}>
-			{items.map( ( item, index ) =>
-				<BottomNavigationAction key={index} label={item.label} icon={item.icon}/> )}
-		</BottomNavigation>
-	</AppBar>;
+	return <div className={classes.footer}>
+		<AppBar position='fixed' color='inherit' className={classes.appBar}>
+			<BottomNavigation
+				showLabels
+				value={index}
+				onChange={( e, value ) => {
+					switch ( value ) {
+					case 4:
+						dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) );
+						break;
+					default:
+						router.push( items[ value ].link ).then();
+						break;
+					}
+				}}>
+				{items.map( ( item, index ) =>
+					<BottomNavigationAction key={index} label={item.label} icon={item.icon}/> )}
+			</BottomNavigation>
+		</AppBar>
+	</div>;
 }

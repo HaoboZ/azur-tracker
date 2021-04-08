@@ -33,11 +33,12 @@ export default function Baseline( { children }: {
 	return <ThemeProvider theme={themes[ main.theme ]}>
 		<SnackbarProvider>
 			<CssBaseline/>
-			<Navigation/>
-			{/*@ts-ignore*/}
-			<Container maxWidth='md' component={Box} pt={2} pb={4}>
-				{children}
-			</Container>
+			<Navigation>
+				{/*@ts-ignore*/}
+				<Container maxWidth='md' component={Box} pt={2} pb={4}>
+					{children}
+				</Container>
+			</Navigation>
 		</SnackbarProvider>
 	</ThemeProvider>;
 }
