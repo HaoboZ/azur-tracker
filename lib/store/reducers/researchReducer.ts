@@ -58,7 +58,7 @@ const initState: State = {
 export default function researchReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( action.data.research )
+		if ( action.data?.research )
 			return action.data.research;
 		break;
 	case RESET:

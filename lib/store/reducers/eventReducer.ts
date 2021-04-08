@@ -112,7 +112,7 @@ const initState: State = {
 export default function eventReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( action.data.event )
+		if ( action.data?.event )
 			return action.data.event;
 		break;
 	case RESET:

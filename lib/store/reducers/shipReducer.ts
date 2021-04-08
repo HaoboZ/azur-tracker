@@ -80,7 +80,7 @@ const initState: State = {
 export default function shipReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case 'import':
-		if ( action.data.ship )
+		if ( action.data?.ship )
 			return action.data.ship;
 		break;
 	case CHECKVERSION:
