@@ -45,7 +45,6 @@ export async function getBackup( check = true ) {
 	}
 	const res = await fetch( '/api/getData' );
 	const { data, lastSaved } = await res.json();
-	const state = JSON.parse( data );
 	store.dispatch( setLastSaved( lastSaved ) );
-	store.dispatch( importBackup( state ) );
+	store.dispatch( importBackup( data ) );
 }
