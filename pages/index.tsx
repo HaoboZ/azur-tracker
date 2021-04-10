@@ -1,8 +1,6 @@
 import {
-	Box,
 	Button,
 	ButtonGroup,
-	CircularProgress,
 	Link as MuiLink,
 	List,
 	ListItem,
@@ -32,12 +30,6 @@ export default function Home() {
 	      dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const snackbar = useSnackBar();
-	
-	if ( loading ) {
-		return <Box display='flex' justifyContent='center'>
-			<CircularProgress/>
-		</Box>;
-	}
 	
 	return <List>
 		<ListItem>
