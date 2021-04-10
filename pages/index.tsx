@@ -40,31 +40,25 @@ export default function Home() {
 	}
 	
 	return <List>
-		{!session ? <ListItem>
+		<ListItem>
 			<ListItemText>
-				Sign in for Cloud Save
+				{loading ? 'Loading...' :
+					( session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save' )}
 			</ListItemText>
-			<ListItemSecondaryAction>
-				<Button
-					variant='outlined'
-					color='inherit'
-					onClick={() => signIn( 'google' )}>
-					Sign In
-				</Button>
-			</ListItemSecondaryAction>
-		</ListItem> : <ListItem>
-			<ListItemText>
-				Account: {session.user.email}
-			</ListItemText>
-			<ListItemSecondaryAction>
-				<Button
+			{!loading && <ListItemSecondaryAction>
+				{session ? <Button
 					variant='outlined'
 					color='inherit'
 					onClick={() => signOut()}>
 					Sign Out
-				</Button>
-			</ListItemSecondaryAction>
-		</ListItem>}
+				</Button> : <Button
+					variant='outlined'
+					color='inherit'
+					onClick={() => signIn( 'google' )}>
+					Sign In
+				</Button>}
+			</ListItemSecondaryAction>}
+		</ListItem>
 		<ListItem>
 			<ListItemText>Auto Backup</ListItemText>
 			<ListItemSecondaryAction>

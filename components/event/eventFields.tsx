@@ -55,7 +55,6 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	
 	const classes = useStyles();
 	
 	const [ shopDialog, setShopDialog ] = React.useState( false );
@@ -89,7 +88,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
 			/>
 		</Grid>
-		<Grid item sm={4} xs={6}>
+		<Grid item sm={4} xs={12}>
 			<TextField
 				type='text' disabled className={classes.disabledInput} label='Days Remaining'
 				InputProps={{
@@ -112,7 +111,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 			/>
 			<ShopDialog status={shopDialog} closeDialog={() => setShopDialog( false )}/>
 		</Grid>
-		<Grid item sm={3} xs={4}>
+		<Grid item sm={3} xs={6}>
 			<TextField
 				type='text' label='Daily Points'
 				InputProps={{
@@ -124,7 +123,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 			/>
 			<DailyDialog status={dailyDialog} closeDialog={() => setDailyDialog( false )}/>
 		</Grid>
-		<Grid item sm={3} xs={4}>
+		<Grid item sm={3} xs={6}>
 			<TextField
 				type='text' disabled className={classes.disabledInput} label='Required Points'
 				InputProps={{
@@ -134,7 +133,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				defaultValue={neededPoints}
 			/>
 		</Grid>
-		<Grid item sm={3} xs={4}>
+		<Grid item sm={3} xs={6}>
 			<TextField
 				type='number'
 				label='Current Points'

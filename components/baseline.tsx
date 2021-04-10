@@ -24,6 +24,10 @@ export default function Baseline( { children }: {
 	}, Object.values( store ) );
 	
 	React.useEffect( () => {
+		if ( main.autoLoad && session ) getBackup().then();
+	}, [ session ] );
+	
+	React.useEffect( () => {
 		const interval = setInterval( () => {
 			if ( main.autoLoad && session ) getBackup().then();
 		}, main.autoLoadInterval );

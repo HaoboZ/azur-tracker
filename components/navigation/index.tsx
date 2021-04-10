@@ -15,7 +15,7 @@ const useStyles = makeStyles( {
 
 export default function Navigation( { children } ) {
 	const classes = useStyles();
-	const size = useMediaQuery( ( theme: Theme ) => theme.breakpoints.up( 'sm' ) );
+	const size = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <>
 		{size && <TitleBar/>}

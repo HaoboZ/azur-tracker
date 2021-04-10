@@ -39,7 +39,8 @@ export default function Event() {
 		<EventFields
 			time={time}
 			remainingDays={remainingDays}
-			neededPoints={neededPoints}/>
+			neededPoints={neededPoints}
+		/>
 		<FarmingTable remainingPoints={remainingPoints}/>
 	</Grid>;
 }
