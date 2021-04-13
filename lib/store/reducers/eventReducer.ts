@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import eventRef from '../../reference/eventRef';
 
 const RESET         = 'event/reset',
@@ -7,7 +5,7 @@ const RESET         = 'event/reset',
       SETSHOP       = 'event/setShop',
       SETDAILY      = 'event/setDaily',
       SETPOINTS     = 'event/setPoints',
-      ADDFARMING    = 'event/addFarming',
+      SETFARMING    = 'event/addFarming',
       MODIFYFARMING = 'event/modifyFarming';
 
 export function event_reset() {
@@ -41,12 +39,10 @@ export function event_setPoints( points: number ) {
 	};
 }
 
-export function event_addFarming( index: number, remove?: boolean ) {
-	
+export function event_setFarming( farming: { points: number, oil: number }[] ) {
 	return {
-		type: ADDFARMING,
-		index,
-		remove
+		type: SETFARMING,
+		farming
 	};
 }
 
@@ -120,8 +116,8 @@ export default function eventReducer( state = initState, action ): State {
 		return {
 			...state,
 			name:             eventRef.name,
-			shopExpectedCost: _.reduce( eventRef.shop, ( total, item, itemName ) =>
-				total + item.cost * Math.min( item.amount, state.shop[ itemName ] || 0 ),
+			shopExpectedCost: eventRef.shop.reduce( ( total, item ) =>
+				total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ),
 				0 ),
 			points:           0
 		};
@@ -139,15 +135,8 @@ export default function eventReducer( state = initState, action ): State {
 		};
 	case SETPOINTS:
 		return { ...state, points: action.points };
-	case ADDFARMING:
-		if ( !action.remove && state.farming.length >= action.index ) {
-			state.farming.splice( action.index, 0, { points: 0, oil: 0 } );
-			return { ...state, farming: [ ...state.farming ] };
-		} else if ( state.farming.length > action.index ) {
-			state.farming.splice( action.index, 1 );
-			return { ...state, farming: [ ...state.farming ] };
-		}
-		break;
+	case SETFARMING:
+		return { ...state, farming: action.farming };
 	case MODIFYFARMING:
 		state.farming[ action.index ] = { ...state.farming[ action.index ], ...action.item };
 		return { ...state, farming: state.farming };

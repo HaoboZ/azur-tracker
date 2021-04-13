@@ -1,26 +1,26 @@
-export const researchShips = {
+export const researchShips: { [ key: string ]: { name: string, type: number, fate: boolean, url: string }[] } = {
 	'PR1': [
-		[ 'Neptune', 0, true, 'HMS_Neptune' ],
-		[ 'Monarch', 0, true, 'Monarch' ],
-		[ 'Ibuki', 0, true, 'Ibuki' ],
-		[ 'Izumo', 0, true, 'Izumo' ],
-		[ 'Roon', 0, true, 'Roon' ],
-		[ 'Saint Louis', 0, true, 'Saint_Louis' ]
+		{ name: 'Neptune', type: 0, fate: true, url: 'HMS_Neptune' },
+		{ name: 'Monarch', type: 0, fate: true, url: 'Monarch' },
+		{ name: 'Ibuki', type: 0, fate: true, url: 'Ibuki' },
+		{ name: 'Izumo', type: 0, fate: true, url: 'Izumo' },
+		{ name: 'Roon', type: 0, fate: true, url: 'Roon' },
+		{ name: 'Saint Louis', type: 0, fate: true, url: 'Saint_Louis' }
 	],
 	'PR2': [
-		[ 'Seattle', 0, true, 'Seattle' ],
-		[ 'Georgia', 0, true, 'Georgia' ],
-		[ 'Kitakaze', 0, true, 'Kitakaze' ],
-		[ 'Azuma', 1, false, 'Azuma' ],
-		[ 'Friedrich der Groβe', 1, false, 'Friedrich_der_Grosse' ],
-		[ 'Gascogne', 0, true, 'Gascogne' ]
+		{ name: 'Seattle', type: 0, fate: true, url: 'Seattle' },
+		{ name: 'Georgia', type: 0, fate: true, url: 'Georgia' },
+		{ name: 'Kitakaze', type: 0, fate: true, url: 'Kitakaze' },
+		{ name: 'Azuma', type: 1, fate: false, url: 'Azuma' },
+		{ name: 'Friedrich der Groβe', type: 1, fate: false, url: 'Friedrich_der_Grosse' },
+		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
 	],
 	'PR3': [
-		[ 'Cheshire', 0, false, 'Cheshire' ],
-		[ 'Drake', 1, false, 'Drake' ],
-		[ 'Mainz', 0, false, 'Mainz' ],
-		[ 'Odin', 0, false, 'Odin' ],
-		[ 'Champagne', 0, false, 'Champagne' ]
+		{ name: 'Cheshire', type: 0, fate: false, url: 'Cheshire' },
+		{ name: 'Drake', type: 1, fate: false, url: 'Drake' },
+		{ name: 'Mainz', type: 0, fate: false, url: 'Mainz' },
+		{ name: 'Odin', type: 0, fate: false, url: 'Odin' },
+		{ name: 'Champagne', type: 0, fate: false, url: 'Champagne' }
 	]
 };
 

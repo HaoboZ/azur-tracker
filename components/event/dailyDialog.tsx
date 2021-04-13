@@ -6,28 +6,15 @@ import {
 	DialogContentText,
 	DialogTitle,
 	makeStyles,
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
 	TextField
 } from '@material-ui/core';
-import { Add as AddIcon, Remove as RemoveIcon } from '@material-ui/icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
+import EnhancedTable from '../enhancedTable';
 
-const useStyles = makeStyles( ( theme ) => ( {
-	table:       {
-		'& tr:nth-of-type(odd),& th': {
-			backgroundColor: theme.palette.type === 'dark'
-				                 ? theme.palette.action.hover : theme.palette.action.focus
-		}
-	},
+const useStyles = makeStyles( {
 	numberInput: {
 		textAlign:                                                    'right',
 		'&[type=number]':                                             {
@@ -38,7 +25,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 			margin:               0
 		}
 	}
-} ) );
+} );
 
 export default function DailyDialog( { status, closeDialog }: {
 	status: boolean
@@ -46,7 +33,6 @@ export default function DailyDialog( { status, closeDialog }: {
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	
 	const classes = useStyles();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
@@ -57,16 +43,6 @@ export default function DailyDialog( { status, closeDialog }: {
 	// total points gained daily
 	const dailyTotal = React.useMemo( () =>
 		daily.reduce( ( total, item ) => total + item.amount, 0 ), [ daily ] );
-	
-	function addItem( index: number, remove?: boolean ) {
-		if ( !remove && daily.length >= index ) {
-			daily.splice( index, 0, { name: '', amount: 0 } );
-			setDaily( [ ...daily ] );
-		} else if ( daily.length > index ) {
-			daily.splice( index, 1 );
-			setDaily( [ ...daily ] );
-		}
-	}
 	
 	function modifyItem( index: number, item: { name?: string, amount?: number } ) {
 		if ( 'amount' in item ) item.amount = Math.max( item.amount || 0, 0 );
@@ -88,61 +64,32 @@ export default function DailyDialog( { status, closeDialog }: {
 			<DialogContentText>
 				Total Daily: {dailyTotal}
 			</DialogContentText>
-			<TableContainer component={Paper}>
-				<Table size='small' className={classes.table}>
-					<TableHead>
-						<TableRow>
-							<TableCell colSpan={2}/>
-							<TableCell width={400}>Name</TableCell>
-							<TableCell align='right'>Amount</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{daily.map( ( item, index ) => <TableRow key={index}>
-							<TableCell>
-								<Button
-									variant='contained'
-									onClick={() => addItem( index )}>
-									<AddIcon/>
-								</Button>
-							</TableCell>
-							<TableCell>
-								<Button
-									variant='contained'
-									onClick={() => addItem( index, true )}>
-									<RemoveIcon/>
-								</Button>
-							</TableCell>
-							<TableCell>
-								<TextField
-									type='text' fullWidth
-									value={item.name}
-									onChange={( e ) =>
-										modifyItem( index, { name: e.target.value } )}
-								/>
-							</TableCell>
-							<TableCell align='right'>
-								<TextField
-									type='number'
-									inputProps={{ className: classes.numberInput }}
-									value={item.amount}
-									onChange={( e ) =>
-										modifyItem( index, { amount: parseInt( e.target.value ) } )}
-								/>
-							</TableCell>
-						</TableRow> )}
-						<TableRow>
-							<TableCell colSpan={4}>
-								<Button
-									variant='contained'
-									onClick={() => addItem( daily.length )}>
-									<AddIcon/>
-								</Button>
-							</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<EnhancedTable
+				data={daily}
+				columnHeader={[
+					'Name',
+					'Amount'
+				]}
+				columns={( item, index ) => [
+					<TextField
+						type='text' fullWidth
+						value={item.name}
+						onChange={( e ) =>
+							modifyItem( index, { name: e.target.value } )}
+					/>,
+					<TextField
+						type='number'
+						inputProps={{ className: classes.numberInput }}
+						value={item.amount}
+						onChange={( e ) =>
+							modifyItem( index, { amount: parseInt( e.target.value ) } )}
+					/>
+				]}
+				setData={setDaily}
+				newData={() => ( { name: '', amount: 0 } )}
+				sortable
+				editable
+			/>
 		</DialogContent>
 		<DialogActions>
 			<Button variant='contained' color='primary' onClick={() => {

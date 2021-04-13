@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import EventFields from '../components/event/eventFields';
 import FarmingTable from '../components/event/farmingTable';
-import PageTitleReset from '../components/pageTitleReset';
+import PageTitle from '../components/pageTitle';
 import eventRef from '../lib/reference/eventRef';
 import { event_newEvent, event_reset } from '../lib/store/reducers/eventReducer';
 
@@ -35,7 +35,9 @@ export default function Event() {
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <Grid container spacing={2}>
-		<PageTitleReset name='Event Tracker' reset={event_reset}/>
+		<Grid item xs={12}>
+			<PageTitle title='Event Tracker' actions={[ { name: 'Reset', onClick: () => dispatch( event_reset() ) } ]}/>
+		</Grid>
 		<EventFields
 			time={time}
 			remainingDays={remainingDays}

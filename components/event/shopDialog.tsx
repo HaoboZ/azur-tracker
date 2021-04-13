@@ -7,30 +7,17 @@ import {
 	DialogTitle,
 	Grid,
 	makeStyles,
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
 	TextField,
 	Typography
 } from '@material-ui/core';
-import _ from 'lodash';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
+import EnhancedTable from '../enhancedTable';
 
-const useStyles = makeStyles( ( theme ) => ( {
-	table:       {
-		'& tr:nth-of-type(odd),& th': {
-			backgroundColor: theme.palette.type === 'dark'
-				                 ? theme.palette.action.hover : theme.palette.action.focus
-		}
-	},
+const useStyles = makeStyles( {
 	numberInput: {
 		textAlign:                                                    'right',
 		'&[type=number]':                                             {
@@ -41,7 +28,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 			margin:               0
 		}
 	}
-} ) );
+} );
 
 export default function ShopDialog( { status, closeDialog }: {
 	status: boolean
@@ -58,8 +45,8 @@ export default function ShopDialog( { status, closeDialog }: {
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
-		_.reduce( eventRef.shop, ( total, item, itemName ) => [
-			total[ 0 ] + item.cost * Math.min( item.amount, shop[ itemName ] || 0 ),
+		eventRef.shop.reduce( ( total, item ) => [
+			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
 			total[ 1 ] + item.cost * item.amount
 		], [ 0, 0 ] ), [ shop ] );
 	
@@ -83,38 +70,29 @@ export default function ShopDialog( { status, closeDialog }: {
 				</Grid>
 			</Grid>
 			<Box margin={2}/>
-			<TableContainer component={Paper}>
-				<Table size='small' className={classes.table}>
-					<TableHead>
-						<TableRow>
-							<TableCell>Name</TableCell>
-							<TableCell>Cost</TableCell>
-							<TableCell align='right'>Amount</TableCell>
-							<TableCell align='right'>Wanted</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{_.map( eventRef.shop, ( item, itemName ) => {
-							return <TableRow key={itemName}>
-								<TableCell>{itemName}</TableCell>
-								<TableCell>{item.cost}</TableCell>
-								<TableCell align='right'>{item.amount}</TableCell>
-								<TableCell align='right'>
-									<TextField
-										type='number'
-										inputProps={{ className: classes.numberInput }}
-										value={shop[ itemName ] || 0}
-										onChange={( e ) => {
-											shop[ itemName ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
-											setShop( { ...shop } );
-										}}
-									/>
-								</TableCell>
-							</TableRow>;
-						} )}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<EnhancedTable
+				data={eventRef.shop}
+				columnHeader={[
+					'Name',
+					'Cost',
+					'Amount',
+					'Wanted'
+				]}
+				columns={( item ) => [
+					item.name,
+					item.cost,
+					item.amount,
+					<TextField
+						type='number'
+						inputProps={{ className: classes.numberInput }}
+						value={shop[ item.name ] || 0}
+						onChange={( e ) => {
+							shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
+							setShop( { ...shop } );
+						}}
+					/>
+				]}
+			/>
 		</DialogContent>
 		<DialogActions>
 			<Button variant='contained' color='primary' onClick={() => {

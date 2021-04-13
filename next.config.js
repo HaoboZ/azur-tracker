@@ -12,6 +12,6 @@ module.exports = withBundleAnalyzer( withPWA( {
 		runtimeCaching
 	},
 	future: {
-		webpack5: true
+		webpack5: process.env.NODE_ENV !== 'development'
 	}
 } ) );
