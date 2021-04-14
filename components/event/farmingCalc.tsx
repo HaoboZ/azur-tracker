@@ -17,7 +17,7 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function FarmingTable( { remainingPoints }: {
+export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
 } ) {
 	const event    = useSelector( store => store.event ),

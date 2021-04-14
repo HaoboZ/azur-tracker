@@ -7,7 +7,7 @@ import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
 import EquipFilter from '../components/armada/equipFilter';
 import TableColumns from '../components/armada/tableColumns';
-import PageTitle from '../components/pageTitle';
+import ActionTitle from '../components/actionTitle';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
@@ -84,7 +84,11 @@ export default function Armada() {
           }
 		`}</style>
 		<Grid item xs={12}>
-			<PageTitle title='Armada Tracker' actions={[ { name: 'Reset', onClick: () => dispatch( ship_reset() ) } ]}/>
+			<ActionTitle
+				title='Armada Tracker'
+				variant='h6'
+				actions={[ { name: 'Reset', onClick: () => dispatch( ship_reset() ) } ]}
+			/>
 		</Grid>
 		<Grid item xs>
 			<FormControlLabel

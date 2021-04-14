@@ -1,7 +1,7 @@
 {
 	"name": "Azur Lane Tracker",
 	"short_name": "Azur Tracker",
-	"display": "standalone",
+	"display": "fullscreen",
 	"orientation": "portrait",
 	"scope": "/",
 	"start_url": "/",

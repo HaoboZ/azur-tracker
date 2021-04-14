@@ -15,7 +15,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import EnhancedTable from '../components/enhancedTable';
-import PageTitle from '../components/pageTitle';
+import ActionTitle from '../components/actionTitle';
 import { devLevels, fateLevels, researchShips } from '../lib/reference/researchRef';
 
 import { research_modifyShip, research_reset, research_setLastTab } from '../lib/store/reducers/researchReducer';
@@ -46,13 +46,15 @@ export default function Research() {
 	
 	return <Grid container spacing={2}>
 		<Grid item xs={12}>
-			<PageTitle title='Research Tracker' actions={[ {
-				name:    'Reset',
-				onClick: () => dispatch( research_reset() )
-			} ]}/>
+			<ActionTitle
+				title='Research Tracker'
+				variant='h6'
+				actions={[ { name: 'Reset', onClick: () => dispatch( research_reset() ) } ]}
+			/>
 		</Grid>
 		<Grid item xs={12}>
 			<Tabs
+				variant='fullWidth'
 				value={research.lastTab}
 				onChange={( e, value ) => {
 					dispatch( research_setLastTab( value ) );

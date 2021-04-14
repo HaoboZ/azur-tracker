@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import EventFields from '../components/event/eventFields';
-import FarmingTable from '../components/event/farmingTable';
-import PageTitle from '../components/pageTitle';
+import FarmingCalc from '../components/event/farmingCalc';
+import ActionTitle from '../components/actionTitle';
 import eventRef from '../lib/reference/eventRef';
 import { event_newEvent, event_reset } from '../lib/store/reducers/eventReducer';
 
@@ -36,13 +36,17 @@ export default function Event() {
 	
 	return <Grid container spacing={2}>
 		<Grid item xs={12}>
-			<PageTitle title='Event Tracker' actions={[ { name: 'Reset', onClick: () => dispatch( event_reset() ) } ]}/>
+			<ActionTitle
+				title='Event Tracker'
+				variant='h6'
+				actions={[ { name: 'Reset', onClick: () => dispatch( event_reset() ) } ]}
+			/>
 		</Grid>
 		<EventFields
 			time={time}
 			remainingDays={remainingDays}
 			neededPoints={neededPoints}
 		/>
-		<FarmingTable remainingPoints={remainingPoints}/>
+		<FarmingCalc remainingPoints={remainingPoints}/>
 	</Grid>;
 }

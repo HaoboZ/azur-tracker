@@ -4,14 +4,14 @@ import React from 'react';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
-const useStyles = makeStyles( {
+const useStyles = makeStyles( ( theme ) => ( {
 	safeArea: {
-		paddingTop:    'env(safe-area-inset-top)',
+		paddingTop:    theme.breakpoints.up( 'sm' ) ? 0 : 'env(safe-area-inset-top)',
 		paddingLeft:   'env(safe-area-inset-left)',
 		paddingRight:  'env(safe-area-inset-right)',
 		paddingBottom: 'env(safe-area-inset-bottom)'
 	}
-} );
+} ) );
 
 export default function Navigation( { children } ) {
 	const classes = useStyles();
