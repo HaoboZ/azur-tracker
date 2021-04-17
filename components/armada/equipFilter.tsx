@@ -27,8 +27,7 @@ export default function EquipFilter( { colors, equipList, value, setValue }: {
 		fullWidth
 		classes={{ popper: classes.popper }}
 		value={value}
-		onChange={( e, newValue ) =>
-			setValue( newValue as any || equips[ 0 ] )}
+		onChange={( e, newValue ) => setValue( newValue as any || equips[ 0 ] )}
 		renderOption={( option ) => <>
 			<Box pr={1}>
 				<Image

@@ -15,7 +15,8 @@ type Message = {
 }
 
 export default function SnackbarProvider( { children } ) {
-	const size = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	
 	const [ open, setOpen ]           = React.useState( false ),
 	      [ nextSnack, setNextSnack ] = React.useState<Message>( undefined ),
 	      [ snack, setSnack ]         = React.useState<Message>( undefined );
@@ -41,7 +42,7 @@ export default function SnackbarProvider( { children } ) {
 		<Snackbar
 			open={open}
 			autoHideDuration={5000}
-			anchorOrigin={{ vertical: size ? 'bottom' : 'top', horizontal: 'center' }}
+			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
 			TransitionComponent={Grow}
 			onClose={( e, reason ) => {
 				if ( reason === 'clickaway' ) return;

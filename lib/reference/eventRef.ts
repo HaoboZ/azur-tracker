@@ -4,8 +4,8 @@ export default {
 	link:    'Ashen_Simulacrum',
 	endDate: '2021-04-07T23:59-07',
 	shop:    [
-		{ name: 'Cavalla', cost: 8000, amount: 5 },
-		{ name: 'Twin 130mm Main Gun (B-2LM)', cost: 2000, amount: 1 },
+		// { name: 'Cavalla', cost: 8000, amount: 5 },
+		// { name: 'Twin 130mm Main Gun (B-2LM)', cost: 2000, amount: 1 },
 		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },

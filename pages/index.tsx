@@ -149,8 +149,7 @@ export default function Home() {
 			<ListItemSecondaryAction>
 				<Switch
 					checked={main.theme === 'dark'}
-					onChange={( e, checked ) =>
-						dispatch( setTheme( checked ? 'dark' : 'light' ) )}
+					onChange={( e, checked ) => dispatch( setTheme( checked ? 'dark' : 'light' ) )}
 				/>
 			</ListItemSecondaryAction>
 		</ListItem>

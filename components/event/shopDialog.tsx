@@ -1,21 +1,20 @@
 import {
 	Box,
-	Button,
-	Dialog,
-	DialogActions,
 	DialogContent,
+	DialogContentText,
 	DialogTitle,
 	Grid,
+	ListItemText,
 	makeStyles,
-	TextField,
-	Typography
+	TextField
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
-import EnhancedTable from '../enhancedTable';
+import PageDialog from '../pageDialog';
+import ResponsiveDataDisplay from '../responsiveDataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
@@ -30,9 +29,9 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function ShopDialog( { status, closeDialog }: {
-	status: boolean
-	closeDialog: () => void
+export default function ShopDialog( { open, onClose }: {
+	open: boolean
+	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
@@ -40,8 +39,8 @@ export default function ShopDialog( { status, closeDialog }: {
 	
 	const [ shop, setShop ] = React.useState( event.shop );
 	React.useEffect( () => {
-		if ( status ) setShop( event.shop );
-	}, [ status ] );
+		if ( open ) setShop( event.shop );
+	}, [ open ] );
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
@@ -50,60 +49,69 @@ export default function ShopDialog( { status, closeDialog }: {
 			total[ 1 ] + item.cost * item.amount
 		], [ 0, 0 ] ), [ shop ] );
 	
-	return <Dialog
-		open={status}
-		onClose={closeDialog}
-		maxWidth='md'
-		fullWidth
-		disablePortal
-		disableEnforceFocus
-		disableAutoFocus
-		closeAfterTransition>
+	return <PageDialog
+		open={open}
+		onClose={onClose}
+		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
 		<DialogTitle>Shop Items</DialogTitle>
-		<DialogContent>
-			<Grid container spacing={2}>
-				<Grid item xs={6}>
-					<Typography>Buyout Price: {buyoutCost}</Typography>
+		<DialogContent style={{ padding: 0 }}>
+			<Box mx={3}>
+				<Grid container spacing={2}>
+					<Grid item xs={6}>
+						<DialogContentText>Buyout Price: {buyoutCost}</DialogContentText>
+					</Grid>
+					<Grid item xs={6}>
+						<DialogContentText>Expected Price: {expectedCost}</DialogContentText>
+					</Grid>
 				</Grid>
-				<Grid item xs={6}>
-					<Typography>Expected Price: {expectedCost}</Typography>
-				</Grid>
-			</Grid>
-			<Box margin={2}/>
-			<EnhancedTable
+			</Box>
+			<ResponsiveDataDisplay
 				data={eventRef.shop}
-				columnHeader={[
-					'Name',
-					'Cost',
-					'Amount',
-					'Wanted'
-				]}
-				columns={( item ) => [
-					item.name,
-					item.cost,
-					item.amount,
-					<TextField
-						type='number'
-						inputProps={{ className: classes.numberInput }}
-						value={shop[ item.name ] || 0}
-						onChange={( e ) => {
-							shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
-							setShop( { ...shop } );
-						}}
-					/>
-				]}
+				tableProps={{
+					columnHeader: [
+						'Name',
+						'Cost',
+						'Amount',
+						'Wanted'
+					],
+					columns:      ( item ) => [
+						item.name,
+						item.cost,
+						item.amount,
+						<TextField
+							type='number'
+							inputProps={{ className: classes.numberInput }}
+							value={shop[ item.name ] || 0}
+							onChange={( e ) => {
+								shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
+								setShop( { ...shop } );
+							}}
+						/>
+					]
+				}}
+				listProps={{
+					renderRow: ( ( item ) => <Grid container spacing={2}>
+						<Grid item xs={9}>
+							<ListItemText
+								primary={item.name}
+								secondary={'cost: ' + item.cost + ' amount: ' + item.amount}
+							/>
+						</Grid>
+						<Grid item xs={3}>
+							<TextField
+								type='number'
+								label='Wanted'
+								inputProps={{ className: classes.numberInput }}
+								value={shop[ item.name ] || 0}
+								onChange={( e ) => {
+									shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
+									setShop( { ...shop } );
+								}}
+							/>
+						</Grid>
+					</Grid> )
+				}}
 			/>
 		</DialogContent>
-		<DialogActions>
-			<Button variant='contained' color='primary' onClick={() => {
-				dispatch( event_setShop( shop, expectedCost ) );
-				closeDialog();
-			}}>
-				Save
-			</Button>
-			<Button variant='contained' color='secondary' onClick={closeDialog}>
-				Cancel
-			</Button>
-		</DialogActions>
-	</Dialog>;
+	</PageDialog>;
 }

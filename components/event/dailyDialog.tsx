@@ -1,18 +1,10 @@
-import {
-	Button,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	makeStyles,
-	TextField
-} from '@material-ui/core';
+import { DialogContent, DialogContentText, DialogTitle, Grid, makeStyles, TextField } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
-import EnhancedTable from '../enhancedTable';
+import PageDialog from '../pageDialog';
+import ResponsiveDataDisplay from '../responsiveDataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
@@ -27,9 +19,9 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function DailyDialog( { status, closeDialog }: {
-	status: boolean
-	closeDialog: () => void
+export default function DailyDialog( { open, onClose }: {
+	open: boolean
+	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
@@ -37,8 +29,8 @@ export default function DailyDialog( { status, closeDialog }: {
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
 	React.useEffect( () => {
-		if ( status ) setDaily( event.daily );
-	}, [ status ] );
+		if ( open ) setDaily( event.daily );
+	}, [ open ] );
 	
 	// total points gained daily
 	const dailyTotal = React.useMemo( () =>
@@ -50,57 +42,62 @@ export default function DailyDialog( { status, closeDialog }: {
 		setDaily( [ ...daily ] );
 	}
 	
-	return <Dialog
-		open={status}
-		onClose={closeDialog}
-		maxWidth='md'
-		fullWidth
-		disablePortal
-		disableEnforceFocus
-		disableAutoFocus
-		closeAfterTransition>
+	return <PageDialog
+		open={open}
+		onClose={onClose}
+		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
 		<DialogTitle>Daily Points</DialogTitle>
-		<DialogContent>
-			<DialogContentText>
-				Total Daily: {dailyTotal}
-			</DialogContentText>
-			<EnhancedTable
+		<DialogContent style={{ padding: 0 }}>
+			<ResponsiveDataDisplay
+				title={<DialogContentText>Total Daily: {dailyTotal}</DialogContentText>}
 				data={daily}
-				columnHeader={[
-					'Name',
-					'Amount'
-				]}
-				columns={( item, index ) => [
-					<TextField
-						type='text' fullWidth
-						value={item.name}
-						onChange={( e ) =>
-							modifyItem( index, { name: e.target.value } )}
-					/>,
-					<TextField
-						type='number'
-						inputProps={{ className: classes.numberInput }}
-						value={item.amount}
-						onChange={( e ) =>
-							modifyItem( index, { amount: parseInt( e.target.value ) } )}
-					/>
-				]}
+				tableProps={{
+					columnHeader: [
+						'Name',
+						'Amount'
+					],
+					columns:      ( item, index ) => [
+						<TextField
+							type='text'
+							fullWidth
+							value={item.name}
+							onChange={( e ) => modifyItem( index, { name: e.target.value } )}
+						/>,
+						<TextField
+							type='number'
+							inputProps={{ className: classes.numberInput }}
+							value={item.amount}
+							onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+						/>
+					]
+				}}
+				listProps={{
+					renderRow: ( item, index ) => <Grid container spacing={2}>
+						<Grid item xs={9}>
+							<TextField
+								type='text'
+								fullWidth
+								label='Name'
+								value={item.name}
+								onChange={( e ) => modifyItem( index, { name: e.target.value } )}
+							/>
+						</Grid>
+						<Grid item xs={3}>
+							<TextField
+								type='number'
+								label='Amount'
+								inputProps={{ className: classes.numberInput }}
+								value={item.amount}
+								onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							/>
+						</Grid>
+					</Grid>
+				}}
 				setData={setDaily}
 				newData={() => ( { name: '', amount: 0 } )}
 				sortable
 				editable
 			/>
 		</DialogContent>
-		<DialogActions>
-			<Button variant='contained' color='primary' onClick={() => {
-				dispatch( event_setDaily( daily, dailyTotal ) );
-				closeDialog();
-			}}>
-				Save
-			</Button>
-			<Button variant='contained' color='secondary' onClick={closeDialog}>
-				Cancel
-			</Button>
-		</DialogActions>
-	</Dialog>;
-}
+	</PageDialog>;
+};

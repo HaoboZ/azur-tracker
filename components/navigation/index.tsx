@@ -15,13 +15,13 @@ const useStyles = makeStyles( ( theme ) => ( {
 
 export default function Navigation( { children } ) {
 	const classes = useStyles();
-	const size = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <>
-		{size && <TitleBar/>}
+		{wide && <TitleBar/>}
 		<div className={classes.safeArea}>
 			{children}
 		</div>
-		{!size && <BottomBar/>}
+		{!wide && <BottomBar/>}
 	</>;
 }

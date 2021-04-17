@@ -1,4 +1,4 @@
-export const researchShips: { [ key: string ]: { name: string, type: number, fate: boolean, url: string }[] } = {
+export const researchShips: Record<string, { name: string, type: number, fate: boolean, url: string }[]> = {
 	'PR1': [
 		{ name: 'Neptune', type: 0, fate: true, url: 'HMS_Neptune' },
 		{ name: 'Monarch', type: 0, fate: true, url: 'Monarch' },

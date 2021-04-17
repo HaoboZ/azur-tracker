@@ -1,4 +1,3 @@
-import { Grid } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,26 +26,25 @@ export default function Event() {
 		return null;
 	
 	// number of days until end of event
-	const remainingDays = Math.max( moment( eventRef.endDate ).local().diff( time, 'day', true ), 0 );
+	const remainingDays = Math.floor( Math.max(
+		moment( eventRef.endDate ).local().diff( time, 'day', true )
+		, 0 ) );
 	
 	// number of points needed until only dailies are enough
-	const neededPoints    = event.shopExpectedCost - Math.floor( remainingDays ) * event.dailyExpected,
+	const neededPoints    = event.shopExpectedCost - remainingDays * event.dailyExpected,
 	      // points still needed to be farmed
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
-	return <Grid container spacing={2}>
-		<Grid item xs={12}>
-			<ActionTitle
-				title='Event Tracker'
-				variant='h6'
-				actions={[ { name: 'Reset', onClick: () => dispatch( event_reset() ) } ]}
-			/>
-		</Grid>
+	return <>
+		<ActionTitle
+			title='Event Tracker'
+			actions={[ { name: 'Reset', onClick: () => dispatch( event_reset() ) } ]}
+		/>
 		<EventFields
 			time={time}
 			remainingDays={remainingDays}
 			neededPoints={neededPoints}
 		/>
 		<FarmingCalc remainingPoints={remainingPoints}/>
-	</Grid>;
+	</>;
 }

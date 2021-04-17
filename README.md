@@ -13,3 +13,6 @@ yarn dev
 Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
+
+* add badges when updated correct reducer
+* add react swipeable views for research tabs

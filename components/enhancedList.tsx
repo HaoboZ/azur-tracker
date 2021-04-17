@@ -1,4 +1,4 @@
-import { Button, Divider, IconButton, List, ListItem, ListItemIcon, makeStyles } from '@material-ui/core';
+import { IconButton, List, ListItem, ListItemIcon, makeStyles } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Edit as EditIcon, Menu as MenuIcon } from '@material-ui/icons';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
@@ -12,16 +12,16 @@ const useStyles = makeStyles( ( theme ) => ( {
 } ) );
 
 export default function EnhancedList<Item>( {
-	title = 'List Title',
+	title,
 	data,
 	renderRow,
 	sortable,
 	editable,
-	setData,
+	setData = () => null,
 	newData = () => ( {} as Item ),
 	...props
 }: {
-	title?: string
+	title?: React.ReactNode
 	data: Item[]
 	renderRow: ( ( item: Item, index: number ) => React.ReactNode )
 	sortable?: boolean
@@ -33,40 +33,40 @@ export default function EnhancedList<Item>( {
 	
 	const [ editing, setEditing ] = React.useState( false );
 	
-	const listData = data.map( ( item, index ) => <ListItem key={index} divider>
-		<Divider/>
-		{editing && <ListItemIcon>
-			{editable && <IconButton onClick={() => {
-				const _data = [ ...data ];
-				_data.splice( index, 1 );
-				setData( _data );
-			}}><CloseIcon/></IconButton>}
-			{sortable && <IconButton className='sortHandle'><MenuIcon/></IconButton>}
-		</ListItemIcon>}
-		{renderRow( item, index )}
-	</ListItem> );
+	const listData = data.map( ( item, index ) => {
+		const hasIcon = editing || sortable;
+		return <ListItem key={index} divider style={hasIcon && { paddingLeft: 0 }}>
+			{hasIcon && <ListItemIcon>
+				{editing && <IconButton onClick={() => {
+					const _data = [ ...data ];
+					_data.splice( index, 1 );
+					setData?.( _data );
+				}}><CloseIcon/></IconButton>}
+				{sortable && <IconButton className='sortHandle'><MenuIcon/></IconButton>}
+			</ListItemIcon>}
+			{renderRow( item, index )}
+		</ListItem>;
+	} );
 	
 	return <List
-		subheader={<ActionTitle title={title} actions={[ {
+		subheader={( title || editable ) && <ActionTitle title={title} actions={editable ? [ {
 			name:    editing ? 'Cancel' : 'Edit',
 			onClick: () => setEditing( !editing ),
 			props:   { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
 		}, {
 			name:    'Add',
-			onClick: async () => setData( [ ...data, { ...await newData() } ] ),
+			onClick: async () => setData?.( [ ...data, { ...await newData?.() } ] ),
 			props:   { color: 'primary', startIcon: <AddIcon/> }
-		} ]}/>}
+		} ] : []}/>}
 		{...props}>
-		{sortable ?
-			<ReactSortable
-				list={data as any}
-				setList={setData as any}
-				handle='.sortHandle'
-				ghostClass={classes.selectedSort}
-				forceFallback
-				animation={150}>
-				{listData}
-			</ReactSortable>
-			: listData}
+		{sortable ? <ReactSortable
+			list={data as any}
+			setList={setData as any}
+			handle='.sortHandle'
+			ghostClass={classes.selectedSort}
+			forceFallback
+			animation={150}>
+			{listData}
+		</ReactSortable> : listData}
 	</List>;
 }

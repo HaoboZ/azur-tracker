@@ -1,13 +1,13 @@
-import { Checkbox, FormControlLabel, Grid, makeStyles } from '@material-ui/core';
+import { Box, Checkbox, FormControlLabel, Grid, makeStyles } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import ActionTitle from '../components/actionTitle';
 import DetailPanel from '../components/armada/detailPanel';
 import EquipDialog from '../components/armada/equipDialog';
 import EquipFilter from '../components/armada/equipFilter';
 import TableColumns from '../components/armada/tableColumns';
-import ActionTitle from '../components/actionTitle';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
@@ -70,82 +70,84 @@ export default function Armada() {
 		return shipData.equipBetter.some( val => val );
 	} ), [ ship, equip ] );
 	
-	return <Grid container spacing={2}>
+	return <>
 		{ /*language=css*/}
 		<style global jsx>{`
-          .MuiTableCell-sizeSmall {
-              padding: 0 8px !important;
-              max-width: 180px;
-              white-space: nowrap;
-          }
+		  .MuiTableCell-sizeSmall {
+			  padding: 0 8px !important;
+			  max-width: 180px;
+			  white-space: nowrap;
+		  }
 
-          .MuiTableCell-paddingNone:last-child {
-              padding: 4px 8px 0 !important;
-          }
+		  .MuiTableCell-paddingNone:last-child {
+			  padding: 4px 8px 0 !important;
+		  }
 		`}</style>
-		<Grid item xs={12}>
-			<ActionTitle
-				title='Armada Tracker'
-				variant='h6'
-				actions={[ { name: 'Reset', onClick: () => dispatch( ship_reset() ) } ]}
-			/>
-		</Grid>
-		<Grid item xs>
-			<FormControlLabel
-				control={<Checkbox
-					checked={ship.filter.levelMax}
-					onChange={( e ) =>
-						dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}/>}
-				label='Maxed Level'/>
-		</Grid>
-		<Grid item xs>
-			<FormControlLabel
-				control={<Checkbox
-					checked={ship.filter.equipMax}
-					onChange={( e ) =>
-						dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}/>}
-				label='Maxed Equip'/>
-		</Grid>
-		<Grid item xs>
-			<FormControlLabel
-				control={<Checkbox
-					checked={ship.filter.level0}
-					onChange={( e ) =>
-						dispatch( ship_setFilter( { level0: e.target.checked } ) )}/>}
-				label='0 Level'/>
-		</Grid>
-		<Grid item sm={4} xs={12}>
-			<EquipFilter
+		<ActionTitle
+			title='Armada Tracker'
+			actions={[ { name: 'Reset', onClick: () => dispatch( ship_reset() ) } ]}
+		/>
+		<Box mx={3}>
+			<Grid container spacing={2}>
+				<Grid item xs>
+					<FormControlLabel
+						control={<Checkbox
+							checked={ship.filter.levelMax}
+							onChange={( e ) => dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}
+						/>}
+						label='Maxed Level'
+					/>
+				</Grid>
+				<Grid item xs>
+					<FormControlLabel
+						control={<Checkbox
+							checked={ship.filter.equipMax}
+							onChange={( e ) => dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}
+						/>}
+						label='Maxed Equip'
+					/>
+				</Grid>
+				<Grid item xs>
+					<FormControlLabel
+						control={<Checkbox
+							checked={ship.filter.level0}
+							onChange={( e ) => dispatch( ship_setFilter( { level0: e.target.checked } ) )}
+						/>}
+						label='0 Level'
+					/>
+				</Grid>
+				<Grid item sm={4} xs={12}>
+					<EquipFilter
+						colors={classes}
+						equipList={equips}
+						value={equip}
+						setValue={setEquip}
+					/>
+				</Grid>
+			</Grid>
+		</Box>
+		<MaterialTable
+			title='Ship List'
+			icons={tableIcons}
+			columns={TableColumns()}
+			data={filteredShipList}
+			detailPanel={( rowData ) => <DetailPanel
 				colors={classes}
-				equipList={equips}
-				value={equip}
-				setValue={setEquip}
-			/>
-		</Grid>
-		<Grid item xs={12}>
-			<MaterialTable
-				title='Ship List'
-				icons={tableIcons}
-				columns={TableColumns()}
-				data={filteredShipList}
-				detailPanel={( rowData ) => <DetailPanel
-					colors={classes}
-					rowData={rowData}
-					equipClick={( rowData, index ) => {
-						setEquipInfo( { rowData, index } );
-						setEquipOpen( true );
-					}}/>}
-				onRowClick={( e, rowData, togglePanel ) => togglePanel()}
-				options={{
-					doubleHorizontalScroll: true,
-					emptyRowsWhenPaging:    false,
-					grouping:               true,
-					padding:                'dense',
-					pageSize:               100,
-					pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
-				}}
-			/>
-		</Grid>
+				rowData={rowData}
+				equipClick={( rowData, index ) => {
+					setEquipInfo( { rowData, index } );
+					setEquipOpen( true );
+				}}/>}
+			onRowClick={( e, rowData, togglePanel ) => togglePanel()}
+			options={{
+				doubleHorizontalScroll: true,
+				emptyRowsWhenPaging:    false,
+				grouping:               true,
+				padding:                'dense',
+				pageSize:               100,
+				pageSizeOptions:        [ 50, 100, 200, Object.keys( shipRef ).length ]
+			}}
+		/>
 		<EquipDialog
 			colors={classes}
 			open={equipOpen}
@@ -153,5 +155,5 @@ export default function Armada() {
 			info={equipInfo}
 			selectedEquip={equip}
 		/>
-	</Grid>;
+	</>;
 }

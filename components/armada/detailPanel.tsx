@@ -33,8 +33,8 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 						fullWidth
 						value={rowData.love}
 						SelectDisplayProps={{ style: { textAlign: 'center' } }}
-						onChange={( e ) =>
-							dispatch( ship_setShip( rowData.id, { love: e.target.value as number } ) )}>
+						onChange={( e ) => dispatch( ship_setShip( rowData.id,
+							{ love: e.target.value as number } ) )}>
 						<MenuItem value={0}>♡</MenuItem>
 						<MenuItem value={1}>♥</MenuItem>
 						<MenuItem value={2}>💍</MenuItem>
@@ -49,8 +49,8 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 						fullWidth
 						value={rowData.lvl}
 						SelectDisplayProps={{ style: { textAlign: 'center' } }}
-						onChange={( e ) =>
-							dispatch( ship_setShip( rowData.id, { lvl: e.target.value as number } ) )}>
+						onChange={( e ) => dispatch( ship_setShip( rowData.id,
+							{ lvl: e.target.value as number } ) )}>
 						<MenuItem value={0}>0</MenuItem>
 						<MenuItem value={70}>70</MenuItem>
 						<MenuItem value={80}>80</MenuItem>

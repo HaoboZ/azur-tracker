@@ -45,11 +45,11 @@ export default function Baseline( { children }: {
 }
 
 function Content( { children } ) {
-	const size = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <Navigation>
 		{/*@ts-ignore*/}
-		<Container maxWidth='md' disableGutters={!size} component={Box} overflow='hidden' pb={4}>
+		<Container maxWidth='md' disableGutters={!wide} component={Box} overflow='hidden' pb={4}>
 			{children}
 		</Container>
 	</Navigation>;

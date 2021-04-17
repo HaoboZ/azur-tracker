@@ -60,7 +60,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 	const [ shopDialog, setShopDialog ] = React.useState( false );
 	const [ dailyDialog, setDailyDialog ] = React.useState( false );
 	
-	return <>
+	return <Grid container spacing={2}>
 		<Grid item xs={12} component={Box} mx='auto'>
 			<Link
 				href={`https://azurlane.koumakan.jp/${eventRef.link}`}
@@ -76,75 +76,73 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				{eventRef.name}
 			</Typography>
 		</Grid>
-		<Grid item sm={4} xs={6}>
-			<TextField
-				type='text' disabled className={classes.disabledInput} label='Current Date'
-				value={time.format( 'l LT' )}
-			/>
-		</Grid>
-		<Grid item sm={4} xs={6}>
-			<TextField
-				type='text' disabled className={classes.disabledInput} label='End Date'
-				defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
-			/>
-		</Grid>
-		<Grid item sm={4} xs={12}>
-			<TextField
-				type='text' disabled className={classes.disabledInput} label='Days Remaining'
-				InputProps={{
-					endAdornment: <InputAdornment position='end'>Days</InputAdornment>
-				}}
-				inputProps={{ className: classes.rightInput }}
-				defaultValue={Math.floor( remainingDays )}
-			/>
-		</Grid>
-		<Grid item sm={3} xs={6}>
-			<TextField
-				type='text' label='Shop'
-				InputProps={{
-					startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
-					endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
-				}}
-				inputProps={{ className: classes.rightInput }}
-				value={event.shopExpectedCost}
-				onClick={() => setShopDialog( true )}
-			/>
-			<ShopDialog status={shopDialog} closeDialog={() => setShopDialog( false )}/>
-		</Grid>
-		<Grid item sm={3} xs={6}>
-			<TextField
-				type='text' label='Daily Points'
-				InputProps={{
-					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
-				}}
-				inputProps={{ className: classes.rightInput }}
-				value={event.dailyExpected}
-				onClick={() => setDailyDialog( true )}
-			/>
-			<DailyDialog status={dailyDialog} closeDialog={() => setDailyDialog( false )}/>
-		</Grid>
-		<Grid item sm={3} xs={6}>
-			<TextField
-				type='text' disabled className={classes.disabledInput} label='Required Points'
-				InputProps={{
-					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
-				}}
-				inputProps={{ className: classes.rightInput }}
-				defaultValue={neededPoints}
-			/>
-		</Grid>
-		<Grid item sm={3} xs={6}>
-			<TextField
-				type='number'
-				label='Current Points'
-				inputProps={{ className: `${classes.numberInput} ${classes.rightInput}` }}
-				InputProps={{
-					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
-				}}
-				value={event.points}
-				onChange={( e ) =>
-					dispatch( event_setPoints( parseInt( e.target.value ) ) )}
-			/>
-		</Grid>
-	</>;
+		<Box mx={3}>
+			<Grid container spacing={2}>
+				<Grid item sm={4} xs={6}>
+					<TextField
+						type='text' disabled className={classes.disabledInput} label='Current Date'
+						value={time.format( 'l LT' )}
+					/>
+				</Grid>
+				<Grid item sm={4} xs={6}>
+					<TextField
+						type='text' disabled className={classes.disabledInput} label='End Date'
+						defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
+					/>
+				</Grid>
+				<Grid item sm={4} xs={12} component={Box} textAlign='center'>
+					<Typography>
+						{remainingDays} Day{remainingDays === 1 ? '' : 's'} Remaining
+					</Typography>
+				</Grid>
+				<Grid item sm={3} xs={6}>
+					<TextField
+						type='text' label='Shop'
+						InputProps={{
+							startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
+							endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
+						}}
+						inputProps={{ className: classes.rightInput }}
+						value={event.shopExpectedCost}
+						onClick={() => setShopDialog( true )}
+					/>
+					<ShopDialog open={shopDialog} onClose={() => setShopDialog( false )}/>
+				</Grid>
+				<Grid item sm={3} xs={6}>
+					<TextField
+						type='text' label='Daily Points'
+						InputProps={{
+							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
+						}}
+						inputProps={{ className: classes.rightInput }}
+						value={event.dailyExpected}
+						onClick={() => setDailyDialog( true )}
+					/>
+					<DailyDialog open={dailyDialog} onClose={() => setDailyDialog( false )}/>
+				</Grid>
+				<Grid item sm={3} xs={6}>
+					<TextField
+						type='text' disabled className={classes.disabledInput} label='Required Points'
+						InputProps={{
+							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
+						}}
+						inputProps={{ className: classes.rightInput }}
+						defaultValue={neededPoints}
+					/>
+				</Grid>
+				<Grid item sm={3} xs={6}>
+					<TextField
+						type='number'
+						label='Current Points'
+						inputProps={{ className: `${classes.numberInput} ${classes.rightInput}` }}
+						InputProps={{
+							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
+						}}
+						value={event.points}
+						onChange={( e ) => dispatch( event_setPoints( parseInt( e.target.value ) ) )}
+					/>
+				</Grid>
+			</Grid>
+		</Box>
+	</Grid>;
 }
