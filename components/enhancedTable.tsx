@@ -47,7 +47,7 @@ export default function EnhancedTable<Item>( {
 	title?: React.ReactNode
 	data: Item[]
 	columnHeader: React.ReactNodeArray
-	columns: ( ( item: Item, index: number ) => React.ReactNodeArray )
+	columns: ( item: Item, index: number ) => React.ReactNodeArray
 	sortable?: boolean
 	editable?: boolean
 	setData?: ( items: Item[] ) => void // required if sortable or editable is true

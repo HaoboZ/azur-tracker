@@ -25,9 +25,9 @@ export default function Research() {
 				{Object.keys( researchShips ).map( ( label, index ) =>
 					<Tab key={index} label={label} value={index.toString()}/> )}
 			</TabList>
-			{Object.values( researchShips ).map( ( researchPR, index ) =>
+			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<TabPanel key={index} value={index.toString()} style={{ padding: 0 }}>
-					<ResearchGroup researchPR={researchPR} wide={wide}/>
+					<ResearchGroup researchData={researchData} wide={wide}/>
 				</TabPanel> )}
 		</TabContext>
 	</>;

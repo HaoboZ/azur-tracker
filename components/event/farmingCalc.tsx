@@ -1,28 +1,15 @@
-import { Grid, makeStyles, TextField, Typography } from '@material-ui/core';
+import { Grid, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 import ResponsiveDataDisplay from '../responsiveDataDisplay';
 
-const useStyles = makeStyles( {
-	numberInput: {
-		'&[type=number]':                                             {
-			'-moz-appearance': 'textfield'
-		},
-		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-			'-webkit-appearance': 'none',
-			margin:               0
-		}
-	}
-} );
-
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	const classes = useStyles();
 	
 	return <ResponsiveDataDisplay
 		title='Farming'
@@ -39,14 +26,12 @@ export default function FarmingCalc( { remainingPoints }: {
 				      oil   = plays * item.oil;
 				return [ <TextField
 					type='number'
-					inputProps={{ className: classes.numberInput }}
 					value={item.points}
 					onChange={( e ) => dispatch( event_modifyFarming( index,
 						{ points: parseInt( e.target.value ) } ) )}
 				/>,
 					<TextField
 						type='number'
-						inputProps={{ className: classes.numberInput }}
 						value={item.oil}
 						onChange={( e ) => dispatch( event_modifyFarming( index,
 							{ oil: parseInt( e.target.value ) } ) )}
@@ -65,7 +50,6 @@ export default function FarmingCalc( { remainingPoints }: {
 						<TextField
 							type='number'
 							label='Points/Run'
-							inputProps={{ className: classes.numberInput }}
 							value={item.points}
 							onChange={( e ) => dispatch( event_modifyFarming( index,
 								{ points: parseInt( e.target.value ) } ) )}
@@ -75,7 +59,6 @@ export default function FarmingCalc( { remainingPoints }: {
 						<TextField
 							type='number'
 							label='Oil/Run'
-							inputProps={{ className: classes.numberInput }}
 							value={item.oil}
 							onChange={( e ) => dispatch( event_modifyFarming( index,
 								{ oil: parseInt( e.target.value ) } ) )}

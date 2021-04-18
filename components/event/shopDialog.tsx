@@ -1,13 +1,4 @@
-import {
-	Box,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	Grid,
-	ListItemText,
-	makeStyles,
-	TextField
-} from '@material-ui/core';
+import { Box, DialogContent, DialogContentText, DialogTitle, Grid, ListItemText, TextField } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,26 +7,12 @@ import { event_setShop } from '../../lib/store/reducers/eventReducer';
 import PageDialog from '../pageDialog';
 import ResponsiveDataDisplay from '../responsiveDataDisplay';
 
-const useStyles = makeStyles( {
-	numberInput: {
-		textAlign:                                                    'right',
-		'&[type=number]':                                             {
-			'-moz-appearance': 'textfield'
-		},
-		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-			'-webkit-appearance': 'none',
-			margin:               0
-		}
-	}
-} );
-
 export default function ShopDialog( { open, onClose }: {
 	open: boolean
 	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	const classes = useStyles();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
 	React.useEffect( () => {
@@ -80,7 +57,6 @@ export default function ShopDialog( { open, onClose }: {
 						item.amount,
 						<TextField
 							type='number'
-							inputProps={{ className: classes.numberInput }}
 							value={shop[ item.name ] || 0}
 							onChange={( e ) => {
 								shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
@@ -101,7 +77,6 @@ export default function ShopDialog( { open, onClose }: {
 							<TextField
 								type='number'
 								label='Wanted'
-								inputProps={{ className: classes.numberInput }}
 								value={shop[ item.name ] || 0}
 								onChange={( e ) => {
 									shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );

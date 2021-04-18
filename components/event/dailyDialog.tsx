@@ -1,4 +1,4 @@
-import { DialogContent, DialogContentText, DialogTitle, Grid, makeStyles, TextField } from '@material-ui/core';
+import { DialogContent, DialogContentText, DialogTitle, Grid, TextField } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,26 +6,12 @@ import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 import PageDialog from '../pageDialog';
 import ResponsiveDataDisplay from '../responsiveDataDisplay';
 
-const useStyles = makeStyles( {
-	numberInput: {
-		textAlign:                                                    'right',
-		'&[type=number]':                                             {
-			'-moz-appearance': 'textfield'
-		},
-		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-			'-webkit-appearance': 'none',
-			margin:               0
-		}
-	}
-} );
-
 export default function DailyDialog( { open, onClose }: {
 	open: boolean
 	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
-	const classes = useStyles();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
 	React.useEffect( () => {
@@ -65,7 +51,6 @@ export default function DailyDialog( { open, onClose }: {
 						/>,
 						<TextField
 							type='number'
-							inputProps={{ className: classes.numberInput }}
 							value={item.amount}
 							onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
 						/>
@@ -86,7 +71,6 @@ export default function DailyDialog( { open, onClose }: {
 							<TextField
 								type='number'
 								label='Amount'
-								inputProps={{ className: classes.numberInput }}
 								value={item.amount}
 								onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
 							/>

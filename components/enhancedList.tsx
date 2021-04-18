@@ -1,11 +1,39 @@
-import { IconButton, List, ListItem, ListItemIcon, makeStyles } from '@material-ui/core';
-import { Add as AddIcon, Close as CloseIcon, Edit as EditIcon, Menu as MenuIcon } from '@material-ui/icons';
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	IconButton,
+	List,
+	ListItem,
+	ListItemIcon,
+	makeStyles,
+	Paper
+} from '@material-ui/core';
+import {
+	Add as AddIcon,
+	Close as CloseIcon,
+	Edit as EditIcon,
+	ExpandMore as ExpandMoreIcon,
+	Menu as MenuIcon
+} from '@material-ui/icons';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 
 import ActionTitle from './actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
+	center:       {
+		alignItems:       'center',
+		marginTop:        theme.spacing( 1 ),
+		marginBottom:     theme.spacing( 1 ),
+		'&.Mui-expanded': {
+			marginTop:    theme.spacing( 2 ),
+			marginBottom: theme.spacing( 2 )
+		}
+	},
+	iconSpace:    {
+		paddingLeft: 0
+	},
 	selectedSort: {
 		backgroundColor: `${theme.palette.secondary.main} !important`
 	}
@@ -15,6 +43,7 @@ export default function EnhancedList<Item>( {
 	title,
 	data,
 	renderRow,
+	renderPanel,
 	sortable,
 	editable,
 	setData = () => null,
@@ -23,7 +52,8 @@ export default function EnhancedList<Item>( {
 }: {
 	title?: React.ReactNode
 	data: Item[]
-	renderRow: ( ( item: Item, index: number ) => React.ReactNode )
+	renderRow: ( item: Item, index: number ) => React.ReactNode
+	renderPanel?: ( item: Item, index: number ) => React.ReactNode
 	sortable?: boolean
 	editable?: boolean
 	setData?: ( items: Item[] ) => void // required if sortable or editable is true
@@ -35,7 +65,8 @@ export default function EnhancedList<Item>( {
 	
 	const listData = data.map( ( item, index ) => {
 		const hasIcon = editing || sortable;
-		return <ListItem key={index} divider style={hasIcon && { paddingLeft: 0 }}>
+		
+		const itemRow = <>
 			{hasIcon && <ListItemIcon>
 				{editing && <IconButton onClick={() => {
 					const _data = [ ...data ];
@@ -45,7 +76,27 @@ export default function EnhancedList<Item>( {
 				{sortable && <IconButton className='sortHandle'><MenuIcon/></IconButton>}
 			</ListItemIcon>}
 			{renderRow( item, index )}
-		</ListItem>;
+		</>;
+		
+		if ( renderPanel ) {
+			return <Accordion>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon/>}
+					classes={{
+						root:    hasIcon && classes.iconSpace,
+						content: classes.center
+					}}>
+					{itemRow}
+				</AccordionSummary>
+				<AccordionDetails>
+					{renderPanel( item, index )}
+				</AccordionDetails>
+			</Accordion>;
+		} else {
+			return <ListItem key={index} divider className={hasIcon && classes.iconSpace}>
+				{itemRow}
+			</ListItem>;
+		}
 	} );
 	
 	return <List
@@ -59,14 +110,16 @@ export default function EnhancedList<Item>( {
 			props:   { color: 'primary', startIcon: <AddIcon/> }
 		} ] : []}/>}
 		{...props}>
-		{sortable ? <ReactSortable
-			list={data as any}
-			setList={setData as any}
-			handle='.sortHandle'
-			ghostClass={classes.selectedSort}
-			forceFallback
-			animation={150}>
-			{listData}
-		</ReactSortable> : listData}
+		<Paper>
+			{sortable ? <ReactSortable
+				list={data as any}
+				setList={setData as any}
+				handle='.sortHandle'
+				ghostClass={classes.selectedSort}
+				forceFallback
+				animation={150}>
+				{listData}
+			</ReactSortable> : listData}
+		</Paper>
 	</List>;
 }

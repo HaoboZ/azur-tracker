@@ -1,4 +1,13 @@
-import { InputAdornment, makeStyles, TextField, Typography } from '@material-ui/core';
+import {
+	Avatar,
+	Grid,
+	InputAdornment,
+	ListItemAvatar,
+	ListItemText,
+	makeStyles,
+	TextField,
+	Typography
+} from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,38 +29,39 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function ResearchGroup( { researchPR, wide }:
-	{ researchPR: typeof researchShips[string], wide: boolean } ) {
+export default function ResearchGroup( { researchData, wide }:
+	{ researchData: typeof researchShips[string], wide: boolean } ) {
 	const research = useSelector( store => store.research ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
-	const [ shipData, totalPR, totalDR ] = React.useMemo( () => {
+	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
-		const shipData = researchPR.map( ( item ) => {
+		const shipData = researchData.map( ( item ) => {
 			const ship = research.ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
 			const devPrints  = Math.max( Math.floor( devLevels[ 30 ][ item.type * 2 + 1 ]
 				- devLevel[ item.type * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
 				0 ),
-			      fatePrints = Math.max( Math.floor( fateLevels[ 5 ][ 1 ]
+			      fatePrints = item.fate ? Math.max( Math.floor( fateLevels[ 5 ][ 1 ]
 				      - fateLevel[ 1 ] - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
-				      0 );
+				      0 ) : 0;
+			
 			if ( item.type ) {
 				totalDR += devPrints;
 			} else {
 				totalPR += devPrints;
 				if ( item.fate ) totalPR += fatePrints;
 			}
-			return [ devLevel, devPrints, fatePrints ];
+			return { devLevel, devPrints, fatePrints };
 		} );
-		return [ shipData, totalPR, totalDR ];
+		return { shipData, totalPR, totalDR };
 	}, [ research.ships ] );
 	
 	return <>
 		<ResponsiveDataDisplay
-			data={researchPR}
+			data={researchData}
 			tableProps={{
 				columnHeader: [
 					'Name',
@@ -64,16 +74,16 @@ export default function ResearchGroup( { researchPR, wide }:
 				],
 				columns:      ( item, index ) => {
 					const ship = research.ships[ item.name ] || {};
-					const [ devLevel, devPrints, fatePrints ] = shipData[ index ];
-					
+					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
 						<>
-							<Image
-								src={`/images/ships/${item.url}.png`}
-								alt={item.name}
-								height={60}
-								width={60}
-							/>
+							<Avatar variant='rounded' style={{ width: 60, height: 60 }}>
+								<Image
+									src={`/images/ships/${item.url}.png`}
+									alt={item.name}
+									layout='fill'
+								/>
+							</Avatar>
 							<Typography>{item.name}</Typography>
 						</>,
 						<TextField
@@ -86,9 +96,7 @@ export default function ResearchGroup( { researchPR, wide }:
 							type='number'
 							InputProps={{
 								endAdornment:
-									<InputAdornment position='end'>
-										/{devLevel[ item.type * 2 ] * 10}
-									</InputAdornment>
+									<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
 							}}
 							inputProps={{ className: classes.numberInput }}
 							value={ship.devStage || 0}
@@ -119,7 +127,82 @@ export default function ResearchGroup( { researchPR, wide }:
 				}
 			}}
 			listProps={{
-				renderRow: ( item ) => 'Hi'
+				renderRow:   ( item, index ) => {
+					const { devPrints, fatePrints } = shipData[ index ];
+					return <>
+						<ListItemAvatar>
+							<Avatar variant='rounded'>
+								<Image
+									src={`/images/ships/${item.url}.png`}
+									alt={item.name}
+									layout='fill'
+								/>
+							</Avatar>
+						</ListItemAvatar>
+						<ListItemText
+							primary={item.name}
+							secondary={`Needs: ${devPrints + fatePrints} Prints`}
+						/>
+					</>;
+				},
+				renderPanel: ( item, index ) => {
+					const ship = research.ships[ item.name ] || {};
+					const { devLevel } = shipData[ index ];
+					return <Grid container spacing={2}>
+						<Grid item xs={6}>
+							<TextField
+								type='number'
+								size='small'
+								InputProps={{
+									startAdornment: <InputAdornment position='start'>Dev Level</InputAdornment>
+								}}
+								value={ship.devLevel || 0}
+								onChange={( e ) => dispatch( research_modifyShip( item.name,
+									{ devLevel: parseInt( e.target.value ) } ) )}
+							/>
+							<TextField
+								type='number'
+								size='small'
+								InputProps={{
+									startAdornment:
+										<InputAdornment position='start'>Stage</InputAdornment>,
+									endAdornment:
+										<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
+								}}
+								inputProps={{ className: classes.numberInput }}
+								value={ship.devStage || 0}
+								onChange={( e ) => dispatch( research_modifyShip( item.name,
+									{ devStage: parseInt( e.target.value ) },
+									devLevel[ item.type * 2 ] * 10 ) )}
+							/>
+						</Grid>
+						
+						{item.fate && <Grid item xs={6}>
+							<TextField
+								type='number'
+								size='small'
+								InputProps={{
+									startAdornment: <InputAdornment position='start'>Fate Level</InputAdornment>
+								}}
+								value={ship.fateLevel || 0}
+								onChange={( e ) => dispatch( research_modifyShip( item.name,
+									{ fateLevel: parseInt( e.target.value ) } ) )}
+							/>
+							<TextField
+								type='number'
+								size='small'
+								InputProps={{
+									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
+									endAdornment:   <InputAdornment position='end'>%</InputAdornment>
+								}}
+								inputProps={{ className: classes.numberInput }}
+								value={ship.fateStage || 0}
+								onChange={( e ) => dispatch( research_modifyShip( item.name,
+									{ fateStage: parseInt( e.target.value ) } ) )}
+							/>
+						</Grid>}
+					</Grid>;
+				}
 			}}
 			wide={wide}
 		/>

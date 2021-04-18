@@ -18,11 +18,12 @@ export default function ResponsiveDataDisplay<Item>( {
 	newData?: () => Item | Promise<Item>  // required if editable is true
 	wide?: boolean
 	listProps: {
-		renderRow: ( ( item: Item, index: number ) => React.ReactNode )
+		renderRow: ( item: Item, index: number ) => React.ReactNode,
+		renderPanel?: ( item: Item, index: number ) => React.ReactNode
 	} & React.ComponentProps<typeof List>
 	tableProps: {
 		columnHeader: React.ReactNodeArray
-		columns: ( ( item: Item, index: number ) => React.ReactNodeArray )
+		columns: ( item: Item, index: number ) => React.ReactNodeArray
 	} & React.ComponentProps<typeof TableContainer>
 } ) {
 	if ( wide ) return <EnhancedTable {...tableProps} {...props as any}/>;
