@@ -13,6 +13,13 @@ export default function _App( { Component, pageProps } ) {
 			<AuthProvider session={pageProps.session}>
 				<Head>
 					<title>Azur Lane Tracker</title>
+					<meta charSet='utf-8'/>
+					<meta
+						name='viewport'
+						content='width=device-width,
+							minimum-scale=1, maximum-scale=1, initial-scale=1,
+							user-scalable=no, viewport-fit=cover'
+					/>
 				</Head>
 				<Baseline>
 					<Component {...pageProps}/>

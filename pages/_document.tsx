@@ -25,14 +25,6 @@ export default class _Document extends Document {
 		// noinspection HtmlRequiredTitleElement
 		return <Html lang='en'>
 			<Head>
-				<meta charSet='utf-8'/>
-				<meta
-					name='viewport'
-					content='width=device-width,
-							minimum-scale=1, maximum-scale=1, initial-scale=1,
-							user-scalable=no, viewport-fit=cover'
-				/>
-				
 				<link rel='manifest' href='site.webmanifest'/>
 				
 				<link rel='apple-touch-icon' href='icons/apple-icon-180.png'/>
