@@ -5,7 +5,7 @@ import {
 	List,
 	ListItem,
 	ListItemSecondaryAction,
-	ListItemText,
+	ListItemText, makeStyles,
 	Slider,
 	Switch,
 	Typography
@@ -25,15 +25,28 @@ import {
 	setTheme
 } from '../lib/store/reducers/mainReducer';
 
+const useStyles = makeStyles( {
+	longText:   {
+		width:        '70%',
+		whiteSpace:   'nowrap',
+		overflow:     'hidden',
+		textOverflow: 'ellipsis'
+	},
+	longAction: {
+		width: '40%'
+	}
+} );
+
 export default function Home() {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const snackbar = useSnackBar();
+	const classes = useStyles();
 	
 	return <List>
 		<ListItem>
-			<ListItemText>
+			<ListItemText classes={{ primary: classes.longText }}>
 				{loading ? 'Loading...' :
 					( session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save' )}
 			</ListItemText>
@@ -76,8 +89,8 @@ export default function Home() {
 		</ListItem>
 		
 		<ListItem>
-			<ListItemText>Auto Save Interval</ListItemText>
-			<ListItemSecondaryAction style={{ width: '40%' }}>
+			<ListItemText>Auto Save Interval (secs)</ListItemText>
+			<ListItemSecondaryAction className={classes.longAction}>
 				<Slider
 					value={main.autoSaveInterval}
 					onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
@@ -92,7 +105,7 @@ export default function Home() {
 		</ListItem>
 		<ListItem>
 			<ListItemText>Auto Load Interval (secs)</ListItemText>
-			<ListItemSecondaryAction style={{ width: '40%' }}>
+			<ListItemSecondaryAction className={classes.longAction}>
 				<Slider
 					value={main.autoLoadInterval}
 					onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}

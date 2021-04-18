@@ -26,6 +26,10 @@ const useStyles = makeStyles( {
 			'-webkit-appearance': 'none',
 			margin:               0
 		}
+	},
+	avatar:      {
+		width:  60,
+		height: 60
 	}
 } );
 
@@ -77,7 +81,7 @@ export default function ResearchGroup( { researchData, wide }:
 					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
 						<>
-							<Avatar variant='rounded' style={{ width: 60, height: 60 }}>
+							<Avatar variant='rounded' className={classes.avatar}>
 								<Image
 									src={`/images/ships/${item.url}.png`}
 									alt={item.name}

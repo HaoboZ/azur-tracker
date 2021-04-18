@@ -79,7 +79,7 @@ export default function EnhancedList<Item>( {
 		</>;
 		
 		if ( renderPanel ) {
-			return <Accordion>
+			return <Accordion key={index}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon/>}
 					classes={{
