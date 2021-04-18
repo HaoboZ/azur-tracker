@@ -4,7 +4,7 @@ import React from 'react';
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 
-export default function ResponsiveDataDisplay<Item>( {
+export default function DataDisplay<Item>( {
 	listProps,
 	tableProps,
 	wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) ),

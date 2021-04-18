@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 import PageDialog from '../pageDialog';
-import ResponsiveDataDisplay from '../responsiveDataDisplay';
+import DataDisplay from '../dataDisplay';
 
 export default function DailyDialog( { open, onClose }: {
 	open: boolean
@@ -34,7 +34,7 @@ export default function DailyDialog( { open, onClose }: {
 		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
 		<DialogTitle>Daily Points</DialogTitle>
 		<DialogContent style={{ padding: 0 }}>
-			<ResponsiveDataDisplay
+			<DataDisplay
 				title={<DialogContentText>Total Daily: {dailyTotal}</DialogContentText>}
 				data={daily}
 				tableProps={{

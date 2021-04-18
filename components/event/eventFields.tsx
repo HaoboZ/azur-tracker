@@ -105,12 +105,12 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 					<TextField
 						type='text'
 						label='Shop'
-						disabled
+						inputProps={{ className: classes.rightInput }}
 						InputProps={{
+							readOnly:       true,
 							startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
 							endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
 						}}
-						inputProps={{ className: classes.rightInput }}
 						value={event.shopExpectedCost}
 						onClick={() => setShopDialog( true )}
 					/>
@@ -120,9 +120,9 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 					<TextField
 						type='text'
 						label='Daily Points'
-						disabled
 						inputProps={{ className: classes.rightInput }}
 						InputProps={{
+							readOnly:     true,
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.dailyExpected}
@@ -147,7 +147,11 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 					<TextField
 						type='number'
 						label='Current Points'
-						inputProps={{ inputMode: 'numeric', className: `${classes.numberInput} ${classes.rightInput}` }}
+						inputProps={{
+							inputMode: 'numeric',
+							className: `${classes.numberInput} ${classes.rightInput}`,
+							onFocus:   ( e ) => e.target.select()
+						}}
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}

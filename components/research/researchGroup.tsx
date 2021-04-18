@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
-import ResponsiveDataDisplay from '../responsiveDataDisplay';
+import DataDisplay from '../dataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
@@ -64,7 +64,7 @@ export default function ResearchGroup( { researchData, wide }:
 	}, [ research.ships ] );
 	
 	return <>
-		<ResponsiveDataDisplay
+		<DataDisplay
 			data={researchData}
 			tableProps={{
 				columnHeader: [
@@ -170,7 +170,11 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
-								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
+								inputProps={{
+									inputMode: 'numeric',
+									className: classes.numberInput,
+									onFocus:   ( e ) => e.target.select()
+								}}
 								InputProps={{
 									startAdornment:
 										<InputAdornment position='start'>Stage</InputAdornment>,
@@ -183,7 +187,6 @@ export default function ResearchGroup( { researchData, wide }:
 									devLevel[ item.type * 2 ] * 10 ) )}
 							/>
 						</Grid>
-						
 						{item.fate && <Grid item xs={6}>
 							<TextField
 								type='number'
@@ -199,7 +202,11 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
-								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
+								inputProps={{
+									inputMode: 'numeric',
+									className: classes.numberInput,
+									onFocus:   ( e ) => e.target.select()
+								}}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment:   <InputAdornment position='end'>%</InputAdornment>

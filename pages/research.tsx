@@ -1,7 +1,7 @@
-import { Tab, Theme, useMediaQuery } from '@material-ui/core';
-import { TabContext, TabList, TabPanel } from '@material-ui/lab';
+import { Tab, Tabs, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SwipeableViews from 'react-swipeable-views';
 
 import ActionTitle from '../components/actionTitle';
 import ResearchGroup from '../components/research/researchGroup';
@@ -18,17 +18,23 @@ export default function Research() {
 			title='Research Tracker'
 			actions={[ { name: 'Reset', onClick: () => dispatch( research_reset() ) } ]}
 		/>
-		<TabContext value={research.lastTab.toString()}>
-			<TabList
-				variant='fullWidth'
-				onChange={( e, value ) => dispatch( research_setLastTab( value ) )}>
-				{Object.keys( researchShips ).map( ( label, index ) =>
-					<Tab key={index} label={label} value={index.toString()}/> )}
-			</TabList>
+		<Tabs
+			variant='fullWidth'
+			value={research.lastTab.toString()}
+			onChange={( e, value ) => {
+				return dispatch( research_setLastTab( +value ) );
+			}}>
+			{Object.keys( researchShips ).map( ( label, index ) =>
+				<Tab key={index} label={label} value={index.toString()}/> )}
+		</Tabs>
+		<SwipeableViews
+			index={research.lastTab}
+			onChangeIndex={( index ) => {
+				dispatch( research_setLastTab( index ) );
+			}}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
-				<TabPanel key={index} value={index.toString()} style={{ padding: 0 }}>
-					<ResearchGroup researchData={researchData} wide={wide}/>
-				</TabPanel> )}
-		</TabContext>
+				<ResearchGroup key={index} researchData={researchData} wide={wide}/>
+			)}
+		</SwipeableViews>
 	</>;
 }

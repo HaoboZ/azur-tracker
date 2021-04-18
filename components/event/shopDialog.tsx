@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 import PageDialog from '../pageDialog';
-import ResponsiveDataDisplay from '../responsiveDataDisplay';
+import DataDisplay from '../dataDisplay';
 
 export default function ShopDialog( { open, onClose }: {
 	open: boolean
@@ -32,7 +32,7 @@ export default function ShopDialog( { open, onClose }: {
 		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
 		<DialogTitle>Shop Items</DialogTitle>
 		<DialogContent style={{ padding: 0 }}>
-			<Box mx={3}>
+			<Box mx={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>
 						<DialogContentText>Buyout Price: {buyoutCost}</DialogContentText>
@@ -42,7 +42,7 @@ export default function ShopDialog( { open, onClose }: {
 					</Grid>
 				</Grid>
 			</Box>
-			<ResponsiveDataDisplay
+			<DataDisplay
 				data={eventRef.shop}
 				tableProps={{
 					columnHeader: [

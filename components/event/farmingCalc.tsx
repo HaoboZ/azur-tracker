@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
-import ResponsiveDataDisplay from '../responsiveDataDisplay';
+import DataDisplay from '../dataDisplay';
 
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
@@ -11,7 +11,7 @@ export default function FarmingCalc( { remainingPoints }: {
 	const event    = useSelector( store => store.event ),
 	      dispatch = useDispatch();
 	
-	return <ResponsiveDataDisplay
+	return <DataDisplay
 		title='Farming'
 		data={event.farming}
 		tableProps={{
