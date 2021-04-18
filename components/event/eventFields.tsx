@@ -17,16 +17,16 @@ import DailyDialog from './dailyDialog';
 import ShopDialog from './shopDialog';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	banner:        {
+	banner:      {
 		width:    '100%',
 		maxWidth: 700,
 		display:  'block',
 		margin:   'auto'
 	},
-	rightInput:    {
+	rightInput:  {
 		textAlign: 'right'
 	},
-	disabledInput: {
+	blankInput:  {
 		'& .MuiInputBase-root.Mui-disabled':         {
 			color: theme.palette.text.primary
 		},
@@ -37,7 +37,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 			borderBottomStyle: 'none'
 		}
 	},
-	numberInput:   {
+	numberInput: {
 		'&[type=number]':                                             {
 			'-moz-appearance': 'textfield'
 		},
@@ -80,13 +80,19 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 			<Grid container spacing={2}>
 				<Grid item sm={4} xs={6}>
 					<TextField
-						type='text' disabled className={classes.disabledInput} label='Current Date'
+						type='text'
+						disabled
+						className={classes.blankInput}
+						label='Current Date'
 						value={time.format( 'l LT' )}
 					/>
 				</Grid>
 				<Grid item sm={4} xs={6}>
 					<TextField
-						type='text' disabled className={classes.disabledInput} label='End Date'
+						type='text'
+						disabled
+						className={classes.blankInput}
+						label='End Date'
 						defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
 					/>
 				</Grid>
@@ -97,7 +103,9 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				</Grid>
 				<Grid item sm={3} xs={6}>
 					<TextField
-						type='text' label='Shop'
+						type='text'
+						label='Shop'
+						disabled
 						InputProps={{
 							startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
 							endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
@@ -110,11 +118,13 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				</Grid>
 				<Grid item sm={3} xs={6}>
 					<TextField
-						type='text' label='Daily Points'
+						type='text'
+						label='Daily Points'
+						disabled
+						inputProps={{ className: classes.rightInput }}
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
-						inputProps={{ className: classes.rightInput }}
 						value={event.dailyExpected}
 						onClick={() => setDailyDialog( true )}
 					/>
@@ -122,11 +132,14 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				</Grid>
 				<Grid item sm={3} xs={6}>
 					<TextField
-						type='text' disabled className={classes.disabledInput} label='Required Points'
+						type='text'
+						label='Required Points'
+						disabled
+						className={classes.blankInput}
+						inputProps={{ className: classes.rightInput }}
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
-						inputProps={{ className: classes.rightInput }}
 						defaultValue={neededPoints}
 					/>
 				</Grid>
@@ -134,7 +147,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 					<TextField
 						type='number'
 						label='Current Points'
-						inputProps={{ className: `${classes.numberInput} ${classes.rightInput}` }}
+						inputProps={{ inputMode: 'numeric', className: `${classes.numberInput} ${classes.rightInput}` }}
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}

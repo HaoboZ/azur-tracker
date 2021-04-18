@@ -92,17 +92,18 @@ export default function ResearchGroup( { researchData, wide }:
 						</>,
 						<TextField
 							type='number'
+							inputProps={{ inputMode: 'numeric' }}
 							value={ship.devLevel || 0}
 							onChange={( e ) => dispatch( research_modifyShip( item.name,
 								{ devLevel: parseInt( e.target.value ) } ) )}
 						/>,
 						<TextField
 							type='number'
+							inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 							InputProps={{
 								endAdornment:
 									<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
 							}}
-							inputProps={{ className: classes.numberInput }}
 							value={ship.devStage || 0}
 							onChange={( e ) => dispatch( research_modifyShip( item.name,
 								{ devStage: parseInt( e.target.value ) },
@@ -111,16 +112,17 @@ export default function ResearchGroup( { researchData, wide }:
 						<Typography>{devPrints}</Typography>,
 						...( item.fate ? [ <TextField
 							type='number'
+							inputProps={{ inputMode: 'numeric' }}
 							value={ship.fateLevel || 0}
 							onChange={( e ) => dispatch( research_modifyShip( item.name,
 								{ fateLevel: parseInt( e.target.value ) } ) )}
 						/>,
 							<TextField
 								type='number'
+								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 								InputProps={{
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
 								}}
-								inputProps={{ className: classes.numberInput }}
 								value={ship.fateStage || 0}
 								onChange={( e ) => dispatch( research_modifyShip( item.name,
 									{ fateStage: parseInt( e.target.value ) } ) )}
@@ -157,6 +159,7 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
+								inputProps={{ inputMode: 'numeric' }}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Dev Level</InputAdornment>
 								}}
@@ -167,13 +170,13 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
+								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 								InputProps={{
 									startAdornment:
 										<InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment:
 										<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
 								}}
-								inputProps={{ className: classes.numberInput }}
 								value={ship.devStage || 0}
 								onChange={( e ) => dispatch( research_modifyShip( item.name,
 									{ devStage: parseInt( e.target.value ) },
@@ -185,6 +188,7 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
+								inputProps={{ inputMode: 'numeric' }}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Fate Level</InputAdornment>
 								}}
@@ -195,11 +199,11 @@ export default function ResearchGroup( { researchData, wide }:
 							<TextField
 								type='number'
 								size='small'
+								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment:   <InputAdornment position='end'>%</InputAdornment>
 								}}
-								inputProps={{ className: classes.numberInput }}
 								value={ship.fateStage || 0}
 								onChange={( e ) => dispatch( research_modifyShip( item.name,
 									{ fateStage: parseInt( e.target.value ) } ) )}

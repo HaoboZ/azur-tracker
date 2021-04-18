@@ -26,12 +26,14 @@ export default function FarmingCalc( { remainingPoints }: {
 				      oil   = plays * item.oil;
 				return [ <TextField
 					type='number'
+					inputProps={{ inputMode: 'numeric' }}
 					value={item.points}
 					onChange={( e ) => dispatch( event_modifyFarming( index,
 						{ points: parseInt( e.target.value ) } ) )}
 				/>,
 					<TextField
 						type='number'
+						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
 						onChange={( e ) => dispatch( event_modifyFarming( index,
 							{ oil: parseInt( e.target.value ) } ) )}
@@ -49,6 +51,7 @@ export default function FarmingCalc( { remainingPoints }: {
 					<Grid item xs>
 						<TextField
 							type='number'
+							inputProps={{ inputMode: 'numeric' }}
 							label='Points/Run'
 							value={item.points}
 							onChange={( e ) => dispatch( event_modifyFarming( index,
@@ -58,6 +61,7 @@ export default function FarmingCalc( { remainingPoints }: {
 					<Grid item xs>
 						<TextField
 							type='number'
+							inputProps={{ inputMode: 'numeric' }}
 							label='Oil/Run'
 							value={item.oil}
 							onChange={( e ) => dispatch( event_modifyFarming( index,
