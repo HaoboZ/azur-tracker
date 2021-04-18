@@ -5,7 +5,8 @@ import {
 	List,
 	ListItem,
 	ListItemSecondaryAction,
-	ListItemText, makeStyles,
+	ListItemText,
+	makeStyles,
 	Slider,
 	Switch,
 	Typography
@@ -44,6 +45,7 @@ export default function Home() {
 	const snackbar = useSnackBar();
 	const classes = useStyles();
 	
+	// noinspection HtmlUnknownTarget
 	return <List>
 		<ListItem>
 			<ListItemText classes={{ primary: classes.longText }}>
@@ -71,17 +73,13 @@ export default function Home() {
 					<Button
 						color={main.autoSave ? 'primary' : 'default'}
 						variant={main.autoSave ? 'contained' : 'outlined'}
-						onClick={() => {
-							dispatch( setAutoSave( !main.autoSave ) );
-						}}>
+						onClick={() => dispatch( setAutoSave( !main.autoSave ) )}>
 						Save
 					</Button>
 					<Button
 						color={main.autoLoad ? 'primary' : 'default'}
 						variant={main.autoLoad ? 'contained' : 'outlined'}
-						onClick={() => {
-							dispatch( setAutoLoad( !main.autoLoad ) );
-						}}>
+						onClick={() => dispatch( setAutoLoad( !main.autoLoad ) )}>
 						Load
 					</Button>
 				</ButtonGroup>
