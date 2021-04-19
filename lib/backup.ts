@@ -28,8 +28,8 @@ export async function setBackup() {
 		method: 'POST',
 		body
 	} );
-	const { modifiedTime } = await res.json();
-	store.dispatch( setLastSaved( modifiedTime ) );
+	const { lastSaved } = await res.json();
+	store.dispatch( setLastSaved( lastSaved ) );
 }
 
 export async function getBackup( check = true ) {

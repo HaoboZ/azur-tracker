@@ -87,7 +87,6 @@ export default function mainReducer( state = initState, action ): State {
 	case SETLASTSAVED:
 		return { ...state, lastSaved: action.lastSaved };
 	case SETNEWDATA:
-		console.log( action.newData );
 		return { ...state, newData: { ...state.newData, ...action.newData } };
 	case SETTHEME:
 		return { ...state, theme: action.theme };

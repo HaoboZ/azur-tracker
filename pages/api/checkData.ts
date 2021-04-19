@@ -3,7 +3,7 @@ import { NextApiHandler } from 'next';
 import getDrive from '../../lib/driveData/getDrive';
 import getInfo from '../../lib/driveData/getInfo';
 
-export default ( async function( req, res ) {
+export default ( async function ( req, res ) {
 	try {
 		const { checksum, lastSaved } = req.query;
 		const drive = await getDrive( req );
