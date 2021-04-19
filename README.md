@@ -14,4 +14,4 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
 
-* add animation to delete and add for data display
+* add animation to delete and add for data display 
