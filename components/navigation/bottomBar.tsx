@@ -1,4 +1,4 @@
-import { AppBar, BottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
+import { AppBar, Badge, BottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setTheme } from '../../lib/store/reducers/mainReducer';
+import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( () => ( {
 	footer: {
@@ -56,11 +56,20 @@ export default function BottomBar() {
 						break;
 					default:
 						router.push( items[ value ].link ).then();
+						dispatch( setNewData( { [ items[ value ].link.substring(1) ]: false } ) );
 						break;
 					}
 				}}>
-				{items.map( ( item, index ) =>
-					<BottomNavigationAction key={index} label={item.label} icon={item.icon}/> )}
+				{items.map( ( item, index ) => <BottomNavigationAction
+					key={index}
+					label={item.label}
+					icon={<Badge
+						color='secondary'
+						variant='dot'
+						invisible={!main.newData[ item.link.substring( 1 ) ]}>
+						{item.icon}
+					</Badge>}
+				/> )}
 			</BottomNavigation>
 		</AppBar>
 	</div>;

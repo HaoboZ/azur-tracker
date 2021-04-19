@@ -12,7 +12,7 @@ export default ( async function( req, res ) {
 			if ( lastSaved < file.modifiedTime )
 				res.json( '"prompt"' );
 			else if ( lastSaved > file.modifiedTime )
-				res.json( '"old"' );
+				res.json( '"update"' );
 			else
 				res.json( true );
 		} else {

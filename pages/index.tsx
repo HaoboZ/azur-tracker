@@ -17,6 +17,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getBackup, setBackup } from '../lib/backup';
+import { useIndicator } from '../lib/provider/indicatorProvider';
 import { useSnackBar } from '../lib/provider/snackbarProvider';
 import {
 	setAutoLoad,
@@ -43,6 +44,7 @@ export default function Home() {
 	      dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const snackbar = useSnackBar();
+	const indicator = useIndicator();
 	const classes = useStyles();
 	
 	// noinspection HtmlUnknownTarget
@@ -126,12 +128,12 @@ export default function Home() {
 						onClick={async () => {
 							try {
 								if ( session ) {
-									await setBackup();
-									snackbar.showMessage( 'Data Successfully Saved' );
+									await indicator( setBackup() );
+									snackbar( 'Data Successfully Saved' );
 								} else
-									snackbar.showMessage( 'Sign In to Save', 'info' );
+									snackbar( 'Sign In to Save', 'info' );
 							} catch ( e ) {
-								snackbar.showMessage( String( e ), 'error' );
+								snackbar( String( e ), 'error' );
 							}
 						}}>
 						Save
@@ -142,12 +144,12 @@ export default function Home() {
 						onClick={async () => {
 							try {
 								if ( session ) {
-									await getBackup();
-									snackbar.showMessage( 'Data Successfully Loaded' );
+									await indicator( getBackup() );
+									snackbar( 'Data Successfully Loaded' );
 								} else
-									snackbar.showMessage( 'Sign In to Load', 'info' );
+									snackbar( 'Sign In to Load', 'info' );
 							} catch ( e ) {
-								snackbar.showMessage( String( e ), 'error' );
+								snackbar( String( e ), 'error' );
 							}
 						}}>
 						Load

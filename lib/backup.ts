@@ -1,8 +1,9 @@
 import { md5 } from 'hash-wasm';
 import stringify from 'json-stable-stringify';
+import _ from 'lodash';
 
 import { store } from './store';
-import { importBackup, setLastSaved } from './store/reducers/mainReducer';
+import { importBackup, setLastSaved, setNewData } from './store/reducers/mainReducer';
 
 async function checkDataIntegrity() {
 	const { main, ...state } = store.getState();
@@ -23,14 +24,12 @@ export async function setBackup() {
 		await getBackup( false );
 		return;
 	}
-	const modifiedTime = new Date().toISOString();
-	store.dispatch( setLastSaved( modifiedTime ) );
-	await fetch( `/api/setData?${new URLSearchParams( {
-		modifiedTime
-	} )}`, {
+	const res = await fetch( '/api/setData', {
 		method: 'POST',
 		body
 	} );
+	const { modifiedTime } = await res.json();
+	store.dispatch( setLastSaved( modifiedTime ) );
 }
 
 export async function getBackup( check = true ) {
@@ -38,7 +37,7 @@ export async function getBackup( check = true ) {
 	if ( check ) {
 		const { valid } = await checkDataIntegrity();
 		if ( !valid ) return;
-		if ( valid === 'old' ) {
+		if ( valid === 'update' ) {
 			await setBackup();
 			return;
 		}
@@ -46,5 +45,9 @@ export async function getBackup( check = true ) {
 	const res = await fetch( '/api/getData' );
 	const { data, lastSaved } = await res.json();
 	store.dispatch( setLastSaved( lastSaved ) );
+	const state = store.getState();
+	const changed = Object.keys( data ).filter( ( item ) => !_.isEqual( state[ item ], data[ item ] ) );
+	// noinspection CommaExpressionJS
+	store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
 	store.dispatch( importBackup( data ) );
 }

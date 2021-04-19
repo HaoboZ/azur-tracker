@@ -23,12 +23,19 @@ const migrations = {
 				return ship;
 			} )
 		}
+	} ),
+	3: ( state: RootState ) => ( {
+		...state,
+		main: {
+			...state.main,
+			newData: {}
+		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
 	key:             'root',
-	version:         2,
+	version:         3,
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate:         createMigrate( migrations as any, { debug: false } ),

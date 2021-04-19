@@ -20,11 +20,12 @@ export default function ShopDialog( { open, onClose }: {
 	}, [ open ] );
 	
 	// expected cost to buy wanted items and total cost to buy everything
-	const [ expectedCost, buyoutCost ] = React.useMemo( () =>
-		eventRef.shop.reduce( ( total, item ) => [
+	const [ expectedCost, buyoutCost ] = React.useMemo(
+		() => eventRef.shop.reduce( ( total, item ) => [
 			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
 			total[ 1 ] + item.cost * item.amount
-		], [ 0, 0 ] ), [ shop ] );
+		], [ 0, 0 ] ),
+		[ shop ] );
 	
 	return <PageDialog
 		open={open}

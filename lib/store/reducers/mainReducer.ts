@@ -1,9 +1,10 @@
-const SETTHEME            = 'main/setTheme',
+const SETLASTSAVED        = 'main/setLastSaved',
+      SETNEWDATA          = 'main/setNewData',
+      SETTHEME            = 'main/setTheme',
       SETAUTOSAVE         = 'main/setAutoSave',
       SETAUTOLOAD         = 'main/setAutoLoad',
       SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
-      SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval',
-      SETLASTSAVED        = 'main/setLastSaved';
+      SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval';
 
 export function importBackup( data: any ) {
 	return {
@@ -16,6 +17,13 @@ export function setLastSaved( lastSaved: string ) {
 	return {
 		type: SETLASTSAVED,
 		lastSaved
+	};
+}
+
+export function setNewData( newData: Record<string, boolean> ) {
+	return {
+		type: SETNEWDATA,
+		newData
 	};
 }
 
@@ -56,6 +64,7 @@ export function setAutoLoadInterval( interval: number ) {
 
 type State = {
 	lastSaved: string
+	newData: Record<string, boolean>
 	theme: string
 	autoSave: boolean
 	autoLoad: boolean
@@ -65,6 +74,7 @@ type State = {
 
 const initState: State = {
 	lastSaved:        new Date( 0 ).toISOString(),
+	newData:          {},
 	theme:            'light',
 	autoSave:         true,
 	autoLoad:         true,
@@ -76,6 +86,9 @@ export default function mainReducer( state = initState, action ): State {
 	switch ( action.type ) {
 	case SETLASTSAVED:
 		return { ...state, lastSaved: action.lastSaved };
+	case SETNEWDATA:
+		console.log( action.newData );
+		return { ...state, newData: { ...state.newData, ...action.newData } };
 	case SETTHEME:
 		return { ...state, theme: action.theme };
 	case SETAUTOSAVE:

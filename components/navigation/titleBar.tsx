@@ -1,21 +1,10 @@
-import {
-	AppBar,
-	Box,
-	IconButton,
-	Link as MuiLink,
-	makeStyles,
-	MenuItem,
-	Toolbar
-} from '@material-ui/core';
-import {
-	Brightness3 as Brightness3Icon,
-	BrightnessHigh as BrightnessHighIcon
-} from '@material-ui/icons';
+import { AppBar, Badge, Box, Button, IconButton, Link as MuiLink, makeStyles, Toolbar } from '@material-ui/core';
+import { Brightness3 as Brightness3Icon, BrightnessHigh as BrightnessHighIcon } from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setTheme } from '../../lib/store/reducers/mainReducer';
+import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	appBar: {
@@ -24,24 +13,34 @@ const useStyles = makeStyles( ( theme ) => ( {
 		paddingRight: 'env(safe-area-inset-right)'
 	},
 	title:  {
-		paddingRight: theme.spacing( 3 )
+		marginRight: theme.spacing( 3 )
 	}
 } ) );
-
-const LinkItem = ( { children, href } ) => {
-	return <Link href={href}><MenuItem>{children}</MenuItem></Link>;
-};
 
 export default function TitleBar() {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
+	const LinkItem = ( { children, href } ) => <Link href={href}>
+		<Badge
+			color='secondary'
+			variant='dot'
+			className={classes.title}
+			invisible={!main.newData[ href.substring( 1 ) ]}>
+			<Button onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
+				{children}
+			</Button>
+		</Badge>
+	</Link>;
+	
 	return <AppBar position='static' className={classes.appBar}>
 		<Toolbar>
 			<Link key='index' href='/' passHref>
 				<MuiLink
-					variant='h6' color='inherit' underline='none'
+					variant='h6'
+					color='inherit'
+					underline='none'
 					className={classes.title}>
 					Azur Lane Tracker
 				</MuiLink>

@@ -19,8 +19,9 @@ export default function DailyDialog( { open, onClose }: {
 	}, [ open ] );
 	
 	// total points gained daily
-	const dailyTotal = React.useMemo( () =>
-		daily.reduce( ( total, item ) => total + item.amount, 0 ), [ daily ] );
+	const dailyTotal = React.useMemo(
+		() => daily.reduce( ( total, item ) => total + item.amount, 0 ),
+		[ daily ] );
 	
 	function modifyItem( index: number, item: { name?: string, amount?: number } ) {
 		if ( 'amount' in item ) item.amount = Math.max( item.amount || 0, 0 );

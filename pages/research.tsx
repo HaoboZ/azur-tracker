@@ -21,17 +21,13 @@ export default function Research() {
 		<Tabs
 			variant='fullWidth'
 			value={research.lastTab.toString()}
-			onChange={( e, value ) => {
-				return dispatch( research_setLastTab( +value ) );
-			}}>
+			onChange={( e, value ) => dispatch( research_setLastTab( +value ) )}>
 			{Object.keys( researchShips ).map( ( label, index ) =>
 				<Tab key={index} label={label} value={index.toString()}/> )}
 		</Tabs>
 		<SwipeableViews
 			index={research.lastTab}
-			onChangeIndex={( index ) => {
-				dispatch( research_setLastTab( index ) );
-			}}>
+			onChangeIndex={( index ) => dispatch( research_setLastTab( index ) )}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<ResearchGroup key={index} researchData={researchData} wide={wide}/>
 			)}

@@ -2,11 +2,7 @@ import { Grow, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
 import { Alert, Color } from '@material-ui/lab';
 import React from 'react';
 
-const SnackbarContext = React.createContext<{
-	showMessage: ( message: string, type?: Color ) => void
-}>( {
-	showMessage: () => null
-} );
+const SnackbarContext = React.createContext<( message: string, type?: Color ) => void>( () => null );
 SnackbarContext.displayName = 'Snackbar';
 
 type Message = {
@@ -33,11 +29,8 @@ export default function SnackbarProvider( { children } ) {
 		}
 	}, [ nextSnack, snack ] );
 	
-	return <SnackbarContext.Provider value={{
-		showMessage: ( message, type = 'success' ) => {
-			setNextSnack( { message, type } );
-		}
-	}}>
+	return <SnackbarContext.Provider value={( message, type = 'success' ) =>
+		setNextSnack( { message, type } )}>
 		{children}
 		<Snackbar
 			open={open}
@@ -64,9 +57,7 @@ export function useSnackBar() {
 }
 
 export function withSnackbar() {
-	return ( Component ) => ( props ) => (
-		<SnackbarContext.Consumer>
-			{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
-		</SnackbarContext.Consumer>
-	);
+	return ( Component ) => ( props ) => <SnackbarContext.Consumer>
+		{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
+	</SnackbarContext.Consumer>;
 }

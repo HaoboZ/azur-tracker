@@ -14,5 +14,4 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
 
-* add badges when updated correct reducer
-* add small icon when finished saving
+* add animation to delete and add for data display
