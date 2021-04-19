@@ -16,7 +16,13 @@ export default function Research() {
 	return <>
 		<ActionTitle
 			title='Research Tracker'
-			actions={[ { name: 'Reset', onClick: () => dispatch( research_reset() ) } ]}
+			actions={[ {
+				name:    'Reset',
+				onClick: () => {
+					if ( confirm( 'Are you sure you want to reset this page?' ) )
+						dispatch( research_reset() );
+				}
+			} ]}
 		/>
 		<Tabs
 			variant='fullWidth'

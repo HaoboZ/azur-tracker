@@ -70,22 +70,29 @@ export default function Armada() {
 		return shipData.equipBetter.some( val => val );
 	} ), [ ship, equip ] );
 	
+	// noinspection CssUnusedSymbol
 	return <>
 		{ /*language=css*/}
 		<style global jsx>{`
-		  .MuiTableCell-sizeSmall {
-			  padding: 0 8px !important;
-			  max-width: 180px;
-			  white-space: nowrap;
-		  }
-
-		  .MuiTableCell-paddingNone:last-child {
-			  padding: 4px 8px 0 !important;
-		  }
+			.MuiTableCell-sizeSmall {
+				padding: 0 8px !important;
+				max-width: 180px;
+				white-space: nowrap;
+			}
+			
+			.MuiTableCell-paddingNone:last-child {
+				padding: 4px 8px 0 !important;
+			}
 		`}</style>
 		<ActionTitle
 			title='Armada Tracker'
-			actions={[ { name: 'Reset', onClick: () => dispatch( ship_reset() ) } ]}
+			actions={[ {
+				name:    'Reset',
+				onClick: () => {
+					if ( confirm( 'Are you sure you want to reset this page?' ) )
+						dispatch( ship_reset() );
+				}
+			} ]}
 		/>
 		<Box mx={3}>
 			<Grid container spacing={2}>
