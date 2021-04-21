@@ -1,9 +1,10 @@
 import { Grid, TextField, Typography } from '@material-ui/core';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
-import DataDisplay from '../dataDisplay';
+import DataDisplay from '../../components/dataDisplay';
 
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
@@ -76,8 +77,7 @@ export default function FarmingCalc( { remainingPoints }: {
 			}
 		}}
 		setData={( items ) => dispatch( event_setFarming( items ) )}
-		newData={() => ( { points: 0, oil: 0 } )}
-		sortable
+		newData={() => ( { id: nanoid( 16 ), points: 0, oil: 0 } )}
 		editable
 	/>;
 }

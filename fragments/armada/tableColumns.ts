@@ -1,12 +1,6 @@
 import { Column } from 'material-table';
 
-import {
-	mappedColorClasses,
-	nationColors,
-	rarityColors,
-	tierColors,
-	typeColors
-} from '../../lib/reference/colors';
+import { mappedColorClasses, nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
 import shipRef from '../../lib/reference/shipRef';
 
 export default function TableColumns() {

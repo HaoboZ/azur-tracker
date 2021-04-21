@@ -1,12 +1,4 @@
-import {
-	Box,
-	Grid,
-	InputAdornment,
-	Link,
-	makeStyles,
-	TextField,
-	Typography
-} from '@material-ui/core';
+import { Box, Grid, InputAdornment, Link, makeStyles, TextField, Typography } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

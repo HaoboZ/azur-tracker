@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 
 import ActionTitle from '../components/actionTitle';
-import ResearchGroup from '../components/research/researchGroup';
+import ResearchGroup from '../fragments/research/researchGroup';
 import { researchShips } from '../lib/reference/researchRef';
 import { research_reset, research_setLastTab } from '../lib/store/reducers/researchReducer';
 

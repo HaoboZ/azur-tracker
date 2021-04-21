@@ -8,7 +8,7 @@ import { getBackup, setBackup } from '../lib/backup';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
 import SnackbarProvider from '../lib/provider/snackbarProvider';
 import themes from '../lib/theme';
-import Navigation from './navigation';
+import Navigation from '../components/navigation';
 
 export default function Baseline( { children }: {
 	children?: React.ReactNode

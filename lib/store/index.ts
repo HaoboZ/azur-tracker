@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { nanoid } from 'nanoid';
 import { createStore, Store } from 'redux';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
@@ -30,12 +31,20 @@ const migrations = {
 			...state.main,
 			newData: {}
 		}
+	} ),
+	4: ( state: RootState ) => ( {
+		...state,
+		event: {
+			...state.event,
+			daily:   state.event.daily.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) ),
+			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) )
+		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
 	key:             'root',
-	version:         3,
+	version:         4,
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate:         createMigrate( migrations as any, { debug: false } ),

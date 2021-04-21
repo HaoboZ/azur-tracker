@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
-import PageDialog from '../pageDialog';
-import DataDisplay from '../dataDisplay';
+import DataDisplay from '../../components/dataDisplay';
+import PageDialog from '../../components/pageDialog';
 
 export default function ShopDialog( { open, onClose }: {
 	open: boolean

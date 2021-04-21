@@ -10,7 +10,7 @@ export default function DataDisplay<Item>( {
 	wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) ),
 	...props
 }: {
-	title?: React.ReactNode,
+	title?: React.ReactNode
 	data: Item[]
 	sortable?: boolean
 	editable?: boolean

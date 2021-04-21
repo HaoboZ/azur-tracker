@@ -1,10 +1,11 @@
 import { DialogContent, DialogContentText, DialogTitle, Grid, TextField } from '@material-ui/core';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
-import PageDialog from '../pageDialog';
-import DataDisplay from '../dataDisplay';
+import DataDisplay from '../../components/dataDisplay';
+import PageDialog from '../../components/pageDialog';
 
 export default function DailyDialog( { open, onClose }: {
 	open: boolean
@@ -23,7 +24,7 @@ export default function DailyDialog( { open, onClose }: {
 		() => daily.reduce( ( total, item ) => total + item.amount, 0 ),
 		[ daily ] );
 	
-	function modifyItem( index: number, item: { name?: string, amount?: number } ) {
+	function modifyItem( index: number, item: { id?: string, name?: string, amount?: number } ) {
 		if ( 'amount' in item ) item.amount = Math.max( item.amount || 0, 0 );
 		daily[ index ] = { ...daily[ index ], ...item };
 		setDaily( [ ...daily ] );
@@ -79,8 +80,7 @@ export default function DailyDialog( { open, onClose }: {
 					</Grid>
 				}}
 				setData={setDaily}
-				newData={() => ( { name: '', amount: 0 } )}
-				sortable
+				newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}
 				editable
 			/>
 		</DialogContent>

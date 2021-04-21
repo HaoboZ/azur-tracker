@@ -4,10 +4,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ActionTitle from '../components/actionTitle';
-import DetailPanel from '../components/armada/detailPanel';
-import EquipDialog from '../components/armada/equipDialog';
-import EquipFilter from '../components/armada/equipFilter';
-import TableColumns from '../components/armada/tableColumns';
+import DetailPanel from '../fragments/armada/detailPanel';
+import EquipDialog from '../fragments/armada/equipDialog';
+import EquipFilter from '../fragments/armada/equipFilter';
+import TableColumns from '../fragments/armada/tableColumns';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';

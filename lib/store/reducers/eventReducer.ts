@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import eventRef from '../../reference/eventRef';
 
 const RESET         = 'event/reset',
@@ -60,10 +61,10 @@ type State = {
 	name: string
 	shop: Record<string, number>
 	shopExpectedCost: number
-	daily: { name: string, amount: number }[]
+	daily: { id: string, name: string, amount: number }[]
 	dailyExpected: number
 	points: number
-	farming: { points: number, oil: number }[]
+	farming: { id: string, points: number, oil: number }[]
 }
 
 const initState: State = {
@@ -91,15 +92,15 @@ const initState: State = {
 	},
 	shopExpectedCost: 0,
 	daily:            [
-		{ name: 'Build 3 ships', amount: 300 },
-		{ name: 'Sortie and obtain 15 victories', amount: 300 },
-		{ name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
-		{ name: 'SP Stage', amount: 800 }
+		{ id: nanoid( 16 ), name: 'Build 3 ships', amount: 300 },
+		{ id: nanoid( 16 ), name: 'Sortie and obtain 15 victories', amount: 300 },
+		{ id: nanoid( 16 ), name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
+		{ id: nanoid( 16 ), name: 'SP Stage', amount: 800 }
 	],
 	dailyExpected:    1550,
 	points:           0,
 	farming:          [
-		{ points: 180, oil: 10 + 25 * 6 + 40 }
+		{ id: nanoid( 16 ), points: 180, oil: 10 + 25 * 6 + 40 }
 	]
 };
 

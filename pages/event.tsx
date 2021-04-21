@@ -2,9 +2,9 @@ import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import EventFields from '../components/event/eventFields';
-import FarmingCalc from '../components/event/farmingCalc';
 import ActionTitle from '../components/actionTitle';
+import EventFields from '../fragments/event/eventFields';
+import FarmingCalc from '../fragments/event/farmingCalc';
 import eventRef from '../lib/reference/eventRef';
 import { event_newEvent, event_reset } from '../lib/store/reducers/eventReducer';
 

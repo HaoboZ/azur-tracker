@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Baseline from '../components/baseline';
+import Baseline from '../fragments/baseline';
 import { persistor, store } from '../lib/store';
 
 export default function _App( { Component, pageProps } ) {

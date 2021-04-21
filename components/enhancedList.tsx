@@ -18,6 +18,7 @@ import {
 } from '@material-ui/icons';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from './actionTitle';
 
@@ -36,15 +37,40 @@ const useStyles = makeStyles( ( theme ) => ( {
 	},
 	selectedSort: {
 		backgroundColor: `${theme.palette.secondary.main} !important`
+	},
+	slide:        {
+		'&-enter':        {
+			overflowY:     'hidden',
+			maxHeight:     0,
+			paddingTop:    0,
+			paddingBottom: 0
+		},
+		'&-enter-active': {
+			maxHeight:     `${theme.spacing( 10 )}px !important`,
+			paddingTop:    `${theme.spacing()}px !important`,
+			paddingBottom: `${theme.spacing()}px !important`,
+			transition:    'all 200ms ease-in-out'
+		},
+		'&-exit':         {
+			maxHeight:     theme.spacing( 10 ),
+			paddingTop:    theme.spacing(),
+			paddingBottom: theme.spacing()
+		},
+		'&-exit-active':  {
+			overflowY:     'hidden',
+			maxHeight:     '0 !important',
+			paddingTop:    '0 !important',
+			paddingBottom: '0 !important',
+			transition:    'all 200ms ease-in-out'
+		}
 	}
 } ) );
 
-export default function EnhancedList<Item>( {
+export default function EnhancedList<Item extends { id?: string }>( {
 	title,
 	data,
 	renderRow,
 	renderPanel,
-	sortable,
 	editable,
 	setData = () => null,
 	newData = () => ( {} as Item ),
@@ -54,7 +80,6 @@ export default function EnhancedList<Item>( {
 	data: Item[]
 	renderRow: ( item: Item, index: number ) => React.ReactNode
 	renderPanel?: ( item: Item, index: number ) => React.ReactNode
-	sortable?: boolean
 	editable?: boolean
 	setData?: ( items: Item[] ) => void // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
@@ -62,42 +87,6 @@ export default function EnhancedList<Item>( {
 	const classes = useStyles();
 	
 	const [ editing, setEditing ] = React.useState( false );
-	
-	const listData = data.map( ( item, index ) => {
-		const hasIcon = editing || sortable;
-		
-		const itemRow = <>
-			{hasIcon && <ListItemIcon>
-				{editing && <IconButton onClick={() => {
-					const _data = [ ...data ];
-					_data.splice( index, 1 );
-					setData?.( _data );
-				}}><CloseIcon/></IconButton>}
-				{sortable && <IconButton className='sortHandle'><MenuIcon/></IconButton>}
-			</ListItemIcon>}
-			{renderRow( item, index )}
-		</>;
-		
-		if ( renderPanel ) {
-			return <Accordion key={index}>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon/>}
-					classes={{
-						root:    hasIcon && classes.iconSpace,
-						content: classes.center
-					}}>
-					{itemRow}
-				</AccordionSummary>
-				<AccordionDetails>
-					{renderPanel( item, index )}
-				</AccordionDetails>
-			</Accordion>;
-		} else {
-			return <ListItem key={index} divider className={hasIcon && classes.iconSpace}>
-				{itemRow}
-			</ListItem>;
-		}
-	} );
 	
 	return <List
 		subheader={( title || editable ) && <ActionTitle title={title} actions={editable ? [ {
@@ -111,15 +100,61 @@ export default function EnhancedList<Item>( {
 		} ] : []}/>}
 		{...props}>
 		<Paper>
-			{sortable ? <ReactSortable
+			{editable ? <ReactSortable
 				list={data as any}
 				setList={setData as any}
 				handle='.sortHandle'
 				ghostClass={classes.selectedSort}
 				forceFallback
 				animation={150}>
-				{listData}
-			</ReactSortable> : listData}
+				<TransitionGroup component={null}>
+					{data.map( ( item, index ) => {
+						const itemRow = <>
+							<ListItemIcon>
+								{editing && <IconButton onClick={() => {
+									const _data = [ ...data ];
+									_data.splice( index, 1 );
+									setData?.( _data );
+								}}><CloseIcon/></IconButton>}
+								<IconButton className='sortHandle'><MenuIcon/></IconButton>
+							</ListItemIcon>
+							{renderRow( item, index )}
+						</>;
+						
+						return <CSSTransition
+							key={item.id || index}
+							timeout={200}
+							classNames={classes.slide}>
+							{renderPanel ? <Accordion>
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon/>}
+									classes={{
+										root:    classes.iconSpace,
+										content: classes.center
+									}}>
+									{itemRow}
+								</AccordionSummary>
+								<AccordionDetails>
+									{renderPanel( item, index )}
+								</AccordionDetails>
+							</Accordion> : <ListItem divider className={classes.iconSpace}>
+								{itemRow}
+							</ListItem>}
+						</CSSTransition>;
+					} )}
+				</TransitionGroup>
+			</ReactSortable> : data.map( ( item, index ) => renderPanel ? <Accordion>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon/>}
+					classes={{ content: classes.center }}>
+					{renderRow( item, index )}
+				</AccordionSummary>
+				<AccordionDetails>
+					{renderPanel( item, index )}
+				</AccordionDetails>
+			</Accordion> : <ListItem divider>
+				{renderRow( item, index )}
+			</ListItem> )}
 		</Paper>
 	</List>;
 }

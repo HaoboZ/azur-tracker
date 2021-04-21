@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
-import DataDisplay from '../dataDisplay';
+import DataDisplay from '../../components/dataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
