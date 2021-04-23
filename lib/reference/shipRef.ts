@@ -214,6 +214,7 @@ const ships = {
 	'Kamikaze':                       [ 'Kamikaze', 'Elite', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 86, 'Light', 47, 1726, 60, 179, 414, 193, 0, 7, 229, 202, 0, 193 ],
 	'Matsukaze':                      [ 'Matsukaze', 'Elite', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 45, 'Light', 47, 1726, 59, 170, 414, 190, 0, 7, 223, 186, 0, 193 ],
 	'Hatakaze':                       [ 'Hatakaze', 'Rare', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 87, 'Light', 44, 1561, 60, 139, 404, 193, 0, 7, 203, 189, 0, 183 ],
+	'Oite':                           [ 'Oite', 'Rare', 'Sakura Empire', 'Destroyer', 4, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 42, 'Light', 44, 1561, 59, 130, 404, 193, 0, 7, 203, 195, 0, 183 ],
 	'Mutsuki':                        [ 'Mutsuki', 'Rare', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 35, 'Light', 47, 1652, 59, 173, 462, 193, 0, 7, 216, 181, 0, 178 ],
 	'Kisaragi':                       [ 'Kisaragi', 'Rare', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 15, 'Light', 47, 1652, 59, 173, 462, 193, 0, 7, 216, 179, 0, 178 ],
 	'Uzuki':                          [ 'Uzuki', 'Common', 'Sakura Empire', 'Destroyer', 3, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T', 37, 'Light', 44, 1487, 59, 138, 427, 193, 0, 7, 196, 181, 0, 178 ],
