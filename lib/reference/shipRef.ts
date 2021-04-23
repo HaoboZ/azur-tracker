@@ -1,10 +1,9 @@
 import _ from 'lodash';
 
-//([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*),([^,]*)\n
+//([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\n
 //'$1':['$2','$3','$4','$5',$6,$7,'$8','$9','$10','$11','$12',$13,'$14',$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26],\n
-//([01])/([01])
-//$1,$2
 
+// noinspection JSNonASCIINames,NonAsciiCharacters
 const ships = {
 	'Universal_Bulin':                [ 'Universal Bulin', 'Elite', 'Universal', 'Destroyer', 3, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2', 100, 'Light', 35, 232, 23, 23, 23, 116, 23, 3, 116, 33, 0, 116 ],
 	'Prototype_Bulin_MKII':           [ 'Prototype Bulin MKII', 'Super Rare', 'Universal', 'Destroyer', 3, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2', 100, 'Light', 35, 232, 23, 23, 23, 116, 23, 3, 116, 33, 0, 116 ],
@@ -292,6 +291,7 @@ const ships = {
 	'Kirishima':                      [ 'Kirishima', 'Elite', 'Sakura Empire', 'Battlecruiser', 3, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 37, 'Medium', 30, 6604, 367, 273, 0, 37, 0, 14, 160, 0, 0, 68 ],
 	'Hiei-chan':                      [ 'Hiei-chan', 'Elite', 'Sakura Empire', 'Battlecruiser', 3, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 37, 'Medium', 30, 6454, 363, 247, 168, 40, 0, 14, 160, 0, 0, 68 ],
 	'Amagi':                          [ 'Amagi', 'Super Rare', 'Sakura Empire', 'Battlecruiser', 0.5, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 23, 'Medium', 30, 7654, 421, 187, 213, 41, 0, 15, 148, 0, 0, 68 ],
+	'Amagi-chan':                     [ 'Amagi', 'Elite', 'Sakura Empire', 'Ballecruiser', 4, [ 1 ], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 23, 'Medium', 30, 7223, 367, 182, 171, 43, 0, 14, 142, 0, 0, 68 ],
 	'Mikasa':                         [ 'Mikasa', 'Super Rare', 'Sakura Empire', 'Battleship', 2, [ 0, 0, 0, 1, 1 ], 'BB/Speed', 'CL/DD/Main', 'DD/Main', 'A/BB1', 'A/BB2', 95, 'Heavy', 18, 5372, 334, 172, 0, 25, 0, 14, 163, 0, 0, 72 ],
 	'Fusou':                          [ 'Fusou', 'Elite', 'Sakura Empire', 'Aviation Battleship', 2, [], 'BB/Damage', 'SP', 'AA/Main', 'A/BBV1', 'A/BBV2', 13, 'Heavy', 23, 7266, 390, 303, 0, 31, 202, 13, 134, 0, 0, 77 ],
 	'Yamashiro':                      [ 'Yamashiro', 'Elite', 'Sakura Empire', 'Aviation Battleship', 2, [], 'BB/Damage', 'SP', 'AA/Main', 'A/BBV1', 'A/BBV2', 14, 'Heavy', 23, 7657, 390, 303, 0, 31, 202, 13, 134, 0, 0, 77 ],
@@ -386,13 +386,20 @@ const ships = {
 	'Ning_Hai':                       [ 'Ning Hai', 'Super Rare', 'Dragon Empery', 'Light Cruiser', 1, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 51, 'Light', 23, 2192, 201, 304, 234, 110, 0, 10, 187, 75, 0, 152 ],
 	'Ping_Hai':                       [ 'Ping Hai', 'Super Rare', 'Dragon Empery', 'Light Cruiser', 1, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 47, 'Light', 21, 2160, 201, 272, 234, 107, 0, 10, 187, 75, 0, 155 ],
 	'Carabiniere':                    [ 'Carabiniere', 'Elite', 'Sardegna Empire', 'Destroyer', 2, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2', 65, 'Light', 45, 1788, 126, 160, 267, 214, 0, 9, 201, 204, 0, 189 ],
+	'Nicoloso_da_Recco':              [ 'Nicoloso da Recco', 'Elite', 'Sardegna Empire', 'Destroyer', 4, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2', 82, 'Light', 39, 1850, 115, 171, 279, 209, 0, 9, 199, 206, 0, 186 ],
+	'Maestrale':                      [ 'Maestrale', 'Elite', 'Sardegna Empire', 'Destroyer', 4, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 56, 'Light', 45, 1821, 109, 160, 293, 217, 0, 9, 209, 192, 0, 200 ],
+	'Libeccio':                       [ 'Libeccio', 'Elite', 'Sardegna Empire', 'Destroyer', 4, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 42, 'Light', 45, 1783, 115, 154, 299, 212, 0, 9, 209, 184, 0, 200 ],
 	'Vincenzo_Gioberti':              [ 'Vincenzo Gioberti', 'Elite', 'Sardegna Empire', 'Destroyer', 2, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 44, 'Light', 45, 1846, 113, 154, 289, 212, 0, 9, 209, 215, 0, 200 ],
+	'Duca_degli_Abruzzi':             [ 'Duca degli Abruzzi', 'Super Rare', 'Sardegna Empire', 'Light Cruiser', 4, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 85, 'Light', 35, 4360, 159, 371, 320, 96, 0, 11, 181, 97, 0, 169 ],
 	'Trento':                         [ 'Trento', 'Rare', 'Sardegna Empire', 'Heavy Cruiser', 3, [], 'CA', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 42, 'Light', 28, 3544, 232, 186, 184, 71, 0, 10, 160, 0, 0, 118 ],
 	'Zara':                           [ 'Zara', 'Super Rare', 'Sardegna Empire', 'Heavy Cruiser', 1, [ 1 ], 'CA', 'DD/Aux', 'AA/Speed', 'A/CA1', 'A/CA2', 75, 'Medium', 26, 4941, 252, 229, 0, 57, 0, 12, 182, 0, 0, 118 ],
 	'Pola':                           [ 'Pola', 'Super Rare', 'Sardegna Empire', 'Heavy Cruiser', 0.5, [], 'CA', 'DD/Aux', 'AA/Speed', 'A/CA1', 'A/CA2', 75, 'Medium', 26, 4941, 252, 243, 0, 57, 0, 12, 182, 0, 0, 118 ],
+	'Vittorio_Veneto':                [ 'Vittorio Veneto', 'Super Rare', 'Sardegna Empire', 'Battleship', 4, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 80, 'Heavy', 30, 8491, 429, 243, 0, 35, 0, 15, 159, 0, 0, 58 ],
 	'Littorio':                       [ 'Littorio', 'Super Rare', 'Sardegna Empire', 'Battleship', 1.5, [ 1 ], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 79, 'Heavy', 30, 8367, 421, 243, 0, 35, 0, 15, 154, 0, 0, 58 ],
 	'Conte_di_Cavour':                [ 'Conte di Cavour', 'Rare', 'Sardegna Empire', 'Battleship', 3, [], 'BB/Damage', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 45, 'Heavy', 27, 6831, 337, 175, 146, 36, 0, 13, 138, 0, 0, 62 ],
 	'Giulio_Cesare':                  [ 'Giulio Cesare', 'Elite', 'Sardegna Empire', 'Battleship', 3, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 65, 'Heavy', 27, 7030, 347, 186, 151, 36, 0, 14, 149, 0, 0, 64 ],
+	'Aquila':                         [ 'Aquila', 'Super Rare', 'Sardegna Empire', 'Aircraft Carrier', 4, [ 0, 1 ], 'F', 'F/DB', 'TB', 'A/CV1', 'A/CV2', 40, 'Medium', 30, 6217, 0, 363, 0, 45, 398, 13, 127, 0, 0, 101 ],
+	'Torricelli':                     [ 'Torricelli', 'Elite', 'Sardegna Empire', 'Submarine', 4, [], 'ST', 'ST', 'SS', 'A/SS1', 'A/SS2', 16, 'Light', 14, 1518, 39, 0, 499, 37, 0, 7, 84, 0, 0, 178 ],
 	'Gromky':                         [ 'Gromky', 'Elite', 'Northern Parliament', 'Destroyer', 1.5, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 45, 'Light', 45, 2277, 131, 167, 235, 175, 0, 9, 199, 204, 0, 183 ],
 	'Gremyashchy':                    [ 'Gremyashchy', 'Elite', 'Northern Parliament', 'Destroyer', 1.5, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 70, 'Light', 45, 2165, 142, 150, 279, 165, 0, 9, 199, 199, 0, 183 ],
 	'Grozny':                         [ 'Grozny', 'Elite', 'Northern Parliament', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 60, 'Light', 46, 2496, 125, 204, 179, 166, 0, 10, 200, 200, 0, 184 ],
