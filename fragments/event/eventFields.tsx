@@ -132,7 +132,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
-						defaultValue={neededPoints}
+						value={neededPoints}
 					/>
 				</Grid>
 				<Grid item sm={3} xs={6}>

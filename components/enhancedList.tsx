@@ -143,7 +143,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 						</CSSTransition>;
 					} )}
 				</TransitionGroup>
-			</ReactSortable> : data.map( ( item, index ) => renderPanel ? <Accordion>
+			</ReactSortable> : data.map( ( item, index ) => renderPanel ? <Accordion key={index}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon/>}
 					classes={{ content: classes.center }}>
@@ -152,7 +152,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				<AccordionDetails>
 					{renderPanel( item, index )}
 				</AccordionDetails>
-			</Accordion> : <ListItem divider>
+			</Accordion> : <ListItem key={index} divider>
 				{renderRow( item, index )}
 			</ListItem> )}
 		</Paper>
