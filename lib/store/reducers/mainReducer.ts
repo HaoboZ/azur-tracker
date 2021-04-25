@@ -27,7 +27,7 @@ export function setNewData( newData: Record<string, boolean> ) {
 	};
 }
 
-export function setTheme( theme: 'default' | 'light' | 'dark' ) {
+export function setTheme( theme: string ) {
 	return {
 		type: SETTHEME,
 		theme

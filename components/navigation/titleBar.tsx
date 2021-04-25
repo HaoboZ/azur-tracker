@@ -1,5 +1,9 @@
 import { AppBar, Badge, Box, Button, IconButton, Link as MuiLink, makeStyles, Toolbar } from '@material-ui/core';
-import { Brightness3 as Brightness3Icon, BrightnessHigh as BrightnessHighIcon } from '@material-ui/icons';
+import {
+	Brightness3 as Brightness3Icon,
+	Brightness4 as Brightness4Icon,
+	BrightnessHigh as BrightnessHighIcon
+} from '@material-ui/icons';
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,8 +55,18 @@ export default function TitleBar() {
 			<Box flexGrow={1}/>
 			<IconButton
 				color='inherit'
-				onClick={() => dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) )}>
-				{main.theme === 'light' ? <BrightnessHighIcon/> : <Brightness3Icon/>}
+				onClick={() => {
+					dispatch( setTheme( {
+						'light':   'dark',
+						'dark':    'default',
+						'default': 'light'
+					}[ main.theme ] || 'light' ) );
+				}}>
+				{{
+					'light':   <BrightnessHighIcon/>,
+					'dark':    <Brightness3Icon/>,
+					'default': <Brightness4Icon/>
+				}[ main.theme ] || 'default'}
 			</IconButton>
 		</Toolbar>
 	</AppBar>;

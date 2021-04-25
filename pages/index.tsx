@@ -8,9 +8,13 @@ import {
 	ListItemText,
 	makeStyles,
 	Slider,
-	Switch,
 	Typography
 } from '@material-ui/core';
+import {
+	Brightness3 as Brightness3Icon,
+	Brightness4 as Brightness4Icon,
+	BrightnessHigh as BrightnessHighIcon
+} from '@material-ui/icons';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import React from 'react';
@@ -73,14 +77,14 @@ export default function Home() {
 			<ListItemSecondaryAction>
 				<ButtonGroup>
 					<Button
-						color={main.autoSave ? 'primary' : 'default'}
 						variant={main.autoSave ? 'contained' : 'outlined'}
+						color={main.autoSave ? 'primary' : 'default'}
 						onClick={() => dispatch( setAutoSave( !main.autoSave ) )}>
 						Save
 					</Button>
 					<Button
-						color={main.autoLoad ? 'primary' : 'default'}
 						variant={main.autoLoad ? 'contained' : 'outlined'}
+						color={main.autoLoad ? 'primary' : 'default'}
 						onClick={() => dispatch( setAutoLoad( !main.autoLoad ) )}>
 						Load
 					</Button>
@@ -158,12 +162,28 @@ export default function Home() {
 			</ListItemSecondaryAction>
 		</ListItem>
 		<ListItem>
-			<ListItemText>Dark Mode</ListItemText>
+			<ListItemText>Theme</ListItemText>
 			<ListItemSecondaryAction>
-				<Switch
-					checked={main.theme === 'dark'}
-					onChange={( e, checked ) => dispatch( setTheme( checked ? 'dark' : 'light' ) )}
-				/>
+				<ButtonGroup>
+					<Button
+						variant={main.theme === 'default' ? 'contained' : 'outlined'}
+						color={main.theme === 'default' ? 'primary' : 'default'}
+						onClick={() => dispatch( setTheme( 'default' ) )}>
+						<Brightness4Icon/>
+					</Button>
+					<Button
+						variant={main.theme === 'light' ? 'contained' : 'outlined'}
+						color={main.theme === 'light' ? 'primary' : 'default'}
+						onClick={() => dispatch( setTheme( 'light' ) )}>
+						<BrightnessHighIcon/>
+					</Button>
+					<Button
+						variant={main.theme === 'dark' ? 'contained' : 'outlined'}
+						color={main.theme === 'dark' ? 'primary' : 'default'}
+						onClick={() => dispatch( setTheme( 'dark' ) )}>
+						<Brightness3Icon/>
+					</Button>
+				</ButtonGroup>
 			</ListItemSecondaryAction>
 		</ListItem>
 		<ListItem>
