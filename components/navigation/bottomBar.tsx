@@ -28,7 +28,7 @@ const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
 	{ label: 'Event', icon: <EventIcon/>, link: '/event' },
 	{ label: 'Research', icon: <CameraIcon/>, link: '/research' },
-	{ label: 'Armada', icon: <DirectionsBoatIcon/>, link: '/armada' }
+	{ label: 'Ship', icon: <DirectionsBoatIcon/>, link: '/ship' }
 ];
 
 export default function BottomBar() {

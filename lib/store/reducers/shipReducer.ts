@@ -72,7 +72,7 @@ const initState: State = {
 		equipMax: true,
 		level0:   true
 	},
-	version: '2021-03-15'
+	version: '2021-04-24'
 };
 
 export default function shipReducer( state = initState, action ): State {

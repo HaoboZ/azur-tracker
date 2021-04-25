@@ -15,12 +15,13 @@ const migrations = {
 		ship: {
 			...state.ship,
 			ships: _.mapValues( state.ship.ships, ( ship ) => {
-				if ( ship?.equip )
-					ship.equip = ship.equip.map( ( val ) => {
+				if ( ship?.equip ) {
+					ship.equip = ship.equip?.map( ( val ) => {
 						if ( val.length > 1 )
 							val[ 1 ] = +val[ 1 ] as any;
 						return val;
 					} );
+				}
 				return ship;
 			} )
 		}
@@ -39,12 +40,34 @@ const migrations = {
 			daily:   state.event.daily.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) ),
 			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) )
 		}
+	} ),
+	5: ( state: RootState ) => ( {
+		...state,
+		ship: {
+			...state.ship,
+			ships: _.mapValues( state.ship.ships, ( ship ) => {
+				ship.equip?.forEach( ( equip ) => {
+					switch ( equip[ 0 ] % 10 ) {
+					case 1:
+						equip[ 0 ] -= 1;
+						break;
+					case 2:
+						equip[ 0 ] += 18;
+						break;
+					case 3:
+						equip[ 0 ] += 37;
+						break;
+					}
+				} );
+				return ship;
+			} )
+		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
 	key:             'root',
-	version:         4,
+	version:         5,
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate:         createMigrate( migrations as any, { debug: false } ),

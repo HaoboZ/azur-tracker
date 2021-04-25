@@ -110,14 +110,14 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				<TransitionGroup component={null}>
 					{data.map( ( item, index ) => {
 						const itemRow = <>
-							<ListItemIcon>
-								{editing && <IconButton onClick={() => {
+							{editing && <ListItemIcon>
+								<IconButton onClick={() => {
 									const _data = [ ...data ];
 									_data.splice( index, 1 );
 									setData?.( _data );
-								}}><CloseIcon/></IconButton>}
+								}}><CloseIcon/></IconButton>
 								<IconButton className='sortHandle'><MenuIcon/></IconButton>
-							</ListItemIcon>
+							</ListItemIcon>}
 							{renderRow( item, index )}
 						</>;
 						

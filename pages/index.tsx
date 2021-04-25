@@ -188,12 +188,12 @@ export default function Home() {
 		</ListItem>
 		<ListItem>
 			<Typography>
-				<Link href='/armada' passHref>
+				<Link href='/ship' passHref>
 					<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
-						Armada Tracker
+						Ship Tracker
 					</MuiLink>
 				</Link>
-				{' '}- for those who want a fully leveled, fully equipped fleet, rise my glorious armada
+				{' '}- for those who want a fully leveled, fully equipped fleet
 			</Typography>
 		</ListItem>
 	</List>;

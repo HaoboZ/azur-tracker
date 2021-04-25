@@ -66,7 +66,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 	}, [ info ] );
 	
 	// equipment currently in that slot
-	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ][ 0 ] || 0 ];
+	const currentEquip = equipsIndex[ info?.rowData.equipped[ info.index ][ 0 ] ] || equips[ 0 ];
 	
 	// equipment that will go in slot
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );

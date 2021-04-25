@@ -7,21 +7,17 @@ import { useSelector } from 'react-redux';
 import { getBackup, setBackup } from '../lib/backup';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
 import SnackbarProvider from '../lib/provider/snackbarProvider';
-import themes from '../lib/theme';
+import useTheme from '../lib/useTheme';
 import Navigation from '../components/navigation';
 
-export default function Baseline( { children }: {
-	children?: React.ReactNode
-} ) {
-	const main = useSelector( store => store.main );
+export default function Baseline( { children }: { children?: React.ReactNode } ) {
+	const theme = useTheme();
 	
-	return <ThemeProvider theme={themes[ main.theme ]}>
+	return <ThemeProvider theme={theme}>
 		<SnackbarProvider>
 			<IndicatorProvider>
 				<CssBaseline/>
-				<Content>
-					{children}
-				</Content>
+				<Content>{children}</Content>
 			</IndicatorProvider>
 		</SnackbarProvider>
 	</ThemeProvider>;

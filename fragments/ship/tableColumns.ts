@@ -55,9 +55,9 @@ export default function TableColumns() {
 			render( data, type ) {
 				const val: number = type === 'group' ? data as any : data.tier;
 				switch ( val ) {
-				case 4:
+				case 6:
 					return '';
-				case 3:
+				case 5:
 					return 'N';
 				default:
 					return val;

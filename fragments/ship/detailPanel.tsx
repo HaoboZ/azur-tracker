@@ -4,7 +4,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { rarityColors, tierColors } from '../../lib/reference/colors';
-import { equipsIndex } from '../../lib/reference/equipRef';
+import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 
@@ -67,7 +67,7 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 		</Grid>
 		<Grid item xs={8} container spacing={1} alignItems='center' justify='center'>
 			{rowData.equipped.map( ( val, index ) => {
-				const equip = equipsIndex[ val[ 0 ] || 0 ];
+				const equip = equipsIndex[ val[ 0 ] ] || equips[ 0 ];
 				return <Grid
 					key={index}
 					item xs

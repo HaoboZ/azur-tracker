@@ -4,10 +4,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ActionTitle from '../components/actionTitle';
-import DetailPanel from '../fragments/armada/detailPanel';
-import EquipDialog from '../fragments/armada/equipDialog';
-import EquipFilter from '../fragments/armada/equipFilter';
-import TableColumns from '../fragments/armada/tableColumns';
+import DetailPanel from '../fragments/ship/detailPanel';
+import EquipDialog from '../fragments/ship/equipDialog';
+import EquipFilter from '../fragments/ship/equipFilter';
+import TableColumns from '../fragments/ship/tableColumns';
 import { mappedColorClasses } from '../lib/reference/colors';
 import { equippable, equips, equipTier } from '../lib/reference/equipRef';
 import shipRef from '../lib/reference/shipRef';
@@ -16,7 +16,7 @@ import tableIcons from '../lib/tableIcons';
 
 const useStyles = makeStyles( () => mappedColorClasses as any );
 
-export default function Armada() {
+export default function Ship() {
 	const ship     = useSelector( store => store.ship ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
@@ -85,7 +85,7 @@ export default function Armada() {
 			}
 		`}</style>
 		<ActionTitle
-			title='Armada Tracker'
+			title='Ship Tracker'
 			actions={[ {
 				name:    'Reset',
 				onClick: () => {

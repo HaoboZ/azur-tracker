@@ -27,7 +27,7 @@ export function setNewData( newData: Record<string, boolean> ) {
 	};
 }
 
-export function setTheme( theme: 'light' | 'dark' ) {
+export function setTheme( theme: 'default' | 'light' | 'dark' ) {
 	return {
 		type: SETTHEME,
 		theme
@@ -75,7 +75,7 @@ type State = {
 const initState: State = {
 	lastSaved:        new Date( 0 ).toISOString(),
 	newData:          {},
-	theme:            'light',
+	theme:            'default',
 	autoSave:         true,
 	autoLoad:         true,
 	autoSaveInterval: 2 * 1000,

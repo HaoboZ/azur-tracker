@@ -54,14 +54,14 @@ export const equips      = [
 	       //region Torpedo
 	       {
 		       id:     25040,
-		       name:   '533mm Quintuple Torpedo Mount MkIX',
+		       name:   '533mm Quintuple Torpedo Mount Mk IX',
 		       image:  '533mm_Quintuple_Torpedo_Mount_Mk_IX',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15240,
-		       name:   '533mm Quintuple Torpedo Mount Mk17',
+		       name:   '533mm Quintuple Torpedo Mount Mk 17',
 		       image:  '533mm_Quintuple_Torpedo_Mount_Mk_17',
 		       type:   type.T,
 		       rarity: rarity.SR
@@ -74,92 +74,92 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     5203,
-		       name:   'Quintuple 533mm Torpedo',
+		       id:     5240,
+		       name:   '533mm Quintuple Torpedo Mount',
 		       image:  '533mm_Quintuple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     35203,
-		       name:   'Quadruple 610mm Torpedo',
+		       id:     35240,
+		       name:   '610mm Quadruple Torpedo Mount',
 		       image:  '610mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     15220,
-		       name:   '533mm Quadruple Torpedo Mount Mk17',
+		       name:   '533mm Quadruple Torpedo Mount Mk 17',
 		       image:  '533mm_Quadruple_Torpedo_Mount_Mk_17',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     25020,
-		       name:   '533mm Quadruple Torpedo Mount MkIX',
+		       name:   '533mm Quadruple Torpedo Mount Mk IX',
 		       image:  '533mm_Quadruple_Torpedo_Mount_Mk_IX',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     5103,
-		       name:   'Quadruple 533mm Torpedo',
+		       id:     5140,
+		       name:   '533mm Quadruple Torpedo Mount',
 		       image:  '533mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     5202,
-		       name:   'Quintuple 533mm Torpedo',
+		       id:     5220,
+		       name:   '533mm Quintuple Torpedo Mount',
 		       image:  '533mm_Quintuple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     45203,
-		       name:   'Quintuple 533mm Magnetic Torpedo',
+		       id:     45240,
+		       name:   '533mm Quintuple Magnetic Torpedo Mount',
 		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.UR
 	       },
 	       {
-		       id:     35202,
-		       name:   'Quadruple 610mm Torpedo',
+		       id:     35220,
+		       name:   '610mm Quadruple Torpedo Mount',
 		       image:  '610mm_Quadruple_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     45103,
-		       name:   'Quadruple 533mm Magnetic Torpedo',
+		       id:     45140,
+		       name:   '533mm Quadruple Magnetic Torpedo Mount',
 		       image:  '533mm_Quadruple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     45202,
-		       name:   'Quintuple 533mm Magnetic Torpedo',
+		       id:     45220,
+		       name:   '533mm Quintuple Magnetic Torpedo Mount',
 		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     45102,
-		       name:   'Quadruple 533mm Magnetic Torpedo',
+		       id:     45120,
+		       name:   '533mm Quadruple Magnetic Torpedo Mount',
 		       image:  '533mm_Quadruple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     45201,
-		       name:   'Quintuple 533mm Magnetic Torpedo',
+		       id:     45200,
+		       name:   '533mm Quintuple Magnetic Torpedo Mount',
 		       image:  '533mm_Quintuple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     45003,
-		       name:   'Triple 533mm Magnetic Torpedo',
+		       id:     45040,
+		       name:   '533mm Triple Magnetic Torpedo Mount',
 		       image:  '533mm_Triple_Homing_Torpedo_Mount',
 		       type:   type.T,
 		       rarity: rarity.E
@@ -168,35 +168,35 @@ export const equips      = [
 	       //region Anti-Air
 	       {
 		       id:     26660,
-		       name:   'Sextuple Bofors 40mm AA Gun',
+		       name:   'Sextuple 40mm Bofors AA Gun Mount',
 		       image:  'Sextuple_40mm_Bofors',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     16403,
-		       name:   'Quadruple 40mm Bofors Gun',
+		       id:     16440,
+		       name:   'Quadruple 40mm Bofors AA Gun Mount',
 		       image:  'Quadruple_40mm_Bofors_(Mk_2_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     16080,
-		       name:   'Twin 76mm Rapid Fire Gun Mount Mk27',
+		       name:   'Twin 76mm Mk 27 RF AA Gun Mount',
 		       image:  'Twin_76mm_AA_(Mk_27_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     26203,
-		       name:   'Octuple 40mm Pom Pom Gun',
+		       id:     26240,
+		       name:   'Octuple 40mm Pom-Pom Gun Mount',
 		       image:  'Octuple_40mm_Pom-Pom',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     46360,
-		       name:   'Twin 105mm SK C/33 na Anti-Air Gun Mount',
+		       name:   'Twin 105mm SK C/33 na AA Gun Mount',
 		       image:  'Twin_105mm_AA_(SK_C$2F33_na)',
 		       type:   type.AA,
 		       rarity: rarity.SR
@@ -210,84 +210,84 @@ export const equips      = [
 	       },
 	       {
 		       id:     36700,
-		       name:   'Prototype 40mm AA Gun (Type 5)',
+		       name:   'Twin 40mm Bofors Type 5 AA Gun Mount',
 		       image:  'Twin_40mm_Bofors_(Type_5)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     36560,
-		       name:   '100mm Mounted AA Gun',
+		       name:   'Twin 100mm Type 98 AA Gun Mount',
 		       image:  'Twin_100mm_AA_(Type_98)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     46303,
-		       name:   'Twin 105mm AA Gun (SK C)',
+		       id:     46340,
+		       name:   'Twin 105mm SK C/33 AA Gun Mount',
 		       image:  'Twin_105mm_AA_(SK_C$2F33)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     26620,
-		       name:   'Twin 40mm Bofors "Hazemeyer" AA Gun',
+		       name:   'Twin 40mm Bofors "Hazemeyer" AA Gun Mount',
 		       image:  'Twin_40mm_Bofors_Hazemeyer',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     55103,
-		       name:   'Single 90mm High-Angle Gun (M1939)',
+		       id:     95140,
+		       name:   'Single 90mm Model 1939 AA Gun',
 		       image:  'Single_90mm_AA_(Model_1939)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     26503,
-		       name:   'Twin 113mm AA Gun',
+		       id:     26540,
+		       name:   'Twin 113mm AA Gun Mount',
 		       image:  'Twin_113mm_AA_(QF_Mark_I)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     16402,
-		       name:   'Quadruple 40mm Bofors Gun',
+		       id:     16420,
+		       name:   'Quadruple 40mm Bofors AA Gun Mount',
 		       image:  'Quadruple_40mm_Bofors_(Mk_2_Mount)',
 		       type:   type.AA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     36360,
-		       name:   '25mm Type 96 Triple AT/AA Gun',
+		       name:   'Triple 25mm Type 96 AT/AA Gun Mount',
 		       image:  'Triple_25mm_AA_(Type_96_Blast_Shield)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     26202,
-		       name:   'Octuple 40mm Pom Pom Gun',
+		       id:     26220,
+		       name:   'Octuple 40mm Pom-Pom Gun Mount',
 		       image:  'Octuple_40mm_Pom-Pom',
 		       type:   type.AA,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     50600,
-		       name:   'Twin 37mm AA Gun (Mle 1936)',
+		       id:     90600,
+		       name:   'Twin 37mm Mle 1936 AA Gun Mount',
 		       image:  'Twin_37mm_ACAD_(Mle_1936)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     36660,
-		       name:   '127mm Type 89 High-Angle Gun',
+		       name:   'Twin 127mm Type 89 AA Gun Mount',
 		       image:  'Twin_127mm_AA_(Type_89_A1_Mod_2)',
 		       type:   type.AA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     21500,
-		       name:   '134mm Twin High-Angle Gun',
+		       id:     26640,
+		       name:   'Twin 134mm AA Gun Mount',
 		       image:  'Twin_134mm_AA_(QF_Mark_I)',
 		       type:   type.AA,
 		       rarity: rarity.SR
@@ -295,43 +295,43 @@ export const equips      = [
 	       //endregion
 	       //region Destroyer
 	       {
-		       id:     85003,
-		       name:   'Twin 130mm Main Gun (B-2LM)',
+		       id:     85040,
+		       name:   'Twin 130mm B-2LM Main Gun Mount',
 		       image:  'Twin_130mm_(B-2LM)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     21600,
-		       name:   'Twin 114mm DP (4.5" MK IV)',
+		       name:   'Twin 114mm Mk IV Dual-Purpose Gun Mount',
 		       image:  'Twin_114mm_(QF_Mk_IV_Prototype)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     21460,
-		       name:   'Twin 120mm Dual-Purpose Gun Mount MkXI',
+		       name:   'Twin 120mm Mk XI Dual-Purpose Gun Mount',
 		       image:  'Twin_120mm_(QF_Mark_XI)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     50703,
-		       name:   'Single 138.6mm Main Gun (Mle 1927)',
+		       id:     90740,
+		       name:   'Single 138.6mm Mle 1927 Naval Gun',
 		       image:  'Single_138.6mm_(Mle_1927)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     21403,
-		       name:   'Twin 120mm Main Gun',
+		       id:     21440,
+		       name:   'Twin 120mm Main Gun Mount',
 		       image:  'Twin_120mm_(QF_Mark_XII)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     55403,
-		       name:   'Twin 120mm Main Gun (M1936)',
+		       id:     95440,
+		       name:   'Twin 120mm M1936 Main Gun Mount',
 		       image:  'Twin_120mm_(Model_1936)',
 		       type:   type.DD,
 		       rarity: rarity.E
@@ -344,22 +344,22 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     50103,
-		       name:   'Single 138.6mm Main Gun (Mle 1929)',
+		       id:     90140,
+		       name:   'Single 138.6mm Mle 1929 Naval Gun',
 		       image:  'Single_138.6mm_(Mle_1929)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     31003,
-		       name:   'Twin 100mm (Type 98) AA Gun',
+		       id:     31040,
+		       name:   'Twin 100mm Type 98 High-Angle Gun',
 		       image:  'Twin_100mm_(Type_98)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     7203,
-		       name:   'Single 130mm Main Gun',
+		       id:     7240,
+		       name:   'Single 130mm Naval Gun',
 		       image:  'Single_130mm_(B13_Pattern_1936)',
 		       type:   type.DD,
 		       rarity: rarity.E
@@ -372,57 +372,57 @@ export const equips      = [
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     50102,
-		       name:   'Single 138.6mm Main Gun (Mle 1929)',
+		       id:     90120,
+		       name:   'Single 138.6mm Mle 1929 Naval Gun',
 		       image:  'Single_138.6mm_(Mle_1929)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     31002,
-		       name:   'Twin 100mm (Type 98) AA Gun',
+		       id:     31020,
+		       name:   'Twin 100mm Type 98 High-Angle Gun',
 		       image:  'Twin_100mm_(Type_98)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     11203,
-		       name:   'Twin 127mm MK12 Dual Gun',
+		       id:     11240,
+		       name:   'Twin 127mm Mk 12 Dual-Purpose Gun Mount',
 		       image:  'Twin_127mm_(5$22$2F38_Mk_38)',
 		       type:   type.DD,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     11103,
+		       id:     11140,
 		       name:   'Single 127mm Main Gun',
 		       image:  'Single_127mm_(5$22$2F38_Mk_30)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     11202,
-		       name:   'Twin 127mm MK12 Dual Gun',
+		       id:     11220,
+		       name:   'Twin 127mm Mk 12 Dual-Purpose Gun Mount',
 		       image:  'Twin_127mm_(5$22$2F38_Mk_38)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     41103,
-		       name:   'Twin 128mm Dual Gun (SK C/41)',
+		       id:     41140,
+		       name:   'Twin 128mm SK C/41 Dual-Purpose Gun Mount',
 		       image:  'Twin_128mm_(SK_C$2F41)',
 		       type:   type.DD,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     11003,
+		       id:     11040,
 		       name:   '76mm AA Gun',
 		       image:  'Single_76mm_(3$22$2F50_caliber_gun)',
 		       type:   type.DD,
 		       rarity: rarity.R
 	       },
 	       {
-		       id:     21302,
-		       name:   'Single 120mm Main Gun',
+		       id:     21340,
+		       name:   'Single 120mm QF Mark IX Naval Gun',
 		       image:  'Single_120mm_(QF_Mark_IX)',
 		       type:   type.DD,
 		       rarity: rarity.R
@@ -430,22 +430,22 @@ export const equips      = [
 	       //endregion
 	       //region Light Cruiser
 	       {
-		       id:     22203,
+		       id:     22240,
 		       name:   'Triple 152mm Main Gun2',
 		       image:  'Triple_152mm_(BL_6$22_Mk_XXIII)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     22103,
+		       id:     22140,
 		       name:   'Twin 152mm Main Gun',
 		       image:  'Twin_152mm_(BL_6$22_Mk_XXIII)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     42203,
-		       name:   'Twin 150mm Main Gun (TbtsK C/36)',
+		       id:     42240,
+		       name:   'Twin 150mm TbtsK C/36 Main Gun Mount',
 		       image:  'Twin_150mm_(TbtsK_C$2F36)',
 		       type:   type.CL,
 		       rarity: rarity.E
@@ -459,34 +459,34 @@ export const equips      = [
 	       },
 	       {
 		       id:     12200,
-		       name:   'Prototype Triple 152mm Main Gun (DP MK17)',
+		       name:   'Prototype Triple 152mm DP Mk 17 Main Gun Mount',
 		       image:  'Triple_152mm_(6$22$2F47_Mk_17_DP_Prototype)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     85123,
-		       name:   'Triple 152mm Main Gun (B-38 MK5)',
+		       id:     85160,
+		       name:   'Triple 152mm B-38 MK 5 Main Gun Mount',
 		       image:  'Triple_152mm_(MK-5)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     12160,
-		       name:   'Triple 152mm Main Gun Mount Mk16',
+		       name:   'Triple 152mm Mk 16 Main Gun Mount',
 		       image:  'Triple_152mm_(6$22$2F47_Mk_16)_Mod_1',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     32203,
-		       name:   'Triple 155mm Mounted Gun',
+		       id:     32240,
+		       name:   'Triple 155mm Main Gun Mount',
 		       image:  'Triple_155mm_(3rd_Year_Type)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     12103,
+		       id:     12140,
 		       name:   'Triple 152mm Main Gun',
 		       image:  'Triple_152mm_(6$22$2F47_Mk_16)',
 		       type:   type.CL,
@@ -494,28 +494,35 @@ export const equips      = [
 	       },
 	       {
 		       id:     22260,
-		       name:   'Prototype Triple 152mm Main Gun',
+		       name:   'Prototype Triple 152mm Mk XXV Main Gun Mount',
 		       image:  'Triple_152mm_(BL_6$22_Mk_XXV_Prototype)',
 		       type:   type.CL,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     85122,
-		       name:   'Triple 152mm Main Gun (B-38 MK5)',
+		       id:     95640,
+		       name:   'Triple 152mm Model 1934 Main Gun Mount',
+		       image:  'Triple_152mm_(Model_1934)',
+		       type:   type.CL,
+		       rarity: rarity.SR
+	       },
+	       {
+		       id:     85140,
+		       name:   'Triple 152mm B-38 MK 5 Main Gun Mount',
 		       image:  'Triple_152mm_(MK-5)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     32202,
-		       name:   'Triple 155mm Mounted Gun',
+		       id:     32220,
+		       name:   'Triple 155mm Main Gun Mount',
 		       image:  'Triple_155mm_(3rd_Year_Type)',
 		       type:   type.CL,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     42003,
-		       name:   'Single 150mm Main Gun (SK C/28)',
+		       id:     42040,
+		       name:   'Single 150mm SK C/28 Main Gun Mount',
 		       image:  'Single_150mm_(SK_C$2F28)',
 		       type:   type.CL,
 		       rarity: rarity.E
@@ -524,70 +531,70 @@ export const equips      = [
 	       //region Heavy Cruiser
 	       {
 		       id:     23120,
-		       name:   'Prototype Triple 234mm Main Gun (9.2" MK XII)',
+		       name:   'Prototype Triple 234mm Main Gun Mount',
 		       image:  'Triple_234mm_(BL_9.2$22_Mk_XII_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.UR
 	       },
 	       {
 		       id:     43060,
-		       name:   'Prototype Triple 203mm Main Gun (SK C)',
+		       name:   'Prototype Triple 203mm SK C/34 Main Gun Mount',
 		       image:  'Triple_203mm_(SK_C$2F34_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     13160,
-		       name:   'Triple 203mm Main Gun Mount Mk15',
+		       name:   'Triple 203mm Mk 15 Main Gun Mount',
 		       image:  'Triple_203mm_(8$22$2F55_Mk_15)_T0',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     55203,
-		       name:   'Twin 203mm Main Gun (M1927)',
+		       id:     95200,
+		       name:   'Twin 203mm Model 1927 Main Gun Mount',
 		       image:  'Twin_203mm_(Model_1927)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     43103,
-		       name:   'Triple 283mm Main Gun (SK C/28)',
+		       id:     43140,
+		       name:   'Triple 283mm SK C/28 Main Gun Mount',
 		       image:  'Triple_283mm_(SK_C$2F28)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     7340,
-		       name:   'Submarine-mounted Twin 203mm Cannon (Mle 1924)',
+		       name:   'Twin 203mm Mle 1924 Submarine Gun Mount',
 		       image:  'Twin_203mm_(Mle_1924_Submarine-mount)',
 		       type:   type.SS,
 		       rarity: rarity.R
 	       },
 	       {
-		       id:     43003,
-		       name:   'Twin 203mm Main Gun (SK C)',
+		       id:     43040,
+		       name:   'Twin 203mm (SK C/34)',
 		       image:  'Twin_203mm_(SK_C$2F34)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     23100,
-		       name:   'Prototype Twin 234mm Main Gun (9.2" MK XII)',
+		       name:   'Prototype Twin 234mm Main Gun Mount',
 		       image:  'Twin_234mm_(BL_9.2$22_Mk_XII_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     43002,
-		       name:   'Twin 203mm Main Gun (SK C)',
+		       id:     43020,
+		       name:   'Twin 203mm (SK C/34)',
 		       image:  'Twin_203mm_(SK_C$2F34)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     23200,
-		       name:   'Prototype Triple 203mm Main Gun Mount Mk IX',
+		       name:   'Prototype Triple 203mm Mk IX Main Gun Mount',
 		       image:  'Triple_203mm_(BL_Mk_IX_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
@@ -600,43 +607,43 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     50863,
-		       name:   'Twin 203mm Main Gun (Mle 1924)',
+		       id:     90900,
+		       name:   'Twin 203mm Mle 1924 Main Gun Mount',
 		       image:  'Twin_203mm_(Mle_1924)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     33100,
-		       name:   'Prototype Triple 310mm Main Gun (Type 0)',
+		       name:   'Prototype Triple 310mm Type 0 Main Gun Mount',
 		       image:  'Triple_310mm_(Type_0_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     33060,
-		       name:   'Prototype 203mm (Type 3) Mounted Gun',
+		       name:   'Prototype 203mm No. 3 Naval Gun Mount',
 		       image:  'Twin_203mm_(3rd_Year_Type_No._3_Prototype)',
 		       type:   type.CA,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     55202,
-		       name:   'Twin 203mm Main Gun (M1927)',
+		       id:     90220,
+		       name:   'Twin 203mm Model 1927 Main Gun Mount',
 		       image:  'Twin_203mm_(Model_1927)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     33003,
-		       name:   '203mm Mounted Gun',
+		       id:     33040,
+		       name:   'Twin 203mm Naval Gun Mount',
 		       image:  'Twin_203mm_(3rd_Year_Type)',
 		       type:   type.CA,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     50862,
-		       name:   'Twin 203mm Main Gun (Mle 1924)',
+		       id:     90880,
+		       name:   'Twin 203mm Mle 1924 Main Gun Mount',
 		       image:  'Twin_203mm_(Mle_1924)',
 		       type:   type.CA,
 		       rarity: rarity.E
@@ -644,35 +651,35 @@ export const equips      = [
 	       //endregion
 	       //region Battleship
 	       {
-		       id:     34100,
-		       name:   '410mm Mounted Gun (Type 3 Shell)',
+		       id:     34160,
+		       name:   'Twin 410mm (Type 3 Shell) Naval Gun Mount',
 		       image:  'Twin_410mm_(3rd_Year_Type)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     14500,
-		       name:   'Prototype Twin 457mm Main Gun (18" MKA)',
+		       name:   'Prototype Twin 457mm Mk A Main Gun Mount',
 		       image:  'Twin_457mm_(Mark_A_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.UR
 	       },
 	       {
-		       id:     51000,
-		       name:   'Prototype Triple 406mm/50 Main Gun',
+		       id:     91000,
+		       name:   'Prototype Triple 406mm /50 Main Gun Mount',
 		       image:  'Triple_406mm_(Mle_1938_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     14303,
-		       name:   'Triple 406mm MK6 Main Gun',
+		       id:     14340,
+		       name:   'Triple 406mm Mk 6 Main Gun Mount',
 		       image:  'Triple_406mm_(16$22$2F45_Mk_6)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     24203,
+		       id:     24240,
 		       name:   'Triple 406mm Main Gun',
 		       image:  'Triple_406mm_(BL_16$22_Mk_I)',
 		       type:   type.BB,
@@ -680,14 +687,14 @@ export const equips      = [
 	       },
 	       {
 		       id:     34180,
-		       name:   'Prototype Triple 410mm Mounted Gun',
+		       name:   'Prototype Triple 410mm Main Gun Mount',
 		       image:  'Triple_410mm_(10th_Year_Type_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     14360,
-		       name:   'Prototype Triple 406mm Main Gun Mount MkD',
+		       name:   'Prototype 406mm Mk D Main Gun Mount',
 		       image:  'Triple_406mm_(16$22$2F50_Mark_D_Mod_0_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
@@ -700,28 +707,28 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     50403,
-		       name:   'Quadruple 380mm Main Gun (Mle 1935)',
+		       id:     90440,
+		       name:   'Quadruple 380mm Mle 1935 Main Gun Mount',
 		       image:  'Quadruple_380mm_(Mle_1935)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     55003,
-		       name:   'Triple 381mm Main Gun (M1934)',
+		       id:     95040,
+		       name:   'Triple 381mm M1934 Main Gun Mount',
 		       image:  'Triple_381mm_(Model_1934)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     85302,
-		       name:   'Triple 406mm Main Gun (B-37 MK1)',
+		       id:     85320,
+		       name:   'Triple 406mm MK-1 Main Gun Mount',
 		       image:  'Triple_406mm_(MK-1)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     24202,
+		       id:     24220,
 		       name:   'Triple 406mm Main Gun',
 		       image:  'Triple_406mm_(BL_16$22_Mk_I)',
 		       type:   type.BB,
@@ -729,77 +736,77 @@ export const equips      = [
 	       },
 	       {
 		       id:     44200,
-		       name:   'Prototype Twin 406mm Main Gun (SK C/34)',
+		       name:   'Prototype 406mm SK C/34 Main Gun Mount',
 		       image:  'Twin_406mm_(SK_C$2F34_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     44300,
-		       name:   'Prototype Triple 305mm Main Gun (SK C/39)',
+		       name:   'Prototype Triple 305mm SK C/39 Main Gun Mount',
 		       image:  'Triple_305mm_(SK_C$2F39_Prototype)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
 		       id:     34300,
-		       name:   '410mm Breech-Loading Naval Gun Kai',
+		       name:   'Twin 410mm Kai Naval Gun Mount',
 		       image:  'Twin_410mm_(3rd_Year_Type)_Kai',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     14380,
-		       name:   'Triple 406mm Main Gun Mount Mk2',
+		       name:   'Triple 406mm Mk 2 Main Gun Mount',
 		       image:  'Triple_406mm_(16$22$2F50_Mk_2)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     14260,
-		       name:   'Twin 406mm Main Gun Mount Mk8',
+		       name:   'Twin 406mm Mk 8 Main Gun Mount',
 		       image:  'Twin_406mm_(16$22$2F45_Mk_8)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     34103,
-		       name:   '410mm Mounted Gun',
+		       id:     34140,
+		       name:   'Twin 410mm Naval Gun Mount',
 		       image:  'Twin_410mm_(3rd_Year_Type)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     43108,
-		       name:   'Triple 283mm Main Gun (SK C/34)',
+		       id:     44040,
+		       name:   'Triple 283mm SK C/34 Main Gun Mount',
 		       image:  'Triple_283mm_(SK_C$2F34)',
 		       type:   type.BB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     24300,
-		       name:   'Twin 381mm Advanced Main Gun',
+		       id:     24340,
+		       name:   'Twin 381mm Advanced Main Gun Mount',
 		       image:  'Twin_381mm_(BL_15$22_Mk_II)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     44103,
-		       name:   'Twin 380mm Main Gun (SK C)',
+		       id:     44140,
+		       name:   'Twin 380mm SK C/34 Main Gun Mount',
 		       image:  'Twin_380mm_(SK_C$2F34)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     24003,
-		       name:   'Quadruple 356mm Main Gun',
+		       id:     24040,
+		       name:   'Quadruple 356mm Main Gun Mount',
 		       image:  'Quadruple_356mm_(BL_14$22_Mk_VII)',
 		       type:   type.BB,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     85423,
-		       name:   'Triple 305mm Main Gun (M1907)',
+		       id:     85420,
+		       name:   'Triple 305mm M1907 Main Gun Mount',
 		       image:  'Triple_305mm_(Pattern_1907)',
 		       type:   type.BB,
 		       rarity: rarity.R
@@ -828,13 +835,13 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     37303,
+		       id:     37340,
 		       name:   'A7M Reppuu',
 		       image:  'Mitsubishi_A7M_Reppuu',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
-	       { id: 27103, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.SR },
+	       { id: 27140, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.SR },
 	       { id: 27300, name: 'Sea Fury', image: 'Hawker_Sea_Fury', type: type.F, rarity: rarity.SR },
 	       {
 		       id:     37400,
@@ -844,22 +851,22 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     17303,
+		       id:     17340,
 		       name:   'F6F Hellcat',
 		       image:  'Grumman_F6F_Hellcat',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
-	       { id: 17203, name: 'F4U Corsair', image: 'Vought_F4U_Corsair', type: type.F, rarity: rarity.E },
+	       { id: 17240, name: 'F4U Corsair', image: 'Vought_F4U_Corsair', type: type.F, rarity: rarity.E },
 	       {
-		       id:     37302,
+		       id:     37320,
 		       name:   'A7M Reppuu',
 		       image:  'Mitsubishi_A7M_Reppuu',
 		       type:   type.F,
 		       rarity: rarity.E
 	       },
-	       { id: 27102, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.E },
-	       { id: 17302, name: 'F6F Hellcat', image: 'Grumman_F6F_Hellcat', type: type.F, rarity: rarity.E },
+	       { id: 27120, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.E },
+	       { id: 17320, name: 'F6F Hellcat', image: 'Grumman_F6F_Hellcat', type: type.F, rarity: rarity.E },
 	       {
 		       id:     17380,
 		       name:   'F8F Bearcat',
@@ -867,7 +874,7 @@ export const equips      = [
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
-	       { id: 37203, name: 'A6M5 Zero', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
+	       { id: 37240, name: 'A6M5 Zero', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
 	       {
 		       id:     27060,
 		       name:   'Seafire FR.47',
@@ -877,13 +884,13 @@ export const equips      = [
 	       },
 	       {
 		       id:     17060,
-		       name:   'Brewster F2A Buffalo (Thach Squadron)',
+		       name:   'F2A Buffalo (Thach Squadron)',
 		       image:  'Brewster_F2A_Buffalo_(Thach_Squadron)',
 		       type:   type.F,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     47103,
+		       id:     47140,
 		       name:   'Messerschmitt Me-155A',
 		       image:  'Messerschmitt_Me-155A',
 		       type:   type.F,
@@ -892,14 +899,14 @@ export const equips      = [
 	       //endregion
 	       //region Dive Bomber
 	       {
-		       id:     49003,
+		       id:     49040,
 		       name:   'Ju-87C Dive Bomber',
 		       image:  'Junkers_Ju-87C',
 		       type:   type.DB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     19103,
+		       id:     19140,
 		       name:   'SB2C Helldiver',
 		       image:  'Curtiss_SB2C_Helldiver',
 		       type:   type.DB,
@@ -921,14 +928,14 @@ export const equips      = [
 	       },
 	       {
 		       id:     29200,
-		       name:   'Fairey Firefly',
+		       name:   'Firefly',
 		       image:  'Fairey_Firefly',
 		       type:   type.DB,
 		       rarity: rarity.SR
 	       },
-	       { id: 39103, name: 'Comet', image: 'Yokosuka_D4Y_Suisei', type: type.DB, rarity: rarity.SR },
+	       { id: 39140, name: 'Suisei', image: 'Yokosuka_D4Y_Suisei', type: type.DB, rarity: rarity.SR },
 	       {
-		       id:     19203,
+		       id:     19240,
 		       name:   'BTD-1 Destroyer',
 		       image:  'Douglas_BTD-1_Destroyer',
 		       type:   type.DB,
@@ -943,7 +950,7 @@ export const equips      = [
 	       },
 	       {
 		       id:     29300,
-		       name:   'Fairey Barracuda (831 Squadron)',
+		       name:   'Barracuda (831 Squadron)',
 		       image:  'Fairey_Barracuda_(831_Squadron)',
 		       type:   type.DB,
 		       rarity: rarity.SR
@@ -965,7 +972,7 @@ export const equips      = [
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
-	       { id: 28103, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.SR },
+	       { id: 28140, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.SR },
 	       { id: 28220, name: 'Firecrest', image: 'Blackburn_Firecrest', type: type.TB, rarity: rarity.SR },
 	       {
 		       id:     28200,
@@ -981,9 +988,9 @@ export const equips      = [
 		       type:   type.TB,
 		       rarity: rarity.SR
 	       },
-	       { id: 28102, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.E },
+	       { id: 28120, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.E },
 	       {
-		       id:     38203,
+		       id:     38240,
 		       name:   'Aichi B7A Ryusei',
 		       image:  'Aichi_B7A_Ryusei',
 		       type:   type.TB,
@@ -998,22 +1005,22 @@ export const equips      = [
 	       },
 	       { id: 48040, name: 'Ju-87 D-4', image: 'Junkers_Ju-87_D-4', type: type.TB, rarity: rarity.SR },
 	       {
-		       id:     38103,
-		       name:   'Nakajima B6N Tenzan',
+		       id:     38140,
+		       name:   'Tenzan',
 		       image:  'Nakajima_B6N_Tenzan',
 		       type:   type.TB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     38202,
+		       id:     38220,
 		       name:   'Aichi B7A Ryusei',
 		       image:  'Aichi_B7A_Ryusei',
 		       type:   type.TB,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     28303,
-		       name:   'Fairey Albacore',
+		       id:     28340,
+		       name:   'Albacore',
 		       image:  'Fairey_Albacore',
 		       type:   type.TB,
 		       rarity: rarity.E
@@ -1043,7 +1050,7 @@ export const equips      = [
 	       },
 	       { id: 39300, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SSP, rarity: rarity.E },
 	       {
-		       id:     39203,
+		       id:     39240,
 		       name:   'Aichi E16A Zuiun',
 		       image:  'Aichi_E16A_Zuiun',
 		       type:   type.SSP,
@@ -1059,15 +1066,15 @@ export const equips      = [
 	       //endregion
 	       //region Submarine Torpedo
 	       {
-		       id:     35563,
+		       id:     35560,
 		       name:   'Type 96 Submarine Torpedo',
 		       image:  'Submarine-mounted_Type_96_Oxygen_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     45403,
-		       name:   'G7e Acoustic Guided Torpedo',
+		       id:     45440,
+		       name:   'G7e Acoustic Homing Submarine Torpedo',
 		       image:  'Submarine-mounted_G7e_Acoustic_Homing_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.SR
@@ -1080,7 +1087,7 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     35503,
+		       id:     35540,
 		       name:   'Type 95 Submarine Torpedo',
 		       image:  'Submarine-mounted_Type_95_Oxygen_Torpedo',
 		       type:   type.ST,
@@ -1094,7 +1101,7 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     15103,
+		       id:     15140,
 		       name:   'Mark 16 Submarine Torpedo',
 		       image:  'Submarine-mounted_Mark_16_Torpedo',
 		       type:   type.ST,
@@ -1108,28 +1115,28 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     45303,
+		       id:     45340,
 		       name:   'G7a Submarine Torpedo',
 		       image:  'Submarine-mounted_G7a_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     45402,
-		       name:   'G7e Acoustic Guided Torpedo',
+		       id:     45420,
+		       name:   'G7e Acoustic Homing Submarine Torpedo',
 		       image:  'Submarine-mounted_G7e_Acoustic_Homing_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     35502,
+		       id:     35520,
 		       name:   'Type 95 Submarine Torpedo',
 		       image:  'Submarine-mounted_Type_95_Oxygen_Torpedo',
 		       type:   type.ST,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     15102,
+		       id:     15120,
 		       name:   'Mark 16 Submarine Torpedo',
 		       image:  'Submarine-mounted_Mark_16_Torpedo',
 		       type:   type.ST,
@@ -1138,7 +1145,7 @@ export const equips      = [
 	       //endregion
 	       //region Auxilliary
 	       {
-		       id:     2600,
+		       id:     2640,
 		       name:   'Type 93 Pure Oxygen Torpedo',
 		       image:  'Type_93_Pure_Oxygen_Torpedo',
 		       type:   type.A,
@@ -1146,8 +1153,8 @@ export const equips      = [
 	       },
 	       { id: 640, name: 'Z Flag', image: 'Z_Flag', type: type.A, rarity: rarity.UR },
 	       {
-		       id:     2700,
-		       name:   '533mm Acoustic Torpedo',
+		       id:     2740,
+		       name:   '533mm Magnetic Torpedo',
 		       image:  '533mm_Magnetic_Torpedo',
 		       type:   type.A,
 		       rarity: rarity.SR
@@ -1278,16 +1285,16 @@ export const equips      = [
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
-	       { id: 1503, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.SR },
+	       { id: 1540, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.SR },
 	       {
-		       id:     1003,
-		       name:   'Repair Toolkit',
+		       id:     1040,
+		       name:   'Ship Maintenance Facility',
 		       image:  'Ship_Maintenance_Crane',
 		       type:   type.A,
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     1403,
+		       id:     1440,
 		       name:   'Steam Catapult',
 		       image:  'Steam_Catapult',
 		       type:   type.A,
@@ -1303,7 +1310,7 @@ export const equips      = [
 	       { id: 89060, name: 'Team Emblem', image: 'Team_Emblem', type: type.A, rarity: rarity.SR },
 	       {
 		       id:     600,
-		       name:   'Type 1 Piercing Shell',
+		       name:   'Type 1 AP Shell',
 		       image:  'Type_1_Armor_Piercing_Shell',
 		       type:   type.A,
 		       rarity: rarity.SR
@@ -1343,15 +1350,15 @@ export const equips      = [
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 1102, name: 'Air Radar', image: 'Air_Radar', type: type.A, rarity: rarity.E },
+	       { id: 1120, name: 'Air Radar', image: 'Air_Radar', type: type.A, rarity: rarity.E },
 	       {
-		       id:     1302,
+		       id:     1340,
 		       name:   'Anti-Torpedo Bulge',
 		       image:  'Anti-Torpedo_Bulge',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2202, name: 'Autoloader', image: 'Autoloader', type: type.A, rarity: rarity.E },
+	       { id: 2240, name: 'Autoloader', image: 'Autoloader', type: type.A, rarity: rarity.E },
 	       {
 		       id:     3100,
 		       name:   'Compressed Oxygen Cylinder',
@@ -1367,24 +1374,24 @@ export const equips      = [
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     2102,
+		       id:     2140,
 		       name:   'Aviation Oil Tank',
 		       image:  'Drop_Tank',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     1202,
+		       id:     1240,
 		       name:   'Fire Control Radar',
 		       image:  'Fire_Control_Radar',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2002, name: 'Fuel Filter', image: 'Fuel_Filter', type: type.A, rarity: rarity.E },
-	       { id: 2302, name: 'Gyroscope', image: 'Gyroscope', type: type.A, rarity: rarity.E },
+	       { id: 2040, name: 'Fuel Filter', image: 'Fuel_Filter', type: type.A, rarity: rarity.E },
+	       { id: 2340, name: 'Gyroscope', image: 'Gyroscope', type: type.A, rarity: rarity.E },
 	       { id: 680, name: 'Homing Beacon', image: 'Homing_Beacon', type: type.A, rarity: rarity.E },
 	       {
-		       id:     1802,
+		       id:     1840,
 		       name:   'Advanced Boiler',
 		       image:  'Improved_Boiler',
 		       type:   type.A,
@@ -1406,7 +1413,7 @@ export const equips      = [
 	       },
 	       {
 		       id:     1960,
-		       name:   'Marinière Camouflage',
+		       name:   'Ocean Soul Camouflage',
 		       image:  'Ocean_Soul_Camouflage',
 		       type:   type.A,
 		       rarity: rarity.E
@@ -1418,10 +1425,10 @@ export const equips      = [
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
-	       { id: 2402, name: 'Repair Tools', image: 'Repair_Toolkit', type: type.A, rarity: rarity.E },
-	       { id: 1502, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.E },
+	       { id: 2440, name: 'Repair Toolkit', image: 'Repair_Toolkit', type: type.A, rarity: rarity.E },
+	       { id: 1520, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.E },
 	       {
-		       id:     1402,
+		       id:     1420,
 		       name:   'Steam Catapult',
 		       image:  'Steam_Catapult',
 		       type:   type.A,
@@ -1429,14 +1436,14 @@ export const equips      = [
 	       },
 	       {
 		       id:     580,
-		       name:   'Type 91 Piercing Shell',
+		       name:   'Type 91 AP Shell',
 		       image:  'Type_91_Armor_Piercing_Shell',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
 		       id:     2800,
-		       name:   'Type 94 AA Device',
+		       name:   'Type 94 Anti-Air Fire Control System',
 		       image:  'Type_94_High_Angle_Director',
 		       type:   type.A,
 		       rarity: rarity.E
@@ -1456,22 +1463,22 @@ export const equips      = [
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     2501,
+		       id:     2540,
 		       name:   'Fire Suppressor',
 		       image:  'Fire_Extinguisher',
 		       type:   type.A,
 		       rarity: rarity.R
 	       },
 	       {
-		       id:     1701,
+		       id:     1740,
 		       name:   'Hydraulic Steering Gear',
 		       image:  'Hydraulic_Steering_Gear',
 		       type:   type.A,
 		       rarity: rarity.R
 	       },
 	       {
-		       id:     1901,
-		       name:   'Navy Camouflage',
+		       id:     1940,
+		       name:   'Naval Camouflage',
 		       image:  'Naval_Camouflage',
 		       type:   type.A,
 		       rarity: rarity.R
@@ -1486,36 +1493,43 @@ export const equips      = [
 		       rarity: rarity.SR
 	       },
 	       {
-		       id:     3003,
-		       name:   'Advanced Sonar',
-		       image:  'Improved_Sonar',
-		       type:   type.A,
-		       rarity: rarity.SR
-	       },
-	       { id: 2902, name: 'Basic Sonar', image: 'Basic_Sonar', type: type.A, rarity: rarity.E },
-	       {
-		       id:     740,
-		       name:   'Fl 282 Helicopter',
-		       image:  'Flettner_Fl_282_Kolibri',
-		       type:   type.A,
-		       rarity: rarity.E
-	       },
-	       {
-		       id:     4302,
-		       name:   'TBM-3 Avenger (Anti-Sub)',
-		       image:  'General_Motors_TBM-3_Avenger_(ASW)',
-		       type:   type.A,
-		       rarity: rarity.E
-	       },
-	       {
-		       id:     4102,
+		       id:     4140,
 		       name:   'Improved Depth Charge Projector',
 		       image:  'Improved_Depth_Charge',
 		       type:   type.A,
 		       rarity: rarity.E
 	       },
 	       {
-		       id:     3002,
+		       id:     4240,
+		       name:   'Swordfish Mk II-ASV (ASW)',
+		       image:  'Fairey_Swordfish_Mk_II-ASV_(ASW)',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       {
+		       id:     4302,
+		       name:   'TBM-3 Avenger (ASW)',
+		       image:  'General_Motors_TBM-3_Avenger_(ASW)',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       { id: 2940, name: 'Basic Sonar', image: 'Basic_Sonar', type: type.A, rarity: rarity.E },
+	       {
+		       id:     740,
+		       name:   'Fl 282 Kolibri',
+		       image:  'Flettner_Fl_282_Kolibri',
+		       type:   type.A,
+		       rarity: rarity.E
+	       },
+	       {
+		       id:     3040,
+		       name:   'Advanced Sonar',
+		       image:  'Improved_Sonar',
+		       type:   type.A,
+		       rarity: rarity.SR
+	       },
+	       {
+		       id:     3020,
 		       name:   'Advanced Sonar',
 		       image:  'Improved_Sonar',
 		       type:   type.A,
@@ -1561,7 +1575,7 @@ export const equips      = [
              }, {} as Record<number, { id, name, image, type, rarity }> );
 
 const map = equips.reduce( ( obj, item ) => {
-	obj[ `${ item.name }/${ rarity[ item.rarity ] }` ] = item.id;
+	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
 	return obj;
 }, {} as Record<string, number | string> );
 
@@ -1570,131 +1584,131 @@ let a;
 // tiers of equipment by slot
 export const equipTier: Record<string, Record<number, number[]>> = {
 	'T':         {
-		[ map[ 'Quintuple 533mm Magnetic Torpedo/UR' ] ]:   [ 0, a = 0 ],
-		[ map[ 'Quadruple 533mm Magnetic Torpedo/SR' ] ]:   [ 1, ++a ],
-		[ map[ '533mm Quintuple Torpedo Mount Mk17/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Quintuple 533mm Torpedo/SR' ] ]:            [ 1, ++a ],
-		[ map[ 'Quintuple 533mm Magnetic Torpedo/SR' ] ]:   [ 2, ++a ],
-		[ map[ '533mm Quintuple Torpedo Mount MkIX/SR' ] ]: [ 2, ++a ],
-		[ map[ '610mm Quadruple Torpedo Mount Kai/SR' ] ]:  [ 2, ++a ],
-		[ map[ 'Quadruple 610mm Torpedo/SR' ] ]:            [ 2, ++a ],
-		[ map[ '533mm Quadruple Torpedo Mount Mk17/E' ] ]:  [ 3, ++a ],
-		[ map[ 'Quadruple 533mm Torpedo/E' ] ]:             [ 3, ++a ],
-		[ map[ 'Quadruple 533mm Magnetic Torpedo/E' ] ]:    [ 3, ++a ],
-		[ map[ 'Quintuple 533mm Torpedo/E' ] ]:             [ 3, ++a ],
-		[ map[ 'Quintuple 533mm Magnetic Torpedo/E' ] ]:    [ 4, ++a ],
-		[ map[ '533mm Quadruple Torpedo Mount MkIX/E' ] ]:  [ 4, ++a ],
-		[ map[ 'Quadruple 610mm Torpedo/E' ] ]:             [ 4, ++a ]
+		[ map[ '533mm Quintuple Magnetic Torpedo Mount/UR' ] ]: [ 0, a = 0 ],
+		[ map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ '533mm Quintuple Torpedo Mount Mk 17/SR' ] ]:    [ 1, ++a ],
+		[ map[ '533mm Quintuple Torpedo Mount/SR' ] ]:          [ 1, ++a ],
+		[ map[ '533mm Quintuple Magnetic Torpedo Mount/SR' ] ]: [ 2, ++a ],
+		[ map[ '533mm Quintuple Torpedo Mount Mk IX/SR' ] ]:    [ 2, ++a ],
+		[ map[ '610mm Quadruple Torpedo Mount Kai/SR' ] ]:      [ 2, ++a ],
+		[ map[ '610mm Quadruple Torpedo Mount/SR' ] ]:          [ 2, ++a ],
+		[ map[ '533mm Quadruple Torpedo Mount Mk 17/E' ] ]:     [ 3, ++a ],
+		[ map[ '533mm Quadruple Torpedo Mount/E' ] ]:           [ 3, ++a ],
+		[ map[ '533mm Quadruple Magnetic Torpedo Mount/E' ] ]:  [ 3, ++a ],
+		[ map[ '533mm Quintuple Torpedo Mount/E' ] ]:           [ 3, ++a ],
+		[ map[ '533mm Quintuple Magnetic Torpedo Mount/E' ] ]:  [ 4, ++a ],
+		[ map[ '533mm Quadruple Torpedo Mount Mk IX/E' ] ]:     [ 4, ++a ],
+		[ map[ '610mm Quadruple Torpedo Mount/E' ] ]:           [ 4, ++a ]
 	},
 	'AA/Damage': {
-		[ map[ 'Sextuple Bofors 40mm AA Gun/SR' ] ]:              [ 0, a = 0 ],
-		[ map[ '134mm Twin High-Angle Gun/SR' ] ]:                [ 0, ++a ],
-		[ map[ 'Twin 113mm AA Gun/SR' ] ]:                        [ 1, ++a ],
-		[ map[ 'Octuple 40mm Pom Pom Gun/SR' ] ]:                 [ 1, ++a ],
-		[ map[ 'Twin 105mm SK C/33 na Anti-Air Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ '100mm Mounted AA Gun/SR' ] ]:                     [ 2, ++a ],
-		[ map[ '127mm Type 89 High-Angle Gun/SR' ] ]:             [ 2, ++a ],
-		[ map[ 'Twin 105mm AA Gun (SK C)/SR' ] ]:                 [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/SR' ] ]:                [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/E' ] ]:                 [ 4, ++a ],
-		[ map[ 'Octuple 40mm Pom Pom Gun/E' ] ]:                  [ 4, ++a ]
+		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]:  [ 0, a = 0 ],
+		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]:            [ 0, ++a ],
+		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]:            [ 1, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]:     [ 1, ++a ],
+		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]:    [ 2, ++a ],
+		[ map[ 'Twin 127mm Type 89 AA Gun Mount/SR' ] ]:    [ 2, ++a ],
+		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]:    [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]: [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]:  [ 4, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]:      [ 4, ++a ]
 	},
 	'AA':        {
-		[ map[ 'Sextuple Bofors 40mm AA Gun/SR' ] ]:              [ 0, a = 0 ],
-		[ map[ 'Quadruple 40mm Bofors Gun/SR' ] ]:                [ 0, ++a ],
-		[ map[ 'Twin 76mm Rapid Fire Gun Mount Mk27/SR' ] ]:      [ 0, ++a ],
-		[ map[ 'Octuple 40mm Pom Pom Gun/SR' ] ]:                 [ 1, ++a ],
-		[ map[ 'Twin 105mm SK C/33 na Anti-Air Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Prototype 40mm AA Gun (Type 5)/SR' ] ]:           [ 1, ++a ],
-		[ map[ '100mm Mounted AA Gun/SR' ] ]:                     [ 2, ++a ],
-		[ map[ 'Twin 105mm AA Gun (SK C)/SR' ] ]:                 [ 2, ++a ],
-		[ map[ 'Single 90mm High-Angle Gun (M1939)/SR' ] ]:       [ 3, ++a ],
-		[ map[ 'Twin 113mm AA Gun/SR' ] ]:                        [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/E' ] ]:                 [ 4, ++a ],
-		[ map[ 'Octuple 40mm Pom Pom Gun/E' ] ]:                  [ 4, ++a ]
+		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]:    [ 0, a = 0 ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]:   [ 0, ++a ],
+		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]:      [ 0, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]:       [ 1, ++a ],
+		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]:   [ 1, ++a ],
+		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]:        [ 3, ++a ],
+		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]:              [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]:    [ 4, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]:        [ 4, ++a ]
 	},
 	'AA/Speed':  {
-		[ map[ '25mm Type 96 Triple AT/AA Gun/SR' ] ]:       [ 0, a = 0 ],
-		[ map[ 'Twin 76mm Rapid Fire Gun Mount Mk27/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Prototype 40mm AA Gun (Type 5)/SR' ] ]:      [ 1, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/SR' ] ]:           [ 1, ++a ],
-		[ map[ 'Twin 37mm AA Gun (Mle 1936)/SR' ] ]:         [ 2, ++a ],
-		[ map[ '134mm Twin High-Angle Gun/SR' ] ]:           [ 3, ++a ],
-		[ map[ 'Single 90mm High-Angle Gun (M1939)/SR' ] ]:  [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/E' ] ]:            [ 4, ++a ]
+		[ map[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ] ]:  [ 0, a = 0 ],
+		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]:      [ 0, ++a ],
+		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]:   [ 1, ++a ],
+		[ map[ 'Twin 37mm Mle 1936 AA Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]:              [ 3, ++a ],
+		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]:        [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]:    [ 4, ++a ]
 	},
 	'AA/Main':   {
-		[ map[ 'Twin 40mm Bofors STAAG/SR' ] ]:              [ 0, a = 0 ],
-		[ map[ 'Twin 40mm Bofors "Hazemeyer" AA Gun/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Twin 76mm Rapid Fire Gun Mount Mk27/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Prototype 40mm AA Gun (Type 5)/SR' ] ]:      [ 1, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/SR' ] ]:           [ 2, ++a ],
-		[ map[ 'Twin 37mm AA Gun (Mle 1936)/SR' ] ]:         [ 3, ++a ],
-		[ map[ '134mm Twin High-Angle Gun/SR' ] ]:           [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors Gun/E' ] ]:            [ 4, ++a ]
+		[ map[ 'Twin 40mm Bofors STAAG/SR' ] ]:                    [ 0, a = 0 ],
+		[ map[ 'Twin 40mm Bofors "Hazemeyer" AA Gun Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]:           [ 1, ++a ],
+		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]:        [ 2, ++a ],
+		[ map[ 'Twin 37mm Mle 1936 AA Gun Mount/SR' ] ]:           [ 3, ++a ],
+		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]:                   [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]:         [ 4, ++a ]
 	},
 	
 	'DD':          {
-		[ map[ 'Twin 130mm Main Gun (B-2LM)/SR' ] ]:                  [ 0, a = 0 ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/SR' ] ]:           [ 0, ++a ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]:              [ 0, a = 0 ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]:            [ 0, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:                   [ 1, ++a ],
-		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 1, ++a ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/SR' ] ]:                     [ 1, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1927)/E' ] ]:            [ 2, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 2, ++a ],
-		[ map[ 'Twin 120mm Main Gun (M1936)/E' ] ]:                   [ 2, ++a ],
-		[ map[ 'Single 130mm Main Gun/E' ] ]:                         [ 3, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/E' ] ]:            [ 3, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Single 138.6mm Mle 1927 Naval Gun/E' ] ]:             [ 2, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]:                     [ 2, ++a ],
+		[ map[ 'Twin 120mm M1936 Main Gun Mount/E' ] ]:               [ 2, ++a ],
+		[ map[ 'Single 130mm Naval Gun/E' ] ]:                        [ 3, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ] ]:             [ 3, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 3, ++a ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/E' ] ]:                      [ 4, ++a ]
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ] ]:       [ 4, ++a ]
 	},
 	'DD/Speed':    {
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:                   [ 0, a = 0 ],
-		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 1, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]:                  [ 1, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]:      [ 0, a = 0 ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:            [ 1, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 2, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/SR' ] ]:           [ 2, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]:            [ 2, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 3, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/E' ] ]:                   [ 3, ++a ],
-		[ map[ 'Single 130mm Main Gun/E' ] ]:                         [ 4, ++a ]
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]:             [ 3, ++a ],
+		[ map[ 'Single 130mm Naval Gun/E' ] ]:                        [ 4, ++a ]
 	},
 	'DD/SSpeed':   {
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:  [ 0, a = 0 ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]: [ 1, ++a ],
-		[ map[ '76mm AA Gun/R' ] ]:                  [ 2, ++a ],
-		[ map[ 'Single 120mm Main Gun/R' ] ]:        [ 2, ++a ],
-		[ map[ 'Single 127mm Main Gun/E' ] ]:        [ 3, ++a ]
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:       [ 1, ++a ],
+		[ map[ '76mm AA Gun/R' ] ]:                              [ 2, ++a ],
+		[ map[ 'Single 120mm QF Mark IX Naval Gun/R' ] ]:        [ 2, ++a ],
+		[ map[ 'Single 127mm Main Gun/E' ] ]:                    [ 3, ++a ]
 	},
 	'DD/SSSpeed':  {
-		[ map[ '76mm AA Gun/R' ] ]:                  [ 0, a = 0 ],
-		[ map[ 'Single 120mm Main Gun/R' ] ]:        [ 0, ++a ],
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:  [ 1, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]: [ 2, ++a ]
+		[ map[ '76mm AA Gun/R' ] ]:                              [ 0, a = 0 ],
+		[ map[ 'Single 120mm QF Mark IX Naval Gun/R' ] ]:        [ 0, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:       [ 2, ++a ]
 	},
 	'DD/AP':       {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/SR' ] ]:           [ 1, ++a ],
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:                   [ 2, ++a ],
-		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 2, ++a ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/SR' ] ]:                     [ 2, ++a ],
-		[ map[ 'Twin 128mm Dual Gun (SK C/41)/E' ] ]:                 [ 3, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1927)/E' ] ]:            [ 3, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 3, ++a ],
-		[ map[ 'Twin 120mm Main Gun (M1936)/E' ] ]:                   [ 3, ++a ],
-		[ map[ 'Single 130mm Main Gun/E' ] ]:                         [ 4, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/E' ] ]:            [ 4, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]:            [ 1, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ] ]:     [ 3, ++a ],
+		[ map[ 'Single 138.6mm Mle 1927 Naval Gun/E' ] ]:             [ 3, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]:                     [ 3, ++a ],
+		[ map[ 'Twin 120mm M1936 Main Gun Mount/E' ] ]:               [ 3, ++a ],
+		[ map[ 'Single 130mm Naval Gun/E' ] ]:                        [ 4, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ] ]:             [ 4, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 4, ++a ]
 	},
 	'DD/AP/Speed': {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:                   [ 1, ++a ],
-		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 2, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]:                  [ 2, ++a ],
-		[ map[ 'Twin 128mm Dual Gun (SK C/41)/E' ] ]:                 [ 3, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/SR' ] ]:           [ 3, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]:      [ 1, ++a ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:            [ 2, ++a ],
+		[ map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ] ]:     [ 3, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]:            [ 3, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 4, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/E' ] ]:                   [ 4, ++a ]
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]:             [ 4, ++a ]
 	},
 	get 'CL/DD'() {
 		return this[ 'DD' ];
@@ -1706,57 +1720,60 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'DD' ];
 	},
 	'DD/Aux':  {
-		[ map[ 'Twin 114mm DP (4.5" MK IV)/SR' ] ]:                   [ 0, a = 0 ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]:                  [ 0, ++a ],
-		[ map[ 'Twin 130mm Main Gun (B-2LM)/SR' ] ]:                  [ 0, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/SR' ] ]:           [ 1, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/E' ] ]:                   [ 1, ++a ],
-		[ map[ 'Twin 120mm Dual-Purpose Gun Mount MkXI/SR' ] ]:       [ 2, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]:      [ 0, a = 0 ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:            [ 0, ++a ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]:              [ 0, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]:            [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]:             [ 1, ++a ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 2, ++a ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/SR' ] ]:                     [ 2, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]:      [ 2, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]:                         [ 4, ++a ],
-		[ map[ 'Single 138.6mm Main Gun (Mle 1929)/E' ] ]:            [ 3, ++a ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/E' ] ]:                      [ 3, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 4, ++a ]
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ] ]:             [ 3, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ] ]:       [ 3, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]:                     [ 4, ++a ]
 	},
 	'DD/Main': {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Twin 130mm Main Gun (B-2LM)/SR' ] ]:                  [ 0, ++a ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]:              [ 0, ++a ],
 		[ map[ 'Twin 127mm Secondary Gun Mount/E' ] ]:                [ 1, ++a ],
-		[ map[ 'Twin 128mm Dual Gun (SK C/41)/E' ] ]:                 [ 2, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:                           [ 3, ++a ]
+		[ map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ] ]:     [ 2, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]:                     [ 3, ++a ]
 	},
 	'DD/Sub':  {
-		[ map[ 'Twin 100mm (Type 98) AA Gun/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Twin 127mm MK12 Dual Gun/SR' ] ]:    [ 0, ++a ],
-		[ map[ 'Twin 120mm Main Gun/E' ] ]:          [ 1, ++a ],
-		[ map[ 'Twin 100mm (Type 98) AA Gun/E' ] ]:  [ 2, ++a ]
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]:       [ 0, a = 0 ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]:                [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]:        [ 2, ++a ]
 	},
 	
 	'CL':      {
-		[ map[ 'Prototype Triple 152mm Main Gun (DP MK17)/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Triple 152mm Main Gun (B-38 MK5)/SR' ] ]:          [ 0, ++a ],
-		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]:           [ 1, ++a ],
-		[ map[ 'Triple 152mm Main Gun Mount Mk16/SR' ] ]:          [ 1, ++a ],
-		[ map[ 'Triple 152mm Main Gun (B-38 MK5)/E' ] ]:           [ 2, ++a ],
-		[ map[ 'Twin 150mm Main Gun (TbtsK C/36)/E' ] ]:           [ 2, ++a ],
-		[ map[ 'Triple 155mm Mounted Gun/SR' ] ]:                  [ 3, ++a ],
-		[ map[ 'Triple 155mm Mounted Gun/E' ] ]:                   [ 4, ++a ],
-		[ map[ 'Single 150mm Main Gun (SK C/28)/E' ] ]:            [ 4, ++a ]
+		[ map[ 'Prototype Triple 152mm DP Mk 17 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/SR' ] ]:          [ 0, ++a ],
+		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/E' ] ]:           [ 1, ++a ],
+		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]:            [ 1, ++a ],
+		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]:              [ 2, ++a ],
+		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]:                    [ 2, ++a ],
+		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]:   [ 3, ++a ],
+		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]:         [ 3, ++a ],
+		[ map[ 'Triple 155mm Main Gun Mount/E' ] ]:                     [ 4, ++a ],
+		[ map[ 'Single 150mm SK C/28 Main Gun Mount/E' ] ]:             [ 4, ++a ]
 	},
 	'CL/AP':   {
-		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Twin 150mm Main Gun (TbtsK C/36)/E' ] ]: [ 1, ++a ],
-		[ map[ 'Single 150mm Main Gun (SK C/28)/E' ] ]:  [ 2, ++a ]
+		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]:       [ 0, ++a ],
+		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]:          [ 1, ++a ],
+		[ map[ 'Single 150mm SK C/28 Main Gun Mount/E' ] ]:           [ 2, ++a ]
 	},
 	'CL/Main': {
-		[ map[ 'Prototype Triple 152mm Main Gun/SR' ] ]:  [ 0, a = 0 ],
-		[ map[ 'Twin 152mm Main Gun/E' ] ]:               [ 0, ++a ],
-		[ map[ 'Twin 150mm Main Gun (TbtsK C/36)/E' ] ]:  [ 1, ++a ],
-		[ map[ 'Triple 152mm Main Gun Mount Mk16/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Triple 152mm Main Gun2/E' ] ]:            [ 2, ++a ],
-		[ map[ 'Triple 155mm Mounted Gun/SR' ] ]:         [ 2, ++a ],
-		[ map[ 'Triple 152mm Main Gun/E' ] ]:             [ 3, ++a ]
+		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Triple 152mm Main Gun2/E' ] ]:                        [ 0, ++a ],
+		[ map[ 'Twin 152mm Main Gun/E' ] ]:                           [ 0, ++a ],
+		[ map[ 'Twin 150mm SK C/28 Secondary Gun Mount/E' ] ]:        [ 1, ++a ],
+		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]:          [ 1, ++a ],
+		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]:            [ 2, ++a ],
+		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]:                  [ 2, ++a ],
+		[ map[ 'Triple 152mm Main Gun/E' ] ]:                         [ 3, ++a ]
 	},
 	get 'CL/DD/Main'() {
 		return this[ 'CL/Main' ];
@@ -1769,109 +1786,109 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	
 	'CA':          {
-		[ map[ 'Prototype Triple 234mm Main Gun (9.2" MK XII)/UR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Prototype Twin 234mm Main Gun (9.2" MK XII)/SR' ] ]:   [ 0, ++a ],
-		[ map[ 'Triple 203mm Main Gun Mount Mk15/SR' ] ]:              [ 1, ++a ],
-		[ map[ 'Prototype Triple 203mm Main Gun (SK C)/SR' ] ]:        [ 1, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/SR' ] ]:                    [ 1, ++a ],
-		[ map[ 'Twin 203mm Main Gun (Mle 1924)/SR' ] ]:                [ 2, ++a ],
-		[ map[ 'Prototype Triple 203mm Main Gun Mount Mk IX/SR' ] ]:   [ 2, ++a ],
-		[ map[ 'Prototype 203mm (Type 3) Mounted Gun/SR' ] ]:          [ 3, ++a ],
+		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]:         [ 0, a = 0 ],
+		[ map[ 'Prototype Twin 234mm Main Gun Mount/SR' ] ]:           [ 0, ++a ],
+		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]:             [ 1, ++a ],
+		[ map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 203mm (SK C/34)/SR' ] ]:                          [ 1, ++a ],
+		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]:            [ 2, ++a ],
+		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]:   [ 2, ++a ],
+		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]:         [ 3, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]:                 [ 3, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/E' ] ]:                     [ 4, ++a ],
-		[ map[ '203mm Mounted Gun/E' ] ]:                              [ 4, ++a ]
+		[ map[ 'Twin 203mm (SK C/34)/E' ] ]:                           [ 4, ++a ],
+		[ map[ 'Twin 203mm Naval Gun Mount/E' ] ]:                     [ 4, ++a ]
 	},
 	'CA/HE':       {
-		[ map[ 'Twin 203mm Main Gun (Mle 1924)/SR' ] ]:              [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 203mm Main Gun Mount Mk IX/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Prototype 203mm (Type 3) Mounted Gun/SR' ] ]:        [ 2, ++a ],
+		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]:          [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]:       [ 2, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]:               [ 2, ++a ],
-		[ map[ '203mm Mounted Gun/E' ] ]:                            [ 3, ++a ]
+		[ map[ 'Twin 203mm Naval Gun Mount/E' ] ]:                   [ 3, ++a ]
 	},
 	'CA/Modified': {
-		[ map[ 'Prototype Triple 234mm Main Gun (9.2" MK XII)/UR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 203mm Main Gun (SK C)/SR' ] ]:        [ 0, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/SR' ] ]:                    [ 1, ++a ],
-		[ map[ 'Triple 203mm Main Gun Mount Mk15/SR' ] ]:              [ 2, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/E' ] ]:                     [ 3, ++a ]
+		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]:         [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Twin 203mm (SK C/34)/SR' ] ]:                          [ 1, ++a ],
+		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]:             [ 2, ++a ],
+		[ map[ 'Twin 203mm (SK C/34)/E' ] ]:                           [ 3, ++a ]
 	},
 	'CA/BB':       {
-		[ map[ 'Prototype Triple 234mm Main Gun (9.2" MK XII)/UR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Triple 283mm Main Gun (SK C/28)/E' ] ]:                [ 0, ++a ],
-		[ map[ 'Prototype Twin 234mm Main Gun (9.2" MK XII)/SR' ] ]:   [ 0, ++a ],
-		[ map[ 'Triple 203mm Main Gun Mount Mk15/SR' ] ]:              [ 1, ++a ],
-		[ map[ 'Prototype Triple 203mm Main Gun (SK C)/SR' ] ]:        [ 1, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/SR' ] ]:                    [ 1, ++a ],
-		[ map[ 'Twin 203mm Main Gun (Mle 1924)/SR' ] ]:                [ 2, ++a ],
-		[ map[ 'Prototype Triple 203mm Main Gun Mount Mk IX/SR' ] ]:   [ 2, ++a ],
-		[ map[ 'Prototype 203mm (Type 3) Mounted Gun/SR' ] ]:          [ 3, ++a ],
+		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]:         [ 0, a = 0 ],
+		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]:            [ 0, ++a ],
+		[ map[ 'Prototype Twin 234mm Main Gun Mount/SR' ] ]:           [ 0, ++a ],
+		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]:             [ 1, ++a ],
+		[ map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 203mm (SK C/34)/SR' ] ]:                          [ 1, ++a ],
+		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]:            [ 2, ++a ],
+		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]:   [ 2, ++a ],
+		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]:         [ 3, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]:                 [ 3, ++a ],
-		[ map[ 'Twin 203mm Main Gun (SK C)/E' ] ]:                     [ 4, ++a ],
-		[ map[ '203mm Mounted Gun/E' ] ]:                              [ 4, ++a ]
+		[ map[ 'Twin 203mm (SK C/34)/E' ] ]:                           [ 4, ++a ],
+		[ map[ 'Twin 203mm Naval Gun Mount/E' ] ]:                     [ 4, ++a ]
 	},
 	get 'CA/CL'() {
 		return this[ 'CA' ];
 	},
 	'CA/CB': {
-		[ map[ 'Prototype Triple 310mm Main Gun (Type 0)/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Triple 283mm Main Gun (SK C/28)/E' ] ]:           [ 1, ++a ]
+		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]:           [ 1, ++a ]
 	},
 	
 	'BB/Damage':   {
 		[ map[ 'Prototype Triple 381mm AA Gun/SR' ] ]:             [ 0, a = 0 ],
-		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 0, ++a ],
-		[ map[ 'Triple 406mm MK6 Main Gun/E' ] ]:                  [ 1, ++a ],
-		[ map[ 'Prototype Triple 406mm/50 Main Gun/SR' ] ]:        [ 2, ++a ],
-		[ map[ 'Prototype Triple 410mm Mounted Gun/SR' ] ]:        [ 3, ++a ],
-		[ map[ 'Prototype Triple 406mm Main Gun Mount MkD/SR' ] ]: [ 3, ++a ]
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]:  [ 0, ++a ],
+		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]:           [ 1, ++a ],
+		[ map[ 'Prototype Triple 406mm /50 Main Gun Mount/SR' ] ]: [ 2, ++a ],
+		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]:     [ 3, ++a ],
+		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]:       [ 3, ++a ]
 	},
 	'BB/Speed':    {
-		[ map[ 'Prototype Twin 406mm Main Gun (SK C/34)/SR' ] ]:   [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 305mm Main Gun (SK C/39)/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 1, ++a ],
-		[ map[ 'Twin 381mm Advanced Main Gun/SR' ] ]:              [ 1, ++a ],
-		[ map[ '410mm Mounted Gun/E' ] ]:                          [ 2, ++a ],
-		[ map[ 'Twin 380mm Main Gun (SK C)/SR' ] ]:                [ 3, ++a ],
-		[ map[ 'Twin 406mm Main Gun Mount Mk8/E' ] ]:              [ 3, ++a ]
+		[ map[ 'Prototype 406mm SK C/34 Main Gun Mount/SR' ] ]:        [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]:      [ 1, ++a ],
+		[ map[ 'Twin 381mm Advanced Main Gun Mount/SR' ] ]:            [ 1, ++a ],
+		[ map[ 'Twin 410mm Naval Gun Mount/E' ] ]:                     [ 2, ++a ],
+		[ map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ] ]:             [ 3, ++a ],
+		[ map[ 'Twin 406mm Mk 8 Main Gun Mount/E' ] ]:                 [ 3, ++a ]
 	},
 	'BB/Modified': {
-		[ map[ 'Prototype Twin 457mm Main Gun (18" MKA)/UR' ] ]:   [ 0, a = 0 ],
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]:  [ 0, a = 0 ],
 		[ map[ 'Triple 406mm Main Gun/SR' ] ]:                     [ 1, ++a ],
-		[ map[ 'Prototype Triple 406mm/50 Main Gun/SR' ] ]:        [ 1, ++a ],
-		[ map[ 'Prototype Triple 410mm Mounted Gun/SR' ] ]:        [ 2, ++a ],
-		[ map[ 'Prototype Triple 406mm Main Gun Mount MkD/SR' ] ]: [ 2, ++a ],
-		[ map[ 'Triple 406mm MK6 Main Gun/E' ] ]:                  [ 3, ++a ]
+		[ map[ 'Prototype Triple 406mm /50 Main Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]:     [ 2, ++a ],
+		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]:       [ 2, ++a ],
+		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]:           [ 3, ++a ]
 	},
 	
 	'F':  {
-		[ map[ 'F7F Tigercat/SR' ] ]:                          [ 0, a = 0 ],
-		[ map[ 'Sea Hornet/SR' ] ]:                            [ 0, ++a ],
-		[ map[ 'F4U (VF-17 "Pirate" Squad)/SR' ] ]:            [ 1, ++a ],
-		[ map[ 'F6F Hellcat/SR' ] ]:                           [ 1, ++a ],
-		[ map[ 'Kawanishi N1K3-A Shiden Kai 2/SR' ] ]:         [ 2, ++a ],
-		[ map[ 'A7M Reppuu/SR' ] ]:                            [ 2, ++a ],
-		[ map[ 'Sea Fury/SR' ] ]:                              [ 2, ++a ],
-		[ map[ 'Seafang/SR' ] ]:                               [ 2, ++a ],
-		[ map[ 'F4U Corsair/E' ] ]:                            [ 3, ++a ],
-		[ map[ 'A7M Reppuu/E' ] ]:                             [ 3, ++a ],
-		[ map[ 'F6F Hellcat/E' ] ]:                            [ 3, ++a ],
-		[ map[ 'Seafang/E' ] ]:                                [ 3, ++a ],
-		[ map[ 'F8F Bearcat/SR' ] ]:                           [ 4, ++a ],
-		[ map[ 'A6M5 Zero/SR' ] ]:                             [ 4, ++a ],
-		[ map[ 'Seafire FR.47/SR' ] ]:                         [ 4, ++a ],
-		[ map[ 'Brewster F2A Buffalo (Thach Squadron)/SR' ] ]: [ 4, ++a ],
-		[ map[ 'Messerschmitt Me-155A/SR' ] ]:                 [ 4, ++a ]
+		[ map[ 'F7F Tigercat/SR' ] ]:                  [ 0, a = 0 ],
+		[ map[ 'Sea Hornet/SR' ] ]:                    [ 0, ++a ],
+		[ map[ 'F4U (VF-17 "Pirate" Squad)/SR' ] ]:    [ 1, ++a ],
+		[ map[ 'F6F Hellcat/SR' ] ]:                   [ 1, ++a ],
+		[ map[ 'Kawanishi N1K3-A Shiden Kai 2/SR' ] ]: [ 2, ++a ],
+		[ map[ 'A7M Reppuu/SR' ] ]:                    [ 2, ++a ],
+		[ map[ 'Sea Fury/SR' ] ]:                      [ 2, ++a ],
+		[ map[ 'Seafang/SR' ] ]:                       [ 2, ++a ],
+		[ map[ 'F4U Corsair/E' ] ]:                    [ 3, ++a ],
+		[ map[ 'A7M Reppuu/E' ] ]:                     [ 3, ++a ],
+		[ map[ 'F6F Hellcat/E' ] ]:                    [ 3, ++a ],
+		[ map[ 'Seafang/E' ] ]:                        [ 3, ++a ],
+		[ map[ 'F8F Bearcat/SR' ] ]:                   [ 4, ++a ],
+		[ map[ 'A6M5 Zero/SR' ] ]:                     [ 4, ++a ],
+		[ map[ 'Seafire FR.47/SR' ] ]:                 [ 4, ++a ],
+		[ map[ 'F2A Buffalo (Thach Squadron)/SR' ] ]:  [ 4, ++a ],
+		[ map[ 'Messerschmitt Me-155A/SR' ] ]:         [ 4, ++a ]
 	},
 	'DB': {
 		[ map[ 'Experimental XSB3C-1/SR' ] ]:              [ 0, a = 0 ],
 		[ map[ 'SB2C Helldiver/E' ] ]:                     [ 1, ++a ],
 		[ map[ 'Suisei Model 12A/SR' ] ]:                  [ 1, ++a ],
 		[ map[ 'Ju-87C Dive Bomber/E' ] ]:                 [ 2, ++a ],
-		[ map[ 'Fairey Firefly/SR' ] ]:                    [ 2, ++a ],
-		[ map[ 'Comet/SR' ] ]:                             [ 2, ++a ],
+		[ map[ 'Firefly/SR' ] ]:                           [ 2, ++a ],
+		[ map[ 'Suisei/SR' ] ]:                            [ 2, ++a ],
 		[ map[ 'SBD Dauntless (McClusky Division)/SR' ] ]: [ 3, ++a ],
 		[ map[ 'BTD-1 Destroyer/SR' ] ]:                   [ 3, ++a ],
-		[ map[ 'Fairey Barracuda (831 Squadron)/SR' ] ]:   [ 3, ++a ]
+		[ map[ 'Barracuda (831 Squadron)/SR' ] ]:          [ 3, ++a ]
 	},
 	'TB': {
 		[ map[ 'Wyvern/UR' ] ]:            [ 0, a = 0 ],
@@ -1886,9 +1903,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'TBD Devastator (VT-8 Squadron)/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Barracuda/E' ] ]:                       [ 3, ++a ],
 		// [ map[ 'Aichi B7A Ryusei/E' ] ]:                [ 3, ++a ],
-		// [ map[ 'Nakajima B6N Tenzan/E' ] ]:             [ 3, ++a ],
+		// [ map[ 'Tenzan/E' ] ]:             [ 3, ++a ],
 		[ map[ 'Swordfish (818 Squad)/SR' ] ]: [ 4, ++a ],
-		[ map[ 'Fairey Albacore/E' ] ]:        [ 4, ++a ]
+		[ map[ 'Albacore/E' ] ]:               [ 4, ++a ]
 	},
 	get 'F/DB'() {
 		return this[ 'F' ];
@@ -1912,24 +1929,24 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Aichi E16A Zuiun/E' ] ]: [ 1, ++a ]
 	},
 	'ST':  {
-		[ map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'G7e Acoustic Guided Torpedo/SR' ] ]:        [ 0, ++a ],
-		[ map[ 'Mark 16 Submarine Torpedo/SR' ] ]:          [ 0, ++a ],
-		[ map[ 'Type 96 Submarine Torpedo/SR' ] ]:          [ 1, ++a ],
-		[ map[ 'Mark 28 Submarine Torpedo/SR' ] ]:          [ 1, ++a ],
-		[ map[ 'Type 95 Submarine Torpedo/SR' ] ]:          [ 1, ++a ],
-		[ map[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ] ]:  [ 1, ++a ],
-		[ map[ 'G7e Acoustic Guided Torpedo/E' ] ]:         [ 2, ++a ],
-		[ map[ 'G7a Submarine Torpedo/E' ] ]:               [ 2, ++a ],
-		[ map[ 'Mark 16 Submarine Torpedo/E' ] ]:           [ 2, ++a ],
-		[ map[ 'Type 95 Submarine Torpedo/E' ] ]:           [ 2, ++a ]
+		[ map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ] ]:    [ 0, a = 0 ],
+		[ map[ 'G7e Acoustic Homing Submarine Torpedo/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Mark 16 Submarine Torpedo/SR' ] ]:             [ 0, ++a ],
+		[ map[ 'Type 96 Submarine Torpedo/SR' ] ]:             [ 1, ++a ],
+		[ map[ 'Mark 28 Submarine Torpedo/SR' ] ]:             [ 1, ++a ],
+		[ map[ 'Type 95 Submarine Torpedo/SR' ] ]:             [ 1, ++a ],
+		[ map[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ] ]:     [ 1, ++a ],
+		[ map[ 'G7e Acoustic Homing Submarine Torpedo/E' ] ]:  [ 2, ++a ],
+		[ map[ 'G7a Submarine Torpedo/E' ] ]:                  [ 2, ++a ],
+		[ map[ 'Mark 16 Submarine Torpedo/E' ] ]:              [ 2, ++a ],
+		[ map[ 'Type 95 Submarine Torpedo/E' ] ]:              [ 2, ++a ]
 	},
 	'SS':  {
-		[ map[ 'Submarine-mounted Twin 203mm Cannon (Mle 1924)/R' ] ]: [ 0, a = 0 ]
+		[ map[ 'Twin 203mm Mle 1924 Submarine Gun Mount/R' ] ]: [ 0, a = 0 ]
 	},
 	
 	'A/DD1':   {
-		[ map[ 'Repair Tools/E' ] ]:    [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:  [ 0, a = 0 ],
 		[ map[ 'Pyoko-Pyoko/SR' ] ]:    [ 0, ++a ],
 		[ map[ 'Advanced Boiler/E' ] ]: [ 1, ++a ]
 	},
@@ -1937,24 +1954,24 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Intel Report - Arctic Stronghold/E' ] ]:          [ 0, a = 0 ],
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Autoloader/E' ] ]:                                [ 1, ++a ],
-		[ map[ 'Repair Tools/E' ] ]:                              [ 2, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]:                            [ 2, ++a ],
 		[ map[ 'Fire Suppressor/R' ] ]:                           [ 3, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]:              [ 3, ++a ]
 	},
 	'A/DD1/T': {
-		[ map[ 'Repair Tools/E' ] ]:                 [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:               [ 0, a = 0 ],
 		[ map[ 'Pyoko-Pyoko/SR' ] ]:                 [ 0, ++a ],
 		[ map[ 'Advanced Boiler/E' ] ]:              [ 1, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 2, ++a ]
 	},
 	'A/DD2/T': {
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Repair Tools/E' ] ]:                 [ 1, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]:               [ 1, ++a ],
 		[ map[ 'Autoloader/E' ] ]:                   [ 2, ++a ],
 		[ map[ 'Fire Suppressor/R' ] ]:              [ 3, ++a ]
 	},
 	'A/CL1':   {
-		[ map[ 'Repair Tools/E' ] ]:       [ 0, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]:     [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]:        [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 2, ++a ]
 	},
@@ -1964,10 +1981,10 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'High Performance Air Radar/SR' ] ]:               [ 0, ++a ],
 		[ map[ 'Air Radar/E' ] ]:                                 [ 1, ++a ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 2, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 2, ++a ]
+		[ map[ 'Naval Camouflage/R' ] ]:                          [ 2, ++a ]
 	},
 	'A/CL1/T': {
-		[ map[ 'Repair Tools/E' ] ]:                 [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:               [ 0, a = 0 ],
 		[ map[ 'Fuel Filter/E' ] ]:                  [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]:           [ 2, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 3, ++a ]
@@ -1978,11 +1995,11 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'High Performance Air Radar/SR' ] ]:               [ 0, ++a ],
 		[ map[ 'Air Radar/E' ] ]:                                 [ 1, ++a ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 2, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 2, ++a ],
+		[ map[ 'Naval Camouflage/R' ] ]:                          [ 2, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]:              [ 3, ++a ]
 	},
 	'A/CA1':   {
-		[ map[ 'Repair Tools/E' ] ]:       [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:     [ 0, a = 0 ],
 		[ map[ 'Fuel Filter/E' ] ]:        [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 2, ++a ]
 	},
@@ -1991,14 +2008,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'Cosmic Kicks/SR' ] ]:                             [ 0, ++a ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
+		[ map[ 'Naval Camouflage/R' ] ]:                          [ 1, ++a ],
 		[ map[ 'SG Radar/SR' ] ]:                                 [ 2, ++a ],
 		[ map[ 'SG Radar/E' ] ]:                                  [ 2, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                        [ 2, ++a ],
 		[ map[ 'Gyroscope/E' ] ]:                                 [ 3, ++a ]
 	},
 	'A/CA1/T': {
-		[ map[ 'Repair Tools/E' ] ]:                 [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:               [ 0, a = 0 ],
 		[ map[ 'Fuel Filter/E' ] ]:                  [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]:           [ 2, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 3, ++a ]
@@ -2008,7 +2025,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Beaver Squad Tag/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'Cosmic Kicks/SR' ] ]:                             [ 0, ++a ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ],
+		[ map[ 'Naval Camouflage/R' ] ]:                          [ 1, ++a ],
 		[ map[ 'SG Radar/SR' ] ]:                                 [ 2, ++a ],
 		[ map[ 'SG Radar/E' ] ]:                                  [ 2, ++a ],
 		[ map[ 'Gyroscope/E' ] ]:                                 [ 3, ++a ],
@@ -2016,7 +2033,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'A/CB1':   {
 		[ map[ 'VH Armor Plating/SR' ] ]:  [ 0, a = 0 ],
-		[ map[ 'Repair Tools/E' ] ]:       [ 1, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]:     [ 1, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]:        [ 2, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 3, ++a ]
 	},
@@ -2024,8 +2041,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'A/CA2' ];
 	},
 	'A/BB1': {
-		[ map[ 'Type 1 Piercing Shell/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Type 91 Piercing Shell/E' ] ]: [ 1, ++a ]
+		[ map[ 'Type 1 AP Shell/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Type 91 AP Shell/E' ] ]: [ 1, ++a ]
 	},
 	'A/BB2': {
 		[ map[ 'Super Heavy Shell/SR' ] ]:                [ 0, a = 0 ],
@@ -2068,7 +2085,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'A/AR':  {
 		[ map[ 'High Performance Air Radar/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Repair Toolkit/SR' ] ]:             [ 0, ++a ],
+		[ map[ 'Ship Maintenance Facility/SR' ] ]:  [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]:                 [ 1, ++a ]
 	},
 	'A/AR1': {
@@ -2080,7 +2097,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Air Radar/E' ] ]:                   [ 1, ++a ]
 	},
 	'A/BM1': {
-		[ map[ 'Repair Tools/E' ] ]:                      [ 0, a = 0 ],
+		[ map[ 'Repair Toolkit/E' ] ]:                    [ 0, a = 0 ],
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                [ 2, ++a ]
 	},
@@ -2088,7 +2105,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'SG Radar/SR' ] ]:                         [ 0, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]:                [ 1, ++a ],
-		[ map[ 'Repair Tools/E' ] ]:                      [ 1, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]:                    [ 1, ++a ],
 		[ map[ 'SG Radar/E' ] ]:                          [ 2, ++a ],
 		[ map[ 'Fire Suppressor/R' ] ]:                   [ 3, ++a ]
 	},
@@ -2099,7 +2116,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'A/AE2': {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Hydraulic Steering Gear/R' ] ]:                   [ 1, ++a ],
-		[ map[ 'Navy Camouflage/R' ] ]:                           [ 1, ++a ]
+		[ map[ 'Naval Camouflage/R' ] ]:                          [ 1, ++a ]
 	},
 	
 	'C': {
