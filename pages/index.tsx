@@ -15,6 +15,7 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import React from 'react';
@@ -75,23 +76,22 @@ export default function Home() {
 		<ListItem>
 			<ListItemText>Auto Backup</ListItemText>
 			<ListItemSecondaryAction>
-				<ButtonGroup>
-					<Button
-						variant={main.autoSave ? 'contained' : 'outlined'}
-						color={main.autoSave ? 'primary' : 'default'}
+				<ToggleButtonGroup size='small'>
+					<ToggleButton
+						value='autoSave'
+						selected={main.autoSave}
 						onClick={() => dispatch( setAutoSave( !main.autoSave ) )}>
 						Save
-					</Button>
-					<Button
-						variant={main.autoLoad ? 'contained' : 'outlined'}
-						color={main.autoLoad ? 'primary' : 'default'}
+					</ToggleButton>
+					<ToggleButton
+						value='autoLoad'
+						selected={main.autoLoad}
 						onClick={() => dispatch( setAutoLoad( !main.autoLoad ) )}>
 						Load
-					</Button>
-				</ButtonGroup>
+					</ToggleButton>
+				</ToggleButtonGroup>
 			</ListItemSecondaryAction>
 		</ListItem>
-		
 		<ListItem>
 			<ListItemText>Auto Save Interval (secs)</ListItemText>
 			<ListItemSecondaryAction className={classes.longAction}>
@@ -164,26 +164,23 @@ export default function Home() {
 		<ListItem>
 			<ListItemText>Theme</ListItemText>
 			<ListItemSecondaryAction>
-				<ButtonGroup>
-					<Button
-						variant={main.theme === 'default' ? 'contained' : 'outlined'}
-						color={main.theme === 'default' ? 'primary' : 'default'}
+				<ToggleButtonGroup value={main.theme} exclusive>
+					<ToggleButton
+						value='default'
 						onClick={() => dispatch( setTheme( 'default' ) )}>
 						<Brightness4Icon/>
-					</Button>
-					<Button
-						variant={main.theme === 'light' ? 'contained' : 'outlined'}
-						color={main.theme === 'light' ? 'primary' : 'default'}
+					</ToggleButton>
+					<ToggleButton
+						value='light'
 						onClick={() => dispatch( setTheme( 'light' ) )}>
 						<BrightnessHighIcon/>
-					</Button>
-					<Button
-						variant={main.theme === 'dark' ? 'contained' : 'outlined'}
-						color={main.theme === 'dark' ? 'primary' : 'default'}
+					</ToggleButton>
+					<ToggleButton
+						value='dark'
 						onClick={() => dispatch( setTheme( 'dark' ) )}>
 						<Brightness3Icon/>
-					</Button>
-				</ButtonGroup>
+					</ToggleButton>
+				</ToggleButtonGroup>
 			</ListItemSecondaryAction>
 		</ListItem>
 		<ListItem>
