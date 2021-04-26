@@ -1750,12 +1750,12 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'CL':      {
 		[ map[ 'Prototype Triple 152mm DP Mk 17 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/SR' ] ]:          [ 0, ++a ],
-		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/E' ] ]:           [ 1, ++a ],
-		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]:            [ 1, ++a ],
-		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]:              [ 2, ++a ],
-		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]:                    [ 2, ++a ],
-		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]:   [ 3, ++a ],
-		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]:         [ 3, ++a ],
+		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]:   [ 1, ++a ],
+		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]:         [ 1, ++a ],
+		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]:            [ 2, ++a ],
+		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]:              [ 3, ++a ],
+		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]:                    [ 3, ++a ],
+		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/E' ] ]:           [ 4, ++a ],
 		[ map[ 'Triple 155mm Main Gun Mount/E' ] ]:                     [ 4, ++a ],
 		[ map[ 'Single 150mm SK C/28 Main Gun Mount/E' ] ]:             [ 4, ++a ]
 	},
