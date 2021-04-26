@@ -129,7 +129,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon/>}
 									classes={{
-										root:    classes.iconSpace,
+										root:    editing ? classes.iconSpace : undefined,
 										content: classes.center
 									}}>
 									{itemRow}
@@ -137,7 +137,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 								<AccordionDetails>
 									{renderPanel( item, index )}
 								</AccordionDetails>
-							</Accordion> : <ListItem divider className={classes.iconSpace}>
+							</Accordion> : <ListItem divider className={editing ? classes.iconSpace : undefined}>
 								{itemRow}
 							</ListItem>}
 						</CSSTransition>;

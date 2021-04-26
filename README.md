@@ -15,3 +15,4 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 ## TODO
 
 * mobile ship page
+* use same utf font

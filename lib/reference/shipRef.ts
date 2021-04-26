@@ -400,7 +400,7 @@ const ships = {
 	'Conte_di_Cavour':                [ 'Conte di Cavour', 'Rare', 'Sardegna Empire', 'Battleship', 5, [], 'BB/Damage', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 45, 'Heavy', 27, 6831, 337, 175, 146, 36, 0, 13, 138, 0, 0, 62 ],
 	'Giulio_Cesare':                  [ 'Giulio Cesare', 'Elite', 'Sardegna Empire', 'Battleship', 5, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 65, 'Heavy', 27, 7030, 347, 186, 151, 36, 0, 14, 149, 0, 0, 64 ],
 	'Aquila':                         [ 'Aquila', 'Super Rare', 'Sardegna Empire', 'Aircraft Carrier', 0, [ 0, 1 ], 'F', 'F/DB', 'TB', 'A/CV1', 'A/CV2', 40, 'Medium', 30, 6217, 0, 363, 0, 45, 398, 13, 127, 0, 0, 101 ],
-	'Torricelli':                     [ 'Torricelli', 'Elite', 'Sardegna Empire', 'Submarine', 6, [], 'ST', 'ST', 'SS', 'A/SS1', 'A/SS2', 16, 'Light', 14, 1518, 39, 0, 499, 37, 0, 7, 84, 0, 0, 178 ],
+	'Torricelli':                     [ 'Torricelli', 'Elite', 'Sardegna Empire', 'Submarine', 4, [], 'ST', 'ST', 'SS', 'A/SS1', 'A/SS2', 16, 'Light', 14, 1518, 39, 0, 499, 37, 0, 7, 84, 0, 0, 178 ],
 	'Gromky':                         [ 'Gromky', 'Elite', 'Northern Parliament', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 45, 'Light', 45, 2277, 131, 167, 235, 175, 0, 9, 199, 204, 0, 183 ],
 	'Gremyashchy':                    [ 'Gremyashchy', 'Elite', 'Northern Parliament', 'Destroyer', 3, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 70, 'Light', 45, 2165, 142, 150, 279, 165, 0, 9, 199, 199, 0, 183 ],
 	'Grozny':                         [ 'Grozny', 'Elite', 'Northern Parliament', 'Destroyer', 5, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 60, 'Light', 46, 2496, 125, 204, 179, 166, 0, 10, 200, 200, 0, 184 ],

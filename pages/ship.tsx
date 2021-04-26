@@ -136,7 +136,7 @@ export default function Ship() {
 		<MaterialTable
 			title='Ship List'
 			icons={tableIcons}
-			columns={TableColumns()}
+			columns={TableColumns}
 			data={filteredShipList}
 			detailPanel={( rowData ) => <DetailPanel
 				colors={classes}
