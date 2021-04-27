@@ -7,7 +7,7 @@ import {
 	DialogTitle,
 	FormControlLabel,
 	Grid,
-	Link,
+	Link, makeStyles,
 	Switch,
 	Typography,
 	Zoom
@@ -19,7 +19,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { rarityColors } from '../../lib/reference/colors';
+import { mappedColorClasses, rarityColors } from '../../lib/reference/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
@@ -31,14 +31,16 @@ const Transition = React.forwardRef( (
 	ref: React.Ref<unknown>
 ) => <Zoom ref={ref} {...props}/> );
 
-export default function EquipDialog( { colors, open, onClose, info, selectedEquip }: {
-	colors: Record<string, string>
+const useStyles = makeStyles( () => mappedColorClasses as any );
+
+export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	open: boolean
 	onClose: () => void
 	info: { rowData: typeof shipRef[string], index: number }
 	selectedEquip: typeof equips[number]
 } ) {
 	const dispatch = useDispatch();
+	const classes = useStyles()
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
@@ -129,7 +131,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 							alt={currentEquip.name}
 							height={128}
 							width={128}
-							className={colors[ rarityColors[ currentEquip.rarity ] ]}
+							className={classes[ rarityColors[ currentEquip.rarity ] ]}
 						/>
 					</Link>
 				</Grid>
@@ -144,7 +146,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 							alt={equip.name}
 							height={128}
 							width={128}
-							className={colors[ rarityColors[ equip.rarity ] ]}
+							className={classes[ rarityColors[ equip.rarity ] ]}
 						/>
 					</Link>
 				</Grid>
@@ -164,7 +166,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 					<EquipSelector
 						anchorEl={anchorEl}
 						closeAnchor={() => setAnchorEl( null )}
-						colors={colors}
+						colors={classes}
 						equipList={tierList}
 						setEquip={( id ) => setEquip( equipListIndex[ id ] )}
 					/>
@@ -172,7 +174,7 @@ export default function EquipDialog( { colors, open, onClose, info, selectedEqui
 				<Grid item xs={1}/>
 				<Grid item xs={6}>
 					<EquipFilter
-						colors={colors}
+						colors={classes}
 						equipList={equipList}
 						value={equip}
 						setValue={setEquip}

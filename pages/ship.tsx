@@ -139,7 +139,6 @@ export default function Ship() {
 			columns={TableColumns}
 			data={filteredShipList}
 			detailPanel={( rowData ) => <DetailPanel
-				colors={classes}
 				rowData={rowData}
 				equipClick={( rowData, index ) => {
 					setEquipInfo( { rowData, index } );
@@ -156,7 +155,6 @@ export default function Ship() {
 			}}
 		/>
 		<EquipDialog
-			colors={classes}
 			open={equipOpen}
 			onClose={() => setEquipOpen( false )}
 			info={equipInfo}

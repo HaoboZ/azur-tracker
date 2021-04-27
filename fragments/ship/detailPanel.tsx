@@ -1,19 +1,21 @@
-import { Box, FormControl, Grid, InputLabel, Link, MenuItem, Select } from '@material-ui/core';
+import { Box, FormControl, Grid, InputLabel, Link, makeStyles, MenuItem, Select } from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { rarityColors, tierColors } from '../../lib/reference/colors';
+import { mappedColorClasses, rarityColors, tierColors } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 
-export default function DetailPanel( { colors, rowData, equipClick }: {
-	colors: Record<string, string>
+const useStyles = makeStyles( () => mappedColorClasses as any );
+
+export default function DetailPanel( { rowData, equipClick }: {
 	rowData: typeof shipRef[string]
 	equipClick: ( rowData, index ) => void
 } ) {
 	const dispatch = useDispatch();
+	const classes = useStyles();
 	
 	return <Grid container spacing={2}>
 		<Grid item xs={4} container spacing={2} alignItems='center'>
@@ -71,14 +73,14 @@ export default function DetailPanel( { colors, rowData, equipClick }: {
 				return <Grid
 					key={index}
 					item xs
-					className={colors[ tierColors[ rowData.equipBetter?.[ index ] - 1 ] ]}
+					className={classes[ tierColors[ rowData.equipBetter?.[ index ] - 1 ] ]}
 					onClick={() => equipClick( rowData, index )}>
 					<Image
 						src={`/images/equips/${equip.image}.png`}
 						alt={equip.name}
 						height={128}
 						width={128}
-						className={colors[ rarityColors[ equip.rarity ] ]}
+						className={classes[ rarityColors[ equip.rarity ] ]}
 					/>
 				</Grid>;
 			} )}
