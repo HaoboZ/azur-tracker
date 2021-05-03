@@ -2,6 +2,7 @@ import { Box, FormControl, Grid, InputLabel, Link, makeStyles, MenuItem, Select 
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import SVGIcon from '../../lib/icons';
 
 import { mappedColorClasses, rarityColors, tierColors } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
@@ -37,10 +38,19 @@ export default function DetailPanel( { rowData, equipClick }: {
 						SelectDisplayProps={{ style: { textAlign: 'center' } }}
 						onChange={( e ) => dispatch( ship_setShip( rowData.id,
 							{ love: e.target.value as number } ) )}>
-						<MenuItem value={0}>♡</MenuItem>
-						<MenuItem value={1}>♥</MenuItem>
-						<MenuItem value={2}>💍</MenuItem>
-						<MenuItem value={3}>💍♥</MenuItem>
+						<MenuItem value={0}>
+							<SVGIcon name='emptyHeart'/>
+						</MenuItem>
+						<MenuItem value={1}>
+							<SVGIcon name='heart'/>
+						</MenuItem>
+						<MenuItem value={2}>
+							<SVGIcon name='ring'/>
+						</MenuItem>
+						<MenuItem value={3}>
+							<SVGIcon name='ring'/>
+							<SVGIcon name='heart'/>
+						</MenuItem>
 					</Select>
 				</FormControl>
 			</Grid>
@@ -62,7 +72,11 @@ export default function DetailPanel( { rowData, equipClick }: {
 						<MenuItem value={110}>110</MenuItem>
 						<MenuItem value={115}>115</MenuItem>
 						<MenuItem value={120}>120</MenuItem>
-						<MenuItem value={121}>★</MenuItem>
+						<MenuItem value={121}>
+							<svg height={14} width={14}>
+								<use xlinkHref='#star'/>
+							</svg>
+						</MenuItem>
 					</Select>
 				</FormControl>
 			</Grid>

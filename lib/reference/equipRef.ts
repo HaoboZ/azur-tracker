@@ -1579,7 +1579,6 @@ const map = equips.reduce( ( obj, item ) => {
 	return obj;
 }, {} as Record<string, number | string> );
 
-//✷★☆✦✧⊝–
 let a;
 // tiers of equipment by slot
 export const equipTier: Record<string, Record<number, number[]>> = {

@@ -29,6 +29,7 @@
 		"react-redux": "^7.2.3",
 		"react-sortablejs": "^6.0.0",
 		"react-swipeable-views": "^0.13.9",
+		"react-table": "^7.7.0",
 		"redux": "^4.0.5",
 		"redux-persist": "^6.0.0",
 		"redux-persist-transform-compress": "^4.2.0",
@@ -45,6 +46,7 @@
 		"@types/react": "^17.0.3",
 		"@types/react-redux": "^7.1.16",
 		"@types/react-swipeable-views": "^0.13.0",
+		"@types/react-table": "^7.7.0",
 		"@types/sass": "^1.16.0",
 		"@types/sortablejs": "^1.10.6"
 	}

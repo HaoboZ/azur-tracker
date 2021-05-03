@@ -34,7 +34,6 @@ export default function Ship() {
 		const _ship = ship.ships[ shipData.id ];
 		shipData.love = _ship?.love || 0;
 		shipData.lvl = _ship?.lvl || 0;
-		shipData.equipTier = _ship?.tier || '—————';
 		shipData.equipped = _ship?.equip || new Array( 5 ).fill( [ 0 ] );
 		shipData.equipBetter = [];
 		return shipData;
@@ -45,7 +44,7 @@ export default function Ship() {
 		// selected filters
 		if ( !ship.filter.levelMax && shipData.lvl === 121 ) return false;
 		if ( !ship.filter.level0 && !shipData.lvl ) return false;
-		if ( !ship.filter.equipMax && shipData.equipTier === '✷✷✷✷✷' ) return false;
+		// if ( !ship.filter.equipMax && shipData.equipTier === '✷✷✷✷✷' ) return false;
 		// equipment filter
 		if ( !( equip?.id ) ) return true;
 		shipData.equipBetter = shipData.equipped.map( ( value, index ) => {

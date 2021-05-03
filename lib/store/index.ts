@@ -7,7 +7,9 @@ import authMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
 import { isBrowser } from '../helpers';
+import shipRef from '../reference/shipRef';
 import { rootReducer } from './reducers';
+import { getTier } from './reducers/shipReducer';
 
 const migrations = {
 	2: ( state: RootState ) => ( {
@@ -62,12 +64,23 @@ const migrations = {
 				return ship;
 			} )
 		}
+	} ),
+	6: ( state: RootState ) => ( {
+		...state,
+		ship: {
+			...state.ship,
+			ships: Object.fromEntries( Object.entries( state.ship.ships ).map( ( ship ) => {
+				getTier( shipRef[ ship[ 0 ] ], ship[ 1 ].equip );
+				delete ship[ 1 ][ 'tier' ];
+				return ship;
+			} ) )
+		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
 	key:             'root',
-	version:         5,
+	version:         6,
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate:         createMigrate( migrations as any, { debug: false } ),

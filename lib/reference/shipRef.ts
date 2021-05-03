@@ -506,7 +506,6 @@ export default _.mapValues( ships, ( val, key ) => ( {
 } & {
 	love?: number
 	lvl?: number
-	equipTier?: string
-	equipped?: [ number, 0 | 1 ][]
+	equipped?: [ number, 0 | 1, number ][]
 	equipBetter?: number[]
 }>;

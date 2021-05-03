@@ -17,11 +17,9 @@ export function ship_checkVersion() {
 export function ship_setShip( name: string, ship: {
 	lvl?: number
 	love?: number
-	equip?: [ number, 0 | 1 ][]
-	tier?: string
+	equip?: [ number, 0 | 1, number ][]
 } ) {
-	const tier = getTier( shipRef[ name ], ship.equip );
-	if ( tier ) ship.tier = tier;
+	getTier( shipRef[ name ], ship.equip );
 	
 	return {
 		type: SETSHIP,
@@ -37,25 +35,27 @@ export function ship_setFilter( filter: { levelMax?: boolean, equipMax?: boolean
 	};
 }
 
-function getTier( ship: { equip: string[] }, equip: [ number, 0 | 1 ][] ) {
-	return equip?.map( ( eq, i ) => {
-		if ( !eq?.[ 0 ] ) return '—';
-		if ( eq[ 1 ] ) return '✷'; //✹
-		const tier = equipTier[ ship.equip[ i ] ];
-		if ( eq[ 0 ] in tier ) {
-			return '✷★☆✦✧'[ tier[ eq[ 0 ] ][ 0 ] ];
-		} else {
-			return '🞅';
+export function getTier( ship: { equip: string[] }, equip: [ number, 0 | 1, number ][] ) {
+	equip?.forEach( ( eq, i ) => {
+		if ( !eq ) return;
+		if ( !eq[ 0 ] ) {
+			eq[ 2 ] = 0;
+			return;
 		}
-	} ).join( '' );
+		if ( eq[ 1 ] ) {
+			eq[ 2 ] = 1;
+			return;
+		}
+		const tier = equipTier[ ship.equip[ i ] ];
+		eq[ 2 ] = eq[ 0 ] in tier ? tier[ eq[ 0 ] ][ 0 ] + 1 : 6;
+	} );
 }
 
 type State = {
 	ships: Record<string, {
 		lvl: number
 		love: number
-		equip: [ number, 0 | 1 ][]
-		tier: string
+		equip: [ number, 0 | 1, number ][]
 	}>,
 	filter: {
 		levelMax: boolean
@@ -72,7 +72,7 @@ const initState: State = {
 		equipMax: true,
 		level0:   true
 	},
-	version: '2021-04-25'
+	version: '2021-05-02'
 };
 
 export default function shipReducer( state = initState, action ): State {
@@ -86,8 +86,7 @@ export default function shipReducer( state = initState, action ): State {
 			// recalculate equipment tiers
 			for ( const name in state.ships ) {
 				const ship = state.ships[ name ];
-				const tier = getTier( shipRef[ name ], ship.equip );
-				if ( tier ) ship.tier = tier;
+				getTier( shipRef[ name ], ship.equip );
 			}
 			return { ...state, version: initState.version };
 		}

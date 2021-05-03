@@ -1,5 +1,7 @@
 import { Column } from 'material-table';
+import React from 'react';
 
+import SVGIcon from '../../lib/icons';
 import { mappedColorClasses, nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
 import shipRef from '../../lib/reference/shipRef';
 
@@ -69,8 +71,16 @@ export default [
 		type:  'numeric',
 		align: 'left',
 		render( data, type ) {
-			const val: number = type === 'group' ? data as any : data.love;
-			return [ '♡', '♥', '💍', '💍♥' ][ val ];
+			if ( type === 'group' ) return data;
+			return [
+				<SVGIcon name='emptyHeart' style={{ display: 'flex' }}/>,
+				<SVGIcon name='heart' style={{ display: 'flex' }}/>,
+				<SVGIcon name='ring' style={{ display: 'flex' }}/>,
+				<div style={{ display: 'flex' }}>
+					<SVGIcon name='ring'/>
+					<SVGIcon name='heart'/>
+				</div>
+			][ data.love ];
 		},
 		searchable: false
 	},
@@ -80,15 +90,27 @@ export default [
 		type:  'numeric',
 		align: 'left',
 		render( data, type ) {
-			const val: number = type === 'group' ? data as any : data.lvl;
-			return val === 121 ? '★' : val;
+			if ( type === 'group' ) return data;
+			return data.lvl === 121 ? <SVGIcon name='star'/> : data.lvl;
 		},
 		searchable: false
 	},
 	{
-		title:      'Equips',
-		field:      'equipTier',
-		align:      'center',
+		title: 'Equips',
+		field: 'equipped',
+		align: 'center',
+		render( data, type ) {
+			if ( type === 'group' ) return data;
+			return data.equipped.map( ( equip, i ) => [
+				<SVGIcon key={i}/>,
+				<SVGIcon key={i} name='8star' color='gold'/>,
+				<SVGIcon key={i} name='star' color='gold'/>,
+				<SVGIcon key={i} name='star' color='silver'/>,
+				<SVGIcon key={i} name='star' color='chocolate'/>,
+				<SVGIcon key={i} name='star' color='black'/>,
+				<SVGIcon key={i} name='circle'/>
+			][ equip[ 2 ] ] );
+		},
 		grouping:   false,
 		searchable: false,
 		sorting:    false,
@@ -98,5 +120,6 @@ export default [
 				Math.min.apply( null, rowData.equipBetter.filter( Boolean ) ) - 1 ] ];
 			}
 		}
+		
 	}
 ] as ( Column<typeof shipRef[string]> & { minWidth?: number } )[];

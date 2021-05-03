@@ -32,7 +32,7 @@ export default function TitleBar() {
 			variant='dot'
 			className={classes.title}
 			invisible={!main.newData[ href.substring( 1 ) ]}>
-			<Button onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
+			<Button color='inherit' onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
 				{children}
 			</Button>
 		</Badge>

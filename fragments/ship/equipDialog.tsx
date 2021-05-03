@@ -18,6 +18,7 @@ import _ from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import SVGIcon from '../../lib/icons';
 
 import { mappedColorClasses, rarityColors } from '../../lib/reference/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
@@ -40,7 +41,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	selectedEquip: typeof equips[number]
 } ) {
 	const dispatch = useDispatch();
-	const classes = useStyles()
+	const classes = useStyles();
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
@@ -60,7 +61,13 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 			_.reduce( tierList, ( arr, val, key ) => {
 				arr[ val[ 1 ] ] = {
 					...equipsIndex[ key ],
-					tier: '✷★☆✦✧'[ val[ 0 ] ]
+					tier: [
+						      <SVGIcon name='8star' color='gold'/>,
+						      <SVGIcon name='star' color='gold'/>,
+						      <SVGIcon name='star' color='silver'/>,
+						      <SVGIcon name='star' color='chocolate'/>,
+						      <SVGIcon name='star' color='black'/>
+					      ][ val[ 0 ] ]
 				};
 				return arr;
 			}, [] as ( typeof equips[number] & { tier?: number } )[] )
@@ -91,14 +98,14 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	if ( !( equip.id in equipListIndex ) ) return null;
 	
 	function confirmEquip() {
-		info.rowData.equipped[ info.index ] = [ equip.id, override ];
+		info.rowData.equipped[ info.index ] = [ equip.id, override, 6 ];
 		dispatch( ship_setShip( info.rowData.id, { equip: info.rowData.equipped } ) );
 	}
 	
-	const close = () => {
+	function close() {
 		setAnchorEl( null );
 		onClose();
-	};
+	}
 	
 	return <Dialog
 		open={open}

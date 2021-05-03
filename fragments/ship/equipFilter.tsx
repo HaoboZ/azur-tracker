@@ -48,8 +48,7 @@ export default function EquipFilter( { colors, equipList, value, setValue }: {
 			label='Equipment'
 			InputProps={{
 				...params.InputProps,
-				startAdornment: <><SearchIcon/>{params.InputProps.startAdornment}</>,
-				type:           'search'
+				startAdornment: <><SearchIcon/>{params.InputProps.startAdornment}</>
 			}}
 		/>}
 	/>;
