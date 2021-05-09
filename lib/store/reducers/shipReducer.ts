@@ -1,5 +1,5 @@
 import { equipTier } from '../../reference/equipRef';
-import shipRef from '../../reference/shipRef';
+import shipRef, { version } from '../../reference/shipRef';
 
 const RESET        = 'ship/reset',
       CHECKVERSION = 'ship/checkVersion',
@@ -66,13 +66,13 @@ type State = {
 }
 
 const initState: State = {
-	ships  : {},
-	filter : {
+	ships : {},
+	filter: {
 		levelMax: true,
 		equipMax: true,
 		level0  : true
 	},
-	version: '2021-05-02'
+	version
 };
 
 export default function shipReducer( state = initState, action ): State {

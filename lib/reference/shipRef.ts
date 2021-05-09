@@ -147,8 +147,8 @@ const ships = {
 	'Matchless'                     : [ 'Matchless', 'Elite', 'Royal Navy', 'Destroyer', 5, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2', 76, 'Light', 43, 1683, 76, 157, 394, 210, 0, 9, 201, 223, 0, 180 ],
 	'Musketeer'                     : [ 'Musketeer', 'Elite', 'Royal Navy', 'Destroyer', 5, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2', 67, 'Light', 43, 1683, 76, 156, 400, 210, 0, 9, 201, 223, 0, 178 ],
 	'Eskimo'                        : [ 'Eskimo', 'Elite', 'Royal Navy', 'Destroyer', 3, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2', 72, 'Light', 43, 1657, 87, 156, 350, 211, 0, 9, 212, 193, 0, 188 ],
-	'Curacoa'                       : [ 'Curacoa', 'Elite', 'Royal Navy', 'Light Cruiser', 3, [], 'CL', 'AA/Speed', 'AA/Speed', 'A/CL1', 'A/CL2', 24, 'Light', 29, 3221, 174, 199, 0, 92, 0, 9, 182, 53, 0, 173 ],
-	'Curlew'                        : [ 'Curlew', 'Elite', 'Royal Navy', 'Light Cruiser', 2, [], 'CL', 'AA/Speed', 'AA/Speed', 'A/CL1', 'A/CL2', 45, 'Light', 29, 3029, 168, 223, 0, 92, 0, 9, 190, 53, 0, 171 ],
+	'Curacoa'                       : [ 'Curacoa', 'Elite', 'Royal Navy', 'Light Cruiser', 3, [], 'CL/DD', 'AA/Speed', 'AA/Speed', 'A/CL1', 'A/CL2', 24, 'Light', 29, 3221, 174, 199, 0, 92, 0, 9, 182, 53, 0, 173 ],
+	'Curlew'                        : [ 'Curlew', 'Elite', 'Royal Navy', 'Light Cruiser', 2, [], 'CL/DD', 'AA/Speed', 'AA/Speed', 'A/CL1', 'A/CL2', 45, 'Light', 29, 3029, 168, 223, 0, 92, 0, 9, 190, 53, 0, 171 ],
 	'Leander'                       : [ 'Leander', 'Rare', 'Royal Navy', 'Light Cruiser', 4, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 44, 'Light', 32, 3486, 196, 321, 305, 102, 0, 8, 176, 125, 0, 145 ],
 	'Achilles'                      : [ 'Achilles', 'Elite', 'Royal Navy', 'Light Cruiser', 3, [], 'CL', 'T', 'AA/Speed', 'A/CL1/T', 'A/CL2/T', 54, 'Light', 32, 3214, 213, 295, 359, 97, 0, 9, 180, 128, 0, 148 ],
 	'Ajax'                          : [ 'Ajax', 'Elite', 'Royal Navy', 'Light Cruiser', 3, [], 'CL', 'T', 'AA/Speed', 'A/CL1/T', 'A/CL2/T', 74, 'Light', 32, 3214, 213, 295, 359, 97, 0, 9, 180, 128, 0, 148 ],
@@ -482,6 +482,8 @@ const ships = {
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 0, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
 };
+
+export const version = '2021-05-09';
 
 export const blankShip = {
 	id       : '_',

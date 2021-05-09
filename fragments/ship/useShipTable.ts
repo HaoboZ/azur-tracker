@@ -86,9 +86,11 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 			// autoResetExpanded    : !skipResetRef.current,
 			// autoResetGroupBy     : !skipResetRef.current,
 			// autoResetSelectedRows: !skipResetRef.current,
-			autoResetSortBy  : !skipResetRef.current,
-			autoResetFilters : !skipResetRef.current,
-			autoResetRowState: !skipResetRef.current
+			autoResetHiddenColumns: !skipResetRef.current,
+			autoResetSortBy       : !skipResetRef.current,
+			autoResetGlobalFilter : !skipResetRef.current,
+			autoResetFilters      : !skipResetRef.current,
+			autoResetRowState     : !skipResetRef.current
 		},
 		useFlexLayout,
 		useGlobalFilter,

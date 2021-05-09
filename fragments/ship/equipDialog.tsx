@@ -73,7 +73,6 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	
 	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equips[ 0 ];
-	
 	// equipment that will go in slot
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
 	React.useEffect( () => {
@@ -91,8 +90,6 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	}, [ info ] );
 	
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
-	
-	if ( !( equip.id in equipListIndex ) ) return null;
 	
 	function close() {
 		info.ship.equip[ info.index ] = [ equip.id, override, 6 ];
