@@ -39,7 +39,7 @@ export default function Event() {
 		<ActionTitle
 			title='Event Tracker'
 			actions={[ {
-				name:    'Reset',
+				name   : 'Reset',
 				onClick: () => {
 					if ( confirm( 'Are you sure you want to reset this page?' ) )
 						dispatch( event_reset() );

@@ -73,11 +73,11 @@ type State = {
 }
 
 const initState: State = {
-	lastSaved:        new Date( 0 ).toISOString(),
-	newData:          {},
-	theme:            'default',
-	autoSave:         true,
-	autoLoad:         true,
+	lastSaved       : new Date( 0 ).toISOString(),
+	newData         : {},
+	theme           : 'default',
+	autoSave        : true,
+	autoLoad        : true,
 	autoSaveInterval: 2 * 1000,
 	autoLoadInterval: 20 * 1000
 };

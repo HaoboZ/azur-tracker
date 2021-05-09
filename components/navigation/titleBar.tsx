@@ -12,21 +12,21 @@ import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	appBar: {
-		paddingTop:   'env(safe-area-inset-top)',
-		paddingLeft:  'env(safe-area-inset-left)',
+		paddingTop  : 'env(safe-area-inset-top)',
+		paddingLeft : 'env(safe-area-inset-left)',
 		paddingRight: 'env(safe-area-inset-right)'
 	},
-	title:  {
+	title : {
 		marginRight: theme.spacing( 3 )
 	}
 } ) );
 
-export default function TitleBar() {
+function LinkItem( { children, href } ) {
 	const main     = useSelector( store => store.main ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
-	const LinkItem = ( { children, href } ) => <Link href={href}>
+	return <Link href={href}>
 		<Badge
 			color='secondary'
 			variant='dot'
@@ -37,6 +37,12 @@ export default function TitleBar() {
 			</Button>
 		</Badge>
 	</Link>;
+}
+
+export default function TitleBar() {
+	const main     = useSelector( store => store.main ),
+	      dispatch = useDispatch();
+	const classes = useStyles();
 	
 	return <AppBar position='static' className={classes.appBar}>
 		<Toolbar>
@@ -57,14 +63,14 @@ export default function TitleBar() {
 				color='inherit'
 				onClick={() => {
 					dispatch( setTheme( {
-						'light':   'dark',
-						'dark':    'default',
+						'light'  : 'dark',
+						'dark'   : 'default',
 						'default': 'light'
 					}[ main.theme ] || 'light' ) );
 				}}>
 				{{
-					'light':   <BrightnessHighIcon/>,
-					'dark':    <Brightness3Icon/>,
+					'light'  : <BrightnessHighIcon/>,
+					'dark'   : <Brightness3Icon/>,
 					'default': <Brightness4Icon/>
 				}[ main.theme ] || 'default'}
 			</IconButton>

@@ -22,7 +22,7 @@ export default function FarmingCalc( { remainingPoints }: {
 				'Required Plays',
 				'Total Oil Cost'
 			],
-			columns:      ( item, index ) => {
+			columns     : ( item, index ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return [ <TextField

@@ -44,7 +44,7 @@ export default function DailyDialog( { open, onClose }: {
 						'Name',
 						'Amount'
 					],
-					columns:      ( item, index ) => [
+					columns     : ( item, index ) => [
 						<TextField
 							type='text'
 							fullWidth

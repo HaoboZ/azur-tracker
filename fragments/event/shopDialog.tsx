@@ -52,7 +52,7 @@ export default function ShopDialog( { open, onClose }: {
 						'Amount',
 						'Wanted'
 					],
-					columns:      ( item ) => [
+					columns     : ( item ) => [
 						item.name,
 						item.cost,
 						item.amount,

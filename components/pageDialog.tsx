@@ -6,10 +6,10 @@ const Transition = React.forwardRef( ( props: SlideProps, ref ) =>
 	<Slide direction='up' ref={ref} {...props}/> );
 
 const useStyles = makeStyles( {
-	modal:    { marginTop: 'calc(env(safe-area-inset-top) + 56px)' },
+	modal   : { marginTop: 'calc(env(safe-area-inset-top) + 56px)' },
 	safeArea: {
-		paddingLeft:   'env(safe-area-inset-left)',
-		paddingRight:  'env(safe-area-inset-right)',
+		paddingLeft  : 'env(safe-area-inset-left)',
+		paddingRight : 'env(safe-area-inset-right)',
 		paddingBottom: 'env(safe-area-inset-bottom)'
 	}
 } );

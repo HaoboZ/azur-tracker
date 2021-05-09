@@ -20,7 +20,7 @@ export default function useTheme() {
 	return createMuiTheme( {
 		palette: {
 			type,
-			primary:   { main: '#039be5' },
+			primary  : { main: '#039be5' },
 			secondary: { main: '#d50000' }
 		}
 	} );

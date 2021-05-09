@@ -39,7 +39,7 @@ const migrations = {
 		...state,
 		event: {
 			...state.event,
-			daily:   state.event.daily.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) ),
+			daily  : state.event.daily.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) ),
 			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) )
 		}
 	} ),
@@ -79,12 +79,12 @@ const migrations = {
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
-	key:             'root',
-	version:         6,
+	key            : 'root',
+	version        : 6,
 	storage,
 	stateReconciler: authMergeLevel2,
-	migrate:         createMigrate( migrations as any, { debug: false } ),
-	transforms:      [ createCompressor() ]
+	migrate        : createMigrate( migrations as any, { debug: false } ),
+	transforms     : [ createCompressor() ]
 }, rootReducer );
 
 export type RootState = ReturnType<typeof rootReducer>;

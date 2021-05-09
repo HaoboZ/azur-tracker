@@ -17,7 +17,7 @@ export default function Research() {
 		<ActionTitle
 			title='Research Tracker'
 			actions={[ {
-				name:    'Reset',
+				name   : 'Reset',
 				onClick: () => {
 					if ( confirm( 'Are you sure you want to reset this page?' ) )
 						dispatch( research_reset() );

@@ -11,18 +11,18 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
-const useStyles = makeStyles( () => ( {
+const useStyles = makeStyles( {
 	footer: {
 		height: 56
 	},
 	appBar: {
-		top:           'auto',
-		bottom:        0,
-		paddingLeft:   'env(safe-area-inset-left)',
-		paddingRight:  'env(safe-area-inset-right)',
+		top          : 'auto',
+		bottom       : 0,
+		paddingLeft  : 'env(safe-area-inset-left)',
+		paddingRight : 'env(safe-area-inset-right)',
 		paddingBottom: 'env(safe-area-inset-bottom)'
 	}
-} ) );
+} );
 
 const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
@@ -56,7 +56,7 @@ export default function BottomBar() {
 						break;
 					default:
 						router.push( items[ value ].link ).then();
-						dispatch( setNewData( { [ items[ value ].link.substring(1) ]: false } ) );
+						dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
 						break;
 					}
 				}}>

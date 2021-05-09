@@ -6,9 +6,9 @@ import TitleBar from './titleBar';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	safeArea: {
-		paddingTop:    theme.breakpoints.up( 'sm' ) ? 0 : 'env(safe-area-inset-top)',
-		paddingLeft:   'env(safe-area-inset-left)',
-		paddingRight:  'env(safe-area-inset-right)',
+		paddingTop   : theme.breakpoints.up( 'sm' ) ? 0 : 'env(safe-area-inset-top)',
+		paddingLeft  : 'env(safe-area-inset-left)',
+		paddingRight : 'env(safe-area-inset-right)',
 		paddingBottom: 'env(safe-area-inset-bottom)'
 	}
 } ) );

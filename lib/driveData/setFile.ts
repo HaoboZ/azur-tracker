@@ -9,19 +9,19 @@ export default async function setFile(
 	try {
 		const media = {
 			mimeType: 'application/json',
-			body:     data
+			body    : data
 		};
 		
 		if ( file?.id ) {
 			await drive.files.update( {
-				fileId:      file.id,
+				fileId     : file.id,
 				media,
 				requestBody: { modifiedTime }
 			} as drive_v3.Params$Resource$Files$Update );
 		} else {
 			await drive.files.create( {
 				resource: {
-					name:    file.name,
+					name   : file.name,
 					parents: [ 'appDataFolder' ],
 					modifiedTime
 				},

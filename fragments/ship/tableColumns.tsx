@@ -1,125 +1,136 @@
-import { Column } from 'material-table';
 import React from 'react';
+import { Column } from 'react-table';
 
 import SVGIcon from '../../lib/icons';
-import { mappedColorClasses, nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
-import shipRef from '../../lib/reference/shipRef';
+import { nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
+import { equippable, equipTier } from '../../lib/reference/equipRef';
 
-export default [
-	{
-		title: 'Name',
-		field: 'name',
-		customFilterAndSearch( term, rowData ) {
-			let regex: RegExp;
-			let isValid = true;
-			try {
-				regex = new RegExp( term, 'i' );
-			} catch {
-				isValid = false;
-			}
-			if ( !isValid ) return false;
-			return regex.test( rowData.name.normalize( 'NFD' )
-				.replace( /[\u0300-\u036f]/g, '' ) );
+export default function tableColumns( equipBetter, setEquipBetterDelay ) {
+	return [
+		{
+			Header  : 'Name',
+			accessor: 'name',
+			minWidth: 40
 		},
-		customSort( a, b ) {
-			return a.name.localeCompare( b.name );
+		{
+			Header  : 'Rarity',
+			accessor: 'rarity',
+			minWidth: 20,
+			color   : ( { value } ) => rarityColors[ value ]
 		},
-		grouping: false
-	},
-	{
-		title: 'Rarity',
-		field: 'rarity',
-		cellStyle( _, rowData ) {
-			return mappedColorClasses[ rarityColors[ rowData?.rarity ] ];
-		}
-	},
-	{
-		title: 'Nation',
-		field: 'nation',
-		cellStyle( _, rowData ) {
-			return mappedColorClasses[ nationColors[ rowData?.nation ] ];
-		}
-	},
-	{
-		title: 'Type',
-		field: 'type',
-		cellStyle( _, rowData ) {
-			return mappedColorClasses[ typeColors[ rowData?.type ] ];
-		}
-	},
-	{
-		title:       'Tier',
-		field:       'tier',
-		defaultSort: 'asc',
-		type:        'numeric',
-		align:       'left',
-		render( data, type ) {
-			const val: number = type === 'group' ? data as any : data.tier;
-			switch ( val ) {
-			case 6:
-				return '';
-			case 5:
-				return 'N';
-			default:
-				return val;
-			}
-		}
-	},
-	{
-		title: 'Love',
-		field: 'love',
-		type:  'numeric',
-		align: 'left',
-		render( data, type ) {
-			if ( type === 'group' ) return data;
-			return [
-				<SVGIcon name='emptyHeart' style={{ display: 'flex' }}/>,
-				<SVGIcon name='heart' style={{ display: 'flex' }}/>,
-				<SVGIcon name='ring' style={{ display: 'flex' }}/>,
-				<div style={{ display: 'flex' }}>
-					<SVGIcon name='ring'/>
-					<SVGIcon name='heart'/>
-				</div>
-			][ data.love ];
+		{
+			Header  : 'Nation',
+			accessor: 'nation',
+			minWidth: 20,
+			color   : ( { value } ) => nationColors[ value ]
 		},
-		searchable: false
-	},
-	{
-		title: 'Level',
-		field: 'lvl',
-		type:  'numeric',
-		align: 'left',
-		render( data, type ) {
-			if ( type === 'group' ) return data;
-			return data.lvl === 121 ? <SVGIcon name='star'/> : data.lvl;
+		{
+			Header  : 'Type',
+			accessor: 'type',
+			minWidth: 20,
+			color   : ( { value } ) => typeColors[ value ]
 		},
-		searchable: false
-	},
-	{
-		title: 'Equips',
-		field: 'equipped',
-		align: 'center',
-		render( data, type ) {
-			if ( type === 'group' ) return data;
-			return data.equipped.map( ( equip, i ) => [
-				<SVGIcon key={i}/>,
-				<SVGIcon key={i} name='8star' color='gold'/>,
-				<SVGIcon key={i} name='star' color='gold'/>,
-				<SVGIcon key={i} name='star' color='silver'/>,
-				<SVGIcon key={i} name='star' color='chocolate'/>,
-				<SVGIcon key={i} name='star' color='black'/>,
-				<SVGIcon key={i} name='circle'/>
-			][ equip[ 2 ] ] );
+		{
+			Header  : 'Tier',
+			accessor: 'tier',
+			minWidth: 10,
+			Cell( { value } ) {
+				switch ( value ) {
+				case 6:
+					return '';
+				case 5:
+					return 'N';
+				default:
+					return value;
+				}
+			},
+			disableGlobalFilter: true,
+			sortType           : 'number'
 		},
-		grouping:   false,
-		searchable: false,
-		sorting:    false,
-		cellStyle( _, rowData ) {
-			if ( rowData.equipBetter.length ) {
-				return mappedColorClasses[ tierColors[
-				Math.min.apply( null, rowData.equipBetter.filter( Boolean ) ) - 1 ] ];
-			}
+		{
+			Header  : 'Love',
+			accessor: 'love',
+			minWidth: 10,
+			Cell( { value } ) {
+				return [
+					<SVGIcon name='emptyHeart' style={{ display: 'flex' }}/>,
+					<SVGIcon name='heart' style={{ display: 'flex' }}/>,
+					<SVGIcon name='ring' style={{ display: 'flex' }}/>,
+					<div style={{ display: 'flex' }}>
+						<SVGIcon name='ring'/>
+						<SVGIcon name='heart'/>
+					</div>
+				][ value ];
+			},
+			disableGlobalFilter: true,
+			sortType           : 'number',
+			sortDescFirst      : true
+		},
+		{
+			Header  : 'Level',
+			accessor: 'lvl',
+			minWidth: 10,
+			Cell( { value } ) {
+				return value === 121 ? <SVGIcon name='star'/> : value;
+			},
+			disableGlobalFilter: true,
+			sortType           : 'number',
+			sortDescFirst      : true
+		},
+		{
+			Header  : 'Equips',
+			accessor: 'equip',
+			minWidth: 20,
+			Cell( { value } ) {
+				return value?.map( ( equip, i ) => [
+					<SVGIcon key={i}/>,
+					<SVGIcon key={i} name='8star' color='gold'/>,
+					<SVGIcon key={i} name='star' color='gold'/>,
+					<SVGIcon key={i} name='star' color='silver'/>,
+					<SVGIcon key={i} name='star' color='chocolate'/>,
+					<SVGIcon key={i} name='star' color='black'/>,
+					<SVGIcon key={i} name='circle'/>
+				][ equip[ 2 ] ] ) || null;
+			},
+			color( { row } ) {
+				if ( equipBetter.value[ row.id ] ) {
+					return tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ) ) - 1 ];
+				}
+			},
+			disableGlobalFilter: true,
+			filter( rows, id, filterValue ) {
+				if ( !filterValue?.id ) return rows;
+				
+				const equipBetter = rows.reduce( ( acc, row ) => {
+					acc[ row.id ] = row.values.equip.map( ( value, index ) => {
+						// ships that can equip the equipment
+						if ( !equippable[ row.values.equipType[ index ] ].includes( filterValue.type ) ) return 0;
+						const tierList = equipTier[ row.values.equipType[ index ] ];
+						// is equipped already
+						if ( value?.[ 0 ] === filterValue.id ) return 6;
+						// equip not in tier list
+						if ( !tierList[ filterValue.id ] ) return 0;
+						const tier = tierList[ filterValue.id ]?.[ 0 ] + 1;
+						// none equipped
+						if ( !value?.[ 0 ] ) return tier;
+						// forced BiS
+						if ( value[ 1 ] ) return 0;
+						// current equip not in tier list
+						if ( !tierList[ value[ 0 ] ] ) return tier;
+						// remove those that have higher tier
+						if ( tierList[ value[ 0 ] ][ 1 ] <= tierList[ filterValue.id ][ 1 ] ) return 0;
+						return tier;
+					} );
+					return acc;
+				}, {} );
+				setEquipBetterDelay( filterValue, equipBetter );
+				return rows.filter( ( row ) => equipBetter[ row.id ].some( val => val ) );
+			},
+			disableSortBy: true
+		},
+		{
+			accessor           : 'equipType',
+			disableGlobalFilter: true
 		}
-		
-	}
-] as ( Column<typeof shipRef[string]> & { minWidth?: number } )[];
+	] as Column[];
+}

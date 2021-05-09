@@ -2,30 +2,30 @@ import { Box, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
 
-import { rarityColors } from '../../lib/reference/colors';
+import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips } from '../../lib/reference/equipRef';
 
-const useStyles = makeStyles( () => ( {
+const useStyles = makeStyles( {
 	menu: {
 		maxHeight: 400,
-		width:     300
+		width    : 300
 	},
 	wrap: { whiteSpace: 'normal' }
-} ) );
+} );
 
-export default function EquipSelector( { anchorEl, closeAnchor, colors, equipList, setEquip }: {
+export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement
 	closeAnchor: () => void
-	colors: Record<string, string>
 	equipList: ( typeof equips[number] & { tier?: number } )[]
 	setEquip: ( id: number ) => void
 } ) {
 	const classes = useStyles();
+	const colorClasses = useMappedColorClasses();
 	
 	return <Menu
 		anchorEl={anchorEl}
 		keepMounted
-		open={!!anchorEl}
+		open={Boolean( anchorEl )}
 		onClose={closeAnchor}
 		PaperProps={{ className: classes.menu }}>
 		{equipList.map( ( equip ) => <MenuItem
@@ -43,7 +43,7 @@ export default function EquipSelector( { anchorEl, closeAnchor, colors, equipLis
 					layout='fixed'
 					height={50}
 					width={50}
-					className={colors[ rarityColors[ equip.rarity ] ]}
+					className={colorClasses[ rarityColors[ equip.rarity ] ]}
 				/>
 			</Box>
 			<Typography>{equip.name}</Typography>

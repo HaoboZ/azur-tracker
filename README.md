@@ -14,6 +14,10 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
 
-* mobile ship page
-* change material-table to react-table
+* ship page
+	* dropdown selection of checkbox filters
+		* maxed equip
+		* maxed level
+		* 0 level
+* change material-useShipTable to react-useShipTable
 * change react-sortablejs to react-dnd or react-sortable-hoc (animated?)

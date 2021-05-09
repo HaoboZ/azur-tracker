@@ -8,9 +8,9 @@ IndicatorContext.displayName = 'Indicator';
 const useStyles = makeStyles( {
 	progress: {
 		position: 'fixed',
-		zIndex:   10000,
-		bottom:   'calc(env(safe-area-inset-bottom) + 10px)',
-		right:    10
+		zIndex  : 10000,
+		bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
+		right   : 10
 	}
 } );
 

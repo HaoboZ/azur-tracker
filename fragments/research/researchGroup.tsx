@@ -18,17 +18,17 @@ import DataDisplay from '../../components/dataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
-		textAlign:                                                    'right',
-		'&[type=number]':                                             {
+		textAlign                                                   : 'right',
+		'&[type=number]'                                            : {
 			'-moz-appearance': 'textfield'
 		},
 		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
 			'-webkit-appearance': 'none',
-			margin:               0
+			margin              : 0
 		}
 	},
-	avatar:      {
-		width:  60,
+	avatar     : {
+		width : 60,
 		height: 60
 	}
 } );
@@ -76,7 +76,7 @@ export default function ResearchGroup( { researchData, wide }:
 					'Fate Stage',
 					'Required Prints'
 				],
-				columns:      ( item, index ) => {
+				columns     : ( item, index ) => {
 					const ship = research.ships[ item.name ] || {};
 					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
@@ -133,7 +133,7 @@ export default function ResearchGroup( { researchData, wide }:
 				}
 			}}
 			listProps={{
-				renderRow:   ( item, index ) => {
+				renderRow  : ( item, index ) => {
 					const { devPrints, fatePrints } = shipData[ index ];
 					return <>
 						<ListItemAvatar>
@@ -173,12 +173,12 @@ export default function ResearchGroup( { researchData, wide }:
 								inputProps={{
 									inputMode: 'numeric',
 									className: classes.numberInput,
-									onFocus:   ( e ) => e.target.select()
+									onFocus  : ( e ) => e.target.select()
 								}}
 								InputProps={{
 									startAdornment:
 										<InputAdornment position='start'>Stage</InputAdornment>,
-									endAdornment:
+									endAdornment  :
 										<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
 								}}
 								value={ship.devStage || 0}
@@ -205,11 +205,11 @@ export default function ResearchGroup( { researchData, wide }:
 								inputProps={{
 									inputMode: 'numeric',
 									className: classes.numberInput,
-									onFocus:   ( e ) => e.target.select()
+									onFocus  : ( e ) => e.target.select()
 								}}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
-									endAdornment:   <InputAdornment position='end'>%</InputAdornment>
+									endAdornment  : <InputAdornment position='end'>%</InputAdornment>
 								}}
 								value={ship.fateStage || 0}
 								onChange={( e ) => dispatch( research_modifyShip( item.name,

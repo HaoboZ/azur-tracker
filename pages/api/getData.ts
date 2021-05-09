@@ -4,7 +4,7 @@ import getDrive from '../../lib/driveData/getDrive';
 import getFile from '../../lib/driveData/getFile';
 import getInfo from '../../lib/driveData/getInfo';
 
-export default ( async function( req, res ) {
+export default ( async function GetData( req, res ) {
 	try {
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );

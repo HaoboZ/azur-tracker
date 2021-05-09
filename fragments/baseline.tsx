@@ -29,8 +29,8 @@ function Content( { children } ) {
 	const indicator = useIndicator();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	const delayedSetBackup = React.useMemo(
-		() => _.debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
+	const delayedSetBackup = React.useCallback(
+		_.debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
 		[ main.autoSaveInterval ] );
 	
 	React.useEffect( () => {
@@ -49,9 +49,8 @@ function Content( { children } ) {
 	}, [ main.autoLoadInterval ] );
 	
 	return <Navigation>
-		{/*@ts-ignore*/}
-		<Container maxWidth='md' disableGutters={!wide} component={Box} overflow='hidden' pb={4}>
-			{children}
+		<Container maxWidth='md' disableGutters={!wide}>
+			<Box overflow='hidden'>{children}</Box>
 		</Container>
 	</Navigation>;
 }

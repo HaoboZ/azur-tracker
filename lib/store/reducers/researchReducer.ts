@@ -50,7 +50,7 @@ type State = {
 
 const initState: State = {
 	lastTab: 0,
-	ships:   {}
+	ships  : {}
 };
 
 export default function researchReducer( state = initState, action ): State {

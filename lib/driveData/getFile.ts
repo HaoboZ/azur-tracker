@@ -5,7 +5,7 @@ export default async function getFile( drive: drive_v3.Drive, file: drive_v3.Sch
 	try {
 		const { data } = await drive.files.get( {
 			fileId: file.id,
-			alt:    'media'
+			alt   : 'media'
 		} as drive_v3.Params$Resource$Files$Get );
 		return data as any;
 	} catch ( e ) {

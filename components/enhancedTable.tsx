@@ -13,61 +13,62 @@ import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import ActionTitle from './actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	tableRows:    {
+	tableRows   : {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.action.focus
 		}
 	},
-	minWidth:     {
+	minWidth    : {
 		width: '1%'
 	},
 	selectedSort: {
 		backgroundColor: `${theme.palette.secondary.main} !important`
 	},
-	slide:        {
-		'&-enter':        {
+	slide       : {
+		'&-enter'       : {
 			'& > * > div': {
 				overflowY: 'hidden',
 				maxHeight: 0
 			},
-			'& > *':       {
-				paddingTop:    0,
+			'& > *'      : {
+				paddingTop   : 0,
 				paddingBottom: 0
 			}
 		},
 		'&-enter-active': {
 			'& > * > div': {
-				maxHeight:  `${theme.spacing( 4 )}px !important`,
+				maxHeight : `${theme.spacing( 4 )}px !important`,
 				transition: 'max-height 200ms ease-in-out'
 			},
-			'& > *':       {
-				paddingTop:    `${theme.spacing()}px !important`,
+			'& > *'      : {
+				paddingTop   : `${theme.spacing()}px !important`,
 				paddingBottom: `${theme.spacing()}px !important`,
-				transition:    'padding 200ms ease-in-out'
+				transition   : 'padding 200ms ease-in-out'
 			}
 		},
-		'&-exit':         {
+		'&-exit'        : {
 			'& > * > div': {
 				maxHeight: theme.spacing( 4 )
 			},
-			'& > *':       {
-				paddingTop:    theme.spacing(),
+			'& > *'      : {
+				paddingTop   : theme.spacing(),
 				paddingBottom: theme.spacing()
 			}
 		},
-		'&-exit-active':  {
+		'&-exit-active' : {
 			'& > * > div': {
-				overflowY:  'hidden',
-				maxHeight:  '0 !important',
+				overflowY : 'hidden',
+				maxHeight : '0 !important',
 				transition: 'max-height 200ms ease-in-out'
 			},
-			'& > *':       {
-				paddingTop:    '0 !important',
+			'& > *'      : {
+				paddingTop   : '0 !important',
 				paddingBottom: '0 !important',
-				transition:    'padding 200ms ease-in-out'
+				transition   : 'padding 200ms ease-in-out'
 			}
 		}
 	}

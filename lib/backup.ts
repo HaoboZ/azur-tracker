@@ -9,7 +9,7 @@ async function checkDataIntegrity() {
 	const { main, ...state } = store.getState();
 	const body = stringify( state );
 	const res = await fetch( `/api/checkData?${new URLSearchParams( {
-		checksum:  await md5( body ),
+		checksum : await md5( body ),
 		lastSaved: main.lastSaved
 	} )}` );
 	let valid = await res.json();

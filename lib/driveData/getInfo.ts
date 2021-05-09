@@ -6,7 +6,7 @@ export default async function getInfo( drive: drive_v3.Drive, name?: string ) {
 	try {
 		const { data: { files } } = await drive.files.list( {
 			spaces: 'appDataFolder',
-			q:      name && `name="${name}"`,
+			q     : name && `name="${name}"`,
 			fields: 'nextPageToken, files(id, name, md5Checksum, modifiedTime)'
 		} as drive_v3.Params$Resource$Files$List );
 		

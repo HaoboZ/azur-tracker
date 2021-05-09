@@ -33,10 +33,10 @@ import {
 } from '../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( {
-	longText:   {
-		width:        '70%',
-		whiteSpace:   'nowrap',
-		overflow:     'hidden',
+	longText  : {
+		width       : '70%',
+		whiteSpace  : 'nowrap',
+		overflow    : 'hidden',
 		textOverflow: 'ellipsis'
 	},
 	longAction: {

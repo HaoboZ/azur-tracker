@@ -1,9 +1,9 @@
 export default {
-	name:    'Daedalian Hymn',
-	image:   'Daedalian_Hymn.png',
-	link:    'Daedalian_Hymn',
+	name   : 'Daedalian Hymn',
+	image  : 'Daedalian_Hymn.png',
+	link   : 'Daedalian_Hymn',
 	endDate: '2021-05-05T23:59-07',
-	shop:    [
+	shop   : [
 		{ name: 'Duca degli Abruzzi', cost: 8000, amount: 5 },
 		{ name: 'Triple 152mm Model 1934 Main Gun', cost: 135, amount: 15 },
 		// { name: 'Gear Skin Box', cost: 2000, amount: 10 },

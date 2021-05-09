@@ -35,7 +35,7 @@ export function ship_setFilter( filter: { levelMax?: boolean, equipMax?: boolean
 	};
 }
 
-export function getTier( ship: { equip: string[] }, equip: [ number, 0 | 1, number ][] ) {
+export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, number ][] ) {
 	equip?.forEach( ( eq, i ) => {
 		if ( !eq ) return;
 		if ( !eq[ 0 ] ) {
@@ -46,7 +46,7 @@ export function getTier( ship: { equip: string[] }, equip: [ number, 0 | 1, numb
 			eq[ 2 ] = 1;
 			return;
 		}
-		const tier = equipTier[ ship.equip[ i ] ];
+		const tier = equipTier[ ship.equipType[ i ] ];
 		eq[ 2 ] = eq[ 0 ] in tier ? tier[ eq[ 0 ] ][ 0 ] + 1 : 6;
 	} );
 }
@@ -66,11 +66,11 @@ type State = {
 }
 
 const initState: State = {
-	ships:   {},
-	filter:  {
+	ships  : {},
+	filter : {
 		levelMax: true,
 		equipMax: true,
-		level0:   true
+		level0  : true
 	},
 	version: '2021-05-02'
 };

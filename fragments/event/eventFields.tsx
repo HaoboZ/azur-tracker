@@ -9,20 +9,20 @@ import DailyDialog from './dailyDialog';
 import ShopDialog from './shopDialog';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	banner:      {
-		width:    '100%',
+	banner     : {
+		width   : '100%',
 		maxWidth: 700,
-		display:  'block',
-		margin:   'auto'
+		display : 'block',
+		margin  : 'auto'
 	},
-	rightInput:  {
+	rightInput : {
 		textAlign: 'right'
 	},
-	blankInput:  {
-		'& .MuiInputBase-root.Mui-disabled':         {
+	blankInput : {
+		'& .MuiInputBase-root.Mui-disabled'        : {
 			color: theme.palette.text.primary
 		},
-		'& .MuiFormLabel-root.Mui-disabled':         {
+		'& .MuiFormLabel-root.Mui-disabled'        : {
 			color: theme.palette.text.secondary
 		},
 		'& .MuiInput-underline.Mui-disabled:before': {
@@ -30,12 +30,12 @@ const useStyles = makeStyles( ( theme ) => ( {
 		}
 	},
 	numberInput: {
-		'&[type=number]':                                             {
+		'&[type=number]'                                            : {
 			'-moz-appearance': 'textfield'
 		},
 		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
 			'-webkit-appearance': 'none',
-			margin:               0
+			margin              : 0
 		}
 	}
 } ) );
@@ -99,9 +99,9 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 						label='Shop'
 						inputProps={{ className: classes.rightInput }}
 						InputProps={{
-							readOnly:       true,
+							readOnly      : true,
 							startAdornment: <InputAdornment position='start'>Cost:</InputAdornment>,
-							endAdornment:   <InputAdornment position='end'>Points</InputAdornment>
+							endAdornment  : <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.shopExpectedCost}
 						onClick={() => setShopDialog( true )}
@@ -114,7 +114,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 						label='Daily Points'
 						inputProps={{ className: classes.rightInput }}
 						InputProps={{
-							readOnly:     true,
+							readOnly    : true,
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.dailyExpected}
@@ -142,7 +142,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 						inputProps={{
 							inputMode: 'numeric',
 							className: `${classes.numberInput} ${classes.rightInput}`,
-							onFocus:   ( e ) => e.target.select()
+							onFocus  : ( e ) => e.target.select()
 						}}
 						InputProps={{
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>

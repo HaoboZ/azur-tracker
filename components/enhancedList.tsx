@@ -23,45 +23,45 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ActionTitle from './actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	center:       {
-		alignItems:       'center',
-		marginTop:        theme.spacing( 1 ),
-		marginBottom:     theme.spacing( 1 ),
+	center      : {
+		alignItems      : 'center',
+		marginTop       : theme.spacing( 1 ),
+		marginBottom    : theme.spacing( 1 ),
 		'&.Mui-expanded': {
-			marginTop:    theme.spacing( 2 ),
+			marginTop   : theme.spacing( 2 ),
 			marginBottom: theme.spacing( 2 )
 		}
 	},
-	iconSpace:    {
+	iconSpace   : {
 		paddingLeft: 0
 	},
 	selectedSort: {
 		backgroundColor: `${theme.palette.secondary.main} !important`
 	},
-	slide:        {
-		'&-enter':        {
-			overflowY:     'hidden',
-			maxHeight:     0,
-			paddingTop:    0,
+	slide       : {
+		'&-enter'       : {
+			overflowY    : 'hidden',
+			maxHeight    : 0,
+			paddingTop   : 0,
 			paddingBottom: 0
 		},
 		'&-enter-active': {
-			maxHeight:     `${theme.spacing( 10 )}px !important`,
-			paddingTop:    `${theme.spacing()}px !important`,
+			maxHeight    : `${theme.spacing( 10 )}px !important`,
+			paddingTop   : `${theme.spacing()}px !important`,
 			paddingBottom: `${theme.spacing()}px !important`,
-			transition:    'all 200ms ease-in-out'
+			transition   : 'all 200ms ease-in-out'
 		},
-		'&-exit':         {
-			maxHeight:     theme.spacing( 10 ),
-			paddingTop:    theme.spacing(),
+		'&-exit'        : {
+			maxHeight    : theme.spacing( 10 ),
+			paddingTop   : theme.spacing(),
 			paddingBottom: theme.spacing()
 		},
-		'&-exit-active':  {
-			overflowY:     'hidden',
-			maxHeight:     '0 !important',
-			paddingTop:    '0 !important',
+		'&-exit-active' : {
+			overflowY    : 'hidden',
+			maxHeight    : '0 !important',
+			paddingTop   : '0 !important',
 			paddingBottom: '0 !important',
-			transition:    'all 200ms ease-in-out'
+			transition   : 'all 200ms ease-in-out'
 		}
 	}
 } ) );
@@ -90,13 +90,13 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	
 	return <List
 		subheader={( title || editable ) && <ActionTitle title={title} actions={editable ? [ {
-			name:    editing ? 'Cancel' : 'Edit',
+			name   : editing ? 'Cancel' : 'Edit',
 			onClick: () => setEditing( !editing ),
-			props:   { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
+			props  : { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
 		}, {
-			name:    'Add',
+			name   : 'Add',
 			onClick: async () => setData?.( [ ...data, { ...await newData?.() } ] ),
-			props:   { color: 'primary', startIcon: <AddIcon/> }
+			props  : { color: 'primary', startIcon: <AddIcon/> }
 		} ] : []}/>}
 		{...props}>
 		<Paper>
@@ -129,7 +129,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon/>}
 									classes={{
-										root:    editing ? classes.iconSpace : undefined,
+										root   : editing ? classes.iconSpace : undefined,
 										content: classes.center
 									}}>
 									{itemRow}
