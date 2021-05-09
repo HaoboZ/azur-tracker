@@ -17,8 +17,8 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 	const ship = useSelector( store => store.ship );
 	
 	const skipResetRef = React.useRef( false );
-
-// list of ships with the local data loaded
+	
+	// list of ships with the local data loaded
 	const shipList = React.useMemo( () => {
 		skipResetRef.current = true;
 		return Object.values( shipRef )

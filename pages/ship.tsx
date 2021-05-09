@@ -8,7 +8,7 @@ import VirtualTable from '../components/virtualTable';
 import Filters from '../fragments/ship/filters';
 import ShipDialog from '../fragments/ship/shipDialog';
 import useShipTable from '../fragments/ship/useShipTable';
-import shipRef from '../lib/reference/shipRef';
+import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion, ship_reset } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
@@ -16,7 +16,7 @@ export default function Ship() {
 	const height = usePageHeight();
 	
 	const [ shipOpen, setShipOpen ]       = React.useState( false ),
-	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: shipRef[ 'Universal_Bulin' ] } as any );
+	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as any );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter
 		value: Record<string, number[]>
@@ -63,6 +63,7 @@ export default function Ship() {
 			table={table}
 			open={shipOpen}
 			onClose={() => setShipOpen( false )}
+			onExit={() => setSelectedRow( { original: blankShip } as any )}
 			ship={selectedRow.original as any}
 			equipBetter={equipBetter.value[ selectedRow.id ]}
 		/>
