@@ -21,7 +21,7 @@ export function Icons() {
 			<path d='M50.004 38.42c-12.11 0-21.962 9.849-21.962 21.954 0 12.11 9.852 21.962 21.962 21.962 12.108 0 21.958-9.852 21.958-21.962 0-12.106-9.85-21.954-21.958-21.954zm0 40.916c-10.456 0-18.962-8.506-18.962-18.962 0-10.451 8.506-18.954 18.962-18.954 10.454 0 18.958 8.503 18.958 18.954 0 10.456-8.504 18.962-18.958 18.962z'/>
 			💍
 		</symbol>
-		<symbol xmlns='http://www.w3.org/2000/svg' fill='currentColor' strokeWidth='3' stroke='#000' viewBox='-42.5 -42.5 85 85' id='star'>
+		<symbol xmlns='http://www.w3.org/2000/svg' fill='currentColor' strokeWidth='3' stroke='#000' viewBox='-40 -40 80 80' id='star'>
 			<path d='M0 20l23.511 12.361-4.49-26.181 19.021-18.541-26.286-3.819L0-40l-11.756 23.82-26.286 3.819L-19.021 6.18l-4.49 26.181L0 20'/>
 			★
 		</symbol>
@@ -29,7 +29,7 @@ export function Icons() {
 			<circle cx='50' cy='50' r='40' stroke='currentColor' fill='none' strokeWidth='8'/>
 			🞅
 		</symbol>
-		<symbol xmlns='http://www.w3.org/2000/svg' fill='currentColor' strokeWidth='3' stroke='#000' viewBox='-42.5 -42.5 85 85' id='8star'>
+		<symbol xmlns='http://www.w3.org/2000/svg' fill='currentColor' strokeWidth='3' stroke='#000' viewBox='-40 -40 80 80' id='8star'>
 			<path d='M0 25l15.307 11.955 2.371-19.277 19.277-2.371L25 0l11.955-15.307-19.277-2.371-2.371-19.277L0-25l-15.307-11.955-2.371 19.277-19.277 2.371L-25 0l-11.955 15.307 19.277 2.371 2.371 19.277z'/>
 			✷
 		</symbol>

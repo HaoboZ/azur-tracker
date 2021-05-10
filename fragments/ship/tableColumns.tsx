@@ -53,13 +53,10 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			minWidth: 10,
 			Cell( { value } ) {
 				return [
-					<SVGIcon name='emptyHeart' style={{ display: 'flex' }}/>,
-					<SVGIcon name='heart' style={{ display: 'flex' }}/>,
-					<SVGIcon name='ring' style={{ display: 'flex' }}/>,
-					<div style={{ display: 'flex' }}>
-						<SVGIcon name='ring'/>
-						<SVGIcon name='heart'/>
-					</div>
+					<SVGIcon name='emptyHeart'/>,
+					<SVGIcon name='heart'/>,
+					<SVGIcon name='ring'/>,
+					<><SVGIcon name='ring'/><SVGIcon name='heart'/></>
 				][ value ];
 			},
 			disableGlobalFilter: true,

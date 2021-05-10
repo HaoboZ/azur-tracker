@@ -68,7 +68,12 @@ export default function Ship() {
 					onClick={() => onPress( row )}
 					ContainerProps={props}>
 					<ListItemText
-						primary={<>{row.values.name} - Tier: {row.cells[ 4 ].render( 'Cell' )}</>}
+						primary={<>
+							{row.values.name}
+							{' - Tier: '}{row.cells[ 4 ].render( 'Cell' )}
+							{' - '}{row.cells[ 6 ].render( 'Cell' )}
+							{' / '}{row.cells[ 5 ].render( 'Cell' )}
+						</>}
 						secondary={`${row.values.rarity} - ${row.values.nation} - ${row.values.type}`}
 					/>
 					{/*@ts-ignore*/}

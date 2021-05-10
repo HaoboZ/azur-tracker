@@ -190,7 +190,7 @@ export default function Home() {
 						Event Tracker
 					</MuiLink>
 				</Link>
-				{' '}- calculates farming runs for any stage until you reach your target points
+				{' - calculates farming runs for any stage until you reach your target points'}
 			</Typography>
 		</ListItem>
 		<ListItem>
@@ -200,7 +200,7 @@ export default function Home() {
 						Research Tracker
 					</MuiLink>
 				</Link>
-				{' '}- calculates number of strengthing units for pr ships until max
+				{' - calculates number of strengthing units for pr ships until max'}
 			</Typography>
 		</ListItem>
 		<ListItem>
@@ -210,7 +210,7 @@ export default function Home() {
 						Ship Tracker
 					</MuiLink>
 				</Link>
-				{' '}- for those who want a fully leveled, fully equipped fleet
+				{' - for those who want a fully leveled, fully equipped fleet'}
 			</Typography>
 		</ListItem>
 	</List>;

@@ -12,7 +12,7 @@ import {
 	MenuItem,
 	Select,
 	TextField,
-	Theme,
+	Theme, Typography,
 	useMediaQuery,
 	Zoom
 } from '@material-ui/core';
@@ -114,7 +114,10 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						value={ship.type}
 					/>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={3}>
+					<Typography>Tier: {ship.tier === 121 ? <SVGIcon name='star'/> : ship.tier}</Typography>
+				</Grid>
+				<Grid item xs>
 					<FormControl fullWidth>
 						<InputLabel>Love</InputLabel>
 						<Select
@@ -139,7 +142,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs>
 					<FormControl fullWidth>
 						<InputLabel>Max Level</InputLabel>
 						<Select
