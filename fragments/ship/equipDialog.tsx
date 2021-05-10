@@ -19,7 +19,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import SVGIcon from '../../lib/icons';
+import { TierIcon } from '../../lib/icons';
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
@@ -58,13 +58,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 			_.reduce( tierList, ( arr, val, key ) => {
 				arr[ val[ 1 ] ] = {
 					...equipsIndex[ key ],
-					tier: [
-						<SVGIcon name='8star' color='gold'/>,
-						<SVGIcon name='star' color='gold'/>,
-						<SVGIcon name='star' color='silver'/>,
-						<SVGIcon name='star' color='chocolate'/>,
-						<SVGIcon name='star' color='black'/>
-					][ val[ 0 ] ]
+					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
 			}, [] as ( typeof equips[number] & { tier?: number } )[] )
@@ -102,6 +96,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 		open={open}
 		onClose={close}
 		TransitionComponent={Transition}
+		TransitionProps={{ onExited: () => setEquip( equips[ 0 ] ) }}
 		keepMounted
 		maxWidth='xs'
 		fullWidth
@@ -191,8 +186,14 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				label='Force BiS'
 				labelPlacement='start'
 			/>
-			<Button variant='contained' color='secondary' onClick={close}>
+			<Button variant='contained' color='primary' onClick={close}>
 				Close
+			</Button>
+			<Button variant='contained' color='secondary' onClick={() => {
+				setAnchorEl( null );
+				onClose();
+			}}>
+				Cancel
 			</Button>
 		</DialogActions>
 	</Dialog>;

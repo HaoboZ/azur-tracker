@@ -1,7 +1,7 @@
 import React from 'react';
 import { Column } from 'react-table';
 
-import SVGIcon from '../../lib/icons';
+import SVGIcon, { TierIcon } from '../../lib/icons';
 import { nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
 import { equippable, equipTier } from '../../lib/reference/equipRef';
 
@@ -82,15 +82,7 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			accessor: 'equip',
 			minWidth: 20,
 			Cell( { value } ) {
-				return value?.map( ( equip, i ) => [
-					<SVGIcon key={i}/>,
-					<SVGIcon key={i} name='8star' color='gold'/>,
-					<SVGIcon key={i} name='star' color='gold'/>,
-					<SVGIcon key={i} name='star' color='silver'/>,
-					<SVGIcon key={i} name='star' color='chocolate'/>,
-					<SVGIcon key={i} name='star' color='black'/>,
-					<SVGIcon key={i} name='circle'/>
-				][ equip[ 2 ] ] ) || null;
+				return value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
 			},
 			color( { row } ) {
 				if ( equipBetter.value[ row.id ] ) {

@@ -8,8 +8,10 @@ import {
 	Grid,
 	InputLabel,
 	Link,
+	makeStyles,
 	MenuItem,
 	Select,
+	TextField,
 	Theme,
 	useMediaQuery,
 	Zoom
@@ -20,12 +22,27 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { TableInstance } from 'react-table';
 
-import SVGIcon from '../../lib/icons';
+import SVGIcon, { TierIcon } from '../../lib/icons';
 import { rarityColors, tierColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipDialog from './equipDialog';
+
+const useStyles = makeStyles( ( theme ) => ( {
+	centerInput: { textAlign: 'center' },
+	blankInput : {
+		'& .MuiInputBase-root.Mui-disabled'        : {
+			color: theme.palette.text.primary
+		},
+		'& .MuiFormLabel-root.Mui-disabled'        : {
+			color: theme.palette.text.secondary
+		},
+		'& .MuiInput-underline.Mui-disabled:before': {
+			borderBottomStyle: 'none'
+		}
+	}
+} ) );
 
 const Transition = React.forwardRef( (
 	props: TransitionProps & { children?: React.ReactElement },
@@ -41,6 +58,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 	equipBetter?: number[]
 } ) {
 	const dispatch = useDispatch();
+	const classes = useStyles();
 	const colorClasses = useMappedColorClasses();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
@@ -69,13 +87,40 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 		</Link>
 		<DialogContent>
 			<Grid container spacing={2} alignItems='center'>
+				<Grid item xs={4}>
+					<TextField
+						type='text'
+						label='Rarity'
+						disabled
+						className={classes.blankInput}
+						value={ship.rarity}
+					/>
+				</Grid>
+				<Grid item xs={4}>
+					<TextField
+						type='text'
+						label='Nation'
+						disabled
+						className={classes.blankInput}
+						value={ship.nation}
+					/>
+				</Grid>
+				<Grid item xs={4}>
+					<TextField
+						type='text'
+						label='Type'
+						disabled
+						className={classes.blankInput}
+						value={ship.type}
+					/>
+				</Grid>
 				<Grid item xs={6}>
 					<FormControl fullWidth>
 						<InputLabel>Love</InputLabel>
 						<Select
 							fullWidth
 							value={ship.love}
-							SelectDisplayProps={{ style: { textAlign: 'center' } }}
+							SelectDisplayProps={{ className: classes.centerInput }}
 							onChange={( e ) => dispatch( ship_setShip( ship.id,
 								{ love: e.target.value as number } ) )}>
 							<MenuItem value={0}>
@@ -100,7 +145,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						<Select
 							fullWidth
 							value={ship.lvl}
-							SelectDisplayProps={{ style: { textAlign: 'center' } }}
+							SelectDisplayProps={{ className: classes.centerInput }}
 							onChange={( e ) => dispatch( ship_setShip( ship.id,
 								{ lvl: e.target.value as number } ) )}>
 							<MenuItem value={0}>0</MenuItem>
@@ -127,7 +172,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 							key={index}
 							item xs={wide ? true : 4}
 							className={colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ]}
-							style={{ padding: 5 }}
+							style={{ padding: 5, textAlign: 'center' }}
 							onClick={() => {
 								setEquipInfo( { ship, index } );
 								setEquipOpen( true );
@@ -140,13 +185,14 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 								layout='responsive'
 								className={colorClasses[ rarityColors[ equip.rarity ] ]}
 							/>
+							<TierIcon tier={val[ 2 ]}/>
 						</Grid>;
 					} )}
 				</Grid>
 			</Grid>
 		</DialogContent>
 		<DialogActions>
-			<Button variant='contained' color='secondary' onClick={onClose}>
+			<Button variant='contained' color='primary' onClick={onClose}>
 				Close
 			</Button>
 		</DialogActions>

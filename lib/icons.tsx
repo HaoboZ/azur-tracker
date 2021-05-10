@@ -35,3 +35,15 @@ export function Icons() {
 		</symbol>
 	</svg>;
 }
+
+export function TierIcon( { tier } ) {
+	return [
+		<SVGIcon/>,
+		<SVGIcon name='8star' color='gold'/>,
+		<SVGIcon name='star' color='gold'/>,
+		<SVGIcon name='star' color='silver'/>,
+		<SVGIcon name='star' color='chocolate'/>,
+		<SVGIcon name='star' color='black'/>,
+		<SVGIcon name='circle'/>
+	][ tier ] || null;
+}
