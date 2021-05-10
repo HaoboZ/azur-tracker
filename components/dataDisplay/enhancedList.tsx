@@ -20,7 +20,7 @@ import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import ActionTitle from './actionTitle';
+import ActionTitle from '../actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	center      : {

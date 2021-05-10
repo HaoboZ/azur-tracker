@@ -33,8 +33,8 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function ResearchGroup( { researchData, wide }:
-	{ researchData: typeof researchShips[string], wide: boolean } ) {
+export default function ResearchGroup( { researchData }:
+	{ researchData: typeof researchShips[string] } ) {
 	const research = useSelector( store => store.research ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
@@ -219,7 +219,6 @@ export default function ResearchGroup( { researchData, wide }:
 					</Grid>;
 				}
 			}}
-			wide={wide}
 		/>
 		<Typography>Priority Prints Total: {totalPR}</Typography>
 		<Typography>Decisive Prints Total: {totalDR}</Typography>

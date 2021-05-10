@@ -4,7 +4,7 @@ import { Row, TableInstance } from 'react-table';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 
-import { useMappedColorClasses } from '../lib/reference/colors';
+import { useMappedColorClasses } from '../../lib/reference/colors';
 
 export default function VirtualTable( {
 	getTableProps,

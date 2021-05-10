@@ -1,19 +1,22 @@
+import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Row } from 'react-table';
 
 import ActionTitle from '../components/actionTitle';
 import usePageHeight from '../components/usePageHeight';
-import VirtualTable from '../components/virtualTable';
+import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
 import ShipDialog from '../fragments/ship/shipDialog';
 import useShipTable from '../fragments/ship/useShipTable';
+import { useMappedColorClasses } from '../lib/reference/colors';
 import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion, ship_reset } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
 	const dispatch = useDispatch();
 	const height = usePageHeight();
+	const colorClasses = useMappedColorClasses();
 	
 	const [ shipOpen, setShipOpen ]       = React.useState( false ),
 	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as any );
@@ -54,10 +57,26 @@ export default function Ship() {
 		/>
 		<Filters table={table} resetEquip={() => setEquipBetter( { filter: undefined, value: {} } )}/>
 		<div style={{ height: '100%' }}>
-			<VirtualTable {...table} onPress={( row ) => {
-				setSelectedRow( row );
-				setShipOpen( true );
-			}}/>
+			<VirtualDisplay
+				{...table}
+				onPress={( row ) => {
+					setSelectedRow( row );
+					setShipOpen( true );
+				}}
+				RenderListItem={( { row, onPress, props } ) => <ListItem
+					divider
+					onClick={() => onPress( row )}
+					ContainerProps={props}>
+					<ListItemText
+						primary={<>{row.values.name} - Tier: {row.cells[ 4 ].render( 'Cell' )}</>}
+						secondary={`${row.values.rarity} - ${row.values.nation} - ${row.values.type}`}
+					/>
+					{/*@ts-ignore*/}
+					<ListItemSecondaryAction className={colorClasses[ row.cells[ 7 ].column.color?.( row.cells[ 7 ] ) ]}>
+						{row.cells[ 7 ].render( 'Cell' )}
+					</ListItemSecondaryAction>
+				</ListItem>}
+			/>
 		</div>
 		<ShipDialog
 			table={table}

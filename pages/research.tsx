@@ -1,4 +1,4 @@
-import { Tab, Tabs, Theme, useMediaQuery } from '@material-ui/core';
+import { Tab, Tabs } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
@@ -11,7 +11,6 @@ import { research_reset, research_setLastTab } from '../lib/store/reducers/resea
 export default function Research() {
 	const research = useSelector( store => store.research ),
 	      dispatch = useDispatch();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <>
 		<ActionTitle
@@ -35,7 +34,7 @@ export default function Research() {
 			index={research.lastTab}
 			onChangeIndex={( index ) => dispatch( research_setLastTab( index ) )}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
-				<ResearchGroup key={index} researchData={researchData} wide={wide}/>
+				<ResearchGroup key={index} researchData={researchData}/>
 			)}
 		</SwipeableViews>
 	</>;
