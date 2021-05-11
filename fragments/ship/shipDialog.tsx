@@ -30,8 +30,7 @@ import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipDialog from './equipDialog';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	centerInput: { textAlign: 'center' },
-	blankInput : {
+	blankInput: {
 		'& .MuiInputBase-root.Mui-disabled'        : {
 			color: theme.palette.text.primary
 		},
@@ -123,7 +122,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						<Select
 							fullWidth
 							value={ship.love}
-							SelectDisplayProps={{ className: classes.centerInput }}
+							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) => dispatch( ship_setShip( ship.id,
 								{ love: e.target.value as number } ) )}>
 							<MenuItem value={0}>
@@ -148,7 +147,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						<Select
 							fullWidth
 							value={ship.lvl}
-							SelectDisplayProps={{ className: classes.centerInput }}
+							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) => dispatch( ship_setShip( ship.id,
 								{ lvl: e.target.value as number } ) )}>
 							<MenuItem value={0}>0</MenuItem>
