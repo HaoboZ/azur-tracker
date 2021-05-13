@@ -11,18 +11,26 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
-const useStyles = makeStyles( {
-	footer: {
+const useStyles = makeStyles( ( theme ) => ( {
+	footer   : {
 		height: 56
 	},
-	appBar: {
+	statusBar: {
+		position       : 'fixed',
+		top            : 0,
+		zIndex         : 10000,
+		width          : '100%',
+		height         : 'env(safe-area-inset-top)',
+		backgroundColor: theme.palette.type === 'light' ? theme.palette.primary.main : 'transparent'
+	},
+	appBar   : {
 		top          : 'auto',
 		bottom       : 0,
 		paddingLeft  : 'env(safe-area-inset-left)',
 		paddingRight : 'env(safe-area-inset-right)',
 		paddingBottom: 'env(safe-area-inset-bottom)'
 	}
-} );
+} ) );
 
 const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
@@ -45,6 +53,7 @@ export default function BottomBar() {
 	}, [ router.asPath ] );
 	
 	return <div className={classes.footer}>
+		<div className={classes.statusBar}/>
 		<AppBar position='fixed' color='inherit' className={classes.appBar}>
 			<BottomNavigation
 				showLabels
