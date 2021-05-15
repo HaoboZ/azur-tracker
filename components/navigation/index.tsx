@@ -22,11 +22,8 @@ export default function Navigation( { children } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <div className={classes.view}>
-		{wide ? <TitleBar/> :
-			<div className={classes.statusBar}/>}
-		<div className={classes.safeArea}>
-			{children}
-		</div>
+		{wide ? <TitleBar/> : <div className={classes.statusBar}/>}
+		<div className={classes.safeArea}>{children}</div>
 		{!wide && <BottomBar/>}
 	</div>;
 }

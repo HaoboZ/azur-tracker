@@ -21,7 +21,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 		zIndex         : 10000,
 		width          : '100%',
 		height         : 'env(safe-area-inset-top)',
-		backgroundColor: theme.palette.type === 'light' ? theme.palette.primary.main : 'transparent'
+		backgroundColor: theme.palette.primary.main
 	},
 	appBar   : {
 		top          : 'auto',
@@ -52,8 +52,9 @@ export default function BottomBar() {
 		}
 	}, [ router.asPath ] );
 	
-	return <div className={classes.footer}>
+	return <>
 		<div className={classes.statusBar}/>
+		<div className={classes.footer}/>
 		<AppBar position='fixed' color='inherit' className={classes.appBar}>
 			<BottomNavigation
 				showLabels
@@ -81,5 +82,5 @@ export default function BottomBar() {
 				/> )}
 			</BottomNavigation>
 		</AppBar>
-	</div>;
+	</>;
 }
