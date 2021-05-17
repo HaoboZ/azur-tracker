@@ -2,13 +2,14 @@ import { nanoid } from 'nanoid';
 
 import eventRef from '../../reference/eventRef';
 
-const RESET         = 'event/reset',
-      NEWEVENT      = 'event/newEvent',
-      SETSHOP       = 'event/setShop',
-      SETDAILY      = 'event/setDaily',
-      SETPOINTS     = 'event/setPoints',
-      SETFARMING    = 'event/addFarming',
-      MODIFYFARMING = 'event/modifyFarming';
+const
+	RESET         = 'event/reset',
+	NEWEVENT      = 'event/newEvent',
+	SETSHOP       = 'event/setShop',
+	SETDAILY      = 'event/setDaily',
+	SETPOINTS     = 'event/setPoints',
+	SETFARMING    = 'event/addFarming',
+	MODIFYFARMING = 'event/modifyFarming';
 
 export function event_reset() {
 	return { type: RESET };
@@ -119,8 +120,7 @@ export default function eventReducer( state = initState, action ): State {
 			...state,
 			name            : eventRef.name,
 			shopExpectedCost: eventRef.shop.reduce( ( total, item ) =>
-				total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ),
-				0 ),
+				total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
 			points          : 0
 		};
 	case SETSHOP:

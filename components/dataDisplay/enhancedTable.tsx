@@ -74,10 +74,9 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-const forwardTableBody = React.forwardRef<any>( ( { children }, ref ) => {
+const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
 	const classes = useStyles();
 	return <TableBody ref={ref} className={classes.tableRows}>{children}</TableBody>;
-	// return <TransitionGroup component={TableBody} ref={ref} className={classes.tableRows}>{children}</TransitionGroup>;
 } );
 
 export default function EnhancedTable<Item extends { id?: string }>( {
@@ -118,8 +117,8 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				</TableHead>
 				{editable ? <ReactSortable
 					tag={forwardTableBody}
-					list={data as any}
-					setList={setData as any}
+					list={data as never}
+					setList={setData as never}
 					handle='.sortHandle'
 					ghostClass={classes.selectedSort}
 					forceFallback

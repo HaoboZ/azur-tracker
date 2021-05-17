@@ -24,4 +24,4 @@ export default function useTheme() {
 			secondary: { main: '#d50000' }
 		}
 	} );
-};
+}

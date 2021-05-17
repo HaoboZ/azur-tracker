@@ -27,9 +27,9 @@ export default function VirtualTable( {
 	return <Table size='small' component={Paper} {...getTableProps( { style: { height: '100%' } } )}>
 		<TableHead component='div'>
 			{headerGroups.map( ( headerGroup ) =>
-				<TableRow component='div' {...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
+				<TableRow key={headerGroup.id} component='div' {...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
 					{headerGroup.headers.map( ( column ) =>
-						<TableCell component='div' {...column.getHeaderProps( column.getSortByToggleProps() )}>
+						<TableCell key={column.id} component='div' {...column.getHeaderProps( column.getSortByToggleProps() )}>
 							<TableSortLabel
 								active={column.isSorted}
 								hideSortIcon={!column.canSort}
@@ -54,9 +54,10 @@ export default function VirtualTable( {
 							hover
 							onClick={() => onPress( row )}
 							{...row.getRowProps( { style } )}>
-							{row.cells.map( ( cell ) => <TableCell
+							{row.cells.map( ( cell, i ) => <TableCell
+								key={i}
 								component='div'
-								// @ts-ignore
+								// @ts-expect-error: optional
 								className={colorClasses[ cell.column.color?.( cell ) ]}
 								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>
 								{cell.render( 'Cell' )}

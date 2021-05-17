@@ -18,7 +18,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 	statusBar: {
 		position       : 'fixed',
 		top            : 0,
-		zIndex         : 10000,
+		zIndex         : 1100,
 		width          : '100%',
 		height         : 'env(safe-area-inset-top)',
 		backgroundColor: theme.palette.primary.main

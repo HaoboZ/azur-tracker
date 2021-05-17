@@ -1,7 +1,8 @@
 import {
 	Box,
 	Button,
-	Checkbox, FormControlLabel,
+	Checkbox,
+	FormControlLabel,
 	Grid,
 	IconButton,
 	Menu,
@@ -67,7 +68,8 @@ export default function Filters( { table, resetEquip } ) {
 				/>
 			</Grid>
 			<Grid item md={1} xs={2}>
-				{wide ? <Button
+				{wide
+					? <Button
 						variant='contained'
 						fullWidth
 						onClick={handleClick}>
@@ -86,6 +88,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
+						color='primary'
 						checked={ship.filter.levelMax}
 						onChange={( e ) => dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}
 					/>}
@@ -95,6 +98,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
+						color='primary'
 						checked={ship.filter.equipMax}
 						onChange={( e ) => dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}
 					/>}
@@ -104,6 +108,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
+						color='primary'
 						checked={ship.filter.level0}
 						onChange={( e ) => dispatch( ship_setFilter( { level0: e.target.checked } ) )}
 					/>}

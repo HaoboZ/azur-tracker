@@ -38,12 +38,12 @@ export function Icons() {
 
 export function TierIcon( { tier } ) {
 	return [
-		<SVGIcon/>,
-		<SVGIcon name='8star' color='gold'/>,
-		<SVGIcon name='star' color='gold'/>,
-		<SVGIcon name='star' color='silver'/>,
-		<SVGIcon name='star' color='chocolate'/>,
-		<SVGIcon name='star' color='black'/>,
-		<SVGIcon name='circle'/>
+		<SVGIcon key='empty'/>,
+		<SVGIcon key='8star' name='8star' color='gold'/>,
+		<SVGIcon key='star' name='star' color='gold'/>,
+		<SVGIcon key='star' name='star' color='silver'/>,
+		<SVGIcon key='star' name='star' color='chocolate'/>,
+		<SVGIcon key='star' name='star' color='black'/>,
+		<SVGIcon key='circle' name='circle'/>
 	][ tier ] || null;
 }

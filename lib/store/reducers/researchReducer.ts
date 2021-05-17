@@ -1,6 +1,7 @@
-const RESET      = 'research/reset',
-      SETLASTTAB = 'research/setLastTab',
-      MODIFYSHIP = 'research/modifyShip';
+const
+	RESET      = 'research/reset',
+	SETLASTTAB = 'research/setLastTab',
+	MODIFYSHIP = 'research/modifyShip';
 
 export function research_reset() {
 	return { type: RESET };

@@ -10,7 +10,7 @@ import Filters from '../fragments/ship/filters';
 import ShipDialog from '../fragments/ship/shipDialog';
 import useShipTable from '../fragments/ship/useShipTable';
 import { useMappedColorClasses } from '../lib/reference/colors';
-import { blankShip } from '../lib/reference/shipRef';
+import shipRef, { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion, ship_reset } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
@@ -19,7 +19,7 @@ export default function Ship() {
 	const colorClasses = useMappedColorClasses();
 	
 	const [ shipOpen, setShipOpen ]       = React.useState( false ),
-	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as any );
+	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as unknown as Row );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter
 		value: Record<string, number[]>
@@ -76,7 +76,7 @@ export default function Ship() {
 						</>}
 						secondary={`${row.values.rarity} - ${row.values.nation} - ${row.values.type}`}
 					/>
-					{/*@ts-ignore*/}
+					{/*@ts-expect-error: optional*/}
 					<ListItemSecondaryAction className={colorClasses[ row.cells[ 7 ].column.color?.( row.cells[ 7 ] ) ]}>
 						{row.cells[ 7 ].render( 'Cell' )}
 					</ListItemSecondaryAction>
@@ -87,8 +87,8 @@ export default function Ship() {
 			table={table}
 			open={shipOpen}
 			onClose={() => setShipOpen( false )}
-			onExit={() => setSelectedRow( { original: blankShip } as any )}
-			ship={selectedRow.original as any}
+			onExit={() => setSelectedRow( { original: blankShip } as unknown as Row )}
+			ship={selectedRow.original as typeof shipRef[string]}
 			equipBetter={equipBetter.value[ selectedRow.id ]}
 		/>
 	</div>;

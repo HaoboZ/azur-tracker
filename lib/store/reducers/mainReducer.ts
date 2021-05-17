@@ -1,12 +1,13 @@
-const SETLASTSAVED        = 'main/setLastSaved',
-      SETNEWDATA          = 'main/setNewData',
-      SETTHEME            = 'main/setTheme',
-      SETAUTOSAVE         = 'main/setAutoSave',
-      SETAUTOLOAD         = 'main/setAutoLoad',
-      SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
-      SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval';
+const
+	SETLASTSAVED        = 'main/setLastSaved',
+	SETNEWDATA          = 'main/setNewData',
+	SETTHEME            = 'main/setTheme',
+	SETAUTOSAVE         = 'main/setAutoSave',
+	SETAUTOLOAD         = 'main/setAutoLoad',
+	SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
+	SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval';
 
-export function importBackup( data: any ) {
+export function importBackup( data ) {
 	return {
 		type: 'import',
 		data

@@ -2,9 +2,9 @@ import { Grid, TextField, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DataDisplay from '../../components/dataDisplay';
 
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
-import DataDisplay from '../../components/dataDisplay';
 
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
@@ -25,27 +25,30 @@ export default function FarmingCalc( { remainingPoints }: {
 			columns     : ( item, index ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
-				return [ <TextField
-					type='number'
-					inputProps={{ inputMode: 'numeric' }}
-					value={item.points}
-					onChange={( e ) => dispatch( event_modifyFarming( index,
-						{ points: parseInt( e.target.value ) } ) )}
-				/>,
+				return [
 					<TextField
+						key='points'
+						type='number'
+						inputProps={{ inputMode: 'numeric' }}
+						value={item.points}
+						onChange={( e ) => dispatch( event_modifyFarming( index,
+							{ points: parseInt( e.target.value ) } ) )}
+					/>,
+					<TextField
+						key='oil'
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
 						onChange={( e ) => dispatch( event_modifyFarming( index,
 							{ oil: parseInt( e.target.value ) } ) )}
 					/>,
-					<Typography>{plays}</Typography>,
-					<Typography>{isFinite( oil ) ? oil : Infinity}</Typography>
+					<Typography key='plays'>{plays}</Typography>,
+					<Typography key='cost'>{isFinite( oil ) ? oil : Infinity}</Typography>
 				];
 			}
 		}}
 		listProps={{
-			renderRow: ( item, index ) => {
+			renderRow( item, index ) {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>

@@ -12,7 +12,7 @@ async function checkDataIntegrity() {
 		checksum : await md5( body ),
 		lastSaved: main.lastSaved
 	} )}` );
-	let valid = await res.json();
+	const valid = await res.json();
 	return { valid, body };
 }
 

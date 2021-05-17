@@ -12,7 +12,8 @@ import {
 	MenuItem,
 	Select,
 	TextField,
-	Theme, Typography,
+	Theme,
+	Typography,
 	useMediaQuery,
 	Zoom
 } from '@material-ui/core';
@@ -43,10 +44,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-const Transition = React.forwardRef( (
-	props: TransitionProps & { children?: React.ReactElement },
-	ref: React.Ref<unknown>
-) => <Zoom ref={ref} {...props}/> );
+const Transition = React.forwardRef( ( props: TransitionProps, ref: React.Ref<unknown> ) =>
+	<Zoom ref={ref} {...props}/> );
 
 export default function ShipDialog( { table, open, onClose, onExit, ship, equipBetter = [] }: {
 	table: TableInstance

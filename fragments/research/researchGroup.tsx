@@ -11,10 +11,10 @@ import {
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DataDisplay from '../../components/dataDisplay';
 
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
-import DataDisplay from '../../components/dataDisplay';
 
 const useStyles = makeStyles( {
 	numberInput: {
@@ -45,12 +45,14 @@ export default function ResearchGroup( { researchData }:
 			const ship = research.ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
-			const devPrints  = Math.max( Math.floor( devLevels[ 30 ][ item.type * 2 + 1 ]
-				- devLevel[ item.type * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
-				0 ),
-			      fatePrints = item.fate ? Math.max( Math.floor( fateLevels[ 5 ][ 1 ]
-				      - fateLevel[ 1 ] - Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
-				      0 ) : 0;
+			const devPrints = Math.max(
+				Math.floor( devLevels[ 30 ][ item.type * 2 + 1 ]
+					- devLevel[ item.type * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
+				0 );
+			const fatePrints = item.fate ? Math.max(
+				Math.floor( fateLevels[ 5 ][ 1 ] - fateLevel[ 1 ]
+					- Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
+				0 ) : 0;
 			
 			if ( item.type ) {
 				totalDR += devPrints;
@@ -91,6 +93,7 @@ export default function ResearchGroup( { researchData }:
 							<Typography>{item.name}</Typography>
 						</>,
 						<TextField
+							key='devLevel'
 							type='number'
 							inputProps={{ inputMode: 'numeric' }}
 							value={ship.devLevel || 0}
@@ -98,6 +101,7 @@ export default function ResearchGroup( { researchData }:
 								{ devLevel: parseInt( e.target.value ) } ) )}
 						/>,
 						<TextField
+							key='devStage'
 							type='number'
 							inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 							InputProps={{
@@ -109,15 +113,18 @@ export default function ResearchGroup( { researchData }:
 								{ devStage: parseInt( e.target.value ) },
 								devLevel[ item.type * 2 ] * 10 ) )}
 						/>,
-						<Typography>{devPrints}</Typography>,
-						...( item.fate ? [ <TextField
-							type='number'
-							inputProps={{ inputMode: 'numeric' }}
-							value={ship.fateLevel || 0}
-							onChange={( e ) => dispatch( research_modifyShip( item.name,
-								{ fateLevel: parseInt( e.target.value ) } ) )}
-						/>,
+						<Typography key='devPrints'>{devPrints}</Typography>,
+						...( item.fate ? [
 							<TextField
+								key='fateLevel'
+								type='number'
+								inputProps={{ inputMode: 'numeric' }}
+								value={ship.fateLevel || 0}
+								onChange={( e ) => dispatch( research_modifyShip( item.name,
+									{ fateLevel: parseInt( e.target.value ) } ) )}
+							/>,
+							<TextField
+								key='fateStage'
 								type='number'
 								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 								InputProps={{
@@ -127,13 +134,13 @@ export default function ResearchGroup( { researchData }:
 								onChange={( e ) => dispatch( research_modifyShip( item.name,
 									{ fateStage: parseInt( e.target.value ) } ) )}
 							/>,
-							<Typography>{fatePrints}</Typography>
+							<Typography key='fatePrints'>{fatePrints}</Typography>
 						] : Array( 3 ) )
 					];
 				}
 			}}
 			listProps={{
-				renderRow  : ( item, index ) => {
+				renderRow( item, index ) {
 					const { devPrints, fatePrints } = shipData[ index ];
 					return <>
 						<ListItemAvatar>
@@ -151,7 +158,7 @@ export default function ResearchGroup( { researchData }:
 						/>
 					</>;
 				},
-				renderPanel: ( item, index ) => {
+				renderPanel( item, index ) {
 					const ship = research.ships[ item.name ] || {};
 					const { devLevel } = shipData[ index ];
 					return <Grid container spacing={2}>

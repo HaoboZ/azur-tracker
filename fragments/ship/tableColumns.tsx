@@ -53,9 +53,9 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			minWidth: 10,
 			Cell( { value } ) {
 				return [
-					<SVGIcon name='emptyHeart'/>,
-					<SVGIcon name='heart'/>,
-					<SVGIcon name='ring'/>,
+					<SVGIcon key='emptyHeart' name='emptyHeart'/>,
+					<SVGIcon key='heart' name='heart'/>,
+					<SVGIcon key='ring' name='ring'/>,
 					<><SVGIcon name='ring'/><SVGIcon name='heart'/></>
 				][ value ];
 			},

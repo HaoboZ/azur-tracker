@@ -1,10 +1,11 @@
 import { equipTier } from '../../reference/equipRef';
 import shipRef, { version } from '../../reference/shipRef';
 
-const RESET        = 'ship/reset',
-      CHECKVERSION = 'ship/checkVersion',
-      SETSHIP      = 'ship/setShip',
-      SETFILTER    = 'ship/setFilter';
+const
+	RESET        = 'ship/reset',
+	CHECKVERSION = 'ship/checkVersion',
+	SETSHIP      = 'ship/setShip',
+	SETFILTER    = 'ship/setFilter';
 
 export function ship_reset() {
 	return { type: RESET };

@@ -1,11 +1,11 @@
 import { Box, DialogContent, DialogContentText, DialogTitle, Grid, ListItemText, TextField } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DataDisplay from '../../components/dataDisplay';
+import PageDialog from '../../components/pageDialog';
 
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
-import DataDisplay from '../../components/dataDisplay';
-import PageDialog from '../../components/pageDialog';
 
 export default function ShopDialog( { open, onClose }: {
 	open: boolean
@@ -57,6 +57,7 @@ export default function ShopDialog( { open, onClose }: {
 						item.cost,
 						item.amount,
 						<TextField
+							key='name'
 							type='number'
 							value={shop[ item.name ] || 0}
 							onChange={( e ) => {
@@ -67,25 +68,27 @@ export default function ShopDialog( { open, onClose }: {
 					]
 				}}
 				listProps={{
-					renderRow: ( ( item ) => <Grid container spacing={2}>
-						<Grid item xs={9}>
-							<ListItemText
-								primary={item.name}
-								secondary={'cost: ' + item.cost + ' amount: ' + item.amount}
-							/>
-						</Grid>
-						<Grid item xs={3}>
-							<TextField
-								type='number'
-								label='Wanted'
-								value={shop[ item.name ] || 0}
-								onChange={( e ) => {
-									shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
-									setShop( { ...shop } );
-								}}
-							/>
-						</Grid>
-					</Grid> )
+					renderRow( item ) {
+						return <Grid container spacing={2}>
+							<Grid item xs={9}>
+								<ListItemText
+									primary={item.name}
+									secondary={'cost: ' + item.cost + ' amount: ' + item.amount}
+								/>
+							</Grid>
+							<Grid item xs={3}>
+								<TextField
+									type='number'
+									label='Wanted'
+									value={shop[ item.name ] || 0}
+									onChange={( e ) => {
+										shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
+										setShop( { ...shop } );
+									}}
+								/>
+							</Grid>
+						</Grid>;
+					}
 				}}
 			/>
 		</DialogContent>

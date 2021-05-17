@@ -27,6 +27,6 @@ export default function DataDisplay<Item>( {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return wide
-		? <EnhancedTable {...tableProps} {...props as any}/>
-		: <EnhancedList {...listProps} {...props as any}/>;
+		? <EnhancedTable {...tableProps} {...props as never}/>
+		: <EnhancedList {...listProps} {...props as never}/>;
 }

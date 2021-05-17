@@ -101,8 +101,8 @@ export default function EnhancedList<Item extends { id?: string }>( {
 		{...props}>
 		<Paper>
 			{editable ? <ReactSortable
-				list={data as any}
-				setList={setData as any}
+				list={data as never}
+				setList={setData as never}
 				handle='.sortHandle'
 				ghostClass={classes.selectedSort}
 				forceFallback

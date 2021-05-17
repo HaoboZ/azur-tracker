@@ -27,10 +27,8 @@ import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 
-const Transition = React.forwardRef( (
-	props: TransitionProps & { children?: React.ReactElement },
-	ref: React.Ref<unknown>
-) => <Zoom ref={ref} {...props}/> );
+const Transition = React.forwardRef( ( props: TransitionProps, ref ) =>
+	<Zoom ref={ref} {...props}/> );
 
 export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	open: boolean
@@ -181,7 +179,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				control={<Switch
 					color='primary'
 					checked={Boolean( override )}
-					onChange={( e ) => setOverride( +e.target.checked as any )}
+					onChange={( e ) => setOverride( +e.target.checked as never )}
 				/>}
 				label='Force BiS'
 				labelPlacement='start'

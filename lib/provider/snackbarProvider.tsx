@@ -36,6 +36,7 @@ export default function SnackbarProvider( { children } ) {
 			open={open}
 			autoHideDuration={5000}
 			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
+			style={wide ? undefined : { top: 'calc(24px + env(safe-area-inset-top))' }}
 			TransitionComponent={Grow}
 			onClose={( e, reason ) => {
 				if ( reason === 'clickaway' ) return;
@@ -57,7 +58,7 @@ export function useSnackBar() {
 }
 
 export function withSnackbar() {
-	return ( Component ) => ( props ) => <SnackbarContext.Consumer>
+	return Component => props => <SnackbarContext.Consumer>
 		{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
 	</SnackbarContext.Consumer>;
 }

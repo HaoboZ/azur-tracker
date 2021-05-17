@@ -47,7 +47,7 @@ export const
 		'KizunaAI'           : 'kizuna',
 		'Hololive'           : 'hololive',
 		'Venus Vacation'     : 'venus',
-		'META'               : 'darkGray'
+		'META'               : 'meta'
 	},
 	tierColors   = [
 		'rainbow',
@@ -81,7 +81,7 @@ export const mappedColorStyles: Record<string, CSSProperties> = {
 	kizuna  : { backgroundColor: '#fba5bb', color: 'black' },
 	hololive: { backgroundColor: '#8ee7f1', color: 'black' },
 	venus   : { backgroundColor: '#ffc0cb', color: 'black' },
-	darkGray: { backgroundColor: '#808080', color: 'white' }
+	meta    : { backgroundColor: '#808080', color: 'white' }
 };
 
-export const useMappedColorClasses = makeStyles( mappedColorStyles as any );
+export const useMappedColorClasses = makeStyles( mappedColorStyles as never );

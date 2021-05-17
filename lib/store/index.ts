@@ -20,7 +20,7 @@ const migrations = {
 				if ( ship?.equip ) {
 					ship.equip = ship.equip?.map( ( val ) => {
 						if ( val.length > 1 )
-							val[ 1 ] = +val[ 1 ] as any;
+							val[ 1 ] = +val[ 1 ] as 0 | 1;
 						return val;
 					} );
 				}
@@ -83,7 +83,7 @@ const persistedReducer = persistReducer( {
 	version        : 6,
 	storage,
 	stateReconciler: authMergeLevel2,
-	migrate        : createMigrate( migrations as any, { debug: false } ),
+	migrate        : createMigrate( migrations as never, { debug: false } ),
 	transforms     : [ createCompressor() ]
 }, rootReducer );
 

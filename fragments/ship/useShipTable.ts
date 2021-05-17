@@ -48,7 +48,8 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 	
 	const columns = React.useMemo( () => tableColumns( equipBetter, setEquipBetterDelay ), [ equipBetter ] );
 	
-	return useTable( {
+	return useTable(
+		{
 			columns,
 			data         : shipList,
 			defaultColumn: { width: 10 },
@@ -96,5 +97,6 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 		useGlobalFilter,
 		useFilters,
 		useSortBy,
-		useRowState );
+		useRowState
+	);
 }

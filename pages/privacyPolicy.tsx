@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function PrivacyPolicy() {
 	return <>
 		<h1>Privacy Policy</h1>
@@ -5,10 +7,11 @@ export default function PrivacyPolicy() {
 		<p>This Privacy Policy describes Our policies and procedures on the collection, use and
 			disclosure of Your information when You use the Service and tells You about Your privacy
 			rights and how the law protects You.</p>
-		<p>We use Your Personal data to provide and improve the Service. By using the Service, You
+		<p>
+			We use Your Personal data to provide and improve the Service. By using the Service, You
 			agree to the collection and use of information in accordance with this Privacy Policy. This
-			Privacy Policy has been created with the help of the <a
-				href='https://www.termsfeed.com/privacy-policy-generator/' target='_blank'>Privacy
+			Privacy Policy has been created with the help of the
+			<a href='https://www.termsfeed.com/privacy-policy-generator/' target='_blank' rel='noreferrer'>Privacy
 				Policy Generator</a>.</p>
 		<h1>Interpretation and Definitions</h1>
 		<h2>Interpretation</h2>
@@ -65,7 +68,7 @@ export default function PrivacyPolicy() {
 			</li>
 			<li>
 				<p><strong>Website</strong> refers to Azur Lane Tracker, accessible from <a
-					href='https://azur-lane-tracker.vercel.app/' rel='external nofollow noopener'
+					href='https://azur-lane-tracker.vercel.app/' rel='external nofollow noopener noreferrer'
 					target='_blank'>https://azur-lane-tracker.vercel.app/</a></p>
 			</li>
 			<li>
@@ -116,14 +119,16 @@ export default function PrivacyPolicy() {
 				parts of our Service. Unless you have adjusted Your browser setting so that it will
 				refuse Cookies, our Service may use Cookies.
 			</li>
-			<li><strong>Flash Cookies.</strong> Certain features of our Service may use local stored
+			<li>
+				<strong>Flash Cookies.</strong> Certain features of our Service may use local stored
 				objects (or Flash Cookies) to collect and store information about Your preferences or
 				Your activity on our Service. Flash Cookies are not managed by the same browser settings
 				as those used for Browser Cookies. For more information on how You can delete Flash
 				Cookies, please read &quot;Where can I change the settings for disabling, or deleting
-				local shared objects?&quot; available at <a
+				local shared objects?&quot; available at
+				<a
 					href='https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_'
-					rel='external nofollow noopener'
+					rel='external nofollow noopener noreferrer'
 					target='_blank'>https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_</a>
 			</li>
 			<li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may
@@ -137,7 +142,7 @@ export default function PrivacyPolicy() {
 		<p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies
 			remain on Your personal computer or mobile device when You go offline, while Session
 			Cookies are deleted as soon as You close Your web browser. You can learn more about cookies
-			here: <a href='https://www.termsfeed.com/blog/cookies/' target='_blank'>All About Cookies
+			here: <a href='https://www.termsfeed.com/blog/cookies/' target='_blank' rel='noreferrer'>All About Cookies
 				by TermsFeed</a>.</p>
 		<p>We use both Session and Persistent Cookies for the purposes set out below:</p>
 		<ul>

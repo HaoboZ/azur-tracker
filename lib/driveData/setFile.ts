@@ -6,30 +6,26 @@ export default async function setFile(
 	data: string,
 	modifiedTime: string = new Date().toISOString()
 ) {
-	try {
-		const media = {
-			mimeType: 'application/json',
-			body    : data
-		};
-		
-		if ( file?.id ) {
-			await drive.files.update( {
-				fileId     : file.id,
-				media,
-				requestBody: { modifiedTime }
-			} as drive_v3.Params$Resource$Files$Update );
-		} else {
-			await drive.files.create( {
-				resource: {
-					name   : file.name,
-					parents: [ 'appDataFolder' ],
-					modifiedTime
-				},
-				media
-			} as drive_v3.Params$Resource$Files$Create );
-		}
-	} catch ( e ) {
-		throw e;
+	const media = {
+		mimeType: 'application/json',
+		body    : data
+	};
+	
+	if ( file?.id ) {
+		await drive.files.update( {
+			fileId     : file.id,
+			media,
+			requestBody: { modifiedTime }
+		} as drive_v3.Params$Resource$Files$Update );
+	} else {
+		await drive.files.create( {
+			resource: {
+				name   : file.name,
+				parents: [ 'appDataFolder' ],
+				modifiedTime
+			},
+			media
+		} as drive_v3.Params$Resource$Files$Create );
 	}
 	return modifiedTime;
-};
+}

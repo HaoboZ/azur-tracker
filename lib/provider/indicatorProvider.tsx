@@ -40,7 +40,7 @@ export function useIndicator() {
 }
 
 export function withIndicator() {
-	return ( Component ) => ( props ) => <IndicatorContext.Consumer>
+	return Component => props => <IndicatorContext.Consumer>
 		{( indicator ) => <Component indicator={indicator} {...props}/>}
 	</IndicatorContext.Consumer>;
 }
