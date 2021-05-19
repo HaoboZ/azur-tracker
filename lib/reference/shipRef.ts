@@ -511,17 +511,17 @@ export default _.mapValues( ships, ( val, key ) => ( {
 	special  : val[ 5 ],
 	equipType: [ val[ 6 ], val[ 7 ], val[ 8 ], val[ 9 ], val[ 10 ] ]
 } ) ) as Record<string, {
-	id: string
-	name: string
-	link: string
-	rarity: string
-	nation: string
-	type: string
-	tier: number
-	special: boolean[]
+	id: string,
+	name: string,
+	link: string,
+	rarity: string,
+	nation: string,
+	type: string,
+	tier: number,
+	special: boolean[],
 	equipType: string[]
 } & {
-	love?: number
-	lvl?: number
+	love?: number,
+	lvl?: number,
 	equip?: [ number, 0 | 1, number ][]
 }>;

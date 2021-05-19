@@ -60,14 +60,14 @@ export function event_modifyFarming( index: number, item: { points?: number, oil
 }
 
 type State = {
-	name: string
-	shop: Record<string, number>
-	shopExpectedCost: number
-	daily: { id: string, name: string, amount: number }[]
-	dailyExpected: number
-	points: number
+	name: string,
+	shop: Record<string, number>,
+	shopExpectedCost: number,
+	daily: { id: string, name: string, amount: number }[],
+	dailyExpected: number,
+	points: number,
 	farming: { id: string, points: number, oil: number }[]
-}
+};
 
 const initState: State = {
 	name            : '',

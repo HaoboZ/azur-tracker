@@ -31,9 +31,9 @@ const Transition = React.forwardRef( ( props: TransitionProps, ref ) =>
 	<Zoom ref={ref} {...props}/> );
 
 export default function EquipDialog( { open, onClose, info, selectedEquip }: {
-	open: boolean
-	onClose: () => void
-	info: { ship: typeof shipRef[string], index: number }
+	open: boolean,
+	onClose: () => void,
+	info: { ship: typeof shipRef[string], index: number },
 	selectedEquip?: typeof equips[number]
 } ) {
 	const dispatch = useDispatch();
@@ -179,7 +179,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				control={<Switch
 					color='primary'
 					checked={Boolean( override )}
-					onChange={( e ) => setOverride( +e.target.checked as never )}
+					onChange={( e ) => setOverride( +e.target.checked as any )}
 				/>}
 				label='Force BiS'
 				labelPlacement='start'
@@ -187,10 +187,13 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 			<Button variant='contained' color='primary' onClick={close}>
 				Close
 			</Button>
-			<Button variant='contained' color='secondary' onClick={() => {
-				setAnchorEl( null );
-				onClose();
-			}}>
+			<Button
+				variant='contained'
+				color='secondary'
+				onClick={() => {
+					setAnchorEl( null );
+					onClose();
+				}}>
 				Cancel
 			</Button>
 		</DialogActions>

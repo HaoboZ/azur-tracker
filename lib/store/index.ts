@@ -83,7 +83,7 @@ const persistedReducer = persistReducer( {
 	version        : 6,
 	storage,
 	stateReconciler: authMergeLevel2,
-	migrate        : createMigrate( migrations as never, { debug: false } ),
+	migrate        : createMigrate( migrations as any, { debug: false } ),
 	transforms     : [ createCompressor() ]
 }, rootReducer );
 
@@ -93,6 +93,7 @@ export const store: Store<RootState> = createStore( persistedReducer );
 export const persistor = isBrowser ? persistStore( store ) : undefined;
 
 declare module 'react-redux' {
+	// noinspection JSUnusedGlobalSymbols
 	interface DefaultRootState extends RootState {
 	}
 }

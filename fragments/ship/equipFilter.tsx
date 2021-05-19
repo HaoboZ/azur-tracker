@@ -12,8 +12,8 @@ const useStyles = makeStyles( {
 } );
 
 export default function EquipFilter( { equipList, value, setValue }: {
-	equipList: typeof equips
-	value?: typeof equips[number]
+	equipList: typeof equips,
+	value?: typeof equips[number],
 	setValue: ( value: typeof equips[number] ) => void
 } ) {
 	const classes = useStyles();

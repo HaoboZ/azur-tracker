@@ -21,7 +21,7 @@ export default function Ship() {
 	const [ shipOpen, setShipOpen ]       = React.useState( false ),
 	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as unknown as Row );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
-		filter
+		filter,
 		value: Record<string, number[]>
 	}>( { filter: undefined, value: {} } );
 	

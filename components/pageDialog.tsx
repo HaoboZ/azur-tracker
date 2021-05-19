@@ -15,9 +15,9 @@ const useStyles = makeStyles( {
 } );
 
 export default function PageDialog( { open, onClose, onSave, children }: {
-	open: boolean
-	onClose: () => void
-	onSave?: () => void
+	open: boolean,
+	onClose: () => void,
+	onSave?: () => void,
 	children: React.ReactNode
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
@@ -37,10 +37,13 @@ export default function PageDialog( { open, onClose, onSave, children }: {
 		closeAfterTransition>
 		{children}
 		<DialogActions>
-			<Button variant='contained' color='primary' onClick={() => {
-				onSave?.();
-				onClose();
-			}}>
+			<Button
+				variant='contained'
+				color='primary'
+				onClick={() => {
+					onSave?.();
+					onClose();
+				}}>
 				Save
 			</Button>
 			<Button variant='contained' color='secondary' onClick={onClose}>

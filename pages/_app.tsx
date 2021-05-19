@@ -8,6 +8,7 @@ import Baseline from '../fragments/baseline';
 import { Icons } from '../lib/icons';
 import { persistor, store } from '../lib/store';
 
+// noinspection JSUnusedGlobalSymbols
 export default function _App( { Component, pageProps } ) {
 	return <StoreProvider store={store}>
 		<PersistGate loading={null} persistor={persistor}>

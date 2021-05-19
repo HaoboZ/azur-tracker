@@ -64,14 +64,14 @@ export function setAutoLoadInterval( interval: number ) {
 }
 
 type State = {
-	lastSaved: string
-	newData: Record<string, boolean>
-	theme: string
-	autoSave: boolean
-	autoLoad: boolean
-	autoSaveInterval: number
+	lastSaved: string,
+	newData: Record<string, boolean>,
+	theme: string,
+	autoSave: boolean,
+	autoLoad: boolean,
+	autoSaveInterval: number,
 	autoLoadInterval: number
-}
+};
 
 const initState: State = {
 	lastSaved       : new Date( 0 ).toISOString(),

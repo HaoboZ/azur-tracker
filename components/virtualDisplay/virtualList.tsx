@@ -11,7 +11,7 @@ export default function VirtualList( {
 	onPress,
 	RenderListItem
 }: TableInstance & {
-	onPress?: ( row: Row ) => void
+	onPress?: ( row: Row ) => void,
 	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
 } ) {
 	return <Paper square {...getTableProps( { style: { height: '100%' } } )}>

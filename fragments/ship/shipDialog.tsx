@@ -48,11 +48,11 @@ const Transition = React.forwardRef( ( props: TransitionProps, ref: React.Ref<un
 	<Zoom ref={ref} {...props}/> );
 
 export default function ShipDialog( { table, open, onClose, onExit, ship, equipBetter = [] }: {
-	table: TableInstance
-	open: boolean
-	onClose: () => void
-	onExit?: () => void
-	ship?: typeof shipRef[string]
+	table: TableInstance,
+	open: boolean,
+	onClose: () => void,
+	onExit?: () => void,
+	ship?: typeof shipRef[string],
 	equipBetter?: number[]
 } ) {
 	const dispatch = useDispatch();

@@ -14,9 +14,9 @@ const useStyles = makeStyles( {
 } );
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
-	anchorEl: HTMLElement
-	closeAnchor: () => void
-	equipList: ( typeof equips[number] & { tier?: number } )[]
+	anchorEl: HTMLElement,
+	closeAnchor: () => void,
+	equipList: ( typeof equips[number] & { tier?: number } )[],
 	setEquip: ( id: number ) => void
 } ) {
 	const classes = useStyles();

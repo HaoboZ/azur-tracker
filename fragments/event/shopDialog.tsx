@@ -8,7 +8,7 @@ import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 export default function ShopDialog( { open, onClose }: {
-	open: boolean
+	open: boolean,
 	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),

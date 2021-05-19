@@ -16,8 +16,8 @@ export function ship_checkVersion() {
 }
 
 export function ship_setShip( name: string, ship: {
-	lvl?: number
-	love?: number
+	lvl?: number,
+	love?: number,
 	equip?: [ number, 0 | 1, number ][]
 } ) {
 	getTier( shipRef[ name ], ship.equip );
@@ -54,17 +54,17 @@ export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, 
 
 type State = {
 	ships: Record<string, {
-		lvl: number
-		love: number
+		lvl: number,
+		love: number,
 		equip: [ number, 0 | 1, number ][]
 	}>,
 	filter: {
-		levelMax: boolean
-		equipMax: boolean
+		levelMax: boolean,
+		equipMax: boolean,
 		level0: boolean
-	}
+	},
 	version: string
-}
+};
 
 const initState: State = {
 	ships : {},

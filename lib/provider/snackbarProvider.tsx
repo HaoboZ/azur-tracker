@@ -2,13 +2,14 @@ import { Grow, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
 import { Alert, Color } from '@material-ui/lab';
 import React from 'react';
 
-const SnackbarContext = React.createContext<( message: string, type?: Color ) => void>( () => null );
+type C = ( message: string, type?: Color ) => void;
+const SnackbarContext = React.createContext<C>( () => null );
 SnackbarContext.displayName = 'Snackbar';
 
 type Message = {
-	message: string
+	message: string,
 	type: Color
-}
+};
 
 export default function SnackbarProvider( { children } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );

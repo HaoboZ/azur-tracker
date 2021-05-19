@@ -15,9 +15,9 @@ export function research_setLastTab( lastTab: number ) {
 }
 
 export function research_modifyShip( ship: string, item: {
-	devLevel?: number
-	devStage?: number
-	fateLevel?: number
+	devLevel?: number,
+	devStage?: number,
+	fateLevel?: number,
 	fateStage?: number
 }, maxDev?: number ) {
 	if ( 'devStage' in item ) {
@@ -40,14 +40,14 @@ export function research_modifyShip( ship: string, item: {
 }
 
 type State = {
-	lastTab: number
+	lastTab: number,
 	ships: Record<string, {
-		devLevel?: number
-		devStage?: number
-		fateLevel?: number
+		devLevel?: number,
+		devStage?: number,
+		fateLevel?: number,
 		fateStage?: number
 	}>
-}
+};
 
 const initState: State = {
 	lastTab: 0,

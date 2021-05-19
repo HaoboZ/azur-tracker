@@ -41,8 +41,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 } ) );
 
 export default function EventFields( { time, remainingDays, neededPoints }: {
-	time: moment.Moment
-	remainingDays: number
+	time: moment.Moment,
+	remainingDays: number,
 	neededPoints: number
 } ) {
 	const event    = useSelector( store => store.event ),

@@ -57,6 +57,7 @@ export const
 		'gray'
 	];
 
+// noinspection ES6RedundantNestingInTemplateLiteral
 export const mappedColorStyles: Record<string, CSSProperties> = {
 	rainbow: {
 		background: `linear-gradient(to bottom right, ${'#afa'} 15%, ${'#aaf'}, ${'#faa'} 85%)`,
@@ -84,4 +85,4 @@ export const mappedColorStyles: Record<string, CSSProperties> = {
 	meta    : { backgroundColor: '#808080', color: 'white' }
 };
 
-export const useMappedColorClasses = makeStyles( mappedColorStyles as never );
+export const useMappedColorClasses = makeStyles( mappedColorStyles as any );

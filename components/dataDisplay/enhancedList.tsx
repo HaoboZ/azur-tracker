@@ -76,12 +76,12 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	newData = () => ( {} as Item ),
 	...props
 }: {
-	title?: React.ReactNode
-	data: Item[]
-	renderRow: ( item: Item, index: number ) => React.ReactNode
-	renderPanel?: ( item: Item, index: number ) => React.ReactNode
-	editable?: boolean
-	setData?: ( items: Item[] ) => void // required if sortable or editable is true
+	title?: React.ReactNode,
+	data: Item[],
+	renderRow: ( item: Item, index: number ) => React.ReactNode,
+	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
+	editable?: boolean,
+	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & React.ComponentProps<typeof List> ) {
 	const classes = useStyles();
@@ -89,72 +89,79 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	const [ editing, setEditing ] = React.useState( false );
 	
 	return <List
-		subheader={( title || editable ) && <ActionTitle title={title} actions={editable ? [ {
-			name   : editing ? 'Cancel' : 'Edit',
-			onClick: () => setEditing( !editing ),
-			props  : { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
-		}, {
-			name   : 'Add',
-			onClick: async () => setData?.( [ ...data, { ...await newData?.() } ] ),
-			props  : { color: 'primary', startIcon: <AddIcon/> }
-		} ] : []}/>}
+		subheader={( title || editable ) && <ActionTitle
+			title={title}
+			actions={editable ? [ {
+				name   : editing ? 'Cancel' : 'Edit',
+				onClick: () => setEditing( !editing ),
+				props  : { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
+			}, {
+				name   : 'Add',
+				onClick: async () => setData?.( [ ...data, { ...await newData?.() } ] ),
+				props  : { color: 'primary', startIcon: <AddIcon/> }
+			} ] : []}
+		/>}
 		{...props}>
 		<Paper>
-			{editable ? <ReactSortable
-				list={data as never}
-				setList={setData as never}
-				handle='.sortHandle'
-				ghostClass={classes.selectedSort}
-				forceFallback
-				animation={150}>
-				<TransitionGroup component={null}>
-					{data.map( ( item, index ) => {
-						const itemRow = <>
-							{editing && <ListItemIcon>
-								<IconButton onClick={() => {
-									const _data = [ ...data ];
-									_data.splice( index, 1 );
-									setData?.( _data );
-								}}><CloseIcon/></IconButton>
-								<IconButton className='sortHandle'><MenuIcon/></IconButton>
-							</ListItemIcon>}
-							{renderRow( item, index )}
-						</>;
-						
-						return <CSSTransition
-							key={item.id || index}
-							timeout={200}
-							classNames={classes.slide}>
-							{renderPanel ? <Accordion>
-								<AccordionSummary
-									expandIcon={<ExpandMoreIcon/>}
-									classes={{
-										root   : editing ? classes.iconSpace : undefined,
-										content: classes.center
-									}}>
-									{itemRow}
-								</AccordionSummary>
-								<AccordionDetails>
-									{renderPanel( item, index )}
-								</AccordionDetails>
-							</Accordion> : <ListItem divider className={editing ? classes.iconSpace : undefined}>
-								{itemRow}
-							</ListItem>}
-						</CSSTransition>;
-					} )}
-				</TransitionGroup>
-			</ReactSortable> : data.map( ( item, index ) => renderPanel ? <Accordion key={item.id || index}>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon/>}
-					classes={{ content: classes.center }}>
+			{editable
+				? <ReactSortable
+					list={data as any}
+					setList={setData as any}
+					handle='.sortHandle'
+					ghostClass={classes.selectedSort}
+					forceFallback
+					animation={150}>
+					<TransitionGroup component={null}>
+						{data.map( ( item, index ) => {
+							const itemRow = <>
+								{editing && <ListItemIcon>
+									<IconButton onClick={() => {
+										const _data = [ ...data ];
+										_data.splice( index, 1 );
+										setData?.( _data );
+									}}><CloseIcon/></IconButton>
+									<IconButton className='sortHandle'><MenuIcon/></IconButton>
+								</ListItemIcon>}
+								{renderRow( item, index )}
+							</>;
+							
+							return <CSSTransition
+								key={item.id || index}
+								timeout={200}
+								classNames={classes.slide}>
+								{renderPanel
+									? <Accordion>
+										<AccordionSummary
+											expandIcon={<ExpandMoreIcon/>}
+											classes={{
+												root   : editing ? classes.iconSpace : undefined,
+												content: classes.center
+											}}>
+											{itemRow}
+										</AccordionSummary>
+										<AccordionDetails>
+											{renderPanel( item, index )}
+										</AccordionDetails>
+									</Accordion>
+									: <ListItem divider className={editing ? classes.iconSpace : undefined}>
+										{itemRow}
+									</ListItem>}
+							</CSSTransition>;
+						} )}
+					</TransitionGroup>
+				</ReactSortable>
+				: data.map( ( item, index ) => renderPanel ? <Accordion key={item.id || index}>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon/>}
+						classes={{ content: classes.center }}>
+						{renderRow( item, index )}
+					</AccordionSummary>
+					<AccordionDetails>
+						{renderPanel( item, index )}
+					</AccordionDetails>
+				</Accordion> : <ListItem key={item.id || index} divider>
 					{renderRow( item, index )}
-				</AccordionSummary>
-				<AccordionDetails>
-					{renderPanel( item, index )}
-				</AccordionDetails>
-			</Accordion> : <ListItem key={item.id || index} divider>
-				{renderRow( item, index )}
-			</ListItem> )}
+				</ListItem> )}
 		</Paper>
 	</List>;
 }

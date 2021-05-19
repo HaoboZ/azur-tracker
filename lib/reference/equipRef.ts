@@ -43,10 +43,10 @@ enum rarity {
 }
 
 interface Equip {
-	id: number
-	name: string
-	image: string
-	type: type
+	id: number,
+	name: string,
+	image: string,
+	type: type,
 	rarity: rarity
 }
 
@@ -56,8 +56,8 @@ export const equips: Equip[] = [
 		id    : 0,
 		name  : '',
 		image : 'Azur_Lane_Wiki',
-		type  : '' as never as type,
-		rarity: '' as never as rarity
+		type  : undefined as type,
+		rarity: undefined as rarity
 	},
 	//region Torpedo
 	{
@@ -1590,7 +1590,7 @@ const map = equips.reduce( ( obj, item ) => {
 let a;
 // tiers of equipment by slot
 export const equipTier: Record<string, Record<number, number[]>> = {
-	'T': {
+	'T'        : {
 		[ map[ '533mm Quintuple Magnetic Torpedo Mount/UR' ] ]: [ 0, a = 0 ],
 		[ map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ '533mm Quintuple Torpedo Mount Mk 17/SR' ] ]   : [ 1, ++a ],

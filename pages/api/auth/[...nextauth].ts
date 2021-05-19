@@ -8,6 +8,7 @@ const GOOGLE_AUTHORIZATION_URL = `https://accounts.google.com/o/oauth2/v2/auth?$
 		response_type: 'code'
 	} )}`;
 
+// noinspection JSUnusedGlobalSymbols
 export default NextAuth( {
 	providers: [
 		Providers.Google( {

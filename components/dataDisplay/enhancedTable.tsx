@@ -89,12 +89,12 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	newData = () => ( {} as Item ),
 	...props
 }: {
-	title?: React.ReactNode
-	data: Item[]
-	columnHeader: React.ReactNodeArray
-	columns: ( item: Item, index: number ) => React.ReactNodeArray
-	editable?: boolean
-	setData?: ( items: Item[] ) => void // required if editable is true
+	title?: React.ReactNode,
+	data: Item[],
+	columnHeader: React.ReactNodeArray,
+	columns: ( item: Item, index: number ) => React.ReactNodeArray,
+	editable?: boolean,
+	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & React.ComponentProps<typeof TableContainer> ) {
 	const classes = useStyles();
@@ -115,49 +115,51 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				{editable ? <ReactSortable
-					tag={forwardTableBody}
-					list={data as never}
-					setList={setData as never}
-					handle='.sortHandle'
-					ghostClass={classes.selectedSort}
-					forceFallback
-					animation={200}>
-					<TransitionGroup component={null}>
-						{data.map( ( item, index ) => <CSSTransition
-							key={item.id || index}
-							timeout={200}
-							classNames={classes.slide}>
-							<TableRow>
-								<TableCell className='sortHandle'>
-									<div><MenuIcon/></div>
-								</TableCell>
-								{columns( item, index ).map( ( cell, index ) =>
-									<TableCell key={index}>
-										<div>{cell}</div>
-									</TableCell> )}
-								<TableCell>
-									<div>
-										<IconButton onClick={() => {
-											const _data = [ ...data ];
-											_data.splice( index, 1 );
-											setData( _data );
-										}}>
-											<CloseIcon/>
-										</IconButton>
-									</div>
-								</TableCell>
-							</TableRow>
-						</CSSTransition> )}
-					</TransitionGroup>
-				</ReactSortable> : <TableBody className={classes.tableRows}>
-					{data.map( ( item, index ) => <TableRow key={item.id || index}>
-						{columns( item, index ).map( ( cell, index ) =>
-							<TableCell key={index}>
-								<div>{cell}</div>
-							</TableCell> )}
-					</TableRow> )}
-				</TableBody>}
+				{editable
+					? <ReactSortable
+						tag={forwardTableBody}
+						list={data as any}
+						setList={setData as any}
+						handle='.sortHandle'
+						ghostClass={classes.selectedSort}
+						forceFallback
+						animation={200}>
+						<TransitionGroup component={null}>
+							{data.map( ( item, index ) => <CSSTransition
+								key={item.id || index}
+								timeout={200}
+								classNames={classes.slide}>
+								<TableRow>
+									<TableCell className='sortHandle'>
+										<div><MenuIcon/></div>
+									</TableCell>
+									{columns( item, index ).map( ( cell, index ) =>
+										<TableCell key={index}>
+											<div>{cell}</div>
+										</TableCell> )}
+									<TableCell>
+										<div>
+											<IconButton onClick={() => {
+												const _data = [ ...data ];
+												_data.splice( index, 1 );
+												setData( _data );
+											}}>
+												<CloseIcon/>
+											</IconButton>
+										</div>
+									</TableCell>
+								</TableRow>
+							</CSSTransition> )}
+						</TransitionGroup>
+					</ReactSortable>
+					: <TableBody className={classes.tableRows}>
+						{data.map( ( item, index ) => <TableRow key={item.id || index}>
+							{columns( item, index ).map( ( cell, index ) =>
+								<TableCell key={index}>
+									<div>{cell}</div>
+								</TableCell> )}
+						</TableRow> )}
+					</TableBody>}
 			</Table>
 		</TableContainer>
 	</>;

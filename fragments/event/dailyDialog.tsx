@@ -8,7 +8,7 @@ import PageDialog from '../../components/pageDialog';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyDialog( { open, onClose }: {
-	open: boolean
+	open: boolean,
 	onClose: () => void
 } ) {
 	const event    = useSelector( store => store.event ),

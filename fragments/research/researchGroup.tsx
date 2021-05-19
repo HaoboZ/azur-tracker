@@ -33,8 +33,7 @@ const useStyles = makeStyles( {
 	}
 } );
 
-export default function ResearchGroup( { researchData }:
-	{ researchData: typeof researchShips[string] } ) {
+export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
 	const research = useSelector( store => store.research ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
@@ -105,8 +104,9 @@ export default function ResearchGroup( { researchData }:
 							type='number'
 							inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
 							InputProps={{
-								endAdornment:
-									<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
+								endAdornment: <InputAdornment position='end'>
+									/{devLevel[ item.type * 2 ] * 10}
+								</InputAdornment>
 							}}
 							value={ship.devStage || 0}
 							onChange={( e ) => dispatch( research_modifyShip( item.name,
@@ -183,10 +183,10 @@ export default function ResearchGroup( { researchData }:
 									onFocus  : ( e ) => e.target.select()
 								}}
 								InputProps={{
-									startAdornment:
-										<InputAdornment position='start'>Stage</InputAdornment>,
-									endAdornment  :
-										<InputAdornment position='end'>/{devLevel[ item.type * 2 ] * 10}</InputAdornment>
+									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
+									endAdornment  : <InputAdornment position='end'>
+										/{devLevel[ item.type * 2 ] * 10}
+									</InputAdornment>
 								}}
 								value={ship.devStage || 0}
 								onChange={( e ) => dispatch( research_modifyShip( item.name,

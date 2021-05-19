@@ -10,7 +10,7 @@ export default function VirtualDisplay( {
 	RenderListItem,
 	...table
 }: TableInstance & {
-	onPress?: ( row: Row ) => void
+	onPress?: ( row: Row ) => void,
 	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );

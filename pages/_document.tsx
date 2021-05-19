@@ -2,6 +2,7 @@ import { ServerStyleSheets } from '@material-ui/styles';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 
+// noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
 	static async getInitialProps( ctx ) {
 		// Render app and page and get the context of the page with collected side effects.
