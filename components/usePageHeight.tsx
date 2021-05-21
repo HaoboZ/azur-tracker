@@ -12,5 +12,5 @@ export default function usePageHeight() {
 		return () => window.removeEventListener( 'resize', updateDimensions );
 	}, [] );
 	
-	return `calc(${height - ( wide ? 64 : 56 )}px - env(safe-area-inset-bottom))`;
+	return `calc(${height - ( wide ? 64 : 56 )}px - env(safe-area-inset-top) - env(safe-area-inset-bottom))`;
 }
