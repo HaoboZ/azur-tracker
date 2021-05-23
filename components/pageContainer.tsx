@@ -1,7 +1,7 @@
 import { Box, Container, makeStyles, Theme, Typography, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 
-import usePageHeight from './usePageHeight';
+import usePageHeight from '../lib/hooks/usePageHeight';
 
 const useStyles = makeStyles( {
 	container: {

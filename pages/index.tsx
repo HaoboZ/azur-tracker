@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PageContainer from '../components/pageContainer';
 import { getBackup, setBackup } from '../lib/backup';
+import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/provider/indicatorProvider';
 import { useSnackBar } from '../lib/provider/snackbarProvider';
 import { event_reset } from '../lib/store/reducers/eventReducer';
@@ -51,28 +52,31 @@ export default function Home() {
 	const snackbar = useSnackBar();
 	const indicator = useIndicator();
 	const classes = useStyles();
+	const online = useNetworkStatus();
 	
 	// noinspection HtmlUnknownTarget
 	return <PageContainer title='Azur Lane Tracker'>
 		<List>
 			<ListItem>
-				<ListItemText classes={{ primary: classes.longText }}>
-					{loading ? 'Loading...' :
-						( session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save' )}
-				</ListItemText>
-				{!loading && <ListItemSecondaryAction>
-					{session ? <Button
-						variant='outlined'
-						color='inherit'
-						onClick={() => signOut()}>
-						Sign Out
-					</Button> : <Button
-						variant='outlined'
-						color='inherit'
-						onClick={() => signIn( 'google' )}>
-						Sign In
-					</Button>}
-				</ListItemSecondaryAction>}
+				{online ? <>
+					<ListItemText classes={{ primary: classes.longText }}>
+						{loading ? 'Loading...' :
+							( session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save' )}
+					</ListItemText>
+					{!loading && <ListItemSecondaryAction>
+						{session ? <Button
+							variant='outlined'
+							color='inherit'
+							onClick={() => signOut()}>
+							Sign Out
+						</Button> : <Button
+							variant='outlined'
+							color='inherit'
+							onClick={() => signIn( 'google' )}>
+							Sign In
+						</Button>}
+					</ListItemSecondaryAction>}
+				</> : <ListItemText>Offline</ListItemText>}
 			</ListItem>
 			<ListItem>
 				<ListItemText>Auto Backup</ListItemText>

@@ -8,7 +8,6 @@ export default function usePageHeight() {
 	
 	React.useEffect( () => {
 		const updateDimensions = () => setHeight( window.innerHeight );
-		updateDimensions();
 		window.addEventListener( 'resize', updateDimensions );
 		return () => window.removeEventListener( 'resize', updateDimensions );
 	}, [] );

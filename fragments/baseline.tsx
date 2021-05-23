@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 
 import Navigation from '../components/navigation';
 import { getBackup, setBackup } from '../lib/backup';
+import useTheme from '../lib/hooks/useTheme';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
 import SnackbarProvider from '../lib/provider/snackbarProvider';
-import useTheme from '../lib/useTheme';
 
 export default function Baseline( { children }: { children?: React.ReactNode } ) {
 	const theme = useTheme();
