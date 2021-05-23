@@ -6,11 +6,12 @@ export default function usePageHeight() {
 	
 	const [ height, setHeight ] = React.useState( window.innerHeight );
 	
-	const updateDimensions = () => setHeight( window.innerHeight );
 	React.useEffect( () => {
+		const updateDimensions = () => setHeight( window.innerHeight );
+		updateDimensions();
 		window.addEventListener( 'resize', updateDimensions );
 		return () => window.removeEventListener( 'resize', updateDimensions );
 	}, [] );
 	
-	return `calc(${height - ( wide ? 64 : 56 )}px - env(safe-area-inset-top) - env(safe-area-inset-bottom))`;
+	return `min(calc(100vh - ${wide ? 64 : 56}px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - ( wide ? 64 : 56 )}px)`;
 }

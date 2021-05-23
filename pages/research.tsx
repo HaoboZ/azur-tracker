@@ -3,26 +3,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 
-import ActionTitle from '../components/actionTitle';
+import PageContainer from '../components/pageContainer';
 import ResearchGroup from '../fragments/research/researchGroup';
 import { researchShips } from '../lib/reference/researchRef';
-import { research_reset, research_setLastTab } from '../lib/store/reducers/researchReducer';
+import { research_setLastTab } from '../lib/store/reducers/researchReducer';
 
 export default function Research() {
 	const research = useSelector( store => store.research ),
 	      dispatch = useDispatch();
 	
-	return <>
-		<ActionTitle
-			title='Research Tracker'
-			actions={[ {
-				name   : 'Reset',
-				onClick: () => {
-					if ( confirm( 'Are you sure you want to reset this page?' ) )
-						dispatch( research_reset() );
-				}
-			} ]}
-		/>
+	return <PageContainer title='Research Tracker'>
 		<Tabs
 			variant='fullWidth'
 			value={research.lastTab.toString()}
@@ -37,5 +27,5 @@ export default function Research() {
 				<ResearchGroup key={index} researchData={researchData}/>
 			)}
 		</SwipeableViews>
-	</>;
+	</PageContainer>;
 }

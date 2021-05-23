@@ -13,7 +13,7 @@ import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	footer   : {
-		height: 56
+		height: 'calc(56px + env(safe-area-inset-bottom))'
 	},
 	statusBar: {
 		position       : 'fixed',

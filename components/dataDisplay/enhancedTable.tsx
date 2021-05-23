@@ -116,7 +116,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 					</TableRow>
 				</TableHead>
 				{editable
-					? <ReactSortable
+					? data.length ? <ReactSortable
 						tag={forwardTableBody}
 						list={data as any}
 						setList={setData as any}
@@ -151,7 +151,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 								</TableRow>
 							</CSSTransition> )}
 						</TransitionGroup>
-					</ReactSortable>
+					</ReactSortable> : undefined
 					: <TableBody className={classes.tableRows}>
 						{data.map( ( item, index ) => <TableRow key={item.id || index}>
 							{columns( item, index ).map( ( cell, index ) =>

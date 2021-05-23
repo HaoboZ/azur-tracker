@@ -1,4 +1,4 @@
-import { Box, Container, CssBaseline, Theme, ThemeProvider, useMediaQuery } from '@material-ui/core';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import _ from 'lodash';
 import { useSession } from 'next-auth/client';
 import React from 'react';
@@ -27,7 +27,6 @@ function Content( { children } ) {
 	const { main, ...store } = useSelector( store => store );
 	const [ session ] = useSession();
 	const indicator = useIndicator();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	const delayedSetBackup = React.useCallback(
 		_.debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
@@ -49,8 +48,6 @@ function Content( { children } ) {
 	}, [ main.autoLoadInterval ] );
 	
 	return <Navigation>
-		<Container maxWidth='md' disableGutters={!wide}>
-			<Box overflow='hidden'>{children}</Box>
-		</Container>
+		{children}
 	</Navigation>;
 }

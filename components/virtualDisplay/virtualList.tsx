@@ -15,19 +15,6 @@ export default function VirtualList( {
 	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
 } ) {
 	return <Paper square {...getTableProps( { style: { height: '100%' } } )}>
-		{/*{headerGroups.map( ( headerGroup ) =>*/}
-		{/*	<TableRow component='div' {...headerGroup.getHeaderGroupProps()}>*/}
-		{/*		{headerGroup.headers.map( ( column ) =>*/}
-		{/*			<TableCell component='div' {...column.getHeaderProps( column.getSortByToggleProps() )}>*/}
-		{/*				<TableSortLabel*/}
-		{/*					active={column.isSorted}*/}
-		{/*					hideSortIcon={!column.canSort}*/}
-		{/*					direction={column.isSortedDesc ? 'desc' : 'asc'}>*/}
-		{/*					{column.render( 'Header' )}*/}
-		{/*				</TableSortLabel>*/}
-		{/*			</TableCell> )}*/}
-		{/*	</TableRow> )}*/}
-		
 		<AutoSizer>
 			{( { height, width } ) => <List
 				innerElementType={MuiList}

@@ -8,7 +8,7 @@ IndicatorContext.displayName = 'Indicator';
 const useStyles = makeStyles( {
 	progress: {
 		position: 'fixed',
-		zIndex  : 10000,
+		zIndex  : 1500,
 		bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
 		right   : 10
 	}
@@ -29,7 +29,7 @@ export default function IndicatorProvider( { children } ) {
 		return await promise;
 	}}>
 		{children}
-		<Fade in={visible}>
+		<Fade in={visible} mountOnEnter unmountOnExit>
 			<CircularProgress color='secondary' size={20} className={classes.progress}/>
 		</Fade>
 	</IndicatorContext.Provider>;
@@ -40,7 +40,7 @@ export function useIndicator() {
 }
 
 export function withIndicator() {
-	return Component => props => <IndicatorContext.Consumer>
+	return Component => ( props ) => <IndicatorContext.Consumer>
 		{( indicator ) => <Component indicator={indicator} {...props}/>}
 	</IndicatorContext.Consumer>;
 }
