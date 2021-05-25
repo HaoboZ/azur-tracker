@@ -5,14 +5,14 @@ type C = <T>( promise?: Promise<T> ) => Promise<T>;
 const IndicatorContext = React.createContext<C>( async () => null );
 IndicatorContext.displayName = 'Indicator';
 
-const useStyles = makeStyles( {
+const useStyles = makeStyles( ( theme ) => ( {
 	progress: {
 		position: 'fixed',
 		zIndex  : 1500,
-		bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
-		right   : 10
+		bottom  : `calc(env(safe-area-inset-bottom) + ${theme.spacing()}px)`,
+		right   : theme.spacing()
 	}
-} );
+} ) );
 
 export default function IndicatorProvider( { children } ) {
 	const classes = useStyles();

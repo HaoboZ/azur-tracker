@@ -1,8 +1,8 @@
 import { List as MuiList, Paper } from '@material-ui/core';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
-import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
+import { ReactWindowScroller } from 'react-window-scroller';
 
 export default function VirtualList( {
 	getTableProps,
@@ -15,13 +15,17 @@ export default function VirtualList( {
 	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
 } ) {
 	return <Paper square {...getTableProps( { style: { height: '100%' } } )}>
-		<AutoSizer>
-			{( { height, width } ) => <List
+		<ReactWindowScroller>
+			{( { ref, outerRef, style, onScroll } ) => <List
+				ref={ref}
+				outerRef={outerRef}
+				style={style}
+				onScroll={onScroll}
 				innerElementType={MuiList}
-				height={height}
+				height={window.innerHeight}
+				width='100%'
 				itemCount={rows.length}
-				itemSize={50}
-				width={width}>
+				itemSize={50}>
 				{( { index, style } ) => {
 					const row = rows[ index ];
 					prepareRow( row );
@@ -32,6 +36,6 @@ export default function VirtualList( {
 					/>;
 				}}
 			</List>}
-		</AutoSizer>
+		</ReactWindowScroller>
 	</Paper>;
 }

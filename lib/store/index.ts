@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { mapValues } from 'lodash';
 import { nanoid } from 'nanoid';
 import { createStore, Store } from 'redux';
 import { createMigrate, persistReducer, persistStore } from 'redux-persist';
@@ -16,7 +16,7 @@ const migrations = {
 		...state,
 		ship: {
 			...state.ship,
-			ships: _.mapValues( state.ship.ships, ( ship ) => {
+			ships: mapValues( state.ship.ships, ( ship ) => {
 				if ( ship?.equip ) {
 					ship.equip = ship.equip?.map( ( val ) => {
 						if ( val.length > 1 )
@@ -47,7 +47,7 @@ const migrations = {
 		...state,
 		ship: {
 			...state.ship,
-			ships: _.mapValues( state.ship.ships, ( ship ) => {
+			ships: mapValues( state.ship.ships, ( ship ) => {
 				ship.equip?.forEach( ( equip ) => {
 					switch ( equip[ 0 ] % 10 ) {
 					case 1:

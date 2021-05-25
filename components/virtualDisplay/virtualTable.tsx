@@ -1,8 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
-import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
+import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../lib/reference/colors';
 
@@ -40,12 +40,16 @@ export default function VirtualTable( {
 				</TableRow> )}
 		</TableHead>
 		<TableBody component='div' ref={bodyRef} {...getTableBodyProps()}>
-			<AutoSizer>
-				{( { height, width } ) => <List
-					height={height}
+			<ReactWindowScroller>
+				{( { ref, outerRef, style, onScroll } ) => <List
+					ref={ref}
+					outerRef={outerRef}
+					style={style}
+					onScroll={onScroll}
+					height={window.innerHeight}
+					width='100%'
 					itemCount={rows.length}
-					itemSize={35}
-					width={width}>
+					itemSize={35}>
 					{( { index, style } ) => {
 						const row = rows[ index ];
 						prepareRow( row );
@@ -65,7 +69,7 @@ export default function VirtualTable( {
 						</TableRow>;
 					}}
 				</List>}
-			</AutoSizer>
+			</ReactWindowScroller>
 		</TableBody>
 	</Table>;
 }

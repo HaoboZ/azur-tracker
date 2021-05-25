@@ -1,8 +1,9 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
-import _ from 'lodash';
+import { debounce } from 'lodash';
 import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import smoothscroll from 'smoothscroll-polyfill';
 
 import Navigation from '../components/navigation';
 import { getBackup, setBackup } from '../lib/backup';
@@ -29,8 +30,12 @@ function Content( { children } ) {
 	const indicator = useIndicator();
 	
 	const delayedSetBackup = React.useCallback(
-		_.debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
+		debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
 		[ main.autoSaveInterval ] );
+	
+	React.useEffect( () => {
+		smoothscroll.polyfill();
+	}, [] );
 	
 	React.useEffect( () => {
 		if ( main.autoSave && session ) delayedSetBackup();

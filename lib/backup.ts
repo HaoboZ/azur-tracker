@@ -1,6 +1,6 @@
 import { md5 } from 'hash-wasm';
 import stringify from 'json-stable-stringify';
-import _ from 'lodash';
+import { isEqual } from 'lodash';
 
 import { store } from './store';
 import { importBackup, setLastSaved, setNewData } from './store/reducers/mainReducer';
@@ -46,7 +46,7 @@ export async function getBackup( check = true ) {
 	const { data, lastSaved } = await res.json();
 	store.dispatch( setLastSaved( lastSaved ) );
 	const state = store.getState();
-	const changed = Object.keys( data ).filter( ( item ) => !_.isEqual( state[ item ], data[ item ] ) );
+	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );
 	// noinspection CommaExpressionJS
 	store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
 	store.dispatch( importBackup( data ) );

@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Alert } from '@material-ui/lab';
-import _ from 'lodash';
+import { reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -53,7 +53,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				res[ item.id ] = item;
 				return res;
 			}, {} as typeof equipsIndex ),
-			_.reduce( tierList, ( arr, val, key ) => {
+			reduce( tierList, ( arr, val, key ) => {
 				arr[ val[ 1 ] ] = {
 					...equipsIndex[ key ],
 					tier: <TierIcon tier={val[ 0 ] + 1}/>

@@ -6,6 +6,7 @@ const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 't
 module.exports = withBundleAnalyzer( withPWA( {
 	webpack( config, { webpack } ) {
 		config.plugins.push( new webpack.IgnorePlugin( { resourceRegExp: /\.(test|spec)\.[jt]sx?$/ } ) );
+		config.plugins.push( new webpack.IgnorePlugin( { resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ } ) );
 		return config;
 	},
 	pwa   : {

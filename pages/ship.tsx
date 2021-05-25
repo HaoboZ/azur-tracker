@@ -13,11 +13,6 @@ import shipRef, { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 
 const useStyles = makeStyles( {
-	fullPage  : {
-		// height  : '100%',
-		// display : 'flex',
-		// flexFlow: 'column'
-	},
 	fullHeight: { height: '100%' }
 } );
 
@@ -40,7 +35,7 @@ export default function Ship() {
 	}, [] );
 	
 	// noinspection CssUnusedSymbol
-	return <PageContainer title='Ship Tracker' heightType='height'>
+	return <PageContainer title='Ship Tracker'>
 		{ /*language=css*/}
 		<style global jsx>{`
 			.MuiTableCell-sizeSmall {

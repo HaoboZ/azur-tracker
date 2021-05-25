@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { mapValues } from 'lodash';
 
 //([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\n
 //'$1':['$2','$3','$4','$5',$6,$7,'$8','$9','$10','$11','$12',$13,'$14',$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26],\n
@@ -500,7 +500,7 @@ export const blankShip = {
 	equip    : []
 };
 
-export default _.mapValues( ships, ( val, key ) => ( {
+export default mapValues( ships, ( val, key ) => ( {
 	id       : key,
 	name     : val[ 0 ],
 	link     : `https://azurlane.koumakan.jp/${key}`,
