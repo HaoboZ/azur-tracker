@@ -22,7 +22,7 @@ export default function Ship() {
 	const colorClasses = useMappedColorClasses();
 	
 	const [ shipOpen, setShipOpen ]       = React.useState( false ),
-	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as unknown as Row );
+	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as any );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
 		value: Record<string, number[]>
@@ -80,7 +80,7 @@ export default function Ship() {
 			table={table}
 			open={shipOpen}
 			onClose={() => setShipOpen( false )}
-			onExit={() => setSelectedRow( { original: blankShip } as unknown as Row )}
+			onExit={() => setSelectedRow( { original: blankShip } as any )}
 			ship={selectedRow.original as typeof shipRef[string]}
 			equipBetter={equipBetter.value[ selectedRow.id ]}
 		/>

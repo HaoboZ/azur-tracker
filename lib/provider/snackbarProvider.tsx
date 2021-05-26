@@ -1,4 +1,4 @@
-import { Grow, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
+import { Grow, makeStyles, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
 import { Alert, Color } from '@material-ui/lab';
 import React from 'react';
 
@@ -11,8 +11,15 @@ type Message = {
 	type: Color
 };
 
+const useStyles = makeStyles( ( theme ) => ( {
+	snack: {
+		[ theme.breakpoints.down( 'xs' ) ]: { top: 'calc(24px + env(safe-area-inset-top))' }
+	}
+} ) );
+
 export default function SnackbarProvider( { children } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const classes = useStyles();
 	
 	const [ open, setOpen ]           = React.useState( false ),
 	      [ nextSnack, setNextSnack ] = React.useState<Message>( undefined ),
@@ -37,7 +44,7 @@ export default function SnackbarProvider( { children } ) {
 			open={open}
 			autoHideDuration={5000}
 			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
-			style={wide ? undefined : { top: 'calc(24px + env(safe-area-inset-top))' }}
+			className={classes.snack}
 			TransitionComponent={Grow}
 			onClose={( e, reason ) => {
 				if ( reason === 'clickaway' ) return;

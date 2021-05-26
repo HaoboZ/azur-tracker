@@ -4,38 +4,42 @@ import React from 'react';
 import usePageHeight from '../lib/hooks/usePageHeight';
 import ScrollTop from './scrollTop';
 
-const useStyles = makeStyles( {
-	scroll   : {
-		overflowY              : 'auto',
-		WebkitOverflowScrolling: 'touch'
-	},
+const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
+	scroll   : ( { height } ) => ( {
+		// overflowY              : 'auto',
+		// WebkitOverflowScrolling: 'touch'
+		[ theme.breakpoints.up( 'sm' ) ]  : {
+			minHeight: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`
+		},
+		[ theme.breakpoints.down( 'xs' ) ]: {
+			minHeight: `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`
+		}
+	} ),
 	container: {
 		display  : 'flex',
 		flexFlow : 'column',
 		overflowX: 'hidden'
 	}
-} );
+} ) );
 
 export default function PageContainer( { title, children }: {
 	title: string,
 	children: React.ReactNode
 } ) {
-	const classes = useStyles();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	const height = usePageHeight();
+	const classes = useStyles( { height } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	const targetRef = React.useRef<HTMLDivElement>();
-	
-	React.useEffect( () => {
-		if ( !targetRef.current ) return;
-		// disableBodyScroll( targetRef.current );
-	}, [ targetRef ] );
+	// const targetRef = React.useRef<HTMLDivElement>();
+	//
+	// React.useEffect( () => {
+	// 	if ( !targetRef.current ) return;
+	// 	disableBodyScroll( targetRef.current );
+	// }, [ targetRef ] );
 	
 	return <div
-		// id='scroller'
 		// ref={targetRef}
-		// className={classes.scroll}
-		style={{ minHeight: height }}>
+		className={classes.scroll}>
 		<ScrollTop/>
 		<Container
 			maxWidth='md'

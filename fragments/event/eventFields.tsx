@@ -40,9 +40,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-export default function EventFields( { time, remainingDays, neededPoints }: {
+export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
-	remainingDays: number,
 	neededPoints: number
 } ) {
 	const event    = useSelector( store => store.event ),
@@ -55,7 +54,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 	return <Grid container spacing={2}>
 		<Grid item xs={12} component={Box} mx='auto'>
 			<Link
-				href={`https://azurlane.koumakan.jp/${eventRef.link}`}
+				href={eventRef.link}
 				target='_blank'>
 				<img
 					src={`/images/events/${eventRef.image}`} alt='event banner'
@@ -90,7 +89,7 @@ export default function EventFields( { time, remainingDays, neededPoints }: {
 				</Grid>
 				<Grid item sm={4} xs={12} component={Box} textAlign='center'>
 					<Typography>
-						{remainingDays} Day{remainingDays === 1 ? '' : 's'} Remaining
+						End{time.isBefore( eventRef.endDate ) ? 's' : 'ed'} {time.to( eventRef.endDate )}
 					</Typography>
 				</Grid>
 				<Grid item sm={3} xs={6}>

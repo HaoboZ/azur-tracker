@@ -38,7 +38,6 @@ export default function Event() {
 	return <PageContainer title='Event Tracker'>
 		<EventFields
 			time={time}
-			remainingDays={remainingDays}
 			neededPoints={neededPoints}
 		/>
 		<FarmingCalc remainingPoints={remainingPoints}/>

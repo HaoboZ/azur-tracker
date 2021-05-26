@@ -79,7 +79,7 @@ const initState: State = {
 	theme           : 'default',
 	autoSave        : true,
 	autoLoad        : true,
-	autoSaveInterval: 2 * 1000,
+	autoSaveInterval: 1.5 * 1000,
 	autoLoadInterval: 20 * 1000
 };
 
