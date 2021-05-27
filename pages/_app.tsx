@@ -23,7 +23,7 @@ export default function _App( { Component, pageProps } ) {
 							user-scalable=no, viewport-fit=cover'
 					/>
 					
-					<link rel='manifest' href='site.webmanifest'/>
+					<link rel='manifest' href='manifest.json'/>
 					
 					<link rel='apple-touch-icon' href='icons/apple-icon-180.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
