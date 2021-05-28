@@ -9,9 +9,8 @@ export default function useTheme() {
 	const type: PaletteType = React.useMemo( () => {
 		switch ( main.theme ) {
 		case 'light':
-			return 'light';
 		case 'dark':
-			return 'dark';
+			return main.theme;
 		default:
 			return dark ? 'dark' : 'light';
 		}
