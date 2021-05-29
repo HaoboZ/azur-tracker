@@ -15,7 +15,6 @@ import {
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Alert } from '@material-ui/lab';
 import { reduce } from 'lodash';
-import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -114,7 +113,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						</Alert>
 					</Grid> : undefined}
 				<Grid item xs={5} component={Box} textAlign='center'>
-					<Image
+					<img
 						src={`/images/equips/${currentEquip.image}.png`}
 						alt={currentEquip.name}
 						height={128}
@@ -126,7 +125,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 					<Typography variant='h4' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item xs={5} component={Box} textAlign='center'>
-					<Image
+					<img
 						onClick={() => setEquip( equips[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
 						alt={equip.name}

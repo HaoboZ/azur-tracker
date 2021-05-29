@@ -8,7 +8,6 @@ import {
 	TextField,
 	Typography
 } from '@material-ui/core';
-import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DataDisplay from '../../components/dataDisplay';
@@ -82,13 +81,12 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
 						<>
-							<Avatar variant='rounded' className={classes.avatar}>
-								<Image
-									src={`/images/ships/${item.url}.png`}
-									alt={item.name}
-									layout='fill'
-								/>
-							</Avatar>
+							<Avatar
+								src={`/images/ships/${item.url}.png`}
+								alt={item.name}
+								variant='rounded'
+								className={classes.avatar}
+							/>
 							<Typography>{item.name}</Typography>
 						</>,
 						<TextField
@@ -144,13 +142,11 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 					const { devPrints, fatePrints } = shipData[ index ];
 					return <>
 						<ListItemAvatar>
-							<Avatar variant='rounded'>
-								<Image
-									src={`/images/ships/${item.url}.png`}
-									alt={item.name}
-									layout='fill'
-								/>
-							</Avatar>
+							<Avatar
+								src={`/images/ships/${item.url}.png`}
+								alt={item.name}
+								variant='rounded'
+							/>
 						</ListItemAvatar>
 						<ListItemText
 							primary={item.name}

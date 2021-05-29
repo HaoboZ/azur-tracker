@@ -18,7 +18,6 @@ import {
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
-import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { TableInstance } from 'react-table';
@@ -178,12 +177,11 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 								setEquipInfo( { ship, index } );
 								setEquipOpen( true );
 							}}>
-							<Image
+							<img
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}
 								height={128}
 								width={128}
-								layout='responsive'
 								className={colorClasses[ rarityColors[ equip.rarity ] ]}
 							/>
 							<TierIcon tier={val[ 2 ]}/>

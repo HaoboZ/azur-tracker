@@ -87,7 +87,7 @@ export default function EventFields( { time, neededPoints }: {
 						defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
 					/>
 				</Grid>
-				<Grid item sm={4} xs={12} component={Box} textAlign='center'>
+				<Grid item container sm={4} xs={12} justify='center' alignItems='center'>
 					<Typography>
 						End{time.isBefore( eventRef.endDate ) ? 's' : 'ed'} {time.to( eventRef.endDate )}
 					</Typography>

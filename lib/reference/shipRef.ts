@@ -118,7 +118,7 @@ const ships = {
 	'Intrepid'                      : [ 'Intrepid', 'Super Rare', 'Eagle Union', 'Aircraft Carrier', 1, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 68, 'Medium', 33, 6634, 0, 331, 0, 54, 430, 13, 131, 0, 0, 85 ],
 	'Ticonderoga'                   : [ 'Ticonderoga', 'Super Rare', 'Eagle Union', 'Aircraft Carrier', 6, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 72, 'Medium', 33, 6622, 0, 331, 0, 54, 433, 13, 131, 0, 0, 87 ],
 	'Bunker_Hill'                   : [ 'Bunker Hill', 'Super Rare', 'Eagle Union', 'Aircraft Carrier', 1, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 35, 'Medium', 33, 6610, 0, 309, 0, 54, 425, 13, 131, 0, 0, 82 ],
-	'Independence'                  : [ 'Independence', 'Elite', 'Eagle Union', 'Light Aircraft Carrier', 3, [ 1, 1 ], 'F', 'TB', 'AA/Main', 'A/CV1', 'A/CV2', 35, 'Medium', 33, 6610, 0, 309, 0, 54, 425, 13, 131, 0, 0, 82 ],
+	'Independence'                  : [ 'Independence', 'Super Rare', 'Eagle Union', 'Light Aircraft Carrier', 3, [ 1, 1 ], 'F', 'TB', 'AA/Main', 'A/CV1', 'A/CV2', 78, 'Medium', 31, 5006, 0, 338, 0, 83, 330, 11, 202, 109, 0, 89 ],
 	'Princeton'                     : [ 'Princeton', 'Elite', 'Eagle Union', 'Light Aircraft Carrier', 4, [], 'F', 'TB', 'AA/Main', 'A/CV1', 'A/CV2', 49, 'Medium', 31, 4791, 0, 255, 0, 85, 340, 11, 181, 99, 0, 89 ],
 	'Bataan'                        : [ 'Bataan', 'Elite', 'Eagle Union', 'Light Aircraft Carrier', 2, [ 1 ], 'F', 'TB', 'AA/Main', 'A/CV1', 'A/CV2', 65, 'Medium', 31, 5008, 0, 276, 0, 83, 347, 11, 199, 72, 0, 79 ],
 	'Shangri-La'                    : [ 'Shangri-La', 'Super Rare', 'Eagle Union', 'Aircraft Carrier', 1, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 83, 'Medium', 33, 6647, 0, 331, 0, 54, 430, 13, 131, 0, 0, 91 ],
