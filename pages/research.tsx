@@ -9,7 +9,7 @@ import { researchShips } from '../lib/reference/researchRef';
 import { research_setLastTab } from '../lib/store/reducers/researchReducer';
 
 export default function Research() {
-	const research = useSelector( store => store.research ),
+	const research = useSelector( state => state.research ),
 	      dispatch = useDispatch();
 	
 	return <PageContainer title='Research Tracker'>

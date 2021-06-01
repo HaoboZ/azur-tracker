@@ -11,7 +11,7 @@ export default function DailyDialog( { open, onClose }: {
 	open: boolean,
 	onClose: () => void
 } ) {
-	const event    = useSelector( store => store.event ),
+	const event    = useSelector( state => state.event ),
 	      dispatch = useDispatch();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );

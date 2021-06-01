@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function useTheme() {
-	const main = useSelector( store => store.main );
+	const main = useSelector( state => state.main );
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
 	
 	const type: PaletteType = React.useMemo( () => {

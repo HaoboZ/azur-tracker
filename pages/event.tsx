@@ -9,7 +9,7 @@ import eventRef from '../lib/reference/eventRef';
 import { event_newEvent } from '../lib/store/reducers/eventReducer';
 
 export default function Event() {
-	const event    = useSelector( store => store.event ),
+	const event    = useSelector( state => state.event ),
 	      dispatch = useDispatch();
 	
 	const [ time, setTime ] = React.useState( moment() );

@@ -116,8 +116,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 					<img
 						src={`/images/equips/${currentEquip.image}.png`}
 						alt={currentEquip.name}
-						height={128}
-						width={128}
+						style={{ maxWidth: '100%' }}
 						className={colorClasses[ rarityColors[ currentEquip.rarity ] ]}
 					/>
 				</Grid>
@@ -129,8 +128,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						onClick={() => setEquip( equips[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
 						alt={equip.name}
-						height={128}
-						width={128}
+						style={{ maxWidth: '100%' }}
 						className={colorClasses[ rarityColors[ equip.rarity ] ]}
 					/>
 				</Grid>

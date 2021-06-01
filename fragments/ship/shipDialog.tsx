@@ -57,7 +57,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const colorClasses = useMappedColorClasses();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	const [ equipOpen, setEquipOpen ] = React.useState( false ),
 	      [ equipInfo, setEquipInfo ] = React.useState<{ ship, index }>();
@@ -180,8 +180,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 							<img
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}
-								height={128}
-								width={128}
+								style={{ maxWidth: '100%' }}
 								className={colorClasses[ rarityColors[ equip.rarity ] ]}
 							/>
 							<TierIcon tier={val[ 2 ]}/>

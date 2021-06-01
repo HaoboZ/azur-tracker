@@ -9,7 +9,7 @@ import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
 } ) {
-	const event    = useSelector( store => store.event ),
+	const event    = useSelector( state => state.event ),
 	      dispatch = useDispatch();
 	
 	return <DataDisplay

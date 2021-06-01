@@ -20,8 +20,8 @@ export default function PageDialog( { open, onClose, onSave, children }: {
 	onSave?: () => void,
 	children: React.ReactNode
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	const classes = useStyles();
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	return <Dialog
 		open={open}

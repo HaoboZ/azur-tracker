@@ -5,23 +5,23 @@ import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
 const useStyles = makeStyles( {
-	safeArea : {
+	safeArea: {
 		paddingLeft : 'env(safe-area-inset-left)',
 		paddingRight: 'env(safe-area-inset-right)'
-	},
-	statusBar: {
-		width : '100%',
-		height: 'env(safe-area-inset-top)'
 	}
 } );
 
 export default function Navigation( { children } ) {
 	const classes = useStyles();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
-	return <>
-		{wide ? <TitleBar/> : <div className={classes.statusBar}/>}
-		<div className={classes.safeArea}>{children}</div>
-		{!wide && <BottomBar/>}
-	</>;
+	if ( wide ) {
+		return <TitleBar>
+			<div className={classes.safeArea}>{children}</div>
+		</TitleBar>;
+	} else {
+		return <BottomBar>
+			<div className={classes.safeArea}>{children}</div>
+		</BottomBar>;
+	}
 }

@@ -14,6 +14,10 @@ import SnackbarProvider from '../lib/provider/snackbarProvider';
 export default function Baseline( { children }: { children?: React.ReactNode } ) {
 	const theme = useTheme();
 	
+	React.useEffect( () => {
+		smoothscroll.polyfill();
+	}, [] );
+	
 	return <ThemeProvider theme={theme}>
 		<SnackbarProvider>
 			<IndicatorProvider>
@@ -25,17 +29,13 @@ export default function Baseline( { children }: { children?: React.ReactNode } )
 }
 
 function Content( { children } ) {
-	const { main, ...store } = useSelector( store => store );
+	const { main, ...store } = useSelector( state => state );
 	const [ session ] = useSession();
 	const indicator = useIndicator();
 	
 	const delayedSetBackup = React.useCallback(
 		debounce( () => indicator( setBackup() ), main.autoSaveInterval ),
 		[ main.autoSaveInterval ] );
-	
-	React.useEffect( () => {
-		smoothscroll.polyfill();
-	}, [] );
 	
 	React.useEffect( () => {
 		if ( main.autoSave && session ) delayedSetBackup();

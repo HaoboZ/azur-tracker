@@ -1,4 +1,4 @@
-import { List, TableContainer, Theme, useMediaQuery } from '@material-ui/core';
+import { ListProps, TableContainerProps, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 
 import EnhancedList from './enhancedList';
@@ -18,13 +18,13 @@ export default function DataDisplay<Item>( {
 	listProps: {
 		renderRow: ( item: Item, index: number ) => React.ReactNode,
 		renderPanel?: ( item: Item, index: number ) => React.ReactNode
-	} & React.ComponentProps<typeof List>,
+	} & ListProps,
 	tableProps: {
 		columnHeader: React.ReactNodeArray,
 		columns: ( item: Item, index: number ) => React.ReactNodeArray
-	} & React.ComponentProps<typeof TableContainer>
+	} & TableContainerProps
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	return wide
 		? <EnhancedTable {...tableProps} {...props as any}/>

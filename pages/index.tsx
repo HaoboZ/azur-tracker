@@ -1,7 +1,6 @@
 import {
 	Button,
 	ButtonGroup,
-	Link as MuiLink,
 	List,
 	ListItem,
 	ListItemSecondaryAction,
@@ -16,10 +15,10 @@ import {
 } from '@material-ui/icons';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Link from '../components/Link';
 import PageContainer from '../components/pageContainer';
 import { getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
@@ -46,7 +45,7 @@ const useStyles = makeStyles( {
 } );
 
 export default function Home() {
-	const main     = useSelector( store => store.main ),
+	const main     = useSelector( state => state.main ),
 	      dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const snackbar = useSnackBar();
@@ -190,10 +189,8 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/event' passHref>
-						<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
-							Event Tracker
-						</MuiLink>
+					primary={<Link href='/event' variant='subtitle1' color='textSecondary' underline='always'>
+						Event Tracker
 					</Link>}
 					secondary='calculates farming runs for any stage until you reach your target points'
 					classes={{ secondary: classes.longText }}
@@ -212,10 +209,8 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/research' passHref>
-						<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
-							Research Tracker
-						</MuiLink>
+					primary={<Link href='/research' variant='subtitle1' color='textSecondary' underline='always'>
+						Research Tracker
 					</Link>}
 					secondary='calculates number of strengthing units for pr ships until max'
 					classes={{ secondary: classes.longText }}
@@ -234,10 +229,8 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/ship' passHref>
-						<MuiLink variant='subtitle1' color='textSecondary' underline='always'>
-							Ship Tracker
-						</MuiLink>
+					primary={<Link href='/ship' variant='subtitle1' color='textSecondary' underline='always'>
+						Ship Tracker
 					</Link>}
 					secondary='for those who want a fully leveled, fully equipped fleet'
 					classes={{ secondary: classes.longText }}

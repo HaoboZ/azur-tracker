@@ -23,12 +23,12 @@ const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
 } ) );
 
 export default function PageContainer( { title, children }: {
-	title: string,
-	children: React.ReactNode
+	title?: string,
+	children?: React.ReactNode
 } ) {
 	const height = usePageHeight();
 	const classes = useStyles( { height } );
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	// const targetRef = React.useRef<HTMLDivElement>();
 	//
@@ -45,7 +45,7 @@ export default function PageContainer( { title, children }: {
 			maxWidth='md'
 			disableGutters={!wide}
 			className={classes.container}>
-			<Typography variant='h6' component={Box} p={2}>{title}</Typography>
+			{title && <Typography variant='h6' component={Box} p={2}>{title}</Typography>}
 			{children}
 		</Container>
 	</div>;

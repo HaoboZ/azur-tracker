@@ -12,10 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	footer   : {
-		height: 'calc(56px + env(safe-area-inset-bottom))'
-	},
-	statusBar: {
+	statusBar           : {
 		position       : 'fixed',
 		top            : 0,
 		zIndex         : 1100,
@@ -23,7 +20,14 @@ const useStyles = makeStyles( ( theme ) => ( {
 		height         : 'env(safe-area-inset-top)',
 		backgroundColor: theme.palette.primary.main
 	},
-	appBar   : {
+	statusBarPlaceholder: {
+		width : '100%',
+		height: 'env(safe-area-inset-top)'
+	},
+	footerPlaceholder   : {
+		height: 'calc(56px + env(safe-area-inset-bottom))'
+	},
+	appBar              : {
 		top          : 'auto',
 		bottom       : 0,
 		paddingLeft  : 'env(safe-area-inset-left)',
@@ -39,8 +43,8 @@ const items = [
 	{ label: 'Ship', icon: <DirectionsBoatIcon/>, link: '/ship' }
 ];
 
-export default function BottomBar() {
-	const main     = useSelector( store => store.main ),
+export default function BottomBar( { children } ) {
+	const main     = useSelector( state => state.main ),
 	      dispatch = useDispatch();
 	const router = useRouter();
 	const classes = useStyles();
@@ -54,7 +58,9 @@ export default function BottomBar() {
 	
 	return <>
 		<div className={classes.statusBar}/>
-		<div className={classes.footer}/>
+		<div className={classes.statusBarPlaceholder}/>
+		{children}
+		<div className={classes.footerPlaceholder}/>
 		<AppBar position='fixed' color='inherit' className={classes.appBar}>
 			<BottomNavigation
 				showLabels

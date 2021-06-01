@@ -33,7 +33,7 @@ const useStyles = makeStyles( {
 } );
 
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
-	const research = useSelector( store => store.research ),
+	const research = useSelector( state => state.research ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	

@@ -44,7 +44,7 @@ export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
 	neededPoints: number
 } ) {
-	const event    = useSelector( store => store.event ),
+	const event    = useSelector( state => state.event ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	

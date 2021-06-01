@@ -1,14 +1,14 @@
-import { AppBar, Badge, Box, Button, IconButton, Link as MuiLink, makeStyles, Toolbar } from '@material-ui/core';
+import { AppBar, Badge, Box, Button, IconButton, makeStyles, Toolbar } from '@material-ui/core';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
+import Link from '../Link';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	appBar: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 } ) );
 
 function LinkItem( { children, href } ) {
-	const main     = useSelector( store => store.main ),
+	const main     = useSelector( state => state.main ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
@@ -39,41 +39,41 @@ function LinkItem( { children, href } ) {
 	</Link>;
 }
 
-export default function TitleBar() {
-	const main     = useSelector( store => store.main ),
+export default function TitleBar( { children } ) {
+	const main     = useSelector( state => state.main ),
 	      dispatch = useDispatch();
 	const classes = useStyles();
 	
-	return <AppBar position='static' className={classes.appBar}>
-		<Toolbar>
-			<Link key='index' href='/' passHref>
-				<MuiLink
+	return <>
+		<AppBar position='static' className={classes.appBar}>
+			<Toolbar>
+				<Link
+					href='/'
 					variant='h6'
-					color='inherit'
-					underline='none'
 					className={classes.title}>
 					Azur Lane Tracker
-				</MuiLink>
-			</Link>
-			<LinkItem href='/event'>Event</LinkItem>
-			<LinkItem href='/research'>Research</LinkItem>
-			<LinkItem href='/ship'>Ship</LinkItem>
-			<Box flexGrow={1}/>
-			<IconButton
-				color='inherit'
-				onClick={() => {
-					dispatch( setTheme( {
-						'light'  : 'dark',
-						'dark'   : 'default',
-						'default': 'light'
-					}[ main.theme ] || 'light' ) );
-				}}>
-				{{
-					'light'  : <BrightnessHighIcon/>,
-					'dark'   : <Brightness3Icon/>,
-					'default': <Brightness4Icon/>
-				}[ main.theme ] || 'default'}
-			</IconButton>
-		</Toolbar>
-	</AppBar>;
+				</Link>
+				<LinkItem href='/event'>Event</LinkItem>
+				<LinkItem href='/research'>Research</LinkItem>
+				<LinkItem href='/ship'>Ship</LinkItem>
+				<Box flexGrow={1}/>
+				<IconButton
+					color='inherit'
+					onClick={() => {
+						dispatch( setTheme( {
+							'light'  : 'dark',
+							'dark'   : 'default',
+							'default': 'light'
+						}[ main.theme ] || 'light' ) );
+					}}>
+					{{
+						'light'  : <BrightnessHighIcon/>,
+						'dark'   : <Brightness3Icon/>,
+						'default': <Brightness4Icon/>
+					}[ main.theme ] || 'default'}
+				</IconButton>
+			</Toolbar>
+		</AppBar>
+		{children}
+	</>;
 }

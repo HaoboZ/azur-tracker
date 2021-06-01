@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Typography } from '@material-ui/core';
+import { Box, Button, ButtonGroup, ButtonProps, Typography } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default function ActionTitle( { title = '', variant = 'h6', actions = [] 
 	actions?: {
 		name: string,
 		onClick?: () => void,
-		props?: React.ComponentProps<typeof Button>
+		props?: ButtonProps
 	}[]
 } ) {
 	return <Box display='flex' justifyContent='space-between' p={2}>

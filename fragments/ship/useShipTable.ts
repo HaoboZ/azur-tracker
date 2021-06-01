@@ -14,7 +14,7 @@ import shipRef from '../../lib/reference/shipRef';
 import tableColumns from './tableColumns';
 
 export default function useShipTable( equipBetter, setEquipBetter ) {
-	const ship = useSelector( store => store.ship );
+	const ship = useSelector( state => state.ship );
 	
 	const skipResetRef = React.useRef( false );
 	

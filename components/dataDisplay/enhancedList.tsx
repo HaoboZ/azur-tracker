@@ -6,6 +6,7 @@ import {
 	List,
 	ListItem,
 	ListItemIcon,
+	ListProps,
 	makeStyles,
 	Paper
 } from '@material-ui/core';
@@ -83,7 +84,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	editable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
-} & React.ComponentProps<typeof List> ) {
+} & ListProps ) {
 	const classes = useStyles();
 	
 	const [ editing, setEditing ] = React.useState( false );

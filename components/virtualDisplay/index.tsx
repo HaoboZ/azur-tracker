@@ -13,7 +13,7 @@ export default function VirtualDisplay( {
 	onPress?: ( row: Row ) => void,
 	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	return wide
 		? <VirtualTable {...table} onPress={onPress}/>

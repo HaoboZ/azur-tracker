@@ -6,6 +6,7 @@ import {
 	TableBody,
 	TableCell,
 	TableContainer,
+	TableContainerProps,
 	TableHead,
 	TableRow
 } from '@material-ui/core';
@@ -96,7 +97,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	editable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
-} & React.ComponentProps<typeof TableContainer> ) {
+} & TableContainerProps ) {
 	const classes = useStyles();
 	
 	return <>

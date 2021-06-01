@@ -22,9 +22,9 @@ import { ship_setFilter } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 
 export default function Filters( { table, resetEquip } ) {
-	const ship     = useSelector( store => store.ship ),
+	const ship     = useSelector( state => state.ship ),
 	      dispatch = useDispatch();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	const globalFilter = useAsyncDebounce( ( value ) => {
 		table.setGlobalFilter( value );

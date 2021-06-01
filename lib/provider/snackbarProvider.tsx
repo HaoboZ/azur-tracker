@@ -18,8 +18,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 } ) );
 
 export default function SnackbarProvider( { children } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	const classes = useStyles();
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	const [ open, setOpen ]           = React.useState( false ),
 	      [ nextSnack, setNextSnack ] = React.useState<Message>( undefined ),

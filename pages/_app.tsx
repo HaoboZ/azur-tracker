@@ -14,8 +14,8 @@ export default function _App( { Component, pageProps } ) {
 		<PersistGate loading={null} persistor={persistor}>
 			<AuthProvider session={pageProps.session}>
 				<Head>
-					<title>Azur Lane Tracker</title>
 					<meta charSet='utf-8'/>
+					<title>Azur Lane Tracker</title>
 					<meta
 						name='viewport'
 						content='width=device-width,
@@ -23,7 +23,7 @@ export default function _App( { Component, pageProps } ) {
 							user-scalable=no, viewport-fit=cover'
 					/>
 					
-					<link rel='manifest' href='manifest.json'/>
+					<link rel='manifest' href='app.webmanifest'/>
 					
 					<link rel='apple-touch-icon' href='icons/apple-icon-180.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
