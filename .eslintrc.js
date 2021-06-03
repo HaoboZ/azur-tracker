@@ -55,6 +55,7 @@ module.exports = {
 			'beforeClosing'    : 'never'
 		} ],
 		// typescript
+		'@typescript-eslint/ban-types'                     : 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/member-delimiter-style'        : [ 'warn', {
 			multiline : {

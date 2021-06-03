@@ -56,7 +56,7 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							onClick={() => onPress( row )}
+							onClick={() => onPress?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}

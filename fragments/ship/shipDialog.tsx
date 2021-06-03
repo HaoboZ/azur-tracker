@@ -18,6 +18,7 @@ import {
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
+import clsx from 'clsx';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { TableInstance } from 'react-table';
@@ -40,6 +41,12 @@ const useStyles = makeStyles( ( theme ) => ( {
 		'& .MuiInput-underline.Mui-disabled:before': {
 			borderBottomStyle: 'none'
 		}
+	},
+	equipGrid : {
+		padding      : 5,
+		display      : 'flex',
+		flexDirection: 'column',
+		alignItems   : 'center'
 	}
 } ) );
 
@@ -171,8 +178,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						return <Grid
 							key={index}
 							item xs={wide ? true : 4}
-							className={colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ]}
-							style={{ padding: 5, textAlign: 'center' }}
+							className={clsx( classes.equipGrid, colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ] )}
 							onClick={() => {
 								setEquipInfo( { ship, index } );
 								setEquipOpen( true );

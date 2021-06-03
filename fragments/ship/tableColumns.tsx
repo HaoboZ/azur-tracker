@@ -5,6 +5,16 @@ import SVGIcon, { TierIcon } from '../../lib/icons';
 import { nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
 import { equippable, equipTier } from '../../lib/reference/equipRef';
 
+const Rarity = {
+	'Decisive'  : 0,
+	'Ultra Rare': 0,
+	'Priority'  : 1,
+	'Super Rare': 1,
+	'Elite'     : 2,
+	'Rare'      : 3,
+	'Common'    : 4
+};
+
 export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 	return [
 		{
@@ -16,7 +26,9 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			Header  : 'Rarity',
 			accessor: 'rarity',
 			minWidth: 20,
-			color   : ( { value } ) => rarityColors[ value ]
+			color   : ( { value } ) => rarityColors[ value ],
+			sortType: ( rowA, rowB, columnId ) =>
+				Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
 		},
 		{
 			Header  : 'Nation',

@@ -1,6 +1,7 @@
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { CssBaseline, makeStyles, Theme, ThemeProvider, useMediaQuery } from '@material-ui/core';
 import { debounce } from 'lodash';
 import { useSession } from 'next-auth/client';
+import { SnackbarProvider } from 'notistack';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import smoothscroll from 'smoothscroll-polyfill';
@@ -9,7 +10,12 @@ import Navigation from '../components/navigation';
 import { getBackup, setBackup } from '../lib/backup';
 import useTheme from '../lib/hooks/useTheme';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
-import SnackbarProvider from '../lib/provider/snackbarProvider';
+
+const useStyles = makeStyles( ( theme ) => ( {
+	snack: {
+		[ theme.breakpoints.down( 'xs' ) ]: { top: 'calc(24px + env(safe-area-inset-top))' }
+	}
+} ) );
 
 export default function Baseline( { children }: { children?: React.ReactNode } ) {
 	const theme = useTheme();
@@ -19,13 +25,25 @@ export default function Baseline( { children }: { children?: React.ReactNode } )
 	}, [] );
 	
 	return <ThemeProvider theme={theme}>
-		<SnackbarProvider>
-			<IndicatorProvider>
-				<CssBaseline/>
-				<Content>{children}</Content>
-			</IndicatorProvider>
-		</SnackbarProvider>
+		<Providers>
+			<CssBaseline/>
+			<Content>{children}</Content>
+		</Providers>
 	</ThemeProvider>;
+}
+
+function Providers( { children }: { children?: React.ReactNode } ) {
+	const classes = useStyles();
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	
+	return <SnackbarProvider
+		maxSnack={2}
+		anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
+		className={classes.snack}>
+		<IndicatorProvider>
+			{children}
+		</IndicatorProvider>
+	</SnackbarProvider>;
 }
 
 function Content( { children } ) {

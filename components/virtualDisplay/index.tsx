@@ -7,15 +7,15 @@ import VirtualTable from './virtualTable';
 
 export default function VirtualDisplay( {
 	onPress,
-	RenderListItem,
+	RenderRow,
 	...table
 }: TableInstance & {
 	onPress?: ( row: Row ) => void,
-	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
+	RenderRow: React.FunctionComponent<{ row: Row, onPress, rowProps }>
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	return wide
 		? <VirtualTable {...table} onPress={onPress}/>
-		: <VirtualList {...table} onPress={onPress} RenderListItem={RenderListItem}/>;
+		: <VirtualList {...table} onPress={onPress} RenderRow={RenderRow}/>;
 }

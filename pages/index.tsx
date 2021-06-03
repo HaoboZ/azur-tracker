@@ -15,6 +15,7 @@ import {
 } from '@material-ui/icons';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,7 +24,6 @@ import PageContainer from '../components/pageContainer';
 import { getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/provider/indicatorProvider';
-import { useSnackBar } from '../lib/provider/snackbarProvider';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import {
 	setAutoLoad,
@@ -48,7 +48,7 @@ export default function Home() {
 	const main     = useSelector( state => state.main ),
 	      dispatch = useDispatch();
 	const [ session, loading ] = useSession();
-	const snackbar = useSnackBar();
+	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const classes = useStyles();
 	const online = useNetworkStatus();
@@ -137,11 +137,11 @@ export default function Home() {
 								try {
 									if ( session ) {
 										await indicator( setBackup() );
-										snackbar( 'Data Successfully Saved' );
+										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else
-										snackbar( 'Sign In to Save', 'info' );
+										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 								} catch ( e ) {
-									snackbar( String( e ), 'error' );
+									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}
 							}}>
 							Save
@@ -153,11 +153,11 @@ export default function Home() {
 								try {
 									if ( session ) {
 										await indicator( getBackup() );
-										snackbar( 'Data Successfully Loaded' );
+										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else
-										snackbar( 'Sign In to Load', 'info' );
+										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
 								} catch ( e ) {
-									snackbar( String( e ), 'error' );
+									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}
 							}}>
 							Load

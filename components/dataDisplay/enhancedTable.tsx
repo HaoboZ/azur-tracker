@@ -96,7 +96,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	columns: ( item: Item, index: number ) => React.ReactNodeArray,
 	editable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if editable is true
-	newData?: () => Item | Promise<Item>  // required if editable is true
+	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
 	const classes = useStyles();
 	

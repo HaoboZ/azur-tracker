@@ -56,10 +56,10 @@ export default function Ship() {
 					setSelectedRow( row );
 					setShipOpen( true );
 				}}
-				RenderListItem={( { row, onPress, props } ) => <ListItem
+				RenderRow={( { row, onPress, rowProps } ) => <ListItem
 					divider
 					onClick={() => onPress( row )}
-					ContainerProps={props}>
+					ContainerProps={rowProps}>
 					<ListItemText
 						primary={<>
 							{row.values.name}

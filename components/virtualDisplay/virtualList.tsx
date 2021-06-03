@@ -9,10 +9,10 @@ export default function VirtualList( {
 	rows,
 	prepareRow,
 	onPress,
-	RenderListItem
+	RenderRow
 }: TableInstance & {
 	onPress?: ( row: Row ) => void,
-	RenderListItem: React.FunctionComponent<{ row: Row, onPress, props }>
+	RenderRow: React.FunctionComponent<{ row: Row, onPress, rowProps }>
 } ) {
 	return <Paper square {...getTableProps( { style: { height: '100%' } } )}>
 		<ReactWindowScroller>
@@ -29,10 +29,10 @@ export default function VirtualList( {
 				{( { index, style } ) => {
 					const row = rows[ index ];
 					prepareRow( row );
-					return <RenderListItem
+					return <RenderRow
 						row={row}
 						onPress={onPress}
-						props={row.getRowProps( { style } )}
+						rowProps={row.getRowProps( { style } )}
 					/>;
 				}}
 			</List>}
