@@ -1,5 +1,5 @@
-import { equipTier } from '../../reference/equipRef';
-import shipRef, { version } from '../../reference/shipRef';
+import { equipTier, version } from '../../reference/equipRef';
+import shipRef from '../../reference/shipRef';
 
 const
 	RESET        = 'ship/reset',

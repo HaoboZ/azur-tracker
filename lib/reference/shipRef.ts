@@ -490,8 +490,6 @@ const ships = {
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
 };
 
-export const version = '2021-05-10';
-
 export const blankShip = {
 	id       : '_',
 	name     : 'No Ship',

@@ -50,6 +50,8 @@ interface Equip {
 	rarity: rarity
 }
 
+export const version = '2021-06-03';
+
 // list of equips sorted by type
 export const equips: Equip[] = [
 	{
@@ -664,6 +666,13 @@ export const equips: Equip[] = [
 		image : 'Twin_410mm_(3rd_Year_Type)',
 		type  : type.BB,
 		rarity: rarity.SR
+	},
+	{
+		id    : 14400,
+		name  : 'Triple 406mm MK7 Main Gun',
+		image : 'Triple_406mm_(16$22$2F50_Mk_7)',
+		type  : type.BB,
+		rarity: rarity.UR
 	},
 	{
 		id    : 14500,
@@ -1842,8 +1851,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	
 	'BB/Damage'  : {
-		[ map[ 'Prototype Triple 381mm AA Gun/SR' ] ]            : [ 0, a = 0 ],
-		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ] : [ 0, ++a ],
+		[ map[ 'Triple 406mm MK7 Main Gun/UR' ] ]                : [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 381mm AA Gun/SR' ] ]            : [ 0, ++a ],
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ] : [ 1, ++a ],
 		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]          : [ 1, ++a ],
 		[ map[ 'Prototype Triple 406mm /50 Main Gun Mount/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]    : [ 3, ++a ],
