@@ -11,8 +11,8 @@ export default function ShopDialog( { open, onClose }: {
 	open: boolean,
 	onClose: () => void
 } ) {
-	const event    = useSelector( state => state.event ),
-	      dispatch = useDispatch();
+	const event = useSelector( state => state.event );
+	const dispatch = useDispatch();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
 	React.useEffect( () => {

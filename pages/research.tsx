@@ -9,8 +9,8 @@ import { researchShips } from '../lib/reference/researchRef';
 import { research_setLastTab } from '../lib/store/reducers/researchReducer';
 
 export default function Research() {
-	const research = useSelector( state => state.research ),
-	      dispatch = useDispatch();
+	const research = useSelector( state => state.research );
+	const dispatch = useDispatch();
 	
 	return <PageContainer title='Research Tracker'>
 		<Tabs

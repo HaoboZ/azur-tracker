@@ -22,11 +22,11 @@ const useStyles = makeStyles( ( theme ) => ( {
 } ) );
 
 function LinkItem( { children, href } ) {
-	const main     = useSelector( state => state.main ),
-	      dispatch = useDispatch();
+	const main = useSelector( state => state.main );
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	
-	return <Link href={href}>
+	return <Link variant='h6' href={href}>
 		<Badge
 			color='secondary'
 			variant='dot'
@@ -40,8 +40,8 @@ function LinkItem( { children, href } ) {
 }
 
 export default function TitleBar( { children } ) {
-	const main     = useSelector( state => state.main ),
-	      dispatch = useDispatch();
+	const main = useSelector( state => state.main );
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	
 	return <>

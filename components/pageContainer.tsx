@@ -6,8 +6,6 @@ import ScrollTop from './scrollTop';
 
 const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
 	scroll   : ( { height } ) => ( {
-		// overflowY              : 'auto',
-		// WebkitOverflowScrolling: 'touch'
 		[ theme.breakpoints.up( 'sm' ) ]  : {
 			minHeight: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`
 		},
@@ -30,16 +28,7 @@ export default function PageContainer( { title, children }: {
 	const classes = useStyles( { height } );
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
-	// const targetRef = React.useRef<HTMLDivElement>();
-	//
-	// React.useEffect( () => {
-	// 	if ( !targetRef.current ) return;
-	// 	disableBodyScroll( targetRef.current );
-	// }, [ targetRef ] );
-	
-	return <div
-		// ref={targetRef}
-		className={classes.scroll}>
+	return <div className={classes.scroll}>
 		<ScrollTop/>
 		<Container
 			maxWidth='md'

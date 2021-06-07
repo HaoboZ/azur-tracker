@@ -44,16 +44,15 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
-	const main     = useSelector( state => state.main ),
-	      dispatch = useDispatch();
+	const main = useSelector( state => state.main );
+	const dispatch = useDispatch();
 	const router = useRouter();
 	const classes = useStyles();
 	
 	const index = React.useMemo( () => {
-		for ( let i = 0; i < items.length; ++i ) {
+		for ( let i = 0; i < items.length; ++i )
 			if ( items[ i ].link === router.asPath )
 				return i;
-		}
 	}, [ router.asPath ] );
 	
 	return <>

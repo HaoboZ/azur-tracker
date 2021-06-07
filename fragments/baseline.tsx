@@ -13,7 +13,9 @@ import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvid
 
 const useStyles = makeStyles( ( theme ) => ( {
 	snack: {
-		[ theme.breakpoints.down( 'xs' ) ]: { top: 'calc(24px + env(safe-area-inset-top))' }
+		[ theme.breakpoints.down( 'xs' ) ]: {
+			top: 'env(safe-area-inset-top)'
+		}
 	}
 } ) );
 
@@ -39,7 +41,7 @@ function Providers( { children }: { children?: React.ReactNode } ) {
 	return <SnackbarProvider
 		maxSnack={2}
 		anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
-		className={classes.snack}>
+		classes={{ root: classes.snack }}>
 		<IndicatorProvider>
 			{children}
 		</IndicatorProvider>

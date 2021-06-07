@@ -45,8 +45,8 @@ const useStyles = makeStyles( {
 } );
 
 export default function Home() {
-	const main     = useSelector( state => state.main ),
-	      dispatch = useDispatch();
+	const main = useSelector( state => state.main );
+	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
@@ -135,7 +135,9 @@ export default function Home() {
 							color='inherit'
 							onClick={async () => {
 								try {
-									if ( session ) {
+									if ( !online )
+										enqueueSnackbar( 'Offline' );
+									else if ( session ) {
 										await indicator( setBackup() );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else
@@ -151,7 +153,9 @@ export default function Home() {
 							color='inherit'
 							onClick={async () => {
 								try {
-									if ( session ) {
+									if ( !online )
+										enqueueSnackbar( 'Offline' );
+									else if ( session ) {
 										await indicator( getBackup() );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else
@@ -189,7 +193,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/event' variant='subtitle1' color='textSecondary' underline='always'>
+					primary={<Link href='/event' underline='always'>
 						Event Tracker
 					</Link>}
 					secondary='calculates farming runs for any stage until you reach your target points'
@@ -209,7 +213,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/research' variant='subtitle1' color='textSecondary' underline='always'>
+					primary={<Link href='/research' underline='always'>
 						Research Tracker
 					</Link>}
 					secondary='calculates number of strengthing units for pr ships until max'
@@ -229,7 +233,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/ship' variant='subtitle1' color='textSecondary' underline='always'>
+					primary={<Link href='/ship' underline='always'>
 						Ship Tracker
 					</Link>}
 					secondary='for those who want a fully leveled, fully equipped fleet'

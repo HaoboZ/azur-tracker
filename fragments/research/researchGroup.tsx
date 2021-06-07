@@ -33,8 +33,8 @@ const useStyles = makeStyles( {
 } );
 
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
-	const research = useSelector( state => state.research ),
-	      dispatch = useDispatch();
+	const research = useSelector( state => state.research );
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {

@@ -44,8 +44,8 @@ export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
 	neededPoints: number
 } ) {
-	const event    = useSelector( state => state.event ),
-	      dispatch = useDispatch();
+	const event = useSelector( state => state.event );
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	
 	const [ shopDialog, setShopDialog ] = React.useState( false );
