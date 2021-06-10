@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, makeStyles, Slide, Theme, useMediaQuery } from '@material-ui/core';
-import { SlideProps } from '@material-ui/core/Slide/Slide';
+import { SlideProps } from '@material-ui/core/Slide';
 import React from 'react';
 
 const Transition = React.forwardRef( ( props: SlideProps, ref ) =>
@@ -37,15 +37,15 @@ export default function PageDialog( { open, onClose, onSave, children }: {
 		closeAfterTransition>
 		{children}
 		<DialogActions>
-			<Button
+			{onSave ? <Button
 				variant='contained'
 				color='primary'
 				onClick={() => {
-					onSave?.();
+					onSave();
 					onClose();
 				}}>
 				Save
-			</Button>
+			</Button> : undefined}
 			<Button variant='contained' color='secondary' onClick={onClose}>
 				{onSave ? 'Cancel' : 'Close'}
 			</Button>

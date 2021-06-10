@@ -8,13 +8,13 @@ export default function VirtualList( {
 	getTableProps,
 	rows,
 	prepareRow,
-	onPress,
+	onClick,
 	RenderRow
 }: TableInstance & {
-	onPress?: ( row: Row ) => void,
-	RenderRow: React.FunctionComponent<{ row: Row, onPress, rowProps }>
+	onClick?: ( row: Row ) => void,
+	RenderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
 } ) {
-	return <Paper square {...getTableProps( { style: { height: '100%' } } )}>
+	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
 			{( { ref, outerRef, style, onScroll } ) => <List
 				ref={ref}
@@ -31,7 +31,7 @@ export default function VirtualList( {
 					prepareRow( row );
 					return <RenderRow
 						row={row}
-						onPress={onPress}
+						onClick={onClick}
 						rowProps={row.getRowProps( { style } )}
 					/>;
 				}}

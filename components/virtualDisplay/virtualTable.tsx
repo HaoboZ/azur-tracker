@@ -12,8 +12,8 @@ export default function VirtualTable( {
 	headerGroups,
 	rows,
 	prepareRow,
-	onPress
-}: TableInstance & { onPress?: ( row: Row ) => void } ) {
+	onClick
+}: TableInstance & { onClick?: ( row: Row ) => void } ) {
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
@@ -24,7 +24,7 @@ export default function VirtualTable( {
 		setHeaderStyle( { marginRight: ( firstRow?.offsetWidth - firstRow?.clientWidth ) || 0 } );
 	}, [ firstRow, rows ] );
 	
-	return <Table size='small' component={Paper} {...getTableProps( { style: { height: '100%' } } )}>
+	return <Table size='small' component={Paper} {...getTableProps()}>
 		<TableHead component='div'>
 			{headerGroups.map( ( headerGroup ) =>
 				<TableRow key={headerGroup.id} component='div' {...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
@@ -56,7 +56,7 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							onClick={() => onPress?.( row )}
+							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}

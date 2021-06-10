@@ -14,8 +14,6 @@ const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
 		}
 	} ),
 	container: {
-		display  : 'flex',
-		flexFlow : 'column',
 		overflowX: 'hidden'
 	}
 } ) );

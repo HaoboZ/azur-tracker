@@ -29,7 +29,9 @@ export default function Baseline( { children }: { children?: React.ReactNode } )
 	return <ThemeProvider theme={theme}>
 		<Providers>
 			<CssBaseline/>
-			<Content>{children}</Content>
+			<Content>
+				{children}
+			</Content>
 		</Providers>
 	</ThemeProvider>;
 }

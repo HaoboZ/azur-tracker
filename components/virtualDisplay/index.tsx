@@ -6,16 +6,16 @@ import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 
 export default function VirtualDisplay( {
-	onPress,
+	onClick,
 	RenderRow,
 	...table
 }: TableInstance & {
-	onPress?: ( row: Row ) => void,
-	RenderRow: React.FunctionComponent<{ row: Row, onPress, rowProps }>
+	onClick?: ( row: Row ) => void,
+	RenderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	return wide
-		? <VirtualTable {...table} onPress={onPress}/>
-		: <VirtualList {...table} onPress={onPress} RenderRow={RenderRow}/>;
+		? <VirtualTable {...table} onClick={onClick}/>
+		: <VirtualList {...table} onClick={onClick} RenderRow={RenderRow}/>;
 }
