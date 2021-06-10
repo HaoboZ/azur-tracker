@@ -2,7 +2,7 @@ export default {
 	name   : 'Mirror Involution',
 	image  : 'Mirror_Involution.png',
 	link   : 'https://azurlane.koumakan.jp/Mirror_Involution',
-	endDate: '2021-06-09T23:59-07',
+	endDate: '2021-06-16T23:59-07',
 	shop   : [
 		{ name: 'Ticonderoga', cost: 8000, amount: 5 },
 		{ name: 'Triple 406mm MK7 Main Gun', cost: 10000, amount: 1 },
