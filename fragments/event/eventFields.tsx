@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import eventRef from '../../lib/reference/eventRef';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
-import DailyDialog from './dailyDialog';
-import ShopDialog from './shopDialog';
+import DailyModal from './dailyModal';
+import ShopModal from './shopModal';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	banner     : {
@@ -48,8 +48,8 @@ export default function EventFields( { time, neededPoints }: {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	
-	const [ shopDialog, setShopDialog ] = React.useState( false );
-	const [ dailyDialog, setDailyDialog ] = React.useState( false );
+	const [ shopModalVisible, setShopModalVisible ] = React.useState( false );
+	const [ dailyModalVisible, setDailyModalVisible ] = React.useState( false );
 	
 	return <Grid container spacing={2}>
 		<Grid item xs={12} component={Box} mx='auto'>
@@ -103,9 +103,9 @@ export default function EventFields( { time, neededPoints }: {
 							endAdornment  : <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.shopExpectedCost}
-						onClick={() => setShopDialog( true )}
+						onClick={() => setShopModalVisible( true )}
 					/>
-					<ShopDialog open={shopDialog} onClose={() => setShopDialog( false )}/>
+					<ShopModal open={shopModalVisible} onClose={() => setShopModalVisible( false )}/>
 				</Grid>
 				<Grid item sm={3} xs={6}>
 					<TextField
@@ -117,9 +117,9 @@ export default function EventFields( { time, neededPoints }: {
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.dailyExpected}
-						onClick={() => setDailyDialog( true )}
+						onClick={() => setDailyModalVisible( true )}
 					/>
-					<DailyDialog open={dailyDialog} onClose={() => setDailyDialog( false )}/>
+					<DailyModal open={dailyModalVisible} onClose={() => setDailyModalVisible( false )}/>
 				</Grid>
 				<Grid item sm={3} xs={6}>
 					<TextField

@@ -1,13 +1,13 @@
-import { Box, DialogContent, DialogContentText, DialogTitle, Grid, ListItemText, TextField } from '@material-ui/core';
+import { Box, DialogContent, Grid, ListItemText, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DataDisplay from '../../components/dataDisplay';
-import PageDialog from '../../components/pageDialog';
 
+import DataDisplay from '../../components/dataDisplay';
+import PageModal from '../../components/pageModal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
-export default function ShopDialog( { open, onClose }: {
+export default function ShopModal( { open, onClose }: {
 	open: boolean,
 	onClose: () => void
 } ) {
@@ -27,19 +27,19 @@ export default function ShopDialog( { open, onClose }: {
 		], [ 0, 0 ] ),
 		[ shop ] );
 	
-	return <PageDialog
+	return <PageModal
 		open={open}
 		onClose={onClose}
+		title='Shop Items'
 		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
-		<DialogTitle>Shop Items</DialogTitle>
 		<DialogContent style={{ padding: 0 }}>
-			<Box mx={2}>
+			<Box mx={2} mt={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>
-						<DialogContentText>Buyout Price: {buyoutCost}</DialogContentText>
+						<Typography>Buyout Price: {buyoutCost}</Typography>
 					</Grid>
 					<Grid item xs={6}>
-						<DialogContentText>Expected Price: {expectedCost}</DialogContentText>
+						<Typography>Expected Price: {expectedCost}</Typography>
 					</Grid>
 				</Grid>
 			</Box>
@@ -92,5 +92,5 @@ export default function ShopDialog( { open, onClose }: {
 				}}
 			/>
 		</DialogContent>
-	</PageDialog>;
+	</PageModal>;
 }

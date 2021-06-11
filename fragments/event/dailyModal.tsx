@@ -1,13 +1,13 @@
-import { DialogContent, DialogContentText, DialogTitle, Grid, TextField } from '@material-ui/core';
+import { DialogContent, Grid, TextField, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DataDisplay from '../../components/dataDisplay';
-import PageDialog from '../../components/pageDialog';
 
+import DataDisplay from '../../components/dataDisplay';
+import PageModal from '../../components/pageModal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
-export default function DailyDialog( { open, onClose }: {
+export default function DailyModal( { open, onClose }: {
 	open: boolean,
 	onClose: () => void
 } ) {
@@ -30,14 +30,14 @@ export default function DailyDialog( { open, onClose }: {
 		setDaily( [ ...daily ] );
 	}
 	
-	return <PageDialog
+	return <PageModal
 		open={open}
 		onClose={onClose}
+		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
-		<DialogTitle>Daily Points</DialogTitle>
 		<DialogContent style={{ padding: 0 }}>
 			<DataDisplay
-				title={<DialogContentText>Total Daily: {dailyTotal}</DialogContentText>}
+				title={<Typography>Total Daily: {dailyTotal}</Typography>}
 				data={daily}
 				tableProps={{
 					columnHeader: [
@@ -88,5 +88,5 @@ export default function DailyDialog( { open, onClose }: {
 				editable
 			/>
 		</DialogContent>
-	</PageDialog>;
+	</PageModal>;
 }

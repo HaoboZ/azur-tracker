@@ -50,7 +50,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 	}
 } ) );
 
-const Transition = React.forwardRef( ( props: TransitionProps, ref: React.Ref<unknown> ) =>
+const Transition = React.forwardRef( ( props: TransitionProps, ref: React.ForwardedRef<typeof Zoom> ) =>
 	<Zoom ref={ref} {...props}/> );
 
 export default function ShipDialog( { table, open, onClose, onExit, ship, equipBetter = [] }: {

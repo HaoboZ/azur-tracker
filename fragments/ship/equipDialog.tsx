@@ -26,7 +26,7 @@ import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 
-const Transition = React.forwardRef( ( props: TransitionProps, ref ) =>
+const Transition = React.forwardRef( ( props: TransitionProps, ref: React.ForwardedRef<typeof Zoom> ) =>
 	<Zoom ref={ref} {...props}/> );
 
 export default function EquipDialog( { open, onClose, info, selectedEquip }: {

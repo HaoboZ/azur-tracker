@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DataDisplay from '../../components/dataDisplay';
 
+import DataDisplay from '../../components/dataDisplay';
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 

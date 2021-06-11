@@ -6,7 +6,6 @@ import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 
 export default function VirtualDisplay( {
-	onClick,
 	RenderRow,
 	...table
 }: TableInstance & {
@@ -15,7 +14,9 @@ export default function VirtualDisplay( {
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
-	return wide
-		? <VirtualTable {...table} onClick={onClick}/>
-		: <VirtualList {...table} onClick={onClick} RenderRow={RenderRow}/>;
+	if ( wide ) {
+		return <VirtualTable {...table}/>;
+	} else {
+		return <VirtualList {...table} RenderRow={RenderRow}/>;
+	}
 }

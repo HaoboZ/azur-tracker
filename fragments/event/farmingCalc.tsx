@@ -2,8 +2,8 @@ import { Grid, TextField, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DataDisplay from '../../components/dataDisplay';
 
+import DataDisplay from '../../components/dataDisplay';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 
 export default function FarmingCalc( { remainingPoints }: {
