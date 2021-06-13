@@ -3,6 +3,7 @@ import { NextApiHandler } from 'next';
 import getDrive from '../../lib/driveData/getDrive';
 import getInfo from '../../lib/driveData/getInfo';
 
+// noinspection JSUnusedGlobalSymbols
 export default ( async function CheckData( req, res ) {
 	try {
 		const { checksum, lastSaved } = req.query;

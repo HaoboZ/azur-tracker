@@ -2866,6 +2866,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async-mutex@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "async-mutex@npm:0.3.1"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: 39468028c2d4f09157ca28a8037d0deae21999fa0fce6dfe893e7344789891211fc9363efe0889283f69a35730ed0ec604d552d041adeb8fab1262131d3e4431
+  languageName: node
+  linkType: hard
+
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
@@ -2911,6 +2920,7 @@ __metadata:
     "@types/sortablejs": ^1.10.6
     "@typescript-eslint/eslint-plugin": ^4.26.1
     "@typescript-eslint/parser": ^4.26.1
+    async-mutex: ^0.3.1
     babel-plugin-lodash: ^3.3.4
     body-scroll-lock: ^3.1.5
     clsx: ^1.1.1

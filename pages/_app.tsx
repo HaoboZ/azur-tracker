@@ -23,15 +23,16 @@ export default function _App( { Component, pageProps } ) {
 							user-scalable=no, viewport-fit=cover'
 					/>
 					
-					<link rel='manifest' href='app.webmanifest'/>
+					<link rel='manifest' href='/app.webmanifest'/>
+					<meta name='msapplication-config' content='/browserconfig.xml'/>
 					
-					<link rel='apple-touch-icon' href='icons/apple-icon-180.png'/>
+					<link rel='apple-touch-icon' href='/icons/apple-icon-180.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
 					<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
 					
-					<link rel='icon' type='image/png' sizes='32x32' href='icons/favicon-32x32.png'/>
-					<link rel='icon' type='image/png' sizes='16x16' href='icons/favicon-16x16.png'/>
-					<link rel='mask-icon' href='icons/safari-pinned-tab.svg' color='#039be5'/>
+					<link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png'/>
+					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>
+					<link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#039be5'/>
 					<meta name='msapplication-TileColor' content='#2d89ef'/>
 					<meta name='theme-color' content='#039be5'/>
 					

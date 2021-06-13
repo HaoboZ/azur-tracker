@@ -4,6 +4,7 @@ import getDrive from '../../lib/driveData/getDrive';
 import getFile from '../../lib/driveData/getFile';
 import getInfo from '../../lib/driveData/getInfo';
 
+// noinspection JSUnusedGlobalSymbols
 export default ( async function GetData( req, res ) {
 	try {
 		const drive = await getDrive( req );

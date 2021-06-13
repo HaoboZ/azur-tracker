@@ -15,6 +15,7 @@
 		"@material-ui/lab": "^4.0.0-alpha.58",
 		"@material-ui/styles": "^4.11.4",
 		"@next/bundle-analyzer": "^10.2.3",
+		"async-mutex": "^0.3.1",
 		"body-scroll-lock": "^3.1.5",
 		"clsx": "^1.1.1",
 		"googleapis": "^76.0.0",
