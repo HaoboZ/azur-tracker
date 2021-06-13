@@ -20,6 +20,7 @@ async function checkDataIntegrity() {
 }
 
 export async function setBackup() {
+	store.dispatch( setLastSaved( new Date().toISOString() ) );
 	if ( !navigator.onLine ) return;
 	await mutex.runExclusive( async () => {
 		const { valid, body } = await checkDataIntegrity();
@@ -28,12 +29,12 @@ export async function setBackup() {
 			await getBackup( false );
 			return;
 		}
-		const res = await fetch( '/api/setData', {
+		await fetch( `/api/setData?${new URLSearchParams( {
+			modifiedTime: store.getState().main.lastSaved
+		} )}`, {
 			method: 'POST',
 			body
 		} );
-		const { lastSaved } = await res.json();
-		store.dispatch( setLastSaved( lastSaved ) );
 	} );
 }
 

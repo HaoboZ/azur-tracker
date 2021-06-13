@@ -27,5 +27,4 @@ export default async function setFile(
 			media
 		} as drive_v3.Params$Resource$Files$Create );
 	}
-	return modifiedTime;
 }

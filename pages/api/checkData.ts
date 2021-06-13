@@ -9,6 +9,7 @@ export default ( async function CheckData( req, res ) {
 		const { checksum, lastSaved } = req.query;
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
+		
 		if ( checksum !== file.md5Checksum ) {
 			if ( lastSaved < file.modifiedTime )
 				res.json( '"prompt"' );
