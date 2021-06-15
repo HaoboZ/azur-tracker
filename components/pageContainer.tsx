@@ -1,7 +1,8 @@
-import { Box, Container, makeStyles, Theme, Typography, useMediaQuery } from '@material-ui/core';
+import { Container, makeStyles, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 
 import usePageHeight from '../lib/hooks/usePageHeight';
+import ActionTitle from './actionTitle';
 import ScrollTop from './scrollTop';
 
 const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
@@ -32,7 +33,7 @@ export default function PageContainer( { title, children }: {
 			maxWidth='md'
 			disableGutters={!wide}
 			className={classes.container}>
-			{title && <Typography variant='h6' component={Box} p={2}>{title}</Typography>}
+			<ActionTitle title={title}/>
 			{children}
 		</Container>
 	</div>;

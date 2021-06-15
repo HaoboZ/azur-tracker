@@ -891,7 +891,7 @@ export const equips: Equip[] = [
 		type  : type.F,
 		rarity: rarity.SR
 	},
-	{ id: 37240, name: 'A6M5 Zero', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
+	{ id: 37240, name: 'Type 0 Fighter Model 52', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
 	{
 		id    : 27060,
 		name  : 'Seafire FR.47',
@@ -1891,7 +1891,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'F6F Hellcat/E' ] ]                   : [ 3, ++a ],
 		[ map[ 'Seafang/E' ] ]                       : [ 3, ++a ],
 		[ map[ 'F8F Bearcat/SR' ] ]                  : [ 4, ++a ],
-		[ map[ 'A6M5 Zero/SR' ] ]                    : [ 4, ++a ],
+		[ map[ 'Type 0 Fighter Model 52/SR' ] ]      : [ 4, ++a ],
 		[ map[ 'Seafire FR.47/SR' ] ]                : [ 4, ++a ],
 		[ map[ 'F2A Buffalo (Thach Squadron)/SR' ] ] : [ 4, ++a ],
 		[ map[ 'Messerschmitt Me-155A/SR' ] ]        : [ 4, ++a ]

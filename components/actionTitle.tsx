@@ -1,6 +1,12 @@
-import { Box, Button, ButtonGroup, ButtonProps, Typography } from '@material-ui/core';
+import { Button, ButtonGroup, ButtonProps, makeStyles, Toolbar, Typography } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
 import React from 'react';
+
+const useStyles = makeStyles( {
+	fullTitle: {
+		flexGrow: 1
+	}
+} );
 
 export default function ActionTitle( { title = '', variant = 'h6', actions = [] }: {
 	title?: string,
@@ -11,8 +17,10 @@ export default function ActionTitle( { title = '', variant = 'h6', actions = [] 
 		props?: ButtonProps
 	}[]
 } ) {
-	return <Box display='flex' justifyContent='space-between' p={2}>
-		<Typography variant={variant}>{title}</Typography>
+	const classes = useStyles();
+	
+	return <Toolbar>
+		<Typography variant={variant} className={classes.fullTitle}>{title}</Typography>
 		<ButtonGroup>
 			{actions.map( ( { name, onClick, props }, index ) => <Button
 				key={index}
@@ -23,5 +31,5 @@ export default function ActionTitle( { title = '', variant = 'h6', actions = [] 
 				{name}
 			</Button> )}
 		</ButtonGroup>
-	</Box>;
+	</Toolbar>;
 }
