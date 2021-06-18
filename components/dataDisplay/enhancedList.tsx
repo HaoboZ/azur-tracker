@@ -8,7 +8,8 @@ import {
 	ListItemIcon,
 	ListProps,
 	makeStyles,
-	Paper
+	Paper,
+	Theme
 } from '@material-ui/core';
 import {
 	Add as AddIcon,
@@ -23,7 +24,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( theme: Theme ) => ( {
 	center      : {
 		alignItems      : 'center',
 		marginTop       : theme.spacing(),

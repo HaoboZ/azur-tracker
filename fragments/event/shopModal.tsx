@@ -73,7 +73,7 @@ export default function ShopModal( { open, onClose }: {
 							<Grid item xs={9}>
 								<ListItemText
 									primary={item.name}
-									secondary={'cost: ' + item.cost + ' amount: ' + item.amount}
+									secondary={`cost: ${item.cost} amount: ${item.amount}`}
 								/>
 							</Grid>
 							<Grid item xs={3}>

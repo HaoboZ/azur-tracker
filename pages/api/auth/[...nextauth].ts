@@ -15,9 +15,11 @@ export default NextAuth( {
 			clientId        : process.env.NEXT_PUBLIC_GOOGLE_ID,
 			clientSecret    : process.env.GOOGLE_SECRET,
 			authorizationUrl: GOOGLE_AUTHORIZATION_URL,
-			scope           : 'https://www.googleapis.com/auth/userinfo.profile ' +
-				'https://www.googleapis.com/auth/userinfo.email ' +
+			scope           : [
+				'https://www.googleapis.com/auth/userinfo.profile',
+				'https://www.googleapis.com/auth/userinfo.email',
 				'https://www.googleapis.com/auth/drive.appdata'
+			].join( ' ' )
 		} )
 	],
 	callbacks: {

@@ -15,6 +15,7 @@ import {
 import { TransitionProps } from '@material-ui/core/transitions';
 import { Alert } from '@material-ui/lab';
 import { reduce } from 'lodash';
+import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -113,10 +114,12 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						</Alert>
 					</Grid> : undefined}
 				<Grid item xs={5} component={Box} textAlign='center'>
-					<img
+					<Image
 						src={`/images/equips/${currentEquip.image}.png`}
 						alt={currentEquip.name}
-						style={{ maxWidth: '100%' }}
+						height={128}
+						width={128}
+						layout='intrinsic'
 						className={colorClasses[ rarityColors[ currentEquip.rarity ] ]}
 					/>
 				</Grid>
@@ -124,11 +127,13 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 					<Typography variant='h4' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item xs={5} component={Box} textAlign='center'>
-					<img
+					<Image
 						onClick={() => setEquip( equips[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
 						alt={equip.name}
-						style={{ maxWidth: '100%' }}
+						height={128}
+						width={128}
+						layout='intrinsic'
 						className={colorClasses[ rarityColors[ equip.rarity ] ]}
 					/>
 				</Grid>

@@ -1,6 +1,7 @@
 import { Box, makeStyles, TextField, Typography } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { Autocomplete } from '@material-ui/lab';
+import Image from 'next/image';
 import React from 'react';
 
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
@@ -27,9 +28,10 @@ export default function EquipFilter( { equipList, value, setValue }: {
 		onChange={( e, newValue: typeof equips[number] ) => setValue( newValue || equips[ 0 ] )}
 		renderOption={( option ) => <>
 			<Box pr={1}>
-				<img
+				<Image
 					src={`/images/equips/${option.image}.png`}
 					alt={option.name}
+					layout='fixed'
 					height={50}
 					width={50}
 					className={colorClasses[ rarityColors[ option.rarity ] ]}

@@ -20,7 +20,7 @@ import React from 'react';
 const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
 	<Slide direction='up' ref={ref} {...props}/> );
 
-const useStyles = makeStyles<Theme, { fitSize: boolean }>( ( theme ) => ( {
+const useStyles = makeStyles<Theme, { fitSize: boolean }>( ( theme: Theme ) => ( {
 	modal    : {
 		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 6 )}px)`,
 		height              : ( { fitSize } ) => fitSize ? 'auto' : '100%',

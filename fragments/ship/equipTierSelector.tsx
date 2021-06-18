@@ -1,4 +1,5 @@
 import { Box, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core';
+import Image from 'next/image';
 import React from 'react';
 
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
@@ -36,9 +37,10 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 			}}>
 			{equip.tier && <Typography>{equip.tier}</Typography>}
 			<Box px={1}>
-				<img
+				<Image
 					src={`/images/equips/${equip.image}.png`}
 					alt={equip.name}
+					layout='fixed'
 					height={50}
 					width={50}
 					className={colorClasses[ rarityColors[ equip.rarity ] ]}

@@ -1,7 +1,7 @@
 import { mapValues } from 'lodash';
 
-//([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\n
-//'$1':['$2','$3','$4','$5',$6,$7,'$8','$9','$10','$11','$12',$13,'$14',$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26],\n
+//([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\n
+//'$2':['$3','$4','$5','$6',$7,$8,'$9','$10','$11','$12','$13',$14,'$15',$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27],\n
 
 // noinspection JSNonASCIINames,NonAsciiCharacters
 const ships = {
@@ -487,7 +487,8 @@ const ships = {
 	'Odin'                          : [ 'Odin', 'Priority', 'Ironblood', 'Battlecruiser', 1, [], 'BB/Damage', 'T', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 7126, 361, 337, 241, 36, 0, 16, 171, 0, 0, 62 ],
 	'Champagne'                     : [ 'Champagne', 'Priority', 'Iris Libre', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Medium', 32, 6896, 454, 241, 0, 36, 0, 16, 181, 0, 0, 77 ],
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 0, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
-	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ]
+	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ],
+	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 6, [ 1, 1, 1, 1, 1 ], 'CL', 'DD', 'AA', 'A/CL1', 'ACL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
 };
 
 export const blankShip = {
@@ -495,7 +496,7 @@ export const blankShip = {
 	name     : 'No Ship',
 	link     : '',
 	rarity   : '',
-	nation   : '',
+	faction  : '',
 	type     : '',
 	tier     : '',
 	special  : '',
@@ -510,7 +511,7 @@ export default mapValues( ships, ( val, key ) => ( {
 	name     : val[ 0 ],
 	link     : `https://azurlane.koumakan.jp/${key}`,
 	rarity   : val[ 1 ],
-	nation   : val[ 2 ],
+	faction  : val[ 2 ],
 	type     : val[ 3 ],
 	tier     : val[ 4 ],
 	special  : val[ 5 ],
@@ -520,7 +521,7 @@ export default mapValues( ships, ( val, key ) => ( {
 	name: string,
 	link: string,
 	rarity: string,
-	nation: string,
+	faction: string,
 	type: string,
 	tier: number,
 	special: boolean[],

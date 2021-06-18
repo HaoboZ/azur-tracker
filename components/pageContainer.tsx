@@ -5,7 +5,7 @@ import usePageHeight from '../lib/hooks/usePageHeight';
 import ActionTitle from './actionTitle';
 import ScrollTop from './scrollTop';
 
-const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
+const useStyles = makeStyles<Theme, { height: number }>( ( theme: Theme ) => ( {
 	scroll   : ( { height } ) => ( {
 		[ theme.breakpoints.up( 'sm' ) ]  : {
 			minHeight: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`

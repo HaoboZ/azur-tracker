@@ -55,13 +55,10 @@ export default function Ship() {
 				onClick={() => onClick( row )}
 				ContainerProps={rowProps}>
 				<ListItemText
-					primary={<>
-						{row.values.name}
-						{' - Tier: '}{row.cells[ 4 ].render( 'Cell' )}
-						{' - '}{row.cells[ 6 ].render( 'Cell' )}
-						{' / '}{row.cells[ 5 ].render( 'Cell' )}
-					</>}
-					secondary={`${row.values.rarity} - ${row.values.nation} - ${row.values.type}`}
+					primary={`${row.values.name}\
+ - Tier: ${row.cells[ 4 ].render( 'Cell' )}\
+ - ${row.cells[ 6 ].render( 'Cell' )} / ${row.cells[ 5 ].render( 'Cell' )}`}
+					secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
 				/>
 				{/*@ts-expect-error: optional*/}
 				<ListItemSecondaryAction className={colorClasses[ row.cells[ 7 ].column.color?.( row.cells[ 7 ] ) ]}>

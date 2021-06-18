@@ -11,7 +11,7 @@ import { getBackup, setBackup } from '../lib/backup';
 import useTheme from '../lib/hooks/useTheme';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( theme: Theme ) => ( {
 	snack: {
 		[ theme.breakpoints.down( 'xs' ) ]: {
 			top: 'env(safe-area-inset-top)'

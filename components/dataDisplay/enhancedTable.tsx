@@ -8,7 +8,8 @@ import {
 	TableContainer,
 	TableContainerProps,
 	TableHead,
-	TableRow
+	TableRow,
+	Theme
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
 import React from 'react';
@@ -17,7 +18,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( theme: Theme ) => ( {
 	tableRows   : {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.action.focus

@@ -19,6 +19,7 @@ import {
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 import clsx from 'clsx';
+import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { TableInstance } from 'react-table';
@@ -30,7 +31,7 @@ import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipDialog from './equipDialog';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( theme: Theme ) => ( {
 	blankInput: {
 		'& .MuiInputBase-root.Mui-disabled'        : {
 			color: theme.palette.text.primary
@@ -103,10 +104,10 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 				<Grid item xs={4}>
 					<TextField
 						type='text'
-						label='Nation'
+						label='Faction'
 						disabled
 						className={classes.blankInput}
-						value={ship.nation}
+						value={ship.faction}
 					/>
 				</Grid>
 				<Grid item xs={4}>
@@ -183,10 +184,12 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 								setEquipInfo( { ship, index } );
 								setEquipOpen( true );
 							}}>
-							<img
+							<Image
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}
-								style={{ maxWidth: '100%' }}
+								height={128}
+								width={128}
+								layout='intrinsic'
 								className={colorClasses[ rarityColors[ equip.rarity ] ]}
 							/>
 							<TierIcon tier={val[ 2 ]}/>

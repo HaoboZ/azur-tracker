@@ -2,7 +2,7 @@ import React from 'react';
 import { Column } from 'react-table';
 
 import SVGIcon, { TierIcon } from '../../lib/icons';
-import { nationColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
+import { factionColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
 import { equippable, equipTier } from '../../lib/reference/equipRef';
 
 const Rarity = {
@@ -31,10 +31,10 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 				Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
 		},
 		{
-			Header  : 'Nation',
-			accessor: 'nation',
+			Header  : 'Faction',
+			accessor: 'faction',
 			minWidth: 20,
-			color   : ( { value } ) => nationColors[ value ]
+			color   : ( { value } ) => factionColors[ value ]
 		},
 		{
 			Header  : 'Type',

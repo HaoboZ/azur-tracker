@@ -1,11 +1,11 @@
-import { CircularProgress, Fade, makeStyles } from '@material-ui/core';
+import { CircularProgress, Fade, makeStyles, Theme } from '@material-ui/core';
 import React from 'react';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;
 const IndicatorContext = React.createContext<C>( async () => null );
 IndicatorContext.displayName = 'Indicator';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( theme: Theme ) => ( {
 	progress: {
 		position: 'fixed',
 		zIndex  : 1500,

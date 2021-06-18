@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import { CSSProperties } from 'react';
 
 export const
-	rarityColors = {
+	rarityColors  = {
 		'Decisive'  : 'rainbow',
 		'Ultra Rare': 'rainbow',
 		'UR'        : 'rainbow',
@@ -16,7 +16,7 @@ export const
 		'Common'    : 'gray',
 		'N'         : 'gray'
 	},
-	typeColors   = {
+	typeColors    = {
 		'Destroyer'             : 'blue',
 		'Light Cruiser'         : 'orange',
 		'Heavy Cruiser'         : 'orange',
@@ -32,7 +32,7 @@ export const
 		'Repair Ship'           : 'aqua',
 		'Munition Ship'         : 'aqua'
 	},
-	nationColors = {
+	factionColors = {
 		'Universal'          : 'gray',
 		'Eagle Union'        : 'blue',
 		'Royal Navy'         : 'royal',
@@ -49,7 +49,7 @@ export const
 		'Venus Vacation'     : 'venus',
 		'META'               : 'meta'
 	},
-	tierColors   = [
+	tierColors    = [
 		'rainbow',
 		'yellow',
 		'purple',
