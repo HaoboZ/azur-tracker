@@ -26,19 +26,27 @@ export default function Filters( { table, resetEquip } ) {
 	const dispatch = useDispatch();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
-	const globalFilter = useAsyncDebounce( ( value ) => {
-		table.setGlobalFilter( value );
-	}, 250 );
+	const globalFilter = useAsyncDebounce( ( value ) =>
+		table.setGlobalFilter( value ), 250 );
 	
-	const [ anchorEl, setAnchorEl ] = React.useState<null | HTMLElement>( null );
+	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
+	const searchRef = React.useRef<HTMLInputElement>();
 	
-	const handleClick = ( event: React.MouseEvent<HTMLButtonElement> ) => {
-		setAnchorEl( event.currentTarget );
-	};
-	
-	const handleClose = () => {
-		setAnchorEl( null );
-	};
+	React.useEffect( () => {
+		function search( e: KeyboardEvent ) {
+			if ( !searchRef.current ) return;
+			if ( e.ctrlKey && e.key === 'f' ) {
+				if ( document.activeElement === searchRef.current ) {
+					searchRef.current.select();
+				} else {
+					searchRef.current.focus();
+				}
+				e.preventDefault();
+			}
+		}
+		window.addEventListener( 'keydown', search );
+		return () => window.removeEventListener( 'keydown', search );
+	}, [] );
 	
 	return <Box mx={3} mb={2}>
 		<Grid container spacing={2}>
@@ -58,6 +66,7 @@ export default function Filters( { table, resetEquip } ) {
 					freeSolo
 					onInputChange={( e, value ) => globalFilter( value )}
 					renderInput={( params ) => <TextField
+						inputRef={searchRef}
 						{...params}
 						label='Search'
 						InputProps={{
@@ -72,10 +81,10 @@ export default function Filters( { table, resetEquip } ) {
 					? <Button
 						variant='contained'
 						fullWidth
-						onClick={handleClick}>
+						onClick={( e ) => setAnchorEl( e.currentTarget )}>
 						More
 					</Button>
-					: <IconButton onClick={handleClick}>
+					: <IconButton onClick={( e ) => setAnchorEl( e.currentTarget )}>
 						<MoreVertIcon/>
 					</IconButton>}
 			</Grid>
@@ -84,7 +93,7 @@ export default function Filters( { table, resetEquip } ) {
 			anchorEl={anchorEl}
 			keepMounted
 			open={Boolean( anchorEl )}
-			onClose={handleClose}>
+			onClose={() => setAnchorEl( null )}>
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SVGIcon( { name, ...props }: { name?: string } & React.SVGProps<SVGSVGElement> ) {
 	return <svg height={14} width={14} {...props}>
-		<use xlinkHref={`#${name}`}/>
+		<use href={`#${name}`}/>
 	</svg>;
 }
 

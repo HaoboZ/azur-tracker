@@ -19,6 +19,15 @@ export default function IndicatorProvider( { children } ) {
 	
 	const [ visible, setVisible ] = React.useState( false );
 	
+	React.useEffect( () => {
+		if ( !visible ) return;
+		function warn( e ) {
+			e.returnValue = 'Currently saving, are you sure you want to leave?';
+		}
+		window.addEventListener( 'beforeunload', warn );
+		return () => window.removeEventListener( 'beforeunload', warn );
+	}, [ visible ] );
+	
 	return <IndicatorContext.Provider value={async ( promise ) => {
 		setVisible( true );
 		if ( promise ) {

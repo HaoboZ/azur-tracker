@@ -488,7 +488,7 @@ const ships = {
 	'Champagne'                     : [ 'Champagne', 'Priority', 'Iris Libre', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Medium', 32, 6896, 454, 241, 0, 36, 0, 16, 181, 0, 0, 77 ],
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 0, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ],
-	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 6, [ 1, 1, 1, 1, 1 ], 'CL', 'DD', 'AA', 'A/CL1', 'ACL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
+	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 1, [ 1, 1, 1, 1, 1 ], 'CL', 'DD', 'AA', 'A/CL1', 'ACL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
 };
 
 export const blankShip = {
