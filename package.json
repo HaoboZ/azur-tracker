@@ -18,7 +18,7 @@
 		"async-mutex": "^0.3.1",
 		"body-scroll-lock": "^3.1.5",
 		"clsx": "^1.1.1",
-		"googleapis": "^76.0.0",
+		"googleapis": "^77.0.0",
 		"hash-wasm": "^4.7.0",
 		"json-stable-stringify": "^1.0.1",
 		"lodash": "^4.17.21",
@@ -52,7 +52,7 @@
 		"@types/jest": "^26.0.23",
 		"@types/json-stable-stringify": "^1.0.32",
 		"@types/lodash": "^4.14.170",
-		"@types/node": "^15.12.2",
+		"@types/node": "^15.12.4",
 		"@types/react": "^17.0.11",
 		"@types/react-redux": "^7.1.16",
 		"@types/react-swipeable-views": "^0.13.0",
@@ -64,7 +64,7 @@
 		"@typescript-eslint/parser": "^4.27.0",
 		"babel-plugin-lodash": "^3.3.4",
 		"cross-env": "^7.0.3",
-		"eslint": "^7.28.0",
+		"eslint": "^7.29.0",
 		"eslint-plugin-react": "^7.24.0",
 		"jest": "^27.0.4"
 	}
