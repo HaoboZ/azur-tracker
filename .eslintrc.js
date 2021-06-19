@@ -10,6 +10,11 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:@typescript-eslint/recommended'
 	],
+	settings     : {
+		react: {
+			version: 'detect'
+		}
+	},
 	parser       : '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: { jsx: true },
