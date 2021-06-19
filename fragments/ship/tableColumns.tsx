@@ -105,7 +105,7 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 				const equipBetter = rows.reduce( ( acc, row ) => {
 					acc[ row.id ] = row.values.equip.map( ( value, index ) => {
 						// ships that can equip the equipment
-						if ( !equippable[ row.values.equipType[ index ] ].includes( filterValue.type ) ) return 0;
+						if ( !equippable[ row.values.equipType[ index ] ]?.includes( filterValue.type ) ) return 0;
 						const tierList = equipTier[ row.values.equipType[ index ] ];
 						// is equipped already
 						if ( value?.[ 0 ] === filterValue.id ) return 6;
