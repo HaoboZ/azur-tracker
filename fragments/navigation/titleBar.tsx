@@ -7,8 +7,8 @@ import {
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Link from '../../components/Link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
-import Link from '../Link';
 
 const useStyles = makeStyles( ( theme: Theme ) => ( {
 	appBar: {

@@ -6,10 +6,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import smoothscroll from 'smoothscroll-polyfill';
 
-import Navigation from '../components/navigation';
 import { getBackup, setBackup } from '../lib/backup';
 import useTheme from '../lib/hooks/useTheme';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
+import Navigation from './navigation';
 
 const useStyles = makeStyles( ( theme: Theme ) => ( {
 	snack: {

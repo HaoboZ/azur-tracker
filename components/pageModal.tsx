@@ -22,7 +22,7 @@ const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRe
 
 const useStyles = makeStyles<Theme, { fitSize: boolean }>( ( theme: Theme ) => ( {
 	modal    : {
-		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 6 )}px)`,
+		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 4 )}px)`,
 		height              : ( { fitSize } ) => fitSize ? 'auto' : '100%',
 		borderTopLeftRadius : theme.spacing( 2 ),
 		borderTopRightRadius: theme.spacing( 2 )
@@ -41,7 +41,9 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 	open: boolean,
 	onClose: () => void,
 	title?: React.ReactNode,
+	// renders and called by save button if set
 	onSave?: () => void,
+	// make modal fit size of content or full page (default full page)
 	fitSize?: boolean,
 	children?: React.ReactNode
 } & Partial<Omit<ModalProps, 'onClose'>> ) {
