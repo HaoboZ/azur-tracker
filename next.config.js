@@ -1,16 +1,12 @@
+const bundleAnalyzer = require( '@next/bundle-analyzer' );
 const withPWA = require( 'next-pwa' );
 const runtimeCaching = require( 'next-pwa/cache' );
-const bundleAnalyzer = require( '@next/bundle-analyzer' );
 
 const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } );
 module.exports = withBundleAnalyzer( withPWA( {
 	webpack( config, { webpack } ) {
 		config.plugins.push( new webpack.IgnorePlugin( {
 			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
-		} ) );
-		config.plugins.push( new webpack.IgnorePlugin( {
-			resourceRegExp: /^\.\/locale$/,
-			contextRegExp : /moment$/
 		} ) );
 		return config;
 	},
