@@ -26,6 +26,8 @@ module.exports = {
 		'@typescript-eslint'
 	],
 	rules        : {
+		// possible errors
+		'no-empty': [ 'warn', { 'allowEmptyCatch': true } ],
 		// stylistic issues
 		'array-bracket-spacing'   : [ 'warn', 'always' ],
 		'comma-dangle'            : 'off',
@@ -75,6 +77,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-interface'            : [ 'warn', { allowSingleExtends: true } ],
 		'@typescript-eslint/no-explicit-any'               : 'off',
 		'@typescript-eslint/comma-dangle'                  : [ 'warn', 'never' ],
+		'@typescript-eslint/no-unused-vars'                : [ 'warn', { 'ignoreRestSiblings': true } ],
 		'@typescript-eslint/object-curly-spacing'          : [ 'warn', 'always' ],
 		'@typescript-eslint/semi'                          : [ 'warn', 'always' ]
 	},
