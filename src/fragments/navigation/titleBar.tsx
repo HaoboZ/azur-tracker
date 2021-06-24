@@ -1,4 +1,4 @@
-import { AppBar, Badge, Box, Button, IconButton, makeStyles, Theme, Toolbar } from '@material-ui/core';
+import { AppBar, Badge, Box, Button, IconButton, makeStyles, Toolbar } from '@material-ui/core';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from '../../components/Link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	appBar: {
 		paddingTop  : 'env(safe-area-inset-top)',
 		paddingLeft : 'env(safe-area-inset-left)',

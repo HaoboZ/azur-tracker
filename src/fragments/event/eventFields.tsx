@@ -1,4 +1,4 @@
-import { Box, Grid, InputAdornment, Link, makeStyles, TextField, Theme, Typography } from '@material-ui/core';
+import { Box, Grid, InputAdornment, Link, makeStyles, TextField, Typography } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
 import ShopModal from './shopModal';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	banner     : {
 		width   : '100%',
 		maxWidth: 700,

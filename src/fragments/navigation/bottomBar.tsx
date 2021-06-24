@@ -1,4 +1,4 @@
-import { AppBar, Badge, BottomNavigation, BottomNavigationAction, makeStyles, Theme } from '@material-ui/core';
+import { AppBar, Badge, BottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	statusBar           : {
 		position       : 'fixed',
 		top            : 0,

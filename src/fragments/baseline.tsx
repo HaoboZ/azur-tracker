@@ -11,7 +11,7 @@ import useTheme from '../lib/hooks/useTheme';
 import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
 import Navigation from './navigation';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	snack: {
 		[ theme.breakpoints.down( 'xs' ) ]: {
 			top: 'env(safe-area-inset-top)'

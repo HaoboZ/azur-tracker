@@ -31,7 +31,7 @@ import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipDialog from './equipDialog';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	blankInput: {
 		'& .MuiInputBase-root.Mui-disabled'        : {
 			color: theme.palette.text.primary

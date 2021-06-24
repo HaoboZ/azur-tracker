@@ -1,8 +1,8 @@
-import { Fab, makeStyles, Theme, useScrollTrigger, Zoom } from '@material-ui/core';
+import { Fab, makeStyles, useScrollTrigger, Zoom } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import React from 'react';
 
-const useStyles = makeStyles( ( theme: Theme ) => ( {
+const useStyles = makeStyles( ( theme ) => ( {
 	scrollUp: {
 		position                          : 'fixed',
 		zIndex                            : 1400,
