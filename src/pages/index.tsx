@@ -23,7 +23,7 @@ import Link from '../components/Link';
 import PageContainer from '../components/pageContainer';
 import { getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
-import { useIndicator } from '../lib/provider/indicatorProvider';
+import { useIndicator } from '../lib/providers/indicatorProvider';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import {
 	setAutoLoad,

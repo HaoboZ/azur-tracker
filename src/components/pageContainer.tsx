@@ -15,7 +15,8 @@ const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
 		}
 	} ),
 	container: {
-		overflowX: 'hidden'
+		overflowX: 'hidden',
+		minHeight: 'inherit'
 	}
 } ) );
 

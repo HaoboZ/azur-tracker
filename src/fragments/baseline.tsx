@@ -8,7 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 import { getBackup, setBackup } from '../lib/backup';
 import useTheme from '../lib/hooks/useTheme';
-import IndicatorProvider, { useIndicator } from '../lib/provider/indicatorProvider';
+import IndicatorProvider, { useIndicator } from '../lib/providers/indicatorProvider';
 import Navigation from './navigation';
 
 const useStyles = makeStyles( ( theme ) => ( {

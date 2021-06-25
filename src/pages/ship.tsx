@@ -52,7 +52,7 @@ export default function Ship() {
 			}}
 			RenderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider
-				onClick={() => onClick( row )}
+				onClick={() => onClick?.( row )}
 				ContainerProps={rowProps}>
 				<ListItemText
 					primary={<>
