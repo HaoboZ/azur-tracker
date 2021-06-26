@@ -50,7 +50,7 @@ export default function Ship() {
 				setSelectedRow( row );
 				setShipOpen( true );
 			}}
-			RenderRow={( { row, onClick, rowProps } ) => <ListItem
+			renderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider
 				onClick={() => onClick?.( row )}
 				ContainerProps={rowProps}>

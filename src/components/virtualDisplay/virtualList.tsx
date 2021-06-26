@@ -9,10 +9,10 @@ export default function VirtualList( {
 	rows,
 	prepareRow,
 	onClick,
-	RenderRow
+	renderRow
 }: TableInstance & {
 	onClick?: ( row: Row ) => void,
-	RenderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
+	renderRow: ( props: { row: Row, onClick: ( row: Row ) => void, rowProps } ) => React.ReactNode
 } ) {
 	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
@@ -29,11 +29,11 @@ export default function VirtualList( {
 				{( { index, style } ) => {
 					const row = rows[ index ];
 					prepareRow( row );
-					return <RenderRow
-						row={row}
-						onClick={onClick}
-						rowProps={row.getRowProps( { style } )}
-					/>;
+					return renderRow( {
+						row,
+						onClick,
+						rowProps: row.getRowProps( { style } )
+					} ) as React.ReactElement;
 				}}
 			</List>}
 		</ReactWindowScroller>
