@@ -59,10 +59,18 @@ export default function ShopModal( { open, onClose }: {
 						<TextField
 							key='name'
 							type='number'
-							value={shop[ item.name ] || 0}
+							value={shop[ item.name ]}
 							onChange={( e ) => {
-								shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
-								setShop( { ...shop } );
+								setShop( {
+									...shop,
+									[ item.name ]: e.target.value as any
+								} );
+							}}
+							onBlur={( e ) => {
+								setShop( {
+									...shop,
+									[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+								} );
 							}}
 						/>
 					]
@@ -80,10 +88,18 @@ export default function ShopModal( { open, onClose }: {
 								<TextField
 									type='number'
 									label='Wanted'
-									value={shop[ item.name ] || 0}
+									value={shop[ item.name ]}
 									onChange={( e ) => {
-										shop[ item.name ] = Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount );
-										setShop( { ...shop } );
+										setShop( {
+											...shop,
+											[ item.name ]: e.target.value as any
+										} );
+									}}
+									onBlur={( e ) => {
+										setShop( {
+											...shop,
+											[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+										} );
 									}}
 								/>
 							</Grid>

@@ -24,9 +24,11 @@ export default function DailyModal( { open, onClose }: {
 		() => daily.reduce( ( total, item ) => total + item.amount, 0 ),
 		[ daily ] );
 	
-	function modifyItem( index: number, item: { id?: string, name?: string, amount?: number } ) {
-		if ( 'amount' in item ) item.amount = Math.max( item.amount || 0, 0 );
-		daily[ index ] = { ...daily[ index ], ...item };
+	function modifyItem( index: number, item: { id?: string, name?: string, amount?: string | number } ) {
+		if ( 'amount' in item && typeof item.amount === 'number' ) {
+			item.amount = Math.max( item.amount || 0, 0 );
+		}
+		daily[ index ] = { ...daily[ index ], ...item } as any;
 		setDaily( [ ...daily ] );
 	}
 	
@@ -56,7 +58,8 @@ export default function DailyModal( { open, onClose }: {
 							key='amount'
 							type='number'
 							value={item.amount}
-							onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							onChange={( e ) => modifyItem( index, { amount: e.target.value } )}
+							onBlur={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
 						/>
 					]
 				}}
@@ -77,7 +80,8 @@ export default function DailyModal( { open, onClose }: {
 									type='number'
 									label='Amount'
 									value={item.amount}
-									onChange={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+									onChange={( e ) => modifyItem( index, { amount: e.target.value } )}
+									onBlur={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
 								/>
 							</Grid>
 						</Grid>;
