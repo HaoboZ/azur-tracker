@@ -21,7 +21,7 @@ export default function DailyModal( { open, onClose }: {
 	
 	// total points gained daily
 	const dailyTotal = React.useMemo(
-		() => daily.reduce( ( total, item ) => total + item.amount, 0 ),
+		() => daily.reduce( ( total, item ) => total + +item.amount, 0 ),
 		[ daily ] );
 	
 	function modifyItem( index: number, item: { id?: string, name?: string, amount?: string | number } ) {
