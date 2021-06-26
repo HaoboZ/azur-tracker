@@ -31,7 +31,7 @@ export default function IndicatorProvider( { children } ) {
 	return <IndicatorContext.Provider value={async ( promise ) => {
 		setVisible( true );
 		if ( promise ) {
-			promise.then( () => setVisible( false ) );
+			promise.finally( () => setVisible( false ) );
 		} else {
 			setTimeout( () => setVisible( false ), 1500 );
 		}
