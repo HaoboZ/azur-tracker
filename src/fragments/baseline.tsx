@@ -65,7 +65,7 @@ function Content( { children } ) {
 	
 	React.useEffect( () => {
 		if ( main.autoLoad && session ) indicator( getBackup() ).then();
-	}, [ session ] );
+	}, [ Boolean( session ) ] );
 	
 	React.useEffect( () => {
 		const interval = setInterval( () => {
