@@ -6,9 +6,10 @@ import { isEqual } from 'lodash';
 import { store } from './store';
 import { importBackup, setLastSaved, setNewData } from './store/reducers/mainReducer';
 
-const mutex = new Mutex();
+export const backupMutex = new Mutex();
 
-async function checkDataIntegrity() {
+export async function checkDataIntegrity() {
+	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
 	const body = stringify( state );
 	const res = await fetch( `/api/checkData?${new URLSearchParams( {
@@ -19,43 +20,42 @@ async function checkDataIntegrity() {
 	return { valid, body };
 }
 
-export async function setBackup() {
+export async function setBackup( integrity ) {
+	if ( !integrity ) {
+		store.dispatch( setLastSaved( new Date().toISOString() ) );
+		return;
+	}
+	const { valid, body } = integrity;
+	if ( !valid ) return;
+	if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
+		await getBackup( integrity, false );
+		return;
+	}
 	store.dispatch( setLastSaved( new Date().toISOString() ) );
-	if ( !navigator.onLine ) return;
-	await mutex.runExclusive( async () => {
-		const { valid, body } = await checkDataIntegrity();
-		if ( !valid ) return;
-		if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
-			await getBackup( false );
-			return;
-		}
-		await fetch( `/api/setData?${new URLSearchParams( {
-			modifiedTime: store.getState().main.lastSaved
-		} )}`, {
-			method: 'POST',
-			body
-		} );
+	await fetch( `/api/setData?${new URLSearchParams( {
+		modifiedTime: store.getState().main.lastSaved
+	} )}`, {
+		method: 'POST',
+		body
 	} );
 }
 
-export async function getBackup( check = true ) {
-	if ( !navigator.onLine ) return;
-	await mutex.runExclusive( async () => {
-		if ( check ) {
-			const { valid } = await checkDataIntegrity();
-			if ( !valid ) return;
-			if ( valid === 'update' ) {
-				await setBackup();
-				return;
-			}
+export async function getBackup( integrity, check = true ) {
+	if ( !integrity ) return;
+	if ( check ) {
+		const { valid } = integrity;
+		if ( !valid ) return;
+		if ( valid === 'update' ) {
+			await setBackup( integrity );
+			return;
 		}
-		const res = await fetch( '/api/getData' );
-		const { data, lastSaved } = await res.json();
-		store.dispatch( setLastSaved( lastSaved ) );
-		const state = store.getState();
-		const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );
-		// noinspection CommaExpressionJS
-		store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
-		store.dispatch( importBackup( data ) );
-	} );
+	}
+	const res = await fetch( '/api/getData' );
+	const { data, lastSaved } = await res.json();
+	store.dispatch( setLastSaved( lastSaved ) );
+	const state = store.getState();
+	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );
+	// noinspection CommaExpressionJS
+	store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
+	store.dispatch( importBackup( data ) );
 }

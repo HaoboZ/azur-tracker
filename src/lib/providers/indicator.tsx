@@ -33,7 +33,7 @@ export default function IndicatorProvider( { children } ) {
 		if ( promise ) {
 			promise.finally( () => setVisible( false ) );
 		} else {
-			setTimeout( () => setVisible( false ), 1500 );
+			setTimeout( () => setVisible( false ), 1000 );
 		}
 		return await promise;
 	}}>

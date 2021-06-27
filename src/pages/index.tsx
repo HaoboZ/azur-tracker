@@ -21,9 +21,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Link from '../components/Link';
 import PageContainer from '../components/pageContainer';
-import { getBackup, setBackup } from '../lib/backup';
+import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
-import { useIndicator } from '../lib/providers/indicatorProvider';
+import { useIndicator } from '../lib/providers/indicator';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import {
 	setAutoLoad,
@@ -138,7 +138,8 @@ export default function Home() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
-										await indicator( setBackup() );
+										await backupMutex.runExclusive( async () =>
+											await indicator( setBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -156,7 +157,8 @@ export default function Home() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
-										await indicator( getBackup() );
+										await backupMutex.runExclusive( async () =>
+											await indicator( getBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
