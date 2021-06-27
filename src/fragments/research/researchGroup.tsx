@@ -1,17 +1,9 @@
-import {
-	Avatar,
-	Grid,
-	InputAdornment,
-	ListItemAvatar,
-	ListItemText,
-	makeStyles,
-	TextField,
-	Typography
-} from '@material-ui/core';
+import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DataDisplay from '../../components/dataDisplay';
+import FormattedTextField from '../../components/formattedTextField';
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
@@ -89,15 +81,15 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							/>
 							<Typography>{item.name}</Typography>
 						</>,
-						<TextField
+						<FormattedTextField
 							key='devLevel'
 							type='number'
 							inputProps={{ inputMode: 'numeric' }}
 							value={ship.devLevel || 0}
-							onChange={( e ) => dispatch( research_modifyShip( item.name,
-								{ devLevel: parseInt( e.target.value ) } ) )}
+							onChange={( e ) =>
+								dispatch( research_modifyShip( item.name, { devLevel: parseInt( e.target.value ) } ) )}
 						/>,
-						<TextField
+						<FormattedTextField
 							key='devStage'
 							type='number'
 							inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
@@ -107,21 +99,22 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								</InputAdornment>
 							}}
 							value={ship.devStage || 0}
-							onChange={( e ) => dispatch( research_modifyShip( item.name,
-								{ devStage: parseInt( e.target.value ) },
-								devLevel[ item.type * 2 ] * 10 ) )}
+							onChange={( e ) =>
+								dispatch( research_modifyShip( item.name,
+									{ devStage: parseInt( e.target.value ) },
+									devLevel[ item.type * 2 ] * 10 ) )}
 						/>,
 						<Typography key='devPrints'>{devPrints}</Typography>,
 						...( item.fate ? [
-							<TextField
+							<FormattedTextField
 								key='fateLevel'
 								type='number'
 								inputProps={{ inputMode: 'numeric' }}
 								value={ship.fateLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ fateLevel: parseInt( e.target.value ) } ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name, { fateLevel: parseInt( e.target.value ) } ) )}
 							/>,
-							<TextField
+							<FormattedTextField
 								key='fateStage'
 								type='number'
 								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
@@ -129,8 +122,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
 								}}
 								value={ship.fateStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ fateStage: parseInt( e.target.value ) } ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name, { fateStage: parseInt( e.target.value ) } ) )}
 							/>,
 							<Typography key='fatePrints'>{fatePrints}</Typography>
 						] : Array( 3 ) )
@@ -159,7 +152,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 					const { devLevel } = shipData[ index ];
 					return <Grid container spacing={2}>
 						<Grid item xs={6}>
-							<TextField
+							<FormattedTextField
 								type='number'
 								size='small'
 								inputProps={{ inputMode: 'numeric' }}
@@ -167,10 +160,10 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									startAdornment: <InputAdornment position='start'>Dev Level</InputAdornment>
 								}}
 								value={ship.devLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ devLevel: parseInt( e.target.value ) } ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name, { devLevel: parseInt( e.target.value ) } ) )}
 							/>
-							<TextField
+							<FormattedTextField
 								type='number'
 								size='small'
 								inputProps={{
@@ -185,13 +178,14 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									</InputAdornment>
 								}}
 								value={ship.devStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ devStage: parseInt( e.target.value ) },
-									devLevel[ item.type * 2 ] * 10 ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name,
+										{ devStage: parseInt( e.target.value ) },
+										devLevel[ item.type * 2 ] * 10 ) )}
 							/>
 						</Grid>
 						{item.fate && <Grid item xs={6}>
-							<TextField
+							<FormattedTextField
 								type='number'
 								size='small'
 								inputProps={{ inputMode: 'numeric' }}
@@ -199,10 +193,10 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									startAdornment: <InputAdornment position='start'>Fate Level</InputAdornment>
 								}}
 								value={ship.fateLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ fateLevel: parseInt( e.target.value ) } ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name, { fateLevel: parseInt( e.target.value ) } ) )}
 							/>
-							<TextField
+							<FormattedTextField
 								type='number'
 								size='small'
 								inputProps={{
@@ -215,8 +209,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									endAdornment  : <InputAdornment position='end'>%</InputAdornment>
 								}}
 								value={ship.fateStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( item.name,
-									{ fateStage: parseInt( e.target.value ) } ) )}
+								onChange={( e ) =>
+									dispatch( research_modifyShip( item.name, { fateStage: parseInt( e.target.value ) } ) )}
 							/>
 						</Grid>}
 					</Grid>;

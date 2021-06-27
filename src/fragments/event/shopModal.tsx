@@ -1,8 +1,9 @@
-import { Box, DialogContent, Grid, ListItemText, TextField, Typography } from '@material-ui/core';
+import { Box, DialogContent, Grid, ListItemText, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DataDisplay from '../../components/dataDisplay';
+import FormattedTextField from '../../components/formattedTextField';
 import PageModal from '../../components/pageModal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
@@ -56,17 +57,11 @@ export default function ShopModal( { open, onClose }: {
 						item.name,
 						item.cost,
 						item.amount,
-						<TextField
+						<FormattedTextField
 							key='name'
 							type='number'
 							value={shop[ item.name ]}
 							onChange={( e ) => {
-								setShop( {
-									...shop,
-									[ item.name ]: e.target.value as any
-								} );
-							}}
-							onBlur={( e ) => {
 								setShop( {
 									...shop,
 									[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
@@ -85,17 +80,11 @@ export default function ShopModal( { open, onClose }: {
 								/>
 							</Grid>
 							<Grid item xs={3}>
-								<TextField
+								<FormattedTextField
 									type='number'
 									label='Wanted'
 									value={shop[ item.name ]}
 									onChange={( e ) => {
-										setShop( {
-											...shop,
-											[ item.name ]: e.target.value as any
-										} );
-									}}
-									onBlur={( e ) => {
 										setShop( {
 											...shop,
 											[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )

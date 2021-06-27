@@ -3,6 +3,7 @@ import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import FormattedTextField from '../../components/formattedTextField';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
@@ -94,7 +95,7 @@ export default function EventFields( { time, neededPoints }: {
 					</Typography>
 				</Grid>
 				<Grid item sm={3} xs={6}>
-					<TextField
+					<FormattedTextField
 						type='text'
 						label='Shop'
 						inputProps={{ className: classes.rightInput }}
@@ -136,7 +137,7 @@ export default function EventFields( { time, neededPoints }: {
 					/>
 				</Grid>
 				<Grid item sm={3} xs={6}>
-					<TextField
+					<FormattedTextField
 						type='number'
 						label='Current Points'
 						inputProps={{
@@ -148,7 +149,8 @@ export default function EventFields( { time, neededPoints }: {
 							endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 						}}
 						value={event.points}
-						onChange={( e ) => dispatch( event_setPoints( parseInt( e.target.value ) ) )}
+						onChange={( e ) =>
+							dispatch( event_setPoints( parseInt( e.target.value ) ) )}
 					/>
 				</Grid>
 			</Grid>

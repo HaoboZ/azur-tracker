@@ -1,9 +1,10 @@
-import { DialogContent, Grid, TextField, Typography } from '@material-ui/core';
+import { DialogContent, Grid, Typography } from '@material-ui/core';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import DataDisplay from '../../components/dataDisplay';
+import FormattedTextField from '../../components/formattedTextField';
 import PageModal from '../../components/pageModal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
@@ -47,19 +48,20 @@ export default function DailyModal( { open, onClose }: {
 						'Amount'
 					],
 					columns     : ( item, index ) => [
-						<TextField
+						<FormattedTextField
 							key='name'
 							type='text'
 							fullWidth
 							value={item.name}
-							onChange={( e ) => modifyItem( index, { name: e.target.value } )}
+							onChange={( e ) =>
+								modifyItem( index, { name: e.target.value } )}
 						/>,
-						<TextField
+						<FormattedTextField
 							key='amount'
 							type='number'
 							value={item.amount}
-							onChange={( e ) => modifyItem( index, { amount: e.target.value } )}
-							onBlur={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							onChange={( e ) =>
+								modifyItem( index, { amount: parseInt( e.target.value ) } )}
 						/>
 					]
 				}}
@@ -67,21 +69,22 @@ export default function DailyModal( { open, onClose }: {
 					renderRow( item, index ) {
 						return <Grid container spacing={2}>
 							<Grid item xs={9}>
-								<TextField
+								<FormattedTextField
 									type='text'
 									fullWidth
 									label='Name'
 									value={item.name}
-									onChange={( e ) => modifyItem( index, { name: e.target.value } )}
+									onChange={( e ) =>
+										modifyItem( index, { name: e.target.value } )}
 								/>
 							</Grid>
 							<Grid item xs={3}>
-								<TextField
+								<FormattedTextField
 									type='number'
 									label='Amount'
 									value={item.amount}
-									onChange={( e ) => modifyItem( index, { amount: e.target.value } )}
-									onBlur={( e ) => modifyItem( index, { amount: parseInt( e.target.value ) } )}
+									onChange={( e ) =>
+										modifyItem( index, { amount: parseInt( e.target.value ) } )}
 								/>
 							</Grid>
 						</Grid>;

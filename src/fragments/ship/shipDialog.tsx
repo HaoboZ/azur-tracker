@@ -129,8 +129,8 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 							fullWidth
 							value={ship.love}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={( e ) => dispatch( ship_setShip( ship.id,
-								{ love: e.target.value as number } ) )}>
+							onChange={( e ) =>
+								dispatch( ship_setShip( ship.id, { love: e.target.value as number } ) )}>
 							<MenuItem value={0}>
 								<SVGIcon name='emptyHeart'/>
 							</MenuItem>
@@ -154,8 +154,8 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 							fullWidth
 							value={ship.lvl}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={( e ) => dispatch( ship_setShip( ship.id,
-								{ lvl: e.target.value as number } ) )}>
+							onChange={( e ) =>
+								dispatch( ship_setShip( ship.id, { lvl: e.target.value as number } ) )}>
 							<MenuItem value={0}>0</MenuItem>
 							<MenuItem value={70}>70</MenuItem>
 							<MenuItem value={80}>80</MenuItem>
