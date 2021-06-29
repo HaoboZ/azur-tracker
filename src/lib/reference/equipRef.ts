@@ -1667,7 +1667,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'DD'         : {
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, a = 0 ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 0, ++a ],
-		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
