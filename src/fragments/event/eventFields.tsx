@@ -13,7 +13,6 @@ const useStyles = makeStyles( ( theme ) => ( {
 	banner     : {
 		width   : '100%',
 		maxWidth: 700,
-		display : 'block',
 		margin  : 'auto'
 	},
 	rightInput : {
@@ -53,7 +52,7 @@ export default function EventFields( { time, neededPoints }: {
 	const [ dailyModalVisible, setDailyModalVisible ] = React.useState( false );
 	
 	return <Grid container spacing={2}>
-		<Grid item xs={12} component={Box} mx='auto'>
+		<Grid item container xs={12} justify='center'>
 			<Link
 				href={eventRef.link}
 				target='_blank'>
@@ -64,7 +63,7 @@ export default function EventFields( { time, neededPoints }: {
 				/>
 			</Link>
 		</Grid>
-		<Grid item xs={12} component={Box} textAlign='center'>
+		<Grid item container xs={12} justify='center'>
 			<Typography variant='h6' color='textPrimary'>
 				{eventRef.name}
 			</Typography>

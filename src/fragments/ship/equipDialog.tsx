@@ -113,7 +113,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 							Special Equip Slot (Check Skills & Equipment)
 						</Alert>
 					</Grid> : undefined}
-				<Grid item xs={5} component={Box} textAlign='center'>
+				<Grid item container xs={5} justify='center'>
 					<Image
 						src={`/images/equips/${currentEquip.image}.png`}
 						alt={currentEquip.name}
@@ -126,7 +126,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				<Grid item xs={2}>
 					<Typography variant='h4' align='center'>⇒</Typography>
 				</Grid>
-				<Grid item xs={5} component={Box} textAlign='center'>
+				<Grid item container xs={5} justify='center'>
 					<Image
 						onClick={() => setEquip( equips[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
@@ -137,24 +137,26 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						className={colorClasses[ rarityColors[ equip.rarity ] ]}
 					/>
 				</Grid>
-				<Grid item xs={5} component={Box} textAlign='center'>
+				<Grid item container xs={5} justify='center'>
 					<Link
 						target='_blank'
 						href={`https://azurlane.koumakan.jp/${unescape( currentEquip.image.replace( '$', '%' ) )}`}
+						align='center'
 						color='textPrimary'>
 						{currentEquip.name}
 					</Link>
 				</Grid>
 				<Grid item xs={2}/>
-				<Grid item xs={5} component={Box} textAlign='center'>
+				<Grid item container xs={5} justify='center'>
 					<Link
 						target='_blank'
 						href={`https://azurlane.koumakan.jp/${unescape( equip.image.replace( '$', '%' ) )}`}
+						align='center'
 						color='textPrimary'>
 						{equip.name}
 					</Link>
 				</Grid>
-				<Grid item xs={12} md={6} component={Box} textAlign='center'>
+				<Grid item container xs={12} md={6} justify='center'>
 					<Button
 						variant='outlined'
 						onClick={( e ) => setAnchorEl( e.currentTarget )}>

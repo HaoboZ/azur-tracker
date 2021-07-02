@@ -50,7 +50,7 @@ interface Equip {
 	rarity: rarity
 }
 
-export const version = '2021-06-03';
+export const version = '2021-07-01';
 
 // list of equips sorted by type
 export const equips: Equip[] = [
@@ -1207,6 +1207,7 @@ export const equips: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
+	{ id: 960, name: 'FuMO 25', image: 'Funkmess-Ortung_25_Radar', type: type.A, rarity: rarity.SR },
 	{ id: 89080, name: 'Gamers Mark', image: 'Gamers_Mark', type: type.A, rarity: rarity.SR },
 	{
 		id    : 540,
@@ -2116,15 +2117,17 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'A/BM1': {
 		[ map[ 'Repair Toolkit/E' ] ]                   : [ 0, a = 0 ],
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 1, ++a ],
+		[ map[ 'FuMO 25/SR' ] ]                         : [ 1, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]               : [ 2, ++a ]
 	},
 	'A/BM2': {
 		[ map[ 'High Standard Fire-Control Radar/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'SG Radar/SR' ] ]                        : [ 0, ++a ],
+		[ map[ 'FuMO 25/SR' ] ]                         : [ 0, ++a ],
 		[ map[ 'Fire Control Radar/E' ] ]               : [ 1, ++a ],
 		[ map[ 'Repair Toolkit/E' ] ]                   : [ 1, ++a ],
-		[ map[ 'SG Radar/E' ] ]                         : [ 2, ++a ],
-		[ map[ 'Fire Suppressor/R' ] ]                  : [ 3, ++a ]
+		[ map[ 'SG Radar/SR' ] ]                        : [ 2, ++a ],
+		[ map[ 'Fire Suppressor/R' ] ]                  : [ 3, ++a ],
+		[ map[ 'SG Radar/E' ] ]                         : [ 3, ++a ]
 	},
 	'A/AE1': {
 		[ map[ 'Beaver Squad Tag/SR' ] ]: [ 0, a = 0 ],
