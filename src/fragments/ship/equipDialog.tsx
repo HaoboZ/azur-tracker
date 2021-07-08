@@ -106,14 +106,14 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 		}}>
 		<DialogTitle>Switch Equipment?</DialogTitle>
 		<DialogContent>
-			<Grid container alignItems='center' justify='center'>
+			<Grid container alignItems='center' justifyContent='center'>
 				{info?.ship.special[ info.index ] ?
 					<Grid item xs={12} component={Box} pb={2}>
 						<Alert severity='warning' variant='filled'>
 							Special Equip Slot (Check Skills & Equipment)
 						</Alert>
 					</Grid> : undefined}
-				<Grid item container xs={5} justify='center'>
+				<Grid item container xs={5} justifyContent='center'>
 					<Image
 						src={`/images/equips/${currentEquip.image}.png`}
 						alt={currentEquip.name}
@@ -126,7 +126,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				<Grid item xs={2}>
 					<Typography variant='h4' align='center'>⇒</Typography>
 				</Grid>
-				<Grid item container xs={5} justify='center'>
+				<Grid item container xs={5} justifyContent='center'>
 					<Image
 						onClick={() => setEquip( equips[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
@@ -137,7 +137,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						className={colorClasses[ rarityColors[ equip.rarity ] ]}
 					/>
 				</Grid>
-				<Grid item container xs={5} justify='center'>
+				<Grid item container xs={5} justifyContent='center'>
 					<Link
 						target='_blank'
 						href={`https://azurlane.koumakan.jp/${unescape( currentEquip.image.replace( '$', '%' ) )}`}
@@ -147,7 +147,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 					</Link>
 				</Grid>
 				<Grid item xs={2}/>
-				<Grid item container xs={5} justify='center'>
+				<Grid item container xs={5} justifyContent='center'>
 					<Link
 						target='_blank'
 						href={`https://azurlane.koumakan.jp/${unescape( equip.image.replace( '$', '%' ) )}`}
@@ -156,7 +156,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						{equip.name}
 					</Link>
 				</Grid>
-				<Grid item container xs={12} md={6} justify='center'>
+				<Grid item container xs={12} md={6} justifyContent='center'>
 					<Button
 						variant='outlined'
 						onClick={( e ) => setAnchorEl( e.currentTarget )}>

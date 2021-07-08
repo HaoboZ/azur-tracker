@@ -173,7 +173,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs={12} container alignItems='center' justify='center'>
+				<Grid item xs={12} container alignItems='center' justifyContent='center'>
 					{ship.equip.map( ( val, index ) => {
 						const equip = equipsIndex[ val[ 0 ] ] || equips[ 0 ];
 						return <Grid

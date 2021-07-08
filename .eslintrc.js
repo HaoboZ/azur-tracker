@@ -62,6 +62,7 @@ module.exports = {
 			'beforeClosing'    : 'never'
 		} ],
 		// typescript
+		'@typescript-eslint/ban-ts-comment'                : 'off',
 		'@typescript-eslint/ban-types'                     : 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/member-delimiter-style'        : [ 'warn', {
@@ -77,6 +78,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-interface'            : [ 'warn', { allowSingleExtends: true } ],
 		'@typescript-eslint/no-explicit-any'               : 'off',
 		'@typescript-eslint/comma-dangle'                  : [ 'warn', 'never' ],
+		'@typescript-eslint/no-non-null-assertion'         : 'off',
 		'@typescript-eslint/no-unused-vars'                : [ 'warn', { ignoreRestSiblings: true } ],
 		'@typescript-eslint/object-curly-spacing'          : [ 'warn', 'always' ],
 		'@typescript-eslint/semi'                          : [ 'warn', 'always' ]

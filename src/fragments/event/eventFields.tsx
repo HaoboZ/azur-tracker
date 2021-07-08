@@ -52,7 +52,7 @@ export default function EventFields( { time, neededPoints }: {
 	const [ dailyModalVisible, setDailyModalVisible ] = React.useState( false );
 	
 	return <Grid container spacing={2}>
-		<Grid item container xs={12} justify='center'>
+		<Grid item container xs={12} justifyContent='center'>
 			<Link
 				href={eventRef.link}
 				target='_blank'>
@@ -63,7 +63,7 @@ export default function EventFields( { time, neededPoints }: {
 				/>
 			</Link>
 		</Grid>
-		<Grid item container xs={12} justify='center'>
+		<Grid item container xs={12} justifyContent='center'>
 			<Typography variant='h6' color='textPrimary'>
 				{eventRef.name}
 			</Typography>
@@ -88,7 +88,7 @@ export default function EventFields( { time, neededPoints }: {
 						defaultValue={moment( eventRef.endDate ).format( 'l LT' )}
 					/>
 				</Grid>
-				<Grid item container sm={4} xs={12} justify='center' alignItems='center'>
+				<Grid item container sm={4} xs={12} justifyContent='center' alignItems='center'>
 					<Typography>
 						End{time.isBefore( eventRef.endDate ) ? 's' : 'ed'} {time.to( eventRef.endDate )}
 					</Typography>

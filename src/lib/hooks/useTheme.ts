@@ -1,4 +1,4 @@
-import { createMuiTheme, PaletteType, useMediaQuery } from '@material-ui/core';
+import { createTheme, PaletteType, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -16,7 +16,7 @@ export default function useTheme() {
 		}
 	}, [ main.theme, dark ] );
 	
-	return createMuiTheme( {
+	return createTheme( {
 		palette: {
 			type,
 			primary  : { main: '#039be5' },

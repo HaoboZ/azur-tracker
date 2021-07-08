@@ -29,20 +29,7 @@ export default function Ship() {
 		dispatch( ship_checkVersion() );
 	}, [] );
 	
-	// noinspection CssUnusedSymbol
 	return <PageContainer title='Ship Tracker'>
-		{ /*language=css*/}
-		<style global jsx>{`
-			.MuiTableCell-sizeSmall {
-				padding: 6px 8px !important;
-				white-space: nowrap;
-				overflow: hidden;
-			}
-			
-			.MuiTableRow-hover:hover {
-				cursor: pointer;
-			}
-		`}</style>
 		<Filters table={table} resetEquip={() => setEquipBetter( { filter: undefined, value: {} } )}/>
 		<VirtualDisplay
 			{...table}
@@ -63,7 +50,7 @@ export default function Ship() {
 					</>}
 					secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
 				/>
-				{/*@ts-expect-error: optional*/}
+				{/*@ts-ignore*/}
 				<ListItemSecondaryAction className={colorClasses[ row.cells[ 7 ].column.color?.( row.cells[ 7 ] ) ]}>
 					{row.cells[ 7 ].render( 'Cell' )}
 				</ListItemSecondaryAction>

@@ -1,10 +1,22 @@
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import { makeStyles, Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../lib/reference/colors';
+
+const useStyles = makeStyles( {
+	row : {
+		'&:hover': {
+			cursor: 'pointer'
+		}
+	},
+	cell: {
+		whiteSpace: 'nowrap',
+		overflow  : 'hidden'
+	}
+} );
 
 export default function VirtualTable( {
 	getTableProps,
@@ -14,6 +26,7 @@ export default function VirtualTable( {
 	prepareRow,
 	onClick
 }: TableInstance & { onClick?: ( row: Row ) => void } ) {
+	const classes = useStyles();
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
@@ -56,12 +69,14 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
+							classes={{ hover: classes.row }}
 							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								// @ts-expect-error: optional
+								classes={{ sizeSmall: classes.cell }}
+								// @ts-ignore
 								className={colorClasses[ cell.column.color?.( cell ) ]}
 								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>
 								{cell.render( 'Cell' )}
