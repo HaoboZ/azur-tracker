@@ -35,7 +35,7 @@ export default function VirtualTable( {
 	const [ headerStyle, setHeaderStyle ] = React.useState( {} );
 	
 	React.useEffect( () => {
-		setHeaderStyle( { marginRight: ( firstRow?.offsetWidth - firstRow?.clientWidth ) || 0 } );
+		setHeaderStyle( { marginRight:  firstRow?.offsetWidth - firstRow?.clientWidth  || 0 } );
 	}, [ firstRow, rows ] );
 	
 	return <Table size='small' component={Paper} {...getTableProps()}>

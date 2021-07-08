@@ -32,11 +32,15 @@ module.exports = {
 		'array-bracket-spacing'   : [ 'warn', 'always' ],
 		'comma-dangle'            : 'off',
 		'indent'                  : [ 'warn', 'tab', { VariableDeclarator: 'first' } ],
+		'jsx-quotes'              : [ 'warn', 'prefer-single' ],
 		'key-spacing'             : [ 'off', { align: 'colon' } ],
+		'no-extra-parens'         : [ 'warn', 'all' ],
 		'no-mixed-spaces-and-tabs': [ 'warn', 'smart-tabs' ],
+		'no-trailing-spaces'      : [ 'warn', { skipBlankLines: true } ],
 		'object-curly-spacing'    : 'off',
 		'quotes'                  : [ 'warn', 'single' ],
 		'semi'                    : 'off',
+		'space-in-parens'         : [ 'warn', 'always' ],
 		// react
 		'react/display-name'                 : 'off',
 		'react/function-component-definition': [ 'warn', {
@@ -64,6 +68,7 @@ module.exports = {
 		// typescript
 		'@typescript-eslint/ban-ts-comment'                : 'off',
 		'@typescript-eslint/ban-types'                     : 'off',
+		'@typescript-eslint/comma-dangle'                  : [ 'warn', 'never' ],
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/member-delimiter-style'        : [ 'warn', {
 			multiline : {
@@ -77,7 +82,6 @@ module.exports = {
 		} ],
 		'@typescript-eslint/no-empty-interface'            : [ 'warn', { allowSingleExtends: true } ],
 		'@typescript-eslint/no-explicit-any'               : 'off',
-		'@typescript-eslint/comma-dangle'                  : [ 'warn', 'never' ],
 		'@typescript-eslint/no-non-null-assertion'         : 'off',
 		'@typescript-eslint/no-unused-vars'                : [ 'warn', { ignoreRestSiblings: true } ],
 		'@typescript-eslint/object-curly-spacing'          : [ 'warn', 'always' ],

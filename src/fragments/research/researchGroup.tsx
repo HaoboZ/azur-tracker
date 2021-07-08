@@ -106,7 +106,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									devLevel[ item.type * 2 ] * 10 ) )}
 						/>,
 						<Typography key='devPrints'>{devPrints}</Typography>,
-						...( item.fate ? [
+						...item.fate ? [
 							<FormattedTextField
 								key='fateLevel'
 								type='number'
@@ -127,7 +127,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									dispatch( research_modifyShip( item.name, { fateStage: parseInt( e.target.value ) } ) )}
 							/>,
 							<Typography key='fatePrints'>{fatePrints}</Typography>
-						] : Array( 3 ) )
+						] : Array( 3 )
 					];
 				}
 			}}

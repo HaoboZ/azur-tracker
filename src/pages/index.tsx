@@ -61,7 +61,7 @@ export default function Home() {
 				{online ? <>
 					<ListItemText classes={{ primary: classes.longText }}>
 						{loading ? 'Loading...' :
-							( session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save' )}
+							session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save'}
 					</ListItemText>
 					{!loading && <ListItemSecondaryAction>
 						{session ? <Button

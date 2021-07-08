@@ -1,6 +1,5 @@
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 import IndicatorProvider from '../../lib/providers/indicator';
@@ -10,13 +9,13 @@ const cache = createCache( {
 	prepend: true
 } );
 
-const useStyles = makeStyles( ( theme ) => ( {
-	snack: {
-		[ theme.breakpoints.down( 'sm' ) ]: {
-			top: 'env(safe-area-inset-top)'
-		}
-	}
-} ) );
+// const useStyles = makeStyles( ( theme ) => ( {
+// 	snack: {
+// 		[ theme.breakpoints.down( 'sm' ) ]: {
+// 			top: 'env(safe-area-inset-top)'
+// 		}
+// 	}
+// } ) );
 
 export default function Providers( { children }: { children?: React.ReactNode } ) {
 	// const classes = useStyles();
