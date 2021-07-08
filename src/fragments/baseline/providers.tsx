@@ -1,26 +1,35 @@
-import { makeStyles, Theme, useMediaQuery } from '@material-ui/core';
-import { SnackbarProvider } from 'notistack';
+import createCache from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
+
 import IndicatorProvider from '../../lib/providers/indicator';
+
+const cache = createCache( {
+	key    : 'css',
+	prepend: true
+} );
 
 const useStyles = makeStyles( ( theme ) => ( {
 	snack: {
-		[ theme.breakpoints.down( 'xs' ) ]: {
+		[ theme.breakpoints.down( 'sm' ) ]: {
 			top: 'env(safe-area-inset-top)'
 		}
 	}
 } ) );
 
 export default function Providers( { children }: { children?: React.ReactNode } ) {
-	const classes = useStyles();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
-	
-	return <SnackbarProvider
-		maxSnack={2}
-		anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
-		classes={{ root: classes.snack }}>
-		<IndicatorProvider>
+	// const classes = useStyles();
+	// const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	//
+	// return <SnackbarProvider
+	// 	maxSnack={2}
+	// 	anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
+	// 	classes={{ root: classes.snack }}>
+	return <IndicatorProvider>
+		<CacheProvider value={cache}>
 			{children}
-		</IndicatorProvider>
-	</SnackbarProvider>;
+		</CacheProvider>
+	</IndicatorProvider>;
+	// </SnackbarProvider>;
 }

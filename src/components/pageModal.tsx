@@ -4,7 +4,6 @@ import {
 	DialogActions,
 	DialogTitle,
 	IconButton,
-	makeStyles,
 	ModalProps,
 	Slide,
 	SwipeableDrawer,
@@ -15,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { SlideProps } from '@material-ui/core/Slide';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
@@ -22,7 +22,7 @@ const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRe
 
 const useStyles = makeStyles<Theme, { fitSize: boolean }>( ( theme ) => ( {
 	modal    : {
-		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 4 )}px)`,
+		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 4 )})`,
 		height              : ( { fitSize } ) => fitSize ? 'auto' : '100%',
 		borderTopLeftRadius : theme.spacing( 2 ),
 		borderTopRightRadius: theme.spacing( 2 )
@@ -67,7 +67,6 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 			<DialogActions>
 				{onSave ? <Button
 					variant='contained'
-					color='primary'
 					onClick={async () => {
 						await onSave();
 						onClose();
@@ -99,7 +98,6 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 					{title}
 				</Typography>
 				{onSave ? <Button
-					color='primary'
 					variant='contained'
 					onClick={async () => {
 						await onSave();

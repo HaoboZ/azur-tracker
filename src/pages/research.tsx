@@ -8,6 +8,7 @@ import ResearchGroup from '../fragments/research/researchGroup';
 import { researchShips } from '../lib/reference/researchRef';
 import { research_setLastTab } from '../lib/store/reducers/researchReducer';
 
+// noinspection JSUnusedGlobalSymbols
 export default function Research() {
 	const research = useSelector( state => state.research );
 	const dispatch = useDispatch();

@@ -1,14 +1,15 @@
-import { Fab, makeStyles, useScrollTrigger, Zoom } from '@material-ui/core';
+import { Fab, useScrollTrigger, Zoom } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	scrollUp: {
 		position                          : 'fixed',
 		zIndex                            : 1400,
-		bottom                            : `calc(env(safe-area-inset-bottom) + ${theme.spacing( 3 )}px)`,
+		bottom                            : `calc(env(safe-area-inset-bottom) + ${theme.spacing( 3 )})`,
 		right                             : theme.spacing( 3 ),
-		[ theme.breakpoints.down( 'xs' ) ]: { marginBottom: 64 }
+		[ theme.breakpoints.down( 'sm' ) ]: { marginBottom: 64 }
 	}
 } ) );
 

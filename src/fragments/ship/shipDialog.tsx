@@ -8,7 +8,6 @@ import {
 	Grid,
 	InputLabel,
 	Link,
-	makeStyles,
 	MenuItem,
 	Select,
 	TextField,
@@ -18,6 +17,7 @@ import {
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
+import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -178,7 +178,8 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 						const equip = equipsIndex[ val[ 0 ] ] || equips[ 0 ];
 						return <Grid
 							key={index}
-							item xs={wide ? true : 4}
+							item
+							xs={wide ? true : 4}
 							className={clsx( classes.equipGrid, colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ] )}
 							onClick={() => {
 								setEquipInfo( { ship, index } );
@@ -199,7 +200,7 @@ export default function ShipDialog( { table, open, onClose, onExit, ship, equipB
 			</Grid>
 		</DialogContent>
 		<DialogActions>
-			<Button variant='contained' color='primary' onClick={onClose}>
+			<Button variant='contained' onClick={onClose}>
 				Close
 			</Button>
 		</DialogActions>

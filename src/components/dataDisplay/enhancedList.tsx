@@ -7,7 +7,6 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListProps,
-	makeStyles,
 	Paper
 } from '@material-ui/core';
 import {
@@ -17,6 +16,7 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	Menu as MenuIcon
 } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -47,9 +47,9 @@ const useStyles = makeStyles( ( theme ) => ( {
 			paddingBottom: 0
 		},
 		'&-enter-active': {
-			maxHeight    : `${theme.spacing( 10 )}px !important`,
-			paddingTop   : `${theme.spacing()}px !important`,
-			paddingBottom: `${theme.spacing()}px !important`,
+			maxHeight    : `${theme.spacing( 10 )} !important`,
+			paddingTop   : `${theme.spacing()} !important`,
+			paddingBottom: `${theme.spacing()} !important`,
 			transition   : 'all 200ms ease-in-out'
 		},
 		'&-exit'        : {

@@ -1,5 +1,6 @@
-import { Button, ButtonGroup, ButtonProps, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { Button, ButtonGroup, ButtonProps, Toolbar, Typography } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 const useStyles = makeStyles( {

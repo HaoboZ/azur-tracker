@@ -1,10 +1,11 @@
-import { AppBar, Badge, BottomNavigation, BottomNavigationAction, makeStyles } from '@material-ui/core';
+import { AppBar, Badge, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
 	Event as EventIcon,
 	Home as HomeIcon
 } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

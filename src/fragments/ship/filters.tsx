@@ -1,4 +1,5 @@
 import {
+	Autocomplete,
 	Box,
 	Button,
 	Checkbox,
@@ -12,7 +13,6 @@ import {
 	useMediaQuery
 } from '@material-ui/core';
 import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@material-ui/icons';
-import { Autocomplete } from '@material-ui/lab';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAsyncDebounce } from 'react-table';
@@ -48,7 +48,7 @@ export default function Filters( { table, resetEquip } ) {
 		return () => window.removeEventListener( 'keydown', search );
 	}, [] );
 	
-	return <Box mx={3} mb={2}>
+	return <Box mx={2} mb={2}>
 		<Grid container spacing={2}>
 			<Grid item xs>
 				<EquipFilter
@@ -97,7 +97,6 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						color='primary'
 						checked={ship.filter.levelMax}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}
@@ -108,7 +107,6 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						color='primary'
 						checked={ship.filter.equipMax}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}
@@ -119,7 +117,6 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						color='primary'
 						checked={ship.filter.level0}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { level0: e.target.checked } ) )}

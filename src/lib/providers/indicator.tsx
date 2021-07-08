@@ -1,4 +1,5 @@
-import { CircularProgress, Fade, makeStyles } from '@material-ui/core';
+import { CircularProgress, Fade } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;
@@ -9,7 +10,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 	progress: {
 		position: 'fixed',
 		zIndex  : 1500,
-		bottom  : `calc(env(safe-area-inset-bottom) + ${theme.spacing()}px)`,
+		bottom  : `calc(env(safe-area-inset-bottom) + ${theme.spacing()})`,
 		right   : theme.spacing()
 	}
 } ) );

@@ -60,6 +60,7 @@ export default function ShopModal( { open, onClose }: {
 						<FormattedTextField
 							key='name'
 							type='number'
+							placeholder='0'
 							value={shop[ item.name ]}
 							onChange={( e ) => {
 								setShop( {
@@ -83,6 +84,7 @@ export default function ShopModal( { open, onClose }: {
 								<FormattedTextField
 									type='number'
 									label='Wanted'
+									placeholder='0'
 									value={shop[ item.name ]}
 									onChange={( e ) => {
 										setShop( {

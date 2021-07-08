@@ -1,4 +1,5 @@
-import { Container, makeStyles, Theme, useMediaQuery } from '@material-ui/core';
+import { Container, Theme, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 import usePageHeight from '../lib/hooks/usePageHeight';
@@ -10,7 +11,7 @@ const useStyles = makeStyles<Theme, { height: number }>( ( theme ) => ( {
 		[ theme.breakpoints.up( 'sm' ) ]  : {
 			minHeight: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`
 		},
-		[ theme.breakpoints.down( 'xs' ) ]: {
+		[ theme.breakpoints.down( 'sm' ) ]: {
 			minHeight: `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`
 		}
 	} ),

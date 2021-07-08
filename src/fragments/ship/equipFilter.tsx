@@ -1,6 +1,6 @@
-import { Box, makeStyles, TextField, Typography } from '@material-ui/core';
+import { Autocomplete, Box, TextField, Typography } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
-import { Autocomplete } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/styles';
 import Image from 'next/image';
 import React from 'react';
 
@@ -26,7 +26,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 		classes={{ popper: classes.popper }}
 		value={value}
 		onChange={( e, newValue: typeof equips[number] ) => setValue( newValue || equips[ 0 ] )}
-		renderOption={( option ) => <>
+		renderOption={( props, option ) => <li {...props} key={option.id}>
 			<Box pr={1}>
 				<Image
 					src={`/images/equips/${option.image}.png`}
@@ -38,7 +38,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 				/>
 			</Box>
 			<Typography>{option.name}</Typography>
-		</>}
+		</li>}
 		groupBy={( option ) => typeNames[ option.type ]}
 		renderInput={( params ) => <TextField
 			{...params}

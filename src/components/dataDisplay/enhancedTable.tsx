@@ -1,6 +1,5 @@
 import {
 	IconButton,
-	makeStyles,
 	Paper,
 	Table,
 	TableBody,
@@ -11,6 +10,7 @@ import {
 	TableRow
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -42,12 +42,12 @@ const useStyles = makeStyles( ( theme ) => ( {
 		},
 		'&-enter-active': {
 			'& > * > div': {
-				maxHeight : `${theme.spacing( 4 )}px !important`,
+				maxHeight : `${theme.spacing( 4 )} !important`,
 				transition: 'max-height 200ms ease-in-out'
 			},
 			'& > *'      : {
-				paddingTop   : `${theme.spacing()}px !important`,
-				paddingBottom: `${theme.spacing()}px !important`,
+				paddingTop   : `${theme.spacing()} !important`,
+				paddingBottom: `${theme.spacing()} !important`,
 				transition   : 'padding 200ms ease-in-out'
 			}
 		},

@@ -1,4 +1,5 @@
 import {
+	Alert,
 	Box,
 	Button,
 	Dialog,
@@ -13,7 +14,6 @@ import {
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
-import { Alert } from '@material-ui/lab';
 import { reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
@@ -181,14 +181,13 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 		<DialogActions>
 			<FormControlLabel
 				control={<Switch
-					color='primary'
 					checked={Boolean( override )}
 					onChange={( e ) => setOverride( +e.target.checked as any )}
 				/>}
 				label='Force BiS'
 				labelPlacement='start'
 			/>
-			<Button variant='contained' color='primary' onClick={close}>
+			<Button variant='contained' onClick={close}>
 				Close
 			</Button>
 			<Button

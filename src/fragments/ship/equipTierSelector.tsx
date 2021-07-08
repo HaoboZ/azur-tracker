@@ -1,4 +1,5 @@
-import { Box, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core';
+import { Box, Menu, MenuItem, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import Image from 'next/image';
 import React from 'react';
 

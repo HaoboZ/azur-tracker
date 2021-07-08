@@ -59,6 +59,7 @@ export default function DailyModal( { open, onClose }: {
 						<FormattedTextField
 							key='amount'
 							type='number'
+							placeholder='0'
 							value={item.amount}
 							onChange={( e ) =>
 								modifyItem( index, { amount: parseInt( e.target.value ) } )}
@@ -82,6 +83,7 @@ export default function DailyModal( { open, onClose }: {
 								<FormattedTextField
 									type='number'
 									label='Amount'
+									placeholder='0'
 									value={item.amount}
 									onChange={( e ) =>
 										modifyItem( index, { amount: parseInt( e.target.value ) } )}

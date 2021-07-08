@@ -1,4 +1,5 @@
-import { makeStyles, Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';

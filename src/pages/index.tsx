@@ -5,17 +5,18 @@ import {
 	ListItem,
 	ListItemSecondaryAction,
 	ListItemText,
-	makeStyles,
-	Slider
+	Slider,
+	ToggleButton,
+	ToggleButtonGroup
 } from '@material-ui/core';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/styles';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -48,7 +49,7 @@ export default function Home() {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
-	const { enqueueSnackbar } = useSnackbar();
+	// const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const classes = useStyles();
 	const online = useNetworkStatus();
@@ -136,15 +137,15 @@ export default function Home() {
 							onClick={async () => {
 								try {
 									if ( !online )
-										enqueueSnackbar( 'Offline' );
+										'enqueueSnackbar( \'Offline\' );';
 									else if ( session ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( setBackup( await checkDataIntegrity() ) ) );
-										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
+										'enqueueSnackbar( \'Data Successfully Saved\', { variant: \'success\' } );';
 									} else
-										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
+										'enqueueSnackbar( \'Sign In to Save\', { variant: \'info\' } );';
 								} catch ( e ) {
-									enqueueSnackbar( String( e ), { variant: 'error' } );
+									'enqueueSnackbar( String( e ), { variant: \'error\' } );';
 								}
 							}}>
 							Save
@@ -155,15 +156,15 @@ export default function Home() {
 							onClick={async () => {
 								try {
 									if ( !online )
-										enqueueSnackbar( 'Offline' );
+										'enqueueSnackbar( \'Offline\' );';
 									else if ( session ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( getBackup( await checkDataIntegrity() ) ) );
-										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
+										'enqueueSnackbar( \'Data Successfully Loaded\', { variant: \'success\' } );';
 									} else
-										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
+										'enqueueSnackbar( \'Sign In to Load\', { variant: \'info\' } );';
 								} catch ( e ) {
-									enqueueSnackbar( String( e ), { variant: 'error' } );
+									'enqueueSnackbar( String( e ), { variant: \'error\' } );';
 								}
 							}}>
 							Load

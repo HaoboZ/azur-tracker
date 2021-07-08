@@ -1,4 +1,5 @@
-import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
