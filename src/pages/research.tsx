@@ -23,7 +23,8 @@ export default function Research() {
 		</Tabs>
 		<SwipeableViews
 			index={research.lastTab}
-			onChangeIndex={( index ) => dispatch( research_setLastTab( index ) )}>
+			onChangeIndex={( index ) => dispatch( research_setLastTab( index ) )}
+			containerStyle={{ transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s' }}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<ResearchGroup key={index} researchData={researchData}/>
 			)}

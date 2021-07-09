@@ -1,13 +1,6 @@
 import { Button, ButtonGroup, ButtonProps, Toolbar, Typography } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
-
-const useStyles = makeStyles( {
-	fullTitle: {
-		flexGrow: 1
-	}
-} );
 
 export default function ActionTitle( { title = '', variant = 'h6', actions = [] }: {
 	title?: string,
@@ -18,10 +11,8 @@ export default function ActionTitle( { title = '', variant = 'h6', actions = [] 
 		props?: ButtonProps
 	}[]
 } ) {
-	const classes = useStyles();
-	
 	return <Toolbar>
-		<Typography variant={variant} className={classes.fullTitle}>{title}</Typography>
+		<Typography variant={variant} flexGrow={1}>{title}</Typography>
 		<ButtonGroup>
 			{actions.map( ( { name, onClick, props }, index ) => <Button
 				key={index}

@@ -1,23 +1,11 @@
 import { CircularProgress, Fade } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;
 const IndicatorContext = React.createContext<C>( async () => null );
 IndicatorContext.displayName = 'Indicator';
 
-const useStyles = makeStyles( ( theme ) => ( {
-	progress: {
-		position: 'fixed',
-		zIndex  : 1500,
-		bottom  : `calc(env(safe-area-inset-bottom) + ${theme.spacing()})`,
-		right   : theme.spacing()
-	}
-} ) );
-
 export default function IndicatorProvider( { children } ) {
-	const classes = useStyles();
-	
 	const [ visible, setVisible ] = React.useState( false );
 	
 	React.useEffect( () => {
@@ -40,7 +28,16 @@ export default function IndicatorProvider( { children } ) {
 	}}>
 		{children}
 		<Fade in={visible} mountOnEnter unmountOnExit>
-			<CircularProgress color='secondary' size={20} className={classes.progress}/>
+			<CircularProgress
+				color='secondary'
+				size={20}
+				sx={{
+					position: 'fixed',
+					zIndex  : 1500,
+					bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
+					right   : 'calc(env(safe-area-inset-right) + 10px)'
+				}}
+			/>
 		</Fade>
 	</IndicatorContext.Provider>;
 }

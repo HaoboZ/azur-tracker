@@ -1,18 +1,9 @@
 import { Box, Menu, MenuItem, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import Image from 'next/image';
 import React from 'react';
 
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips } from '../../lib/reference/equipRef';
-
-const useStyles = makeStyles( {
-	menu: {
-		maxHeight: 400,
-		width    : 300
-	},
-	wrap: { whiteSpace: 'normal' }
-} );
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement,
@@ -20,7 +11,6 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 	equipList: ( typeof equips[number] & { tier?: number } )[],
 	setEquip: ( id: number ) => void
 } ) {
-	const classes = useStyles();
 	const colorClasses = useMappedColorClasses();
 	
 	return <Menu
@@ -28,10 +18,10 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 		keepMounted
 		open={Boolean( anchorEl )}
 		onClose={closeAnchor}
-		PaperProps={{ className: classes.menu }}>
+		PaperProps={{ sx: { maxHeight: 400, width: 300 } }}>
 		{equipList.map( ( equip ) => <MenuItem
 			key={equip.id}
-			classes={{ root: classes.wrap }}
+			sx={{ whiteSpace: 'normal' }}
 			onClick={() => {
 				setEquip( equip.id );
 				closeAnchor();

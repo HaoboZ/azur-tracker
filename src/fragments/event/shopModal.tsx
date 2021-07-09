@@ -33,7 +33,7 @@ export default function ShopModal( { open, onClose }: {
 		onClose={onClose}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
-		<DialogContent style={{ padding: 0 }}>
+		<DialogContent sx={{ padding: 0 }}>
 			<Box mx={2} mt={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>

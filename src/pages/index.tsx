@@ -57,6 +57,7 @@ export default function Home() {
 	// noinspection HtmlUnknownTarget
 	return <PageContainer title='Azur Lane Tracker'>
 		<List>
+			<Button onClick={() => indicator()}>Press</Button>
 			<ListItem>
 				{online ? <>
 					<ListItemText classes={{ primary: classes.longText }}>

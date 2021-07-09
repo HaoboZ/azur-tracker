@@ -16,11 +16,18 @@ export const researchShips: Record<string, { name: string, type: number, fate: b
 		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
 	],
 	'PR3': [
-		{ name: 'Cheshire', type: 0, fate: false, url: 'Cheshire' },
+		{ name: 'Cheshire', type: 0, fate: true, url: 'Cheshire' },
 		{ name: 'Drake', type: 1, fate: false, url: 'Drake' },
-		{ name: 'Mainz', type: 0, fate: false, url: 'Mainz' },
-		{ name: 'Odin', type: 0, fate: false, url: 'Odin' },
-		{ name: 'Champagne', type: 0, fate: false, url: 'Champagne' }
+		{ name: 'Mainz', type: 0, fate: true, url: 'Mainz' },
+		{ name: 'Odin', type: 0, fate: true, url: 'Odin' },
+		{ name: 'Champagne', type: 0, fate: true, url: 'Champagne' }
+	],
+	'PR4': [
+		{ name: 'Anchorage', type: 0, fate: false, url: 'Anchorage' },
+		{ name: 'Hakuryuu', type: 1, fate: false, url: 'Hakuryuu' },
+		{ name: 'Ägir', type: 1, fate: false, url: 'Agir' },
+		{ name: 'August von Parseval', type: 0, fate: false, url: 'August_von_Parseval' },
+		{ name: 'Marco Polo', type: 0, fate: false, url: 'Marco_Polo' }
 	]
 };
 

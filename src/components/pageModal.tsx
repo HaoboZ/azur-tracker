@@ -14,28 +14,10 @@ import {
 } from '@material-ui/core';
 import { SlideProps } from '@material-ui/core/Slide';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
 	<Slide direction='up' ref={ref} {...props}/> );
-
-const useStyles = makeStyles<Theme, { fitSize: boolean }>( ( theme ) => ( {
-	modal    : {
-		maxHeight           : `calc(100vh - env(safe-area-inset-top) - ${theme.spacing( 4 )})`,
-		height              : ( { fitSize } ) => fitSize ? 'auto' : '100%',
-		borderTopLeftRadius : theme.spacing( 2 ),
-		borderTopRightRadius: theme.spacing( 2 )
-	},
-	fullTitle: {
-		flexGrow: 1
-	},
-	safeArea : {
-		paddingLeft  : 'env(safe-area-inset-left)',
-		paddingRight : 'env(safe-area-inset-right)',
-		paddingBottom: 'env(safe-area-inset-bottom)'
-	}
-} ) );
 
 export default function PageModal( { onClose, title, onSave, fitSize, children, ...props }: {
 	open: boolean,
@@ -47,7 +29,6 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 	fitSize?: boolean,
 	children?: React.ReactNode
 } & Partial<Omit<ModalProps, 'onClose'>> ) {
-	const classes = useStyles( { fitSize } );
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	if ( wide ) {
@@ -60,7 +41,13 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 			disableEnforceFocus
 			disableAutoFocus
 			closeAfterTransition
-			classes={{ paper: classes.safeArea }}
+			sx={{
+				'& .MuiDialog-paper': {
+					paddingLeft  : 'env(safe-area-inset-left)',
+					paddingRight : 'env(safe-area-inset-right)',
+					paddingBottom: 'env(safe-area-inset-bottom)'
+				}
+			}}
 			{...props}>
 			{title && <DialogTitle>{title}</DialogTitle>}
 			{children}
@@ -88,13 +75,20 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 			disableEnforceFocus
 			disableAutoFocus
 			closeAfterTransition
-			PaperProps={{ className: classes.modal }}
+			PaperProps={{
+				sx: {
+					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
+					height              : fitSize ? 'auto' : '100%',
+					borderTopLeftRadius : 10,
+					borderTopRightRadius: 10
+				}
+			}}
 			{...props}>
 			<Toolbar>
 				<IconButton edge='start' color='inherit' onClick={onClose}>
 					<ArrowBackIcon/>
 				</IconButton>
-				<Typography variant='h6' className={classes.fullTitle}>
+				<Typography variant='h6' flexGrow={1}>
 					{title}
 				</Typography>
 				{onSave ? <Button

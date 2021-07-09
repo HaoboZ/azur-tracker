@@ -1,41 +1,15 @@
-import { AppBar, Badge, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box, useTheme } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
 	Event as EventIcon,
 	Home as HomeIcon
 } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
-
-const useStyles = makeStyles( ( theme ) => ( {
-	statusBar           : {
-		position       : 'fixed',
-		top            : 0,
-		zIndex         : 1100,
-		width          : '100%',
-		height         : 'env(safe-area-inset-top)',
-		backgroundColor: theme.palette.primary.main
-	},
-	statusBarPlaceholder: {
-		width : '100%',
-		height: 'env(safe-area-inset-top)'
-	},
-	footerPlaceholder   : {
-		height: 'calc(56px + env(safe-area-inset-bottom))'
-	},
-	appBar              : {
-		top          : 'auto',
-		bottom       : 0,
-		paddingLeft  : 'env(safe-area-inset-left)',
-		paddingRight : 'env(safe-area-inset-right)',
-		paddingBottom: 'env(safe-area-inset-bottom)'
-	}
-} ) );
 
 const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
@@ -45,10 +19,10 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
+	const theme = useTheme();
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const classes = useStyles();
 	
 	const index = React.useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
@@ -57,11 +31,34 @@ export default function BottomBar( { children } ) {
 	}, [ router.asPath ] );
 	
 	return <>
-		<div className={classes.statusBar}/>
-		<div className={classes.statusBarPlaceholder}/>
+		<Box
+			sx={{
+				position       : 'fixed',
+				top            : 0,
+				zIndex         : 1100,
+				width          : '100%',
+				height         : 'env(safe-area-inset-top)',
+				backgroundColor: theme.palette.primary.main
+			}}
+		/>
+		<Box
+			sx={{
+				width : '100%',
+				height: 'env(safe-area-inset-top)'
+			}}
+		/>
 		{children}
-		<div className={classes.footerPlaceholder}/>
-		<AppBar position='fixed' color='inherit' className={classes.appBar}>
+		<Box sx={{ height: 'calc(env(safe-area-inset-bottom) + 56px)' }}/>
+		<AppBar
+			position='fixed'
+			color='inherit'
+			sx={{
+				top          : 'auto',
+				bottom       : 0,
+				paddingLeft  : 'env(safe-area-inset-left)',
+				paddingRight : 'env(safe-area-inset-right)',
+				paddingBottom: 'env(safe-area-inset-bottom)'
+			}}>
 			<BottomNavigation
 				showLabels
 				value={index}

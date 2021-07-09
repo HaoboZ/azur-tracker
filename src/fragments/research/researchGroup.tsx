@@ -18,10 +18,6 @@ const useStyles = makeStyles( {
 			'-webkit-appearance': 'none',
 			margin              : 0
 		}
-	},
-	avatar     : {
-		width : 60,
-		height: 60
 	}
 } );
 
@@ -78,7 +74,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								src={`/images/ships/${item.url}.png`}
 								alt={item.name}
 								variant='rounded'
-								className={classes.avatar}
+								sx={{ width: 60, height: 60 }}
 							/>
 							<Typography>{item.name}</Typography>
 						</>,

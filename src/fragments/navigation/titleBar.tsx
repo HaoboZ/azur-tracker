@@ -4,34 +4,21 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Link from '../../components/Link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
-const useStyles = makeStyles( ( theme ) => ( {
-	appBar: {
-		paddingTop  : 'env(safe-area-inset-top)',
-		paddingLeft : 'env(safe-area-inset-left)',
-		paddingRight: 'env(safe-area-inset-right)'
-	},
-	title : {
-		marginRight: theme.spacing( 3 )
-	}
-} ) );
-
 function LinkItem( { children, href } ) {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
-	const classes = useStyles();
 	
 	return <Link variant='h6' href={href}>
 		<Badge
 			color='secondary'
 			variant='dot'
-			className={classes.title}
+			sx={{ marginRight: 3 }}
 			invisible={!main.newData[ href.substring( 1 ) ]}>
 			<Button color='inherit' onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
 				{children}
@@ -43,15 +30,20 @@ function LinkItem( { children, href } ) {
 export default function TitleBar( { children } ) {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
-	const classes = useStyles();
 	
 	return <>
-		<AppBar position='static' className={classes.appBar}>
+		<AppBar
+			position='static'
+			sx={{
+				paddingTop  : 'env(safe-area-inset-top)',
+				paddingLeft : 'env(safe-area-inset-left)',
+				paddingRight: 'env(safe-area-inset-right)'
+			}}>
 			<Toolbar>
 				<Link
 					href='/'
 					variant='h6'
-					className={classes.title}>
+					sx={{ marginRight: 3 }}>
 					Azur Lane Tracker
 				</Link>
 				<LinkItem href='/event'>Event</LinkItem>

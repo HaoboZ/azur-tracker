@@ -5,6 +5,7 @@ import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Baseline from '../fragments/baseline';
+import '../fragments/baseline/style.scss';
 import { Icons } from '../lib/icons';
 import { persistor, store } from '../lib/store';
 

@@ -25,10 +25,10 @@ import ActionTitle from '../actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
 	center      : {
-		alignItems      : 'center',
-		marginTop       : theme.spacing(),
-		marginBottom    : theme.spacing(),
-		'&.Mui-expanded': {
+		alignItems       : 'center',
+		marginTop        : theme.spacing(),
+		marginBottom     : theme.spacing(),
+		'& .Mui-expanded': {
 			marginTop   : theme.spacing( 2 ),
 			marginBottom: theme.spacing( 2 )
 		}

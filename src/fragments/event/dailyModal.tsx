@@ -38,7 +38,7 @@ export default function DailyModal( { open, onClose }: {
 		onClose={onClose}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
-		<DialogContent style={{ padding: 0 }}>
+		<DialogContent sx={{ padding: 0 }}>
 			<DataDisplay
 				title={<Typography>Total Daily: {dailyTotal}</Typography>}
 				data={daily}

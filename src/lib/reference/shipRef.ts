@@ -3,7 +3,7 @@ import { mapValues } from 'lodash';
 //([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\n
 //'$2':['$3','$4','$5','$6',$7,$8,'$9','$10','$11','$12','$13',$14,'$15',$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27],\n
 
-// noinspection JSNonASCIINames,NonAsciiCharacters
+// noinspection JSNonASCIINames, NonAsciiCharacters
 const ships = {
 	'Universal_Bulin'               : [ 'Universal Bulin', 'Elite', 'Universal', 'Destroyer', 5, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2', 100, 'Light', 35, 232, 23, 23, 23, 116, 23, 3, 116, 33, 0, 116 ],
 	'Prototype_Bulin_MKII'          : [ 'Prototype Bulin MKII', 'Super Rare', 'Universal', 'Destroyer', 5, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2', 100, 'Light', 35, 232, 23, 23, 23, 116, 23, 3, 116, 33, 0, 116 ],

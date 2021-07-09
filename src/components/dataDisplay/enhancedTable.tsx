@@ -18,18 +18,15 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ActionTitle from '../actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	tableRows   : {
+	tableRows: {
 		'& tr:nth-of-type(odd),& th': {
 			backgroundColor: theme.palette.action.focus
 		}
 	},
-	minWidth    : {
+	minWidth : {
 		width: '1%'
 	},
-	selectedSort: {
-		backgroundColor: `${theme.palette.secondary.main} !important`
-	},
-	slide       : {
+	slide    : {
 		'&-enter'       : {
 			'& > * > div': {
 				overflowY: 'hidden',
@@ -79,7 +76,6 @@ const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
 	const classes = useStyles();
 	return <TableBody ref={ref} className={classes.tableRows}>{children}</TableBody>;
 } );
-
 export default function EnhancedTable<Item extends { id?: string }>( {
 	title,
 	data,
@@ -122,7 +118,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						list={data as any}
 						setList={setData as any}
 						handle='.sortHandle'
-						ghostClass={classes.selectedSort}
+						ghostClass='selectedSort'
 						forceFallback
 						animation={200}>
 						<TransitionGroup component={null}>
