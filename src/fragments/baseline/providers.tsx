@@ -9,22 +9,20 @@ const cache = createCache( {
 	prepend: true
 } );
 
-// const useStyles = makeStyles( ( theme ) => ( {
-// 	snack: {
-// 		[ theme.breakpoints.down( 'sm' ) ]: {
-// 			top: 'env(safe-area-inset-top)'
-// 		}
-// 	}
-// } ) );
-
 export default function Providers( { children }: { children?: React.ReactNode } ) {
-	// const classes = useStyles();
 	// const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	//
 	// return <SnackbarProvider
 	// 	maxSnack={2}
 	// 	anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
-	// 	classes={{ root: classes.snack }}>
+	// 	sx={{
+	// 		'& .MuiSnackbar-root': {
+	// 			top: {
+	// 				xs: 'calc(env(safe-area-inset-top) + 24px)',
+	// 				sm: 0
+	// 			}
+	// 		}
+	// 	}}>
 	return <IndicatorProvider>
 		<CacheProvider value={cache}>
 			{children}
