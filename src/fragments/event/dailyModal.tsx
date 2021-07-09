@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DataDisplay from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import PageModal from '../../components/pageModal';
+import PageModal, { PageModalContainer } from '../../components/pageModal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyModal( { open, onClose }: {
@@ -35,67 +35,70 @@ export default function DailyModal( { open, onClose }: {
 	
 	return <PageModal
 		open={open}
-		onClose={onClose}
-		title='Daily Points'
-		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
-		<DialogContent sx={{ padding: 0 }}>
-			<DataDisplay
-				title={<Typography>Total Daily: {dailyTotal}</Typography>}
-				data={daily}
-				tableProps={{
-					columnHeader: [
-						'Name',
-						'Amount'
-					],
-					columns     : ( item, index ) => [
-						<FormattedTextField
-							key='name'
-							type='text'
-							fullWidth
-							value={item.name}
-							onChange={( e ) =>
-								modifyItem( index, { name: e.target.value } )}
-						/>,
-						<FormattedTextField
-							key='amount'
-							type='number'
-							placeholder='0'
-							value={item.amount}
-							onChange={( e ) =>
-								modifyItem( index, { amount: parseInt( e.target.value ) } )}
-						/>
-					]
-				}}
-				listProps={{
-					renderRow( item, index ) {
-						return <Grid container spacing={2}>
-							<Grid item xs={9}>
-								<FormattedTextField
-									type='text'
-									fullWidth
-									label='Name'
-									value={item.name}
-									onChange={( e ) =>
-										modifyItem( index, { name: e.target.value } )}
-								/>
-							</Grid>
-							<Grid item xs={3}>
-								<FormattedTextField
-									type='number'
-									label='Amount'
-									placeholder='0'
-									value={item.amount}
-									onChange={( e ) =>
-										modifyItem( index, { amount: parseInt( e.target.value ) } )}
-								/>
-							</Grid>
-						</Grid>;
-					}
-				}}
-				setData={setDaily}
-				newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}
-				editable
-			/>
-		</DialogContent>
+		onClose={onClose}>
+		<PageModalContainer
+			onClose={onClose}
+			title='Daily Points'
+			onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
+			<DialogContent sx={{ padding: 0 }}>
+				<DataDisplay
+					title={<Typography>Total Daily: {dailyTotal}</Typography>}
+					data={daily}
+					tableProps={{
+						columnHeader: [
+							'Name',
+							'Amount'
+						],
+						columns     : ( item, index ) => [
+							<FormattedTextField
+								key='name'
+								type='text'
+								fullWidth
+								value={item.name}
+								onChange={( e ) =>
+									modifyItem( index, { name: e.target.value } )}
+							/>,
+							<FormattedTextField
+								key='amount'
+								type='number'
+								placeholder='0'
+								value={item.amount}
+								onChange={( e ) =>
+									modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							/>
+						]
+					}}
+					listProps={{
+						renderRow( item, index ) {
+							return <Grid container spacing={2}>
+								<Grid item xs={9}>
+									<FormattedTextField
+										type='text'
+										fullWidth
+										label='Name'
+										value={item.name}
+										onChange={( e ) =>
+											modifyItem( index, { name: e.target.value } )}
+									/>
+								</Grid>
+								<Grid item xs={3}>
+									<FormattedTextField
+										type='number'
+										label='Amount'
+										placeholder='0'
+										value={item.amount}
+										onChange={( e ) =>
+											modifyItem( index, { amount: parseInt( e.target.value ) } )}
+									/>
+								</Grid>
+							</Grid>;
+						}
+					}}
+					setData={setDaily}
+					newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}
+					editable
+				/>
+			</DialogContent>
+		</PageModalContainer>
 	</PageModal>;
 }

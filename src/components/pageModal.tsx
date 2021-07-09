@@ -19,12 +19,9 @@ import React from 'react';
 const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
 	<Slide direction='up' ref={ref} {...props}/> );
 
-export default function PageModal( { onClose, title, onSave, fitSize, children, ...props }: {
+export default function PageModal( { onClose, fitSize, children, ...props }: {
 	open: boolean,
 	onClose: () => void,
-	title?: React.ReactNode,
-	// renders and called by save button if set
-	onSave?: () => void,
 	// make modal fit size of content or full page (default full page)
 	fitSize?: boolean,
 	children?: React.ReactNode
@@ -49,21 +46,7 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 				}
 			}}
 			{...props}>
-			{title && <DialogTitle>{title}</DialogTitle>}
 			{children}
-			<DialogActions>
-				{onSave ? <Button
-					variant='contained'
-					onClick={async () => {
-						await onSave();
-						onClose();
-					}}>
-					Save
-				</Button> : undefined}
-				<Button variant='contained' color='secondary' onClick={onClose}>
-					{onSave ? 'Cancel' : 'Close'}
-				</Button>
-			</DialogActions>
 		</Dialog>;
 	} else {
 		return <SwipeableDrawer
@@ -84,6 +67,43 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 				}
 			}}
 			{...props}>
+			{children}
+		</SwipeableDrawer>;
+	}
+}
+
+export function PageModalContainer( { onClose, title, onSave, submit, children }: {
+	onClose: () => void,
+	title?: React.ReactNode,
+	// renders and called by save button if set
+	onSave?: () => void,
+	// changes to submit instead
+	submit?: boolean,
+	children?: React.ReactNode
+} ) {
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	
+	if ( wide ) {
+		return <>
+			{title && <DialogTitle>{title}</DialogTitle>}
+			{children}
+			<DialogActions>
+				{onSave || submit ? <Button
+					variant='contained'
+					type={submit ? 'submit' : undefined}
+					onClick={submit ? undefined : async () => {
+						await onSave();
+						onClose();
+					}}>
+					Save
+				</Button> : undefined}
+				<Button variant='contained' color='secondary' onClick={onClose}>
+					{onSave ? 'Cancel' : 'Close'}
+				</Button>
+			</DialogActions>
+		</>;
+	} else {
+		return <>
 			<Toolbar>
 				<IconButton edge='start' color='inherit' onClick={onClose}>
 					<ArrowBackIcon/>
@@ -91,14 +111,15 @@ export default function PageModal( { onClose, title, onSave, fitSize, children, 
 				<Typography variant='h6' flexGrow={1}>
 					{title}
 				</Typography>
-				{onSave ? <Button
+				{onSave || submit ? <Button
 					variant='contained'
-					onClick={async () => {
+					type={submit ? 'submit' : undefined}
+					onClick={submit ? undefined : async () => {
 						await onSave();
 						onClose();
 					}}>Save</Button> : undefined}
 			</Toolbar>
 			{children}
-		</SwipeableDrawer>;
+		</>;
 	}
 }

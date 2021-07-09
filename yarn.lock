@@ -3450,7 +3450,6 @@ __metadata:
     next: ^11.0.1
     next-auth: ^3.27.2
     next-pwa: ^5.2.23
-    notistack: ^1.0.9
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4
@@ -4115,7 +4114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.0.4, clsx@npm:^1.1.0, clsx@npm:^1.1.1":
+"clsx@npm:^1.0.4, clsx@npm:^1.1.1":
   version: 1.1.1
   resolution: "clsx@npm:1.1.1"
   checksum: d8ae10ac0546da19fe8c9516886f6582a64a382cf4d09ea7d36d5287cafbdab1192ab249adc2cdf0310e0b0aeac4f4142cf7c738c98d9cb68c19ba24b6f673d5
@@ -8147,20 +8146,6 @@ __metadata:
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
   checksum: 215a701b471948884193628f3e38910353abf445306b519c42c2a30144b8beb8ca0a684da97bfc2ee11eb168c35c776d484274da4bd8f213d2b22f70579380ee
-  languageName: node
-  linkType: hard
-
-"notistack@npm:^1.0.9":
-  version: 1.0.9
-  resolution: "notistack@npm:1.0.9"
-  dependencies:
-    clsx: ^1.1.0
-    hoist-non-react-statics: ^3.3.0
-  peerDependencies:
-    "@material-ui/core": ^4.0.0
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: b52cf5f7ab3b06b47e6d3d9dffe9730d7702ffb72a62b365098f9fab15a4d99d44ec46342b21842a93c122e8e0c7e5532866cb8b9a73b42e2573acc20d99ff90
   languageName: node
   linkType: hard
 

@@ -13,6 +13,12 @@ export default function Research() {
 	const research = useSelector( state => state.research );
 	const dispatch = useDispatch();
 	
+	const [ swipeFix, setSwipeFix ] = React.useState<any>();
+	React.useEffect( () => {
+		setTimeout( () =>
+			setSwipeFix( { transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s' } ), 1000 );
+	}, [] );
+	
 	return <PageContainer title='Research Tracker'>
 		<Tabs
 			variant='fullWidth'
@@ -24,7 +30,7 @@ export default function Research() {
 		<SwipeableViews
 			index={research.lastTab}
 			onChangeIndex={( index ) => dispatch( research_setLastTab( index ) )}
-			containerStyle={{ transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s' }}>
+			containerStyle={swipeFix}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<ResearchGroup key={index} researchData={researchData}/>
 			)}
