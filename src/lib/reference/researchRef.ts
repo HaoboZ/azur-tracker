@@ -25,7 +25,7 @@ export const researchShips: Record<string, { name: string, type: number, fate: b
 	'PR4': [
 		{ name: 'Anchorage', type: 0, fate: false, url: 'Anchorage' },
 		{ name: 'Hakuryuu', type: 1, fate: false, url: 'Hakuryuu' },
-		{ name: 'Ägir', type: 1, fate: false, url: 'Agir' },
+		{ name: 'Ägir', type: 1, fate: false, url: 'Ägir' },
 		{ name: 'August von Parseval', type: 0, fate: false, url: 'August_von_Parseval' },
 		{ name: 'Marco Polo', type: 0, fate: false, url: 'Marco_Polo' }
 	]

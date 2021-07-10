@@ -5,7 +5,7 @@ import PageModal from '../../components/pageModal';
 
 type C = {
 	showModal: ( props: {
-		// make modal fit size of content or full page (default full page)
+		// make modal fit size of content or full page
 		fitSize?: boolean,
 		render?: React.ReactNode
 	} & Partial<Omit<ModalProps, 'onClose'>> ) => void,

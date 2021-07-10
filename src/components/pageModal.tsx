@@ -22,7 +22,7 @@ const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRe
 export default function PageModal( { onClose, fitSize, children, ...props }: {
 	open: boolean,
 	onClose: () => void,
-	// make modal fit size of content or full page (default full page)
+	// make modal fit size of content or full page
 	fitSize?: boolean,
 	children?: React.ReactNode
 } & Partial<Omit<ModalProps, 'onClose'>> ) {
