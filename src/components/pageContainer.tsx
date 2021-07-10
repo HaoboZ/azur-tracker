@@ -10,7 +10,7 @@ export default function PageContainer( { title, children }: {
 	children?: React.ReactNode
 } ) {
 	const height = usePageHeight();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	return <Box sx={{
 		minHeight: {
@@ -20,7 +20,7 @@ export default function PageContainer( { title, children }: {
 	}}>
 		<ScrollTop/>
 		<Container
-			maxWidth='md'
+			fixed
 			disableGutters={!wide}
 			sx={{ overflowX: 'hidden', minHeight: 'inherit' }}>
 			<ActionTitle title={title}/>

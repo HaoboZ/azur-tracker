@@ -11,11 +11,11 @@ type Message = {
 };
 
 export default function SnackbarProvider( { children } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	const [ open, setOpen ]           = React.useState( false ),
-	      [ nextSnack, setNextSnack ] = React.useState<Message>( undefined ),
-	      [ snack, setSnack ]         = React.useState<Message>( undefined );
+	const [ open, setOpen ] = React.useState( false );
+	const [ nextSnack, setNextSnack ] = React.useState<Message>( undefined );
+	const [ snack, setSnack ] = React.useState<Message>( undefined );
 	
 	React.useEffect( () => {
 		if ( nextSnack && !snack ) {
@@ -39,7 +39,7 @@ export default function SnackbarProvider( { children } ) {
 			sx={{
 				'& .MuiSnackbar-root': {
 					top: {
-						xs: 'calc(24px + env(safe-area-inset-top))',
+						xs: 'calc(env(safe-area-inset-top) + 24px)',
 						sm: 0
 					}
 				}

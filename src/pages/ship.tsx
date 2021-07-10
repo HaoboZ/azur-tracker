@@ -6,18 +6,18 @@ import { Row } from 'react-table';
 import PageContainer from '../components/pageContainer';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
-import ShipDialog from '../fragments/ship/shipDialog';
+import ShipModal from '../fragments/ship/shipModal';
 import useShipTable from '../fragments/ship/useShipTable';
 import { useMappedColorClasses } from '../lib/reference/colors';
-import shipRef, { blankShip } from '../lib/reference/shipRef';
+import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
 	
-	const [ shipOpen, setShipOpen ]       = React.useState( false ),
-	      [ selectedRow, setSelectedRow ] = React.useState<Row>( { original: blankShip } as any );
+	const [ shipOpen, setShipOpen ] = React.useState( false );
+	const [ selectedRow, setSelectedRow ] = React.useState<Row<any>>( { original: blankShip } as any );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
 		value: Record<string, number[]>
@@ -56,13 +56,12 @@ export default function Ship() {
 				</ListItemSecondaryAction>
 			</ListItem>}
 		/>
-		<ShipDialog
-			table={table}
+		<ShipModal
 			open={shipOpen}
 			onClose={() => setShipOpen( false )}
-			onExit={() => setSelectedRow( { original: blankShip } as any )}
-			ship={selectedRow.original as typeof shipRef[string]}
+			ship={selectedRow.original}
 			equipBetter={equipBetter.value[ selectedRow.id ]}
+			selectedEquip={table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value}
 		/>
 	</PageContainer>;
 }

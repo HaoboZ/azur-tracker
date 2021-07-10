@@ -24,7 +24,7 @@ export default function DataDisplay<Item>( {
 		columns: ( item: Item, index: number ) => React.ReactNodeArray
 	} & TableContainerProps
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
 		return <EnhancedTable {...tableProps} {...props as any}/>;

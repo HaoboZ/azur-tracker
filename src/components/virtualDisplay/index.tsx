@@ -12,7 +12,7 @@ export default function VirtualDisplay( {
 	onClick?: ( row: Row ) => void,
 	renderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
 		return <VirtualTable {...table}/>;

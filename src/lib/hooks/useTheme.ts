@@ -1,4 +1,4 @@
-import { createTheme, PaletteMode, useMediaQuery } from '@material-ui/core';
+import { createTheme, PaletteMode, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -17,10 +17,23 @@ export default function useTheme() {
 	}, [ main.theme, dark ] );
 	
 	return createTheme( {
-		palette: {
+		palette   : {
 			mode,
 			primary  : { main: '#039be5' },
 			secondary: { main: '#d50000' }
+		},
+		components: {
+			MuiUseMediaQuery: {
+				defaultProps: {
+					noSsr: true
+				}
+			}
 		}
 	} );
+}
+
+declare module '@material-ui/styles' {
+	// noinspection JSUnusedGlobalSymbols
+	interface DefaultTheme extends Theme {
+	}
 }

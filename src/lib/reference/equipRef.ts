@@ -1928,6 +1928,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'F/DB'() {
 		return this[ 'F' ];
 	},
+	get 'F/TB'() {
+		return this[ 'F' ];
+	},
 	get 'DB/TB'() {
 		return this[ 'DB' ];
 	},

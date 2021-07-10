@@ -26,7 +26,7 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 	fitSize?: boolean,
 	children?: React.ReactNode
 } & Partial<Omit<ModalProps, 'onClose'>> ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
 		return <Dialog
@@ -81,7 +81,7 @@ export function PageModalContainer( { onClose, title, onSave, submit, children }
 	submit?: boolean,
 	children?: React.ReactNode
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
 		return <>

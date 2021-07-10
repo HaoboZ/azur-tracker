@@ -8,9 +8,7 @@ import {
 	IconButton,
 	Menu,
 	MenuItem,
-	TextField,
-	Theme,
-	useMediaQuery
+	TextField
 } from '@material-ui/core';
 import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@material-ui/icons';
 import React from 'react';
@@ -24,7 +22,6 @@ import EquipFilter from './equipFilter';
 export default function Filters( { table, resetEquip } ) {
 	const ship = useSelector( state => state.ship );
 	const dispatch = useDispatch();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
 	
 	const globalFilter = useAsyncDebounce( ( value ) =>
 		table.setGlobalFilter( value ), 250 );
@@ -76,17 +73,19 @@ export default function Filters( { table, resetEquip } ) {
 					/>}
 				/>
 			</Grid>
-			<Grid item md={1} xs={2}>
-				{wide
-					? <Button
-						variant='contained'
-						fullWidth
-						onClick={( e ) => setAnchorEl( e.currentTarget )}>
-						More
-					</Button>
-					: <IconButton onClick={( e ) => setAnchorEl( e.currentTarget )}>
-						<MoreVertIcon/>
-					</IconButton>}
+			<Grid item container xs={2} alignContent='center'>
+				<Button
+					variant='contained'
+					fullWidth
+					sx={{ display: { xs: 'none', sm: 'block' } }}
+					onClick={( e ) => setAnchorEl( e.currentTarget )}>
+					More
+				</Button>
+				<IconButton
+					sx={{ display: { xs: 'block', sm: 'none' } }}
+					onClick={( e ) => setAnchorEl( e.currentTarget )}>
+					<MoreVertIcon/>
+				</IconButton>
 			</Grid>
 		</Grid>
 		<Menu

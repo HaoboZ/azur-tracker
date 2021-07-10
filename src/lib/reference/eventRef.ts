@@ -2,7 +2,7 @@ export default {
 	name   : 'Swirling Cherry Blossoms Rerun',
 	image  : 'Swirling_Cherry_Blossoms_Rerun.png',
 	link   : 'https://azurlane.koumakan.jp/Swirling_Cherry_Blossoms_Rerun',
-	endDate: '2021-07-08T23:59-07',
+	endDate: '2021-07-07T23:59-07',
 	shop   : [
 		{ name: 'Noshiro', cost: 8000, amount: 5 },
 		{ name: 'Kinu', cost: 4000, amount: 5 },

@@ -48,9 +48,7 @@ export default function Event() {
 	
 	return <PageContainer title='Event Tracker'>
 		<Box display='flex' justifyContent='center'>
-			<Link
-				href={eventRef.link}
-				target='_blank'>
+			<Link href={eventRef.link} target='_blank'>
 				<img
 					src={`/images/events/${eventRef.image}`}
 					alt='event banner'

@@ -5,7 +5,7 @@ import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
 export default function Navigation( { children } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ), { noSsr: true } );
+	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
 		return <TitleBar>
