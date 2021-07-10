@@ -34,6 +34,7 @@ export default function TitleBar( { children } ) {
 	return <>
 		<AppBar
 			position='static'
+			enableColorOnDark
 			sx={{
 				paddingTop  : 'env(safe-area-inset-top)',
 				paddingLeft : 'env(safe-area-inset-left)',

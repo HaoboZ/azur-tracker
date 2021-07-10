@@ -20,7 +20,7 @@ import ActionTitle from '../actionTitle';
 const useStyles = makeStyles( ( theme ) => ( {
 	tableRows: {
 		'& tr:nth-of-type(odd),& th': {
-			backgroundColor: theme.palette.action.focus
+			backgroundColor: theme.palette.action.disabledBackground
 		}
 	},
 	minWidth : {
@@ -33,8 +33,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 				maxHeight: 0
 			},
 			'& > *'      : {
-				paddingTop   : 0,
-				paddingBottom: 0
+				paddingY: 0
 			}
 		},
 		'&-enter-active': {
@@ -43,9 +42,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 				transition: 'max-height 200ms ease-in-out'
 			},
 			'& > *'      : {
-				paddingTop   : `${theme.spacing()} !important`,
-				paddingBottom: `${theme.spacing()} !important`,
-				transition   : 'padding 200ms ease-in-out'
+				paddingY  : `${theme.spacing()} !important`,
+				transition: 'padding 200ms ease-in-out'
 			}
 		},
 		'&-exit'        : {
@@ -53,8 +51,7 @@ const useStyles = makeStyles( ( theme ) => ( {
 				maxHeight: theme.spacing( 4 )
 			},
 			'& > *'      : {
-				paddingTop   : theme.spacing(),
-				paddingBottom: theme.spacing()
+				paddingY: 1
 			}
 		},
 		'&-exit-active' : {
@@ -64,9 +61,8 @@ const useStyles = makeStyles( ( theme ) => ( {
 				transition: 'max-height 200ms ease-in-out'
 			},
 			'& > *'      : {
-				paddingTop   : '0 !important',
-				paddingBottom: '0 !important',
-				transition   : 'padding 200ms ease-in-out'
+				paddingY  : '0 !important',
+				transition: 'padding 200ms ease-in-out'
 			}
 		}
 	}

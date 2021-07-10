@@ -26,8 +26,7 @@ export default function BottomBar( { children } ) {
 	
 	const index = React.useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
-			if ( items[ i ].link === router.asPath )
-				return i;
+			if ( items[ i ].link === router.asPath ) return i;
 	}, [ router.asPath ] );
 	
 	return <>
@@ -52,16 +51,16 @@ export default function BottomBar( { children } ) {
 		<AppBar
 			position='fixed'
 			color='inherit'
-			sx={{
-				top          : 'auto',
-				bottom       : 0,
-				paddingLeft  : 'env(safe-area-inset-left)',
-				paddingRight : 'env(safe-area-inset-right)',
-				paddingBottom: 'env(safe-area-inset-bottom)'
-			}}>
+			sx={{ top: 'auto', bottom: 0 }}>
 			<BottomNavigation
 				showLabels
 				value={index}
+				sx={{
+					height         : 'calc(env(safe-area-inset-bottom) + 56px)',
+					paddingLeft    : 'env(safe-area-inset-left)',
+					paddingRight   : 'env(safe-area-inset-right)',
+					paddingBottom  : 'env(safe-area-inset-bottom)'
+				}}
 				onChange={( e, value ) => {
 					switch ( value ) {
 					case 4:

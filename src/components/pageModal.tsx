@@ -32,7 +32,6 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 		return <Dialog
 			onClose={onClose}
 			maxWidth='md'
-			fullWidth={!fitSize}
 			TransitionComponent={Transition}
 			disablePortal
 			disableEnforceFocus
@@ -40,9 +39,9 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 			closeAfterTransition
 			sx={{
 				'& .MuiDialog-paper': {
-					paddingLeft  : 'env(safe-area-inset-left)',
-					paddingRight : 'env(safe-area-inset-right)',
-					paddingBottom: 'env(safe-area-inset-bottom)'
+					marginLeft  : 'env(safe-area-inset-left)',
+					marginRight : 'env(safe-area-inset-right)',
+					marginBottom: 'env(safe-area-inset-bottom)'
 				}
 			}}
 			{...props}>
@@ -62,8 +61,8 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 				sx: {
 					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
 					height              : fitSize ? 'auto' : '100%',
-					borderTopLeftRadius : 10,
-					borderTopRightRadius: 10
+					borderTopLeftRadius : 12,
+					borderTopRightRadius: 12
 				}
 			}}
 			{...props}>

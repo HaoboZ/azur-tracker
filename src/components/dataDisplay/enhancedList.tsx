@@ -24,45 +24,33 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ActionTitle from '../actionTitle';
 
 const useStyles = makeStyles( ( theme ) => ( {
-	center      : {
-		alignItems       : 'center',
-		marginTop        : theme.spacing(),
-		marginBottom     : theme.spacing(),
-		'& .Mui-expanded': {
-			marginTop   : theme.spacing( 2 ),
-			marginBottom: theme.spacing( 2 )
-		}
+	center   : {
+		alignItems: 'center',
+		marginY   : 1
 	},
-	iconSpace   : {
+	iconSpace: {
 		paddingLeft: 0
 	},
-	selectedSort: {
-		backgroundColor: `${theme.palette.secondary.main} !important`
-	},
-	slide       : {
+	slide    : {
 		'&-enter'       : {
-			overflowY    : 'hidden',
-			maxHeight    : 0,
-			paddingTop   : 0,
-			paddingBottom: 0
+			overflowY: 'hidden',
+			maxHeight: 0,
+			paddingY : 0
 		},
 		'&-enter-active': {
-			maxHeight    : `${theme.spacing( 10 )} !important`,
-			paddingTop   : `${theme.spacing()} !important`,
-			paddingBottom: `${theme.spacing()} !important`,
-			transition   : 'all 200ms ease-in-out'
+			maxHeight : `${theme.spacing( 10 )} !important`,
+			paddingY  : `${theme.spacing()} !important`,
+			transition: 'all 200ms ease-in-out'
 		},
 		'&-exit'        : {
-			maxHeight    : theme.spacing( 10 ),
-			paddingTop   : theme.spacing(),
-			paddingBottom: theme.spacing()
+			maxHeight: theme.spacing( 10 ),
+			paddingY : 1
 		},
 		'&-exit-active' : {
-			overflowY    : 'hidden',
-			maxHeight    : '0 !important',
-			paddingTop   : '0 !important',
-			paddingBottom: '0 !important',
-			transition   : 'all 200ms ease-in-out'
+			overflowY : 'hidden',
+			maxHeight : '0 !important',
+			paddingY  : '0 !important',
+			transition: 'all 200ms ease-in-out'
 		}
 	}
 } ) );
@@ -94,7 +82,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			list={data as any}
 			setList={setData as any}
 			handle='.sortHandle'
-			ghostClass={classes.selectedSort}
+			ghostClass='selectedSort'
 			forceFallback
 			animation={150}>
 			<TransitionGroup component={null}>

@@ -2547,10 +2547,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.0.1":
-  version: 16.0.1
-  resolution: "@types/node@npm:16.0.1"
-  checksum: 0f3d559689763cef9c2cf593a9190ead7adc8b71aeaef5c446bda96a781c22e39806780ee240c7272dddf01b82008d84e49a4298fba88b6d7726af76f00fc3ad
+"@types/node@npm:^16.3.1":
+  version: 16.3.1
+  resolution: "@types/node@npm:16.3.1"
+  checksum: 2021138afd66a9235f4b64e412dd8a8d1199f3d17303c2868ab062a10214ba76b793bf4f59e14c3bf981623e099843855776390b445d840779cb171c2fcb97a9
   languageName: node
   linkType: hard
 
@@ -2612,15 +2612,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-redux@npm:^7.1.17":
-  version: 7.1.17
-  resolution: "@types/react-redux@npm:7.1.17"
+"@types/react-redux@npm:^7.1.18":
+  version: 7.1.18
+  resolution: "@types/react-redux@npm:7.1.18"
   dependencies:
     "@types/hoist-non-react-statics": ^3.3.0
     "@types/react": "*"
     hoist-non-react-statics: ^3.3.0
     redux: ^4.0.0
-  checksum: bb1b38146a2bb584b710f453d5eea8c8d8cd57c9ab3e4adf1b175d8f3a86298b85325aaca47fe0ead1bfe3b343d3d5004e048b5a95d11e08764d6bf5072f2c7e
+  checksum: b247ff7ce31cede226f4606571bf975aeec91fe911e65e72cecaaac7234d4d694a7be0791419bb4259c7012b662a96267f694daaacbc18f3157fc7f955af55c9
   languageName: node
   linkType: hard
 
@@ -3422,10 +3422,10 @@ __metadata:
     "@types/jest": ^26.0.24
     "@types/json-stable-stringify": ^1.0.33
     "@types/lodash": ^4.14.171
-    "@types/node": ^16.0.1
+    "@types/node": ^16.3.1
     "@types/react": ^17.0.14
     "@types/react-dom": ^17.0.9
-    "@types/react-redux": ^7.1.17
+    "@types/react-redux": ^7.1.18
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-table": ^7.7.2
     "@types/react-window": ^1.8.4
@@ -3440,7 +3440,7 @@ __metadata:
     eslint: ^7.30.0
     eslint-config-next: ^11.0.1
     eslint-plugin-react: ^7.24.0
-    googleapis: ^80.2.0
+    googleapis: ^81.0.0
     hash-wasm: ^4.8.0
     jest: ^27.0.6
     json-stable-stringify: ^1.0.1
@@ -3448,7 +3448,7 @@ __metadata:
     moment: ^2.29.1
     nanoid: ^3.1.23
     next: ^11.0.1
-    next-auth: ^3.27.2
+    next-auth: ^3.27.3
     next-pwa: ^5.2.23
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -5725,13 +5725,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"googleapis@npm:^80.2.0":
-  version: 80.2.0
-  resolution: "googleapis@npm:80.2.0"
+"googleapis@npm:^81.0.0":
+  version: 81.0.0
+  resolution: "googleapis@npm:81.0.0"
   dependencies:
     google-auth-library: ^7.0.2
     googleapis-common: ^5.0.2
-  checksum: 8bec29750372b9b9b0578a01a08c2a53cb2cb3c4897d0f36a3e6f792ed44355548a0c8f3928c0777e008ab3f228d8a2a8e5d4d2649154ebebb3240b87e4f5bf3
+  checksum: 96b8085854695f9ac41831d665f556adb6f40fe4a03978da041bbd78b4add15ca98e809f34bdd21f5a6bd3ec1ee71fac3f25eceb870337c54d99f356d103b669
   languageName: node
   linkType: hard
 
@@ -7905,9 +7905,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:^3.27.2":
-  version: 3.27.2
-  resolution: "next-auth@npm:3.27.2"
+"next-auth@npm:^3.27.3":
+  version: 3.27.3
+  resolution: "next-auth@npm:3.27.3"
   dependencies:
     "@babel/runtime": ^7.14.0
     "@next-auth/prisma-legacy-adapter": 0.0.1-canary.127
@@ -7924,7 +7924,7 @@ __metadata:
   peerDependencies:
     react: ^16.13.1 || ^17
     react-dom: ^16.13.1 || ^17
-  checksum: bbcac5b049d6360b93c64caefe5d5feadbaf9961ff4a61648e04b320dd4547903da480e22dff8d57e69e23d5d657a24427feae73c9235d4d55719e6901b3f489
+  checksum: 18a535f611da4e6633b9af0e46056e6784de7af85a6f65067a16aa02b28ef00e0a9337365e79b1c42e29864e4722440f002de155a74988d824201deeb5eaa79a
   languageName: node
   linkType: hard
 
