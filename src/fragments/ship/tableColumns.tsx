@@ -48,12 +48,14 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			minWidth: 10,
 			Cell( { value } ) {
 				switch ( value ) {
-				case 6:
+				case 7:
 					return '';
-				case 5:
+				case 6:
 					return 'N';
+				case 0:
+					return 'EX';
 				default:
-					return value;
+					return value - 1;
 				}
 			},
 			disableGlobalFilter: true,

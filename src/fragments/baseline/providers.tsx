@@ -6,6 +6,7 @@ import React from 'react';
 
 import useTheme from '../../lib/hooks/useTheme';
 import IndicatorProvider from '../../lib/providers/indicator';
+import ModalProvider from '../../lib/providers/modal';
 import SnackbarProvider from '../../lib/providers/snack';
 
 const cache = createCache( {
@@ -18,13 +19,15 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	
 	return <AuthProvider session={pageProps.session}>
 		<ThemeProvider theme={theme}>
-			<SnackbarProvider>
-				<IndicatorProvider>
-					<CacheProvider value={cache}>
-						{children}
-					</CacheProvider>
-				</IndicatorProvider>
-			</SnackbarProvider>
+			<ModalProvider>
+				<SnackbarProvider>
+					<IndicatorProvider>
+						<CacheProvider value={cache}>
+							{children}
+						</CacheProvider>
+					</IndicatorProvider>
+				</SnackbarProvider>
+			</ModalProvider>
 		</ThemeProvider>
 	</AuthProvider>;
 }

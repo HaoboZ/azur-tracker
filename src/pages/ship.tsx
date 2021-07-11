@@ -1,23 +1,21 @@
 import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Row } from 'react-table';
 
 import PageContainer from '../components/pageContainer';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
 import ShipModal from '../fragments/ship/shipModal';
 import useShipTable from '../fragments/ship/useShipTable';
+import { useModal } from '../lib/providers/modal';
 import { useMappedColorClasses } from '../lib/reference/colors';
-import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
+	const { showModal } = useModal();
 	
-	const [ shipOpen, setShipOpen ] = React.useState( false );
-	const [ selectedRow, setSelectedRow ] = React.useState<Row<any>>( { original: blankShip } as any );
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
 		value: Record<string, number[]>
@@ -33,10 +31,14 @@ export default function Ship() {
 		<Filters table={table} resetEquip={() => setEquipBetter( { filter: undefined, value: {} } )}/>
 		<VirtualDisplay
 			{...table}
-			onClick={( row ) => {
-				setSelectedRow( row );
-				setShipOpen( true );
-			}}
+			onClick={( row ) => showModal( {
+				render : <ShipModal
+					ship={row.original as any}
+					equipBetter={equipBetter.value[ row.id ]}
+					selectedEquip={table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value}
+				/>,
+				fitSize: true
+			} )}
 			renderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider
 				onClick={() => onClick?.( row )}
@@ -55,13 +57,6 @@ export default function Ship() {
 					{row.cells[ 7 ].render( 'Cell' )}
 				</ListItemSecondaryAction>
 			</ListItem>}
-		/>
-		<ShipModal
-			open={shipOpen}
-			onClose={() => setShipOpen( false )}
-			ship={selectedRow.original}
-			equipBetter={equipBetter.value[ selectedRow.id ]}
-			selectedEquip={table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value}
 		/>
 	</PageContainer>;
 }

@@ -4,6 +4,7 @@ enum type {
 	DD,
 	CL,
 	CA,
+	CB,
 	SS,
 	BB,
 	F,
@@ -50,7 +51,7 @@ interface Equip {
 	rarity: rarity
 }
 
-export const version = '2021-07-01';
+export const version = '2021-07-11';
 
 // list of equips sorted by type
 export const equips: Equip[] = [
@@ -180,6 +181,13 @@ export const equips: Equip[] = [
 		id    : 26660,
 		name  : 'Sextuple 40mm Bofors AA Gun Mount',
 		image : 'Sextuple_40mm_Bofors',
+		type  : type.AA,
+		rarity: rarity.SR
+	},
+	{
+		id    : 95160,
+		name  : 'Prototype Twin 90mm Model 1939 High Angle Gun',
+		image : 'Twin_90mm_AA_(Model_1939_Prototype)',
 		type  : type.AA,
 		rarity: rarity.SR
 	},
@@ -568,6 +576,13 @@ export const equips: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
+		id    : 44400,
+		name  : 'Prototype Triple 305mm SK C/39 Main Gun Mount (CB)',
+		image : 'Triple_305mm_(SK_C$2F39_Prototype)$23CB_Variant',
+		type  : type.CB,
+		rarity: rarity.SR
+	},
+	{
 		id    : 43140,
 		name  : 'Triple 283mm SK C/28 Main Gun Mount',
 		image : 'Triple_283mm_(SK_C$2F28)',
@@ -627,7 +642,7 @@ export const equips: Equip[] = [
 		id    : 33100,
 		name  : 'Prototype Triple 310mm Type 0 Main Gun Mount',
 		image : 'Triple_310mm_(Type_0_Prototype)',
-		type  : type.CA,
+		type  : type.CB,
 		rarity: rarity.SR
 	},
 	{
@@ -703,6 +718,13 @@ export const equips: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
+		id    : 95900,
+		name  : 'Prototype Triple 406mm Model 1940 Main Gun',
+		image : 'Triple_406mm_(Model_1940_Prototype)',
+		type  : type.BB,
+		rarity: rarity.SR
+	},
+	{
 		id    : 34180,
 		name  : 'Prototype Triple 410mm Main Gun Mount',
 		image : 'Triple_410mm_(10th_Year_Type_Prototype)',
@@ -760,8 +782,8 @@ export const equips: Equip[] = [
 	},
 	{
 		id    : 44300,
-		name  : 'Prototype Triple 305mm SK C/39 Main Gun Mount',
-		image : 'Triple_305mm_(SK_C$2F39_Prototype)',
+		name  : 'Prototype Triple 305mm SK C/39 Main Gun Mount (BB)',
+		image : 'Triple_305mm_(SK_C$2F39_Prototype)$23BB_Variant',
 		type  : type.BB,
 		rarity: rarity.SR
 	},
@@ -830,6 +852,13 @@ export const equips: Equip[] = [
 	},
 	//endregion
 	//region Fighter
+	{
+		id    : 47160,
+		name  : 'Prototype BF-109G',
+		image : 'Messerschmitt_Bf_109G_(Carrier-based_Prototype)',
+		type  : type.F,
+		rarity: rarity.SR
+	},
 	{
 		id    : 27320,
 		name  : 'Sea Hornet',
@@ -915,6 +944,13 @@ export const equips: Equip[] = [
 	},
 	//endregion
 	//region Dive Bomber
+	{
+		id    : 39340,
+		name  : 'Prototype Tenrai',
+		image : 'Nakajima_J5N_Tenrai_(Dive_Bomber_Prototype)',
+		type  : type.DB,
+		rarity: rarity.UR
+	},
 	{
 		id    : 49040,
 		name  : 'Ju-87C Dive Bomber',
@@ -1019,6 +1055,13 @@ export const equips: Equip[] = [
 		image : 'Nakajima_B6N2_Tenzan_Model_12A',
 		type  : type.TB,
 		rarity: rarity.E
+	},
+	{
+		id    : 38300,
+		name  : 'Prototype Saiun Kai',
+		image : 'Nakajima_C6N_Saiun_(Model_21_Prototype)',
+		type  : type.TB,
+		rarity: rarity.SR
 	},
 	{ id: 48040, name: 'Ju-87 D-4', image: 'Junkers_Ju-87_D-4', type: type.TB, rarity: rarity.SR },
 	{
@@ -1618,41 +1661,44 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ '610mm Quadruple Torpedo Mount/E' ] ]          : [ 4, ++a ]
 	},
 	'AA/Damage': {
-		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ] : [ 0, a = 0 ],
-		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]           : [ 0, ++a ],
-		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]           : [ 1, ++a ],
-		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]    : [ 1, ++a ],
-		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]   : [ 2, ++a ],
-		[ map[ 'Twin 127mm Type 89 AA Gun Mount/SR' ] ]   : [ 2, ++a ],
-		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]   : [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]: [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ] : [ 4, ++a ],
-		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]     : [ 4, ++a ]
+		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]            : [ 0, a = 0 ],
+		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]                      : [ 0, ++a ],
+		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]                      : [ 1, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]               : [ 1, ++a ],
+		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]           : [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]              : [ 2, ++a ],
+		[ map[ 'Twin 127mm Type 89 AA Gun Mount/SR' ] ]              : [ 2, ++a ],
+		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]              : [ 3, ++a ],
+		[ map[ 'Prototype Twin 90mm Model 1939 High Angle Gun/SR' ] ]: [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]           : [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]                : [ 4, ++a ]
 	},
 	'AA'       : {
-		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]   : [ 0, a = 0 ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]  : [ 0, ++a ],
-		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]     : [ 0, ++a ],
-		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]      : [ 1, ++a ],
-		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]  : [ 1, ++a ],
-		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]     : [ 2, ++a ],
-		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]     : [ 2, ++a ],
-		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]       : [ 3, ++a ],
-		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]             : [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]   : [ 4, ++a ],
-		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]       : [ 4, ++a ]
+		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]            : [ 0, a = 0 ],
+		[ map[ 'Prototype Twin 90mm Model 1939 High Angle Gun/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]           : [ 0, ++a ],
+		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]              : [ 0, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ] ]               : [ 1, ++a ],
+		[ map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ] ]           : [ 1, ++a ],
+		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]         : [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 AA Gun Mount/SR' ] ]              : [ 2, ++a ],
+		[ map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ] ]              : [ 2, ++a ],
+		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]                : [ 3, ++a ],
+		[ map[ 'Twin 113mm AA Gun Mount/SR' ] ]                      : [ 3, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ],
+		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]                : [ 4, ++a ]
 	},
 	'AA/Speed' : {
-		[ map[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ] ] : [ 0, a = 0 ],
-		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]     : [ 0, ++a ],
-		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]  : [ 1, ++a ],
-		[ map[ 'Twin 37mm Mle 1936 AA Gun Mount/SR' ] ]     : [ 2, ++a ],
-		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]             : [ 3, ++a ],
-		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]       : [ 3, ++a ],
-		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]   : [ 4, ++a ]
+		[ map[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ] ]          : [ 0, a = 0 ],
+		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]              : [ 0, ++a ],
+		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]         : [ 1, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]           : [ 1, ++a ],
+		[ map[ 'Twin 37mm Mle 1936 AA Gun Mount/SR' ] ]              : [ 2, ++a ],
+		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]                      : [ 3, ++a ],
+		[ map[ 'Single 90mm Model 1939 AA Gun/SR' ] ]                : [ 3, ++a ],
+		[ map[ 'Prototype Twin 90mm Model 1939 High Angle Gun/SR' ] ]: [ 4, ++a ],
+		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ]
 	},
 	'AA/Main'  : {
 		[ map[ 'Twin 40mm Bofors STAAG/SR' ] ]                   : [ 0, a = 0 ],
@@ -1846,9 +1892,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'CA/CL'() {
 		return this[ 'CA' ];
 	},
-	'CA/CB': {
+	'CA/CB'   : {
 		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]          : [ 1, ++a ]
+	},
+	'CA/CB/AP': {
+		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (CB)/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]      : [ 1, ++a ],
+		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]                : [ 2, ++a ]
 	},
 	
 	'BB/Damage'  : {
@@ -1861,26 +1912,28 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]      : [ 3, ++a ]
 	},
 	'BB/Speed'   : {
-		[ map[ 'Prototype 406mm SK C/34 Main Gun Mount/SR' ] ]       : [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]     : [ 1, ++a ],
-		[ map[ 'Twin 381mm Advanced Main Gun Mount/SR' ] ]           : [ 1, ++a ],
-		[ map[ 'Twin 410mm Naval Gun Mount/E' ] ]                    : [ 2, ++a ],
-		[ map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ] ]            : [ 3, ++a ],
-		[ map[ 'Twin 406mm Mk 8 Main Gun Mount/E' ] ]                : [ 3, ++a ]
+		[ map[ 'Prototype 406mm SK C/34 Main Gun Mount/SR' ] ]            : [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (BB)/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]          : [ 1, ++a ],
+		[ map[ 'Twin 381mm Advanced Main Gun Mount/SR' ] ]                : [ 1, ++a ],
+		[ map[ 'Twin 410mm Naval Gun Mount/E' ] ]                         : [ 2, ++a ],
+		[ map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ] ]                 : [ 3, ++a ],
+		[ map[ 'Twin 406mm Mk 8 Main Gun Mount/E' ] ]                     : [ 3, ++a ]
 	},
 	'BB/Modified': {
-		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ] : [ 0, a = 0 ],
-		[ map[ 'Triple 406mm Main Gun/SR' ] ]                    : [ 1, ++a ],
-		[ map[ 'Prototype Triple 406mm /50 Main Gun Mount/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]    : [ 2, ++a ],
-		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]      : [ 2, ++a ],
-		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]          : [ 3, ++a ]
+		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]  : [ 0, a = 0 ],
+		[ map[ 'Triple 406mm Main Gun/SR' ] ]                     : [ 1, ++a ],
+		[ map[ 'Prototype Triple 406mm Model 1940 Main Gun/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Prototype Triple 406mm /50 Main Gun Mount/SR' ] ] : [ 1, ++a ],
+		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]     : [ 2, ++a ],
+		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]       : [ 2, ++a ],
+		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]           : [ 3, ++a ]
 	},
 	
 	'F' : {
 		[ map[ 'F7F Tigercat/SR' ] ]                 : [ 0, a = 0 ],
 		[ map[ 'Sea Hornet/SR' ] ]                   : [ 0, ++a ],
+		[ map[ 'Prototype BF-109G/SR' ] ]            : [ 1, ++a ],
 		[ map[ 'F4U (VF-17 "Pirate" Squad)/SR' ] ]   : [ 1, ++a ],
 		[ map[ 'F6F Hellcat/SR' ] ]                  : [ 1, ++a ],
 		[ map[ 'Kawanishi N1K3-A Shiden Kai 2/SR' ] ]: [ 2, ++a ],
@@ -1898,7 +1951,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Messerschmitt Me-155A/SR' ] ]        : [ 4, ++a ]
 	},
 	'DB': {
-		[ map[ 'Experimental XSB3C-1/SR' ] ]             : [ 0, a = 0 ],
+		[ map[ 'Prototype Tenrai/UR' ] ]                 : [ 0, a = 0 ],
+		[ map[ 'Experimental XSB3C-1/SR' ] ]             : [ 0, ++a ],
 		[ map[ 'SB2C Helldiver/E' ] ]                    : [ 1, ++a ],
 		[ map[ 'Suisei Model 12A/SR' ] ]                 : [ 1, ++a ],
 		[ map[ 'Ju-87C Dive Bomber/E' ] ]                : [ 2, ++a ],
@@ -1912,6 +1966,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Wyvern/UR' ] ]           : [ 0, a = 0 ],
 		[ map[ 'XTB2D-1 Skypirate/SR' ] ]: [ 0, ++a ],
 		// [ map[ 'Aichi B7A Ryusei/SR' ] ]:               [ 0, ++a ],
+		// [ map[ 'Prototype Saiun Kai/SR' ] ]:            [ 0, ++a ],
 		// [ map[ 'Ju-87 D-4/SR' ] ]:                      [ 0, ++a ],
 		[ map[ 'Barracuda/SR' ] ]          : [ 1, ++a ],
 		[ map[ 'Firecrest/SR' ] ]          : [ 1, ++a ],
@@ -2185,7 +2240,8 @@ export const equippable = {
 	'CA/Modified': [ type.CA ],
 	'CA/BB'      : [ type.CA ],
 	'CA/CL'      : [ type.CA, type.CL ],
-	'CA/CB'      : [ type.CA ],
+	'CA/CB'      : [ type.CA, type.CB ],
+	'CA/CB/AP'   : [ type.CA, type.CB ],
 	
 	'BB/Damage'  : [ type.BB ],
 	'BB/Speed'   : [ type.BB ],

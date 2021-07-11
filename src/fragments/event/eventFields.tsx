@@ -6,6 +6,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormattedTextField from '../../components/formattedTextField';
+import { useModal } from '../../lib/providers/modal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
@@ -33,9 +34,7 @@ export default function EventFields( { time, neededPoints }: {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
 	const classes = useStyles();
-	
-	const [ shopModalVisible, setShopModalVisible ] = React.useState( false );
-	const [ dailyModalVisible, setDailyModalVisible ] = React.useState( false );
+	const { showModal } = useModal();
 	
 	return <Grid container spacing={2} px={2}>
 		<Grid item container xs={12} justifyContent='center'>
@@ -66,9 +65,8 @@ export default function EventFields( { time, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.shopExpectedCost}
-				onClick={() => setShopModalVisible( true )}
+				onClick={() => showModal( { render: <ShopModal/> } )}
 			/>
-			<ShopModal open={shopModalVisible} onClose={() => setShopModalVisible( false )}/>
 		</Grid>
 		<Grid item sm={3} xs={6}>
 			<TextField
@@ -80,9 +78,8 @@ export default function EventFields( { time, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.dailyExpected}
-				onClick={() => setDailyModalVisible( true )}
+				onClick={() => showModal( { render: <DailyModal/> } )}
 			/>
-			<DailyModal open={dailyModalVisible} onClose={() => setDailyModalVisible( false )}/>
 		</Grid>
 		<Grid item sm={3} xs={6}>
 			<InputLabel shrink>Required Points</InputLabel>
