@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import { ThemeProvider } from '@material-ui/core';
+import { StyledEngineProvider, ThemeProvider } from '@material-ui/core';
 import { Provider as AuthProvider } from 'next-auth/client';
 import React from 'react';
 
@@ -18,16 +18,18 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	const theme = useTheme();
 	
 	return <AuthProvider session={pageProps.session}>
-		<ThemeProvider theme={theme}>
-			<ModalProvider>
-				<SnackbarProvider>
-					<IndicatorProvider>
-						<CacheProvider value={cache}>
-							{children}
-						</CacheProvider>
-					</IndicatorProvider>
-				</SnackbarProvider>
-			</ModalProvider>
-		</ThemeProvider>
+		<StyledEngineProvider injectFirst>
+			<ThemeProvider theme={theme}>
+				<ModalProvider>
+					<SnackbarProvider>
+						<IndicatorProvider>
+							<CacheProvider value={cache}>
+								{children}
+							</CacheProvider>
+						</IndicatorProvider>
+					</SnackbarProvider>
+				</ModalProvider>
+			</ThemeProvider>
+		</StyledEngineProvider>
 	</AuthProvider>;
 }

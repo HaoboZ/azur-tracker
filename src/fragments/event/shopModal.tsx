@@ -9,7 +9,7 @@ import { useModal } from '../../lib/providers/modal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
-export default function ShopModal() {
+export default function ShopModal( { index } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
 	const { closeModal } = useModal();
@@ -25,7 +25,7 @@ export default function ShopModal() {
 		[ shop ] );
 	
 	return <PageModalContainer
-		onClose={closeModal}
+		onClose={() => closeModal( index )}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
 		<DialogContent sx={{ padding: 0 }}>

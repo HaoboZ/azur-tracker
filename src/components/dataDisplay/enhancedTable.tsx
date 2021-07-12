@@ -20,7 +20,7 @@ import ActionTitle from '../actionTitle';
 const useStyles = makeStyles( ( theme ) => ( {
 	tableRows: {
 		'& tr:nth-of-type(odd),& th': {
-			backgroundColor: theme.palette.action.disabledBackground
+			backgroundColor: 'action.disabledBackground'
 		}
 	},
 	minWidth : {

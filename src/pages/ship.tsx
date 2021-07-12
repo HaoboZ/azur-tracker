@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import PageContainer from '../components/pageContainer';
+import { ModalVariant } from '../components/pageModal';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
 import ShipModal from '../fragments/ship/shipModal';
@@ -32,12 +33,13 @@ export default function Ship() {
 		<VirtualDisplay
 			{...table}
 			onClick={( row ) => showModal( {
-				render : <ShipModal
+				render : ( index ) => <ShipModal
+					index={index}
 					ship={row.original as any}
 					equipBetter={equipBetter.value[ row.id ]}
 					selectedEquip={table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value}
 				/>,
-				fitSize: true
+				variant: ModalVariant.bottom
 			} )}
 			renderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider

@@ -10,7 +10,8 @@ import {
 	Theme,
 	Toolbar,
 	Typography,
-	useMediaQuery
+	useMediaQuery,
+	useTheme
 } from '@material-ui/core';
 import { SlideProps } from '@material-ui/core/Slide';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
@@ -19,19 +20,26 @@ import React from 'react';
 const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
 	<Slide direction='up' ref={ref} {...props}/> );
 
-export default function PageModal( { onClose, fitSize, children, ...props }: {
+export enum ModalVariant {
+	adaptive = 'adaptive',
+	bottom   = 'bottom',
+	center   = 'center'
+}
+
+export default function PageModal( { variant = ModalVariant.adaptive, children, ...props }: {
 	open: boolean,
 	onClose: () => void,
-	// make modal fit size of content or full page
-	fitSize?: boolean,
+	// type of modal to be displayed
+	variant?: ModalVariant,
 	children?: React.ReactNode
 } & Partial<Omit<ModalProps, 'onClose'>> ) {
+	const theme = useTheme();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	if ( wide ) {
+	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <Dialog
-			onClose={onClose}
 			maxWidth='md'
+			fullWidth
 			TransitionComponent={Transition}
 			disablePortal
 			disableEnforceFocus
@@ -41,6 +49,7 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 				'& .MuiDialog-paper': {
 					marginLeft  : 'env(safe-area-inset-left)',
 					marginRight : 'env(safe-area-inset-right)',
+					marginTop   : 'env(safe-area-inset-top)',
 					marginBottom: 'env(safe-area-inset-bottom)'
 				}
 			}}
@@ -50,19 +59,23 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 	} else {
 		return <SwipeableDrawer
 			anchor='bottom'
-			onClose={onClose}
 			onOpen={() => null}
 			disableSwipeToOpen
 			disablePortal
 			disableEnforceFocus
 			disableAutoFocus
 			closeAfterTransition
+			sx={{ display: 'flex', justifyContent: 'center' }}
 			PaperProps={{
 				sx: {
+					maxWidth            : '100%',
 					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
-					height              : fitSize ? 'auto' : '100%',
+					height              : variant === ModalVariant.bottom ? 'auto' : '100%',
+					left                : 'auto',
+					right               : 'auto',
 					borderTopLeftRadius : 12,
-					borderTopRightRadius: 12
+					borderTopRightRadius: 12,
+					width               : theme.breakpoints.values.md
 				}
 			}}
 			{...props}>
@@ -71,8 +84,17 @@ export default function PageModal( { onClose, fitSize, children, ...props }: {
 	}
 }
 
-export function PageModalContainer( { onClose, title, onSave, submit, children }: {
+export function PageModalContainer( {
+	onClose,
+	variant = ModalVariant.adaptive,
+	title,
+	onSave,
+	submit,
+	children
+}: {
 	onClose: () => void,
+	// type of modal to be displayed
+	variant?: ModalVariant,
 	title?: React.ReactNode,
 	// renders and called by save button if set
 	onSave?: () => void,
@@ -82,7 +104,7 @@ export function PageModalContainer( { onClose, title, onSave, submit, children }
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	if ( wide ) {
+	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <>
 			{title && <DialogTitle>{title}</DialogTitle>}
 			{children}

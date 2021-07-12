@@ -9,7 +9,7 @@ import { PageModalContainer } from '../../components/pageModal';
 import { useModal } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
-export default function DailyModal() {
+export default function DailyModal( { index } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
 	const { closeModal } = useModal();
@@ -30,7 +30,7 @@ export default function DailyModal() {
 	}
 	
 	return <PageModalContainer
-		onClose={closeModal}
+		onClose={() => closeModal( index )}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
 		<DialogContent sx={{ padding: 0 }}>

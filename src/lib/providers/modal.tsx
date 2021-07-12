@@ -1,40 +1,66 @@
-import { ModalProps } from '@material-ui/core';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import PageModal from '../../components/pageModal';
 
 type C = {
-	showModal: ( props: {
-		// make modal fit size of content or full page
-		fitSize?: boolean,
-		render?: React.ReactNode
-	} & Partial<Omit<ModalProps, 'onClose'>> ) => void,
-	closeModal: () => void
+	showModal: ( props: { render?: ( index: number ) => React.ReactNode }
+		& Partial<ComponentProps<typeof PageModal>> ) => void,
+	closeModal: ( index: number ) => void,
+	getModal: ( index: number ) => {
+		open: boolean,
+		render?: ( index: number ) => React.ReactNode,
+		props: Partial<ComponentProps<typeof PageModal>>
+	}
 };
 
-const ModalContext = React.createContext<C>( { showModal: () => null, closeModal: () => null } );
+const ModalContext = React.createContext<C>( {
+	showModal : () => null,
+	closeModal: () => null,
+	getModal  : () => null
+} );
 ModalContext.displayName = 'Modal';
 
 export default function ModalProvider( { children } ) {
-	const [ open, setOpen ] = React.useState( false );
-	const [ props, setProps ] = React.useState<any>();
-	const [ render, setRender ] = React.useState<any>();
+	const [ modals, setModals ] = React.useState<any[]>( [] );
 	
 	return <ModalContext.Provider value={{
 		showModal : ( { render, ...props } ) => {
-			setProps( props );
-			setRender( render );
-			setOpen( true );
+			setModals( ( modals ) => [ ...modals, { open: false, props, render } ] );
+			setTimeout( () => setModals( ( modals ) => {
+				modals.splice( -1, 1, { open: true, props, render } );
+				return [ ...modals ];
+			} ), 0 );
 		},
-		closeModal: () => setOpen( false )
+		closeModal: ( index ) => {
+			setModals( ( modals ) => {
+				modals[ index ].open = false;
+				return [ ...modals ];
+			} );
+			setTimeout( () => setModals( ( modals ) => {
+				modals[ index ] = null;
+				return [ ...modals ];
+			} ), 500 );
+		},
+		getModal  : ( index ) => modals[ index ]
 	}}>
 		{children}
-		<PageModal
-			open={open}
-			onClose={() => setOpen( false )}
-			{...props}>
-			{render}
-		</PageModal>
+		{modals.map( ( modal, index ) => {
+			if ( !modal ) return null;
+			return <PageModal
+				key={index}
+				open={modal.open}
+				onClose={() => {
+					modal.open = false;
+					setModals( ( modals ) => [ ...modals ] );
+					setTimeout( () => setModals( ( modals ) => {
+						modals[ index ] = null;
+						return [ ...modals ];
+					} ), 500 );
+				}}
+				{...modal.props}>
+				{modal.render?.( index )}
+			</PageModal>;
+		} )}
 	</ModalContext.Provider>;
 }
 

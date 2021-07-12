@@ -13,7 +13,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { PageModalContainer } from '../../components/pageModal';
+import { ModalVariant, PageModalContainer } from '../../components/pageModal';
 import SVGIcon, { TierIcon } from '../../lib/icons';
 import { useModal } from '../../lib/providers/modal';
 import { rarityColors, tierColors, useMappedColorClasses } from '../../lib/reference/colors';
@@ -22,7 +22,8 @@ import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipDialog from './equipDialog';
 
-export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
+export default function ShipModal( { index, ship, equipBetter = [], selectedEquip }: {
+	index: number,
 	ship?: typeof shipRef[string],
 	equipBetter?: number[],
 	selectedEquip?: typeof equips[number]
@@ -35,13 +36,14 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const [ equipInfo, setEquipInfo ] = React.useState<{ ship, index }>();
 	
 	return <PageModalContainer
-		onClose={closeModal}
+		onClose={() => closeModal( index )}
 		title={<Link
 			href={ship.link}
 			target='_blank'
 			color='textPrimary'>
 			<DialogTitle>{ship.name}</DialogTitle>
-		</Link>}>
+		</Link>}
+		variant={ModalVariant.bottom}>
 		<DialogContent>
 			<Grid container spacing={2} alignItems='center'>
 				<Grid item xs={4}>

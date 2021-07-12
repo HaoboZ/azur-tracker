@@ -1,4 +1,4 @@
-import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box, useTheme } from '@material-ui/core';
+import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@material-ui/core';
 import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
@@ -19,7 +19,6 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
-	const theme = useTheme();
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -37,7 +36,7 @@ export default function BottomBar( { children } ) {
 				zIndex         : 1100,
 				width          : '100%',
 				height         : 'env(safe-area-inset-top)',
-				backgroundColor: theme.palette.primary.main
+				backgroundColor: 'primary.main'
 			}}
 		/>
 		<Box
@@ -56,10 +55,10 @@ export default function BottomBar( { children } ) {
 				showLabels
 				value={index}
 				sx={{
-					height         : 'calc(env(safe-area-inset-bottom) + 56px)',
-					paddingLeft    : 'env(safe-area-inset-left)',
-					paddingRight   : 'env(safe-area-inset-right)',
-					paddingBottom  : 'env(safe-area-inset-bottom)'
+					height       : 'calc(env(safe-area-inset-bottom) + 56px)',
+					paddingLeft  : 'env(safe-area-inset-left)',
+					paddingRight : 'env(safe-area-inset-right)',
+					paddingBottom: 'env(safe-area-inset-bottom)'
 				}}
 				onChange={( e, value ) => {
 					switch ( value ) {
