@@ -1,9 +1,9 @@
 import { CssBaseline } from '@material-ui/core';
 import React from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
-
-import Effects from './effects';
 import Providers from './providers';
+
+import Wrapper from './wrapper';
 
 export default function Baseline( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {
 	React.useEffect( () => {
@@ -12,8 +12,8 @@ export default function Baseline( { pageProps, children }: { pageProps, children
 	
 	return <Providers pageProps={pageProps}>
 		<CssBaseline/>
-		<Effects>
+		<Wrapper>
 			{children}
-		</Effects>
+		</Wrapper>
 	</Providers>;
 }

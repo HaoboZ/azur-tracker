@@ -1,6 +1,4 @@
 import { Grid, InputAdornment, InputLabel, TextField, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import clsx from 'clsx';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,31 +10,15 @@ import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
 import ShopModal from './shopModal';
 
-const useStyles = makeStyles( {
-	rightInput : {
-		textAlign: 'right'
-	},
-	numberInput: {
-		'&[type=number]'                                            : {
-			'-moz-appearance': 'textfield'
-		},
-		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-			'-webkit-appearance': 'none',
-			margin              : 0
-		}
-	}
-} );
-
 export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
 	neededPoints: number
 } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
-	const classes = useStyles();
 	const { showModal } = useModal();
 	
-	return <Grid container spacing={2} px={2}>
+	return <Grid container spacing={2} px={2} sx={{ '& .rightInput': { textAlign: 'right' } }}>
 		<Grid item container xs={12} justifyContent='center'>
 			<Typography variant='h6' color='textPrimary'>
 				{eventRef.name}
@@ -59,7 +41,7 @@ export default function EventFields( { time, neededPoints }: {
 			<FormattedTextField
 				type='text'
 				label='Shop Cost'
-				inputProps={{ className: classes.rightInput }}
+				inputProps={{ className: 'rightInput' }}
 				InputProps={{
 					readOnly    : true,
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
@@ -72,7 +54,7 @@ export default function EventFields( { time, neededPoints }: {
 			<TextField
 				type='text'
 				label='Daily Points'
-				inputProps={{ className: classes.rightInput }}
+				inputProps={{ className: 'rightInput' }}
 				InputProps={{
 					readOnly    : true,
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
@@ -91,7 +73,7 @@ export default function EventFields( { time, neededPoints }: {
 				label='Current Points'
 				inputProps={{
 					inputMode: 'numeric',
-					className: clsx( classes.numberInput, classes.rightInput ),
+					className: 'numberInput',
 					onFocus  : ( e ) => e.target.select()
 				}}
 				InputProps={{

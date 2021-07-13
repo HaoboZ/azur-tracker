@@ -14,7 +14,6 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,30 +35,23 @@ import {
 import { research_reset } from '../lib/store/reducers/researchReducer';
 import { ship_reset } from '../lib/store/reducers/shipReducer';
 
-const useStyles = makeStyles( {
-	longText  : {
-		width: '80%'
-	},
-	longAction: {
-		width: '40%'
-	}
-} );
-
 export default function Home() {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const snackBar = useSnackBar();
 	const indicator = useIndicator();
-	const classes = useStyles();
 	const online = useNetworkStatus();
 	
 	// noinspection HtmlUnknownTarget
 	return <PageContainer title='Azur Lane Tracker'>
-		<List>
+		<List sx={{
+			'& .longText'  : { width: '80%' },
+			'& .longAction': { width: '40%' }
+		}}>
 			<ListItem>
 				{online ? <>
-					<ListItemText classes={{ primary: classes.longText }}>
+					<ListItemText classes={{ primary: 'longText' }}>
 						{loading ? 'Loading...' :
 							session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save'}
 					</ListItemText>
@@ -99,7 +91,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText>Auto Save Interval (secs)</ListItemText>
-				<ListItemSecondaryAction className={classes.longAction}>
+				<ListItemSecondaryAction className='longAction'>
 					<Slider
 						value={main.autoSaveInterval}
 						onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
@@ -114,7 +106,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText>Auto Load Interval (secs)</ListItemText>
-				<ListItemSecondaryAction className={classes.longAction}>
+				<ListItemSecondaryAction className='longAction'>
 					<Slider
 						value={main.autoLoadInterval}
 						onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
@@ -200,7 +192,7 @@ export default function Home() {
 						Event Tracker
 					</Link>}
 					secondary='calculates farming runs for any stage until you reach your target points'
-					classes={{ secondary: classes.longText }}
+					classes={{ secondary: 'longText' }}
 				/>
 				<ListItemSecondaryAction>
 					<Button
@@ -220,7 +212,7 @@ export default function Home() {
 						Research Tracker
 					</Link>}
 					secondary='calculates number of strengthing units for pr ships until max'
-					classes={{ secondary: classes.longText }}
+					classes={{ secondary: 'longText' }}
 				/>
 				<ListItemSecondaryAction>
 					<Button
@@ -240,7 +232,7 @@ export default function Home() {
 						Ship Tracker
 					</Link>}
 					secondary='for those who want a fully leveled, fully equipped fleet'
-					classes={{ secondary: classes.longText }}
+					classes={{ secondary: 'longText' }}
 				/>
 				<ListItemSecondaryAction>
 					<Button

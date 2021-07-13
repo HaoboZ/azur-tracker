@@ -1,12 +1,31 @@
+import { makeStyles } from '@material-ui/styles';
 import { debounce } from 'lodash';
 import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import { useIndicator } from '../../lib/providers/indicator';
 import Navigation from '../navigation';
 
-export default function Effects( { children } ) {
+const useStyles = makeStyles( ( theme ) => ( {
+	'@global': {
+		'.selectedSort': { backgroundColor: `${theme.palette.primary.main} !important` },
+		'.numberInput' : {
+			textAlign                                                   : 'right',
+			'&[type=number]'                                            : {
+				'-moz-appearance': 'textfield'
+			},
+			'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+				'-webkit-appearance': 'none',
+				margin              : 0
+			}
+		}
+	}
+} ) );
+
+export default function Wrapper( { children } ) {
+	useStyles();
 	const { main, ...store } = useSelector( state => state );
 	const [ session ] = useSession();
 	const indicator = useIndicator();

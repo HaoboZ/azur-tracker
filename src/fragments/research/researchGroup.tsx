@@ -1,5 +1,4 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,23 +7,9 @@ import FormattedTextField from '../../components/formattedTextField';
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
-const useStyles = makeStyles( {
-	numberInput: {
-		textAlign                                                   : 'right',
-		'&[type=number]'                                            : {
-			'-moz-appearance': 'textfield'
-		},
-		'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-			'-webkit-appearance': 'none',
-			margin              : 0
-		}
-	}
-} );
-
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
 	const research = useSelector( state => state.research );
 	const dispatch = useDispatch();
-	const classes = useStyles();
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
@@ -89,7 +74,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 						<FormattedTextField
 							key='devStage'
 							type='number'
-							inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
+							inputProps={{ inputMode: 'numeric', className: 'numberInput' }}
 							InputProps={{
 								endAdornment: <InputAdornment position='end'>
 									/{devLevel[ item.type * 2 ] * 10}
@@ -114,7 +99,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							<FormattedTextField
 								key='fateStage'
 								type='number'
-								inputProps={{ inputMode: 'numeric', className: classes.numberInput }}
+								inputProps={{ inputMode: 'numeric', className: 'numberInput' }}
 								InputProps={{
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
 								}}
@@ -165,7 +150,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								size='small'
 								inputProps={{
 									inputMode: 'numeric',
-									className: classes.numberInput,
+									className: 'numberInput',
 									onFocus  : ( e ) => e.target.select()
 								}}
 								InputProps={{
@@ -198,7 +183,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								size='small'
 								inputProps={{
 									inputMode: 'numeric',
-									className: classes.numberInput,
+									className: 'numberInput',
 									onFocus  : ( e ) => e.target.select()
 								}}
 								InputProps={{

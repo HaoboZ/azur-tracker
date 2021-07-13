@@ -1,4 +1,5 @@
 import {
+	Box,
 	IconButton,
 	Paper,
 	Table,
@@ -10,68 +11,16 @@ import {
 	TableRow
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 
-const useStyles = makeStyles( ( theme ) => ( {
-	tableRows: {
-		'& tr:nth-of-type(odd),& th': {
-			backgroundColor: 'action.disabledBackground'
-		}
-	},
-	minWidth : {
-		width: '1%'
-	},
-	slide    : {
-		'&-enter'       : {
-			'& > * > div': {
-				overflowY: 'hidden',
-				maxHeight: 0
-			},
-			'& > *'      : {
-				paddingY: 0
-			}
-		},
-		'&-enter-active': {
-			'& > * > div': {
-				maxHeight : `${theme.spacing( 4 )} !important`,
-				transition: 'max-height 200ms ease-in-out'
-			},
-			'& > *'      : {
-				paddingY  : `${theme.spacing()} !important`,
-				transition: 'padding 200ms ease-in-out'
-			}
-		},
-		'&-exit'        : {
-			'& > * > div': {
-				maxHeight: theme.spacing( 4 )
-			},
-			'& > *'      : {
-				paddingY: 1
-			}
-		},
-		'&-exit-active' : {
-			'& > * > div': {
-				overflowY : 'hidden',
-				maxHeight : '0 !important',
-				transition: 'max-height 200ms ease-in-out'
-			},
-			'& > *'      : {
-				paddingY  : '0 !important',
-				transition: 'padding 200ms ease-in-out'
-			}
-		}
-	}
-} ) );
-
 const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
-	const classes = useStyles();
-	return <TableBody ref={ref} className={classes.tableRows}>{children}</TableBody>;
+	return <TableBody ref={ref} className='tableRows'>{children}</TableBody>;
 } );
+
 export default function EnhancedTable<Item extends { id?: string }>( {
 	title,
 	data,
@@ -90,18 +39,26 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
-	const classes = useStyles();
 	
-	return <>
+	return <Box sx={{
+		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
+		'& .minWidth'                          : { width: '1%' },
+		'& .slide'                             : {
+			'&-enter'       : { opacity: 0 },
+			'&-enter-active': { opacity: 1, transition: 'all 200ms' },
+			'&-exit'        : { opacity: 1 },
+			'&-exit-active' : { opacity: 0, transition: 'all 200ms' }
+		}
+	}}>
 		{title && <ActionTitle title={title}/>}
 		<TableContainer component={Paper} {...props}>
 			<Table size='small'>
-				<TableHead className={classes.tableRows}>
+				<TableHead className='tableRows'>
 					<TableRow>
-						{editable && <TableCell className={classes.minWidth}/>}
+						{editable && <TableCell className='minWidth'/>}
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
-						{editable && <TableCell className={classes.minWidth}>
+						{editable && <TableCell className='minWidth'>
 							<IconButton onClick={async () => setData( [ ...data, { ...await newData() } ] )}>
 								<AddIcon/>
 							</IconButton>
@@ -117,11 +74,11 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						ghostClass='selectedSort'
 						forceFallback
 						animation={200}>
-						<TransitionGroup component={null}>
+						<TransitionGroup component={null} appear>
 							{data.map( ( item, index ) => <CSSTransition
 								key={item.id || index}
 								timeout={200}
-								classNames={classes.slide}>
+								classNames='slide'>
 								<TableRow>
 									<TableCell className='sortHandle'>
 										<div><MenuIcon/></div>
@@ -145,7 +102,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 							</CSSTransition> )}
 						</TransitionGroup>
 					</ReactSortable> : undefined
-					: <TableBody className={classes.tableRows}>
+					: <TableBody className='tableRows'>
 						{data.map( ( item, index ) => <TableRow key={item.id || index}>
 							{columns( item, index ).map( ( cell, index ) =>
 								<TableCell key={index}>
@@ -155,5 +112,5 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 					</TableBody>}
 			</Table>
 		</TableContainer>
-	</>;
+	</Box>;
 }

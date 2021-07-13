@@ -1,23 +1,10 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../lib/reference/colors';
-
-const useStyles = makeStyles( {
-	row : {
-		'&:hover': {
-			cursor: 'pointer'
-		}
-	},
-	cell: {
-		whiteSpace: 'nowrap',
-		overflow  : 'hidden'
-	}
-} );
 
 export default function VirtualTable( {
 	getTableProps,
@@ -27,7 +14,6 @@ export default function VirtualTable( {
 	prepareRow,
 	onClick
 }: TableInstance & { onClick?: ( row: Row ) => void } ) {
-	const classes = useStyles();
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
@@ -35,10 +21,17 @@ export default function VirtualTable( {
 	const [ headerStyle, setHeaderStyle ] = React.useState( {} );
 	
 	React.useEffect( () => {
-		setHeaderStyle( { marginRight:  firstRow?.offsetWidth - firstRow?.clientWidth  || 0 } );
+		setHeaderStyle( { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 } );
 	}, [ firstRow, rows ] );
 	
-	return <Table size='small' component={Paper} {...getTableProps()}>
+	return <Table
+		size='small'
+		component={Paper}
+		sx={{
+			'& .row:hover': { cursor: 'pointer' },
+			'& .cell'     : { whiteSpace: 'nowrap', overflow: 'hidden' }
+		}}
+		{...getTableProps()}>
 		<TableHead component='div'>
 			{headerGroups.map( ( headerGroup ) =>
 				<TableRow key={headerGroup.id} component='div' {...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
@@ -70,13 +63,13 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							classes={{ hover: classes.row }}
+							classes={{ hover: 'row' }}
 							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								classes={{ sizeSmall: classes.cell }}
+								classes={{ sizeSmall: 'cell' }}
 								// @ts-ignore
 								className={colorClasses[ cell.column.color?.( cell ) ]}
 								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>

@@ -19,17 +19,17 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	
 	return <AuthProvider session={pageProps.session}>
 		<StyledEngineProvider injectFirst>
-			<ThemeProvider theme={theme}>
-				<ModalProvider>
-					<SnackbarProvider>
-						<IndicatorProvider>
-							<CacheProvider value={cache}>
+			<CacheProvider value={cache}>
+				<ThemeProvider theme={theme}>
+					<ModalProvider>
+						<SnackbarProvider>
+							<IndicatorProvider>
 								{children}
-							</CacheProvider>
-						</IndicatorProvider>
-					</SnackbarProvider>
-				</ModalProvider>
-			</ThemeProvider>
+							</IndicatorProvider>
+						</SnackbarProvider>
+					</ModalProvider>
+				</ThemeProvider>
+			</CacheProvider>
 		</StyledEngineProvider>
 	</AuthProvider>;
 }
