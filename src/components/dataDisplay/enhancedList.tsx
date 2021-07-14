@@ -16,6 +16,7 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	Menu as MenuIcon
 } from '@material-ui/icons';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -41,15 +42,16 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & ListProps ) {
 	const [ editing, setEditing ] = React.useState( false );
+	const sid = React.useMemo( () => nanoid( 8 ), [] );
 	
 	const contents = editable
 		? data.length ? <ReactSortable
 			list={data as any}
 			setList={setData as any}
-			handle='.sortHandle'
+			handle={`.${sid}-sortHandle`}
 			ghostClass='selectedSort'
 			forceFallback
-			animation={150}>
+			animation={200}>
 			<TransitionGroup component={null}>
 				{data.map( ( item, index ) => {
 					const itemRow = <>
@@ -59,7 +61,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 								_data.splice( index, 1 );
 								setData?.( _data );
 							}}><CloseIcon/></IconButton>
-							<IconButton className='sortHandle'><MenuIcon/></IconButton>
+							<IconButton className={`${sid}-sortHandle`}><MenuIcon/></IconButton>
 						</ListItemIcon>}
 						{renderRow( item, index )}
 					</>;
@@ -67,15 +69,14 @@ export default function EnhancedList<Item extends { id?: string }>( {
 					return <CSSTransition
 						key={item.id || index}
 						timeout={200}
-						mountOnEnter
-						classNames='slide'>
+						classNames={`${sid}-slide`}>
 						{renderPanel
 							? <Accordion>
 								<AccordionSummary
 									expandIcon={<ExpandMoreIcon/>}
 									classes={{
-										root   : editing ? 'iconSpace' : undefined,
-										content: 'center'
+										root   : editing ? `${sid}-iconSpace` : undefined,
+										content: `${sid}-center`
 									}}>
 									{itemRow}
 								</AccordionSummary>
@@ -83,7 +84,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 									{renderPanel( item, index )}
 								</AccordionDetails>
 							</Accordion>
-							: <ListItem divider className={editing ? 'iconSpace' : undefined}>
+							: <ListItem divider className={editing ? `${sid}-iconSpace` : undefined}>
 								{itemRow}
 							</ListItem>}
 					</CSSTransition>;
@@ -93,7 +94,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 		: data.map( ( item, index ) => renderPanel ? <Accordion key={item.id || index}>
 			<AccordionSummary
 				expandIcon={<ExpandMoreIcon/>}
-				classes={{ content: 'center' }}>
+				classes={{ content: `${sid}-center` }}>
 				{renderRow( item, index )}
 			</AccordionSummary>
 			<AccordionDetails>
@@ -105,9 +106,9 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	
 	return <List
 		sx={{
-			'& .center'   : { alignItems: 'center', marginY: 1 },
-			'& .iconSpace': { paddingLeft: 0 },
-			'& .slide'    : {
+			[ `& .${sid}-center` ]   : { alignItems: 'center', marginY: 1 },
+			[ `& .${sid}-iconSpace` ]: { paddingLeft: 0 },
+			[ `& .${sid}-slide` ]    : {
 				'&-enter'       : { opacity: 0 },
 				'&-enter-active': { opacity: 1, transition: 'all 200ms ease-in-out' },
 				'&-exit'        : { opacity: 1 },

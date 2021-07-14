@@ -11,6 +11,7 @@ import {
 	TableRow
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -39,26 +40,27 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
+	const sid = React.useMemo( () => nanoid( 8 ), [] );
 	
 	return <Box sx={{
-		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
-		'& .minWidth'                          : { width: '1%' },
-		'& .slide'                             : {
+		[ `& .${sid}-tableRows tr:nth-of-type(odd),& th` ]: { bgcolor: 'action.disabledBackground' },
+		[ `& .${sid}-minWidth` ]                          : { width: '1%' },
+		[ `& .${sid}-slide` ]                             : {
 			'&-enter'       : { opacity: 0 },
-			'&-enter-active': { opacity: 1, transition: 'all 200ms' },
+			'&-enter-active': { opacity: 1, transition: 'all 200ms ease-in-out' },
 			'&-exit'        : { opacity: 1 },
-			'&-exit-active' : { opacity: 0, transition: 'all 200ms' }
+			'&-exit-active' : { opacity: 0, transition: 'all 200ms ease-in-out' }
 		}
 	}}>
 		{title && <ActionTitle title={title}/>}
 		<TableContainer component={Paper} {...props}>
 			<Table size='small'>
-				<TableHead className='tableRows'>
+				<TableHead className={`${sid}-tableRows`}>
 					<TableRow>
-						{editable && <TableCell className='minWidth'/>}
+						{editable && <TableCell className={`${sid}-minWidth`}/>}
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
-						{editable && <TableCell className='minWidth'>
+						{editable && <TableCell className={`${sid}-minWidth`}>
 							<IconButton onClick={async () => setData( [ ...data, { ...await newData() } ] )}>
 								<AddIcon/>
 							</IconButton>
@@ -70,7 +72,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						tag={forwardTableBody}
 						list={data as any}
 						setList={setData as any}
-						handle='.sortHandle'
+						handle={`.${sid}-sortHandle`}
 						ghostClass='selectedSort'
 						forceFallback
 						animation={200}>
@@ -78,9 +80,9 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 							{data.map( ( item, index ) => <CSSTransition
 								key={item.id || index}
 								timeout={200}
-								classNames='slide'>
+								classNames={`${sid}-slide`}>
 								<TableRow>
-									<TableCell className='sortHandle'>
+									<TableCell className={`${sid}-sortHandle`}>
 										<div><MenuIcon/></div>
 									</TableCell>
 									{columns( item, index ).map( ( cell, index ) =>
@@ -102,7 +104,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 							</CSSTransition> )}
 						</TransitionGroup>
 					</ReactSortable> : undefined
-					: <TableBody className='tableRows'>
+					: <TableBody className={`${sid}-tableRows`}>
 						{data.map( ( item, index ) => <TableRow key={item.id || index}>
 							{columns( item, index ).map( ( cell, index ) =>
 								<TableCell key={index}>

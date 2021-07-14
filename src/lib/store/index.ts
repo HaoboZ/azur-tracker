@@ -75,12 +75,19 @@ const migrations = {
 				return ship;
 			} ) )
 		}
+	} ),
+	7: ( state: RootState ) => ( {
+		...state,
+		main: {
+			...state.main,
+			researchLastTab: 0
+		}
 	} )
 } as Record<string, ( state: RootState ) => RootState>;
 
 const persistedReducer = persistReducer( {
 	key            : 'root',
-	version        : 6,
+	version        : 7,
 	storage,
 	stateReconciler: authMergeLevel2,
 	migrate        : createMigrate( migrations as any, { debug: false } ),

@@ -14,6 +14,7 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
+import { nanoid } from 'nanoid';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,15 +44,17 @@ export default function Home() {
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
 	
+	const sid = React.useMemo( () => nanoid( 8 ), [] );
+	
 	// noinspection HtmlUnknownTarget
 	return <PageContainer title='Azur Lane Tracker'>
 		<List sx={{
-			'& .longText'  : { width: '80%' },
-			'& .longAction': { width: '40%' }
+			[ `& .${sid}-longText` ]  : { width: '80%' },
+			[ `& .${sid}-longAction` ]: { width: '40%' }
 		}}>
 			<ListItem>
 				{online ? <>
-					<ListItemText classes={{ primary: 'longText' }}>
+					<ListItemText classes={{ primary: `${sid}-longText` }}>
 						{loading ? 'Loading...' :
 							session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save'}
 					</ListItemText>
@@ -91,7 +94,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText>Auto Save Interval (secs)</ListItemText>
-				<ListItemSecondaryAction className='longAction'>
+				<ListItemSecondaryAction className={`${sid}-longAction`}>
 					<Slider
 						value={main.autoSaveInterval}
 						onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
@@ -106,7 +109,7 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText>Auto Load Interval (secs)</ListItemText>
-				<ListItemSecondaryAction className='longAction'>
+				<ListItemSecondaryAction className={`${sid}-longAction`}>
 					<Slider
 						value={main.autoLoadInterval}
 						onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
@@ -192,7 +195,7 @@ export default function Home() {
 						Event Tracker
 					</Link>}
 					secondary='calculates farming runs for any stage until you reach your target points'
-					classes={{ secondary: 'longText' }}
+					classes={{ secondary: `${sid}-longText` }}
 				/>
 				<ListItemSecondaryAction>
 					<Button
@@ -212,7 +215,7 @@ export default function Home() {
 						Research Tracker
 					</Link>}
 					secondary='calculates number of strengthing units for pr ships until max'
-					classes={{ secondary: 'longText' }}
+					classes={{ secondary: `${sid}-longText` }}
 				/>
 				<ListItemSecondaryAction>
 					<Button
@@ -232,7 +235,7 @@ export default function Home() {
 						Ship Tracker
 					</Link>}
 					secondary='for those who want a fully leveled, fully equipped fleet'
-					classes={{ secondary: 'longText' }}
+					classes={{ secondary: `${sid}-longText` }}
 				/>
 				<ListItemSecondaryAction>
 					<Button

@@ -1,8 +1,8 @@
 import { CssBaseline } from '@material-ui/core';
 import React from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
-import Providers from './providers';
 
+import Providers from './providers';
 import Wrapper from './wrapper';
 
 export default function Baseline( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {

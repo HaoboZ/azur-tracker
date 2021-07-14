@@ -1,4 +1,5 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';
@@ -17,8 +18,10 @@ export default function VirtualTable( {
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
-	const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
 	const [ headerStyle, setHeaderStyle ] = React.useState( {} );
+	const sid = React.useMemo( () => nanoid( 8 ), [] );
+	
+	const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
 	
 	React.useEffect( () => {
 		setHeaderStyle( { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 } );
@@ -28,8 +31,8 @@ export default function VirtualTable( {
 		size='small'
 		component={Paper}
 		sx={{
-			'& .row:hover': { cursor: 'pointer' },
-			'& .cell'     : { whiteSpace: 'nowrap', overflow: 'hidden' }
+			[ `& .${sid}-row:hover` ]: { cursor: 'pointer' },
+			[ `& .${sid}-cell` ]     : { whiteSpace: 'nowrap', overflow: 'hidden' }
 		}}
 		{...getTableProps()}>
 		<TableHead component='div'>
@@ -63,13 +66,13 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							classes={{ hover: 'row' }}
+							classes={{ hover: `${sid}-row` }}
 							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								classes={{ sizeSmall: 'cell' }}
+								classes={{ sizeSmall: `${sid}-cell` }}
 								// @ts-ignore
 								className={colorClasses[ cell.column.color?.( cell ) ]}
 								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>

@@ -5,7 +5,8 @@ const
 	SETAUTOSAVE         = 'main/setAutoSave',
 	SETAUTOLOAD         = 'main/setAutoLoad',
 	SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
-	SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval';
+	SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval',
+	RESEARCHLASTTAB     = 'research/researchLastTab';
 
 export function importBackup( data ) {
 	return {
@@ -63,6 +64,13 @@ export function setAutoLoadInterval( interval: number ) {
 	};
 }
 
+export function setResearchLastTab( researchLastTab: number ) {
+	return {
+		type: RESEARCHLASTTAB,
+		researchLastTab
+	};
+}
+
 type State = {
 	lastSaved: string,
 	newData: Record<string, boolean>,
@@ -70,7 +78,8 @@ type State = {
 	autoSave: boolean,
 	autoLoad: boolean,
 	autoSaveInterval: number,
-	autoLoadInterval: number
+	autoLoadInterval: number,
+	researchLastTab: number
 };
 
 const initState: State = {
@@ -80,7 +89,8 @@ const initState: State = {
 	autoSave        : true,
 	autoLoad        : true,
 	autoSaveInterval: 1.5 * 1000,
-	autoLoadInterval: 20 * 1000
+	autoLoadInterval: 20 * 1000,
+	researchLastTab : 0
 };
 
 export default function mainReducer( state = initState, action ): State {
@@ -99,6 +109,8 @@ export default function mainReducer( state = initState, action ): State {
 		return { ...state, autoSaveInterval: action.interval };
 	case SETAUTOLOADINTERVAL:
 		return { ...state, autoLoadInterval: action.interval };
+	case RESEARCHLASTTAB:
+		return { ...state, researchLastTab: action.researchLastTab };
 	}
 	return state;
 }

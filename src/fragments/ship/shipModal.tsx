@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
 import SVGIcon, { TierIcon } from '../../lib/icons';
@@ -28,6 +28,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 	equipBetter?: number[],
 	selectedEquip?: typeof equips[number]
 } ) {
+	const { ships } = useSelector( state => state.ship );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
 	const { closeModal } = useModal();
@@ -67,7 +68,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 						<Select
 							label='Love'
 							fullWidth
-							value={ship.love}
+							value={ships[ ship.id ].love}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
 								dispatch( ship_setShip( ship.id, { love: e.target.value as number } ) )}>
@@ -93,7 +94,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 						<Select
 							label='Max Level'
 							fullWidth
-							value={ship.lvl}
+							value={ships[ ship.id ].lvl}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
 								dispatch( ship_setShip( ship.id, { lvl: e.target.value as number } ) )}>
