@@ -214,7 +214,7 @@ export default function Home() {
 					primary={<Link href='/research' underline='always'>
 						Research Tracker
 					</Link>}
-					secondary='calculates number of strengthing units for pr ships until max'
+					secondary='calculates number of strengthening units for pr ships until max'
 					classes={{ secondary: `${sid}-longText` }}
 				/>
 				<ListItemSecondaryAction>

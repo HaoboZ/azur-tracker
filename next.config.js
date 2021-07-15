@@ -3,6 +3,7 @@ const withPWA = require( 'next-pwa' );
 const runtimeCaching = require( 'next-pwa/cache' );
 
 const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } );
+// noinspection JSUnusedGlobalSymbols
 module.exports = withBundleAnalyzer( withPWA( {
 	webpack( config, { webpack } ) {
 		config.plugins.push( new webpack.IgnorePlugin( {

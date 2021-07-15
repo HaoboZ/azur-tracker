@@ -6,7 +6,7 @@ const lightTheme = createTheme( {
 	palette   : {
 		mode      : 'light',
 		background: { paper: colors.grey[ '100' ] },
-		primary   : { main: colors.blue[ '600' ] },
+		primary   : { main: colors.lightBlue[ '600' ] },
 		secondary : { main: colors.red[ '900' ] }
 	},
 	components: {
@@ -20,7 +20,7 @@ const darkTheme = createTheme( {
 	palette   : {
 		mode      : 'dark',
 		background: { paper: colors.grey[ '900' ] },
-		primary   : { main: colors.blue[ '600' ] },
+		primary   : { main: colors.lightBlue[ '600' ] },
 		secondary : { main: colors.red[ '900' ] }
 	},
 	components: {

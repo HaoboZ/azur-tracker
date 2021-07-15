@@ -2,7 +2,10 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../:\Users\haobo\IdeaProjects\azur-tracker\.idea/dataSources/
+/dataSources
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+# AWS User-specific
+/aws.xml
