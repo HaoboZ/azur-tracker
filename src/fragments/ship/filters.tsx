@@ -19,6 +19,45 @@ import { equips } from '../../lib/reference/equipRef';
 import { ship_setFilter } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 
+const searchOptions = [
+	'Universal',
+	'Eagle Union',
+	'Royal Navy',
+	'Sakura Empire',
+	'Ironblood',
+	'Dragon Empery',
+	'Sardegna Empire',
+	'Northern Parliament',
+	'Iris Libre',
+	'Vichya Dominion',
+	'Neptunia',
+	'KizunaAI',
+	'Hololive',
+	'Venus Vacation',
+	'META',
+	'Destroyer',
+	'Light Cruiser',
+	'Heavy Cruiser',
+	'Large Cruiser',
+	'Battlecruiser',
+	'Battleship',
+	'Aviation Battleship',
+	'Light Aircraft Carrier',
+	'Aircraft Carrier',
+	'Monitor',
+	'Submarine',
+	'Submarine Carrier',
+	'Repair Ship',
+	'Munition Ship',
+	'Decisive',
+	'Ultra Rare',
+	'Priority',
+	'Super Rare',
+	'Elite',
+	'Rare',
+	'Common'
+].map( ( label, id ) => ( { id, label } ) );
+
 export default function Filters( { table, resetEquip } ) {
 	const ship = useSelector( state => state.ship );
 	const dispatch = useDispatch();
@@ -47,7 +86,7 @@ export default function Filters( { table, resetEquip } ) {
 	
 	return <Box mx={2} mb={2}>
 		<Grid container spacing={2}>
-			<Grid item xs>
+			<Grid item md xs={12}>
 				<EquipFilter
 					equipList={equips}
 					setValue={( equip ) => {
@@ -56,9 +95,9 @@ export default function Filters( { table, resetEquip } ) {
 					}}
 				/>
 			</Grid>
-			<Grid item xs>
+			<Grid item md xs={10}>
 				<Autocomplete
-					options={[]}
+					options={searchOptions}
 					fullWidth
 					freeSolo
 					onInputChange={( e, value ) => globalFilter( value )}

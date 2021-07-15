@@ -23,6 +23,7 @@ export const typeNames = {
 	[ type.DD ] : 'Destroyer Gun',
 	[ type.CL ] : 'Light Cruiser Gun',
 	[ type.CA ] : 'Heavy/Large Cruiser Gun',
+	[ type.CB ] : 'Heavy/Large Cruiser Gun',
 	[ type.SS ] : 'Heavy/Large Cruiser Gun',
 	[ type.BB ] : 'Battleship Gun',
 	[ type.F ]  : 'Fighter',

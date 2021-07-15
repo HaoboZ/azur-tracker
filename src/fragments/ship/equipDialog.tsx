@@ -156,7 +156,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						{equip.name}
 					</Link>
 				</Grid>
-				<Grid item container xs={12} sm={6} justifyContent='center'>
+				<Grid item container xs={12} md={6} justifyContent='center'>
 					<Button
 						variant='outlined'
 						onClick={( e ) => setAnchorEl( e.currentTarget )}>
@@ -169,7 +169,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 						setEquip={( id ) => setEquip( equipListIndex[ id ] )}
 					/>
 				</Grid>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} md={6}>
 					<EquipFilter
 						equipList={equipList}
 						value={equip}

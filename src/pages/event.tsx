@@ -1,8 +1,10 @@
 import { Box, Link } from '@material-ui/core';
 import moment from 'moment';
+import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import eventImage from '../../public/images/event.png';
 import PageContainer from '../components/pageContainer';
 import EventFields from '../fragments/event/eventFields';
 import FarmingCalc from '../fragments/event/farmingCalc';
@@ -48,10 +50,7 @@ export default function Event() {
 				}
 			}}>
 			<Link href={eventRef.link} target='_blank'>
-				<img
-					src={`/images/events/${eventRef.image}`}
-					alt='event banner'
-				/>
+				<Image src={eventImage} alt='event banner'/>
 			</Link>
 		</Box>
 		<EventFields

@@ -1,6 +1,5 @@
 export default {
 	name   : 'Swirling Cherry Blossoms Rerun',
-	image  : 'Swirling_Cherry_Blossoms_Rerun.png',
 	link   : 'https://azurlane.koumakan.jp/Swirling_Cherry_Blossoms_Rerun',
 	endDate: '2021-07-07T23:59-07',
 	shop   : [
