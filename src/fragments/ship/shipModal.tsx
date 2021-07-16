@@ -71,7 +71,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 							value={ships[ ship.id ].love}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
-								dispatch( ship_setShip( ship.id, { love: e.target.value as number } ) )}>
+								dispatch( ship_setShip( { name: ship.id, ship: { love: e.target.value as number } } ) )}>
 							<MenuItem value={0}>
 								<SVGIcon name='emptyHeart'/>
 							</MenuItem>
@@ -97,7 +97,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 							value={ships[ ship.id ].lvl}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
-								dispatch( ship_setShip( ship.id, { lvl: e.target.value as number } ) )}>
+								dispatch( ship_setShip( { name: ship.id, ship: { lvl: e.target.value as number } } ) )}>
 							<MenuItem value={0}>0</MenuItem>
 							<MenuItem value={70}>70</MenuItem>
 							<MenuItem value={80}>80</MenuItem>

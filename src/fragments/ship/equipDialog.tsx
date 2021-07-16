@@ -85,7 +85,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	
 	function close() {
 		info.ship.equip[ info.index ] = [ equip.id, override, 6 ];
-		dispatch( ship_setShip( info.ship.id, { equip: info.ship.equip } ) );
+		dispatch( ship_setShip( { name: info.ship.id, ship: { equip: info.ship.equip } } ) );
 		setAnchorEl( null );
 		onClose();
 	}
