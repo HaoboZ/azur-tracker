@@ -32,8 +32,8 @@ export default function DailyModal( { index } ) {
 	return <PageModalContainer
 		onClose={() => closeModal( index )}
 		title='Daily Points'
-		onSave={() => dispatch( event_setDaily( daily, dailyTotal ) )}>
-		<DialogContent sx={{ padding: 0 }}>
+		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
+		<DialogContent sx={{ p: 0 }}>
 			<DataDisplay
 				title={<Typography>Total Daily: {dailyTotal}</Typography>}
 				data={daily}

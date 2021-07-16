@@ -10,15 +10,15 @@ export default function Navigation( { children } ) {
 	if ( wide ) {
 		return <TitleBar>
 			<Box sx={{
-				paddingLeft : 'env(safe-area-inset-left)',
-				paddingRight: 'env(safe-area-inset-right)'
+				pl: 'env(safe-area-inset-left)',
+				pr: 'env(safe-area-inset-right)'
 			}}>{children}</Box>
 		</TitleBar>;
 	} else {
 		return <BottomBar>
 			<Box sx={{
-				paddingLeft : 'env(safe-area-inset-left)',
-				paddingRight: 'env(safe-area-inset-right)'
+				pl: 'env(safe-area-inset-left)',
+				pr: 'env(safe-area-inset-right)'
 			}}>{children}</Box>
 		</BottomBar>;
 	}

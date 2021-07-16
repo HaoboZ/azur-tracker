@@ -1,35 +1,4 @@
-const
-	RESET      = 'research/reset',
-	MODIFYSHIP = 'research/modifyShip';
-
-export function research_reset() {
-	return { type: RESET };
-}
-
-export function research_modifyShip( ship: string, item: {
-	devLevel?: number,
-	devStage?: number,
-	fateLevel?: number,
-	fateStage?: number
-}, maxDev?: number ) {
-	if ( 'devStage' in item ) {
-		item.devStage = Math.min( Math.max( item.devStage, 0 ), maxDev );
-	}
-	if ( 'devLevel' in item ) {
-		item.devLevel = Math.min( Math.max( item.devLevel, 0 ), 30 );
-		item.devStage = 0;
-	}
-	if ( 'fateLevel' in item ) {
-		item.fateLevel = Math.min( Math.max( item.fateLevel, 0 ), 5 );
-		item.fateStage = 0;
-	}
-	if ( 'fateStage' in item ) item.fateStage = Math.min( Math.max( item.fateStage, 0 ), 100 );
-	return {
-		type: MODIFYSHIP,
-		ship,
-		item
-	};
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
 	ships: Record<string, {
@@ -40,21 +9,54 @@ type State = {
 	}>
 };
 
-const initState: State = {
+const initialState: State = {
 	ships: {}
 };
 
-export default function researchReducer( state = initState, action ): State {
-	switch ( action.type ) {
-	case 'import':
-		if ( action.data?.research )
-			return action.data.research;
-		break;
-	case RESET:
-		return initState;
-	case MODIFYSHIP:
-		state.ships[ action.ship ] = { ...state.ships[ action.ship ], ...action.item };
-		return { ...state, ships: { ...state.ships } };
+const researchSlice = createSlice( {
+	name         : 'research',
+	initialState,
+	reducers     : {
+		research_reset() {
+			return initialState;
+		},
+		research_modifyShip( state, { payload }: PayloadAction<{
+			ship: string,
+			item: {
+				devLevel?: number,
+				devStage?: number,
+				fateLevel?: number,
+				fateStage?: number
+			},
+			maxDev?: number
+		}> ) {
+			const { item, maxDev } = payload;
+			if ( 'devStage' in item ) {
+				item.devStage = Math.min( Math.max( item.devStage, 0 ), maxDev );
+			}
+			if ( 'devLevel' in item ) {
+				item.devLevel = Math.min( Math.max( item.devLevel, 0 ), 30 );
+				item.devStage = 0;
+			}
+			if ( 'fateLevel' in item ) {
+				item.fateLevel = Math.min( Math.max( item.fateLevel, 0 ), 5 );
+				item.fateStage = 0;
+			}
+			if ( 'fateStage' in item ) item.fateStage = Math.min( Math.max( item.fateStage, 0 ), 100 );
+			state.ships = {
+				...state.ships,
+				[ payload.ship ]: { ...state.ships[ payload.ship ], ...payload.item }
+			};
+		}
+	},
+	extraReducers: {
+		import( state, { payload } ) {
+			if ( 'research' in payload ) return payload.research;
+		}
 	}
-	return state;
-}
+} );
+
+export default researchSlice.reducer;
+export const
+	research_reset      = researchSlice.actions.research_reset,
+	research_modifyShip = researchSlice.actions.research_modifyShip;

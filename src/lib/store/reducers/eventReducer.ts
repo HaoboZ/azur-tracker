@@ -1,63 +1,7 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
 import eventRef from '../../reference/eventRef';
-
-const
-	RESET         = 'event/reset',
-	NEWEVENT      = 'event/newEvent',
-	SETSHOP       = 'event/setShop',
-	SETDAILY      = 'event/setDaily',
-	SETPOINTS     = 'event/setPoints',
-	SETFARMING    = 'event/addFarming',
-	MODIFYFARMING = 'event/modifyFarming';
-
-export function event_reset() {
-	return { type: RESET };
-}
-
-export function event_newEvent() {
-	return { type: NEWEVENT };
-}
-
-export function event_setShop( shop: Record<string, number>, total: number ) {
-	return {
-		type: SETSHOP,
-		shop,
-		total
-	};
-}
-
-export function event_setDaily( daily: { name: string, amount: number }[], total: number ) {
-	return {
-		type: SETDAILY,
-		daily,
-		total
-	};
-}
-
-export function event_setPoints( points: number ) {
-	return {
-		type  : SETPOINTS,
-		points: Math.max( points || 0, 0 )
-	};
-}
-
-export function event_setFarming( farming: { points: number, oil: number }[] ) {
-	return {
-		type: SETFARMING,
-		farming
-	};
-}
-
-export function event_modifyFarming( index: number, item: { points?: number, oil?: number } ) {
-	if ( 'points' in item ) item.points = Math.max( item.points || 0, 0 );
-	if ( 'oil' in item ) item.oil = Math.max( item.oil || 0, 0 );
-	return {
-		type: MODIFYFARMING,
-		index,
-		item
-	};
-}
 
 type State = {
 	name: string,
@@ -69,7 +13,7 @@ type State = {
 	farming: { id: string, points: number, oil: number }[]
 };
 
-const initState: State = {
+const initialState: State = {
 	name            : '',
 	shop            : {
 		'Gear Skin Box'                       : 0,
@@ -106,42 +50,78 @@ const initState: State = {
 	]
 };
 
-export default function eventReducer( state = initState, action ): State {
-	switch ( action.type ) {
-	case 'import':
-		if ( action.data?.event )
-			return action.data.event;
-		break;
-	case RESET:
-		state = initState;
-		// noinspection FallThroughInSwitchStatementJS
-	case NEWEVENT:
-		return {
-			...state,
-			name            : eventRef.name,
-			shopExpectedCost: eventRef.shop.reduce( ( total, item ) =>
-				total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
-			points          : 0
-		};
-	case SETSHOP:
-		return {
-			...state,
-			shop            : action.shop,
-			shopExpectedCost: action.total
-		};
-	case SETDAILY:
-		return {
-			...state,
-			daily        : action.daily,
-			dailyExpected: action.total
-		};
-	case SETPOINTS:
-		return { ...state, points: action.points };
-	case SETFARMING:
-		return { ...state, farming: action.farming };
-	case MODIFYFARMING:
-		state.farming[ action.index ] = { ...state.farming[ action.index ], ...action.item };
-		return { ...state, farming: state.farming };
-	}
-	return state;
+function newEvent( state ) {
+	return {
+		...state,
+		name            : eventRef.name,
+		shopExpectedCost: eventRef.shop.reduce( ( total, item ) =>
+			total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
+		points          : 0
+	};
 }
+
+const eventSlice = createSlice( {
+	name         : 'event',
+	initialState,
+	reducers     : {
+		event_reset() {
+			return newEvent( initialState );
+		},
+		event_newEvent( state ) {
+			return newEvent( state );
+		},
+		event_setShop( state, { payload }: PayloadAction<{
+			shop: Record<string, number>,
+			total: number
+		}> ) {
+			state.shop = payload.shop;
+			state.shopExpectedCost = payload.total;
+		},
+		event_setDaily( state, { payload }: PayloadAction<{
+			daily: {
+				id: string,
+				name: string,
+				amount: number
+			}[],
+			total: number
+		}> ) {
+			state.daily = payload.daily;
+			state.dailyExpected = payload.total;
+		},
+		event_setPoints( state, { payload }: PayloadAction<number> ) {
+			state.points = Math.max( payload || 0, 0 );
+		},
+		event_setFarming( state, { payload }: PayloadAction<{
+			id: string,
+			points: number,
+			oil: number
+		}[]> ) {
+			state.farming = payload;
+		},
+		event_modifyFarming( state, { payload }: PayloadAction<{
+			index: number,
+			item: { points?: number, oil?: number }
+		}> ) {
+			if ( 'points' in payload.item ) payload.item.points = Math.max( payload.item.points || 0, 0 );
+			if ( 'oil' in payload.item ) payload.item.oil = Math.max( payload.item.oil || 0, 0 );
+			
+			state.farming[ payload.index ] = { ...state.farming[ payload.index ], ...payload.item };
+			return { ...state, farming: state.farming };
+		}
+	},
+	extraReducers: {
+		import( state, { payload } ) {
+			if ( 'event' in payload ) return payload.event;
+		}
+	}
+} );
+
+export default eventSlice.reducer;
+export const
+	event_reset         = eventSlice.actions.event_reset,
+	event_newEvent      = eventSlice.actions.event_newEvent,
+	event_setShop       = eventSlice.actions.event_setShop,
+	event_setDaily      = eventSlice.actions.event_setDaily,
+	event_setPoints     = eventSlice.actions.event_setPoints,
+	event_setFarming    = eventSlice.actions.event_setFarming,
+	event_modifyFarming = eventSlice.actions.event_modifyFarming;

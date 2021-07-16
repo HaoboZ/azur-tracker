@@ -19,8 +19,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ActionTitle from '../actionTitle';
 
 const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
-	return <TableBody ref={ref} className='tableRows'>{children}</TableBody>;
+	return <TableBody ref={ref} className={`${sid}-tableRows`}>{children}</TableBody>;
 } );
+
+const sid = nanoid( 8 );
 
 export default function EnhancedTable<Item extends { id?: string }>( {
 	title,
@@ -40,8 +42,6 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
-	const sid = React.useMemo( () => nanoid( 8 ), [] );
-	
 	return <Box sx={{
 		[ `& .${sid}-tableRows tr:nth-of-type(odd),& th` ]: { bgcolor: 'action.disabledBackground' },
 		[ `& .${sid}-minWidth` ]                          : { width: '1%' },

@@ -1,73 +1,9 @@
-const
-	SETLASTSAVED        = 'main/setLastSaved',
-	SETNEWDATA          = 'main/setNewData',
-	SETTHEME            = 'main/setTheme',
-	SETAUTOSAVE         = 'main/setAutoSave',
-	SETAUTOLOAD         = 'main/setAutoLoad',
-	SETAUTOSAVEINTERVAL = 'main/setAutoSaveInterval',
-	SETAUTOLOADINTERVAL = 'main/setAutoLoadInterval',
-	RESEARCHLASTTAB     = 'research/researchLastTab';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export function importBackup( data ) {
+export function importBackup( payload ) {
 	return {
 		type: 'import',
-		data
-	};
-}
-
-export function setLastSaved( lastSaved: string ) {
-	return {
-		type: SETLASTSAVED,
-		lastSaved
-	};
-}
-
-export function setNewData( newData: Record<string, boolean> ) {
-	return {
-		type: SETNEWDATA,
-		newData
-	};
-}
-
-export function setTheme( theme: string ) {
-	return {
-		type: SETTHEME,
-		theme
-	};
-}
-
-export function setAutoSave( autoSave: boolean ) {
-	return {
-		type: SETAUTOSAVE,
-		autoSave
-	};
-}
-
-export function setAutoLoad( autoLoad: boolean ) {
-	return {
-		type: SETAUTOLOAD,
-		autoLoad
-	};
-}
-
-export function setAutoSaveInterval( interval: number ) {
-	return {
-		type: SETAUTOSAVEINTERVAL,
-		interval
-	};
-}
-
-export function setAutoLoadInterval( interval: number ) {
-	return {
-		type: SETAUTOLOADINTERVAL,
-		interval
-	};
-}
-
-export function setResearchLastTab( researchLastTab: number ) {
-	return {
-		type: RESEARCHLASTTAB,
-		researchLastTab
+		payload
 	};
 }
 
@@ -82,7 +18,7 @@ type State = {
 	researchLastTab: number
 };
 
-const initState: State = {
+const initialState: State = {
 	lastSaved       : new Date( 0 ).toISOString(),
 	newData         : {},
 	theme           : 'default',
@@ -93,24 +29,44 @@ const initState: State = {
 	researchLastTab : 0
 };
 
-export default function mainReducer( state = initState, action ): State {
-	switch ( action.type ) {
-	case SETLASTSAVED:
-		return { ...state, lastSaved: action.lastSaved };
-	case SETNEWDATA:
-		return { ...state, newData: { ...state.newData, ...action.newData } };
-	case SETTHEME:
-		return { ...state, theme: action.theme };
-	case SETAUTOSAVE:
-		return { ...state, autoSave: action.autoSave };
-	case SETAUTOLOAD:
-		return { ...state, autoLoad: action.autoLoad };
-	case SETAUTOSAVEINTERVAL:
-		return { ...state, autoSaveInterval: action.interval };
-	case SETAUTOLOADINTERVAL:
-		return { ...state, autoLoadInterval: action.interval };
-	case RESEARCHLASTTAB:
-		return { ...state, researchLastTab: action.researchLastTab };
+const mainSlice = createSlice( {
+	name    : 'main',
+	initialState,
+	reducers: {
+		setLastSaved( state, { payload }: PayloadAction<string> ) {
+			state.lastSaved = payload;
+		},
+		setNewData( state, { payload }: PayloadAction<Record<string, boolean>> ) {
+			state.newData = { ...state.newData, ...payload };
+		},
+		setTheme( state, { payload }: PayloadAction<string> ) {
+			state.theme = payload;
+		},
+		setAutoSave( state, { payload }: PayloadAction<boolean> ) {
+			state.autoSave = payload;
+		},
+		setAutoLoad( state, { payload }: PayloadAction<boolean> ) {
+			state.autoLoad = payload;
+		},
+		setAutoSaveInterval( state, { payload }: PayloadAction<number> ) {
+			state.autoSaveInterval = payload;
+		},
+		setAutoLoadInterval( state, { payload }: PayloadAction<number> ) {
+			state.autoLoadInterval = payload;
+		},
+		setResearchLastTab( state, { payload }: PayloadAction<number> ) {
+			state.researchLastTab = payload;
+		}
 	}
-	return state;
-}
+} );
+
+export default mainSlice.reducer;
+export const
+	setLastSaved        = mainSlice.actions.setLastSaved,
+	setNewData          = mainSlice.actions.setNewData,
+	setTheme            = mainSlice.actions.setTheme,
+	setAutoSave         = mainSlice.actions.setAutoSave,
+	setAutoLoad         = mainSlice.actions.setAutoLoad,
+	setAutoSaveInterval = mainSlice.actions.setAutoSaveInterval,
+	setAutoLoadInterval = mainSlice.actions.setAutoLoadInterval,
+	setResearchLastTab  = mainSlice.actions.setResearchLastTab;

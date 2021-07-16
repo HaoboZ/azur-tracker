@@ -27,8 +27,8 @@ export default function ShopModal( { index } ) {
 	return <PageModalContainer
 		onClose={() => closeModal( index )}
 		title='Shop Items'
-		onSave={() => dispatch( event_setShop( shop, expectedCost ) )}>
-		<DialogContent sx={{ padding: 0 }}>
+		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
+		<DialogContent sx={{ p: 0 }}>
 			<Box mx={2} mt={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>

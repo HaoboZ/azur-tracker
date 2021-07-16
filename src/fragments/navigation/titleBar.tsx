@@ -18,7 +18,7 @@ function LinkItem( { children, href } ) {
 		<Badge
 			color='secondary'
 			variant='dot'
-			sx={{ marginRight: 3 }}
+			sx={{ mr: 3 }}
 			invisible={!main.newData[ href.substring( 1 ) ]}>
 			<Button color='inherit' onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
 				{children}
@@ -36,15 +36,15 @@ export default function TitleBar( { children } ) {
 			position='static'
 			enableColorOnDark
 			sx={{
-				paddingTop  : 'env(safe-area-inset-top)',
-				paddingLeft : 'env(safe-area-inset-left)',
-				paddingRight: 'env(safe-area-inset-right)'
+				pt: 'env(safe-area-inset-top)',
+				pl: 'env(safe-area-inset-left)',
+				pr: 'env(safe-area-inset-right)'
 			}}>
 			<Toolbar>
 				<Link
 					href='/'
 					variant='h6'
-					sx={{ marginRight: 3 }}>
+					sx={{ mr: 3 }}>
 					Azur Lane Tracker
 				</Link>
 				<LinkItem href='/event'>Event</LinkItem>

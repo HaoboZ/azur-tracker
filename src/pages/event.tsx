@@ -46,7 +46,7 @@ export default function Event() {
 				'& img': {
 					width   : '100%',
 					maxWidth: 700,
-					margin  : 'auto'
+					m       : 'auto'
 				}
 			}}>
 			<Link href={eventRef.link} target='_blank'>

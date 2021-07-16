@@ -7,6 +7,8 @@ import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../lib/reference/colors';
 
+const sid = nanoid( 8 );
+
 export default function VirtualTable( {
 	getTableProps,
 	getTableBodyProps,
@@ -19,7 +21,6 @@ export default function VirtualTable( {
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
 	const [ headerStyle, setHeaderStyle ] = React.useState( {} );
-	const sid = React.useMemo( () => nanoid( 8 ), [] );
 	
 	const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
 	

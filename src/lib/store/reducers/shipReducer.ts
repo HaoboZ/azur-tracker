@@ -1,40 +1,31 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { equipTier, version } from '../../reference/equipRef';
 import shipRef from '../../reference/shipRef';
 
-const
-	RESET        = 'ship/reset',
-	CHECKVERSION = 'ship/checkVersion',
-	SETSHIP      = 'ship/setShip',
-	SETFILTER    = 'ship/setFilter';
+type State = {
+	ships: Record<string, {
+		lvl: number,
+		love: number,
+		equip: [ number, 0 | 1, number ][]
+	}>,
+	filter: {
+		levelMax: boolean,
+		equipMax: boolean,
+		level0: boolean
+	},
+	version: string
+};
 
-export function ship_reset() {
-	return { type: RESET };
-}
-
-export function ship_checkVersion() {
-	return { type: CHECKVERSION };
-}
-
-export function ship_setShip( name: string, ship: {
-	lvl?: number,
-	love?: number,
-	equip?: [ number, 0 | 1, number ][]
-} ) {
-	getTier( shipRef[ name ], ship.equip );
-	
-	return {
-		type: SETSHIP,
-		name,
-		ship
-	};
-}
-
-export function ship_setFilter( filter: { levelMax?: boolean, equipMax?: boolean, level0?: boolean } ) {
-	return {
-		type: SETFILTER,
-		filter
-	};
-}
+const initialState: State = {
+	ships : {},
+	filter: {
+		levelMax: true,
+		equipMax: true,
+		level0  : true
+	},
+	version
+};
 
 export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, number ][] ) {
 	equip?.forEach( ( eq, i ) => {
@@ -52,53 +43,55 @@ export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, 
 	} );
 }
 
-type State = {
-	ships: Record<string, {
-		lvl: number,
-		love: number,
-		equip: [ number, 0 | 1, number ][]
-	}>,
-	filter: {
-		levelMax: boolean,
-		equipMax: boolean,
-		level0: boolean
-	},
-	version: string
-};
-
-const initState: State = {
-	ships : {},
-	filter: {
-		levelMax: true,
-		equipMax: true,
-		level0  : true
-	},
-	version
-};
-
-export default function shipReducer( state = initState, action ): State {
-	switch ( action.type ) {
-	case 'import':
-		if ( action.data?.ship )
-			return action.data.ship;
-		break;
-	case CHECKVERSION:
-		if ( state.version !== initState.version ) {
-			// recalculate equipment tiers
-			for ( const name in state.ships ) {
-				const ship = state.ships[ name ];
-				getTier( shipRef[ name ], ship.equip );
+const shipSlice = createSlice( {
+	name         : 'ship',
+	initialState,
+	reducers     : {
+		ship_reset() {
+			return initialState;
+		},
+		ship_checkVersion( state ) {
+			if ( state.version !== initialState.version ) {
+				// recalculate equipment tiers
+				for ( const name in state.ships ) {
+					const ship = state.ships[ name ];
+					getTier( shipRef[ name ], ship.equip );
+				}
+				state.version = initialState.version;
 			}
-			return { ...state, version: initState.version };
+		},
+		ship_setShip( state, { payload }: PayloadAction<{
+			name: string,
+			ship: {
+				lvl?: number,
+				love?: number,
+				equip?: [ number, 0 | 1, number ][]
+			}
+		}> ) {
+			getTier( shipRef[ payload.name ], payload.ship.equip );
+			state.ships = {
+				...state.ships,
+				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
+			};
+		},
+		ship_setFilter( state, { payload }: PayloadAction<{
+			levelMax?: boolean,
+			equipMax?: boolean,
+			level0?: boolean
+		}> ) {
+			state.filter = { ...state.filter, ...payload };
 		}
-		break;
-	case RESET:
-		return initState;
-	case SETSHIP:
-		state.ships[ action.name ] = { ...state.ships[ action.name ], ...action.ship };
-		return { ...state };
-	case SETFILTER:
-		return { ...state, filter: { ...state.filter, ...action.filter } };
+	},
+	extraReducers: {
+		import( state, { payload } ) {
+			if ( 'ship' in payload ) return payload.ship;
+		}
 	}
-	return state;
-}
+} );
+
+export default shipSlice.reducer;
+export const
+	ship_reset        = shipSlice.actions.ship_reset,
+	ship_checkVersion = shipSlice.actions.ship_checkVersion,
+	ship_setShip      = shipSlice.actions.ship_setShip,
+	ship_setFilter    = shipSlice.actions.ship_setFilter;

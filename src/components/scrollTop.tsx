@@ -10,11 +10,11 @@ export default function ScrollTop() {
 			color='secondary'
 			size='medium'
 			sx={{
-				position    : 'fixed',
-				zIndex      : 1400,
-				bottom      : 'calc(env(safe-area-inset-bottom) + 24px)',
-				right       : 'calc(env(safe-area-inset-right) + 24px)',
-				marginBottom: {
+				position: 'fixed',
+				zIndex  : 1400,
+				bottom  : 'calc(env(safe-area-inset-bottom) + 24px)',
+				right   : 'calc(env(safe-area-inset-right) + 24px)',
+				mb      : {
 					xs: 8,
 					sm: 0
 				}

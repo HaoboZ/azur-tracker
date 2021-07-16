@@ -36,6 +36,8 @@ import {
 import { research_reset } from '../lib/store/reducers/researchReducer';
 import { ship_reset } from '../lib/store/reducers/shipReducer';
 
+const sid = nanoid( 8 );
+
 export default function Home() {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
@@ -43,8 +45,6 @@ export default function Home() {
 	const snackBar = useSnackBar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
-	
-	const sid = React.useMemo( () => nanoid( 8 ), [] );
 	
 	// noinspection HtmlUnknownTarget
 	return <PageContainer title='Azur Lane Tracker'>

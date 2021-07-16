@@ -23,6 +23,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 
+const sid = nanoid( 8 );
+
 export default function EnhancedList<Item extends { id?: string }>( {
 	title,
 	data,
@@ -42,7 +44,6 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & ListProps ) {
 	const [ editing, setEditing ] = React.useState( false );
-	const sid = React.useMemo( () => nanoid( 8 ), [] );
 	
 	const contents = editable
 		? data.length ? <ReactSortable
@@ -106,8 +107,8 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	
 	return <List
 		sx={{
-			[ `& .${sid}-center` ]   : { alignItems: 'center', marginY: 1 },
-			[ `& .${sid}-iconSpace` ]: { paddingLeft: 0 },
+			[ `& .${sid}-center` ]   : { alignItems: 'center', my: 1 },
+			[ `& .${sid}-iconSpace` ]: { pl: 0 },
 			[ `& .${sid}-slide` ]    : {
 				'&-enter'       : { opacity: 0 },
 				'&-enter-active': { opacity: 1, transition: 'all 200ms ease-in-out' },

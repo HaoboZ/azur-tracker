@@ -124,7 +124,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 							xs={4}
 							sm
 							sx={{
-								padding      : 1,
+								p            : 1,
 								display      : 'flex',
 								flexDirection: 'column',
 								alignItems   : 'center'

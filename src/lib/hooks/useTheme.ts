@@ -1,34 +1,34 @@
 import { colors, createTheme, PaletteMode, Theme, useMediaQuery } from '@material-ui/core';
+import { ThemeOptions } from '@material-ui/core/styles/createTheme';
+import { merge } from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const lightTheme = createTheme( {
+const commonTheme: ThemeOptions = {
 	palette   : {
-		mode      : 'light',
-		background: { paper: colors.grey[ '100' ] },
-		primary   : { main: colors.lightBlue[ '600' ] },
-		secondary : { main: colors.red[ '900' ] }
+		primary  : { main: colors.lightBlue[ '600' ] },
+		secondary: { main: colors.red[ '900' ] }
 	},
 	components: {
 		MuiUseMediaQuery: {
 			defaultProps: { noSsr: true }
 		}
 	}
-} );
+};
 
-const darkTheme = createTheme( {
-	palette   : {
-		mode      : 'dark',
-		background: { paper: colors.grey[ '900' ] },
-		primary   : { main: colors.lightBlue[ '600' ] },
-		secondary : { main: colors.red[ '900' ] }
-	},
-	components: {
-		MuiUseMediaQuery: {
-			defaultProps: { noSsr: true }
-		}
+const lightTheme = createTheme( merge( commonTheme, {
+	palette: {
+		mode      : 'light',
+		background: { paper: colors.grey[ '100' ] }
 	}
-} );
+} ) );
+
+const darkTheme = createTheme( merge( commonTheme, {
+	palette: {
+		mode      : 'dark',
+		background: { paper: colors.grey[ '900' ] }
+	}
+} ) );
 
 export default function useTheme() {
 	const main = useSelector( state => state.main );

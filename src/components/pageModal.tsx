@@ -47,10 +47,10 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 			closeAfterTransition
 			sx={{
 				'& .MuiDialog-paper': {
-					marginLeft  : 'env(safe-area-inset-left)',
-					marginRight : 'env(safe-area-inset-right)',
-					marginTop   : 'env(safe-area-inset-top)',
-					marginBottom: 'env(safe-area-inset-bottom)'
+					ml: 'env(safe-area-inset-left)',
+					mr: 'env(safe-area-inset-right)',
+					mt: 'env(safe-area-inset-top)',
+					mb: 'env(safe-area-inset-bottom)'
 				}
 			}}
 			{...props}>

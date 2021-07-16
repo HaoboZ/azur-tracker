@@ -1,18 +1,30 @@
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { mapValues } from 'lodash';
 import { nanoid } from 'nanoid';
-import { createStore, Store } from 'redux';
-import { createMigrate, persistReducer, persistStore } from 'redux-persist';
+import { Store } from 'redux';
+import {
+	createMigrate,
+	FLUSH,
+	PAUSE,
+	PERSIST,
+	persistReducer,
+	persistStore,
+	PURGE,
+	REGISTER,
+	REHYDRATE
+} from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
-import authMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
-import { isBrowser } from '../helpers';
 import shipRef from '../reference/shipRef';
 import { rootReducer } from './reducers';
 import { getTier } from './reducers/shipReducer';
 
-const migrations = {
-	2: ( state: RootState ) => ( {
+export type RootState = ReturnType<typeof rootReducer>;
+
+const migrations: Record<string, ( state: RootState ) => RootState> = {
+	2: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
@@ -28,14 +40,14 @@ const migrations = {
 			} )
 		}
 	} ),
-	3: ( state: RootState ) => ( {
+	3: ( state ) => ( {
 		...state,
 		main: {
 			...state.main,
 			newData: {}
 		}
 	} ),
-	4: ( state: RootState ) => ( {
+	4: ( state ) => ( {
 		...state,
 		event: {
 			...state.event,
@@ -43,7 +55,7 @@ const migrations = {
 			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) )
 		}
 	} ),
-	5: ( state: RootState ) => ( {
+	5: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
@@ -65,7 +77,7 @@ const migrations = {
 			} )
 		}
 	} ),
-	6: ( state: RootState ) => ( {
+	6: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
@@ -76,28 +88,35 @@ const migrations = {
 			} ) )
 		}
 	} ),
-	7: ( state: RootState ) => ( {
+	7: ( state ) => ( {
 		...state,
 		main: {
 			...state.main,
 			researchLastTab: 0
 		}
 	} )
-} as Record<string, ( state: RootState ) => RootState>;
+};
 
-const persistedReducer = persistReducer( {
+const persistedReducer = process.browser ? persistReducer<RootState>( {
 	key            : 'root',
 	version        : 7,
 	storage,
-	stateReconciler: authMergeLevel2,
+	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations as any, { debug: false } ),
 	transforms     : [ createCompressor() ]
-}, rootReducer );
+}, rootReducer ) : rootReducer;
 
-export type RootState = ReturnType<typeof rootReducer>;
+export const store: Store<RootState> = configureStore( {
+	reducer   : persistedReducer,
+	devTools  : process.env.NODE_ENV === 'development',
+	middleware: getDefaultMiddleware( {
+		serializableCheck: {
+			ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ]
+		}
+	} )
+} );
 
-export const store: Store<RootState> = createStore( persistedReducer );
-export const persistor = isBrowser ? persistStore( store ) : undefined;
+export const persistor = process.browser ? persistStore( store ) : undefined;
 
 declare module 'react-redux' {
 	// noinspection JSUnusedGlobalSymbols
