@@ -9,6 +9,20 @@ import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 import SnackbarProvider from '../../lib/providers/snack';
 
+export const provider = <T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>>(
+	provider: T,
+	props: Omit<React.ComponentProps<T>, 'children'> = undefined
+) => [ provider, props ];
+
+export const ProviderComposer = ( { providers, children } ) => {
+	let content = children;
+	for ( let i = providers.length - 1; i >= 0; --i ) {
+		const [ Provider, props ] = providers[ i ];
+		content = <Provider {...props}>{content}</Provider>;
+	}
+	return content;
+};
+
 const cache = createCache( {
 	key    : 'css',
 	prepend: true
@@ -17,19 +31,19 @@ const cache = createCache( {
 export default function Providers( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {
 	const theme = useTheme();
 	
-	return <AuthProvider session={pageProps.session}>
-		<StyledEngineProvider injectFirst>
-			<CacheProvider value={cache}>
-				<ThemeProvider theme={theme}>
-					<ModalProvider>
-						<SnackbarProvider>
-							<IndicatorProvider>
-								{children}
-							</IndicatorProvider>
-						</SnackbarProvider>
-					</ModalProvider>
-				</ThemeProvider>
-			</CacheProvider>
-		</StyledEngineProvider>
-	</AuthProvider>;
+	return <ProviderComposer
+		providers={[
+			// app specific
+			provider( AuthProvider, { session: pageProps.session } ),
+			// styling
+			provider( StyledEngineProvider, { injectFirst: true } ),
+			provider( CacheProvider, { value: cache } ),
+			provider( ThemeProvider, { theme } ),
+			// content
+			provider( ModalProvider ),
+			provider( SnackbarProvider ),
+			provider( IndicatorProvider )
+		]}>
+		{children}
+	</ProviderComposer>;
 }

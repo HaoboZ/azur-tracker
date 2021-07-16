@@ -2568,10 +2568,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.3.2":
-  version: 16.3.2
-  resolution: "@types/node@npm:16.3.2"
-  checksum: 11896edc7022a40f8938e64f57e497b3110ca732bdef785f86f0a0a819609e9b78ad0c950dcaa59177bc299f2793489b605a3e713cdf7900a39031f0018e2134
+"@types/node@npm:^16.3.3":
+  version: 16.3.3
+  resolution: "@types/node@npm:16.3.3"
+  checksum: e597a54070815170d8f541c778900023f2522c27be9c56b2b8411d663da1ef5226f9d16ec158c5d9c84ddcc85551e3d02aa68046aa108b4c6085bc7c95a5bebb
   languageName: node
   linkType: hard
 
@@ -3444,7 +3444,7 @@ __metadata:
     "@types/jest": ^26.0.24
     "@types/json-stable-stringify": ^1.0.33
     "@types/lodash": ^4.14.171
-    "@types/node": ^16.3.2
+    "@types/node": ^16.3.3
     "@types/react": ^17.0.14
     "@types/react-dom": ^17.0.9
     "@types/react-redux": ^7.1.18
@@ -3462,7 +3462,7 @@ __metadata:
     eslint: ^7.30.0
     eslint-config-next: ^11.0.1
     eslint-plugin-react: ^7.24.0
-    googleapis: ^81.0.0
+    googleapis: ^82.0.0
     hash-wasm: ^4.8.0
     jest: ^27.0.6
     json-stable-stringify: ^1.0.1
@@ -5747,13 +5747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"googleapis@npm:^81.0.0":
-  version: 81.0.0
-  resolution: "googleapis@npm:81.0.0"
+"googleapis@npm:^82.0.0":
+  version: 82.0.0
+  resolution: "googleapis@npm:82.0.0"
   dependencies:
     google-auth-library: ^7.0.2
     googleapis-common: ^5.0.2
-  checksum: 96b8085854695f9ac41831d665f556adb6f40fe4a03978da041bbd78b4add15ca98e809f34bdd21f5a6bd3ec1ee71fac3f25eceb870337c54d99f356d103b669
+  checksum: 70c3fc5894f11e43ba150fa31793445975c9ce132f802df84986ab29172c8fe24b8d9c3989d1113b442e627853a1c06e2be44efc958ab7ed48941759a7c4915b
   languageName: node
   linkType: hard
 
