@@ -105,8 +105,8 @@ const eventSlice = createSlice( {
 			if ( 'points' in payload.item ) payload.item.points = Math.max( payload.item.points || 0, 0 );
 			if ( 'oil' in payload.item ) payload.item.oil = Math.max( payload.item.oil || 0, 0 );
 			
+			state.farming = [ ...state.farming ];
 			state.farming[ payload.index ] = { ...state.farming[ payload.index ], ...payload.item };
-			return { ...state, farming: state.farming };
 		}
 	},
 	extraReducers: {

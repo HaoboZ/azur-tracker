@@ -14,7 +14,7 @@ import {
 	Zoom
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
-import { reduce } from 'lodash';
+import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -84,7 +84,7 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	
 	function close() {
-		const newEquip = [ ...info.ship.equip ];
+		const newEquip = cloneDeep( info.ship.equip );
 		newEquip[ info.index ] = [ equip.id, override, 6 ];
 		dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		setAnchorEl( null );
