@@ -1,13 +1,10 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
-import { nanoid } from 'nanoid';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../lib/reference/colors';
-
-const sid = nanoid( 8 );
 
 export default function VirtualTable( {
 	getTableProps,
@@ -32,8 +29,8 @@ export default function VirtualTable( {
 		size='small'
 		component={Paper}
 		sx={{
-			[ `& .${sid}-row:hover` ]: { cursor: 'pointer' },
-			[ `& .${sid}-cell` ]     : { whiteSpace: 'nowrap', overflow: 'hidden' }
+			'& .row:hover': { cursor: 'pointer' },
+			'& .cell'     : { whiteSpace: 'nowrap', overflow: 'hidden' }
 		}}
 		{...getTableProps()}>
 		<TableHead component='div'>
@@ -67,13 +64,13 @@ export default function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							classes={{ hover: `${sid}-row` }}
+							classes={{ hover: 'row' }}
 							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								classes={{ sizeSmall: `${sid}-cell` }}
+								classes={{ sizeSmall: 'cell' }}
 								// @ts-ignore
 								className={colorClasses[ cell.column.color?.( cell ) ]}
 								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>
