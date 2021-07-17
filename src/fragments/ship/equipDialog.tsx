@@ -84,8 +84,9 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	
 	function close() {
-		info.ship.equip[ info.index ] = [ equip.id, override, 6 ];
-		dispatch( ship_setShip( { name: info.ship.id, ship: { equip: info.ship.equip } } ) );
+		const newEquip = [ ...info.ship.equip ];
+		newEquip[ info.index ] = [ equip.id, override, 6 ];
+		dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		setAnchorEl( null );
 		onClose();
 	}
