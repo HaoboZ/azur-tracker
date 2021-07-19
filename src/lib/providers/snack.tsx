@@ -64,8 +64,8 @@ export function useSnackBar() {
 	return React.useContext( SnackbarContext );
 }
 
-export function withSnackbar() {
-	return Component => props => <SnackbarContext.Consumer>
+export function withSnackbar( Component ) {
+	return ( props ) => <SnackbarContext.Consumer>
 		{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
 	</SnackbarContext.Consumer>;
 }

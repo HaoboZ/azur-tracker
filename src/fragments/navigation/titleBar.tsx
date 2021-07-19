@@ -20,7 +20,9 @@ function LinkItem( { children, href } ) {
 			variant='dot'
 			sx={{ mr: 3 }}
 			invisible={!main.newData[ href.substring( 1 ) ]}>
-			<Button color='inherit' onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
+			<Button
+				color='inherit'
+				onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
 				{children}
 			</Button>
 		</Badge>

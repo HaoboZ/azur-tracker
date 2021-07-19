@@ -2,18 +2,19 @@ import {
 	Button,
 	Dialog,
 	DialogActions,
+	DialogProps,
 	DialogTitle,
 	IconButton,
-	ModalProps,
 	Slide,
+	SlideProps,
 	SwipeableDrawer,
+	SwipeableDrawerProps,
 	Theme,
 	Toolbar,
 	Typography,
 	useMediaQuery,
 	useTheme
 } from '@material-ui/core';
-import { SlideProps } from '@material-ui/core/Slide';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import React from 'react';
 
@@ -32,7 +33,7 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 	// type of modal to be displayed
 	variant?: ModalVariant,
 	children?: React.ReactNode
-} & Partial<Omit<ModalProps, 'onClose'>> ) {
+} & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>> ) {
 	const theme = useTheme();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
@@ -42,8 +43,6 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 			fullWidth
 			TransitionComponent={Transition}
 			disablePortal
-			disableEnforceFocus
-			disableAutoFocus
 			closeAfterTransition
 			sx={{
 				'& .MuiDialog-paper': {
@@ -62,8 +61,6 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 			onOpen={() => null}
 			disableSwipeToOpen
 			disablePortal
-			disableEnforceFocus
-			disableAutoFocus
 			closeAfterTransition
 			sx={{ display: 'flex', justifyContent: 'center' }}
 			PaperProps={{

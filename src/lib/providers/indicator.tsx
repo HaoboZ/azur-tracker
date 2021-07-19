@@ -46,8 +46,8 @@ export function useIndicator() {
 	return React.useContext( IndicatorContext );
 }
 
-export function withIndicator() {
-	return Component => ( props ) => <IndicatorContext.Consumer>
+export function withIndicator( Component ) {
+	return ( props ) => <IndicatorContext.Consumer>
 		{( indicator ) => <Component indicator={indicator} {...props}/>}
 	</IndicatorContext.Consumer>;
 }

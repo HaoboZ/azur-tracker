@@ -10,12 +10,13 @@ import ShipModal from '../fragments/ship/shipModal';
 import useShipTable from '../fragments/ship/useShipTable';
 import { useModal } from '../lib/providers/modal';
 import { useMappedColorClasses } from '../lib/reference/colors';
+import { equips } from '../lib/reference/equipRef';
+import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
-	const { showModal } = useModal();
 	
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
@@ -23,6 +24,15 @@ export default function Ship() {
 	}>( { filter: undefined, value: {} } );
 	
 	const table = useShipTable( equipBetter, setEquipBetter );
+	
+	const { show } = useModal( ShipModal, {
+		variant    : ModalVariant.bottom,
+		keepMounted: true
+	}, {
+		ship         : blankShip,
+		equipBetter  : undefined,
+		selectedEquip: equips[ 0 ]
+	} );
 	
 	React.useEffect( () => {
 		dispatch( ship_checkVersion() );
@@ -32,14 +42,10 @@ export default function Ship() {
 		<Filters table={table} resetEquip={() => setEquipBetter( { filter: undefined, value: {} } )}/>
 		<VirtualDisplay
 			{...table}
-			onClick={( row ) => showModal( {
-				render : ( index ) => <ShipModal
-					index={index}
-					ship={row.original as any}
-					equipBetter={equipBetter.value[ row.id ]}
-					selectedEquip={table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value}
-				/>,
-				variant: ModalVariant.bottom
+			onClick={( row ) => show( {
+				ship         : row.original as any,
+				equipBetter  : equipBetter.value[ row.id ],
+				selectedEquip: table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value
 			} )}
 			renderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider

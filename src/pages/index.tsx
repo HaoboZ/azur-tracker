@@ -14,7 +14,7 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { getSession, signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -248,4 +248,9 @@ export default function Home() {
 			</ListItem>
 		</List>
 	</PageContainer>;
+}
+
+// noinspection JSUnusedGlobalSymbols
+export async function getServerSideProps( ctx ) {
+	return { props: { session: await getSession( ctx ) } };
 }

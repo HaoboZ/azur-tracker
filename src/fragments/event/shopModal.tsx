@@ -5,14 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import DataDisplay from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
-import { useModal } from '../../lib/providers/modal';
+import { ModalControls } from '../../lib/providers/modal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
-export default function ShopModal( { index } ) {
+export default function ShopModal( { controls }: { controls: ModalControls } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
-	const { closeModal } = useModal();
 	
 	const [ shop, setShop ] = React.useState( event.shop );
 	
@@ -25,7 +24,7 @@ export default function ShopModal( { index } ) {
 		[ shop ] );
 	
 	return <PageModalContainer
-		onClose={() => closeModal( index )}
+		onClose={() => controls.close()}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
 		<DialogContent sx={{ p: 0 }}>

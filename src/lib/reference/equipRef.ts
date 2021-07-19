@@ -298,10 +298,11 @@ export const equips: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
-		id    : 36660,
-		name  : 'Twin 127mm Type 89 AA Gun Mount',
-		image : 'Twin_127mm_AA_(Type_89_A1_Mod_2)',
-		type  : type.AA,
+		id   : 36660,
+		name : 'Twin 127mm Type 89 AA Gun Mount',
+		image: 'Twin_127mm_AA_(Type_89_A1_Mod_2)',
+		type : type.AA,
+		
 		rarity: rarity.SR
 	},
 	{
@@ -1876,7 +1877,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]            : [ 2, ++a ],
 		[ map[ 'Twin 203mm (SK C/34)/E' ] ]                          : [ 3, ++a ]
 	},
-	'CA/BB'      : {
+	'CA/CB'      : {
 		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]        : [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]           : [ 0, ++a ],
 		[ map[ 'Prototype Twin 234mm Main Gun Mount/SR' ] ]          : [ 0, ++a ],
@@ -1893,11 +1894,11 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'CA/CL'() {
 		return this[ 'CA' ];
 	},
-	'CA/CB'   : {
+	'CB/CA'   : {
 		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]          : [ 1, ++a ]
 	},
-	'CA/CB/AP': {
+	'CB/CA/AP': {
 		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (CB)/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]      : [ 1, ++a ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]                : [ 2, ++a ]
@@ -2239,10 +2240,10 @@ export const equippable = {
 	'CA'         : [ type.CA ],
 	'CA/HE'      : [ type.CA ],
 	'CA/Modified': [ type.CA ],
-	'CA/BB'      : [ type.CA ],
-	'CA/CL'      : [ type.CA, type.CL ],
 	'CA/CB'      : [ type.CA, type.CB ],
-	'CA/CB/AP'   : [ type.CA, type.CB ],
+	'CA/CL'      : [ type.CA, type.CL ],
+	'CB/CA'      : [ type.CA, type.CB ],
+	'CB/CA/AP'   : [ type.CA, type.CB ],
 	
 	'BB/Damage'  : [ type.BB ],
 	'BB/Speed'   : [ type.BB ],

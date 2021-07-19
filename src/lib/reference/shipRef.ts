@@ -360,13 +360,13 @@ const ships = {
 	'Koln'                          : [ 'Köln', 'Rare', 'Ironblood', 'Light Cruiser', 6, [ 0, 0, 0, 1 ], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 62, 'Light', 32, 3612, 172, 348, 318, 100, 0, 8, 180, 105, 0, 153 ],
 	'Leipzig'                       : [ 'Leipzig', 'Elite', 'Ironblood', 'Light Cruiser', 3, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 67, 'Light', 32, 3734, 168, 387, 325, 102, 0, 9, 190, 99, 0, 158 ],
 	'Nurnberg'                      : [ 'Nürnberg', 'Elite', 'Ironblood', 'Light Cruiser', 4, [], 'CL', 'T', 'AA/Damage', 'A/CL1/T', 'A/CL2/T', 80, 'Light', 32, 3811, 176, 403, 304, 98, 0, 10, 192, 101, 0, 158 ],
-	'Deutschland'                   : [ 'Deutschland', 'Elite', 'Ironblood', 'Heavy Cruiser', 3, [], 'CA/BB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 72, 'Medium', 22, 4018, 301, 154, 220, 53, 0, 11, 176, 0, 0, 131 ],
-	'Admiral_Graf_Spee'             : [ 'Admiral Graf Spee', 'Elite', 'Ironblood', 'Heavy Cruiser', 3, [], 'CA/BB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 36, 'Medium', 22, 4361, 298, 154, 216, 54, 0, 11, 174, 0, 0, 125 ],
+	'Deutschland'                   : [ 'Deutschland', 'Elite', 'Ironblood', 'Heavy Cruiser', 3, [], 'CA/CB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 72, 'Medium', 22, 4018, 301, 154, 220, 53, 0, 11, 176, 0, 0, 131 ],
+	'Admiral_Graf_Spee'             : [ 'Admiral Graf Spee', 'Elite', 'Ironblood', 'Heavy Cruiser', 3, [], 'CA/CB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 36, 'Medium', 22, 4361, 298, 154, 216, 54, 0, 11, 174, 0, 0, 125 ],
 	'Admiral_Hipper'                : [ 'Admiral Hipper', 'Elite', 'Ironblood', 'Heavy Cruiser', 5, [], 'CA', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 66, 'Medium', 25, 4970, 251, 189, 190, 61, 0, 11, 176, 0, 0, 128 ],
 	'Prinz_Eugen'                   : [ 'Prinz Eugen', 'Super Rare', 'Ironblood', 'Heavy Cruiser', 4, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 78, 'Medium', 25, 6252, 226, 205, 153, 62, 0, 12, 182, 0, 0, 128 ],
 	'Admiral_Hipper_µ'              : [ 'Admiral Hipper μ', 'Elite', 'Ironblood', 'Heavy Cruiser', 5, [], 'CA', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 66, 'Medium', 25, 4844, 251, 189, 185, 61, 0, 11, 176, 0, 0, 128 ],
 	'Roon_µ'                        : [ 'Roon μ', 'Super Rare', 'Ironblood', 'Heavy Cruiser', 1, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 0, 'Medium', 26, 6055, 283, 233, 215, 78, 0, 12, 171, 0, 0, 125 ],
-	'Prinz_Heinrich'                : [ 'Prinz Heinrich', 'Super Rare', 'Ironblood', 'Heavy Cruiser', 1, [], 'CA/BB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 50, 'Medium', 26, 5946, 310, 219, 245, 66, 0, 12, 182, 0, 0, 132 ],
+	'Prinz_Heinrich'                : [ 'Prinz Heinrich', 'Super Rare', 'Ironblood', 'Heavy Cruiser', 1, [], 'CA/CB', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T', 50, 'Medium', 26, 5946, 310, 219, 245, 66, 0, 12, 182, 0, 0, 132 ],
 	'Scharnhorst'                   : [ 'Scharnhorst', 'Elite', 'Ironblood', 'Battlecruiser', 6, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 43, 'Medium', 31, 7455, 366, 248, 154, 38, 0, 13, 157, 0, 0, 66 ],
 	'Gneisenau'                     : [ 'Gneisenau', 'Elite', 'Ironblood', 'Battlecruiser', 6, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 64, 'Medium', 31, 7455, 366, 248, 154, 38, 0, 13, 157, 0, 0, 66 ],
 	'Bismarck'                      : [ 'Bismarck', 'Super Rare', 'Ironblood', 'Battleship', 2, [ 0, 1, 0, 1, 1 ], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 32, 'Heavy', 30, 8762, 423, 208, 0, 33, 0, 15, 152, 0, 0, 73 ],
@@ -480,7 +480,7 @@ const ships = {
 	'Seattle'                       : [ 'Seattle', 'Priority', 'Eagle Union', 'Light Cruiser', 1, [], 'CL', 'CL/AA', 'AA', 'A/CL1', 'A/CL2', 15, 'Light', 33, 5257, 178, 365, 0, 97, 0, 12, 156, 154, 0, 157 ],
 	'Georgia'                       : [ 'Georgia', 'Priority', 'Eagle Union', 'Battleship', 1, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 33, 8297, 436, 409, 0, 30, 0, 16, 163, 0, 0, 73 ],
 	'Kitakaze'                      : [ 'Kitakaze', 'Priority', 'Sakura Empire', 'Destroyer', 1, [ 1 ], 'DD/Speed', 'T', 'AA', 'A/DD1', 'A/DD2', 15, 'Light', 44, 2641, 86, 197, 393, 197, 0, 11, 223, 122, 0, 208 ],
-	'Azuma'                         : [ 'Azuma', 'Decisive', 'Sakura Empire', 'Battleship', 1, [], 'CA/CB', 'DD/Aux', 'AA', 'A/CB1', 'A/CB2', 0, 'Medium', 27, 7541, 307, 226, 0, 50, 0, 16, 170, 0, 0, 123 ],
+	'Azuma'                         : [ 'Azuma', 'Decisive', 'Sakura Empire', 'Battleship', 1, [], 'CB/CA', 'DD/Aux', 'AA', 'A/CB1', 'A/CB2', 0, 'Medium', 27, 7541, 307, 226, 0, 50, 0, 16, 170, 0, 0, 123 ],
 	'Friedrich_der_Grosse'          : [ 'Friedrich der Groβe', 'Decisive', 'Ironblood', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 9886, 449, 241, 0, 27, 0, 19, 157, 0, 0, 65 ],
 	'Gascogne'                      : [ 'Gascogne', 'Priority', 'Vichya Dominion', 'Battleship', 1, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 32, 7863, 430, 241, 0, 36, 0, 16, 168, 0, 0, 71 ],
 	'Cheshire'                      : [ 'Cheshire', 'Priority', 'Royal Navy', 'Heavy Cruiser', 1, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 27, 5141, 282, 409, 208, 76, 0, 13, 156, 0, 0, 130 ],
@@ -490,12 +490,27 @@ const ships = {
 	'Champagne'                     : [ 'Champagne', 'Priority', 'Iris Libre', 'Battleship', 1, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Medium', 32, 6896, 454, 241, 0, 36, 0, 16, 181, 0, 0, 77 ],
 	'Anchorage'                     : [ 'Anchorage', 'Priority', 'Eagle Union', 'Heavy Cruiser', 1, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 0, 'Medium', 26, 6256, 252, 227, 215, 80, 0, 13, 163, 0, 0, 146 ],
 	'Hakuryuu'                      : [ 'Hakuryuu', 'Decisive', 'Sakura Empire', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F/TB', 'DB', 'DB/TB', 'A/CV1', 'A/CV2', 0, 'Heavy', 34, 8354, 0, 323, 0, 57, 453, 17, 126, 0, 0, 96 ],
-	'Ägir'                          : [ 'Ägir', 'Decisive', 'Ironblood', 'Large Cruiser', 0, [ 1 ], 'CA/CB/AP', 'T', 'AA', 'A/CB1', 'A/CB2', 0, 'Heavy', 26, 7119, 282, 252, 202, 52, 0, 16, 168, 0, 0, 128 ],
+	'Ägir'                          : [ 'Ägir', 'Decisive', 'Ironblood', 'Large Cruiser', 0, [ 1 ], 'CB/CA/AP', 'T', 'AA', 'A/CB1', 'A/CB2', 0, 'Heavy', 26, 7119, 282, 252, 202, 52, 0, 16, 168, 0, 0, 128 ],
 	'August_von_Parseval'           : [ 'August von Parseval', 'Priority', 'Ironblood', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 0, 'Medium', 31, 7238, 0, 327, 0, 47, 430, 14, 120, 0, 0, 108 ],
 	'Marco_Polo'                    : [ 'Marco Polo', 'Priority', 'Sardegna Empire', 'Battleship', 1, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 32, 8422, 432, 258, 0, 40, 0, 16, 156, 0, 0, 64 ],
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ],
 	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 2, [ 1, 1, 1, 1, 1 ], 'CL', 'DD/Aux', 'AA', 'A/CL1', 'A/CL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
+};
+
+export const blankShip = {
+	id       : '_',
+	name     : 'No Ship',
+	link     : '',
+	rarity   : '',
+	faction  : '',
+	type     : '',
+	tier     : 7,
+	special  : [],
+	equipType: [],
+	love     : 0,
+	lvl      : 0,
+	equip    : []
 };
 
 export default mapValues( ships, ( val, key ) => ( {

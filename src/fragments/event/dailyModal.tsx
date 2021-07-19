@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import DataDisplay from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
-import { useModal } from '../../lib/providers/modal';
+import { ModalControls } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
-export default function DailyModal( { index } ) {
+export default function DailyModal( { controls }: { controls: ModalControls } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
-	const { closeModal } = useModal();
 	
 	const [ daily, setDaily ] = React.useState( event.daily );
 	
@@ -30,7 +29,7 @@ export default function DailyModal( { index } ) {
 	}
 	
 	return <PageModalContainer
-		onClose={() => closeModal( index )}
+		onClose={() => controls.close()}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
 		<DialogContent sx={{ p: 0 }}>

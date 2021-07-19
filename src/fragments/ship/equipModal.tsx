@@ -2,7 +2,6 @@ import {
 	Alert,
 	Box,
 	Button,
-	Dialog,
 	DialogActions,
 	DialogContent,
 	DialogTitle,
@@ -10,16 +9,15 @@ import {
 	Grid,
 	Link,
 	Switch,
-	Typography,
-	Zoom
+	Typography
 } from '@material-ui/core';
-import { TransitionProps } from '@material-ui/core/transitions';
 import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TierIcon } from '../../lib/icons';
+import { ModalControls } from '../../lib/providers/modal';
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
@@ -27,12 +25,8 @@ import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 
-const Transition = React.forwardRef( ( props: TransitionProps, ref: React.ForwardedRef<typeof Zoom> ) =>
-	<Zoom ref={ref} {...props}/> );
-
-export default function EquipDialog( { open, onClose, info, selectedEquip }: {
-	open: boolean,
-	onClose: () => void,
+export default function EquipModal( { controls, info, selectedEquip }: {
+	controls: ModalControls,
 	info: { ship: typeof shipRef[string], index: number },
 	selectedEquip?: typeof equips[number]
 } ) {
@@ -67,6 +61,9 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equips[ 0 ];
 	// equipment that will go in slot
 	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
+	const [ override, setOverride ] = React.useState<0 | 1>( 0 );
+	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
+	
 	React.useEffect( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			setEquip( selectedEquip );
@@ -74,38 +71,28 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 			setEquip( currentEquip );
 		else
 			setEquip( equips[ 0 ] );
-	}, [ info, selectedEquip ] );
+	}, [ selectedEquip ] );
 	
-	const [ override, setOverride ] = React.useState<0 | 1>( 0 );
 	React.useEffect( () => {
 		setOverride( info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	}, [ info ] );
 	
-	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
+	React.useEffect( () => {
+		function close( cancel ) {
+			setAnchorEl( null );
+			if ( cancel ) return;
+			const newEquip = cloneDeep( info.ship.equip );
+			newEquip[ info.index ] = [ equip.id, override, 6 ];
+			dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
+		}
+		controls.events.on( 'close', close );
+		return () => {
+			controls.events.off( 'close', close );
+		};
+	}, [ info, equip ] );
 	
-	function close() {
-		const newEquip = cloneDeep( info.ship.equip );
-		newEquip[ info.index ] = [ equip.id, override, 6 ];
-		dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
-		setAnchorEl( null );
-		onClose();
-	}
-	
-	return <Dialog
-		open={open}
-		onClose={close}
-		TransitionComponent={Transition}
-		TransitionProps={{ onExited: () => setEquip( equips[ 0 ] ) }}
-		keepMounted
-		maxWidth='xs'
-		fullWidth
-		onKeyPress={( e ) => {
-			if ( e.key === 'Enter' ) {
-				e.preventDefault();
-				close();
-			}
-		}}>
-		<DialogTitle>Switch Equipment?</DialogTitle>
+	return <>
+		<DialogTitle>Switch Equipment</DialogTitle>
 		<DialogContent>
 			<Grid container alignItems='center' justifyContent='center'>
 				{info?.ship.special[ info.index ] ?
@@ -188,18 +175,15 @@ export default function EquipDialog( { open, onClose, info, selectedEquip }: {
 				label='Force BiS'
 				labelPlacement='start'
 			/>
-			<Button variant='contained' onClick={close}>
+			<Button variant='contained' onClick={() => controls.close()}>
 				Close
 			</Button>
 			<Button
 				variant='contained'
 				color='secondary'
-				onClick={() => {
-					setAnchorEl( null );
-					onClose();
-				}}>
+				onClick={() => controls.close( true )}>
 				Cancel
 			</Button>
 		</DialogActions>
-	</Dialog>;
+	</>;
 }

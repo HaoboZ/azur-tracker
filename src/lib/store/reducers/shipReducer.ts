@@ -7,7 +7,7 @@ type State = {
 	ships: Record<string, {
 		lvl: number,
 		love: number,
-		equip: [ number, 0 | 1, number ][]
+		equip: [ number, 0 | 1, number ][] // id, override, tier
 	}>,
 	filter: {
 		levelMax: boolean,

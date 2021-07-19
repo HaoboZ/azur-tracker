@@ -7,7 +7,9 @@ import {
 	Link,
 	MenuItem,
 	Select,
-	Typography
+	Typography,
+	Zoom,
+	ZoomProps
 } from '@material-ui/core';
 import Image from 'next/image';
 import React from 'react';
@@ -15,15 +17,18 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
 import SVGIcon, { TierIcon } from '../../lib/icons';
-import { useModal } from '../../lib/providers/modal';
+import { ModalControls, useModal } from '../../lib/providers/modal';
 import { rarityColors, tierColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
-import EquipDialog from './equipDialog';
+import EquipModal from './equipModal';
 
-export default function ShipModal( { index, ship, equipBetter = [], selectedEquip }: {
-	index: number,
+const TransitionComponent = React.forwardRef( ( props: ZoomProps, ref: React.ForwardedRef<typeof Zoom> ) =>
+	<Zoom ref={ref} {...props}/> );
+
+export default function ShipModal( { controls, ship, equipBetter = [], selectedEquip }: {
+	controls: ModalControls,
 	ship?: typeof shipRef[string],
 	equipBetter?: number[],
 	selectedEquip?: typeof equips[number]
@@ -31,13 +36,16 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 	const { ships } = useSelector( state => state.ship );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
-	const { closeModal } = useModal();
-	
-	const [ equipOpen, setEquipOpen ] = React.useState( false );
-	const [ equipInfo, setEquipInfo ] = React.useState<{ ship, index }>();
+	const { show } = useModal( EquipModal, {
+		maxWidth: 'xs',
+		TransitionComponent
+	}, {
+		info: undefined,
+		selectedEquip
+	} );
 	
 	return <PageModalContainer
-		onClose={() => closeModal( index )}
+		onClose={() => controls.close()}
 		title={<Link
 			href={ship.link}
 			target='_blank'
@@ -68,7 +76,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 						<Select
 							label='Love'
 							fullWidth
-							value={ships[ ship.id ].love}
+							value={ships[ ship.id ]?.love || 0}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
 								dispatch( ship_setShip( { name: ship.id, ship: { love: e.target.value as number } } ) )}>
@@ -94,7 +102,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 						<Select
 							label='Max Level'
 							fullWidth
-							value={ships[ ship.id ].lvl}
+							value={ships[ ship.id ]?.lvl || 0}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
 							onChange={( e ) =>
 								dispatch( ship_setShip( { name: ship.id, ship: { lvl: e.target.value as number } } ) )}>
@@ -130,10 +138,7 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 								alignItems   : 'center'
 							}}
 							className={colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ]}
-							onClick={() => {
-								setEquipInfo( { ship, index } );
-								setEquipOpen( true );
-							}}>
+							onClick={() => show( { info: { ship, index } } )}>
 							<Image
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}
@@ -148,11 +153,5 @@ export default function ShipModal( { index, ship, equipBetter = [], selectedEqui
 				</Grid>
 			</Grid>
 		</DialogContent>
-		<EquipDialog
-			open={equipOpen}
-			onClose={() => setEquipOpen( false )}
-			info={equipInfo}
-			selectedEquip={selectedEquip}
-		/>
 	</PageModalContainer>;
 }
