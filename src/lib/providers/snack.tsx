@@ -2,15 +2,15 @@ import { Alert, AlertColor, Grow, Snackbar, Theme, useMediaQuery } from '@materi
 import React from 'react';
 
 type C = ( message: string, type?: AlertColor ) => void;
-const SnackbarContext = React.createContext<C>( () => null );
-SnackbarContext.displayName = 'Snackbar';
+const SnackBarContext = React.createContext<C>( () => null );
+SnackBarContext.displayName = 'SnackBar';
 
 type Message = {
 	message: string,
 	type: AlertColor
 };
 
-export default function SnackbarProvider( { children } ) {
+export default function SnackBarProvider( { children } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	const [ open, setOpen ] = React.useState( false );
@@ -29,7 +29,7 @@ export default function SnackbarProvider( { children } ) {
 		}
 	}, [ nextSnack, snack ] );
 	
-	return <SnackbarContext.Provider value={( message, type = 'success' ) =>
+	return <SnackBarContext.Provider value={( message, type = 'success' ) =>
 		setNextSnack( { message, type } )}>
 		{children}
 		<Snackbar
@@ -37,7 +37,7 @@ export default function SnackbarProvider( { children } ) {
 			autoHideDuration={5000}
 			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
 			sx={{
-				'& .MuiSnackbar-root': {
+				'& .MuiSnackBar-root': {
 					top: {
 						xs: 'calc(env(safe-area-inset-top) + 24px)',
 						sm: 0
@@ -57,15 +57,15 @@ export default function SnackbarProvider( { children } ) {
 				{snack?.message}
 			</Alert>
 		</Snackbar>
-	</SnackbarContext.Provider>;
+	</SnackBarContext.Provider>;
 }
 
 export function useSnackBar() {
-	return React.useContext( SnackbarContext );
+	return React.useContext( SnackBarContext );
 }
 
-export function withSnackbar( Component ) {
-	return ( props ) => <SnackbarContext.Consumer>
-		{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
-	</SnackbarContext.Consumer>;
+export function withSnackBar( Component ) {
+	return ( props ) => <SnackBarContext.Consumer>
+		{( snackBar ) => <Component snackBar={snackBar} {...props}/>}
+	</SnackBarContext.Consumer>;
 }

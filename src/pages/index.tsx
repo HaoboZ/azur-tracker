@@ -251,6 +251,10 @@ export default function Home() {
 }
 
 // noinspection JSUnusedGlobalSymbols
-export async function getServerSideProps( ctx ) {
-	return { props: { session: await getSession( ctx ) } };
+export async function getServerSideProps( context ) {
+	try {
+		return { props: { session: await getSession( context ) } };
+	} catch ( e ) {
+		return { props: {} };
+	}
 }
