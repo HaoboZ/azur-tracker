@@ -174,6 +174,7 @@ export default function EquipModal( { controls, info, selectedEquip }: {
 				/>}
 				label='Force BiS'
 				labelPlacement='start'
+				sx={{ mr: 2 }}
 			/>
 			<Button variant='contained' onClick={() => controls.close()}>
 				Close
