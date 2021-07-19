@@ -37,6 +37,7 @@ export default function ShipModal( { controls, ship, equipBetter = [], selectedE
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
 	const { show } = useModal( EquipModal, {
+		variant : ModalVariant.center,
 		maxWidth: 'xs',
 		TransitionComponent
 	}, {
