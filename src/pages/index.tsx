@@ -15,7 +15,7 @@ import {
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
 import { GetServerSideProps } from 'next';
-import { getSession, signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -253,13 +253,13 @@ export default function Home() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getServerSideProps: GetServerSideProps = async ( context ) => {
-	try {
-		console.log( 'tried' );
-		const session = await getSession( context );
-		console.log( session );
-		return { props: { session } };
-	} catch ( e ) {
-		console.log( 'fail', e );
-		return { props: {} };
-	}
+	// try {
+	// 	console.log( 'tried' );
+	// 	const session = await getSession( context );
+	// 	console.log( session );
+	// 	return { props: { session } };
+	// } catch ( e ) {
+	// 	console.log( 'fail', e );
+	return { props: {} };
+	// }
 };
