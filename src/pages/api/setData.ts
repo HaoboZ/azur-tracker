@@ -4,8 +4,7 @@ import getDrive from '../../lib/driveData/getDrive';
 import getInfo from '../../lib/driveData/getInfo';
 import setFile from '../../lib/driveData/setFile';
 
-// noinspection JSUnusedGlobalSymbols
-export default ( async function SetData( req, res ) {
+const SetData: NextApiHandler = async ( req, res ) => {
 	try {
 		const { modifiedTime } = req.query as Record<string, string>;
 		const drive = await getDrive( req );
@@ -16,4 +15,6 @@ export default ( async function SetData( req, res ) {
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );
 	}
-} as NextApiHandler );
+};
+// noinspection JSUnusedGlobalSymbols
+export default SetData;

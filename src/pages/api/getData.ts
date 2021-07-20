@@ -4,8 +4,7 @@ import getDrive from '../../lib/driveData/getDrive';
 import getFile from '../../lib/driveData/getFile';
 import getInfo from '../../lib/driveData/getInfo';
 
-// noinspection JSUnusedGlobalSymbols
-export default ( async function GetData( req, res ) {
+const GetData: NextApiHandler = async ( req, res ) => {
 	try {
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
@@ -14,4 +13,6 @@ export default ( async function GetData( req, res ) {
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );
 	}
-} as NextApiHandler );
+};
+// noinspection JSUnusedGlobalSymbols
+export default GetData;

@@ -3,8 +3,7 @@ import { NextApiHandler } from 'next';
 import getDrive from '../../lib/driveData/getDrive';
 import getInfo from '../../lib/driveData/getInfo';
 
-// noinspection JSUnusedGlobalSymbols
-export default ( async function CheckData( req, res ) {
+const CheckData: NextApiHandler = async ( req, res ) => {
 	try {
 		const { checksum, lastSaved } = req.query;
 		const drive = await getDrive( req );
@@ -23,4 +22,6 @@ export default ( async function CheckData( req, res ) {
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );
 	}
-} as NextApiHandler );
+};
+// noinspection JSUnusedGlobalSymbols
+export default CheckData;
