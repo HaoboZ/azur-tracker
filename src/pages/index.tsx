@@ -251,7 +251,7 @@ export default function Home() {
 }
 
 // TODO: add back once https://github.com/nextauthjs/next-auth/pull/2228 is merged
-// // noinspection JSUnusedGlobalSymbols
-// export const getInitialProps: GetServerSideProps = async ( context ) => {
+// noinspection JSUnusedGlobalSymbols
+// export const getServerSideProps: GetServerSideProps = async ( context ) => {
 // 	return { props: { session: await getSession( context ) } };
 // };

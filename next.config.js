@@ -1,4 +1,5 @@
 const bundleAnalyzer = require( '@next/bundle-analyzer' );
+const LodashModuleReplacementPlugin = require( 'lodash-webpack-plugin' );
 const withPWA = require( 'next-pwa' );
 const runtimeCaching = require( 'next-pwa/cache' );
 
@@ -6,9 +7,17 @@ const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 't
 // noinspection JSUnusedGlobalSymbols
 module.exports = withBundleAnalyzer( withPWA( {
 	webpack( config, { webpack } ) {
-		config.plugins.push( new webpack.IgnorePlugin( {
-			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
-		} ) );
+		config.plugins.push(
+			new LodashModuleReplacementPlugin( {
+				caching    : true,
+				collections: true,
+				deburring  : true,
+				flattening : true
+			} ),
+			new webpack.IgnorePlugin( {
+				resourceRegExp: /\.(test|spec)\.[jt]sx?$/
+			} )
+		);
 		return config;
 	},
 	pwa: {
