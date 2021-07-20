@@ -14,8 +14,7 @@ import {
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
 } from '@material-ui/icons';
-import { GetServerSideProps } from 'next';
-import { getSession, signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -251,7 +250,8 @@ export default function Home() {
 	</PageContainer>;
 }
 
-// noinspection JSUnusedGlobalSymbols
-export const getInitialProps: GetServerSideProps = async ( context ) => {
-	return { props: { session: await getSession( context ) } };
-};
+// TODO: add back once https://github.com/nextauthjs/next-auth/pull/2228 is merged
+// // noinspection JSUnusedGlobalSymbols
+// export const getInitialProps: GetServerSideProps = async ( context ) => {
+// 	return { props: { session: await getSession( context ) } };
+// };
