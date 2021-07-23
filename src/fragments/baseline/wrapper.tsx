@@ -31,8 +31,8 @@ export default function Wrapper( { children } ) {
 	const indicator = useIndicator();
 	
 	const delayedSetBackup = React.useCallback(
-		debounce( async () => backupMutex.runExclusive( async () =>
-			await indicator( setBackup( await checkDataIntegrity() ) )
+		debounce( async () => backupMutex.runExclusive(
+			async () => await indicator( setBackup( await checkDataIntegrity() ) )
 		), main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
 	React.useEffect( () => {
@@ -41,15 +41,16 @@ export default function Wrapper( { children } ) {
 	
 	React.useEffect( () => {
 		( async () => {
-			if ( main.autoLoad && session ) await backupMutex.runExclusive( async () =>
-				await indicator( getBackup( await checkDataIntegrity() ) ) );
+			if ( main.autoLoad && session ) await backupMutex.runExclusive(
+				async () => await indicator( getBackup( await checkDataIntegrity() ) )
+			);
 		} )();
 	}, [ Boolean( session ) ] );
 	
 	React.useEffect( () => {
 		const interval = setInterval( async () => {
-			if ( main.autoLoad && session ) await backupMutex.runExclusive( async () =>
-				await indicator( getBackup( await checkDataIntegrity() ) ) );
+			if ( main.autoLoad && session ) await backupMutex.runExclusive(
+				async () => await indicator( getBackup( await checkDataIntegrity() ) ) );
 		}, main.autoLoadInterval );
 		return () => clearInterval( interval );
 	}, [ main.autoLoadInterval ] );

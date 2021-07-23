@@ -11,7 +11,7 @@ import Link from '../../components/Link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 function LinkItem( { children, href } ) {
-	const main = useSelector( state => state.main );
+	const newData = useSelector( state => state.main.newData );
 	const dispatch = useDispatch();
 	
 	return <Link variant='h6' href={href}>
@@ -19,7 +19,7 @@ function LinkItem( { children, href } ) {
 			color='secondary'
 			variant='dot'
 			sx={{ mr: 3 }}
-			invisible={!main.newData[ href.substring( 1 ) ]}>
+			invisible={!newData[ href.substring( 1 ) ]}>
 			<Button
 				color='inherit'
 				onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
@@ -30,7 +30,7 @@ function LinkItem( { children, href } ) {
 }
 
 export default function TitleBar( { children } ) {
-	const main = useSelector( state => state.main );
+	const theme = useSelector( state => state.main.theme );
 	const dispatch = useDispatch();
 	
 	return <>
@@ -60,13 +60,13 @@ export default function TitleBar( { children } ) {
 							'light'  : 'dark',
 							'dark'   : 'default',
 							'default': 'light'
-						}[ main.theme ] || 'light' ) );
+						}[ theme ] || 'light' ) );
 					}}>
 					{{
 						'light'  : <BrightnessHighIcon/>,
 						'dark'   : <Brightness3Icon/>,
 						'default': <Brightness4Icon/>
-					}[ main.theme ] || 'default'}
+					}[ theme ] || 'default'}
 				</IconButton>
 			</Toolbar>
 		</AppBar>

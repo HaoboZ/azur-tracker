@@ -29,8 +29,8 @@ export default function SnackBarProvider( { children } ) {
 		}
 	}, [ nextSnack, snack ] );
 	
-	return <SnackBarContext.Provider value={( message, type = 'success' ) =>
-		setNextSnack( { message, type } )}>
+	return <SnackBarContext.Provider
+		value={( message, type = 'success' ) => setNextSnack( { message, type } )}>
 		{children}
 		<Snackbar
 			open={open}

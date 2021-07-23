@@ -10,10 +10,10 @@ import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 export default function ShopModal( { controls }: { controls: ModalControls } ) {
-	const event = useSelector( state => state.event );
+	const _shop = useSelector( state => state.event.shop );
 	const dispatch = useDispatch();
 	
-	const [ shop, setShop ] = React.useState( event.shop );
+	const [ shop, setShop ] = React.useState( _shop );
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo(

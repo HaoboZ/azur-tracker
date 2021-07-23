@@ -131,8 +131,9 @@ export default function Home() {
 									if ( !online )
 										snackBar( 'Offline' );
 									else if ( session ) {
-										await backupMutex.runExclusive( async () =>
-											await indicator( setBackup( await checkDataIntegrity() ) ) );
+										await backupMutex.runExclusive(
+											async () => await indicator( setBackup( await checkDataIntegrity() ) )
+										);
 										snackBar( 'Data Successfully Saved', 'success' );
 									} else
 										snackBar( 'Sign In to Save', 'info' );
@@ -150,8 +151,9 @@ export default function Home() {
 									if ( !online )
 										snackBar( 'Offline' );
 									else if ( session ) {
-										await backupMutex.runExclusive( async () =>
-											await indicator( getBackup( await checkDataIntegrity() ) ) );
+										await backupMutex.runExclusive(
+											async () => await indicator( getBackup( await checkDataIntegrity() ) )
+										);
 										snackBar( 'Data Successfully Loaded', 'success' );
 									} else
 										snackBar( 'Sign In to Load', 'info' );

@@ -10,10 +10,10 @@ import { ModalControls } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyModal( { controls }: { controls: ModalControls } ) {
-	const event = useSelector( state => state.event );
+	const _daily = useSelector( state => state.event.daily );
 	const dispatch = useDispatch();
 	
-	const [ daily, setDaily ] = React.useState( event.daily );
+	const [ daily, setDaily ] = React.useState( _daily );
 	
 	// total points gained daily
 	const dailyTotal = React.useMemo(

@@ -471,6 +471,13 @@ const ships = {
 	'Nagisa'                        : [ 'Nagisa', 'Elite', 'Venus Vacation', 'Battleship', 4, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 87, 'Heavy', 30, 7510, 384, 174, 0, 40, 0, 14, 149, 0, 0, 65 ],
 	'Nyotengu'                      : [ 'Nyotengu', 'Elite', 'Venus Vacation', 'Aircraft Carrier', 5, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 88, 'Medium', 32, 6646, 0, 309, 0, 54, 374, 12, 116, 0, 0, 87 ],
 	'Monica'                        : [ 'Monica', 'Elite', 'Venus Vacation', 'Light Cruiser', 5, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 88, 'Light', 32, 3775, 148, 357, 292, 100, 0, 10, 182, 87, 0, 160 ],
+	'Haruka_Amami'                  : [ 'Haruka Amami', 'Super Rare', 'The Idolmaster', 'Light Cruiser', 7, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 83, 'Light', 32, 4019, 163, 359, 360, 96, 0, 11, 193, 147, 0, 159 ],
+	'Chihaya_Kisaragi'              : [ 'Chihaya Kisaragi', 'Super Rare', 'The Idolmaster', 'Aircraft Carrier', 7, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 72, 'Medium', 31, 6763, 0, 316, 0, 54, 429, 13, 145, 0, 0, 88 ],
+	'Iori_Minase'                   : [ 'Iori Minase', 'Super Rare', 'The Idolmaster', 'Battleship', 7, [], 'BB/Speed', 'DD', 'AA/Main', 'A/BB1', 'A/BB2', 77, 'Heavy', 26, 7816, 421, 377, 0, 34, 0, 15, 150, 0, 0, 56 ],
+	'Azusa_Miura'                   : [ 'Azusa Miura', 'Super Rare', 'The Idolmaster', 'Heavy Cruiser', 7, [], 'CA', 'DD', 'AA', 'A/CA1', 'A/CA2', 91, 'Medium', 26, 5237, 240, 211, 0, 66, 0, 12, 175, 0, 0, 130 ],
+	'Ritsuko_Akizuki'               : [ 'Ritsuko Akizuki', 'Elite', 'The Idolmaster', 'Munition Ship', 7, [], 'DD', 'AA', 'C', 'A/AE1', 'A/AE2', 85, 'Medium', 25, 4323, 70, 174, 0, 63, 0, 10, 215, 0, 0, 225 ],
+	'Ami_Futami'                    : [ 'Ami Futami', 'Elite', 'The Idolmaster', 'Submarine', 7, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 74, 'Light', 23, 1507, 49, 0, 512, 43, 0, 6, 116, 0, 0, 199 ],
+	'Mami_Futami'                   : [ 'Mami Futami', 'Elite', 'The Idolmaster', 'Submarine', 7, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 74, 'Light', 23, 1507, 49, 0, 512, 43, 0, 6, 116, 0, 0, 199 ],
 	'HMS_Neptune'                   : [ 'HMS Neptune', 'Priority', 'Royal Navy', 'Light Cruiser', 2, [], 'CL/AP', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 15, 'Light', 33, 4637, 172, 363, 352, 98, 0, 12, 164, 152, 0, 158 ],
 	'Monarch'                       : [ 'Monarch', 'Priority', 'Royal Navy', 'Battleship', 1, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 28, 7967, 423, 230, 0, 35, 0, 16, 168, 0, 0, 66 ],
 	'Ibuki'                         : [ 'Ibuki', 'Priority', 'Sakura Empire', 'Heavy Cruiser', 2, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 28, 4793, 270, 194, 289, 86, 0, 13, 187, 0, 0, 136 ],
@@ -495,7 +502,7 @@ const ships = {
 	'Marco_Polo'                    : [ 'Marco Polo', 'Priority', 'Sardegna Empire', 'Battleship', 1, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 32, 8422, 432, 258, 0, 40, 0, 16, 156, 0, 0, 64 ],
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ],
-	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 2, [ 1, 1, 1, 1, 1 ], 'CL', 'DD/Aux', 'AA', 'A/CL1', 'A/CL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
+	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 2, [ 1, 1, 1, 1, 1 ], 'CL', 'DD', 'AA', 'A/CL1', 'ACL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
 };
 
 export const blankShip = {

@@ -7,7 +7,7 @@ import React from 'react';
 import useTheme from '../../lib/hooks/useTheme';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
-import SnackbarProvider from '../../lib/providers/snack';
+import SnackBarProvider from '../../lib/providers/snack';
 
 export const provider = <T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>>(
 	provider: T,
@@ -33,15 +33,15 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	
 	return <ProviderComposer
 		providers={[
-			// app specific
-			provider( AuthProvider, { session: pageProps.session } ),
 			// styling
 			provider( StyledEngineProvider, { injectFirst: true } ),
 			provider( CacheProvider, { value: cache } ),
 			provider( ThemeProvider, { theme } ),
+			// app specific
+			provider( AuthProvider, { session: pageProps.session } ),
 			// content
 			provider( ModalProvider ),
-			provider( SnackbarProvider ),
+			provider( SnackBarProvider ),
 			provider( IndicatorProvider )
 		]}>
 		{children}

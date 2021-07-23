@@ -8,13 +8,13 @@ import { devLevels, fateLevels, researchShips } from '../../lib/reference/resear
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
-	const research = useSelector( state => state.research );
+	const ships = useSelector( state => state.research.ships );
 	const dispatch = useDispatch();
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
 		const shipData = researchData.map( ( item ) => {
-			const ship = research.ships[ item.name ] || {};
+			const ship = ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
 			const devPrints = Math.max(
@@ -35,7 +35,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 			return { devLevel, devPrints, fatePrints };
 		} );
 		return { shipData, totalPR, totalDR };
-	}, [ research.ships ] );
+	}, [ ships ] );
 	
 	return <>
 		<DataDisplay
@@ -51,7 +51,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 					'Required Prints'
 				],
 				columns     : ( item, index ) => {
-					const ship = research.ships[ item.name ] || {};
+					const ship = ships[ item.name ] || {};
 					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
 						<>
@@ -137,7 +137,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 					</>;
 				},
 				renderPanel( item, index ) {
-					const ship = research.ships[ item.name ] || {};
+					const ship = ships[ item.name ] || {};
 					const { devLevel } = shipData[ index ];
 					return <Grid container spacing={2}>
 						<Grid item xs={6}>

@@ -59,7 +59,7 @@ const searchOptions = [
 ].map( ( label, id ) => ( { id, label } ) );
 
 export default function Filters( { table, resetEquip } ) {
-	const ship = useSelector( state => state.ship );
+	const filter = useSelector( state => state.ship.filter );
 	const dispatch = useDispatch();
 	
 	const globalFilter = useAsyncDebounce( ( value ) =>
@@ -135,7 +135,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						checked={ship.filter.levelMax}
+						checked={filter.levelMax}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}
 					/>}
@@ -145,7 +145,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						checked={ship.filter.equipMax}
+						checked={filter.equipMax}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}
 					/>}
@@ -155,7 +155,7 @@ export default function Filters( { table, resetEquip } ) {
 			<MenuItem>
 				<FormControlLabel
 					control={<Checkbox
-						checked={ship.filter.level0}
+						checked={filter.level0}
 						onChange={( e ) =>
 							dispatch( ship_setFilter( { level0: e.target.checked } ) )}
 					/>}

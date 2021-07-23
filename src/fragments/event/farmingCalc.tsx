@@ -10,12 +10,12 @@ import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/
 export default function FarmingCalc( { remainingPoints }: {
 	remainingPoints: number
 } ) {
-	const event = useSelector( state => state.event );
+	const farming = useSelector( state => state.event.farming );
 	const dispatch = useDispatch();
 	
 	return <DataDisplay
 		title='Farming'
-		data={event.farming}
+		data={farming}
 		tableProps={{
 			columnHeader: [
 				'Points/Run',

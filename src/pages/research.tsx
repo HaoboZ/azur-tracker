@@ -15,8 +15,9 @@ export default function Research() {
 	
 	const [ swipeFix, setSwipeFix ] = React.useState<any>();
 	React.useEffect( () => {
-		setTimeout( () =>
-			setSwipeFix( { transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s' } ), 1000 );
+		setTimeout( () => setSwipeFix( {
+			transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
+		} ), 1000 );
 	}, [] );
 	
 	return <PageContainer title='Research Tracker'>
