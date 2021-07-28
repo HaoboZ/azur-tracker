@@ -12,8 +12,7 @@ import {
 	Theme,
 	Toolbar,
 	Typography,
-	useMediaQuery,
-	useTheme
+	useMediaQuery
 } from '@material-ui/core';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import React from 'react';
@@ -34,7 +33,6 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 	variant?: ModalVariant,
 	children?: React.ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>> ) {
-	const theme = useTheme();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
@@ -72,7 +70,7 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 					right               : 'auto',
 					borderTopLeftRadius : 12,
 					borderTopRightRadius: 12,
-					width               : theme.breakpoints.values.md
+					width               : ( theme ) => theme.breakpoints.values.md
 				}
 			}}
 			{...props}>

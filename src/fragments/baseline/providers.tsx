@@ -37,12 +37,12 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 			provider( StyledEngineProvider, { injectFirst: true } ),
 			provider( CacheProvider, { value: cache } ),
 			provider( ThemeProvider, { theme } ),
-			// app specific
-			provider( AuthProvider, { session: pageProps.session } ),
 			// content
 			provider( ModalProvider ),
 			provider( SnackBarProvider ),
-			provider( IndicatorProvider )
+			provider( IndicatorProvider ),
+			// app
+			provider( AuthProvider, { session: pageProps.session } )
 		]}>
 		{children}
 	</ProviderComposer>;

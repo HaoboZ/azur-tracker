@@ -7,7 +7,8 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListProps,
-	Paper
+	Paper,
+	useTheme
 } from '@material-ui/core';
 import {
 	Add as AddIcon,
@@ -40,6 +41,8 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & ListProps ) {
+	const theme = useTheme();
+	
 	const [ editing, setEditing ] = React.useState( false );
 	
 	const contents = editable
@@ -49,24 +52,26 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			handle='.sortHandle'
 			ghostClass='selectedSort'
 			forceFallback
-			animation={200}>
+			animation={theme.transitions.duration.shorter}>
 			<TransitionGroup component={null}>
 				{data.map( ( item, index ) => {
 					const itemRow = <>
 						{editing && <ListItemIcon>
+							<IconButton className='sortHandle'><MenuIcon/></IconButton>
+						</ListItemIcon>}
+						{renderRow( item, index )}
+						{editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
 							<IconButton onClick={() => {
 								const _data = [ ...data ];
 								_data.splice( index, 1 );
 								setData?.( _data );
 							}}><CloseIcon/></IconButton>
-							<IconButton className='sortHandle'><MenuIcon/></IconButton>
 						</ListItemIcon>}
-						{renderRow( item, index )}
 					</>;
 					
 					return <CSSTransition
 						key={item.id || index}
-						timeout={200}
+						timeout={theme.transitions.duration.standard}
 						classNames='slide'>
 						{renderPanel
 							? <Accordion>
@@ -108,9 +113,15 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			'& .iconSpace': { pl: 0 },
 			'& .slide'    : {
 				'&-enter'       : { opacity: 0 },
-				'&-enter-active': { opacity: 1, transition: 'all 200ms ease-in-out' },
+				'&-enter-active': {
+					opacity   : 1,
+					transition: ( theme ) => theme.transitions.create( 'opacity' )
+				},
 				'&-exit'        : { opacity: 1 },
-				'&-exit-active' : { opacity: 0, transition: 'all 200ms ease-in-out' }
+				'&-exit-active' : {
+					opacity   : 0,
+					transition: ( theme ) => theme.transitions.create( 'opacity' )
+				}
 			}
 		}}
 		subheader={( title || editable ) && <ActionTitle

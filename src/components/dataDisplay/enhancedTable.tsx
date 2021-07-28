@@ -8,7 +8,8 @@ import {
 	TableContainer,
 	TableContainerProps,
 	TableHead,
-	TableRow
+	TableRow,
+	useTheme
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
 import React from 'react';
@@ -39,14 +40,22 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
+	const theme = useTheme();
+	
 	return <Box sx={{
 		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
 		'& .minWidth'                          : { width: '1%' },
 		'& .slide'                             : {
 			'&-enter'       : { opacity: 0 },
-			'&-enter-active': { opacity: 1, transition: 'all 200ms ease-in-out' },
+			'&-enter-active': {
+				opacity   : 1,
+				transition: ( theme ) => theme.transitions.create( 'opacity' )
+			},
 			'&-exit'        : { opacity: 1 },
-			'&-exit-active' : { opacity: 0, transition: 'all 200ms ease-in-out' }
+			'&-exit-active' : {
+				opacity   : 0,
+				transition: ( theme ) => theme.transitions.create( 'opacity' )
+			}
 		}
 	}}>
 		{title && <ActionTitle title={title}/>}
@@ -72,11 +81,11 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						handle='.sortHandle'
 						ghostClass='selectedSort'
 						forceFallback
-						animation={200}>
-						<TransitionGroup component={null} appear>
+						animation={theme.transitions.duration.shorter}>
+						<TransitionGroup component={null}>
 							{data.map( ( item, index ) => <CSSTransition
 								key={item.id || index}
-								timeout={200}
+								timeout={theme.transitions.duration.standard}
 								classNames='slide'>
 								<TableRow>
 									<TableCell className='sortHandle'>
