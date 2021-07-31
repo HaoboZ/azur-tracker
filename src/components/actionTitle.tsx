@@ -1,10 +1,9 @@
-import { Button, ButtonGroup, ButtonProps, Toolbar, Typography } from '@material-ui/core';
-import { Variant } from '@material-ui/core/styles/createTypography';
+import { Button, ButtonGroup, ButtonProps, Toolbar, Typography, TypographyVariant } from '@material-ui/core';
 import React from 'react';
 
 export default function ActionTitle( { title = '', variant = 'h6', actions = [] }: {
 	title?: string,
-	variant?: Variant,
+	variant?: TypographyVariant,
 	actions?: {
 		name: string,
 		onClick?: () => void,

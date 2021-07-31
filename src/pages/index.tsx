@@ -39,7 +39,7 @@ export default function Home() {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
-	const snackBar = useSnackBar();
+	const { enqueueSnackbar } = useSnackBar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
 	
@@ -129,16 +129,16 @@ export default function Home() {
 							onClick={async () => {
 								try {
 									if ( !online )
-										snackBar( 'Offline' );
+										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
 										await backupMutex.runExclusive(
 											async () => await indicator( setBackup( await checkDataIntegrity() ) )
 										);
-										snackBar( 'Data Successfully Saved', 'success' );
+										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else
-										snackBar( 'Sign In to Save', 'info' );
+										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 								} catch ( e ) {
-									snackBar( String( e ), 'error' );
+									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}
 							}}>
 							Save
@@ -149,16 +149,16 @@ export default function Home() {
 							onClick={async () => {
 								try {
 									if ( !online )
-										snackBar( 'Offline' );
+										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
 										await backupMutex.runExclusive(
 											async () => await indicator( getBackup( await checkDataIntegrity() ) )
 										);
-										snackBar( 'Data Successfully Loaded', 'success' );
+										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else
-										snackBar( 'Sign In to Load', 'info' );
+										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
 								} catch ( e ) {
-									snackBar( String( e ), 'error' );
+									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}
 							}}>
 							Load
@@ -199,7 +199,7 @@ export default function Home() {
 				<ListItemSecondaryAction>
 					<Button
 						variant='contained'
-						color='secondary'
+						color='error'
 						onClick={() => {
 							if ( confirm( 'Are you sure you want to reset this page?' ) )
 								dispatch( event_reset() );
@@ -219,7 +219,7 @@ export default function Home() {
 				<ListItemSecondaryAction>
 					<Button
 						variant='contained'
-						color='secondary'
+						color='error'
 						onClick={() => {
 							if ( confirm( 'Are you sure you want to reset this page?' ) )
 								dispatch( research_reset() );
@@ -239,7 +239,7 @@ export default function Home() {
 				<ListItemSecondaryAction>
 					<Button
 						variant='contained'
-						color='secondary'
+						color='error'
 						onClick={() => {
 							if ( confirm( 'Are you sure you want to reset this page?' ) )
 								dispatch( ship_reset() );

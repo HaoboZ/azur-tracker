@@ -39,14 +39,9 @@ export default function BottomBar( { children } ) {
 				bgcolor : 'primary.main'
 			}}
 		/>
-		<Box
-			sx={{
-				width : '100%',
-				height: 'env(safe-area-inset-top)'
-			}}
-		/>
+		<Box width='100%' height='env(safe-area-inset-top)'/>
 		{children}
-		<Box sx={{ height: 'calc(env(safe-area-inset-bottom) + 56px)' }}/>
+		<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
 		<AppBar
 			position='fixed'
 			color='inherit'

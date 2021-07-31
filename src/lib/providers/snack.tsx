@@ -1,13 +1,19 @@
 import { Alert, AlertColor, Grow, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 
-type C = ( message: string, type?: AlertColor ) => void;
-const SnackBarContext = React.createContext<C>( () => null );
+type C = {
+	enqueueSnackbar: ( message: string, props?: { variant: AlertColor } ) => void,
+	closeSnackbar: () => void
+};
+const SnackBarContext = React.createContext<C>( {
+	enqueueSnackbar: () => null,
+	closeSnackbar  : () => null
+} );
 SnackBarContext.displayName = 'SnackBar';
 
 type Message = {
 	message: string,
-	type: AlertColor
+	props?: { variant: AlertColor }
 };
 
 export default function SnackBarProvider( { children } ) {
@@ -30,7 +36,10 @@ export default function SnackBarProvider( { children } ) {
 	}, [ nextSnack, snack ] );
 	
 	return <SnackBarContext.Provider
-		value={( message, type = 'success' ) => setNextSnack( { message, type } )}>
+		value={{
+			enqueueSnackbar: ( message, props ) => setNextSnack( { message, props } ),
+			closeSnackbar  : () => setOpen( false )
+		}}>
 		{children}
 		<Snackbar
 			open={open}
@@ -52,7 +61,7 @@ export default function SnackBarProvider( { children } ) {
 			TransitionProps={{ onExited: () => setSnack( undefined ) }}>
 			<Alert
 				variant='filled'
-				color={snack?.type}
+				color={snack?.props.variant}
 				onClose={() => setOpen( false )}>
 				{snack?.message}
 			</Alert>

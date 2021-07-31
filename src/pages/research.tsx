@@ -14,7 +14,7 @@ export default function Research() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	
-	const [ swipeFix, setSwipeFix ] = React.useState<any>();
+	const [ swipeFix, setSwipeFix ] = React.useState<React.CSSProperties>();
 	
 	React.useEffect( () => {
 		setTimeout( () => setSwipeFix( {

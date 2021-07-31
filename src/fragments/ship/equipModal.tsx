@@ -181,7 +181,7 @@ export default function EquipModal( { controls, info, selectedEquip }: {
 			</Button>
 			<Button
 				variant='contained'
-				color='secondary'
+				color='error'
 				onClick={() => controls.close( true )}>
 				Cancel
 			</Button>

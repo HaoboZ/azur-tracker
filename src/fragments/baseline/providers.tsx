@@ -5,23 +5,10 @@ import { Provider as AuthProvider } from 'next-auth/client';
 import React from 'react';
 
 import useTheme from '../../lib/hooks/useTheme';
+import { provider, ProviderComposer } from '../../lib/providers';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 import SnackBarProvider from '../../lib/providers/snack';
-
-export const provider = <T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>>(
-	provider: T,
-	props: Omit<React.ComponentProps<T>, 'children'> = undefined
-) => [ provider, props ];
-
-export const ProviderComposer = ( { providers, children } ) => {
-	let content = children;
-	for ( let i = providers.length - 1; i >= 0; --i ) {
-		const [ Provider, props ] = providers[ i ];
-		content = <Provider {...props}>{content}</Provider>;
-	}
-	return content;
-};
 
 const cache = createCache( {
 	key    : 'css',
@@ -37,12 +24,12 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 			provider( StyledEngineProvider, { injectFirst: true } ),
 			provider( CacheProvider, { value: cache } ),
 			provider( ThemeProvider, { theme } ),
+			// app
+			provider( AuthProvider, { session: pageProps.session } ),
 			// content
 			provider( ModalProvider ),
 			provider( SnackBarProvider ),
-			provider( IndicatorProvider ),
-			// app
-			provider( AuthProvider, { session: pageProps.session } )
+			provider( IndicatorProvider )
 		]}>
 		{children}
 	</ProviderComposer>;

@@ -113,7 +113,7 @@ export function PageModalContainer( {
 					}}>
 					Save
 				</Button> : undefined}
-				<Button variant='contained' color='secondary' onClick={onClose}>
+				<Button variant='contained' color='error' onClick={onClose}>
 					{onSave ? 'Cancel' : 'Close'}
 				</Button>
 			</DialogActions>
