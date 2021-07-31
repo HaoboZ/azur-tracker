@@ -89,7 +89,7 @@ export default function EquipModal( { controls, info, selectedEquip }: {
 		return () => {
 			controls.events.off( 'close', close );
 		};
-	}, [ info, equip ] );
+	}, [ info, equip, override ] );
 	
 	return <>
 		<DialogTitle>Switch Equipment</DialogTitle>
