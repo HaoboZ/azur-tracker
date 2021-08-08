@@ -18,7 +18,7 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Link from '../components/Link';
+import Link from '../components/link';
 import PageContainer from '../components/pageContainer';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';

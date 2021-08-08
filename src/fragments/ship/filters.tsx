@@ -100,7 +100,10 @@ export default function Filters( { table, resetEquip } ) {
 					options={searchOptions}
 					fullWidth
 					freeSolo
-					onInputChange={( e, value ) => globalFilter( value )}
+					onInputChange={( e, value ) => {
+						// TODO: temporary fix until mui autocomplete freeSolo works
+						if ( e ) globalFilter( value );
+					}}
 					renderInput={( params ) => <TextField
 						inputRef={searchRef}
 						{...params}

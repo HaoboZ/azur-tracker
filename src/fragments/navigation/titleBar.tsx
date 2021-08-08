@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Link from '../../components/Link';
+import Link from '../../components/link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 function LinkItem( { children, href } ) {

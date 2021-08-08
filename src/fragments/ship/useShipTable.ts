@@ -16,11 +16,8 @@ import tableColumns from './tableColumns';
 export default function useShipTable( equipBetter, setEquipBetter ) {
 	const ship = useSelector( state => state.ship );
 	
-	const skipResetRef = React.useRef( false );
-	
 	// list of ships with the local data loaded
 	const shipList = React.useMemo( () => {
-		skipResetRef.current = true;
 		return Object.values( shipRef )
 			.map( ( shipData ) => {
 				const _ship = ship.ships[ shipData.id ];
@@ -36,10 +33,6 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 			} );
 	}, [ ship ] );
 	
-	React.useEffect( () => {
-		skipResetRef.current = false;
-	} );
-	
 	const setEquipBetterDelay = useAsyncDebounce( ( filter, value ) => {
 		if ( equipBetter.filter !== filter ) {
 			setEquipBetter( { filter, value } );
@@ -51,13 +44,13 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 	return useTable(
 		{
 			columns,
-			data         : shipList,
-			defaultColumn: { width: 10 },
-			initialState : {
+			data                  : shipList,
+			defaultColumn         : { width: 10 },
+			initialState          : {
 				hiddenColumns: [ 'equipType' ],
 				sortBy       : [ { id: 'tier' }, { id: 'lvl', desc: true } ]
 			},
-			filterTypes  : {
+			filterTypes           : {
 				// case insensitive ignores accents in strings
 				normal: ( rows, ids, filterValue ) => {
 					let regex: RegExp;
@@ -82,16 +75,16 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 					} );
 				}
 			},
-			globalFilter : 'normal',
-			// autoResetPage        : !skipResetRef.current,
-			// autoResetExpanded    : !skipResetRef.current,
-			// autoResetGroupBy     : !skipResetRef.current,
-			// autoResetSelectedRows: !skipResetRef.current,
-			autoResetHiddenColumns: !skipResetRef.current,
-			autoResetSortBy       : !skipResetRef.current,
-			autoResetGlobalFilter : !skipResetRef.current,
-			autoResetFilters      : !skipResetRef.current,
-			autoResetRowState     : !skipResetRef.current
+			globalFilter          : 'normal',
+			autoResetPage         : false,
+			autoResetExpanded     : false,
+			autoResetGroupBy      : false,
+			autoResetSelectedRows : false,
+			autoResetHiddenColumns: false,
+			autoResetSortBy       : false,
+			autoResetGlobalFilter : false,
+			autoResetFilters      : false,
+			autoResetRowState     : false
 		},
 		useFlexLayout,
 		useGlobalFilter,
