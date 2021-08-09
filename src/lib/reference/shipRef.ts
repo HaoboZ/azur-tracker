@@ -473,7 +473,7 @@ const ships = {
 	'Monica'                        : [ 'Monica', 'Elite', 'Venus Vacation', 'Light Cruiser', 5, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 88, 'Light', 32, 3775, 148, 357, 292, 100, 0, 10, 182, 87, 0, 160 ],
 	'Haruka_Amami'                  : [ 'Haruka Amami', 'Super Rare', 'The Idolmaster', 'Light Cruiser', 3, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 83, 'Light', 32, 4019, 163, 359, 360, 96, 0, 11, 193, 147, 0, 159 ],
 	'Chihaya_Kisaragi'              : [ 'Chihaya Kisaragi', 'Super Rare', 'The Idolmaster', 'Aircraft Carrier', 2, [], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 72, 'Medium', 31, 6763, 0, 316, 0, 54, 429, 13, 145, 0, 0, 88 ],
-	'Iori_Minase'                   : [ 'Iori Minase', 'Super Rare', 'The Idolmaster', 'Battleship', 2, [], 'BB/Speed', 'DD', 'AA/Main', 'A/BB1', 'A/BB2', 77, 'Heavy', 26, 7816, 421, 377, 0, 34, 0, 15, 150, 0, 0, 56 ],
+	'Iori_Minase'                   : [ 'Iori Minase', 'Super Rare', 'The Idolmaster', 'Battleship', 2, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 77, 'Heavy', 26, 7816, 421, 377, 0, 34, 0, 15, 150, 0, 0, 56 ],
 	'Azusa_Miura'                   : [ 'Azusa Miura', 'Super Rare', 'The Idolmaster', 'Heavy Cruiser', 1, [], 'CA', 'DD/Sub', 'AA', 'A/CA1', 'A/CA2', 91, 'Medium', 26, 5237, 240, 211, 0, 66, 0, 12, 175, 0, 0, 130 ],
 	'Ritsuko_Akizuki'               : [ 'Ritsuko Akizuki', 'Elite', 'The Idolmaster', 'Munition Ship', 2, [], 'DD', 'AA', 'C', 'A/AE1', 'A/AE2', 85, 'Medium', 25, 4323, 70, 174, 0, 63, 0, 10, 215, 0, 0, 225 ],
 	'Ami_Futami'                    : [ 'Ami Futami', 'Elite', 'The Idolmaster', 'Submarine', 4, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 74, 'Light', 23, 1507, 49, 0, 512, 43, 0, 6, 116, 0, 0, 199 ],
