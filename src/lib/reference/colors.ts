@@ -47,6 +47,7 @@ export const
 		'KizunaAI'           : 'kizuna',
 		'Hololive'           : 'hololive',
 		'Venus Vacation'     : 'venus',
+		'The Idolmaster'     : 'idolmaster',
 		'META'               : 'meta'
 	},
 	tierColors    = [
@@ -72,17 +73,18 @@ export const mappedColorStyles: Record<string, CSSProperties> = {
 	green  : { backgroundColor: '#98fb98', color: 'black' },
 	aqua   : { backgroundColor: '#7fffd4', color: 'black' },
 	
-	royal   : { backgroundColor: '#83aaf0', color: 'white' },
-	sakura  : { backgroundColor: '#fff0f5', color: 'black' },
-	sardegna: { backgroundColor: '#6ebe93', color: 'black' },
-	northern: { backgroundColor: '#f5f5f5', color: 'black' },
-	iris    : { backgroundColor: '#ffd700', color: 'black' },
-	vichya  : { backgroundColor: '#d77c7c', color: 'white' },
-	neptunia: { backgroundColor: '#b39ae5', color: 'white' },
-	kizuna  : { backgroundColor: '#fba5bb', color: 'black' },
-	hololive: { backgroundColor: '#8ee7f1', color: 'black' },
-	venus   : { backgroundColor: '#ffc0cb', color: 'black' },
-	meta    : { backgroundColor: '#808080', color: 'white' }
+	royal     : { backgroundColor: '#83aaf0', color: 'white' },
+	sakura    : { backgroundColor: '#fff0f5', color: 'black' },
+	sardegna  : { backgroundColor: '#6ebe93', color: 'black' },
+	northern  : { backgroundColor: '#f5f5f5', color: 'black' },
+	iris      : { backgroundColor: '#ffd700', color: 'black' },
+	vichya    : { backgroundColor: '#d77c7c', color: 'white' },
+	neptunia  : { backgroundColor: '#b39ae5', color: 'white' },
+	kizuna    : { backgroundColor: '#fba5bb', color: 'black' },
+	hololive  : { backgroundColor: '#8ee7f1', color: 'black' },
+	venus     : { backgroundColor: '#ffc0cb', color: 'black' },
+	idolmaster: { backgroundColor: '#f8bde9', color: 'black' },
+	meta      : { backgroundColor: '#808080', color: 'white' }
 };
 
 export const useMappedColorClasses = makeStyles( mappedColorStyles as any );
