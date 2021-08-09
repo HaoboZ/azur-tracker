@@ -26,7 +26,7 @@ type StaticModalControls<T = object> = ModalControls & {
 
 export type DynamicModalControls<T = object> = {
 	show: (
-		Component?: React.ComponentType<T & { controls: ModalControls }>,
+		Component?: React.ComponentType<T>,
 		modalProps?: Partial<ComponentProps<typeof PageModal>>,
 		props?: T
 	) => void,
@@ -36,7 +36,7 @@ export type DynamicModalControls<T = object> = {
 
 type C1<T = any> = (
 	id: string,
-	Component: React.ComponentType<T & { controls: ModalControls }>,
+	Component: React.ComponentType<T>,
 	modalProps?: Partial<ComponentProps<typeof PageModal>>,
 	props?: T
 ) => StaticModalControls<T>;
@@ -51,6 +51,9 @@ const ModalContext = React.createContext<C1 & C2>( () => ( {
 	events: null
 } ) );
 ModalContext.displayName = 'Modal';
+
+const ModalControlsContext = React.createContext<ModalControls>( undefined );
+ModalControlsContext.displayName = 'ModalControls';
 
 export default function ModalProvider( { children } ) {
 	const [ modals, setModals ] = React.useState<Modal[]>( [] );
@@ -70,9 +73,7 @@ export default function ModalProvider( { children } ) {
 				}
 				return newModals;
 			} ),
-			status: () => {
-				return modals.find( modal => modal?.id === id );
-			},
+			status: () => modals.find( modal => modal?.id === id ),
 			events: new EventEmitter()
 		};
 	}
@@ -160,13 +161,14 @@ export default function ModalProvider( { children } ) {
 		{children}
 		{modals.map( ( modal ) => {
 			if ( !modal?.id ) return null;
-			return <PageModal
-				key={modal.id}
-				open={modal.open}
-				onClose={() => modal.props.controls.close()}
-				{...modal.modalProps}>
-				<modal.Component {...modal.props}/>
-			</PageModal>;
+			return <ModalControlsContext.Provider key={modal.id} value={modal.props.controls}>
+				<PageModal
+					open={modal.open}
+					onClose={() => modal.props.controls.close()}
+					{...modal.modalProps}>
+					<modal.Component {...modal.props}/>
+				</PageModal>
+			</ModalControlsContext.Provider>;
 		} )}
 	</ModalContext.Provider>;
 }
@@ -196,6 +198,10 @@ export function useModal<T>(
 	}, [] );
 	
 	return controls;
+}
+
+export function useModalControls() {
+	return React.useContext( ModalControlsContext );
 }
 
 export function withModal( Component ) {

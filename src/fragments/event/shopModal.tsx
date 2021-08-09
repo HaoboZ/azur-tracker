@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import DataDisplay from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
-import { ModalControls } from '../../lib/providers/modal';
+import { useModalControls } from '../../lib/providers/modal';
 import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
-export default function ShopModal( { controls }: { controls: ModalControls } ) {
+export default function ShopModal() {
+	const controls = useModalControls();
 	const _shop = useSelector( state => state.event.shop );
 	const dispatch = useDispatch();
 	

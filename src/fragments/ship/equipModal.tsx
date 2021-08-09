@@ -17,7 +17,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TierIcon } from '../../lib/icons';
-import { ModalControls } from '../../lib/providers/modal';
+import { useModalControls } from '../../lib/providers/modal';
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
@@ -25,11 +25,11 @@ import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 
-export default function EquipModal( { controls, info, selectedEquip }: {
-	controls: ModalControls,
+export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: typeof shipRef[string], index: number },
 	selectedEquip?: typeof equips[number]
 } ) {
+	const controls = useModalControls();
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
 	

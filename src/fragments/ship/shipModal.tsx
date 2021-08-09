@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
 import SVGIcon, { TierIcon } from '../../lib/icons';
-import { ModalControls, useModal } from '../../lib/providers/modal';
+import { useModal, useModalControls } from '../../lib/providers/modal';
 import { rarityColors, tierColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
@@ -27,12 +27,12 @@ import EquipModal from './equipModal';
 const TransitionComponent = React.forwardRef( ( props: ZoomProps, ref: React.ForwardedRef<typeof Zoom> ) =>
 	<Zoom ref={ref} {...props}/> );
 
-export default function ShipModal( { controls, ship, equipBetter = [], selectedEquip }: {
-	controls: ModalControls,
+export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	ship?: typeof shipRef[string],
 	equipBetter?: number[],
 	selectedEquip?: typeof equips[number]
 } ) {
+	const controls = useModalControls();
 	const ships = useSelector( state => state.ship.ships );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
@@ -41,8 +41,8 @@ export default function ShipModal( { controls, ship, equipBetter = [], selectedE
 		maxWidth: 'xs',
 		TransitionComponent
 	}, {
-		info: undefined,
-		selectedEquip
+		info         : undefined,
+		selectedEquip: undefined
 	} );
 	
 	return <PageModalContainer
@@ -141,7 +141,7 @@ export default function ShipModal( { controls, ship, equipBetter = [], selectedE
 								alignItems   : 'center'
 							}}
 							className={colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ]}
-							onClick={() => show( { info: { ship, index } } )}>
+							onClick={() => show( { info: { ship, index }, selectedEquip } )}>
 							<Image
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}

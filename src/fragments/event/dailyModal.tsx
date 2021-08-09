@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import DataDisplay from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
-import { ModalControls } from '../../lib/providers/modal';
+import { useModalControls } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
-export default function DailyModal( { controls }: { controls: ModalControls } ) {
+export default function DailyModal() {
+	const controls = useModalControls();
 	const _daily = useSelector( state => state.event.daily );
 	const dispatch = useDispatch();
 	
