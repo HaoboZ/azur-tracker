@@ -192,7 +192,7 @@ export function useModal<T>(
 	const [ controls, setControls ] = React.useState<StaticModalControls<T>>( {} as never );
 	
 	React.useEffect( () => {
-		const controls = context( id, Component, modalProps, props );
+		const controls = context( id, Component, { keepMounted: true, ...modalProps }, props );
 		setControls( controls );
 		return controls.remove;
 	}, [] );

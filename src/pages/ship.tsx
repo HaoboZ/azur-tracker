@@ -26,11 +26,9 @@ export default function Ship() {
 	const table = useShipTable( equipBetter, setEquipBetter );
 	
 	const { show } = useModal( ShipModal, {
-		variant    : ModalVariant.bottom,
-		keepMounted: true
+		variant: ModalVariant.bottom
 	}, {
 		ship         : blankShip,
-		equipBetter  : undefined,
 		selectedEquip: equips[ 0 ]
 	} );
 	
@@ -39,7 +37,7 @@ export default function Ship() {
 	}, [] );
 	
 	return <PageContainer title='Ship Tracker'>
-		<Filters table={table} resetEquip={() => setEquipBetter( { filter: undefined, value: {} } )}/>
+		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}
 			onClick={( row ) => show( {

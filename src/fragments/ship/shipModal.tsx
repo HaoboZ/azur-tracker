@@ -40,10 +40,20 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		variant : ModalVariant.center,
 		maxWidth: 'xs',
 		TransitionComponent
-	}, {
-		info         : undefined,
-		selectedEquip: undefined
 	} );
+	
+	const tier = React.useMemo( () => {
+		switch ( ship.tier ) {
+		case 7:
+			return '?';
+		case 6:
+			return 'N';
+		case 0:
+			return 'EX';
+		default:
+			return ship.tier - 1;
+		}
+	}, [ ship.tier ] );
 	
 	return <PageModalContainer
 		onClose={() => controls.close()}
@@ -69,7 +79,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 					<Typography>{ship.type}</Typography>
 				</Grid>
 				<Grid item xs={3}>
-					<Typography>Tier: {ship.tier === 121 ? <SVGIcon name='star'/> : ship.tier}</Typography>
+					<Typography>Tier: {tier}</Typography>
 				</Grid>
 				<Grid item xs>
 					<FormControl fullWidth>

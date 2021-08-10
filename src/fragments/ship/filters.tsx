@@ -13,28 +13,22 @@ import {
 import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@material-ui/icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAsyncDebounce } from 'react-table';
+import { TableInstance, useAsyncDebounce } from 'react-table';
 
 import { equips } from '../../lib/reference/equipRef';
 import { ship_setFilter } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 
 const searchOptions = [
-	'Universal',
-	'Eagle Union',
-	'Royal Navy',
-	'Sakura Empire',
-	'Ironblood',
-	'Dragon Empery',
-	'Sardegna Empire',
-	'Northern Parliament',
-	'Iris Libre',
-	'Vichya Dominion',
-	'Neptunia',
-	'KizunaAI',
-	'Hololive',
-	'Venus Vacation',
-	'META',
+	// rarity
+	'Decisive',
+	'Ultra Rare',
+	'Priority',
+	'Super Rare',
+	'Elite',
+	'Rare',
+	'Common',
+	// types
 	'Destroyer',
 	'Light Cruiser',
 	'Heavy Cruiser',
@@ -49,22 +43,32 @@ const searchOptions = [
 	'Submarine Carrier',
 	'Repair Ship',
 	'Munition Ship',
-	'Decisive',
-	'Ultra Rare',
-	'Priority',
-	'Super Rare',
-	'Elite',
-	'Rare',
-	'Common'
+	// nations
+	'Universal',
+	'Eagle Union',
+	'Royal Navy',
+	'Sakura Empire',
+	'Ironblood',
+	'Dragon Empery',
+	'Sardegna Empire',
+	'Northern Parliament',
+	'Iris Libre',
+	'Vichya Dominion',
+	'Neptunia',
+	'KizunaAI',
+	'Hololive',
+	'Venus Vacation',
+	'META'
 ].map( ( label, id ) => ( { id, label } ) );
 
-export default function Filters( { table, resetEquip } ) {
-	const filter = useSelector( state => state.ship.filter );
+export default function Filters( { table }: { table: TableInstance } ) {
+	const { filter, ships } = useSelector( state => state.ship );
 	const dispatch = useDispatch();
 	
 	const globalFilter = useAsyncDebounce( ( value ) =>
 		table.setGlobalFilter( value ), 250 );
 	
+	const [ search, setSearch ] = React.useState( '' );
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	const searchRef = React.useRef<HTMLInputElement>();
 	
@@ -84,15 +88,16 @@ export default function Filters( { table, resetEquip } ) {
 		return () => window.removeEventListener( 'keydown', search );
 	}, [] );
 	
+	React.useEffect( () => {
+		table.setFilter( 'equip', filter => filter && { ...filter } );
+	}, [ ships ] );
+	
 	return <Box mx={2} mb={2}>
 		<Grid container spacing={2}>
 			<Grid item md xs={12}>
 				<EquipFilter
 					equipList={equips}
-					setValue={( equip ) => {
-						resetEquip();
-						table.setFilter( 'equip', equip );
-					}}
+					setValue={( equip ) => table.setFilter( 'equip', equip )}
 				/>
 			</Grid>
 			<Grid item md xs={10}>
@@ -100,9 +105,13 @@ export default function Filters( { table, resetEquip } ) {
 					options={searchOptions}
 					fullWidth
 					freeSolo
+					inputValue={search}
 					onInputChange={( e, value ) => {
 						// TODO: temporary fix until mui autocomplete freeSolo works
-						if ( e ) globalFilter( value );
+						if ( e ) {
+							setSearch( value );
+							globalFilter( value );
+						}
 					}}
 					renderInput={( params ) => <TextField
 						inputRef={searchRef}

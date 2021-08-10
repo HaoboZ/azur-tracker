@@ -16,6 +16,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 	return <Autocomplete
 		options={equipList}
 		getOptionLabel={( option ) => option.name}
+		isOptionEqualToValue={( option, value ) => option.id === value?.id}
 		fullWidth
 		value={value}
 		onChange={( e, newValue: typeof equips[number] ) => setValue( newValue || equips[ 0 ] )}

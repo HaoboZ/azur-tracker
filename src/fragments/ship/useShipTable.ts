@@ -53,43 +53,36 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 			filterTypes           : {
 				// case insensitive ignores accents in strings
 				normal: ( rows, ids, filterValue ) => {
-					let regex: RegExp;
-					let isValid = true;
 					try {
-						regex = new RegExp( filterValue, 'i' );
-					} catch {
-						isValid = false;
-					}
-					if ( !isValid ) return [];
-					return rows.filter( ( row ) => {
-						for ( const id of ids ) {
-							if ( id === 'name' ) {
-								if ( regex.test( row.values[ id ].normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) ) )
-									return true;
-							} else {
-								if ( regex.test( row.values[ id ] ) )
-									return true;
+						const regex = new RegExp( filterValue, 'i' );
+						return rows.filter( ( row ) => {
+							for ( const id of ids ) {
+								if ( id === 'name' ) {
+									if ( regex.test( row.values[ id ].normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) ) )
+										return true;
+								} else {
+									if ( regex.test( row.values[ id ] ) )
+										return true;
+								}
 							}
-						}
-						return false;
-					} );
+							return false;
+						} );
+					} catch {
+						return [];
+					}
 				}
 			},
 			globalFilter          : 'normal',
-			autoResetPage         : false,
-			autoResetExpanded     : false,
-			autoResetGroupBy      : false,
-			autoResetSelectedRows : false,
 			autoResetHiddenColumns: false,
+			autoResetRowState     : false,
 			autoResetSortBy       : false,
 			autoResetGlobalFilter : false,
-			autoResetFilters      : false,
-			autoResetRowState     : false
+			autoResetFilters      : false
 		},
 		useFlexLayout,
-		useGlobalFilter,
+		useRowState,
 		useFilters,
-		useSortBy,
-		useRowState
+		useGlobalFilter,
+		useSortBy
 	);
 }
