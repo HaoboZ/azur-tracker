@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
 import SVGIcon, { TierIcon } from '../../lib/icons';
 import { useModal, useModalControls } from '../../lib/providers/modal';
-import { rarityColors, tierColors, useMappedColorClasses } from '../../lib/reference/colors';
+import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
 import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
@@ -29,7 +29,7 @@ const TransitionComponent = React.forwardRef( ( props: ZoomProps, ref: React.For
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	ship?: typeof shipRef[string],
-	equipBetter?: number[],
+	equipBetter?: [ number, number ][],
 	selectedEquip?: typeof equips[number]
 } ) {
 	const controls = useModalControls();
@@ -150,7 +150,6 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								flexDirection: 'column',
 								alignItems   : 'center'
 							}}
-							className={colorClasses[ tierColors[ equipBetter[ index ] - 1 ] ]}
 							onClick={() => show( { info: { ship, index }, selectedEquip } )}>
 							<Image
 								src={`/images/equips/${equip.image}.png`}
@@ -160,7 +159,14 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								layout='intrinsic'
 								className={colorClasses[ rarityColors[ equip.rarity ] ]}
 							/>
-							<TierIcon tier={val[ 2 ]}/>
+							<div>
+								<TierIcon tier={val[ 2 ]}/>
+								{equipBetter[ index ]?.[ 1 ] ? <>
+									<SVGIcon name='arrow'/>
+									<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
+								</> : undefined}
+							</div>
+						
 						</Grid>;
 					} )}
 				</Grid>

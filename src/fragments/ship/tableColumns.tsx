@@ -80,10 +80,12 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 		Header             : 'Equips',
 		accessor           : 'equip',
 		minWidth           : 20,
-		Cell               : ( { value } ) => value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
+		Cell               : ( { value, row } ) => equipBetter.value[ row.id ]
+			? `+${Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( equip => equip[ 1 ] ) )}`
+			: value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
 		color              : ( { row } ) => {
 			if ( equipBetter.value[ row.id ] ) {
-				return tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ) ) - 1 ];
+				return tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( equip => equip[ 0 ] ) ) ];
 			}
 		},
 		disableGlobalFilter: true,
@@ -93,27 +95,29 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			const equipBetter = rows.reduce( ( acc, row ) => {
 				acc[ row.id ] = row.values.equip.map( ( value, index ) => {
 					// ships that can equip the equipment
-					if ( !equippable[ row.values.equipType[ index ] ]?.includes( filterValue.type ) ) return 0;
+					if ( !equippable[ row.values.equipType[ index ] ]?.includes( filterValue.type ) ) return false;
 					const tierList = equipTier[ row.values.equipType[ index ] ];
-					// is equipped already
-					if ( value?.[ 0 ] === filterValue.id ) return 6;
-					// equip not in tier list
-					if ( !tierList[ filterValue.id ] ) return 0;
-					const tier = tierList[ filterValue.id ][ 0 ] + 1;
+					const newTier = tierList[ filterValue.id ],
+					      oldTier = tierList[ value[ 0 ] ];
 					// none equipped
-					if ( !value?.[ 0 ] ) return tier;
+					if ( !value?.[ 0 ] ) return newTier;
+					// is equipped already
+					if ( value[ 0 ] === filterValue.id ) return [ 5, 0 ];
+					// equip not in tier list
+					if ( !newTier ) return false;
 					// forced BiS
-					if ( value[ 1 ] ) return 0;
+					if ( value[ 1 ] ) return false;
 					// current equip not in tier list
-					if ( !tierList[ value[ 0 ] ] ) return tier;
+					if ( !oldTier ) return newTier;
 					// remove those that have higher tier
-					if ( tierList[ value[ 0 ] ][ 1 ] <= tierList[ filterValue.id ][ 1 ] ) return 0;
-					return tier;
+					if ( oldTier[ 1 ] <= newTier[ 1 ] ) return false;
+					return [ newTier[ 0 ], oldTier[ 1 ] - newTier[ 1 ] ];
 				} );
 				return acc;
 			}, {} );
+			
 			setEquipBetterDelay( filterValue, equipBetter );
-			return rows.filter( ( row ) => equipBetter[ row.id ].some( val => val ) );
+			return rows.filter( ( row ) => equipBetter[ row.id ].some( Boolean ) );
 		},
 		disableSortBy      : true
 	}, {
