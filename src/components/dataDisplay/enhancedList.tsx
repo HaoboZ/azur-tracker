@@ -127,13 +127,14 @@ export default function EnhancedList<Item extends { id?: string }>( {
 		subheader={( title || editable ) && <ActionTitle
 			title={title}
 			actions={editable ? [ {
-				name   : editing ? 'Cancel' : 'Edit',
-				onClick: () => setEditing( !editing ),
-				props  : { startIcon: editing ? <CloseIcon/> : <EditIcon/> }
+				name     : editing ? 'Cancel' : 'Edit',
+				onClick  : () => setEditing( !editing ),
+				startIcon: editing ? <CloseIcon/> : <EditIcon/>
 			}, {
-				name   : 'Add',
-				onClick: async () => setData?.( [ ...data, { ...await newData?.() } ] ),
-				props  : { color: 'primary', startIcon: <AddIcon/> }
+				name     : 'Add',
+				onClick  : async () => setData?.( [ ...data, { ...await newData?.() } ] ),
+				color    : 'primary',
+				startIcon: <AddIcon/>
 			} ] : []}
 		/>}
 		{...props}>

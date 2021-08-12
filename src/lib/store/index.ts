@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { mapValues } from 'lodash';
 import { nanoid } from 'nanoid';
 import { Store } from 'redux';
@@ -109,7 +109,7 @@ const persistedReducer = process.browser ? persistReducer<RootState>( {
 export const store: Store<RootState> = configureStore( {
 	reducer   : persistedReducer,
 	devTools  : process.env.NODE_ENV === 'development',
-	middleware: getDefaultMiddleware( {
+	middleware: ( getDefaultMiddleware ) => getDefaultMiddleware( {
 		serializableCheck: {
 			ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ]
 		}

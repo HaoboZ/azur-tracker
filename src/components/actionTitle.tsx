@@ -1,24 +1,18 @@
-import { Button, ButtonGroup, ButtonProps, Toolbar, Typography, TypographyVariant } from '@material-ui/core';
+import { Button, ButtonGroup, ButtonProps, Toolbar, Typography, TypographyProps } from '@material-ui/core';
 import React from 'react';
 
-export default function ActionTitle( { title = '', variant = 'h6', actions = [] }: {
+export default function ActionTitle( { title = '', actions, ...props }: {
 	title?: string,
-	variant?: TypographyVariant,
-	actions?: {
-		name: string,
-		onClick?: () => void,
-		props?: ButtonProps
-	}[]
-} ) {
+	actions?: ( { name: string } & ButtonProps )[]
+} & TypographyProps ) {
 	return <Toolbar>
-		<Typography variant={variant} flexGrow={1}>{title}</Typography>
+		<Typography variant='h6' flexGrow={1} {...props}>{title}</Typography>
 		<ButtonGroup>
-			{actions.map( ( { name, onClick, props }, index ) => <Button
+			{actions?.map( ( { name, ...props }, index ) => <Button
 				key={index}
 				variant='contained'
 				color='secondary'
-				{...props}
-				onClick={onClick}>
+				{...props}>
 				{name}
 			</Button> )}
 		</ButtonGroup>

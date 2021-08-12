@@ -4,9 +4,9 @@ import {
 	DialogActions,
 	DialogProps,
 	DialogTitle,
+	Grow,
+	GrowProps,
 	IconButton,
-	Slide,
-	SlideProps,
 	SwipeableDrawer,
 	SwipeableDrawerProps,
 	Theme,
@@ -17,8 +17,8 @@ import {
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import React from 'react';
 
-const Transition = React.forwardRef( ( props: SlideProps, ref: React.ForwardedRef<typeof Slide> ) =>
-	<Slide direction='up' ref={ref} {...props}/> );
+const Transition = React.forwardRef( ( props: GrowProps, ref: React.ForwardedRef<typeof Grow> ) =>
+	<Grow ref={ref} {...props}/> );
 
 export enum ModalVariant {
 	adaptive = 'adaptive',
