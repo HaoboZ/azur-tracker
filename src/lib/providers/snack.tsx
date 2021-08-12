@@ -35,6 +35,7 @@ export default function SnackBarProvider( { children } ) {
 		}
 	}, [ nextSnack, snack ] );
 	
+	// noinspection JSUnusedGlobalSymbols
 	return <SnackBarContext.Provider
 		value={{
 			enqueueSnackbar: ( message, props ) => setNextSnack( { message, props } ),

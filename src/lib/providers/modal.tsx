@@ -173,6 +173,7 @@ export default function ModalProvider( { children } ) {
 	</ModalContext.Provider>;
 }
 
+/* eslint-disable react-hooks/rules-of-hooks */
 export function useModal(): DynamicModalControls;
 export function useModal<T>(
 	Component: React.ComponentType<T & { controls: ModalControls }>,
@@ -202,10 +203,4 @@ export function useModal<T>(
 
 export function useModalControls() {
 	return React.useContext( ModalControlsContext );
-}
-
-export function withModal( Component ) {
-	return ( props ) => <ModalContext.Consumer>
-		{( modal ) => <Component modal={modal} {...props}/>}
-	</ModalContext.Consumer>;
 }

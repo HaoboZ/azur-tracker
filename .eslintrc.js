@@ -8,7 +8,8 @@ module.exports = {
 	extends      : [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'next'
 	],
 	settings     : {
 		react: {
@@ -86,7 +87,10 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion'         : 'off',
 		'@typescript-eslint/no-unused-vars'                : [ 'warn', { ignoreRestSiblings: true } ],
 		'@typescript-eslint/object-curly-spacing'          : [ 'warn', 'always' ],
-		'@typescript-eslint/semi'                          : [ 'warn', 'always' ]
+		'@typescript-eslint/semi'                          : [ 'warn', 'always' ],
+		// others
+		'import/no-anonymous-default-export': 'off',
+		'react-hooks/exhaustive-deps'       : 'off'
 	},
 	overrides    : [
 		{
