@@ -17,6 +17,7 @@ export default function Event() {
 	
 	const [ time, setTime ] = React.useState( moment() );
 	
+	// resets event and changes time
 	React.useEffect( () => {
 		if ( event.name != eventRef.name )
 			dispatch( event_newEvent() );

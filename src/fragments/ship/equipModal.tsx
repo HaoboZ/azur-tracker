@@ -64,6 +64,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	const [ override, setOverride ] = React.useState<0 | 1>( 0 );
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	
+	// sets right side equip
 	React.useEffect( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			setEquip( selectedEquip );
@@ -73,10 +74,12 @@ export default function EquipModal( { info, selectedEquip }: {
 			setEquip( equips[ 0 ] );
 	}, [ equipListIndex, currentEquip, selectedEquip ] );
 	
+	// sets override
 	React.useEffect( () => {
 		setOverride( info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	}, [ info ] );
 	
+	// clears equip on close to prevent flicker
 	React.useEffect( () => {
 		function close( cancel ) {
 			setAnchorEl( null );

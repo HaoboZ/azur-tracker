@@ -23,6 +23,7 @@ export default function SnackBarProvider( { children } ) {
 	const [ nextSnack, setNextSnack ] = React.useState<Message>( undefined );
 	const [ snack, setSnack ] = React.useState<Message>( undefined );
 	
+	// queues up snack
 	React.useEffect( () => {
 		if ( nextSnack && !snack ) {
 			// Set a new snack when we don't have an active one

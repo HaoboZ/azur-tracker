@@ -5,15 +5,19 @@ import React, { ComponentProps } from 'react';
 
 import PageModal from '../../components/pageModal';
 
+type ModalProps = Partial<ComponentProps<typeof PageModal>>;
+
 type Modal = {
 	id: string,
 	open: boolean,
 	Component: React.ComponentType,
-	modalProps?: Partial<ComponentProps<typeof PageModal>>,
+	modalProps?: ModalProps,
 	props?: any
 };
 
-export type ModalControls = {
+export type ModalControls<T = object> = {
+	setModalProps: ( value: ModalProps | ( ( prevProps: ModalProps ) => ModalProps ) ) => void,
+	setProps: ( value: T | ( ( prevProps: T ) => T ) ) => void,
 	close: ( ...args ) => void,
 	status: () => Modal,
 	events: EventEmitter
@@ -27,7 +31,7 @@ type StaticModalControls<T = object> = ModalControls & {
 export type DynamicModalControls<T = object> = {
 	show: (
 		Component?: React.ComponentType<T>,
-		modalProps?: Partial<ComponentProps<typeof PageModal>>,
+		modalProps?: ModalProps,
 		props?: T
 	) => void,
 	close: ( id: string ) => void,
@@ -37,18 +41,20 @@ export type DynamicModalControls<T = object> = {
 type C1<T = any> = (
 	id: string,
 	Component: React.ComponentType<T>,
-	modalProps?: Partial<ComponentProps<typeof PageModal>>,
+	modalProps?: ModalProps,
 	props?: T
 ) => StaticModalControls<T>;
 
 type C2 = () => DynamicModalControls;
 
 const ModalContext = React.createContext<C1 & C2>( () => ( {
-	show  : () => null,
-	close : () => null,
-	status: () => null,
-	remove: () => null,
-	events: null
+	show         : () => null,
+	setModalProps: () => null,
+	setProps     : () => null,
+	close        : () => null,
+	status       : () => null,
+	remove       : () => null,
+	events       : null
 } ) );
 ModalContext.displayName = 'Modal';
 
@@ -58,23 +64,37 @@ ModalControlsContext.displayName = 'ModalControls';
 export default function ModalProvider( { children } ) {
 	const [ modals, setModals ] = React.useState<Modal[]>( [] );
 	
+	const setModal = React.useCallback( ( id: string, value: Modal | ( ( prevProps: Modal ) => Modal ) ) => {
+		setModals( ( modals ) => {
+			const index = modals.findIndex( modal => modal?.id === id );
+			if ( index === -1 ) return modals;
+			const newModals = [ ...modals ];
+			newModals[ index ] = typeof value === 'function' ? value( newModals[ index ] ) : value;
+			return newModals;
+		} );
+	}, [] );
+	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
-			close : ( ...args ) => setModals( ( modals ) => {
-				const index = modals.findIndex( modal => modal?.id === id );
-				if ( index === -1 ) return modals;
-				const newModals = [ ...modals ];
-				newModals[ index ] = { ...newModals[ index ], open: false };
-				newModals[ index ]?.props.controls.events.emit( 'close', ...args );
+			setProps     : ( value ) => setModal( id, ( modal ) => ( {
+				...modal,
+				props: typeof value === 'function' ? value( modal.props ) : value
+			} ) ),
+			setModalProps: ( value ) => setModal( id, ( modal ) => ( {
+				...modal,
+				modalProps: typeof value === 'function' ? value( modal.modalProps ) : value
+			} ) ),
+			close        : ( ...args ) => setModal( id, ( modal ) => {
+				const newModal = { ...modal, open: false };
+				setTimeout( () => modal?.props.controls.events.emit( 'close', ...args ), 250 );
 				if ( remove ) {
-					setTimeout( () => setModals( ( modals ) => {
-						return modals.filter( modal => modal?.id !== id );
-					} ), 500 );
+					setTimeout( () => setModals( ( modals ) =>
+						modals.filter( modal => modal?.id !== id ) ), 500 );
 				}
-				return newModals;
+				return newModal;
 			} ),
-			status: () => modals.find( modal => modal?.id === id ),
-			events: new EventEmitter()
+			status       : () => modals.find( modal => modal?.id === id ),
+			events       : new EventEmitter()
 		};
 	}
 	
@@ -177,12 +197,12 @@ export default function ModalProvider( { children } ) {
 export function useModal(): DynamicModalControls;
 export function useModal<T>(
 	Component: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: Partial<ComponentProps<typeof PageModal>>,
+	modalProps?: ModalProps,
 	props?: T
 ): StaticModalControls;
 export function useModal<T>(
 	Component?: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: Partial<ComponentProps<typeof PageModal>>,
+	modalProps?: ModalProps,
 	props?: T
 ) {
 	if ( !Component ) return React.useContext<C2>( ModalContext )();
@@ -192,6 +212,7 @@ export function useModal<T>(
 	
 	const [ controls, setControls ] = React.useState<StaticModalControls<T>>( {} as never );
 	
+	// sets controls from the modal context
 	React.useEffect( () => {
 		const controls = context( id, Component, { keepMounted: true, ...modalProps }, props );
 		setControls( controls );

@@ -35,10 +35,12 @@ export default function Wrapper( { children } ) {
 			async () => await indicator( setBackup( await checkDataIntegrity() ) )
 		), main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
+	// auto save
 	React.useEffect( () => {
 		if ( main.autoSave && session ) delayedSetBackup();
 	}, Object.values( store ) );
 	
+	// load on log
 	React.useEffect( () => {
 		( async () => {
 			if ( main.autoLoad && session ) await backupMutex.runExclusive(
@@ -47,6 +49,7 @@ export default function Wrapper( { children } ) {
 		} )();
 	}, [ Boolean( session ) ] );
 	
+	// auto load
 	React.useEffect( () => {
 		const interval = setInterval( async () => {
 			if ( main.autoLoad && session ) await backupMutex.runExclusive(

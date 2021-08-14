@@ -72,6 +72,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	const searchRef = React.useRef<HTMLInputElement>();
 	
+	// keydown listener for search
 	React.useEffect( () => {
 		function search( e: KeyboardEvent ) {
 			if ( !searchRef.current ) return;
@@ -88,6 +89,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 		return () => window.removeEventListener( 'keydown', search );
 	}, [] );
 	
+	// resets filter when ships change
 	React.useEffect( () => {
 		table.setFilter( 'equip', filter => filter && { ...filter } );
 	}, [ ships ] );

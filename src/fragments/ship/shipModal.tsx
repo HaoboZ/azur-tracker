@@ -20,7 +20,7 @@ import SVGIcon, { TierIcon } from '../../lib/icons';
 import { useModal, useModalControls } from '../../lib/providers/modal';
 import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
 import { equips, equipsIndex } from '../../lib/reference/equipRef';
-import shipRef from '../../lib/reference/shipRef';
+import shipRef, { blankShip } from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipModal from './equipModal';
 
@@ -42,6 +42,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		TransitionComponent
 	} );
 	
+	// calculates tier
 	const tier = React.useMemo( () => {
 		switch ( ship.tier ) {
 		case 7:
@@ -54,6 +55,17 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 			return ship.tier - 1;
 		}
 	}, [ ship.tier ] );
+	
+	// clears ship when closed to avoid flicker
+	React.useEffect( () => {
+		function close() {
+			controls.setProps( ( props ) => ( { ...props, ship: blankShip } ) );
+		}
+		controls.events.on( 'close', close );
+		return () => {
+			controls.events.off( 'close', close );
+		};
+	}, [] );
 	
 	return <PageModalContainer
 		onClose={() => controls.close()}

@@ -32,6 +32,7 @@ export default function Ship() {
 		selectedEquip: equips[ 0 ]
 	} );
 	
+	// resets ship equip tiers if version changes
 	React.useEffect( () => {
 		dispatch( ship_checkVersion() );
 	}, [] );
