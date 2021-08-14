@@ -83,7 +83,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	React.useEffect( () => {
 		function close( cancel ) {
 			setAnchorEl( null );
-			if ( cancel ) return;
+			if ( cancel || !controls.status()?.open ) return;
 			const newEquip = cloneDeep( info.ship.equip );
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
 			dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
