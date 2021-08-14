@@ -84,7 +84,7 @@ export function PageModalContainer( {
 	variant = ModalVariant.adaptive,
 	title,
 	onSave,
-	submit,
+	keepOpenOnSave,
 	children
 }: {
 	onClose: () => void,
@@ -93,8 +93,7 @@ export function PageModalContainer( {
 	title?: React.ReactNode,
 	// renders and called by save button if set
 	onSave?: () => void,
-	// changes to submit instead
-	submit?: boolean,
+	keepOpenOnSave?: boolean,
 	children?: React.ReactNode
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
@@ -104,12 +103,11 @@ export function PageModalContainer( {
 			{title && <DialogTitle>{title}</DialogTitle>}
 			{children}
 			<DialogActions>
-				{onSave || submit ? <Button
+				{onSave ? <Button
 					variant='contained'
-					type={submit ? 'submit' : undefined}
-					onClick={submit ? undefined : async () => {
+					onClick={async () => {
 						await onSave();
-						onClose();
+						!keepOpenOnSave && onClose();
 					}}>
 					Save
 				</Button> : undefined}
@@ -127,12 +125,11 @@ export function PageModalContainer( {
 				<Typography variant='h6' flexGrow={1}>
 					{title}
 				</Typography>
-				{onSave || submit ? <Button
+				{onSave ? <Button
 					variant='contained'
-					type={submit ? 'submit' : undefined}
-					onClick={submit ? undefined : async () => {
+					onClick={async () => {
 						await onSave();
-						onClose();
+						!keepOpenOnSave && onClose();
 					}}>Save</Button> : undefined}
 			</Toolbar>
 			{children}

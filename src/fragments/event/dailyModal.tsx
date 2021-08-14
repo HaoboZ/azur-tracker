@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DataDisplay from '../../components/dataDisplay';
+import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
 import { useModalControls } from '../../lib/providers/modal';
@@ -34,7 +34,7 @@ export default function DailyModal() {
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
 		<DialogContent sx={{ p: 0 }}>
-			<DataDisplay
+			<EnhancedDisplay
 				title={<Typography>Total Daily: {dailyTotal}</Typography>}
 				data={daily}
 				tableProps={{
@@ -90,6 +90,7 @@ export default function DailyModal() {
 				setData={setDaily}
 				newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}
 				editable
+				sortable
 			/>
 		</DialogContent>
 	</PageModalContainer>;

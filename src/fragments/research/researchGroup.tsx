@@ -2,7 +2,7 @@ import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DataDisplay from '../../components/dataDisplay';
+import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
@@ -38,7 +38,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 	}, [ ships ] );
 	
 	return <>
-		<DataDisplay
+		<EnhancedDisplay
 			data={researchData}
 			tableProps={{
 				columnHeader: [

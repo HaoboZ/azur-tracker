@@ -28,6 +28,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	columnHeader,
 	columns,
 	editable,
+	sortable,
 	setData,
 	newData = () => ( {} as Item ),
 	...props
@@ -37,10 +38,43 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	columnHeader: React.ReactNodeArray,
 	columns: ( item: Item, index: number ) => React.ReactNodeArray,
 	editable?: boolean,
+	sortable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if editable is true
 	newData?: () => Item | Promise<Item> // required if editable is true
 } & TableContainerProps ) {
 	const theme = useTheme();
+	
+	const dataItems = React.useMemo( () => {
+		const row = ( item, index ) => <TableRow>
+			{sortable && <TableCell className='sortHandle'>
+				<div><MenuIcon/></div>
+			</TableCell>}
+			{columns( item, index ).map( ( cell, index ) =>
+				<TableCell key={index}>
+					<div>{cell}</div>
+				</TableCell> )}
+			{editable && <TableCell>
+				<div>
+					<IconButton onClick={() => {
+						const _data = [ ...data ];
+						_data.splice( index, 1 );
+						setData( _data );
+					}}>
+						<CloseIcon/>
+					</IconButton>
+				</div>
+			</TableCell>}
+		</TableRow>;
+		
+		return <TransitionGroup component={null}>
+			{data.map( ( item, index ) => <CSSTransition
+				key={item.id || index}
+				timeout={theme.transitions.duration.standard}
+				classNames='slide'>
+				{row( item, index )}
+			</CSSTransition> )}
+		</TransitionGroup>;
+	}, [ data, columns, editable, sortable ] );
 	
 	return <Box sx={{
 		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
@@ -63,7 +97,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 			<Table size='small'>
 				<TableHead className='tableRows'>
 					<TableRow>
-						{editable && <TableCell className='minWidth'/>}
+						{sortable && <TableCell className='minWidth'/>}
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
 						{editable && <TableCell className='minWidth'>
@@ -82,41 +116,10 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						ghostClass='selectedSort'
 						forceFallback
 						animation={theme.transitions.duration.shorter}>
-						<TransitionGroup component={null}>
-							{data.map( ( item, index ) => <CSSTransition
-								key={item.id || index}
-								timeout={theme.transitions.duration.standard}
-								classNames='slide'>
-								<TableRow>
-									<TableCell className='sortHandle'>
-										<div><MenuIcon/></div>
-									</TableCell>
-									{columns( item, index ).map( ( cell, index ) =>
-										<TableCell key={index}>
-											<div>{cell}</div>
-										</TableCell> )}
-									<TableCell>
-										<div>
-											<IconButton onClick={() => {
-												const _data = [ ...data ];
-												_data.splice( index, 1 );
-												setData( _data );
-											}}>
-												<CloseIcon/>
-											</IconButton>
-										</div>
-									</TableCell>
-								</TableRow>
-							</CSSTransition> )}
-						</TransitionGroup>
+						{dataItems}
 					</ReactSortable> : undefined
 					: <TableBody className='tableRows'>
-						{data.map( ( item, index ) => <TableRow key={item.id || index}>
-							{columns( item, index ).map( ( cell, index ) =>
-								<TableCell key={index}>
-									<div>{cell}</div>
-								</TableCell> )}
-						</TableRow> )}
+						{dataItems}
 					</TableBody>}
 			</Table>
 		</TableContainer>

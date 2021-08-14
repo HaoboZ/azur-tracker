@@ -29,6 +29,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	renderRow,
 	renderPanel,
 	editable,
+	sortable,
 	setData = () => null,
 	newData = () => ( {} as Item ),
 	...props
@@ -38,6 +39,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	renderRow: ( item: Item, index: number ) => React.ReactNode,
 	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
 	editable?: boolean,
+	sortable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>  // required if editable is true
 } & ListProps ) {
@@ -45,7 +47,50 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	
 	const [ editing, setEditing ] = React.useState( false );
 	
-	const contents = editable
+	const dataItems = React.useMemo( () => {
+		const itemRow = ( item, index ) => <>
+			{sortable && editing && <ListItemIcon>
+				<IconButton className='sortHandle'><MenuIcon/></IconButton>
+			</ListItemIcon>}
+			{renderRow( item, index )}
+			{editable && editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
+				<IconButton onClick={() => {
+					const _data = [ ...data ];
+					_data.splice( index, 1 );
+					setData?.( _data );
+				}}><CloseIcon/></IconButton>
+			</ListItemIcon>}
+		</>;
+		
+		const row = ( item, index ) => renderPanel
+			? <Accordion>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon/>}
+					classes={{
+						root   : editing ? 'iconSpace' : undefined,
+						content: 'center'
+					}}>
+					{itemRow( item, index )}
+				</AccordionSummary>
+				<AccordionDetails>
+					{renderPanel( item, index )}
+				</AccordionDetails>
+			</Accordion>
+			: <ListItem divider className={editing ? 'iconSpace' : undefined}>
+				{itemRow( item, index )}
+			</ListItem>;
+		
+		return <TransitionGroup component={null}>
+			{data.map( ( item, index ) => <CSSTransition
+				key={item.id || index}
+				timeout={theme.transitions.duration.standard}
+				classNames='slide'>
+				{row( item, index )}
+			</CSSTransition> )}
+		</TransitionGroup>;
+	}, [ data, editable, sortable, editing ] );
+	
+	const contents = sortable
 		? data.length ? <ReactSortable
 			list={data as any}
 			setList={setData as any}
@@ -53,59 +98,9 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			ghostClass='selectedSort'
 			forceFallback
 			animation={theme.transitions.duration.shorter}>
-			<TransitionGroup component={null}>
-				{data.map( ( item, index ) => {
-					const itemRow = <>
-						{editing && <ListItemIcon>
-							<IconButton className='sortHandle'><MenuIcon/></IconButton>
-						</ListItemIcon>}
-						{renderRow( item, index )}
-						{editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
-							<IconButton onClick={() => {
-								const _data = [ ...data ];
-								_data.splice( index, 1 );
-								setData?.( _data );
-							}}><CloseIcon/></IconButton>
-						</ListItemIcon>}
-					</>;
-					
-					return <CSSTransition
-						key={item.id || index}
-						timeout={theme.transitions.duration.standard}
-						classNames='slide'>
-						{renderPanel
-							? <Accordion>
-								<AccordionSummary
-									expandIcon={<ExpandMoreIcon/>}
-									classes={{
-										root   : editing ? 'iconSpace' : undefined,
-										content: 'center'
-									}}>
-									{itemRow}
-								</AccordionSummary>
-								<AccordionDetails>
-									{renderPanel( item, index )}
-								</AccordionDetails>
-							</Accordion>
-							: <ListItem divider className={editing ? 'iconSpace' : undefined}>
-								{itemRow}
-							</ListItem>}
-					</CSSTransition>;
-				} )}
-			</TransitionGroup>
+			{dataItems}
 		</ReactSortable> : undefined
-		: data.map( ( item, index ) => renderPanel ? <Accordion key={item.id || index}>
-			<AccordionSummary
-				expandIcon={<ExpandMoreIcon/>}
-				classes={{ content: 'center' }}>
-				{renderRow( item, index )}
-			</AccordionSummary>
-			<AccordionDetails>
-				{renderPanel( item, index )}
-			</AccordionDetails>
-		</Accordion> : <ListItem key={item.id || index} divider>
-			{renderRow( item, index )}
-		</ListItem> );
+		: dataItems;
 	
 	return <List
 		sx={{
@@ -124,9 +119,9 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				}
 			}
 		}}
-		subheader={( title || editable ) && <ActionTitle
+		subheader={( title || editable || sortable ) && <ActionTitle
 			title={title}
-			actions={editable ? [ {
+			actions={editable || sortable ? [ {
 				name     : editing ? 'Cancel' : 'Edit',
 				onClick  : () => setEditing( !editing ),
 				startIcon: editing ? <CloseIcon/> : <EditIcon/>
@@ -135,7 +130,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				onClick  : async () => setData?.( [ ...data, { ...await newData?.() } ] ),
 				color    : 'primary',
 				startIcon: <AddIcon/>
-			} ] : []}
+			} ] : undefined}
 		/>}
 		{...props}>
 		{renderPanel ? contents : <Paper>{contents}</Paper>}

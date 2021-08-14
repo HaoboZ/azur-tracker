@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DataDisplay from '../../components/dataDisplay';
+import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 
@@ -13,7 +13,7 @@ export default function FarmingCalc( { remainingPoints }: {
 	const farming = useSelector( state => state.event.farming );
 	const dispatch = useDispatch();
 	
-	return <DataDisplay
+	return <EnhancedDisplay
 		title='Farming'
 		data={farming}
 		tableProps={{
@@ -83,5 +83,6 @@ export default function FarmingCalc( { remainingPoints }: {
 		setData={( items ) => dispatch( event_setFarming( items ) )}
 		newData={() => ( { id: nanoid( 16 ), points: 0, oil: 0 } )}
 		editable
+		sortable
 	/>;
 }

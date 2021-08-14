@@ -2,7 +2,7 @@ import { Box, DialogContent, Grid, ListItemText, Typography } from '@material-ui
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DataDisplay from '../../components/dataDisplay';
+import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
 import { useModalControls } from '../../lib/providers/modal';
@@ -39,7 +39,7 @@ export default function ShopModal() {
 					</Grid>
 				</Grid>
 			</Box>
-			<DataDisplay
+			<EnhancedDisplay
 				data={eventRef.shop}
 				tableProps={{
 					columnHeader: [

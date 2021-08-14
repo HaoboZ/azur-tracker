@@ -4,15 +4,15 @@ import React from 'react';
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 
-export default function DataDisplay<Item>( {
+export default function EnhancedDisplay<Item>( {
 	listProps,
 	tableProps,
 	...props
 }: {
 	title?: React.ReactNode,
 	data: Item[],
-	sortable?: boolean,
 	editable?: boolean,
+	sortable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>,  // required if editable is true
 	listProps: {
