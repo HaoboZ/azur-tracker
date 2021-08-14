@@ -71,7 +71,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			setEquip( currentEquip );
 		else
 			setEquip( equips[ 0 ] );
-	}, [ selectedEquip ] );
+	}, [ equipListIndex, currentEquip, selectedEquip ] );
 	
 	React.useEffect( () => {
 		setOverride( info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
@@ -84,6 +84,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			const newEquip = cloneDeep( info.ship.equip );
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
 			dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
+			setEquip( equips[ 0 ] );
 		}
 		controls.events.on( 'close', close );
 		return () => {
