@@ -25,46 +25,65 @@ const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
 export default function EnhancedTable<Item extends { id?: string }>( {
 	title,
 	data,
-	columnHeader,
-	columns,
+	setData,
 	editable,
 	sortable,
-	setData,
-	newData = () => ( {} as Item ),
+	selectable,
+	columnHeader,
+	columns,
 	...props
 }: {
 	title?: React.ReactNode,
 	data: Item[],
-	columnHeader: React.ReactNodeArray,
-	columns: ( item: Item, index: number ) => React.ReactNodeArray,
-	editable?: boolean,
+	// required if sortable or editable is true
+	setData?: ( items: Item[] ) => void,
+	editable?: {
+		newData: () => Item | Promise<Item>
+	},
 	sortable?: boolean,
-	setData?: ( items: Item[] ) => void, // required if editable is true
-	newData?: () => Item | Promise<Item> // required if editable is true
+	selectable?: {
+		min?: number,
+		max?: number,
+		selected: string[],
+		onSelect?: ( id: string, adding: boolean ) => void
+	},
+	columnHeader: React.ReactNodeArray,
+	columns: ( item: Item, index: number ) => React.ReactNodeArray
 } & TableContainerProps ) {
 	const theme = useTheme();
 	
 	const dataItems = React.useMemo( () => {
-		const row = ( item, index ) => <TableRow hover>
-			{sortable && <TableCell className='sortHandle'>
-				<div><MenuIcon/></div>
-			</TableCell>}
-			{columns( item, index ).map( ( cell, index ) =>
-				<TableCell key={index}>
-					<div>{cell}</div>
-				</TableCell> )}
-			{editable && <TableCell>
-				<div>
-					<IconButton onClick={() => {
-						const _data = [ ...data ];
-						_data.splice( index, 1 );
-						setData( _data );
-					}}>
-						<CloseIcon/>
-					</IconButton>
-				</div>
-			</TableCell>}
-		</TableRow>;
+		const total = selectable?.selected.length;
+		
+		const row = ( item, index ) => {
+			const selected = selectable?.selected.includes( item?.id || index );
+			return <TableRow
+				hover
+				selected={selected}
+				onClick={selectable ? () => {
+					if ( selected ? total <= selectable?.min : total >= selectable?.max ) return;
+					selectable.onSelect?.( item?.id || index, !selected );
+				} : undefined}>
+				{sortable && <TableCell className='sortHandle'>
+					<div><MenuIcon/></div>
+				</TableCell>}
+				{columns( item, index ).map( ( cell, index ) =>
+					<TableCell key={index}>
+						<div>{cell}</div>
+					</TableCell> )}
+				{Boolean( editable ) && <TableCell>
+					<div>
+						<IconButton onClick={() => {
+							const _data = [ ...data ];
+							_data.splice( index, 1 );
+							setData( _data );
+						}}>
+							<CloseIcon/>
+						</IconButton>
+					</div>
+				</TableCell>}
+			</TableRow>;
+		};
 		
 		return <TransitionGroup component={null}>
 			{data.map( ( item, index ) => <CSSTransition
@@ -74,7 +93,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				{row( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
-	}, [ data, columns, editable, sortable ] );
+	}, [ data, columns, Boolean( editable ), sortable ] );
 	
 	const sortItems = sortable
 		? data.length ? <ReactSortable
@@ -115,8 +134,8 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						{sortable && <TableCell className='minWidth'/>}
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
-						{editable && <TableCell className='minWidth'>
-							<IconButton onClick={async () => setData( [ ...data, { ...await newData() } ] )}>
+						{Boolean( editable ) && <TableCell className='minWidth'>
+							<IconButton onClick={async () => setData( [ ...data, { ...await editable.newData() } ] )}>
 								<AddIcon/>
 							</IconButton>
 						</TableCell>}

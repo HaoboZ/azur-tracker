@@ -5,6 +5,7 @@ import {
 	IconButton,
 	List,
 	ListItem,
+	ListItemButton,
 	ListItemIcon,
 	ListProps,
 	Paper,
@@ -26,22 +27,31 @@ import ActionTitle from '../actionTitle';
 export default function EnhancedList<Item extends { id?: string }>( {
 	title,
 	data,
-	renderRow,
-	renderPanel,
+	setData,
 	editable,
 	sortable,
-	setData = () => null,
-	newData = () => ( {} as Item ),
+	selectable,
+	renderRow,
+	renderPanel,
 	...props
 }: {
 	title?: React.ReactNode,
 	data: Item[],
-	renderRow: ( item: Item, index: number ) => React.ReactNode,
-	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
-	editable?: boolean,
+	// required if sortable or editable is true
+	setData?: ( items: Item[] ) => void,
+	editable?: {
+		newData: () => Item | Promise<Item>
+	},
 	sortable?: boolean,
-	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
-	newData?: () => Item | Promise<Item>  // required if editable is true
+	// doesn't work with renderPanel
+	selectable?: {
+		min?: number,
+		max?: number,
+		selected: string[],
+		onSelect?: ( id: string, adding: boolean ) => void
+	},
+	renderRow: ( item: Item, index: number ) => React.ReactNode,
+	renderPanel?: ( item: Item, index: number ) => React.ReactNode
 } & ListProps ) {
 	const theme = useTheme();
 	
@@ -53,7 +63,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
 			{renderRow( item, index )}
-			{editable && editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
+			{Boolean( editable ) && editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={() => {
 					const _data = [ ...data ];
 					_data.splice( index, 1 );
@@ -62,23 +72,37 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			</ListItemIcon>}
 		</>;
 		
-		const row = ( item, index ) => renderPanel
-			? <Accordion>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon/>}
-					classes={{
-						root   : editing ? 'iconSpace' : undefined,
-						content: 'center'
-					}}>
+		const total = selectable?.selected.length;
+		
+		const row = ( item, index ) => {
+			const selected = selectable?.selected.includes( item?.id || index );
+			return renderPanel
+				? <Accordion>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon/>}
+						classes={{
+							root   : editing ? 'iconSpace' : undefined,
+							content: 'center'
+						}}>
+						{itemRow( item, index )}
+					</AccordionSummary>
+					<AccordionDetails>
+						{renderPanel( item, index )}
+					</AccordionDetails>
+				</Accordion>
+				: selectable ? <ListItemButton
+					divider
+					selected={selected}
+					onClick={selectable ? () => {
+						if ( selected ? total <= selectable?.min : total >= selectable?.max ) return;
+						selectable.onSelect?.( item?.id || index, !selected );
+					} : undefined}
+					className={editing ? 'iconSpace' : undefined}>
 					{itemRow( item, index )}
-				</AccordionSummary>
-				<AccordionDetails>
-					{renderPanel( item, index )}
-				</AccordionDetails>
-			</Accordion>
-			: <ListItem divider className={editing ? 'iconSpace' : undefined}>
-				{itemRow( item, index )}
-			</ListItem>;
+				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
+					{itemRow( item, index )}
+				</ListItem>;
+		};
 		
 		return <TransitionGroup component={null}>
 			{data.map( ( item, index ) => <CSSTransition
@@ -88,7 +112,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				{row( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
-	}, [ data, editable, sortable, editing ] );
+	}, [ data, Boolean( editable ), sortable, editing ] );
 	
 	const sortItems = sortable
 		? data.length ? <ReactSortable
@@ -119,7 +143,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				}
 			}
 		}}
-		subheader={( title || editable || sortable ) && <ActionTitle
+		subheader={Boolean( title || editable || sortable ) && <ActionTitle
 			title={title}
 			actions={editable || sortable ? [ {
 				name     : editing ? 'Cancel' : 'Edit',
@@ -127,7 +151,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				startIcon: editing ? <CloseIcon/> : <EditIcon/>
 			}, {
 				name     : 'Add',
-				onClick  : async () => setData?.( [ ...data, { ...await newData?.() } ] ),
+				onClick  : async () => setData( [ ...data, { ...await editable.newData() } ] ),
 				color    : 'primary',
 				startIcon: <AddIcon/>
 			} ] : undefined}

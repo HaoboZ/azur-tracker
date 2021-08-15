@@ -16,6 +16,11 @@ export default function FarmingCalc( { remainingPoints }: {
 	return <EnhancedDisplay
 		title='Farming'
 		data={farming}
+		setData={( items ) => dispatch( event_setFarming( items ) )}
+		editable={{
+			newData: () => ( { id: nanoid( 16 ), points: 0, oil: 0 } )
+		}}
+		sortable
 		tableProps={{
 			columnHeader: [
 				'Points/Run',
@@ -80,9 +85,5 @@ export default function FarmingCalc( { remainingPoints }: {
 				</Grid>;
 			}
 		}}
-		setData={( items ) => dispatch( event_setFarming( items ) )}
-		newData={() => ( { id: nanoid( 16 ), points: 0, oil: 0 } )}
-		editable
-		sortable
 	/>;
 }

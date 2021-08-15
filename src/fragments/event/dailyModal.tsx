@@ -37,6 +37,11 @@ export default function DailyModal() {
 			<EnhancedDisplay
 				title={<Typography>Total Daily: {dailyTotal}</Typography>}
 				data={daily}
+				setData={setDaily}
+				editable={{
+					newData: () => ( { id: nanoid( 16 ), name: '', amount: 0 } )
+				}}
+				sortable
 				tableProps={{
 					columnHeader: [
 						'Name',
@@ -85,10 +90,6 @@ export default function DailyModal() {
 						</Grid>
 					</Grid>
 				}}
-				setData={setDaily}
-				newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}
-				editable
-				sortable
 			/>
 		</DialogContent>
 	</PageModalContainer>;
