@@ -80,8 +80,7 @@ export default function EventFields( { time, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.points}
-				onChange={( e ) =>
-					dispatch( event_setPoints( parseInt( e.target.value ) ) )}
+				onChange={( e ) => dispatch( event_setPoints( parseInt( e.target.value ) ) )}
 			/>
 		</Grid>
 	</Grid>;

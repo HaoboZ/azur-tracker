@@ -57,12 +57,10 @@ export default function ShopModal() {
 							type='number'
 							placeholder='0'
 							value={shop[ item.name ]}
-							onChange={( e ) => {
-								setShop( {
-									...shop,
-									[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
-								} );
-							}}
+							onChange={( e ) => setShop( {
+								...shop,
+								[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+							} )}
 						/>
 					]
 				}}
@@ -80,12 +78,10 @@ export default function ShopModal() {
 								label='Wanted'
 								placeholder='0'
 								value={shop[ item.name ]}
-								onChange={( e ) => {
-									setShop( {
-										...shop,
-										[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
-									} );
-								}}
+								onChange={( e ) => setShop( {
+									...shop,
+									[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+								} )}
 							/>
 						</Grid>
 					</Grid>

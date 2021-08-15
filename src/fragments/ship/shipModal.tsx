@@ -125,8 +125,10 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							fullWidth
 							value={ships[ ship.id ]?.lvl || 0}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={( e ) =>
-								dispatch( ship_setShip( { name: ship.id, ship: { lvl: e.target.value as number } } ) )}>
+							onChange={( e ) => dispatch( ship_setShip( {
+								name: ship.id,
+								ship: { lvl: e.target.value as number }
+							} ) )}>
 							<MenuItem value={0}>0</MenuItem>
 							<MenuItem value={70}>70</MenuItem>
 							<MenuItem value={80}>80</MenuItem>

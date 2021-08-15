@@ -7,9 +7,7 @@ import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 
-export default function FarmingCalc( { remainingPoints }: {
-	remainingPoints: number
-} ) {
+export default function FarmingCalc( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useSelector( state => state.event.farming );
 	const dispatch = useDispatch();
 	
@@ -37,16 +35,20 @@ export default function FarmingCalc( { remainingPoints }: {
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.points}
-						onChange={( e ) =>
-							dispatch( event_modifyFarming( { index, item: { points: parseInt( e.target.value ) } } ) )}
+						onChange={( e ) => dispatch( event_modifyFarming( {
+							index,
+							item: { points: parseInt( e.target.value ) }
+						} ) )}
 					/>,
 					<FormattedTextField
 						key='oil'
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
-						onChange={( e ) =>
-							dispatch( event_modifyFarming( { index, item: { oil: parseInt( e.target.value ) } } ) )}
+						onChange={( e ) => dispatch( event_modifyFarming( {
+							index,
+							item: { oil: parseInt( e.target.value ) }
+						} ) )}
 					/>,
 					<Typography key='plays'>{plays}</Typography>,
 					<Typography key='cost'>{isFinite( oil ) ? oil : Infinity}</Typography>
@@ -64,8 +66,10 @@ export default function FarmingCalc( { remainingPoints }: {
 							inputProps={{ inputMode: 'numeric' }}
 							label='Points/Run'
 							value={item.points}
-							onChange={( e ) =>
-								dispatch( event_modifyFarming( { index, item: { points: parseInt( e.target.value ) } } ) )}
+							onChange={( e ) => dispatch( event_modifyFarming( {
+								index,
+								item: { points: parseInt( e.target.value ) }
+							} ) )}
 						/>
 					</Grid>
 					<Grid item xs>
@@ -74,8 +78,10 @@ export default function FarmingCalc( { remainingPoints }: {
 							inputProps={{ inputMode: 'numeric' }}
 							label='Oil/Run'
 							value={item.oil}
-							onChange={( e ) =>
-								dispatch( event_modifyFarming( { index, item: { oil: parseInt( e.target.value ) } } ) )}
+							onChange={( e ) => dispatch( event_modifyFarming( {
+								index,
+								item: { oil: parseInt( e.target.value ) }
+							} ) )}
 						/>
 					</Grid>
 					<Grid item xs={5}>

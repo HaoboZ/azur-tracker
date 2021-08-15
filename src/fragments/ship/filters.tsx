@@ -150,8 +150,9 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.levelMax}
-						onChange={( e ) =>
-							dispatch( ship_setFilter( { levelMax: e.target.checked } ) )}
+						onChange={( e ) => dispatch( ship_setFilter( {
+							levelMax: e.target.checked
+						} ) )}
 					/>}
 					label='Maxed Level'
 				/>
@@ -160,8 +161,9 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.equipMax}
-						onChange={( e ) =>
-							dispatch( ship_setFilter( { equipMax: e.target.checked } ) )}
+						onChange={( e ) => dispatch( ship_setFilter( {
+							equipMax: e.target.checked
+						} ) )}
 					/>}
 					label='Maxed Equip'
 				/>
@@ -170,8 +172,9 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.level0}
-						onChange={( e ) =>
-							dispatch( ship_setFilter( { level0: e.target.checked } ) )}
+						onChange={( e ) => dispatch( ship_setFilter( {
+							level0: e.target.checked
+						} ) )}
 					/>}
 					label='0 Level'
 				/>

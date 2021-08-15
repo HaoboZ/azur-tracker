@@ -1,7 +1,7 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../data/colors';
@@ -17,13 +17,11 @@ export default function VirtualTable( {
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
-	const [ headerStyle, setHeaderStyle ] = React.useState( {} );
 	
-	const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
-	
-	React.useEffect( () => {
-		setHeaderStyle( { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 } );
-	}, [ firstRow, rows ] );
+	const headerStyle = React.useMemo( () => {
+		const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
+		return { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 };
+	}, [ rows ] );
 	
 	return <Table
 		size='small'
@@ -49,7 +47,7 @@ export default function VirtualTable( {
 		</TableHead>
 		<TableBody component='div' ref={bodyRef} {...getTableBodyProps()}>
 			<ReactWindowScroller>
-				{( { ref, outerRef, style, onScroll } ) => <List
+				{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
 					ref={ref}
 					outerRef={outerRef}
 					style={style}
@@ -78,7 +76,7 @@ export default function VirtualTable( {
 							</TableCell> )}
 						</TableRow>;
 					}}
-				</List>}
+				</FixedSizeList>}
 			</ReactWindowScroller>
 		</TableBody>
 	</Table>;

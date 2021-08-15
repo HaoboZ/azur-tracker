@@ -1,7 +1,7 @@
-import { List as MuiList, Paper } from '@material-ui/core';
+import { List, Paper } from '@material-ui/core';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 export default function VirtualList( {
@@ -16,12 +16,12 @@ export default function VirtualList( {
 } ) {
 	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
-			{( { ref, outerRef, style, onScroll } ) => <List
+			{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
 				ref={ref}
 				outerRef={outerRef}
 				style={style}
 				onScroll={onScroll}
-				innerElementType={MuiList}
+				innerElementType={List}
 				height={window.innerHeight}
 				width='100%'
 				itemCount={rows.length}
@@ -35,7 +35,7 @@ export default function VirtualList( {
 						rowProps: row.getRowProps( { style } )
 					} ) as React.ReactElement;
 				}}
-			</List>}
+			</FixedSizeList>}
 		</ReactWindowScroller>
 	</Paper>;
 }

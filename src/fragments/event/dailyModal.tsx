@@ -53,16 +53,18 @@ export default function DailyModal() {
 							type='text'
 							fullWidth
 							value={item.name}
-							onChange={( e ) =>
-								modifyItem( index, { name: e.target.value } )}
+							onChange={( e ) => modifyItem( index, {
+								name: e.target.value
+							} )}
 						/>,
 						<FormattedTextField
 							key='amount'
 							type='number'
 							placeholder='0'
 							value={item.amount}
-							onChange={( e ) =>
-								modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							onChange={( e ) => modifyItem( index, {
+								amount: parseInt( e.target.value )
+							} )}
 						/>
 					]
 				}}
@@ -74,8 +76,9 @@ export default function DailyModal() {
 								fullWidth
 								label='Name'
 								value={item.name}
-								onChange={( e ) =>
-									modifyItem( index, { name: e.target.value } )}
+								onChange={( e ) => modifyItem( index, {
+									name: e.target.value
+								} )}
 							/>
 						</Grid>
 						<Grid item xs={3}>
@@ -84,8 +87,9 @@ export default function DailyModal() {
 								label='Amount'
 								placeholder='0'
 								value={item.amount}
-								onChange={( e ) =>
-									modifyItem( index, { amount: parseInt( e.target.value ) } )}
+								onChange={( e ) => modifyItem( index, {
+									amount: parseInt( e.target.value )
+								} )}
 							/>
 						</Grid>
 					</Grid>

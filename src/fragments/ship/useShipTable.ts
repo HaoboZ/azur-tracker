@@ -1,14 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {
-	useAsyncDebounce,
-	useFilters,
-	useFlexLayout,
-	useGlobalFilter,
-	useRowState,
-	useSortBy,
-	useTable
-} from 'react-table';
+import { useFilters, useFlexLayout, useGlobalFilter, useRowState, useSortBy, useTable } from 'react-table';
 
 import shipRef from '../../data/shipData';
 import tableColumns from './tableColumns';
@@ -31,11 +23,9 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 			return ship.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
 		} ), [ ship ] );
 	
-	const setEquipBetterDelay = useAsyncDebounce( ( filter, value ) => {
-		if ( equipBetter.filter !== filter ) setEquipBetter( { filter, value } );
-	}, 0 );
-	
-	const columns = React.useMemo( () => tableColumns( equipBetter, setEquipBetterDelay ), [ equipBetter ] );
+	const columns = React.useMemo(
+		() => tableColumns( equipBetter, setEquipBetter ),
+		[ equipBetter ] );
 	
 	return useTable(
 		{
