@@ -19,7 +19,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ActionTitle from '../actionTitle';
 
 const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
-	return <TableBody ref={ref} className='tableRows'>{children}</TableBody>;
+	return <TableBody ref={ref}>{children}</TableBody>;
 } );
 
 export default function EnhancedTable<Item extends { id?: string }>( {
@@ -45,7 +45,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	const theme = useTheme();
 	
 	const dataItems = React.useMemo( () => {
-		const row = ( item, index ) => <TableRow>
+		const row = ( item, index ) => <TableRow hover>
 			{sortable && <TableCell className='sortHandle'>
 				<div><MenuIcon/></div>
 			</TableCell>}
@@ -87,14 +87,14 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 			animation={theme.transitions.duration.shorter}>
 			{dataItems}
 		</ReactSortable> : undefined
-		: <TableBody className='tableRows'>
+		: <TableBody>
 			{dataItems}
 		</TableBody>;
 	
 	return <Box sx={{
-		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
-		'& .minWidth'                          : { width: '1%' },
-		'& .slide'                             : {
+		'& .minWidth'        : { width: '1%' },
+		'& .sortHandle:hover': { cursor: 'pointer' },
+		'& .slide'           : {
 			'&-enter'       : { opacity: 0 },
 			'&-enter-active': {
 				opacity   : 1,
@@ -110,7 +110,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 		{title && <ActionTitle title={title}/>}
 		<TableContainer component={Paper} {...props}>
 			<Table size='small'>
-				<TableHead className='tableRows'>
+				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
 						{sortable && <TableCell className='minWidth'/>}
 						{columnHeader.map( ( cell, index ) =>

@@ -14,7 +14,7 @@ const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
 	title?: React.ReactNode,
 	data: Item[],
 	editable?: boolean,
-	onSelect?: ( selected: Item, adding?: boolean ) => void,
+	sortable?: boolean,
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>,  // required if editable is true
 	listProps: {
