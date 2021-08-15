@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { equipTier, version } from '../../reference/equipRef';
-import shipRef from '../../reference/shipRef';
+import { equipTier, version } from '../../../data/equipData';
+import shipRef from '../../../data/shipData';
 
 type State = {
 	ships: Record<string, {

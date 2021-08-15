@@ -62,30 +62,28 @@ export default function DailyModal() {
 					]
 				}}
 				listProps={{
-					renderRow( item, index ) {
-						return <Grid container spacing={2}>
-							<Grid item xs={9}>
-								<FormattedTextField
-									type='text'
-									fullWidth
-									label='Name'
-									value={item.name}
-									onChange={( e ) =>
-										modifyItem( index, { name: e.target.value } )}
-								/>
-							</Grid>
-							<Grid item xs={3}>
-								<FormattedTextField
-									type='number'
-									label='Amount'
-									placeholder='0'
-									value={item.amount}
-									onChange={( e ) =>
-										modifyItem( index, { amount: parseInt( e.target.value ) } )}
-								/>
-							</Grid>
-						</Grid>;
-					}
+					renderRow: ( item, index ) => <Grid container spacing={2}>
+						<Grid item xs={9}>
+							<FormattedTextField
+								type='text'
+								fullWidth
+								label='Name'
+								value={item.name}
+								onChange={( e ) =>
+									modifyItem( index, { name: e.target.value } )}
+							/>
+						</Grid>
+						<Grid item xs={3}>
+							<FormattedTextField
+								type='number'
+								label='Amount'
+								placeholder='0'
+								value={item.amount}
+								onChange={( e ) =>
+									modifyItem( index, { amount: parseInt( e.target.value ) } )}
+							/>
+						</Grid>
+					</Grid>
 				}}
 				setData={setDaily}
 				newData={() => ( { id: nanoid( 16 ), name: '', amount: 0 } )}

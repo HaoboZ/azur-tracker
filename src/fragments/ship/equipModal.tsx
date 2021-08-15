@@ -16,11 +16,11 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { equippable, equips, equipsIndex, equipTier } from '../../data/equipData';
+import shipRef from '../../data/shipData';
 import { TierIcon } from '../../lib/icons';
 import { useModalControls } from '../../lib/providers/modal';
-import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
-import { equippable, equips, equipsIndex, equipTier } from '../../lib/reference/equipRef';
-import shipRef from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
@@ -55,45 +55,36 @@ export default function EquipModal( { info, selectedEquip }: {
 				return arr;
 			}, [] as ( typeof equips[number] & { tier?: number } )[] )
 		];
-	}, [ info ] );
+	}, [] );
 	
 	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equips[ 0 ];
 	// equipment that will go in slot
-	const [ equip, setEquip ] = React.useState<typeof equips[number]>( equips[ 0 ] );
-	const [ override, setOverride ] = React.useState<0 | 1>( 0 );
+	const [ equip, setEquip ] = React.useState<typeof equips[number]>( () => {
+		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
+			return selectedEquip;
+		else if ( currentEquip.id )
+			return currentEquip;
+		else
+			return equips[ 0 ];
+	} );
+	const [ override, setOverride ] = React.useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	
-	// sets right side equip
-	React.useEffect( () => {
-		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
-			setEquip( selectedEquip );
-		else if ( currentEquip.id )
-			setEquip( currentEquip );
-		else
-			setEquip( equips[ 0 ] );
-	}, [ equipListIndex, currentEquip, selectedEquip ] );
-	
-	// sets override
-	React.useEffect( () => {
-		setOverride( info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
-	}, [ info ] );
-	
-	// clears equip on close to prevent flicker
+	// saves info on close
 	React.useEffect( () => {
 		function close( cancel ) {
 			setAnchorEl( null );
-			if ( cancel || !controls.status()?.open ) return;
+			if ( cancel ) return;
 			const newEquip = cloneDeep( info.ship.equip );
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
 			dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
-			setEquip( equips[ 0 ] );
 		}
 		controls.events.on( 'close', close );
 		return () => {
 			controls.events.off( 'close', close );
 		};
-	}, [ info, equip, override ] );
+	}, [ equip, override ] );
 	
 	return <>
 		<DialogTitle>Switch Equipment</DialogTitle>

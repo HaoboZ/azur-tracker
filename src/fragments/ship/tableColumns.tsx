@@ -1,9 +1,9 @@
 import React from 'react';
 import { Column } from 'react-table';
+import { factionColors, rarityColors, tierColors, typeColors } from '../../data/colors';
+import { equippable, equipTier } from '../../data/equipData';
 
 import SVGIcon, { TierIcon } from '../../lib/icons';
-import { factionColors, rarityColors, tierColors, typeColors } from '../../lib/reference/colors';
-import { equippable, equipTier } from '../../lib/reference/equipRef';
 
 const Rarity = {
 	'Decisive'  : 0,
@@ -120,8 +120,5 @@ export default function tableColumns( equipBetter, setEquipBetterDelay ) {
 			return rows.filter( ( row ) => equipBetter[ row.id ].some( Boolean ) );
 		},
 		disableSortBy      : true
-	}, {
-		accessor           : 'equipType',
-		disableGlobalFilter: true
 	} ] as Column[];
 }

@@ -5,18 +5,17 @@ import { useDispatch } from 'react-redux';
 import PageContainer from '../components/pageContainer';
 import { ModalVariant } from '../components/pageModal';
 import VirtualDisplay from '../components/virtualDisplay';
+import { useMappedColorClasses } from '../data/colors';
 import Filters from '../fragments/ship/filters';
 import ShipModal from '../fragments/ship/shipModal';
 import useShipTable from '../fragments/ship/useShipTable';
 import { useModal } from '../lib/providers/modal';
-import { useMappedColorClasses } from '../lib/reference/colors';
-import { equips } from '../lib/reference/equipRef';
-import { blankShip } from '../lib/reference/shipRef';
 import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 
 export default function Ship() {
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
+	const { show } = useModal();
 	
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
@@ -24,13 +23,6 @@ export default function Ship() {
 	}>( { filter: undefined, value: {} } );
 	
 	const table = useShipTable( equipBetter, setEquipBetter );
-	
-	const { show } = useModal( ShipModal, {
-		variant: ModalVariant.bottom
-	}, {
-		ship         : blankShip,
-		selectedEquip: equips[ 0 ]
-	} );
 	
 	// resets ship equip tiers if version changes
 	React.useEffect( () => {
@@ -41,7 +33,9 @@ export default function Ship() {
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}
-			onClick={( row ) => show( {
+			onClick={( row ) => show( ShipModal, {
+				variant: ModalVariant.bottom
+			}, {
 				ship         : row.original as any,
 				equipBetter  : equipBetter.value[ row.id ],
 				selectedEquip: table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value

@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next';
 
-import getDrive from '../../lib/driveData/getDrive';
-import getInfo from '../../lib/driveData/getInfo';
+import getDrive from '../../lib/google/drive/getDrive';
+import getInfo from '../../lib/google/drive/getInfo';
 
 const CheckData: NextApiHandler = async ( req, res ) => {
 	try {

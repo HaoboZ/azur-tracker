@@ -4,7 +4,7 @@ import { Row, TableInstance } from 'react-table';
 import { FixedSizeList as List } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
-import { useMappedColorClasses } from '../../lib/reference/colors';
+import { useMappedColorClasses } from '../../data/colors';
 
 export default function VirtualTable( {
 	getTableProps,

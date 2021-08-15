@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { PageModalContainer } from '../../components/pageModal';
+import eventRef from '../../data/eventData';
 import { useModalControls } from '../../lib/providers/modal';
-import eventRef from '../../lib/reference/eventRef';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 export default function ShopModal() {
@@ -67,30 +67,28 @@ export default function ShopModal() {
 					]
 				}}
 				listProps={{
-					renderRow( item ) {
-						return <Grid container spacing={2}>
-							<Grid item xs={9}>
-								<ListItemText
-									primary={item.name}
-									secondary={`cost: ${item.cost} amount: ${item.amount}`}
-								/>
-							</Grid>
-							<Grid item xs={3}>
-								<FormattedTextField
-									type='number'
-									label='Wanted'
-									placeholder='0'
-									value={shop[ item.name ]}
-									onChange={( e ) => {
-										setShop( {
-											...shop,
-											[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
-										} );
-									}}
-								/>
-							</Grid>
-						</Grid>;
-					}
+					renderRow: ( item ) => <Grid container spacing={2}>
+						<Grid item xs={9}>
+							<ListItemText
+								primary={item.name}
+								secondary={`cost: ${item.cost} amount: ${item.amount}`}
+							/>
+						</Grid>
+						<Grid item xs={3}>
+							<FormattedTextField
+								type='number'
+								label='Wanted'
+								placeholder='0'
+								value={shop[ item.name ]}
+								onChange={( e ) => {
+									setShop( {
+										...shop,
+										[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+									} );
+								}}
+							/>
+						</Grid>
+					</Grid>
 				}}
 			/>
 		</DialogContent>

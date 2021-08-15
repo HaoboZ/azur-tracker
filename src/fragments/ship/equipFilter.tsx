@@ -3,8 +3,8 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import Image from 'next/image';
 import React from 'react';
 
-import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
-import { equips, typeNames } from '../../lib/reference/equipRef';
+import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { equips, typeNames } from '../../data/equipData';
 
 export default function EquipFilter( { equipList, value, setValue }: {
 	equipList: typeof equips,

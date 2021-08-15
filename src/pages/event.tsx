@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import eventImage from '../../public/images/event.png';
 import PageContainer from '../components/pageContainer';
+import eventRef from '../data/eventData';
 import EventFields from '../fragments/event/eventFields';
 import FarmingCalc from '../fragments/event/farmingCalc';
-import eventRef from '../lib/reference/eventRef';
 import { event_newEvent } from '../lib/store/reducers/eventReducer';
 
 export default function Event() {

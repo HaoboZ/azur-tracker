@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { devLevels, fateLevels, researchShips } from '../../lib/reference/researchRef';
+import { devLevels, fateLevels, researchShips } from '../../data/researchData';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
@@ -120,7 +120,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 				}
 			}}
 			listProps={{
-				renderRow( item, index ) {
+				renderRow: ( item, index ) => {
 					const { devPrints, fatePrints } = shipData[ index ];
 					return <>
 						<ListItemAvatar>

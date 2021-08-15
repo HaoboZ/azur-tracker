@@ -86,7 +86,7 @@ export default function ModalProvider( { children } ) {
 			} ) ),
 			close        : ( ...args ) => setModal( id, ( modal ) => {
 				const newModal = { ...modal, open: false };
-				setTimeout( () => modal?.props.controls.events.emit( 'close', ...args ), 250 );
+				modal?.props.controls.events.emit( 'close', ...args );
 				if ( remove ) {
 					setTimeout( () => setModals( ( modals ) =>
 						modals.filter( modal => modal?.id !== id ) ), 500 );
@@ -126,10 +126,10 @@ export default function ModalProvider( { children } ) {
 				const id = nanoid( 16 );
 				newModals.push( {
 					id,
-					open : false,
-					Component,
+					open     : false,
+					Component: React.memo( Component ),
 					modalProps,
-					props: { ...props, controls: controls( id, true ) }
+					props    : { ...props, controls: controls( id, true ) }
 				} );
 				setTimeout( () => setModals( ( modals ) => {
 					const index = modals.findIndex( modal => modal?.id === id );
@@ -162,10 +162,10 @@ export default function ModalProvider( { children } ) {
 				modalControls = controls( id );
 				newModals.push( {
 					id,
-					open : false,
-					Component,
+					open     : false,
+					Component: React.memo( Component ),
 					modalProps,
-					props: { ...props, controls: modalControls }
+					props    : { ...props, controls: modalControls }
 				} );
 			} else {
 				modalControls = newModals[ index ]?.props.controls;
@@ -205,8 +205,10 @@ export function useModal<T>(
 	modalProps?: ModalProps,
 	props?: T
 ) {
+	// is dynamic modal
 	if ( !Component ) return React.useContext<C2>( ModalContext )();
 	
+	// is static modal
 	const id = React.useMemo( () => nanoid( 16 ), [] );
 	const context = React.useContext<C1<T>>( ModalContext );
 	
@@ -216,6 +218,7 @@ export function useModal<T>(
 	React.useEffect( () => {
 		const controls = context( id, Component, { keepMounted: true, ...modalProps }, props );
 		setControls( controls );
+		// remove modal on dismount
 		return controls.remove;
 	}, [] );
 	

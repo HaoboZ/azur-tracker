@@ -1,10 +1,12 @@
 import { ListProps, TableContainerProps, Theme, useMediaQuery } from '@material-ui/core';
+import { omit } from 'lodash';
 import React from 'react';
+import { shallowEqual } from 'react-redux';
 
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 
-export default function EnhancedDisplay<Item>( {
+const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
 	listProps,
 	tableProps,
 	...props
@@ -12,7 +14,7 @@ export default function EnhancedDisplay<Item>( {
 	title?: React.ReactNode,
 	data: Item[],
 	editable?: boolean,
-	sortable?: boolean,
+	onSelect?: ( selected: Item, adding?: boolean ) => void,
 	setData?: ( items: Item[] ) => void, // required if sortable or editable is true
 	newData?: () => Item | Promise<Item>,  // required if editable is true
 	listProps: {
@@ -31,4 +33,8 @@ export default function EnhancedDisplay<Item>( {
 	} else {
 		return <EnhancedList {...listProps} {...props as any}/>;
 	}
-}
+}, ( prevProps, nextProps ) => shallowEqual(
+	omit( prevProps, [ 'tableProps', 'listProps' ] ),
+	omit( nextProps, [ 'tableProps', 'listProps' ] )
+) );
+export default EnhancedDisplay;

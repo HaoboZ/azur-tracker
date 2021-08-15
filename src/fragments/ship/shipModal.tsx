@@ -16,11 +16,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
+import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { equips, equipsIndex } from '../../data/equipData';
+import shipRef from '../../data/shipData';
 import SVGIcon, { TierIcon } from '../../lib/icons';
 import { useModal, useModalControls } from '../../lib/providers/modal';
-import { rarityColors, useMappedColorClasses } from '../../lib/reference/colors';
-import { equips, equipsIndex } from '../../lib/reference/equipRef';
-import shipRef, { blankShip } from '../../lib/reference/shipRef';
 import { ship_setShip } from '../../lib/store/reducers/shipReducer';
 import EquipModal from './equipModal';
 
@@ -36,11 +36,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const ships = useSelector( state => state.ship.ships );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
-	const { show } = useModal( EquipModal, {
-		variant : ModalVariant.center,
-		maxWidth: 'xs',
-		TransitionComponent
-	} );
+	const { show } = useModal();
 	
 	// calculates tier
 	const tier = React.useMemo( () => {
@@ -56,16 +52,16 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		}
 	}, [ ship.tier ] );
 	
-	// clears ship when closed to avoid flicker
-	React.useEffect( () => {
-		function close() {
-			controls.setProps( ( props ) => ( { ...props, ship: blankShip } ) );
-		}
-		controls.events.on( 'close', close );
-		return () => {
-			controls.events.off( 'close', close );
-		};
-	}, [] );
+	// // clears ship when closed to avoid flicker
+	// React.useEffect( () => {
+	// 	function close() {
+	// 		controls.setProps( ( props ) => ( { ...props, ship: blankShip } ) );
+	// 	}
+	// 	controls.events.on( 'close', close );
+	// 	return () => {
+	// 		controls.events.off( 'close', close );
+	// 	};
+	// }, [] );
 	
 	return <PageModalContainer
 		onClose={() => controls.close()}
@@ -162,7 +158,11 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								flexDirection: 'column',
 								alignItems   : 'center'
 							}}
-							onClick={() => show( { info: { ship, index }, selectedEquip } )}>
+							onClick={() => show( EquipModal, {
+								variant : ModalVariant.center,
+								maxWidth: 'xs',
+								TransitionComponent
+							}, { info: { ship, index }, selectedEquip } )}>
 							<Image
 								src={`/images/equips/${equip.image}.png`}
 								alt={equip.name}

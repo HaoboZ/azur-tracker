@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 
 import PageContainer from '../components/pageContainer';
+import { researchShips } from '../data/researchData';
 import ResearchGroup from '../fragments/research/researchGroup';
-import { researchShips } from '../lib/reference/researchRef';
 import { setResearchLastTab } from '../lib/store/reducers/mainReducer';
 
 // noinspection JSUnusedGlobalSymbols

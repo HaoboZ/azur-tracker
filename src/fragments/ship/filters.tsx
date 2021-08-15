@@ -15,7 +15,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
 
-import { equips } from '../../lib/reference/equipRef';
+import { equips } from '../../data/equipData';
 import { ship_setFilter } from '../../lib/store/reducers/shipReducer';
 import EquipFilter from './equipFilter';
 

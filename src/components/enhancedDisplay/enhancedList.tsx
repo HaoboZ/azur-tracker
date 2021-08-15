@@ -90,7 +90,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 		</TransitionGroup>;
 	}, [ data, editable, sortable, editing ] );
 	
-	const contents = sortable
+	const sortItems = sortable
 		? data.length ? <ReactSortable
 			list={data as any}
 			setList={setData as any}
@@ -133,6 +133,6 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			} ] : undefined}
 		/>}
 		{...props}>
-		{renderPanel ? contents : <Paper>{contents}</Paper>}
+		{renderPanel ? sortItems : <Paper>{sortItems}</Paper>}
 	</List>;
 }

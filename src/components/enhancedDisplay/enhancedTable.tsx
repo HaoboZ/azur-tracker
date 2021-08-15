@@ -76,6 +76,21 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 		</TransitionGroup>;
 	}, [ data, columns, editable, sortable ] );
 	
+	const sortItems = sortable
+		? data.length ? <ReactSortable
+			tag={forwardTableBody}
+			list={data as any}
+			setList={setData as any}
+			handle='.sortHandle'
+			ghostClass='selectedSort'
+			forceFallback
+			animation={theme.transitions.duration.shorter}>
+			{dataItems}
+		</ReactSortable> : undefined
+		: <TableBody className='tableRows'>
+			{dataItems}
+		</TableBody>;
+	
 	return <Box sx={{
 		'& .tableRows tr:nth-of-type(odd),& th': { bgcolor: 'action.disabledBackground' },
 		'& .minWidth'                          : { width: '1%' },
@@ -107,20 +122,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				{editable
-					? data.length ? <ReactSortable
-						tag={forwardTableBody}
-						list={data as any}
-						setList={setData as any}
-						handle='.sortHandle'
-						ghostClass='selectedSort'
-						forceFallback
-						animation={theme.transitions.duration.shorter}>
-						{dataItems}
-					</ReactSortable> : undefined
-					: <TableBody className='tableRows'>
-						{dataItems}
-					</TableBody>}
+				{sortItems}
 			</Table>
 		</TableContainer>
 	</Box>;

@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormattedTextField from '../../components/formattedTextField';
+import eventRef from '../../data/eventData';
 import { useModal } from '../../lib/providers/modal';
-import eventRef from '../../lib/reference/eventRef';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
 import ShopModal from './shopModal';
