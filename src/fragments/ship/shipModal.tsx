@@ -154,12 +154,10 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							item
 							xs={4}
 							sm
-							sx={{
-								p            : 1,
-								display      : 'flex',
-								flexDirection: 'column',
-								alignItems   : 'center'
-							}}
+							p={1}
+							display='flex'
+							flexDirection='column'
+							alignItems='center'
 							onClick={() => show( EquipModal, {
 								variant : ModalVariant.center,
 								maxWidth: 'xs',

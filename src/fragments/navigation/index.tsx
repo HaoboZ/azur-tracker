@@ -9,17 +9,19 @@ export default function Navigation( { children } ) {
 	
 	if ( wide ) {
 		return <TitleBar>
-			<Box sx={{
-				pl: 'env(safe-area-inset-left)',
-				pr: 'env(safe-area-inset-right)'
-			}}>{children}</Box>
+			<Box
+				pl='env(safe-area-inset-left)'
+				pr='env(safe-area-inset-right)'>
+				{children}
+			</Box>
 		</TitleBar>;
 	} else {
 		return <BottomBar>
-			<Box sx={{
-				pl: 'env(safe-area-inset-left)',
-				pr: 'env(safe-area-inset-right)'
-			}}>{children}</Box>
+			<Box
+				pl='env(safe-area-inset-left)'
+				pr='env(safe-area-inset-right)'>
+				{children}
+			</Box>
 		</BottomBar>;
 	}
 }

@@ -13,11 +13,9 @@ export default function PageContainer( { title, actions, children }: {
 	const height = usePageHeight();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
-	return <Box sx={{
-		minHeight: {
-			xs: `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`,
-			sm: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`
-		}
+	return <Box minHeight={{
+		xs: `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`,
+		sm: `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`
 	}}>
 		<ScrollTop/>
 		<Container

@@ -30,14 +30,12 @@ export default function BottomBar( { children } ) {
 	
 	return <>
 		<Box
-			sx={{
-				position: 'fixed',
-				top     : 0,
-				zIndex  : 1100,
-				width   : '100%',
-				height  : 'env(safe-area-inset-top)',
-				bgcolor : 'primary.main'
-			}}
+			position='fixed'
+			top={0}
+			zIndex={1100}
+			width='100%'
+			height='env(safe-area-inset-top)'
+			bgcolor='primary.main'
 		/>
 		<Box width='100%' height='env(safe-area-inset-top)'/>
 		{children}
