@@ -12,7 +12,7 @@ const GOOGLE_AUTHORIZATION_URL = `https://accounts.google.com/o/oauth2/v2/auth?$
 export default NextAuth( {
 	providers: [
 		Providers.Google( {
-			clientId        : process.env.NEXT_PUBLIC_GOOGLE_ID,
+			clientId        : process.env.GOOGLE_ID,
 			clientSecret    : process.env.GOOGLE_SECRET,
 			authorizationUrl: GOOGLE_AUTHORIZATION_URL,
 			scope           : [
