@@ -38,14 +38,16 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	// required if sortable or editable is true
 	setData?: ( items: Item[] ) => void,
 	editable?: {
-		newData: () => Item | Promise<Item>
+		newData: () => Item | Promise<Item>,
+		min?: number,
+		max?: number
 	},
 	sortable?: boolean,
 	selectable?: {
-		min?: number,
-		max?: number,
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void
+		onSelect?: ( id: string, adding: boolean ) => void,
+		min?: number,
+		max?: number
 	},
 	columnHeader: React.ReactNodeArray,
 	columns: ( item: Item, index: number ) => React.ReactNodeArray
@@ -53,17 +55,17 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	const theme = useTheme();
 	
 	const dataItems = React.useMemo( () => {
-		const total = selectable?.selected.length;
+		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index ) => {
 			const selected = selectable?.selected.includes( item?.id || index );
 			return <TableRow
 				hover
 				selected={selected}
-				onClick={selectable ? () => {
-					if ( selected ? total <= selectable?.min : total >= selectable?.max ) return;
-					selectable.onSelect?.( item?.id || index, !selected );
-				} : undefined}>
+				onClick={selectable?.onSelect && ( () => {
+					if ( selected ? totalSelected <= selectable?.min : totalSelected >= selectable?.max ) return;
+					selectable.onSelect( item?.id || index, !selected );
+				} )}>
 				{sortable && <TableCell className='sortHandle'>
 					<div><MenuIcon/></div>
 				</TableCell>}
@@ -73,13 +75,14 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 					</TableCell> )}
 				{Boolean( editable ) && <TableCell>
 					<div>
-						<IconButton onClick={() => {
+						{( editable?.min ? data.length > editable.min : true )
+						&& <IconButton onClick={() => {
 							const _data = [ ...data ];
 							_data.splice( index, 1 );
 							setData( _data );
 						}}>
 							<CloseIcon/>
-						</IconButton>
+						</IconButton>}
 					</div>
 				</TableCell>}
 			</TableRow>;
@@ -135,9 +138,10 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
 						{Boolean( editable ) && <TableCell className='minWidth'>
-							<IconButton onClick={async () => setData( [ ...data, { ...await editable.newData() } ] )}>
+							{( editable?.max ? data.length < editable.max : true )
+							&& <IconButton onClick={async () => setData( [ ...data, { ...await editable.newData() } ] )}>
 								<AddIcon/>
-							</IconButton>
+							</IconButton>}
 						</TableCell>}
 					</TableRow>
 				</TableHead>

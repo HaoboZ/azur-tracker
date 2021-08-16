@@ -40,15 +40,17 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	// required if sortable or editable is true
 	setData?: ( items: Item[] ) => void,
 	editable?: {
-		newData: () => Item | Promise<Item>
+		newData: () => Item | Promise<Item>,
+		min?: number,
+		max?: number
 	},
 	sortable?: boolean,
 	// doesn't work with renderPanel
 	selectable?: {
-		min?: number,
-		max?: number,
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void
+		onSelect?: ( id: string, adding: boolean ) => void,
+		min?: number,
+		max?: number
 	},
 	renderRow: ( item: Item, index: number ) => React.ReactNode,
 	renderPanel?: ( item: Item, index: number ) => React.ReactNode
@@ -63,7 +65,8 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
 			{renderRow( item, index )}
-			{Boolean( editable ) && editing && <ListItemIcon sx={{ minWidth: 'unset' }}>
+			{Boolean( editable ) && editing && ( editable?.min ? data.length > editable.min : true )
+			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={() => {
 					const _data = [ ...data ];
 					_data.splice( index, 1 );
@@ -72,7 +75,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			</ListItemIcon>}
 		</>;
 		
-		const total = selectable?.selected.length;
+		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index ) => {
 			const selected = selectable?.selected.includes( item?.id || index );
@@ -93,10 +96,10 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				: selectable ? <ListItemButton
 					divider
 					selected={selected}
-					onClick={selectable ? () => {
-						if ( selected ? total <= selectable?.min : total >= selectable?.max ) return;
-						selectable.onSelect?.( item?.id || index, !selected );
-					} : undefined}
+					onClick={selectable.onSelect && ( () => {
+						if ( selected ? totalSelected <= selectable?.min : totalSelected >= selectable?.max ) return;
+						selectable.onSelect( item?.id || index, !selected );
+					} )}
 					className={editing ? 'iconSpace' : undefined}>
 					{itemRow( item, index )}
 				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
@@ -149,12 +152,12 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				name     : editing ? 'Cancel' : 'Edit',
 				onClick  : () => setEditing( !editing ),
 				startIcon: editing ? <CloseIcon/> : <EditIcon/>
-			}, {
+			}, ...( editable?.max ? data.length < editable.max : true ) ? [ {
 				name     : 'Add',
 				onClick  : async () => setData( [ ...data, { ...await editable.newData() } ] ),
-				color    : 'primary',
+				color    : 'primary' as any,
 				startIcon: <AddIcon/>
-			} ] : undefined}
+			} ] : [] ] : undefined}
 		/>}
 		{...props}>
 		{renderPanel ? sortItems : <Paper>{sortItems}</Paper>}

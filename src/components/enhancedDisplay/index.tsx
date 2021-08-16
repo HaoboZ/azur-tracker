@@ -16,14 +16,16 @@ const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
 	// required if sortable or editable is true
 	setData?: ( items: Item[] ) => void,
 	editable?: {
-		newData: () => Item | Promise<Item>
+		newData: () => Item | Promise<Item>,
+		min?: number,
+		max?: number
 	},
 	sortable?: boolean,
 	selectable?: {
-		min?: number,
-		max?: number,
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void
+		onSelect?: ( id: string, adding: boolean ) => void,
+		min?: number,
+		max?: number
 	},
 	listProps: {
 		renderRow: ( item: Item, index: number ) => React.ReactNode,

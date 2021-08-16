@@ -69,7 +69,7 @@ export default function ModalProvider( { children } ) {
 			const index = modals.findIndex( modal => modal?.id === id );
 			if ( index === -1 ) return modals;
 			const newModals = [ ...modals ];
-			newModals[ index ] = typeof value === 'function' ? value( newModals[ index ] ) : value;
+			newModals[ index ] = typeof value === 'function' ? value?.( newModals[ index ] ) : value;
 			return newModals;
 		} );
 	}, [] );
