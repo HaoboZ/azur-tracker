@@ -23,7 +23,7 @@ const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
 	sortable?: boolean,
 	selectable?: {
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void,
+		setSelected?: ( selected: string[] ) => void,
 		min?: number,
 		max?: number
 	},

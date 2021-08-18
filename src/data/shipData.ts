@@ -487,7 +487,7 @@ const ships = {
 	'Seattle'                       : [ 'Seattle', 'Priority', 'Eagle Union', 'Light Cruiser', 1, [], 'CL', 'CL/AA', 'AA', 'A/CL1', 'A/CL2', 15, 'Light', 33, 5257, 178, 365, 0, 97, 0, 12, 156, 154, 0, 157 ],
 	'Georgia'                       : [ 'Georgia', 'Priority', 'Eagle Union', 'Battleship', 1, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 33, 8297, 436, 409, 0, 30, 0, 16, 163, 0, 0, 73 ],
 	'Kitakaze'                      : [ 'Kitakaze', 'Priority', 'Sakura Empire', 'Destroyer', 1, [ 1 ], 'DD/Speed', 'T', 'AA', 'A/DD1', 'A/DD2', 15, 'Light', 44, 2641, 86, 197, 393, 197, 0, 11, 223, 122, 0, 208 ],
-	'Azuma'                         : [ 'Azuma', 'Decisive', 'Sakura Empire', 'Battleship', 1, [], 'CB/CA', 'DD/Aux', 'AA', 'A/CB1', 'A/CB2', 0, 'Medium', 27, 7541, 307, 226, 0, 50, 0, 16, 170, 0, 0, 123 ],
+	'Azuma'                         : [ 'Azuma', 'Decisive', 'Sakura Empire', 'Large Cruiser', 1, [], 'CB/CA', 'DD/Aux', 'AA', 'A/CB1', 'A/CB2', 0, 'Medium', 27, 7541, 307, 226, 0, 50, 0, 16, 170, 0, 0, 123 ],
 	'Friedrich_der_Grosse'          : [ 'Friedrich der Groβe', 'Decisive', 'Ironblood', 'Battleship', 0, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 0, 'Heavy', 30, 9886, 449, 241, 0, 27, 0, 19, 157, 0, 0, 65 ],
 	'Gascogne'                      : [ 'Gascogne', 'Priority', 'Vichya Dominion', 'Battleship', 1, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2', 15, 'Heavy', 32, 7863, 430, 241, 0, 36, 0, 16, 168, 0, 0, 71 ],
 	'Cheshire'                      : [ 'Cheshire', 'Priority', 'Royal Navy', 'Heavy Cruiser', 1, [], 'CA', 'T', 'AA', 'A/CA1/T', 'A/CA2/T', 15, 'Medium', 27, 5141, 282, 409, 208, 76, 0, 13, 156, 0, 0, 130 ],

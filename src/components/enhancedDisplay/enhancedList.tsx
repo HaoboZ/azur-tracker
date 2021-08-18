@@ -48,7 +48,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	// doesn't work with renderPanel
 	selectable?: {
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void,
+		setSelected?: ( selected: string[] ) => void,
 		min?: number,
 		max?: number
 	},
@@ -60,17 +60,27 @@ export default function EnhancedList<Item extends { id?: string }>( {
 	const [ editing, setEditing ] = React.useState( false );
 	
 	const dataItems = React.useMemo( () => {
-		const itemRow = ( item, index ) => <>
+		const itemRow = ( item, index, selected ) => <>
 			{sortable && editing && <ListItemIcon>
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
 			{renderRow( item, index )}
 			{Boolean( editable ) && editing && ( editable?.min ? data.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
-				<IconButton onClick={() => {
+				<IconButton onClick={( e ) => {
+					e.stopPropagation();
 					const _data = [ ...data ];
 					_data.splice( index, 1 );
 					setData?.( _data );
+					
+					if ( selected && totalSelected <= selectable?.min ) {
+						const newSelected = selectable.selected.filter( ( id ) => id !== ( item.id ?? index ) );
+						const selected = _data.find( ( item ) => !newSelected.includes( item.id ) );
+						if ( selected ) {
+							newSelected.push( selected.id ?? index );
+							selectable.setSelected( newSelected );
+						}
+					}
 				}}><CloseIcon/></IconButton>
 			</ListItemIcon>}
 		</>;
@@ -87,7 +97,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 							root   : editing ? 'iconSpace' : undefined,
 							content: 'center'
 						}}>
-						{itemRow( item, index )}
+						{itemRow( item, index, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
 						{renderPanel( item, index )}
@@ -96,14 +106,21 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				: selectable ? <ListItemButton
 					divider
 					selected={selected}
-					onClick={selectable.onSelect && ( () => {
-						if ( selected ? totalSelected <= selectable?.min : totalSelected >= selectable?.max ) return;
-						selectable.onSelect( item?.id || index, !selected );
+					onClick={selectable?.setSelected && ( () => {
+						let newSelected = [ ...selectable.selected ];
+						if ( selected ) {
+							if ( totalSelected <= selectable?.min ) return;
+							newSelected = newSelected.filter( ( id ) => id !== ( item?.id ?? index ) );
+						} else {
+							if ( totalSelected >= selectable?.max ) newSelected.shift();
+							newSelected.push( item?.id ?? index );
+						}
+						selectable.setSelected( newSelected );
 					} )}
 					className={editing ? 'iconSpace' : undefined}>
-					{itemRow( item, index )}
+					{itemRow( item, index, selected )}
 				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
-					{itemRow( item, index )}
+					{itemRow( item, index, selected )}
 				</ListItem>;
 		};
 		
@@ -115,7 +132,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				{row( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
-	}, [ data, Boolean( editable ), sortable, editing ] );
+	}, [ data, Boolean( editable ), sortable, editing, selectable?.selected ] );
 	
 	const sortItems = sortable
 		? data.length ? <ReactSortable

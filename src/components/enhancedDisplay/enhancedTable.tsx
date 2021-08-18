@@ -45,7 +45,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 	sortable?: boolean,
 	selectable?: {
 		selected: string[],
-		onSelect?: ( id: string, adding: boolean ) => void,
+		setSelected?: ( selected: string[] ) => void,
 		min?: number,
 		max?: number
 	},
@@ -62,9 +62,16 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 			return <TableRow
 				hover
 				selected={selected}
-				onClick={selectable?.onSelect && ( () => {
-					if ( selected ? totalSelected <= selectable?.min : totalSelected >= selectable?.max ) return;
-					selectable.onSelect( item?.id || index, !selected );
+				onClick={selectable?.setSelected && ( () => {
+					let newSelected = [ ...selectable.selected ];
+					if ( selected ) {
+						if ( totalSelected <= selectable?.min ) return;
+						newSelected = newSelected.filter( ( id ) => id !== ( item?.id ?? index ) );
+					} else {
+						if ( totalSelected >= selectable?.max ) newSelected.shift();
+						newSelected.push( item?.id ?? index );
+					}
+					selectable.setSelected( newSelected );
 				} )}>
 				{sortable && <TableCell className='sortHandle'>
 					<div><MenuIcon/></div>
@@ -76,10 +83,20 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				{Boolean( editable ) && <TableCell>
 					<div>
 						{( editable?.min ? data.length > editable.min : true )
-						&& <IconButton onClick={() => {
+						&& <IconButton onClick={( e ) => {
+							e.stopPropagation();
 							const _data = [ ...data ];
 							_data.splice( index, 1 );
 							setData( _data );
+							
+							if ( selected && totalSelected <= selectable?.min ) {
+								const newSelected = selectable.selected.filter( ( id ) => id !== ( item.id ?? index ) );
+								const selected = _data.find( ( item ) => !newSelected.includes( item.id ) );
+								if ( selected ) {
+									newSelected.push( selected.id ?? index );
+									selectable.setSelected( newSelected );
+								}
+							}
 						}}>
 							<CloseIcon/>
 						</IconButton>}
@@ -96,7 +113,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				{row( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
-	}, [ data, columns, Boolean( editable ), sortable ] );
+	}, [ data, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	const sortItems = sortable
 		? data.length ? <ReactSortable
@@ -122,8 +139,8 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				opacity   : 1,
 				transition: ( theme ) => theme.transitions.create( 'opacity' )
 			},
-			'&-exit'        : { opacity: 1 },
-			'&-exit-active' : {
+			'&-exit'       : { opacity: 1 },
+			'&-exit-active': {
 				opacity   : 0,
 				transition: ( theme ) => theme.transitions.create( 'opacity' )
 			}
