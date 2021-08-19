@@ -1341,6 +1341,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@corex/deepmerge@npm:^2.6.34":
+  version: 2.6.34
+  resolution: "@corex/deepmerge@npm:2.6.34"
+  checksum: 73a396a32f7fc5698f7ad29bc1067d8499cb1767f91b315e6ef01abede34f4342a6c5ed264928f888569db6476a85f9a3f6e5a2261ec22a637d647661784b963
+  languageName: node
+  linkType: hard
+
 "@date-io/core@npm:^2.10.11":
   version: 2.10.11
   resolution: "@date-io/core@npm:2.10.11"
@@ -3500,6 +3507,7 @@ __metadata:
     next: ^11.1.0
     next-auth: ^3.28.0
     next-pwa: ^5.3.1
+    next-sitemap: ^1.6.160
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4
@@ -7715,6 +7723,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"matcher@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "matcher@npm:4.0.0"
+  dependencies:
+    escape-string-regexp: ^4.0.0
+  checksum: d338aff31d8dfd3626873e43777f46b123579734d53bb8d18d64b08a822ba5e8d39f5fe2e23403258e6143aa0cbe20a15662720d825cd0d3af961d5a44230328
+  languageName: node
+  linkType: hard
+
 "md5.js@npm:^1.3.4":
   version: 1.3.5
   resolution: "md5.js@npm:1.3.5"
@@ -8019,6 +8036,21 @@ __metadata:
   peerDependencies:
     next: ">=9.0.0"
   checksum: 1c6f74243515ddffd4248355ae9e6a46424b3ae94ffa0db140d05dbcc59fbad839b2a6608e549aba37a7fb4908818dbd77241be0240e17a92b4b51078ec8b65d
+  languageName: node
+  linkType: hard
+
+"next-sitemap@npm:^1.6.160":
+  version: 1.6.160
+  resolution: "next-sitemap@npm:1.6.160"
+  dependencies:
+    "@corex/deepmerge": ^2.6.34
+    matcher: ^4.0.0
+    minimist: ^1.2.5
+  peerDependencies:
+    next: "*"
+  bin:
+    next-sitemap: bin/next-sitemap
+  checksum: ed347e557c4e3381ab016ea893d331ed761c21ad31d5508ec42b0d9b90f607ac4a1203f0fd0a5806e4221e4c8aa88d63d1dcc246b9a5589402e5a5ae418063f2
   languageName: node
   linkType: hard
 
