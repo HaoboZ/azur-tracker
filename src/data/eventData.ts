@@ -1,6 +1,6 @@
 export default {
 	name   : 'Microlayer Medley Rerun',
-	link   : 'https://azurlane.koumakan.jp/Azur_Anthem',
+	link   : 'https://azurlane.koumakan.jp/Microlayer_Medley',
 	endDate: '2021-09-01T23:59-07',
 	shop   : [
 		{ name: 'Bremerton', cost: 8000, amount: 5 },
