@@ -7,12 +7,15 @@ import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 
 const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
+	extraData,
 	listProps,
 	tableProps,
 	...props
 }: {
 	title?: React.ReactNode,
 	data: Item[],
+	// extra check for memo
+	extraData?: any,
 	// required if sortable or editable is true
 	setData?: ( items: Item[] ) => void,
 	editable?: {

@@ -41,6 +41,7 @@ export default function ShopModal() {
 			</Box>
 			<EnhancedDisplay
 				data={eventRef.shop}
+				extraData={shop}
 				tableProps={{
 					columnHeader: [
 						'Name',
@@ -56,7 +57,7 @@ export default function ShopModal() {
 							key='name'
 							type='number'
 							placeholder='0'
-							value={shop[ item.name ]}
+							value={shop[ item.name ] || 0}
 							onChange={( e ) => setShop( {
 								...shop,
 								[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
