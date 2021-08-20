@@ -7,7 +7,7 @@ export default function FormattedTextField( props: TextFieldProps ) {
 	
 	React.useEffect( () => {
 		if ( !focused ) setText( props.value );
-	}, [ props.value ] );
+	}, [ focused, props.value ] );
 	
 	return <TextField
 		{...props}
