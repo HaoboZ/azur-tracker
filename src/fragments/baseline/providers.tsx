@@ -10,13 +10,10 @@ import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 import SnackBarProvider from '../../lib/providers/snack';
 
-const cache = createCache( {
-	key    : 'css',
-	prepend: true
-} );
-
 export default function Providers( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {
 	const theme = useTheme();
+	
+	const [ cache ] = React.useState( () => createCache( { key: 'css', prepend: true } ) );
 	
 	return <ProviderComposer
 		providers={[

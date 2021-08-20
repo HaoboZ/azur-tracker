@@ -209,7 +209,7 @@ export function useModal<T>(
 	if ( !Component ) return React.useContext<C2>( ModalContext )();
 	
 	// is static modal
-	const id = React.useMemo( () => nanoid( 16 ), [] );
+	const [ id ] = React.useState( () => nanoid( 16 ) );
 	const context = React.useContext<C1<T>>( ModalContext );
 	
 	const [ controls, setControls ] = React.useState<StaticModalControls<T>>( {} as never );

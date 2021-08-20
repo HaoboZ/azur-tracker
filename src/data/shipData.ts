@@ -43,6 +43,7 @@ const ships = {
 	'Charles_Ausburne'              : [ 'Charles Ausburne', 'Elite', 'Eagle Union', 'Destroyer', 6, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 82, 'Light', 42, 2112, 87, 178, 291, 158, 0, 9, 215, 212, 0, 207 ],
 	'Halsey_Powell'                 : [ 'Halsey Powell', 'Rare', 'Eagle Union', 'Destroyer', 6, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 55, 'Light', 42, 2095, 81, 220, 281, 160, 0, 9, 203, 214, 0, 198 ],
 	'Allen_M._Sumner'               : [ 'Allen M. Sumner', 'Super Rare', 'Eagle Union', 'Destroyer', 2, [], 'DD/Speed', 'T', 'AA', 'A/DD1', 'A/DD2', 80, 'Light', 40, 2526, 140, 233, 373, 179, 0, 10, 229, 221, 0, 208 ],
+	'Ingraham'                      : [ 'Ingraham', 'Super Rare', 'Eagle Union', 'Destroyer', 7, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 75, 'Light', 40, 2400, 137, 230, 378, 179, 0, 10, 229, 221, 0, 208 ],
 	'Cooper'                        : [ 'Cooper', 'Elite', 'Eagle Union', 'Destroyer', 5, [ 0, 0, 0, 1, 1 ], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 22, 'Light', 40, 2190, 126, 200, 360, 179, 0, 9, 220, 215, 0, 202 ],
 	'Eldridge'                      : [ 'Eldridge', 'Super Rare', 'Eagle Union', 'Destroyer', 4, [], 'DD/Speed', 'T', 'AA', 'A/DD1', 'A/DD2', 75, 'Light', 25, 1720, 81, 183, 381, 211, 0, 10, 231, 226, 0, 194 ],
 	'Omaha'                         : [ 'Omaha', 'Common', 'Eagle Union', 'Light Cruiser', 6, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T', 67, 'Light', 35, 3237, 142, 281, 207, 101, 0, 8, 182, 80, 0, 151 ],
@@ -129,6 +130,7 @@ const ships = {
 	'Dace'                          : [ 'Dace', 'Elite', 'Eagle Union', 'Submarine', 4, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 68, 'Light', 16, 1692, 71, 0, 503, 41, 0, 6, 90, 0, 243, 178 ],
 	'Albacore_µ'                    : [ 'Albacore μ', 'Elite', 'Eagle Union', 'Submarine', 3, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 79, 'Light', 16, 1843, 59, 0, 507, 41, 0, 6, 92, 0, 0, 193 ],
 	'Archerfish'                    : [ 'Archerfish', 'Super Rare', 'Eagle Union', 'Submarine', 1, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2', 90, 'Light', 16, 1924, 65, 0, 530, 41, 0, 7, 95, 0, 0, 192 ],
+	'Nautilus'                      : [ 'Nautilus', 'Elite', 'Eagle Union', 'Submarine', 7, [], 'ST', 'ST', 'CL/DD/Sub', 'A/SS1', 'A/SS2', 69, 'Light', 13, 2458, 113, 0, 499, 36, 0, 6, 92, 0, 0, 193 ],
 	'Vestal'                        : [ 'Vestal', 'Elite', 'Eagle Union', 'Repair Ship', 1, [], 'A/AR', 'AA', 'AA', 'A/AR1', 'A/AR2', 79, 'Light', 16, 4624, 50, 152, 0, 43, 0, 10, 168, 0, 0, 108 ],
 	'Vampire'                       : [ 'Vampire', 'Elite', 'Royal Navy', 'Destroyer', 6, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 42, 'Light', 40, 1314, 71, 156, 376, 195, 0, 9, 196, 207, 0, 167 ],
 	'Amazon'                        : [ 'Amazon', 'Elite', 'Royal Navy', 'Destroyer', 6, [], 'DD', 'T', 'AA', 'A/DD1', 'A/DD2', 72, 'Light', 47, 1535, 65, 194, 360, 231, 0, 8, 192, 216, 0, 186 ],
@@ -503,21 +505,6 @@ const ships = {
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2', 36, 'Medium', 34, 4721, 0, 250, 0, 47, 340, 14, 100, 0, 0, 65 ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2', 87, 'Medium', 31, 6338, 0, 320, 0, 52, 419, 14, 115, 0, 0, 103 ],
 	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 2, [ 1, 1, 1, 1, 1 ], 'CL', 'DD', 'AA', 'A/CL1', 'ACL2', 33, 'Light', 33, 4181, 175, 414, 0, 95, 0, 12, 195, 165, 0, 184 ]
-};
-
-export const blankShip = {
-	id       : '_',
-	name     : 'No Ship',
-	link     : '',
-	rarity   : '',
-	faction  : '',
-	type     : '',
-	tier     : 7,
-	special  : [],
-	equipType: [],
-	love     : 0,
-	lvl      : 0,
-	equip    : []
 };
 
 export default mapValues( ships, ( val, key ) => ( {

@@ -1,4 +1,5 @@
 import { Mutex } from 'async-mutex';
+import axios from 'axios';
 import { md5 } from 'hash-wasm';
 import stringify from 'json-stable-stringify';
 import { isEqual } from 'lodash';
@@ -12,12 +13,13 @@ export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
 	const body = stringify( state );
-	const res = await fetch( `/api/checkData?${new URLSearchParams( {
-		checksum : await md5( body ),
-		lastSaved: main.lastSaved
-	} )}` );
-	const valid = await res.json();
-	return { valid, body };
+	const { data } = await axios( '/api/checkData', {
+		params: {
+			checksum : await md5( body ),
+			lastSaved: main.lastSaved
+		}
+	} );
+	return { valid: data, data: body };
 }
 
 export async function setBackup( integrity ) {
@@ -25,18 +27,17 @@ export async function setBackup( integrity ) {
 		store.dispatch( setLastSaved( new Date().toISOString() ) );
 		return;
 	}
-	const { valid, body } = integrity;
+	const { valid, data } = integrity;
 	if ( !valid ) return;
 	if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
 		await getBackup( integrity, false );
 		return;
 	}
 	store.dispatch( setLastSaved( new Date().toISOString() ) );
-	await fetch( `/api/setData?${new URLSearchParams( {
-		modifiedTime: store.getState().main.lastSaved
-	} )}`, {
+	await axios( '/api/setData', {
 		method: 'POST',
-		body
+		params: { modifiedTime: store.getState().main.lastSaved },
+		data
 	} );
 }
 
@@ -50,8 +51,7 @@ export async function getBackup( integrity, check = true ) {
 			return;
 		}
 	}
-	const res = await fetch( '/api/getData' );
-	const { data, lastSaved } = await res.json();
+	const { data: { data, lastSaved } } = await axios( '/api/getData' );
 	store.dispatch( setLastSaved( lastSaved ) );
 	const state = store.getState();
 	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );

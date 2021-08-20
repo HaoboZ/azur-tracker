@@ -1,10 +1,13 @@
 export default {
-	name   : 'Azur Anthem',
+	name   : 'Microlayer Medley Rerun',
 	link   : 'https://azurlane.koumakan.jp/Azur_Anthem',
-	endDate: '2021-08-04T23:59-07',
+	endDate: '2021-09-01T23:59-07',
 	shop   : [
-		{ name: 'Azusa Miura', cost: 8000, amount: 5 },
+		{ name: 'Bremerton', cost: 8000, amount: 5 },
+		{ name: 'Casablanca', cost: 8000, amount: 5 },
 		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
+		{ name: 'TBM Avenger (VT-18 Squadron)', cost: 2000, amount: 1 },
+		{ name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Sakura Tech Box', cost: 300, amount: 4 },
