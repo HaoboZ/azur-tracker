@@ -5,6 +5,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import eventImage from '../../public/images/event.png';
+import ActionTitle from '../components/actionTitle';
 import PageContainer from '../components/pageContainer';
 import eventRef from '../data/eventData';
 import EventFields from '../fragments/event/eventFields';
@@ -39,7 +40,8 @@ export default function Event() {
 	      // points still needed to be farmed
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
-	return <PageContainer title='Event Tracker'>
+	return <PageContainer>
+		<ActionTitle>Event Tracker</ActionTitle>
 		<Box
 			display='flex'
 			justifyContent='center'

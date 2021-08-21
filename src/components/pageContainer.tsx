@@ -1,15 +1,12 @@
-import { Box, ButtonProps, Container, Theme, useMediaQuery } from '@material-ui/core';
+import { Box, Container, ContainerProps, Theme, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 
 import usePageHeight from '../lib/hooks/usePageHeight';
-import ActionTitle from './actionTitle';
 import ScrollTop from './scrollTop';
 
-export default function PageContainer( { title, actions, children }: {
-	title?: string,
-	actions?: ( { name: string } & ButtonProps )[],
+export default function PageContainer( { children, ...props }: {
 	children?: React.ReactNode
-} ) {
+} & ContainerProps ) {
 	const height = usePageHeight();
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
@@ -21,8 +18,8 @@ export default function PageContainer( { title, actions, children }: {
 		<Container
 			fixed
 			disableGutters={!wide}
-			sx={{ overflowX: 'hidden', minHeight: 'inherit' }}>
-			<ActionTitle title={title} actions={actions}/>
+			sx={{ overflowX: 'hidden', minHeight: 'inherit', ...props.sx }}
+			{...props}>
 			{children}
 		</Container>
 	</Box>;

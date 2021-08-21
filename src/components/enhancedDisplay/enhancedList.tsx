@@ -7,8 +7,8 @@ import {
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
-	ListProps,
 	Paper,
+	Typography,
 	useTheme
 } from '@material-ui/core';
 import {
@@ -22,72 +22,54 @@ import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import ActionTitle from '../actionTitle';
+import ActionTitle, { ActionButtonProps } from '../actionTitle';
+import Loading from '../loading';
+import { deleteRow, EnhancedDisplayProps, EnhancedListProps, selectRow } from './helpers';
 
 export default function EnhancedList<Item extends { id?: string }>( {
 	title,
-	data,
+	actionTitleProps,
+	data = [],
 	setData,
 	editable,
 	sortable,
 	selectable,
+	loading,
+	loadingComponent = <Loading/>,
+	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	renderRow,
 	renderPanel,
+	removeDelete,
+	addButtonProps,
+	editButtonProps,
 	...props
-}: {
-	title?: React.ReactNode,
-	data: Item[],
-	// required if sortable or editable is true
-	setData?: ( items: Item[] ) => void,
-	editable?: {
-		newData: () => Item | Promise<Item>,
-		min?: number,
-		max?: number
-	},
-	sortable?: boolean,
-	// doesn't work with renderPanel
-	selectable?: {
-		selected: string[],
-		setSelected?: ( selected: string[] ) => void,
-		min?: number,
-		max?: number
-	},
-	renderRow: ( item: Item, index: number ) => React.ReactNode,
-	renderPanel?: ( item: Item, index: number ) => React.ReactNode
-} & ListProps ) {
+}: EnhancedDisplayProps<Item> & EnhancedListProps<Item> ) {
 	const theme = useTheme();
 	
 	const [ editing, setEditing ] = React.useState( false );
 	
 	const dataItems = React.useMemo( () => {
-		const itemRow = ( item, index, selected ) => <>
+		const totalSelected = selectable?.selected.length;
+		
+		const row = ( item, index, selected ) => <>
 			{sortable && editing && <ListItemIcon>
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
-			{renderRow( item, index )}
-			{Boolean( editable ) && editing && ( editable?.min ? data.length > editable.min : true )
+			{renderRow( item, index, removeDelete
+				? () => deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected )
+				: undefined )}
+			{Boolean( editable ) && !removeDelete && editing && ( editable?.min ? data.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={( e ) => {
 					e.stopPropagation();
-					const _data = [ ...data ];
-					_data.splice( index, 1 );
-					setData?.( _data );
-					
-					if ( selected && totalSelected <= selectable?.min ) {
-						const newSelected = selectable.selected.filter( ( id ) => id !== ( item.id ?? index ) );
-						const selected = _data.find( ( item ) => !newSelected.includes( item.id ) );
-						if ( selected ) {
-							newSelected.push( selected.id ?? index );
-							selectable.setSelected( newSelected );
-						}
-					}
-				}}><CloseIcon/></IconButton>
+					deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
+				}}>
+					<CloseIcon/>
+				</IconButton>
 			</ListItemIcon>}
 		</>;
 		
-		const totalSelected = selectable?.selected.length;
-		
-		const row = ( item, index ) => {
+		const panel = ( item, index ) => {
 			const selected = selectable?.selected.includes( item?.id || index );
 			return renderPanel
 				? <Accordion>
@@ -97,7 +79,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 							root   : editing ? 'iconSpace' : undefined,
 							content: 'center'
 						}}>
-						{itemRow( item, index, selected )}
+						{row( item, index, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
 						{renderPanel( item, index )}
@@ -106,45 +88,38 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				: selectable ? <ListItemButton
 					divider
 					selected={selected}
-					onClick={selectable?.setSelected && ( () => {
-						let newSelected = [ ...selectable.selected ];
-						if ( selected ) {
-							if ( totalSelected <= selectable?.min ) return;
-							newSelected = newSelected.filter( ( id ) => id !== ( item?.id ?? index ) );
-						} else {
-							if ( totalSelected >= selectable?.max ) newSelected.shift();
-							newSelected.push( item?.id ?? index );
-						}
-						selectable.setSelected( newSelected );
-					} )}
+					onClick={selectable?.setSelected
+					&& ( () => selectRow( selectable, item, index, selected, totalSelected ) )}
 					className={editing ? 'iconSpace' : undefined}>
-					{itemRow( item, index, selected )}
+					{row( item, index, selected )}
 				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
-					{itemRow( item, index, selected )}
+					{row( item, index, selected )}
 				</ListItem>;
 		};
 		
-		return <TransitionGroup component={null}>
+		const transition = <TransitionGroup component={null}>
 			{data.map( ( item, index ) => <CSSTransition
 				key={item.id || index}
 				timeout={theme.transitions.duration.standard}
 				classNames='slide'>
-				{row( item, index )}
+				{panel( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
+		
+		const sort = sortable
+			? <ReactSortable
+				list={data as any}
+				setList={setData as any}
+				handle='.sortHandle'
+				ghostClass='selectedSort'
+				forceFallback
+				animation={theme.transitions.duration.shorter}>
+				{transition}
+			</ReactSortable>
+			: transition;
+		
+		return renderPanel ? sort : <Paper>{sort}</Paper>;
 	}, [ data, Boolean( editable ), sortable, editing, selectable?.selected ] );
-	
-	const sortItems = sortable
-		? data.length ? <ReactSortable
-			list={data as any}
-			setList={setData as any}
-			handle='.sortHandle'
-			ghostClass='selectedSort'
-			forceFallback
-			animation={theme.transitions.duration.shorter}>
-			{dataItems}
-		</ReactSortable> : undefined
-		: dataItems;
 	
 	return <List
 		sx={{
@@ -164,19 +139,30 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			}
 		}}
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
-			title={title}
-			actions={editable || sortable ? [ {
-				name     : editing ? 'Cancel' : 'Edit',
-				onClick  : () => setEditing( !editing ),
-				startIcon: editing ? <CloseIcon/> : <EditIcon/>
-			}, ...( editable?.max ? data.length < editable.max : true ) ? [ {
-				name     : 'Add',
-				onClick  : async () => setData( [ ...data, { ...await editable.newData() } ] ),
-				color    : 'primary' as any,
-				startIcon: <AddIcon/>
-			} ] : [] ] : undefined}
-		/>}
+			{...actionTitleProps}
+			actions={!loading && ( editable || sortable ) ? [
+				...sortable || !removeDelete ? [ {
+					name     : editing ? 'Cancel' : 'Edit',
+					onClick  : () => setEditing( !editing ),
+					color    : editing ? 'error' : 'info',
+					startIcon: editing ? <CloseIcon/> : <EditIcon/>,
+					...editButtonProps
+				} as ActionButtonProps ] : [],
+				...( editable?.max ? data.length < editable.max : true ) ? [ {
+					name     : 'Add',
+					onClick  : async () => {
+						editable.onAdd?.();
+						setData?.( [ ...data, { ...await editable.newData() } ] );
+					},
+					color    : 'secondary',
+					startIcon: <AddIcon/>,
+					...addButtonProps
+				} as ActionButtonProps ] : [] ] : undefined}>
+			{title}
+		</ActionTitle>}
 		{...props}>
-		{renderPanel ? sortItems : <Paper>{sortItems}</Paper>}
+		{loading || !data.length
+			? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
+			: dataItems}
 	</List>;
 }

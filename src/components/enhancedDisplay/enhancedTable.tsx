@@ -6,9 +6,9 @@ import {
 	TableBody,
 	TableCell,
 	TableContainer,
-	TableContainerProps,
 	TableHead,
 	TableRow,
+	Typography,
 	useTheme
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
@@ -17,41 +17,27 @@ import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
+import Loading from '../loading';
+import { deleteRow, EnhancedDisplayProps, EnhancedTableProps, selectRow } from './helpers';
 
-const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) => {
-	return <TableBody ref={ref}>{children}</TableBody>;
-} );
+const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) =>
+	<TableBody ref={ref}>{children}</TableBody> );
 
 export default function EnhancedTable<Item extends { id?: string }>( {
 	title,
-	data,
+	actionTitleProps,
+	data = [],
 	setData,
 	editable,
 	sortable,
 	selectable,
+	loading,
+	loadingComponent = <Loading/>,
+	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	columnHeader,
 	columns,
 	...props
-}: {
-	title?: React.ReactNode,
-	data: Item[],
-	// required if sortable or editable is true
-	setData?: ( items: Item[] ) => void,
-	editable?: {
-		newData: () => Item | Promise<Item>,
-		min?: number,
-		max?: number
-	},
-	sortable?: boolean,
-	selectable?: {
-		selected: string[],
-		setSelected?: ( selected: string[] ) => void,
-		min?: number,
-		max?: number
-	},
-	columnHeader: React.ReactNodeArray,
-	columns: ( item: Item, index: number ) => React.ReactNodeArray
-} & TableContainerProps ) {
+}: EnhancedDisplayProps<Item> & EnhancedTableProps<Item> ) {
 	const theme = useTheme();
 	
 	const dataItems = React.useMemo( () => {
@@ -59,44 +45,24 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 		
 		const row = ( item, index ) => {
 			const selected = selectable?.selected.includes( item?.id || index );
+			
 			return <TableRow
 				hover
 				selected={selected}
-				onClick={selectable?.setSelected && ( () => {
-					let newSelected = [ ...selectable.selected ];
-					if ( selected ) {
-						if ( totalSelected <= selectable?.min ) return;
-						newSelected = newSelected.filter( ( id ) => id !== ( item?.id ?? index ) );
-					} else {
-						if ( totalSelected >= selectable?.max ) newSelected.shift();
-						newSelected.push( item?.id ?? index );
-					}
-					selectable.setSelected( newSelected );
-				} )}>
+				onClick={selectable?.setSelected
+				&& ( () => selectRow( selectable, item, index, selected, totalSelected ) )}>
 				{sortable && <TableCell className='sortHandle'>
 					<div><MenuIcon/></div>
 				</TableCell>}
-				{columns( item, index ).map( ( cell, index ) =>
-					<TableCell key={index}>
-						<div>{cell}</div>
-					</TableCell> )}
+				{columns( item, index ).map( ( cell, index ) => <TableCell key={index}>
+					<div>{cell}</div>
+				</TableCell> )}
 				{Boolean( editable ) && <TableCell>
 					<div>
 						{( editable?.min ? data.length > editable.min : true )
 						&& <IconButton onClick={( e ) => {
 							e.stopPropagation();
-							const _data = [ ...data ];
-							_data.splice( index, 1 );
-							setData( _data );
-							
-							if ( selected && totalSelected <= selectable?.min ) {
-								const newSelected = selectable.selected.filter( ( id ) => id !== ( item.id ?? index ) );
-								const selected = _data.find( ( item ) => !newSelected.includes( item.id ) );
-								if ( selected ) {
-									newSelected.push( selected.id ?? index );
-									selectable.setSelected( newSelected );
-								}
-							}
+							deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
 						}}>
 							<CloseIcon/>
 						</IconButton>}
@@ -105,7 +71,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 			</TableRow>;
 		};
 		
-		return <TransitionGroup component={null}>
+		const transition = <TransitionGroup component={null}>
 			{data.map( ( item, index ) => <CSSTransition
 				key={item.id || index}
 				timeout={theme.transitions.duration.standard}
@@ -113,22 +79,20 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				{row( item, index )}
 			</CSSTransition> )}
 		</TransitionGroup>;
+		
+		return sortable
+			? <ReactSortable
+				tag={forwardTableBody}
+				list={data as any}
+				setList={setData as any}
+				handle='.sortHandle'
+				ghostClass='selectedSort'
+				forceFallback
+				animation={theme.transitions.duration.shorter}>
+				{transition}
+			</ReactSortable>
+			: <TableBody>{transition}</TableBody>;
 	}, [ data, columns, Boolean( editable ), sortable, selectable?.selected ] );
-	
-	const sortItems = sortable
-		? data.length ? <ReactSortable
-			tag={forwardTableBody}
-			list={data as any}
-			setList={setData as any}
-			handle='.sortHandle'
-			ghostClass='selectedSort'
-			forceFallback
-			animation={theme.transitions.duration.shorter}>
-			{dataItems}
-		</ReactSortable> : undefined
-		: <TableBody>
-			{dataItems}
-		</TableBody>;
 	
 	return <Box sx={{
 		'& .minWidth'        : { width: '1%' },
@@ -139,14 +103,14 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				opacity   : 1,
 				transition: ( theme ) => theme.transitions.create( 'opacity' )
 			},
-			'&-exit'       : { opacity: 1 },
-			'&-exit-active': {
+			'&-exit'        : { opacity: 1 },
+			'&-exit-active' : {
 				opacity   : 0,
 				transition: ( theme ) => theme.transitions.create( 'opacity' )
 			}
 		}
 	}}>
-		{title && <ActionTitle title={title}/>}
+		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
 			<Table size='small'>
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
@@ -155,14 +119,23 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						{columnHeader.map( ( cell, index ) =>
 							<TableCell key={index}>{cell}</TableCell> )}
 						{Boolean( editable ) && <TableCell className='minWidth'>
-							{( editable?.max ? data.length < editable.max : true )
-							&& <IconButton onClick={async () => setData( [ ...data, { ...await editable.newData() } ] )}>
+							{!loading && ( editable?.max ? data.length < editable.max : true )
+							&& <IconButton onClick={async () => {
+								editable.onAdd?.();
+								setData?.( [ ...data, { ...await editable.newData() } ] );
+							}}>
 								<AddIcon/>
 							</IconButton>}
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				{sortItems}
+				{loading || !data.length
+					? <TableBody><TableRow>
+						<TableCell colSpan={columnHeader.length + 2}>
+							{loading ? loadingComponent : emptyComponent}
+						</TableCell>
+					</TableRow></TableBody>
+					: dataItems}
 			</Table>
 		</TableContainer>
 	</Box>;

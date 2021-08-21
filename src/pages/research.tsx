@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 
+import ActionTitle from '../components/actionTitle';
 import PageContainer from '../components/pageContainer';
 import { researchShips } from '../data/researchData';
 import ResearchGroup from '../fragments/research/researchGroup';
@@ -22,7 +23,8 @@ export default function Research() {
 		} ), 1000 );
 	}, [] );
 	
-	return <PageContainer title='Research Tracker'>
+	return <PageContainer>
+		<ActionTitle>Research Tracker</ActionTitle>
 		<Tabs
 			variant='fullWidth'
 			selectionFollowsFocus

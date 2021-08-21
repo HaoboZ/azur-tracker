@@ -2,6 +2,7 @@ import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/co
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import ActionTitle from '../components/actionTitle';
 import PageContainer from '../components/pageContainer';
 import { ModalVariant } from '../components/pageModal';
 import VirtualDisplay from '../components/virtualDisplay';
@@ -29,7 +30,8 @@ export default function Ship() {
 		dispatch( ship_checkVersion() );
 	}, [] );
 	
-	return <PageContainer title='Ship Tracker'>
+	return <PageContainer>
+		<ActionTitle>Ship Tracker</ActionTitle>
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}

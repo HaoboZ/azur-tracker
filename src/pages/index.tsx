@@ -19,6 +19,7 @@ import { getSession, signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import ActionTitle from '../components/actionTitle';
 import Link from '../components/link';
 import PageContainer from '../components/pageContainer';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
@@ -45,7 +46,8 @@ export default function Home() {
 	const online = useNetworkStatus();
 	
 	// noinspection HtmlUnknownTarget
-	return <PageContainer title='Azur Lane Tracker'>
+	return <PageContainer>
+		<ActionTitle>Azur Lane Tracker</ActionTitle>
 		<List sx={{
 			'& .longText'  : { width: '80%' },
 			'& .longAction': { width: '40%' }
@@ -54,7 +56,8 @@ export default function Home() {
 				{online ? <>
 					<ListItemText classes={{ primary: 'longText' }}>
 						{loading ? 'Loading...' :
-							session ? `Account: ${session.user.email}` : 'Sign in for Cloud Save'}
+							session ? `Account: ${session.user.email}`
+								: 'Sign in for Cloud Save'}
 					</ListItemText>
 					{!loading && <ListItemSecondaryAction>
 						{session ? <Button

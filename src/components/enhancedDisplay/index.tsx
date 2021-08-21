@@ -1,50 +1,26 @@
-import { ListProps, TableContainerProps, Theme, useMediaQuery } from '@material-ui/core';
+import { Theme, useMediaQuery } from '@material-ui/core';
 import { omit } from 'lodash';
 import React from 'react';
 import { shallowEqual } from 'react-redux';
 
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
+import { EnhancedDisplayProps, EnhancedListProps, EnhancedTableProps } from './helpers';
 
 const EnhancedDisplay = React.memo( function EnhancedDisplay<Item>( {
-	extraData,
 	listProps,
 	tableProps,
 	...props
-}: {
-	title?: React.ReactNode,
-	data: Item[],
-	// extra check for memo
-	extraData?: any,
-	// required if sortable or editable is true
-	setData?: ( items: Item[] ) => void,
-	editable?: {
-		newData: () => Item | Promise<Item>,
-		min?: number,
-		max?: number
-	},
-	sortable?: boolean,
-	selectable?: {
-		selected: string[],
-		setSelected?: ( selected: string[] ) => void,
-		min?: number,
-		max?: number
-	},
-	listProps: {
-		renderRow: ( item: Item, index: number ) => React.ReactNode,
-		renderPanel?: ( item: Item, index: number ) => React.ReactNode
-	} & ListProps,
-	tableProps: {
-		columnHeader: React.ReactNodeArray,
-		columns: ( item: Item, index: number ) => React.ReactNodeArray
-	} & TableContainerProps
+}: EnhancedDisplayProps<Item> & {
+	listProps: EnhancedListProps<Item>,
+	tableProps: EnhancedTableProps<Item>
 } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
-		return <EnhancedTable {...tableProps} {...props as any}/>;
+		return <EnhancedTable {...tableProps} {...props}/>;
 	} else {
-		return <EnhancedList {...listProps} {...props as any}/>;
+		return <EnhancedList {...listProps} {...props}/>;
 	}
 }, ( prevProps, nextProps ) => shallowEqual(
 	omit( prevProps, [ 'tableProps', 'listProps' ] ),
