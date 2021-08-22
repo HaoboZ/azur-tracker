@@ -12,18 +12,19 @@ import {
 	useTheme
 } from '@material-ui/core';
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
+import { isEqual, pick } from 'lodash';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 import Loading from '../loading';
-import { deleteRow, EnhancedDisplayProps, EnhancedTableProps, selectRow } from './helpers';
+import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
 const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) =>
 	<TableBody ref={ref}>{children}</TableBody> );
 
-export default function EnhancedTable<Item extends { id?: string }>( {
+const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: string }>( {
 	title,
 	actionTitleProps,
 	data = [],
@@ -50,7 +51,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 				hover
 				selected={selected}
 				onClick={selectable?.setSelected
-				&& ( () => selectRow( selectable, item, index, selected, totalSelected ) )}>
+				&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}>
 				{sortable && <TableCell className='sortHandle'>
 					<div><MenuIcon/></div>
 				</TableCell>}
@@ -62,7 +63,7 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 						{( editable?.min ? data.length > editable.min : true )
 						&& <IconButton onClick={( e ) => {
 							e.stopPropagation();
-							deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
+							_deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
 						}}>
 							<CloseIcon/>
 						</IconButton>}
@@ -139,4 +140,8 @@ export default function EnhancedTable<Item extends { id?: string }>( {
 			</Table>
 		</TableContainer>
 	</Box>;
-}
+}, ( prevProps, nextProps ) =>
+	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
+	&& Object.is( prevProps.data, nextProps.data )
+	&& Object.is( prevProps.extraData, nextProps.extraData ) );
+export default EnhancedTable;

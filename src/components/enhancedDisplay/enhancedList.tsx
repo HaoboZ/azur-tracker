@@ -18,15 +18,16 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	Menu as MenuIcon
 } from '@material-ui/icons';
+import { isEqual, pick } from 'lodash';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle, { ActionButtonProps } from '../actionTitle';
 import Loading from '../loading';
-import { deleteRow, EnhancedDisplayProps, EnhancedListProps, selectRow } from './helpers';
+import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
 
-export default function EnhancedList<Item extends { id?: string }>( {
+const EnhancedList = React.memo( function EnhancedList<Item extends { id?: string }>( {
 	title,
 	actionTitleProps,
 	data = [],
@@ -56,13 +57,13 @@ export default function EnhancedList<Item extends { id?: string }>( {
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
 			{renderRow( item, index, removeDelete
-				? () => deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected )
+				? () => _deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected )
 				: undefined )}
 			{Boolean( editable ) && !removeDelete && editing && ( editable?.min ? data.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={( e ) => {
 					e.stopPropagation();
-					deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
+					_deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
 				}}>
 					<CloseIcon/>
 				</IconButton>
@@ -89,7 +90,7 @@ export default function EnhancedList<Item extends { id?: string }>( {
 					divider
 					selected={selected}
 					onClick={selectable?.setSelected
-					&& ( () => selectRow( selectable, item, index, selected, totalSelected ) )}
+					&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}
 					className={editing ? 'iconSpace' : undefined}>
 					{row( item, index, selected )}
 				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
@@ -165,4 +166,8 @@ export default function EnhancedList<Item extends { id?: string }>( {
 			? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
 			: dataItems}
 	</List>;
-}
+}, ( prevProps, nextProps ) =>
+	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
+	&& Object.is( prevProps.data, nextProps.data )
+	&& Object.is( prevProps.extraData, nextProps.extraData ) );
+export default EnhancedList;

@@ -7,7 +7,7 @@ export type EnhancedDisplayProps<Item> = {
 	title?: React.ReactNode,
 	actionTitleProps?: ActionTitleProps,
 	data: Item[],
-	// extra check for memo
+	// extra check for memo, needs to be memoized
 	extraData?: any,
 	// required if sortable is true
 	setData?: ( ( items: Item[] ) => void ),
@@ -45,7 +45,7 @@ export type EnhancedTableProps<Item> = {
 	columns: ( item: Item, index: number ) => React.ReactNodeArray
 } & Omit<TableContainerProps, 'title'>;
 
-export function deleteRow( data, setData, editable, selectable,
+export function _deleteRow( data, setData, editable, selectable,
 	item, index, selected, totalSelected ) {
 	const _data = [ ...data ];
 	const deleted = _data.splice( index, 1 );
@@ -62,7 +62,7 @@ export function deleteRow( data, setData, editable, selectable,
 	}
 }
 
-export function selectRow( selectable,
+export function _selectRow( selectable,
 	item, index, selected, totalSelected ) {
 	let newSelected = [ ...selectable.selected ];
 	if ( selected ) {

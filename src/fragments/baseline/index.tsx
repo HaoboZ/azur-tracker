@@ -12,8 +12,6 @@ export default function Baseline( { pageProps, children }: { pageProps, children
 	
 	return <Providers pageProps={pageProps}>
 		<CssBaseline/>
-		<Wrapper>
-			{children}
-		</Wrapper>
+		<Wrapper>{children}</Wrapper>
 	</Providers>;
 }

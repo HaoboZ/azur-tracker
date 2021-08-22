@@ -5,9 +5,7 @@ import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
 export default function Navigation( { children } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
-	
-	if ( wide ) {
+	if ( useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) ) ) {
 		return <TitleBar>
 			<Box
 				pl='env(safe-area-inset-left)'

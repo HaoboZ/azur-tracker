@@ -1,19 +1,20 @@
 import { List, Paper } from '@material-ui/core';
+import { isEqual } from 'lodash';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
-export default function VirtualList( {
+const VirtualList = React.memo( function VirtualList( {
 	getTableProps,
 	rows,
 	prepareRow,
 	onClick,
 	renderRow
-}: TableInstance & {
+}: {
 	onClick?: ( row: Row ) => void,
 	renderRow: ( props: { row: Row, onClick: ( row: Row ) => void, rowProps } ) => React.ReactNode
-} ) {
+} & TableInstance ) {
 	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
 			{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
@@ -38,4 +39,7 @@ export default function VirtualList( {
 			</FixedSizeList>}
 		</ReactWindowScroller>
 	</Paper>;
-}
+}, ( prevProps, nextProps ) =>
+	isEqual( prevProps.state, nextProps.state )
+	&& Object.is( prevProps.rows, nextProps.rows ) );
+export default VirtualList;

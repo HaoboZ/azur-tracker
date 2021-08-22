@@ -1,4 +1,5 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import { isEqual } from 'lodash';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
@@ -6,14 +7,14 @@ import { ReactWindowScroller } from 'react-window-scroller';
 
 import { useMappedColorClasses } from '../../data/colors';
 
-export default function VirtualTable( {
+const VirtualTable = React.memo( function VirtualTable( {
 	getTableProps,
 	getTableBodyProps,
 	headerGroups,
 	rows,
 	prepareRow,
 	onClick
-}: TableInstance & { onClick?: ( row: Row ) => void } ) {
+}: { onClick?: ( row: Row ) => void } & TableInstance ) {
 	const colorClasses = useMappedColorClasses();
 	
 	const bodyRef = React.useRef<HTMLDivElement>();
@@ -80,4 +81,7 @@ export default function VirtualTable( {
 			</ReactWindowScroller>
 		</TableBody>
 	</Table>;
-}
+}, ( prevProps, nextProps ) =>
+	isEqual( prevProps.state, nextProps.state )
+	&& Object.is( prevProps.rows, nextProps.rows ) );
+export default VirtualTable;
