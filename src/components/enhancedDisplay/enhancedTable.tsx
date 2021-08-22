@@ -28,6 +28,7 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 	title,
 	actionTitleProps,
 	data = [],
+	extraData,
 	setData,
 	editable,
 	sortable,
@@ -93,7 +94,7 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 				{transition}
 			</ReactSortable>
 			: <TableBody>{transition}</TableBody>;
-	}, [ data, columns, Boolean( editable ), sortable, selectable?.selected ] );
+	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box sx={{
 		'& .minWidth'        : { width: '1%' },

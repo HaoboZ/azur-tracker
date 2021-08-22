@@ -31,6 +31,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	title,
 	actionTitleProps,
 	data = [],
+	extraData,
 	setData,
 	editable,
 	sortable,
@@ -50,6 +51,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	const [ editing, setEditing ] = React.useState( false );
 	
 	const dataItems = React.useMemo( () => {
+		console.log( extraData );
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, selected ) => <>
@@ -120,7 +122,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 			: transition;
 		
 		return renderPanel ? sort : <Paper>{sort}</Paper>;
-	}, [ data, Boolean( editable ), sortable, editing, selectable?.selected ] );
+	}, [ data, extraData, Boolean( editable ), sortable, editing, selectable?.selected ] );
 	
 	return <List
 		sx={{

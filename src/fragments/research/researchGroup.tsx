@@ -40,6 +40,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 	return <>
 		<EnhancedDisplay
 			data={researchData}
+			extraData={ships}
 			tableProps={{
 				columnHeader: [
 					'Name',

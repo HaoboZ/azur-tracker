@@ -14,6 +14,7 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 	return <EnhancedDisplay
 		title='Farming'
 		data={farming}
+		extraData={remainingPoints}
 		setData={( items ) => dispatch( event_setFarming( items ) )}
 		editable={{
 			newData: () => ( { id: nanoid( 16 ), points: 0, oil: 0 } )
@@ -57,6 +58,7 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 		}}
 		listProps={{
 			renderRow: ( item, index ) => {
+				console.log( remainingPoints );
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>
