@@ -79,7 +79,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 					<AccordionSummary
 						expandIcon={<ExpandMoreIcon/>}
 						classes={{
-							root   : editing ? 'iconSpace' : undefined,
+							root   : 'iconSpace',
 							content: 'center'
 						}}>
 						{row( item, index, selected )}
@@ -93,7 +93,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 					selected={selected}
 					onClick={selectable?.setSelected
 					&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}
-					className={editing ? 'iconSpace' : undefined}>
+					className='iconSpace'>
 					{row( item, index, selected )}
 				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
 					{row( item, index, selected )}
@@ -126,8 +126,8 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	
 	return <List
 		sx={{
-			'& .center'   : { alignItems: 'center', my: 1 },
-			'& .iconSpace': { pl: 0 },
+			'& .center'   : { alignItems: 'center' },
+			'& .iconSpace': editing ? { px: 1 } : undefined,
 			'& .slide'    : {
 				'&-enter'       : { opacity: 0 },
 				'&-enter-active': {

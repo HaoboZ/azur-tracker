@@ -17,14 +17,13 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 			const ship = ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
-			const devPrints = Math.max(
+			const devPrints = Math.max( 0,
 				Math.floor( devLevels[ 30 ][ item.type * 2 + 1 ]
-					- devLevel[ item.type * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ),
-				0 );
-			const fatePrints = item.fate ? Math.max(
+					- devLevel[ item.type * 2 + 1 ] - ( ship.devStage || 0 ) / 10 ) );
+			const fatePrints = item.fate ? Math.max( 0,
 				Math.floor( fateLevels[ 5 ][ 1 ] - fateLevel[ 1 ]
-					- Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ),
-				0 ) : 0;
+					- Math.ceil( fateLevel[ 0 ] * ( ship.fateStage || 0 ) / 100 ) ) )
+				: 0;
 			
 			if ( item.type ) {
 				totalDR += devPrints;

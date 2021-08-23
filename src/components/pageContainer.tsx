@@ -16,7 +16,6 @@ export default function PageContainer( { children, ...props }: {
 	}}>
 		<ScrollTop/>
 		<Container
-			fixed
 			disableGutters={!wide}
 			sx={{ overflowX: 'hidden', minHeight: 'inherit', ...props.sx }}
 			{...props}>
