@@ -1,8 +1,8 @@
 import React from 'react';
 import { Column } from 'react-table';
+
 import { factionColors, rarityColors, tierColors, typeColors } from '../../data/colors';
 import { equippable, equipTier } from '../../data/equipData';
-
 import SVGIcon, { TierIcon } from '../../lib/icons';
 
 const Rarity = {

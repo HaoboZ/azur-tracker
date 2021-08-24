@@ -21,7 +21,7 @@ import ActionTitle from '../actionTitle';
 import Loading from '../loading';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
-const forwardTableBody = React.forwardRef<never>( ( { children }, ref ) =>
+const forwardTableBody = React.forwardRef<HTMLTableSectionElement>( ( { children }, ref ) =>
 	<TableBody ref={ref}>{children}</TableBody> );
 
 const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: string }>( {

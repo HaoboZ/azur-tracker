@@ -1,9 +1,9 @@
 import { Box, BoxProps, CircularProgress, CircularProgressProps } from '@material-ui/core';
 import React from 'react';
 
-export default function Loading( { delay = 250, component, containerProps, ...props }: {
+export default function Loading( { delay = 250, children, containerProps, ...props }: {
 	delay?: number,
-	component?: React.ReactNode,
+	children?: React.ReactNode,
 	containerProps?: BoxProps
 } & CircularProgressProps ) {
 	const [ loading, setLoading ] = React.useState( false );
@@ -14,7 +14,7 @@ export default function Loading( { delay = 250, component, containerProps, ...pr
 	
 	if ( !loading ) return null;
 	
-	if ( component ) return component as JSX.Element;
+	if ( children ) return children as JSX.Element;
 	
 	return <Box textAlign='center' py={2} {...containerProps}>
 		<CircularProgress {...props}/>

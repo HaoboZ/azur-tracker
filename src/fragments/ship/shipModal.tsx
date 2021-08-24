@@ -52,17 +52,6 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		}
 	}, [ ship.tier ] );
 	
-	// // clears ship when closed to avoid flicker
-	// React.useEffect( () => {
-	// 	function close() {
-	// 		controls.setProps( ( props ) => ( { ...props, ship: blankShip } ) );
-	// 	}
-	// 	controls.events.on( 'close', close );
-	// 	return () => {
-	// 		controls.events.off( 'close', close );
-	// 	};
-	// }, [] );
-	
 	return <PageModalContainer
 		onClose={() => controls.close()}
 		title={<Link

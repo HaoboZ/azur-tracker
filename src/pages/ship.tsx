@@ -20,7 +20,7 @@ export default function Ship() {
 	
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
-		value: Record<string, number[]>
+		value: Record<string, [ number, number ][]>
 	}>( { filter: undefined, value: {} } );
 	
 	const table = useShipTable( equipBetter, setEquipBetter );

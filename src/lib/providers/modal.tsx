@@ -1,60 +1,54 @@
 import EventEmitter from 'events';
 import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 
-import PageModal from '../../components/pageModal';
-
-type ModalProps = Partial<ComponentProps<typeof PageModal>>;
+import PageModal, { PageModalProps } from '../../components/pageModal';
 
 type Modal = {
 	id: string,
 	open: boolean,
 	Component: React.ComponentType,
-	modalProps?: ModalProps,
+	modalProps?: Partial<PageModalProps>,
 	props?: any
 };
 
-export type ModalControls<T = object> = {
-	setModalProps: ( value: ModalProps | ( ( prevProps: ModalProps ) => ModalProps ) ) => void,
-	setProps: ( value: T | ( ( prevProps: T ) => T ) ) => void,
+export type ModalControls = {
 	close: ( ...args ) => void,
 	status: () => Modal,
 	events: EventEmitter
 };
 
-type StaticModalControls<T = object> = ModalControls & {
+type StaticModalControls<T> = ModalControls & {
 	show: ( props?: T, ...args ) => void,
 	remove: () => void
 };
 
-export type DynamicModalControls<T = object> = {
-	show: (
+export type DynamicModalControls = {
+	show: <T>(
 		Component?: React.ComponentType<T>,
-		modalProps?: ModalProps,
+		modalProps?: Partial<PageModalProps>,
 		props?: T
 	) => void,
 	close: ( id: string ) => void,
 	status: ( id: string ) => Modal
 };
 
-type C1<T = any> = (
+type C1<T> = (
 	id: string,
 	Component: React.ComponentType<T>,
-	modalProps?: ModalProps,
+	modalProps?: Partial<PageModalProps>,
 	props?: T
 ) => StaticModalControls<T>;
 
 type C2 = () => DynamicModalControls;
 
-const ModalContext = React.createContext<C1 & C2>( () => ( {
-	show         : () => null,
-	setModalProps: () => null,
-	setProps     : () => null,
-	close        : () => null,
-	status       : () => null,
-	remove       : () => null,
-	events       : null
+const ModalContext = React.createContext<C1<any> & C2>( () => ( {
+	show  : () => null,
+	close : () => null,
+	status: () => null,
+	remove: () => null,
+	events: null
 } ) );
 ModalContext.displayName = 'Modal';
 
@@ -64,41 +58,27 @@ ModalControlsContext.displayName = 'ModalControls';
 export default function ModalProvider( { children } ) {
 	const [ modals, setModals ] = React.useState<Modal[]>( [] );
 	
-	const setModal = React.useCallback( ( id: string, value: Modal | ( ( prevProps: Modal ) => Modal ) ) => {
-		setModals( ( modals ) => {
-			const index = modals.findIndex( modal => modal?.id === id );
-			if ( index === -1 ) return modals;
-			const newModals = [ ...modals ];
-			newModals[ index ] = typeof value === 'function' ? value?.( newModals[ index ] ) : value;
-			return newModals;
-		} );
-	}, [] );
-	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
-			setProps     : ( value ) => setModal( id, ( modal ) => ( {
-				...modal,
-				props: typeof value === 'function' ? value( modal.props ) : value
-			} ) ),
-			setModalProps: ( value ) => setModal( id, ( modal ) => ( {
-				...modal,
-				modalProps: typeof value === 'function' ? value( modal.modalProps ) : value
-			} ) ),
-			close        : ( ...args ) => setModal( id, ( modal ) => {
-				const newModal = { ...modal, open: false };
-				modal?.props.controls.events.emit( 'close', ...args );
+			close : ( ...args ) => setModals( ( modals ) => {
+				const index = modals.findIndex( modal => modal?.id === id );
+				if ( index === -1 ) return modals;
+				const newModals = [ ...modals ];
+				newModals[ index ] = { ...newModals[ index ], open: false };
+				newModals[ index ]?.props.controls.events.emit( 'close', ...args );
 				if ( remove ) {
-					setTimeout( () => setModals( ( modals ) =>
-						modals.filter( modal => modal?.id !== id ) ), 500 );
+					setTimeout( () => setModals( ( modals ) => {
+						return modals.filter( modal => modal?.id !== id );
+					} ), 500 );
 				}
-				return newModal;
+				return newModals;
 			} ),
-			status       : () => modals.find( modal => modal?.id === id ),
-			events       : new EventEmitter()
+			status: () => modals.find( modal => modal?.id === id ),
+			events: new EventEmitter()
 		};
 	}
 	
-	function staticControls( id, controls ): StaticModalControls {
+	function staticControls( id, controls ): StaticModalControls<any> {
 		return {
 			...controls,
 			show  : ( props, ...args ) => setModals( ( modals ) => {
@@ -126,10 +106,10 @@ export default function ModalProvider( { children } ) {
 				const id = nanoid( 16 );
 				newModals.push( {
 					id,
-					open     : false,
-					Component: React.memo( Component ),
+					open : false,
+					Component,
 					modalProps,
-					props    : { ...props, controls: controls( id, true ) }
+					props: { ...props, controls: controls( id, true ) }
 				} );
 				setTimeout( () => setModals( ( modals ) => {
 					const index = modals.findIndex( modal => modal?.id === id );
@@ -162,10 +142,10 @@ export default function ModalProvider( { children } ) {
 				modalControls = controls( id );
 				newModals.push( {
 					id,
-					open     : false,
-					Component: React.memo( Component ),
+					open : false,
+					Component,
 					modalProps,
-					props    : { ...props, controls: modalControls }
+					props: { ...props, controls: modalControls }
 				} );
 			} else {
 				modalControls = newModals[ index ]?.props.controls;
@@ -197,28 +177,24 @@ export default function ModalProvider( { children } ) {
 export function useModal(): DynamicModalControls;
 export function useModal<T>(
 	Component: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: ModalProps,
+	modalProps?: Partial<PageModalProps>,
 	props?: T
-): StaticModalControls;
+): StaticModalControls<T>;
 export function useModal<T>(
 	Component?: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: ModalProps,
+	modalProps?: Partial<PageModalProps>,
 	props?: T
 ) {
-	// is dynamic modal
 	if ( !Component ) return React.useContext<C2>( ModalContext )();
 	
-	// is static modal
 	const [ id ] = React.useState( () => nanoid( 16 ) );
 	const context = React.useContext<C1<T>>( ModalContext );
 	
 	const [ controls, setControls ] = React.useState<StaticModalControls<T>>( {} as never );
 	
-	// sets controls from the modal context
 	React.useEffect( () => {
-		const controls = context( id, Component, { keepMounted: true, ...modalProps }, props );
+		const controls = context( id, Component, modalProps, props );
 		setControls( controls );
-		// remove modal on dismount
 		return controls.remove;
 	}, [] );
 	
@@ -227,4 +203,10 @@ export function useModal<T>(
 
 export function useModalControls() {
 	return React.useContext( ModalControlsContext );
+}
+
+export function withModal( Component ) {
+	return ( props ) => <ModalContext.Consumer>
+		{( modal ) => <Component modal={modal} {...props}/>}
+	</ModalContext.Consumer>;
 }

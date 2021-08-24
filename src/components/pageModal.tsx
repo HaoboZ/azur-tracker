@@ -26,13 +26,15 @@ export enum ModalVariant {
 	center   = 'center'
 }
 
-export default function PageModal( { variant = ModalVariant.adaptive, children, ...props }: {
+export type PageModalProps = {
 	open: boolean,
 	onClose: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
 	children?: React.ReactNode
-} & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>> ) {
+} & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
+
+export default function PageModal( { variant = ModalVariant.adaptive, children, ...props }: PageModalProps ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {

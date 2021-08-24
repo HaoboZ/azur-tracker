@@ -23,7 +23,7 @@ import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import ActionTitle, { ActionButtonProps } from '../actionTitle';
+import ActionTitle from '../actionTitle';
 import Loading from '../loading';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
 
@@ -144,14 +144,14 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
 			{...actionTitleProps}
 			actions={!loading && ( editable || sortable ) ? [
-				...sortable || !removeDelete ? [ {
+				( sortable || !removeDelete ) && {
 					name     : editing ? 'Cancel' : 'Edit',
 					onClick  : () => setEditing( !editing ),
 					color    : editing ? 'error' : 'info',
 					startIcon: editing ? <CloseIcon/> : <EditIcon/>,
 					...editButtonProps
-				} as ActionButtonProps ] : [],
-				...( editable?.max ? data.length < editable.max : true ) ? [ {
+				},
+				( editable?.max ? data.length < editable.max : true ) && {
 					name     : 'Add',
 					onClick  : async () => {
 						editable.onAdd?.();
@@ -160,7 +160,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 					color    : 'secondary',
 					startIcon: <AddIcon/>,
 					...addButtonProps
-				} as ActionButtonProps ] : [] ] : undefined}>
+				} ] : undefined}>
 			{title}
 		</ActionTitle>}
 		{...props}>
