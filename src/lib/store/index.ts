@@ -51,8 +51,8 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 		...state,
 		event: {
 			...state.event,
-			daily  : state.event.daily.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) ),
-			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid( 16 ) } ) )
+			daily  : state.event.daily.map( ( item ) => ( { ...item, id: nanoid() } ) ),
+			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid() } ) )
 		}
 	} ),
 	5: ( state ) => ( {

@@ -8,7 +8,7 @@ import useTheme from '../../lib/hooks/useTheme';
 import { provider, ProviderComposer } from '../../lib/providers';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
-import SnackBarProvider from '../../lib/providers/snack';
+import SnackbarProvider from '../../lib/providers/snackbar';
 
 export default function Providers( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {
 	const theme = useTheme();
@@ -25,7 +25,7 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 			provider( AuthProvider, { session: pageProps.session } ),
 			// content
 			provider( ModalProvider ),
-			provider( SnackBarProvider ),
+			provider( SnackbarProvider ),
 			provider( IndicatorProvider )
 		]}>
 		{children}

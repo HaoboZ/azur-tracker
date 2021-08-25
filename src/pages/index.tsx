@@ -24,7 +24,7 @@ import PageContainer from '../components/pageContainer';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/providers/indicator';
-import { useSnackBar } from '../lib/providers/snack';
+import { useSnackbar } from '../lib/providers/snackbar';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import {
 	setAutoLoad,
@@ -40,7 +40,7 @@ export default function Home() {
 	const main = useSelector( state => state.main );
 	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
-	const { enqueueSnackbar } = useSnackBar();
+	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
 	

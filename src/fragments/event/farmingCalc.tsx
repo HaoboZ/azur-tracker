@@ -17,7 +17,7 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 		extraData={remainingPoints}
 		setData={( items ) => dispatch( event_setFarming( items ) )}
 		editable={{
-			newData: () => ( { id: nanoid( 16 ), points: 0, oil: 0 } )
+			newData: () => ( { id: nanoid(), points: 0, oil: 0 } )
 		}}
 		sortable
 		tableProps={{

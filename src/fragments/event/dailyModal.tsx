@@ -39,7 +39,7 @@ export default function DailyModal() {
 				data={daily}
 				setData={setDaily}
 				editable={{
-					newData: () => ( { id: nanoid( 16 ), name: '', amount: 0 } )
+					newData: () => ( { id: nanoid(), name: '', amount: 0 } )
 				}}
 				sortable
 				tableProps={{

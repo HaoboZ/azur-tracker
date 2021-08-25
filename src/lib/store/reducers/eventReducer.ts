@@ -38,15 +38,15 @@ const initialState: State = {
 	},
 	shopExpectedCost: 0,
 	daily           : [
-		{ id: nanoid( 16 ), name: 'Build 3 ships', amount: 300 },
-		{ id: nanoid( 16 ), name: 'Sortie and obtain 15 victories', amount: 300 },
-		{ id: nanoid( 16 ), name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
-		{ id: nanoid( 16 ), name: 'SP Stage', amount: 800 }
+		{ id: nanoid(), name: 'Build 3 ships', amount: 300 },
+		{ id: nanoid(), name: 'Sortie and obtain 15 victories', amount: 300 },
+		{ id: nanoid(), name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
+		{ id: nanoid(), name: 'SP Stage', amount: 800 }
 	],
 	dailyExpected   : 1550,
 	points          : 0,
 	farming         : [
-		{ id: nanoid( 16 ), points: 180, oil: 10 + 25 * 6 + 40 }
+		{ id: nanoid(), points: 180, oil: 10 + 25 * 6 + 40 }
 	]
 };
 

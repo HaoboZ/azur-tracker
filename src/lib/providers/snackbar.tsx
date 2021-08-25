@@ -9,14 +9,14 @@ const SnackBarContext = React.createContext<C>( {
 	enqueueSnackbar: () => null,
 	closeSnackbar  : () => null
 } );
-SnackBarContext.displayName = 'SnackBar';
+SnackBarContext.displayName = 'Snackbar';
 
 type Message = {
 	message: string,
 	props?: { variant: AlertColor }
 };
 
-export default function SnackBarProvider( { children } ) {
+export default function SnackbarProvider( { children } ) {
 	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
 	
 	const [ open, setOpen ] = React.useState( false );
@@ -71,7 +71,7 @@ export default function SnackBarProvider( { children } ) {
 	</SnackBarContext.Provider>;
 }
 
-export function useSnackBar() {
+export function useSnackbar() {
 	return React.useContext( SnackBarContext );
 }
 
