@@ -12,14 +12,15 @@ export const backupMutex = new Mutex();
 export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
-	const body = stringify( state );
+	const data = stringify( state );
 	const { data: { action } } = await axios( '/api/checkData', {
 		params: {
-			checksum : await md5( body ),
+			checksum : await md5( data ),
 			lastSaved: main.lastSaved
 		}
 	} );
-	return { action, body };
+	
+	return { action, data };
 }
 
 export async function setBackup( integrity ) {
@@ -27,7 +28,8 @@ export async function setBackup( integrity ) {
 		store.dispatch( setLastSaved( new Date().toISOString() ) );
 		return;
 	}
-	const { action, body } = integrity;
+	const { action, data } = integrity;
+	
 	if ( !action ) return;
 	if ( action === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
 		await getBackup( integrity, false );
@@ -37,7 +39,7 @@ export async function setBackup( integrity ) {
 	await axios( '/api/setData', {
 		method: 'POST',
 		params: { modifiedTime: store.getState().main.lastSaved },
-		data  : { body }
+		data  : { data }
 	} );
 }
 
