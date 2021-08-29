@@ -11,13 +11,13 @@ const CheckData: NextApiHandler = async ( req, res ) => {
 		
 		if ( checksum !== file.md5Checksum ) {
 			if ( lastSaved < file.modifiedTime )
-				res.json( '"prompt"' );
+				res.json( { action: 'prompt' } );
 			else if ( lastSaved > file.modifiedTime )
-				res.json( '"update"' );
+				res.json( { action: 'update' } );
 			else
-				res.json( true );
+				res.json( { action: true } );
 		} else {
-			res.json( false );
+			res.json( { action: false } );
 		}
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );

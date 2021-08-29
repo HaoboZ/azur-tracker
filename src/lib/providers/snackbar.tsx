@@ -48,7 +48,7 @@ export default function SnackbarProvider( { children } ) {
 			autoHideDuration={5000}
 			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
 			sx={{
-				'& .MuiSnackBar-root': {
+				'& .MuiSnackbar-root': {
 					top: {
 						xs: 'calc(env(safe-area-inset-top) + 24px)',
 						sm: 0

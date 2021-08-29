@@ -13,13 +13,13 @@ export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
 	const body = stringify( state );
-	const { data } = await axios( '/api/checkData', {
+	const { data: { action } } = await axios( '/api/checkData', {
 		params: {
 			checksum : await md5( body ),
 			lastSaved: main.lastSaved
 		}
 	} );
-	return { valid: data, body };
+	return { action, body };
 }
 
 export async function setBackup( integrity ) {
@@ -27,9 +27,9 @@ export async function setBackup( integrity ) {
 		store.dispatch( setLastSaved( new Date().toISOString() ) );
 		return;
 	}
-	const { valid, body } = integrity;
-	if ( !valid ) return;
-	if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
+	const { action, body } = integrity;
+	if ( !action ) return;
+	if ( action === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
 		await getBackup( integrity, false );
 		return;
 	}
@@ -44,9 +44,9 @@ export async function setBackup( integrity ) {
 export async function getBackup( integrity, check = true ) {
 	if ( !integrity ) return;
 	if ( check ) {
-		const { valid } = integrity;
-		if ( !valid ) return;
-		if ( valid === 'update' ) {
+		const { action } = integrity;
+		if ( !action ) return;
+		if ( action === 'update' ) {
 			await setBackup( integrity );
 			return;
 		}
