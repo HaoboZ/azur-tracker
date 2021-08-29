@@ -4,10 +4,7 @@ import React from 'react';
 
 export default function Link( { children, href, ...props }: LinkProps ) {
 	return <NextLink href={href} passHref>
-		<MuiLink
-			color='inherit'
-			underline='hover'
-			{...props}>
+		<MuiLink color='inherit' underline='hover' {...props}>
 			{children}
 		</MuiLink>
 	</NextLink>;

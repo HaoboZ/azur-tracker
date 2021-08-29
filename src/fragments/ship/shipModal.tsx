@@ -36,7 +36,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const ships = useSelector( state => state.ship.ships );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
-	const { show } = useModal();
+	const { showModal } = useModal();
 	
 	// calculates tier
 	const tier = React.useMemo( () => {
@@ -53,7 +53,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	}, [ ship.tier ] );
 	
 	return <PageModalContainer
-		onClose={() => controls.close()}
+		onClose={() => controls.closeModal()}
 		title={<Link
 			href={ship.link}
 			target='_blank'
@@ -147,7 +147,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							display='flex'
 							flexDirection='column'
 							alignItems='center'
-							onClick={() => show( EquipModal, {
+							onClick={() => showModal( EquipModal, {
 								variant : ModalVariant.center,
 								maxWidth: 'xs',
 								TransitionComponent

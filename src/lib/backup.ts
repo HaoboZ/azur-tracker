@@ -19,7 +19,7 @@ export async function checkDataIntegrity() {
 			lastSaved: main.lastSaved
 		}
 	} );
-	return { valid: data, data: body };
+	return { valid: data, body };
 }
 
 export async function setBackup( integrity ) {
@@ -27,7 +27,7 @@ export async function setBackup( integrity ) {
 		store.dispatch( setLastSaved( new Date().toISOString() ) );
 		return;
 	}
-	const { valid, data } = integrity;
+	const { valid, body } = integrity;
 	if ( !valid ) return;
 	if ( valid === 'prompt' && !confirm( 'Conflicts found, override cloud data?' ) ) {
 		await getBackup( integrity, false );
@@ -37,7 +37,7 @@ export async function setBackup( integrity ) {
 	await axios( '/api/setData', {
 		method: 'POST',
 		params: { modifiedTime: store.getState().main.lastSaved },
-		data
+		data  : { body }
 	} );
 }
 

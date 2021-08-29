@@ -171,13 +171,13 @@ export default function EquipModal( { info, selectedEquip }: {
 				labelPlacement='start'
 				sx={{ mr: 2 }}
 			/>
-			<Button variant='contained' onClick={() => controls.close()}>
+			<Button variant='contained' onClick={() => controls.closeModal()}>
 				Close
 			</Button>
 			<Button
 				variant='contained'
 				color='error'
-				onClick={() => controls.close( true )}>
+				onClick={() => controls.closeModal( true )}>
 				Cancel
 			</Button>
 		</DialogActions>

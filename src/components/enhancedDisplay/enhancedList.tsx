@@ -41,7 +41,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	renderRow,
 	renderPanel,
-	removeDelete,
+	removeEditing,
 	addButtonProps,
 	editButtonProps,
 	...props
@@ -55,13 +55,13 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, selected ) => <>
-			{sortable && editing && <ListItemIcon>
+			{!removeEditing && editing && sortable && <ListItemIcon>
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
-			{renderRow( item, index, removeDelete
+			{renderRow( item, index, removeEditing
 				? () => _deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected )
 				: undefined )}
-			{Boolean( editable ) && !removeDelete && editing && ( editable?.min ? data.length > editable.min : true )
+			{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? data.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={( e ) => {
 					e.stopPropagation();
@@ -95,7 +95,7 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 					&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}
 					className='iconSpace'>
 					{row( item, index, selected )}
-				</ListItemButton> : <ListItem divider className={editing ? 'iconSpace' : undefined}>
+				</ListItemButton> : <ListItem divider className={removeEditing || editing ? 'iconSpace' : undefined}>
 					{row( item, index, selected )}
 				</ListItem>;
 		};
@@ -122,12 +122,12 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 			: transition;
 		
 		return renderPanel ? sort : <Paper>{sort}</Paper>;
-	}, [ data, extraData, Boolean( editable ), sortable, editing, selectable?.selected ] );
+	}, [ data, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return <List
 		sx={{
 			'& .center'   : { alignItems: 'center' },
-			'& .iconSpace': editing ? { px: 1 } : undefined,
+			'& .iconSpace': removeEditing || editing ? { px: 1 } : undefined,
 			'& .slide'    : {
 				'&-enter'       : { opacity: 0 },
 				'&-enter-active': {
@@ -142,9 +142,8 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 			}
 		}}
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
-			{...actionTitleProps}
-			actions={!loading && ( editable || sortable ) ? [
-				( sortable || !removeDelete ) && {
+			actions={!removeEditing && !loading && ( editable || sortable ) ? [
+				sortable && {
 					name     : editing ? 'Cancel' : 'Edit',
 					onClick  : () => setEditing( !editing ),
 					color    : editing ? 'error' : 'info',
@@ -160,7 +159,8 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 					color    : 'secondary',
 					startIcon: <AddIcon/>,
 					...addButtonProps
-				} ] : undefined}>
+				} ] : undefined}
+			{...actionTitleProps}>
 			{title}
 		</ActionTitle>}
 		{...props}>

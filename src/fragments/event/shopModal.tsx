@@ -25,7 +25,7 @@ export default function ShopModal() {
 		[ shop ] );
 	
 	return <PageModalContainer
-		onClose={() => controls.close()}
+		onClose={() => controls.closeModal()}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
 		<DialogContent sx={{ p: 0 }}>

@@ -16,7 +16,7 @@ import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
 export default function Ship() {
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
-	const { show } = useModal();
+	const { showModal } = useModal();
 	
 	const [ equipBetter, setEquipBetter ] = React.useState<{
 		filter,
@@ -35,7 +35,7 @@ export default function Ship() {
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}
-			onClick={( row ) => show( ShipModal, {
+			onClick={( row ) => showModal( ShipModal, {
 				variant: ModalVariant.bottom
 			}, {
 				ship         : row.original as any,

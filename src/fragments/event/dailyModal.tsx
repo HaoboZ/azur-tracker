@@ -30,7 +30,7 @@ export default function DailyModal() {
 	}
 	
 	return <PageModalContainer
-		onClose={() => controls.close()}
+		onClose={() => controls.closeModal()}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
 		<DialogContent sx={{ p: 0 }}>

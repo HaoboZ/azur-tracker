@@ -16,7 +16,7 @@ export default function EventFields( { time, neededPoints }: {
 } ) {
 	const event = useSelector( state => state.event );
 	const dispatch = useDispatch();
-	const { show } = useModal();
+	const { showModal } = useModal();
 	
 	return <Grid container spacing={2} px={2} sx={{ '& .rightInput': { textAlign: 'right' } }}>
 		<Grid item container xs={12} justifyContent='center'>
@@ -47,7 +47,7 @@ export default function EventFields( { time, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.shopExpectedCost}
-				onClick={() => show( ShopModal )}
+				onClick={() => showModal( ShopModal )}
 			/>
 		</Grid>
 		<Grid item sm={3} xs={6}>
@@ -60,7 +60,7 @@ export default function EventFields( { time, neededPoints }: {
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.dailyExpected}
-				onClick={() => show( DailyModal )}
+				onClick={() => showModal( DailyModal )}
 			/>
 		</Grid>
 		<Grid item sm={3} xs={6}>

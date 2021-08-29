@@ -14,24 +14,24 @@ type Modal = {
 };
 
 export type ModalControls = {
-	close: ( ...args ) => void,
-	status: () => Modal,
+	closeModal: ( ...args ) => void,
+	modalStatus: () => Modal,
 	events: EventEmitter
 };
 
 type StaticModalControls<T> = ModalControls & {
-	show: ( props?: T, ...args ) => void,
-	remove: () => void
+	showModal: ( props?: T, ...args ) => void,
+	removeModal: () => void
 };
 
 export type DynamicModalControls = {
-	show: <T>(
+	showModal: <T>(
 		Component?: React.ComponentType<T>,
 		modalProps?: Partial<PageModalProps>,
 		props?: T
 	) => string,
-	close: ( id: string ) => void,
-	status: ( id: string ) => Modal
+	closeModal: ( id: string ) => void,
+	modalStatus: ( id: string ) => Modal
 };
 
 type C1<T> = (
@@ -44,11 +44,11 @@ type C1<T> = (
 type C2 = () => DynamicModalControls;
 
 const ModalContext = React.createContext<C1<any> & C2>( () => ( {
-	show  : () => null,
-	close : () => null,
-	status: () => null,
-	remove: () => null,
-	events: null
+	showModal  : () => null,
+	closeModal : () => null,
+	modalStatus: () => null,
+	removeModal: () => null,
+	events     : null
 } ) );
 ModalContext.displayName = 'Modal';
 
@@ -60,7 +60,7 @@ export default function ModalProvider( { children } ) {
 	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
-			close : ( ...args ) => setModals( ( modals ) => {
+			closeModal : ( ...args ) => setModals( ( modals ) => {
 				const index = modals.findIndex( modal => modal?.id === id );
 				if ( index === -1 ) return modals;
 				const newModals = [ ...modals ];
@@ -73,15 +73,15 @@ export default function ModalProvider( { children } ) {
 				}
 				return newModals;
 			} ),
-			status: () => modals.find( modal => modal?.id === id ),
-			events: new EventEmitter()
+			modalStatus: () => modals.find( modal => modal?.id === id ),
+			events     : new EventEmitter()
 		};
 	}
 	
 	function staticControls( id, controls ): StaticModalControls<any> {
 		return {
 			...controls,
-			show  : ( props, ...args ) => setModals( ( modals ) => {
+			showModal  : ( props, ...args ) => setModals( ( modals ) => {
 				const index = modals.findIndex( modal => modal?.id === id );
 				if ( index === -1 ) return modals;
 				const newModals = [ ...modals ];
@@ -93,13 +93,13 @@ export default function ModalProvider( { children } ) {
 				newModals[ index ]?.props.controls.events.emit( 'open', ...args );
 				return newModals;
 			} ),
-			remove: () => setModals( ( modals ) => modals.filter( ( modal ) => modal?.id !== id ) )
+			removeModal: () => setModals( ( modals ) => modals.filter( ( modal ) => modal?.id !== id ) )
 		};
 	}
 	
 	function dynamicControls(): DynamicModalControls {
 		return {
-			show  : ( Component, modalProps, props ) => {
+			showModal  : ( Component, modalProps, props ) => {
 				const id = nanoid();
 				setModals( ( modals ) => {
 					const newModals = [ ...modals ];
@@ -121,11 +121,11 @@ export default function ModalProvider( { children } ) {
 				} );
 				return id;
 			},
-			close : ( id ) => {
+			closeModal : ( id ) => {
 				const modal = modals.find( modal => modal?.id === id );
 				modal?.props.controls.close();
 			},
-			status: ( id ) => {
+			modalStatus: ( id ) => {
 				const modal = modals.find( modal => modal?.id === id );
 				return modal?.props.controls.status();
 			}
@@ -196,7 +196,7 @@ export function useModal<T>(
 	React.useEffect( () => {
 		const controls = context( id, Component, modalProps, props );
 		setControls( controls );
-		return controls.remove;
+		return controls.removeModal;
 	}, [] );
 	
 	return controls;

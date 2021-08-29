@@ -10,7 +10,7 @@ const SetData: NextApiHandler = async ( req, res ) => {
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
 		
-		await setFile( drive, file, req.body, modifiedTime );
+		await setFile( drive, file, req.body.data, modifiedTime );
 		res.end();
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );

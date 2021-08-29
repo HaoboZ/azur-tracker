@@ -4,7 +4,7 @@ import React from 'react';
 import usePageHeight from '../lib/hooks/usePageHeight';
 import ScrollTop from './scrollTop';
 
-export default function PageContainer( { children, ...props }: {
+export default function PageContainer( { children, sx, ...props }: {
 	children?: React.ReactNode
 } & ContainerProps ) {
 	const height = usePageHeight();
@@ -17,7 +17,7 @@ export default function PageContainer( { children, ...props }: {
 		<ScrollTop/>
 		<Container
 			disableGutters={!wide}
-			sx={{ overflowX: 'hidden', minHeight: 'inherit', ...props.sx }}
+			sx={{ overflowX: 'hidden', minHeight: 'inherit', ...sx }}
 			{...props}>
 			{children}
 		</Container>

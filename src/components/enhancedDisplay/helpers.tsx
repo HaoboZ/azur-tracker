@@ -35,7 +35,7 @@ export type EnhancedDisplayProps<Item> = {
 export type EnhancedListProps<Item> = {
 	renderRow: ( item: Item, index: number, onDelete?: () => void ) => React.ReactNode,
 	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
-	removeDelete?: boolean,
+	removeEditing?: boolean,
 	addButtonProps?: ActionButtonProps,
 	editButtonProps?: ActionButtonProps
 } & Omit<ListProps, 'title'>;
