@@ -58,7 +58,6 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 		}}
 		listProps={{
 			renderRow: ( item, index ) => {
-				console.log( remainingPoints );
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>

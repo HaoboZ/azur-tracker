@@ -51,7 +51,6 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	const [ editing, setEditing ] = React.useState( false );
 	
 	const dataItems = React.useMemo( () => {
-		console.log( extraData );
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, selected ) => <>
