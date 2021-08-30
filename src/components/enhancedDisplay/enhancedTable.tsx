@@ -62,8 +62,8 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 				{Boolean( editable ) && <TableCell>
 					<div>
 						{( editable?.min ? data.length > editable.min : true )
-						&& <IconButton onClick={( e ) => {
-							e.stopPropagation();
+						&& <IconButton onClick={( { stopPropagation } ) => {
+							stopPropagation();
 							_deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
 						}}>
 							<CloseIcon/>
@@ -103,12 +103,12 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 			'&-enter'       : { opacity: 0 },
 			'&-enter-active': {
 				opacity   : 1,
-				transition: ( theme ) => theme.transitions.create( 'opacity' )
+				transition: ( { transitions } ) => transitions.create( 'opacity' )
 			},
 			'&-exit'        : { opacity: 1 },
 			'&-exit-active' : {
 				opacity   : 0,
-				transition: ( theme ) => theme.transitions.create( 'opacity' )
+				transition: ( { transitions } ) => transitions.create( 'opacity' )
 			}
 		}
 	}}>

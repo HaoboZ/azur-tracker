@@ -62,10 +62,10 @@ const searchOptions = [
 ].map( ( label, id ) => ( { id, label } ) );
 
 export default function Filters( { table }: { table: TableInstance } ) {
-	const { filter, ships } = useSelector( state => state.ship );
+	const { filter, ships } = useSelector( ( { ship } ) => ship );
 	const dispatch = useDispatch();
 	
-	const globalFilter = useAsyncDebounce( ( value ) =>
+	const globalFilter = useAsyncDebounce( value =>
 		table.setGlobalFilter( value ), 250 );
 	
 	const [ search, setSearch ] = React.useState( '' );
@@ -99,7 +99,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 			<Grid item md xs={12}>
 				<EquipFilter
 					equipList={equips}
-					setValue={( equip ) => table.setFilter( 'equip', equip )}
+					setValue={equip => table.setFilter( 'equip', equip )}
 				/>
 			</Grid>
 			<Grid item md xs={10}>
@@ -115,7 +115,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 							globalFilter( value );
 						}
 					}}
-					renderInput={( params ) => <TextField
+					renderInput={params => <TextField
 						inputRef={searchRef}
 						{...params}
 						label='Search'
@@ -131,12 +131,12 @@ export default function Filters( { table }: { table: TableInstance } ) {
 					variant='contained'
 					fullWidth
 					sx={{ display: { xs: 'none', sm: 'block' } }}
-					onClick={( e ) => setAnchorEl( e.currentTarget )}>
+					onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
 					More
 				</Button>
 				<IconButton
 					sx={{ display: { xs: 'block', sm: 'none' } }}
-					onClick={( e ) => setAnchorEl( e.currentTarget )}>
+					onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
 					<MoreVertIcon/>
 				</IconButton>
 			</Grid>
@@ -150,9 +150,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.levelMax}
-						onChange={( e ) => dispatch( ship_setFilter( {
-							levelMax: e.target.checked
-						} ) )}
+						onChange={( { target } ) => dispatch( ship_setFilter( { levelMax: target.checked } ) )}
 					/>}
 					label='Maxed Level'
 				/>
@@ -161,9 +159,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.equipMax}
-						onChange={( e ) => dispatch( ship_setFilter( {
-							equipMax: e.target.checked
-						} ) )}
+						onChange={( { target } ) => dispatch( ship_setFilter( { equipMax: target.checked } ) )}
 					/>}
 					label='Maxed Equip'
 				/>
@@ -172,9 +168,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.level0}
-						onChange={( e ) => dispatch( ship_setFilter( {
-							level0: e.target.checked
-						} ) )}
+						onChange={( { target } ) => dispatch( ship_setFilter( { level0: target.checked } ) )}
 					/>}
 					label='0 Level'
 				/>

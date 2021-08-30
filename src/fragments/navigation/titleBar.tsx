@@ -11,7 +11,7 @@ import Link from '../../components/link';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 function LinkItem( { children, href } ) {
-	const newData = useSelector( state => state.main.newData );
+	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	
 	return <Link variant='h6' href={href}>
@@ -30,7 +30,7 @@ function LinkItem( { children, href } ) {
 }
 
 export default function TitleBar( { children } ) {
-	const theme = useSelector( state => state.main.theme );
+	const theme = useSelector( ( { main } ) => main.theme );
 	const dispatch = useDispatch();
 	
 	return <>

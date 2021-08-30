@@ -13,7 +13,7 @@ import FarmingCalc from '../fragments/event/farmingCalc';
 import { event_newEvent } from '../lib/store/reducers/eventReducer';
 
 export default function Event() {
-	const event = useSelector( state => state.event );
+	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
 	
 	const [ time, setTime ] = React.useState( moment() );

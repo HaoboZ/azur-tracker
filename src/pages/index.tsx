@@ -37,7 +37,7 @@ import { research_reset } from '../lib/store/reducers/researchReducer';
 import { ship_reset } from '../lib/store/reducers/shipReducer';
 
 export default function Home() {
-	const main = useSelector( state => state.main );
+	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();
 	const [ session, loading ] = useSession();
 	const { enqueueSnackbar } = useSnackbar();
@@ -99,7 +99,7 @@ export default function Home() {
 						value={main.autoSaveInterval}
 						onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
 						valueLabelDisplay='auto'
-						valueLabelFormat={( value ) => value / 1000}
+						valueLabelFormat={value => value / 1000}
 						step={500}
 						marks
 						min={500}
@@ -114,7 +114,7 @@ export default function Home() {
 						value={main.autoLoadInterval}
 						onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
 						valueLabelDisplay='auto'
-						valueLabelFormat={( value ) => value / 1000}
+						valueLabelFormat={value => value / 1000}
 						step={2500}
 						marks
 						min={5000}
@@ -134,12 +134,12 @@ export default function Home() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
-										await backupMutex.runExclusive(
-											async () => await indicator( setBackup( await checkDataIntegrity() ) )
-										);
+										await backupMutex.runExclusive( async () =>
+											await indicator( setBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
-									} else
+									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
+									}
 								} catch ( e ) {
 									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}
@@ -154,12 +154,12 @@ export default function Home() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( session ) {
-										await backupMutex.runExclusive(
-											async () => await indicator( getBackup( await checkDataIntegrity() ) )
-										);
+										await backupMutex.runExclusive( async () =>
+											await indicator( getBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
-									} else
+									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
+									}
 								} catch ( e ) {
 									enqueueSnackbar( String( e ), { variant: 'error' } );
 								}

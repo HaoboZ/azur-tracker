@@ -33,18 +33,22 @@ const VirtualTable = React.memo( function VirtualTable( {
 		}}
 		{...getTableProps()}>
 		<TableHead component='div'>
-			{headerGroups.map( ( headerGroup ) =>
-				<TableRow key={headerGroup.id} component='div' {...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
-					{headerGroup.headers.map( ( column ) =>
-						<TableCell key={column.id} component='div' {...column.getHeaderProps( column.getSortByToggleProps() )}>
-							<TableSortLabel
-								active={column.isSorted}
-								hideSortIcon={!column.canSort}
-								direction={column.isSortedDesc ? 'desc' : 'asc'}>
-								{column.render( 'Header' )}
-							</TableSortLabel>
-						</TableCell> )}
-				</TableRow> )}
+			{headerGroups.map( headerGroup => <TableRow
+				key={headerGroup.id}
+				component='div'
+				{...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
+				{headerGroup.headers.map( column => <TableCell
+					key={column.id}
+					component='div'
+					{...column.getHeaderProps( column.getSortByToggleProps() )}>
+					<TableSortLabel
+						active={column.isSorted}
+						hideSortIcon={!column.canSort}
+						direction={column.isSortedDesc ? 'desc' : 'asc'}>
+						{column.render( 'Header' )}
+					</TableSortLabel>
+				</TableCell> )}
+			</TableRow> )}
 		</TableHead>
 		<TableBody component='div' ref={bodyRef} {...getTableBodyProps()}>
 			<ReactWindowScroller>

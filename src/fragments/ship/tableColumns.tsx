@@ -94,7 +94,7 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 				if ( equipBetter.filter ) setEquipBetter( { filter: undefined, value: {} } );
 				return rows;
 			} else if ( filterValue === equipBetter.filter ) {
-				return rows.filter( ( row ) => equipBetter.value[ row.id ]?.some( Boolean ) );
+				return rows.filter( ( { id } ) => equipBetter.value[ id ]?.some( Boolean ) );
 			} else {
 				const newEquipBetter = rows.reduce( ( acc, row ) => {
 					acc[ row.id ] = row.values.equip.map( ( value, index ) => {
@@ -121,7 +121,7 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 				}, {} );
 				
 				setEquipBetter( { filter: filterValue, value: newEquipBetter } );
-				return rows.filter( ( row ) => newEquipBetter[ row.id ].some( Boolean ) );
+				return rows.filter( ( { id } ) => newEquipBetter[ id ].some( Boolean ) );
 			}
 		},
 		disableSortBy      : true

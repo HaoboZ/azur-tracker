@@ -19,7 +19,7 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 		open={Boolean( anchorEl )}
 		onClose={closeAnchor}
 		PaperProps={{ sx: { maxHeight: 400, width: 300 } }}>
-		{equipList.map( ( equip ) => <MenuItem
+		{equipList.map( equip => <MenuItem
 			key={equip.id}
 			sx={{ whiteSpace: 'normal' }}
 			onClick={() => {

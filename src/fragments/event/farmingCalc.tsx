@@ -8,14 +8,14 @@ import FormattedTextField from '../../components/formattedTextField';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 
 export default function FarmingCalc( { remainingPoints }: { remainingPoints: number } ) {
-	const farming = useSelector( state => state.event.farming );
+	const farming = useSelector( ( { event } ) => event.farming );
 	const dispatch = useDispatch();
 	
 	return <EnhancedDisplay
 		title='Farming'
 		data={farming}
 		extraData={remainingPoints}
-		setData={( items ) => dispatch( event_setFarming( items ) )}
+		setData={items => dispatch( event_setFarming( items ) )}
 		editable={{
 			newData: () => ( { id: nanoid(), points: 0, oil: 0 } )
 		}}
@@ -36,9 +36,9 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.points}
-						onChange={( e ) => dispatch( event_modifyFarming( {
+						onChange={( { target } ) => dispatch( event_modifyFarming( {
 							index,
-							item: { points: parseInt( e.target.value ) }
+							item: { points: parseInt( target.value ) }
 						} ) )}
 					/>,
 					<FormattedTextField
@@ -46,9 +46,9 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
-						onChange={( e ) => dispatch( event_modifyFarming( {
+						onChange={( { target } ) => dispatch( event_modifyFarming( {
 							index,
-							item: { oil: parseInt( e.target.value ) }
+							item: { oil: parseInt( target.value ) }
 						} ) )}
 					/>,
 					<Typography key='plays'>{plays}</Typography>,
@@ -67,9 +67,9 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 							inputProps={{ inputMode: 'numeric' }}
 							label='Points/Run'
 							value={item.points}
-							onChange={( e ) => dispatch( event_modifyFarming( {
+							onChange={( { target } ) => dispatch( event_modifyFarming( {
 								index,
-								item: { points: parseInt( e.target.value ) }
+								item: { points: parseInt( target.value ) }
 							} ) )}
 						/>
 					</Grid>
@@ -79,9 +79,9 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 							inputProps={{ inputMode: 'numeric' }}
 							label='Oil/Run'
 							value={item.oil}
-							onChange={( e ) => dispatch( event_modifyFarming( {
+							onChange={( { target } ) => dispatch( event_modifyFarming( {
 								index,
-								item: { oil: parseInt( e.target.value ) }
+								item: { oil: parseInt( target.value ) }
 							} ) )}
 						/>
 					</Grid>

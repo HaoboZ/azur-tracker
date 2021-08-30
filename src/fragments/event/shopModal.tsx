@@ -11,7 +11,7 @@ import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 export default function ShopModal() {
 	const controls = useModalControls();
-	const _shop = useSelector( state => state.event.shop );
+	const _shop = useSelector( ( { event } ) => event.shop );
 	const dispatch = useDispatch();
 	
 	const [ shop, setShop ] = React.useState( _shop );
@@ -49,7 +49,7 @@ export default function ShopModal() {
 						'Amount',
 						'Wanted'
 					],
-					columns     : ( item ) => [
+					columns     : item => [
 						item.name,
 						item.cost,
 						item.amount,
@@ -58,15 +58,15 @@ export default function ShopModal() {
 							type='number'
 							placeholder='0'
 							value={shop[ item.name ] || 0}
-							onChange={( e ) => setShop( {
+							onChange={( { target } ) => setShop( {
 								...shop,
-								[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+								[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
 							} )}
 						/>
 					]
 				}}
 				listProps={{
-					renderRow: ( item ) => <Grid container spacing={2}>
+					renderRow: item => <Grid container spacing={2}>
 						<Grid item xs={9}>
 							<ListItemText
 								primary={item.name}
@@ -79,9 +79,9 @@ export default function ShopModal() {
 								label='Wanted'
 								placeholder='0'
 								value={shop[ item.name ]}
-								onChange={( e ) => setShop( {
+								onChange={( { target } ) => setShop( {
 									...shop,
-									[ item.name ]: Math.min( Math.max( parseInt( e.target.value ) || 0, 0 ), item.amount )
+									[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
 								} )}
 							/>
 						</Grid>

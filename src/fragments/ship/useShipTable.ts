@@ -6,21 +6,21 @@ import shipRef from '../../data/shipData';
 import tableColumns from './tableColumns';
 
 export default function useShipTable( equipBetter, setEquipBetter ) {
-	const ship = useSelector( state => state.ship );
+	const ship = useSelector( ( { ship } ) => ship );
 	
 	// list of ships with the local data loaded
 	const shipList = React.useMemo( () => Object.values( shipRef )
-		.map( ( shipData ) => {
+		.map( shipData => {
 			const _ship = ship.ships[ shipData.id ];
 			shipData.love = _ship?.love || 0;
 			shipData.lvl = _ship?.lvl || 0;
 			shipData.equip = _ship?.equip || new Array( 5 ).fill( [] );
 			return shipData;
 		} )
-		.filter( ( shipData ) => {
+		.filter( shipData => {
 			if ( !ship.filter.levelMax && shipData.lvl === 121 ) return false;
 			if ( !ship.filter.level0 && !shipData.lvl ) return false;
-			return ship.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
+			return ship.filter.equipMax || !shipData.equip?.every( equip => equip[ 2 ] === 1 );
 		} ), [ ship ] );
 	
 	const columns = React.useMemo(
@@ -41,13 +41,13 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 				normal: ( rows, ids, filterValue ) => {
 					try {
 						const regex = new RegExp( filterValue, 'i' );
-						return rows.filter( ( row ) => {
+						return rows.filter( ( { values } ) => {
 							for ( const id of ids ) {
 								if ( id === 'name' ) {
-									if ( regex.test( row.values[ id ].normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) ) )
+									if ( regex.test( values[ id ].normalize( 'NFD' ).replace( /[\u0300-\u036f]/g, '' ) ) )
 										return true;
 								} else {
-									if ( regex.test( row.values[ id ] ) )
+									if ( regex.test( values[ id ] ) )
 										return true;
 								}
 							}

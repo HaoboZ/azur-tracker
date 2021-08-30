@@ -33,7 +33,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	selectedEquip?: typeof equips[number]
 } ) {
 	const controls = useModalControls();
-	const ships = useSelector( state => state.ship.ships );
+	const ships = useSelector( ( { ship } ) => ship.ships );
 	const dispatch = useDispatch();
 	const colorClasses = useMappedColorClasses();
 	const { showModal } = useModal();
@@ -86,9 +86,9 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							fullWidth
 							value={ships[ ship.id ]?.love || 0}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={( e ) => dispatch( ship_setShip( {
+							onChange={( { target } ) => dispatch( ship_setShip( {
 								name: ship.id,
-								ship: { love: e.target.value as number }
+								ship: { love: target.value as number }
 							} ) )}>
 							<MenuItem value={0}>
 								<SVGIcon name='emptyHeart'/>
@@ -114,9 +114,9 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							fullWidth
 							value={ships[ ship.id ]?.lvl || 0}
 							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={( e ) => dispatch( ship_setShip( {
+							onChange={( { target } ) => dispatch( ship_setShip( {
 								name: ship.id,
-								ship: { lvl: e.target.value as number }
+								ship: { lvl: target.value as number }
 							} ) )}>
 							<MenuItem value={0}>0</MenuItem>
 							<MenuItem value={70}>70</MenuItem>

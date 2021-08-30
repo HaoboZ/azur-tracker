@@ -15,7 +15,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 	
 	return <Autocomplete
 		options={equipList}
-		getOptionLabel={( option ) => option.name}
+		getOptionLabel={( { name } ) => name}
 		isOptionEqualToValue={( option, value ) => option.id === value?.id}
 		fullWidth
 		value={value}
@@ -33,8 +33,8 @@ export default function EquipFilter( { equipList, value, setValue }: {
 			</Box>
 			<Typography>{option.name}</Typography>
 		</li>}
-		groupBy={( option ) => typeNames[ option.type ]}
-		renderInput={( params ) => <TextField
+		groupBy={( { type } ) => typeNames[ type ]}
+		renderInput={params => <TextField
 			{...params}
 			label='Equipment'
 			InputProps={{

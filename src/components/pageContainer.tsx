@@ -8,7 +8,7 @@ export default function PageContainer( { children, sx, ...props }: {
 	children?: React.ReactNode
 } & ContainerProps ) {
 	const height = usePageHeight();
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	return <Box minHeight={{
 		xs: `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`,

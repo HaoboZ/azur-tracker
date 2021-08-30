@@ -13,7 +13,3 @@ yarn dev
 ```
 
 Open [localhost](http://localhost:3000) with your browser to see the result.
-
-## TODO
-
-* filters on top of mobile ship list

@@ -35,12 +35,12 @@ export default function Ship() {
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}
-			onClick={( row ) => showModal( ShipModal, {
+			onClick={row => showModal( ShipModal, {
 				variant: ModalVariant.bottom
 			}, {
 				ship         : row.original as any,
 				equipBetter  : equipBetter.value[ row.id ],
-				selectedEquip: table.state.filters.find( ( filter ) => filter.id === 'equip' )?.value
+				selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
 			} )}
 			renderRow={( { row, onClick, rowProps } ) => <ListItem
 				divider

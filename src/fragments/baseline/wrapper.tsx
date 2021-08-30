@@ -8,9 +8,9 @@ import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib
 import { useIndicator } from '../../lib/providers/indicator';
 import Navigation from '../navigation';
 
-const useStyles = makeStyles( ( theme ) => ( {
+const useStyles = makeStyles( ( { palette } ) => ( {
 	'@global': {
-		'.selectedSort': { backgroundColor: `${theme.palette.primary.main} !important` },
+		'.selectedSort': { backgroundColor: `${palette.primary.main} !important` },
 		'.numberInput' : {
 			textAlign                                                   : 'right',
 			'&[type=number]'                                            : {
@@ -31,8 +31,8 @@ export default function Wrapper( { children } ) {
 	const indicator = useIndicator();
 	
 	const delayedSetBackup = React.useCallback(
-		debounce( async () => backupMutex.runExclusive(
-			async () => await indicator( setBackup( await checkDataIntegrity() ) )
+		debounce( () => backupMutex.runExclusive( async () =>
+			await indicator( setBackup( await checkDataIntegrity() ) )
 		), main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
 	// auto save

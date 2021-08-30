@@ -10,7 +10,7 @@ export type EnhancedDisplayProps<Item> = {
 	// extra check for memo, needs to be memoized
 	extraData?: any,
 	// required if sortable is true
-	setData?: ( ( items: Item[] ) => void ),
+	setData?: ( items: Item[] ) => void,
 	editable?: {
 		// required if setData is set
 		newData?: () => Item | Promise<Item>,
@@ -53,8 +53,8 @@ export function _deleteRow( data, setData, editable, selectable,
 	setData?.( _data );
 	
 	if ( selected && totalSelected <= selectable?.min ) {
-		const newSelected = selectable.selected.filter( ( id ) => id !== ( item.id ?? index ) );
-		const selected = _data.find( ( item ) => !newSelected.includes( item.id ) );
+		const newSelected = selectable.selected.filter( id => id !== ( item.id ?? index ) );
+		const selected = _data.find( ( { id } ) => !newSelected.includes( id ) );
 		if ( selected ) {
 			newSelected.push( selected.id ?? index );
 			selectable.setSelected( newSelected );
@@ -67,7 +67,7 @@ export function _selectRow( selectable,
 	let newSelected = [ ...selectable.selected ];
 	if ( selected ) {
 		if ( totalSelected <= selectable?.min ) return;
-		newSelected = newSelected.filter( ( id ) => id !== ( item?.id ?? index ) );
+		newSelected = newSelected.filter( id => id !== ( item?.id ?? index ) );
 	} else {
 		if ( totalSelected >= selectable?.max ) newSelected.shift();
 		newSelected.push( item?.id ?? index );

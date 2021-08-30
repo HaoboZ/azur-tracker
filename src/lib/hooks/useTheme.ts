@@ -30,7 +30,7 @@ const darkTheme = createTheme( merge( commonTheme, {
 } ) );
 
 export default function useTheme() {
-	const theme = useSelector( state => state.main.theme );
+	const theme = useSelector( ( { main } ) => main.theme );
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
 	
 	const mode: PaletteMode = React.useMemo( () => {

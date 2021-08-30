@@ -11,7 +11,7 @@ import { setResearchLastTab } from '../lib/store/reducers/mainReducer';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {
-	const researchLastTab = useSelector( state => state.main.researchLastTab );
+	const researchLastTab = useSelector( ( { main } ) => main.researchLastTab );
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	
@@ -35,7 +35,7 @@ export default function Research() {
 		</Tabs>
 		<SwipeableViews
 			index={researchLastTab}
-			onChangeIndex={( index ) => dispatch( setResearchLastTab( index ) )}
+			onChangeIndex={index => dispatch( setResearchLastTab( index ) )}
 			containerStyle={swipeFix}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<ResearchGroup key={index} researchData={researchData}/>

@@ -14,7 +14,7 @@ export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
 	neededPoints: number
 } ) {
-	const event = useSelector( state => state.event );
+	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
 	
@@ -74,13 +74,13 @@ export default function EventFields( { time, neededPoints }: {
 				inputProps={{
 					inputMode: 'numeric',
 					className: 'numberInput',
-					onFocus  : ( e ) => e.target.select()
+					onFocus  : ( { target } ) => target.select()
 				}}
 				InputProps={{
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.points}
-				onChange={( e ) => dispatch( event_setPoints( parseInt( e.target.value ) ) )}
+				onChange={( { target } ) => dispatch( event_setPoints( parseInt( target.value ) ) )}
 			/>
 		</Grid>
 	</Grid>;

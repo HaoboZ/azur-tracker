@@ -35,7 +35,7 @@ export type PageModalProps = {
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
 export default function PageModal( { variant = ModalVariant.adaptive, children, ...props }: PageModalProps ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <Dialog
@@ -72,7 +72,7 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 					right               : 'auto',
 					borderTopLeftRadius : 12,
 					borderTopRightRadius: 12,
-					width               : ( theme ) => theme.breakpoints.values.md
+					width               : ( { breakpoints } ) => breakpoints.values.md
 				}
 			}}
 			{...props}>
@@ -98,7 +98,7 @@ export function PageModalContainer( {
 	keepOpenOnSave?: boolean,
 	children?: React.ReactNode
 } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <>

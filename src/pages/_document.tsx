@@ -10,7 +10,7 @@ export default class _Document extends Document {
 		const originalRenderPage = ctx.renderPage;
 		
 		ctx.renderPage = () => originalRenderPage( {
-			enhanceApp: ( App ) => ( props ) => sheets.collect( <App {...props}/> )
+			enhanceApp: App => props => sheets.collect( <App {...props}/> )
 		} );
 		
 		const initialProps = await Document.getInitialProps( ctx );

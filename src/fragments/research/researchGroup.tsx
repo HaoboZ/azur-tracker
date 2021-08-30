@@ -8,12 +8,12 @@ import { devLevels, fateLevels, researchShips } from '../../data/researchData';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
 export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
-	const ships = useSelector( state => state.research.ships );
+	const ships = useSelector( ( { research } ) => research.ships );
 	const dispatch = useDispatch();
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
-		const shipData = researchData.map( ( item ) => {
+		const shipData = researchData.map( item => {
 			const ship = ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
@@ -67,9 +67,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							type='number'
 							inputProps={{ inputMode: 'numeric' }}
 							value={ship.devLevel || 0}
-							onChange={( e ) => dispatch( research_modifyShip( {
+							onChange={( { target } ) => dispatch( research_modifyShip( {
 								ship: item.name,
-								item: { devLevel: parseInt( e.target.value ) }
+								item: { devLevel: parseInt( target.value ) }
 							} ) )}
 						/>,
 						<FormattedTextField
@@ -82,9 +82,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								</InputAdornment>
 							}}
 							value={ship.devStage || 0}
-							onChange={( e ) => dispatch( research_modifyShip( {
+							onChange={( { target } ) => dispatch( research_modifyShip( {
 								ship  : item.name,
-								item  : { devStage: parseInt( e.target.value ) },
+								item  : { devStage: parseInt( target.value ) },
 								maxDev: devLevel[ item.type * 2 ] * 10
 							} ) )}
 						/>,
@@ -95,9 +95,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								type='number'
 								inputProps={{ inputMode: 'numeric' }}
 								value={ship.fateLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
-									item: { fateLevel: parseInt( e.target.value ) }
+									item: { fateLevel: parseInt( target.value ) }
 								} ) )}
 							/>,
 							<FormattedTextField
@@ -108,9 +108,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
 								}}
 								value={ship.fateStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
-									item: { fateStage: parseInt( e.target.value ) }
+									item: { fateStage: parseInt( target.value ) }
 								} ) )}
 							/>,
 							<Typography key='fatePrints'>{fatePrints}</Typography>
@@ -148,9 +148,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									startAdornment: <InputAdornment position='start'>Dev Level</InputAdornment>
 								}}
 								value={ship.devLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
-									item: { devLevel: parseInt( e.target.value ) }
+									item: { devLevel: parseInt( target.value ) }
 								} ) )}
 							/>
 							<FormattedTextField
@@ -159,7 +159,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								inputProps={{
 									inputMode: 'numeric',
 									className: 'numberInput',
-									onFocus  : ( e ) => e.target.select()
+									onFocus  : ( { target } ) => target.select()
 								}}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
@@ -168,9 +168,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									</InputAdornment>
 								}}
 								value={ship.devStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship  : item.name,
-									item  : { devStage: parseInt( e.target.value ) },
+									item  : { devStage: parseInt( target.value ) },
 									maxDev: devLevel[ item.type * 2 ] * 10
 								} ) )}
 							/>
@@ -184,9 +184,9 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									startAdornment: <InputAdornment position='start'>Fate Level</InputAdornment>
 								}}
 								value={ship.fateLevel || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
-									item: { fateLevel: parseInt( e.target.value ) }
+									item: { fateLevel: parseInt( target.value ) }
 								} ) )}
 							/>
 							<FormattedTextField
@@ -195,16 +195,16 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 								inputProps={{
 									inputMode: 'numeric',
 									className: 'numberInput',
-									onFocus  : ( e ) => e.target.select()
+									onFocus  : ( { target } ) => target.select()
 								}}
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment  : <InputAdornment position='end'>%</InputAdornment>
 								}}
 								value={ship.fateStage || 0}
-								onChange={( e ) => dispatch( research_modifyShip( {
+								onChange={( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
-									item: { fateStage: parseInt( e.target.value ) }
+									item: { fateStage: parseInt( target.value ) }
 								} ) )}
 							/>
 						</Grid>}

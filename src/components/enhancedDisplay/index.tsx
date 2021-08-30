@@ -13,7 +13,7 @@ export default function EnhancedDisplay<Item>( {
 	listProps: EnhancedListProps<Item>,
 	tableProps: EnhancedTableProps<Item>
 } ) {
-	if ( useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) ) ) {
+	if ( useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) ) ) {
 		return <EnhancedTable {...props} {...tableProps}/>;
 	} else {
 		return <EnhancedList {...props} {...listProps}/>;

@@ -5,11 +5,11 @@ type C = {
 	enqueueSnackbar: ( message: string, props?: { variant: AlertColor } ) => void,
 	closeSnackbar: () => void
 };
-const SnackBarContext = React.createContext<C>( {
+const SnackbarContext = React.createContext<C>( {
 	enqueueSnackbar: () => null,
 	closeSnackbar  : () => null
 } );
-SnackBarContext.displayName = 'Snackbar';
+SnackbarContext.displayName = 'Snackbar';
 
 type Message = {
 	message: string,
@@ -17,7 +17,7 @@ type Message = {
 };
 
 export default function SnackbarProvider( { children } ) {
-	const wide = useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) );
+	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	const [ open, setOpen ] = React.useState( false );
 	const [ nextSnack, setNextSnack ] = React.useState<Message>( undefined );
@@ -37,7 +37,7 @@ export default function SnackbarProvider( { children } ) {
 	}, [ nextSnack, snack ] );
 	
 	// noinspection JSUnusedGlobalSymbols
-	return <SnackBarContext.Provider
+	return <SnackbarContext.Provider
 		value={{
 			enqueueSnackbar: ( message, props ) => setNextSnack( { message, props } ),
 			closeSnackbar  : () => setOpen( false )
@@ -48,11 +48,10 @@ export default function SnackbarProvider( { children } ) {
 			autoHideDuration={5000}
 			anchorOrigin={{ vertical: wide ? 'bottom' : 'top', horizontal: 'center' }}
 			sx={{
-				'& .MuiSnackbar-root': {
-					top: {
-						xs: 'calc(env(safe-area-inset-top) + 24px)',
-						sm: 0
-					}
+				pointerEvents: 'none',
+				mt           : {
+					xs: 'env(safe-area-inset-top)',
+					sm: 0
 				}
 			}}
 			TransitionComponent={Grow}
@@ -63,20 +62,21 @@ export default function SnackbarProvider( { children } ) {
 			TransitionProps={{ onExited: () => setSnack( undefined ) }}>
 			<Alert
 				variant='filled'
-				color={snack?.props.variant}
+				color={snack?.props?.variant}
+				sx={{ pointerEvents: 'auto' }}
 				onClose={() => setOpen( false )}>
 				{snack?.message}
 			</Alert>
 		</Snackbar>
-	</SnackBarContext.Provider>;
+	</SnackbarContext.Provider>;
 }
 
 export function useSnackbar() {
-	return React.useContext( SnackBarContext );
+	return React.useContext( SnackbarContext );
 }
 
-export function withSnackBar( Component ) {
-	return ( props ) => <SnackBarContext.Consumer>
-		{( snackBar ) => <Component snackBar={snackBar} {...props}/>}
-	</SnackBarContext.Consumer>;
+export function withSnackbar( Component ) {
+	return props => <SnackbarContext.Consumer>
+		{snackbar => <Component snackbar={snackbar} {...props}/>}
+	</SnackbarContext.Consumer>;
 }

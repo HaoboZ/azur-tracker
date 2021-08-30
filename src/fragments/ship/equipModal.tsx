@@ -36,7 +36,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
 		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
-		const equipList = equipType ? equips.filter( ( item ) => equipType.includes( item.type ) ) : [];
+		const equipList = equipType ? equips.filter( ( { type } ) => equipType.includes( type ) ) : [];
 		equipList.unshift( equips[ 0 ] );
 		
 		const tierList = equipType ? equipTier[ info?.ship.equipType[ info.index ] ] : [];
@@ -142,14 +142,14 @@ export default function EquipModal( { info, selectedEquip }: {
 				<Grid item container xs={12} md={6} justifyContent='center'>
 					<Button
 						variant='outlined'
-						onClick={( e ) => setAnchorEl( e.currentTarget )}>
+						onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
 						Equipment Tier
 					</Button>
 					<EquipTierSelector
 						anchorEl={anchorEl}
 						closeAnchor={() => setAnchorEl( null )}
 						equipList={tierList}
-						setEquip={( id ) => setEquip( equipListIndex[ id ] )}
+						setEquip={id => setEquip( equipListIndex[ id ] )}
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
@@ -165,7 +165,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			<FormControlLabel
 				control={<Switch
 					checked={Boolean( override )}
-					onChange={( e ) => setOverride( +e.target.checked as any )}
+					onChange={( { target } ) => setOverride( +target.checked as any )}
 				/>}
 				label='Force BiS'
 				labelPlacement='start'

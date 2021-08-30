@@ -19,7 +19,7 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
-	const main = useSelector( state => state.main );
+	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();
 	const router = useRouter();
 	

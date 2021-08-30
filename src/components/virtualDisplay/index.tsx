@@ -9,7 +9,7 @@ export default function VirtualDisplay( { renderRow, ...table }: {
 	onClick?: ( row: Row ) => void,
 	renderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
 } & TableInstance ) {
-	if ( useMediaQuery<Theme>( ( theme ) => theme.breakpoints.up( 'sm' ) ) ) {
+	if ( useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) ) ) {
 		return <VirtualTable {...table}/>;
 	} else {
 		return <VirtualList {...table} renderRow={renderRow}/>;

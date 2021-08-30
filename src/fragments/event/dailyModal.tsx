@@ -11,7 +11,7 @@ import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyModal() {
 	const controls = useModalControls();
-	const _daily = useSelector( state => state.event.daily );
+	const _daily = useSelector( ( { event } ) => event.daily );
 	const dispatch = useDispatch();
 	
 	const [ daily, setDaily ] = React.useState( _daily );
@@ -53,18 +53,14 @@ export default function DailyModal() {
 							type='text'
 							fullWidth
 							value={item.name}
-							onChange={( e ) => modifyItem( index, {
-								name: e.target.value
-							} )}
+							onChange={( { target } ) => modifyItem( index, { name: target.value } )}
 						/>,
 						<FormattedTextField
 							key='amount'
 							type='number'
 							placeholder='0'
 							value={item.amount}
-							onChange={( e ) => modifyItem( index, {
-								amount: parseInt( e.target.value )
-							} )}
+							onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
 						/>
 					]
 				}}
@@ -76,9 +72,7 @@ export default function DailyModal() {
 								fullWidth
 								label='Name'
 								value={item.name}
-								onChange={( e ) => modifyItem( index, {
-									name: e.target.value
-								} )}
+								onChange={( { target } ) => modifyItem( index, { name: target.value } )}
 							/>
 						</Grid>
 						<Grid item xs={3}>
@@ -87,9 +81,7 @@ export default function DailyModal() {
 								label='Amount'
 								placeholder='0'
 								value={item.amount}
-								onChange={( e ) => modifyItem( index, {
-									amount: parseInt( e.target.value )
-								} )}
+								onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
 							/>
 						</Grid>
 					</Grid>

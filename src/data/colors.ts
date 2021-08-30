@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { makeStyles } from '@material-ui/styles';
 import { CSSProperties } from 'react';
 
