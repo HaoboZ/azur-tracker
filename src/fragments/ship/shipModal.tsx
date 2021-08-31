@@ -16,7 +16,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ModalVariant, PageModalContainer } from '../../components/pageModal';
-import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { rarityColors } from '../../data/colors';
 import { equips, equipsIndex } from '../../data/equipData';
 import shipRef from '../../data/shipData';
 import SVGIcon, { TierIcon } from '../../lib/icons';
@@ -35,7 +35,6 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const controls = useModalControls();
 	const ships = useSelector( ( { ship } ) => ship.ships );
 	const dispatch = useDispatch();
-	const colorClasses = useMappedColorClasses();
 	const { showModal } = useModal();
 	
 	// calculates tier
@@ -158,7 +157,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								height={128}
 								width={128}
 								layout='intrinsic'
-								className={colorClasses[ rarityColors[ equip.rarity ] ]}
+								className={`color-${rarityColors[ equip.rarity ]}`}
 							/>
 							<div>
 								<TierIcon tier={val[ 2 ]}/>

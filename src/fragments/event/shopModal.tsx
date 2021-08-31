@@ -49,7 +49,7 @@ export default function ShopModal() {
 						'Amount',
 						'Wanted'
 					],
-					columns     : item => [
+					columns     : ( item ) => [
 						item.name,
 						item.cost,
 						item.amount,
@@ -66,7 +66,7 @@ export default function ShopModal() {
 					]
 				}}
 				listProps={{
-					renderRow: item => <Grid container spacing={2}>
+					renderRow: ( item ) => <Grid container spacing={2}>
 						<Grid item xs={9}>
 							<ListItemText
 								primary={item.name}

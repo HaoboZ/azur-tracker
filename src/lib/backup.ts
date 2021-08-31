@@ -56,7 +56,7 @@ export async function getBackup( integrity, check = true ) {
 	const { data: { data, lastSaved } } = await axios( '/api/getData' );
 	store.dispatch( setLastSaved( lastSaved ) );
 	const state = store.getState();
-	const changed = Object.keys( data ).filter( item => !isEqual( state[ item ], data[ item ] ) );
+	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );
 	// noinspection CommaExpressionJS, JSRemoveUnnecessaryParentheses
 	store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
 	store.dispatch( importBackup( data ) );

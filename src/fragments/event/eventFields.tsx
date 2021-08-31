@@ -71,16 +71,14 @@ export default function EventFields( { time, neededPoints }: {
 			<FormattedTextField
 				type='number'
 				label='Current Points'
-				inputProps={{
-					inputMode: 'numeric',
-					className: 'numberInput',
-					onFocus  : ( { target } ) => target.select()
-				}}
+				inputMode='numeric'
+				className='numberInput'
 				InputProps={{
 					endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 				}}
 				value={event.points}
 				onChange={( { target } ) => dispatch( event_setPoints( parseInt( target.value ) ) )}
+				onFocus={( { target } ) => target.select()}
 			/>
 		</Grid>
 	</Grid>;

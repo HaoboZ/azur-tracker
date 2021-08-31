@@ -13,7 +13,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
-		const shipData = researchData.map( item => {
+		const shipData = researchData.map( ( item ) => {
 			const ship = ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
@@ -75,7 +75,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 						<FormattedTextField
 							key='devStage'
 							type='number'
-							inputProps={{ inputMode: 'numeric', className: 'numberInput' }}
+							inputMode='numeric'
+							className='numberInput'
 							InputProps={{
 								endAdornment: <InputAdornment position='end'>
 									/{devLevel[ item.type * 2 ] * 10}
@@ -103,7 +104,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							<FormattedTextField
 								key='fateStage'
 								type='number'
-								inputProps={{ inputMode: 'numeric', className: 'numberInput' }}
+								inputMode='numeric'
+								className='numberInput'
 								InputProps={{
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
 								}}
@@ -156,11 +158,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							<FormattedTextField
 								type='number'
 								size='small'
-								inputProps={{
-									inputMode: 'numeric',
-									className: 'numberInput',
-									onFocus  : ( { target } ) => target.select()
-								}}
+								inputMode='numeric'
+								className='numberInput'
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment  : <InputAdornment position='end'>
@@ -173,6 +172,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									item  : { devStage: parseInt( target.value ) },
 									maxDev: devLevel[ item.type * 2 ] * 10
 								} ) )}
+								onFocus={( { target } ) => target.select()}
 							/>
 						</Grid>
 						{item.fate && <Grid item xs={6}>
@@ -192,11 +192,8 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 							<FormattedTextField
 								type='number'
 								size='small'
-								inputProps={{
-									inputMode: 'numeric',
-									className: 'numberInput',
-									onFocus  : ( { target } ) => target.select()
-								}}
+								inputMode='numeric'
+								className='numberInput'
 								InputProps={{
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment  : <InputAdornment position='end'>%</InputAdornment>
@@ -206,6 +203,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 									ship: item.name,
 									item: { fateStage: parseInt( target.value ) }
 								} ) )}
+								onFocus={( { target } ) => target.select()}
 							/>
 						</Grid>}
 					</Grid>;

@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 export default {
 	name   : 'Microlayer Medley Rerun',
 	link   : 'https://azurlane.koumakan.jp/Microlayer_Medley',

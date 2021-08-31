@@ -65,7 +65,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 	const { filter, ships } = useSelector( ( { ship } ) => ship );
 	const dispatch = useDispatch();
 	
-	const globalFilter = useAsyncDebounce( value =>
+	const globalFilter = useAsyncDebounce( ( value ) =>
 		table.setGlobalFilter( value ), 250 );
 	
 	const [ search, setSearch ] = React.useState( '' );
@@ -91,7 +91,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 	
 	// resets filter when ships change
 	React.useEffect( () => {
-		table.setFilter( 'equip', filter => filter && { ...filter } );
+		table.setFilter( 'equip', ( filter ) => filter && { ...filter } );
 	}, [ ships ] );
 	
 	return <Box mx={2} mb={2}>
@@ -99,7 +99,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 			<Grid item md xs={12}>
 				<EquipFilter
 					equipList={equips}
-					setValue={equip => table.setFilter( 'equip', equip )}
+					setValue={( equip ) => table.setFilter( 'equip', equip )}
 				/>
 			</Grid>
 			<Grid item md xs={10}>
@@ -115,7 +115,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 							globalFilter( value );
 						}
 					}}
-					renderInput={params => <TextField
+					renderInput={( params ) => <TextField
 						inputRef={searchRef}
 						{...params}
 						label='Search'

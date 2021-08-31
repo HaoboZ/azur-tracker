@@ -99,7 +99,7 @@ export default function Home() {
 						value={main.autoSaveInterval}
 						onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
 						valueLabelDisplay='auto'
-						valueLabelFormat={value => value / 1000}
+						valueLabelFormat={( value ) => value / 1000}
 						step={500}
 						marks
 						min={500}
@@ -114,7 +114,7 @@ export default function Home() {
 						value={main.autoLoadInterval}
 						onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
 						valueLabelDisplay='auto'
-						valueLabelFormat={value => value / 1000}
+						valueLabelFormat={( value ) => value / 1000}
 						step={2500}
 						marks
 						min={5000}

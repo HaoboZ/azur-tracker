@@ -16,7 +16,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { rarityColors } from '../../data/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../data/equipData';
 import shipRef from '../../data/shipData';
 import { TierIcon } from '../../lib/icons';
@@ -31,7 +31,6 @@ export default function EquipModal( { info, selectedEquip }: {
 } ) {
 	const controls = useModalControls();
 	const dispatch = useDispatch();
-	const colorClasses = useMappedColorClasses();
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
@@ -103,7 +102,7 @@ export default function EquipModal( { info, selectedEquip }: {
 						height={128}
 						width={128}
 						layout='intrinsic'
-						className={colorClasses[ rarityColors[ currentEquip.rarity ] ]}
+						className={`color-${rarityColors[ currentEquip.rarity ]}`}
 					/>
 				</Grid>
 				<Grid item xs={2}>
@@ -117,7 +116,7 @@ export default function EquipModal( { info, selectedEquip }: {
 						height={128}
 						width={128}
 						layout='intrinsic'
-						className={colorClasses[ rarityColors[ equip.rarity ] ]}
+						className={`color-${rarityColors[ equip.rarity ]}`}
 					/>
 				</Grid>
 				<Grid item container xs={5} justifyContent='center'>
@@ -149,7 +148,7 @@ export default function EquipModal( { info, selectedEquip }: {
 						anchorEl={anchorEl}
 						closeAnchor={() => setAnchorEl( null )}
 						equipList={tierList}
-						setEquip={id => setEquip( equipListIndex[ id ] )}
+						setEquip={( id ) => setEquip( equipListIndex[ id ] )}
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>

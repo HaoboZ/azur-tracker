@@ -1,8 +1,5 @@
 // noinspection SpellCheckingInspection
 
-import { makeStyles } from '@material-ui/styles';
-import { CSSProperties } from 'react';
-
 export const
 	rarityColors  = {
 		'Decisive'  : 'rainbow',
@@ -60,33 +57,7 @@ export const
 		'gray'
 	];
 
-// noinspection ES6RedundantNestingInTemplateLiteral
-export const mappedColorStyles: Record<string, CSSProperties> = {
-	rainbow: {
-		background: `linear-gradient(to bottom right, ${'#afa'} 15%, ${'#aaf'}, ${'#faa'} 85%)`,
-		color     : 'black'
-	},
-	yellow : { backgroundColor: '#eee8aa', color: 'black' },
-	blue   : { backgroundColor: '#b0e0e6', color: 'black' },
-	gray   : { backgroundColor: '#dcdcdc', color: 'black' },
-	purple : { backgroundColor: '#dda0dd', color: 'black' },
-	orange : { backgroundColor: '#ffdead', color: 'black' },
-	red    : { backgroundColor: '#ffc0cb', color: 'black' },
-	green  : { backgroundColor: '#98fb98', color: 'black' },
-	aqua   : { backgroundColor: '#7fffd4', color: 'black' },
-	
-	royal     : { backgroundColor: '#83aaf0', color: 'white' },
-	sakura    : { backgroundColor: '#fff0f5', color: 'black' },
-	sardegna  : { backgroundColor: '#6ebe93', color: 'black' },
-	northern  : { backgroundColor: '#f5f5f5', color: 'black' },
-	iris      : { backgroundColor: '#ffd700', color: 'black' },
-	vichya    : { backgroundColor: '#d77c7c', color: 'white' },
-	neptunia  : { backgroundColor: '#b39ae5', color: 'white' },
-	kizuna    : { backgroundColor: '#fba5bb', color: 'black' },
-	hololive  : { backgroundColor: '#8ee7f1', color: 'black' },
-	venus     : { backgroundColor: '#ffc0cb', color: 'black' },
-	idolmaster: { backgroundColor: '#f8bde9', color: 'black' },
-	meta      : { backgroundColor: '#808080', color: 'white' }
-};
-
-export const useMappedColorClasses = makeStyles( mappedColorStyles as any );
+export const bgcolorGen = ( theme, backgroundColor ) => ( {
+	backgroundColor: `${backgroundColor} !important`,
+	color          : `${theme.palette.getContrastText( backgroundColor )} !important`
+} );

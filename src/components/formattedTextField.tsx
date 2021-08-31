@@ -12,15 +12,15 @@ export default function FormattedTextField( props: TextFieldProps ) {
 	return <TextField
 		{...props}
 		value={text}
-		onFocus={e => {
+		onFocus={( e ) => {
 			setFocused( true );
 			props.onFocus?.( e );
 		}}
-		onChange={e => {
+		onChange={( e ) => {
 			setText( e.target.value );
 			props.onChange?.( e );
 		}}
-		onBlur={e => {
+		onBlur={( e ) => {
 			setText( props.value );
 			setFocused( false );
 			props.onBlur?.( e );

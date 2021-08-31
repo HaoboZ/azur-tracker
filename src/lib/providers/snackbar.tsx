@@ -76,7 +76,7 @@ export function useSnackbar() {
 }
 
 export function withSnackbar( Component ) {
-	return props => <SnackbarContext.Consumer>
-		{snackbar => <Component snackbar={snackbar} {...props}/>}
+	return ( props ) => <SnackbarContext.Consumer>
+		{( snackbar ) => <Component snackbar={snackbar} {...props}/>}
 	</SnackbarContext.Consumer>;
 }

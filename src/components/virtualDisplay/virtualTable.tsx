@@ -1,11 +1,10 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
+import clsx from 'clsx';
 import { isEqual } from 'lodash';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
-
-import { useMappedColorClasses } from '../../data/colors';
 
 const VirtualTable = React.memo( function VirtualTable( {
 	getTableProps,
@@ -15,8 +14,6 @@ const VirtualTable = React.memo( function VirtualTable( {
 	prepareRow,
 	onClick
 }: { onClick?: ( row: Row ) => void } & TableInstance ) {
-	const colorClasses = useMappedColorClasses();
-	
 	const bodyRef = React.useRef<HTMLDivElement>();
 	
 	const headerStyle = React.useMemo( () => {
@@ -29,15 +26,21 @@ const VirtualTable = React.memo( function VirtualTable( {
 		component={Paper}
 		sx={{
 			'& .row:hover': { cursor: 'pointer' },
-			'& .cell'     : { whiteSpace: 'nowrap', overflow: 'hidden' }
+			'& .cell'     : {
+				display   : 'flex',
+				alignItems: 'center',
+				whiteSpace: 'nowrap',
+				overflow  : 'hidden',
+				px        : 1
+			}
 		}}
 		{...getTableProps()}>
 		<TableHead component='div'>
-			{headerGroups.map( headerGroup => <TableRow
+			{headerGroups.map( ( headerGroup ) => <TableRow
 				key={headerGroup.id}
 				component='div'
 				{...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
-				{headerGroup.headers.map( column => <TableCell
+				{headerGroup.headers.map( ( column ) => <TableCell
 					key={column.id}
 					component='div'
 					{...column.getHeaderProps( column.getSortByToggleProps() )}>
@@ -73,10 +76,8 @@ const VirtualTable = React.memo( function VirtualTable( {
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								classes={{ sizeSmall: 'cell' }}
-								// @ts-ignore
-								className={colorClasses[ cell.column.color?.( cell ) ]}
-								{...cell.getCellProps( { style: { display: 'flex', alignItems: 'center' } } )}>
+								className={clsx( 'cell', ( cell.column as any ).className?.( cell ) )}
+								{...cell.getCellProps()}>
 								{cell.render( 'Cell' )}
 							</TableCell> )}
 						</TableRow>;

@@ -24,13 +24,13 @@ import { getTier } from './reducers/shipReducer';
 export type RootState = ReturnType<typeof rootReducer>;
 
 const migrations: Record<string, ( state: RootState ) => RootState> = {
-	2: state => ( {
+	2: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
-			ships: mapValues( state.ship.ships, ship => {
+			ships: mapValues( state.ship.ships, ( ship ) => {
 				if ( ship?.equip ) {
-					ship.equip = ship.equip?.map( val => {
+					ship.equip = ship.equip?.map( ( val ) => {
 						if ( val.length > 1 )
 							val[ 1 ] = +val[ 1 ] as 0 | 1;
 						return val;
@@ -40,27 +40,27 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 			} )
 		}
 	} ),
-	3: state => ( {
+	3: ( state ) => ( {
 		...state,
 		main: {
 			...state.main,
 			newData: {}
 		}
 	} ),
-	4: state => ( {
+	4: ( state ) => ( {
 		...state,
 		event: {
 			...state.event,
-			daily  : state.event.daily.map( item => ( { ...item, id: nanoid() } ) ),
-			farming: state.event.farming.map( item => ( { ...item, id: nanoid() } ) )
+			daily  : state.event.daily.map( ( item ) => ( { ...item, id: nanoid() } ) ),
+			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid() } ) )
 		}
 	} ),
-	5: state => ( {
+	5: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
-			ships: mapValues( state.ship.ships, ship => {
-				ship.equip?.forEach( equip => {
+			ships: mapValues( state.ship.ships, ( ship ) => {
+				ship.equip?.forEach( ( equip ) => {
 					switch ( equip[ 0 ] % 10 ) {
 					case 1:
 						equip[ 0 ] -= 1;
@@ -77,18 +77,18 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 			} )
 		}
 	} ),
-	6: state => ( {
+	6: ( state ) => ( {
 		...state,
 		ship: {
 			...state.ship,
-			ships: Object.fromEntries( Object.entries( state.ship.ships ).map( ship => {
+			ships: Object.fromEntries( Object.entries( state.ship.ships ).map( ( ship ) => {
 				getTier( shipRef[ ship[ 0 ] ], ship[ 1 ].equip );
 				delete ship[ 1 ][ 'tier' ];
 				return ship;
 			} ) )
 		}
 	} ),
-	7: state => ( {
+	7: ( state ) => ( {
 		...state,
 		main: {
 			...state.main,
@@ -110,7 +110,7 @@ const persistedReducer = process.browser ? persistReducer<RootState>( {
 export const store: Store<RootState> = configureStore( {
 	reducer   : persistedReducer,
 	devTools  : process.env.NODE_ENV === 'development',
-	middleware: getDefaultMiddleware => getDefaultMiddleware( {
+	middleware: ( getDefaultMiddleware ) => getDefaultMiddleware( {
 		serializableCheck: {
 			ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ]
 		}

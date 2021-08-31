@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column } from 'react-table';
+import { Cell, Column } from 'react-table';
 
 import { factionColors, rarityColors, tierColors, typeColors } from '../../data/colors';
 import { equippable, equipTier } from '../../data/equipData';
@@ -21,22 +21,21 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 		accessor: 'name',
 		minWidth: 40
 	}, {
-		Header  : 'Rarity',
-		accessor: 'rarity',
-		minWidth: 20,
-		color   : ( { value } ) => rarityColors[ value ],
-		sortType: ( rowA, rowB, columnId ) =>
-			Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
+		Header   : 'Rarity',
+		accessor : 'rarity',
+		minWidth : 20,
+		className: ( { value } ) => `color-${rarityColors[ value ]}`,
+		sortType : ( rowA, rowB, columnId ) => Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
 	}, {
-		Header  : 'Faction',
-		accessor: 'faction',
-		minWidth: 20,
-		color   : ( { value } ) => factionColors[ value ]
+		Header   : 'Faction',
+		accessor : 'faction',
+		minWidth : 20,
+		className: ( { value } ) => `color-${factionColors[ value ]}`
 	}, {
-		Header  : 'Type',
-		accessor: 'type',
-		minWidth: 20,
-		color   : ( { value } ) => typeColors[ value ]
+		Header   : 'Type',
+		accessor : 'type',
+		minWidth : 20,
+		className: ( { value } ) => `color-${typeColors[ value ]}`
 	}, {
 		Header             : 'Tier',
 		accessor           : 'tier',
@@ -81,11 +80,11 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 		accessor           : 'equip',
 		minWidth           : 20,
 		Cell               : ( { value, row } ) => equipBetter.value[ row.id ]
-			? `+${Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( equip => equip[ 1 ] ) )}`
+			? `+${Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
 			: value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
-		color              : ( { row } ) => {
+		className          : ( { row } ) => {
 			if ( equipBetter.value[ row.id ] ) {
-				return tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( equip => equip[ 0 ] ) ) ];
+				return `color-${tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`;
 			}
 		},
 		disableGlobalFilter: true,
@@ -128,5 +127,5 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 	}, {
 		accessor           : 'equipType',
 		disableGlobalFilter: true
-	} ] as Column[];
+	} ] as ( Column<any> & { className?: ( cell: Cell ) => string } )[];
 }

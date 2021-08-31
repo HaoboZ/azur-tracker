@@ -35,7 +35,7 @@ export default function Research() {
 		</Tabs>
 		<SwipeableViews
 			index={researchLastTab}
-			onChangeIndex={index => dispatch( setResearchLastTab( index ) )}
+			onChangeIndex={( index ) => dispatch( setResearchLastTab( index ) )}
 			containerStyle={swipeFix}>
 			{Object.values( researchShips ).map( ( researchData, index ) =>
 				<ResearchGroup key={index} researchData={researchData}/>

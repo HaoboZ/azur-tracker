@@ -3,7 +3,7 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import Image from 'next/image';
 import React from 'react';
 
-import { rarityColors, useMappedColorClasses } from '../../data/colors';
+import { rarityColors } from '../../data/colors';
 import { equips, typeNames } from '../../data/equipData';
 
 export default function EquipFilter( { equipList, value, setValue }: {
@@ -11,8 +11,6 @@ export default function EquipFilter( { equipList, value, setValue }: {
 	value?: typeof equips[number],
 	setValue: ( value: typeof equips[number] ) => void
 } ) {
-	const colorClasses = useMappedColorClasses();
-	
 	return <Autocomplete
 		options={equipList}
 		getOptionLabel={( { name } ) => name}
@@ -28,13 +26,13 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					layout='fixed'
 					height={50}
 					width={50}
-					className={colorClasses[ rarityColors[ option.rarity ] ]}
+					className={`color-${rarityColors[ option.rarity ]}`}
 				/>
 			</Box>
 			<Typography>{option.name}</Typography>
 		</li>}
 		groupBy={( { type } ) => typeNames[ type ]}
-		renderInput={params => <TextField
+		renderInput={( params ) => <TextField
 			{...params}
 			label='Equipment'
 			InputProps={{

@@ -19,12 +19,15 @@ module.exports = {
 		ecmaVersion : 12,
 		sourceType  : 'module'
 	},
-	plugins      : [ '@typescript-eslint' ],
+	plugins      : [
+		'@typescript-eslint'
+	],
 	rules        : {
 		// possible errors
 		'no-empty': [ 'warn', { 'allowEmptyCatch': true } ],
 		// stylistic issues
 		'array-bracket-spacing'   : [ 'warn', 'always' ],
+		'arrow-parens'            : [ 'warn', 'always' ],
 		'comma-dangle'            : 'off',
 		'indent'                  : [ 'warn', 'tab', { VariableDeclarator: 'first' } ],
 		'jsx-quotes'              : [ 'warn', 'prefer-single' ],
@@ -44,10 +47,7 @@ module.exports = {
 		} ],
 		'react/no-unescaped-entities'        : 'off',
 		'react/prop-types'                   : 'off',
-		'react/jsx-closing-bracket-location' : [ 'warn', {
-			selfClosing: 'line-aligned',
-			nonEmpty   : 'after-props'
-		} ],
+		'react/jsx-closing-bracket-location' : [ 'warn', { selfClosing: 'line-aligned', nonEmpty: 'after-props' } ],
 		'react/jsx-curly-brace-presence'     : [ 'warn', 'never' ],
 		'react/jsx-curly-newline'            : [ 'warn', 'consistent' ],
 		'react/jsx-curly-spacing'            : [ 'warn', 'never' ],
@@ -66,14 +66,8 @@ module.exports = {
 		'@typescript-eslint/comma-dangle'                  : [ 'warn', 'never' ],
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/member-delimiter-style'        : [ 'warn', {
-			multiline : {
-				delimiter  : 'comma',
-				requireLast: false
-			},
-			singleline: {
-				delimiter  : 'comma',
-				requireLast: false
-			}
+			multiline : { delimiter: 'comma', requireLast: false },
+			singleline: { delimiter: 'comma', requireLast: false }
 		} ],
 		'@typescript-eslint/no-empty-interface'            : [ 'warn', { allowSingleExtends: true } ],
 		'@typescript-eslint/no-explicit-any'               : 'off',

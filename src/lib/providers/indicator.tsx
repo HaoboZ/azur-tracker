@@ -17,7 +17,7 @@ export default function IndicatorProvider( { children } ) {
 		return () => window.removeEventListener( 'beforeunload', warn );
 	}, [ visible ] );
 	
-	return <IndicatorContext.Provider value={async promise => {
+	return <IndicatorContext.Provider value={async ( promise ) => {
 		setVisible( true );
 		if ( promise ) {
 			promise.finally( () => setVisible( false ) );
@@ -47,7 +47,7 @@ export function useIndicator() {
 }
 
 export function withIndicator( Component ) {
-	return props => <IndicatorContext.Consumer>
-		{indicator => <Component indicator={indicator} {...props}/>}
+	return ( props ) => <IndicatorContext.Consumer>
+		{( indicator ) => <Component indicator={indicator} {...props}/>}
 	</IndicatorContext.Consumer>;
 }
