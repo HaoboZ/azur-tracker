@@ -1,4 +1,4 @@
-import { colors, createTheme, PaletteMode, Theme, ThemeOptions, useMediaQuery } from '@material-ui/core';
+import { colors, createTheme, PaletteMode, Theme, ThemeOptions, useMediaQuery } from '@mui/material';
 import { merge } from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -46,7 +46,7 @@ export default function useTheme() {
 	return mode === 'dark' ? darkTheme : lightTheme;
 }
 
-declare module '@material-ui/private-theming' {
+declare module '@mui/private-theming' {
 	// noinspection JSUnusedGlobalSymbols
 	interface DefaultTheme extends Theme {
 	}

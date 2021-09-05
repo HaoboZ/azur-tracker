@@ -1,4 +1,4 @@
-import { CircularProgress, Fade } from '@material-ui/core';
+import { CircularProgress, Fade } from '@mui/material';
 import React from 'react';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;

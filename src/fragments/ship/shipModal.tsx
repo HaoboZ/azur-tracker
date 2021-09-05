@@ -1,4 +1,5 @@
 import {
+	Box,
 	DialogContent,
 	DialogTitle,
 	FormControl,
@@ -10,7 +11,7 @@ import {
 	Typography,
 	Zoom,
 	ZoomProps
-} from '@material-ui/core';
+} from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -159,14 +160,13 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								layout='intrinsic'
 								className={`color-${rarityColors[ equip.rarity ]}`}
 							/>
-							<div>
+							<Box>
 								<TierIcon tier={val[ 2 ]}/>
 								{equipBetter[ index ]?.[ 1 ] ? <>
 									<SVGIcon name='arrow'/>
 									<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
 								</> : undefined}
-							</div>
-						
+							</Box>
 						</Grid>;
 					} )}
 				</Grid>

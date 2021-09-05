@@ -1,4 +1,4 @@
-import { GlobalStyles, Theme } from '@material-ui/core';
+import { GlobalStyles, Theme } from '@mui/material';
 import { debounce } from 'lodash';
 import { useSession } from 'next-auth/client';
 import React from 'react';

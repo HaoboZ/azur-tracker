@@ -1,3 +1,4 @@
+import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@mui/icons-material';
 import {
 	Autocomplete,
 	Box,
@@ -9,8 +10,7 @@ import {
 	Menu,
 	MenuItem,
 	TextField
-} from '@material-ui/core';
-import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@material-ui/icons';
+} from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';

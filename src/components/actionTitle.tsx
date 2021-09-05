@@ -1,4 +1,4 @@
-import { Box, BoxProps, Button, ButtonGroup, ButtonProps, Typography, TypographyProps } from '@material-ui/core';
+import { Box, BoxProps, Button, ButtonGroup, ButtonProps, Typography, TypographyProps } from '@mui/material';
 import React from 'react';
 
 export type ActionButtonProps = { name: React.ReactNode } & ButtonProps;

@@ -1,5 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
-import clsx from 'clsx';
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { isEqual } from 'lodash';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
@@ -25,8 +24,8 @@ const VirtualTable = React.memo( function VirtualTable( {
 		size='small'
 		component={Paper}
 		sx={{
-			'& .row:hover': { cursor: 'pointer' },
-			'& .cell'     : {
+			'& .MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
+			'& .MuiTableCell-root'      : {
 				display   : 'flex',
 				alignItems: 'center',
 				whiteSpace: 'nowrap',
@@ -70,13 +69,12 @@ const VirtualTable = React.memo( function VirtualTable( {
 						return <TableRow
 							component='div'
 							hover
-							classes={{ hover: 'row' }}
 							onClick={() => onClick?.( row )}
 							{...row.getRowProps( { style } )}>
 							{row.cells.map( ( cell, i ) => <TableCell
 								key={i}
 								component='div'
-								className={clsx( 'cell', ( cell.column as any ).className?.( cell ) )}
+								className={( cell.column as any ).className?.( cell )}
 								{...cell.getCellProps()}>
 								{cell.render( 'Cell' )}
 							</TableCell> )}

@@ -1,3 +1,4 @@
+import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material';
 import {
 	Box,
 	IconButton,
@@ -10,8 +11,7 @@ import {
 	TableRow,
 	Typography,
 	useTheme
-} from '@material-ui/core';
-import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@material-ui/icons';
+} from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
@@ -52,23 +52,23 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 				hover
 				selected={selected}
 				onClick={selectable?.setSelected
-				&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}>
+				&& ( () => _selectRow( selectable,
+					item, index, selected, totalSelected ) )}>
 				{sortable && <TableCell className='sortHandle'>
-					<div><MenuIcon/></div>
+					<MenuIcon/>
 				</TableCell>}
 				{columns( item, index ).map( ( cell, index ) => <TableCell key={index}>
-					<div>{cell}</div>
+					{cell}
 				</TableCell> )}
 				{Boolean( editable ) && <TableCell>
-					<div>
-						{( editable?.min ? data.length > editable.min : true )
-						&& <IconButton onClick={( { stopPropagation } ) => {
-							stopPropagation();
-							_deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
-						}}>
-							<CloseIcon/>
-						</IconButton>}
-					</div>
+					{( editable?.min ? data.length > editable.min : true )
+					&& <IconButton onClick={( e ) => {
+						e.stopPropagation();
+						_deleteRow( data, setData, editable, selectable,
+							item, index, selected, totalSelected );
+					}}>
+						<CloseIcon/>
+					</IconButton>}
 				</TableCell>}
 			</TableRow>;
 		};
@@ -114,7 +114,14 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 	}}>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
-			<Table size='small'>
+			<Table
+				size='small'
+				sx={{
+					'& .MuiTableBody-root .MuiTableRow-root': {
+						':hover'        : selectable ? { cursor: 'pointer' } : undefined,
+						':last-child td': { borderBottom: 0 }
+					}
+				}}>
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
 						{sortable && <TableCell className='minWidth'/>}
@@ -132,11 +139,13 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 					</TableRow>
 				</TableHead>
 				{loading || !data.length
-					? <TableBody><TableRow>
-						<TableCell colSpan={columnHeader.length + 2}>
-							{loading ? loadingComponent : emptyComponent}
-						</TableCell>
-					</TableRow></TableBody>
+					? <TableBody>
+						<TableRow>
+							<TableCell colSpan={columnHeader.length + 2}>
+								{loading ? loadingComponent : emptyComponent}
+							</TableCell>
+						</TableRow>
+					</TableBody>
 					: dataItems}
 			</Table>
 		</TableContainer>

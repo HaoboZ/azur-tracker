@@ -1,4 +1,4 @@
-import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
+import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -40,10 +40,7 @@ export default function Ship() {
 				equipBetter  : equipBetter.value[ row.id ],
 				selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
 			} )}
-			renderRow={( { row, onClick, rowProps } ) => <ListItem
-				divider
-				onClick={() => onClick?.( row )}
-				ContainerProps={rowProps}>
+			renderRow={( row ) => <>
 				<ListItemText
 					primary={<>
 						{row.values.name}
@@ -53,11 +50,10 @@ export default function Ship() {
 					</>}
 					secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
 				/>
-				{/*@ts-ignore*/}
-				<ListItemSecondaryAction className={`color-${row.cells[ 7 ].column.color?.( row.cells[ 7 ] )}`}>
+				<ListItemSecondaryAction className={( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] )}>
 					{row.cells[ 7 ].render( 'Cell' )}
 				</ListItemSecondaryAction>
-			</ListItem>}
+			</>}
 		/>
 	</PageContainer>;
 }

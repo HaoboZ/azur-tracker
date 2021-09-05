@@ -1,4 +1,4 @@
-import { DialogContent, Grid, Typography } from '@material-ui/core';
+import { DialogContent, Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

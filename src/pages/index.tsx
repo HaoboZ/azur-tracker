@@ -1,4 +1,9 @@
 import {
+	Brightness3 as Brightness3Icon,
+	Brightness4 as Brightness4Icon,
+	BrightnessHigh as BrightnessHighIcon
+} from '@mui/icons-material';
+import {
 	Button,
 	ButtonGroup,
 	List,
@@ -8,12 +13,7 @@ import {
 	Slider,
 	ToggleButton,
 	ToggleButtonGroup
-} from '@material-ui/core';
-import {
-	Brightness3 as Brightness3Icon,
-	Brightness4 as Brightness4Icon,
-	BrightnessHigh as BrightnessHighIcon
-} from '@material-ui/icons';
+} from '@mui/material';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

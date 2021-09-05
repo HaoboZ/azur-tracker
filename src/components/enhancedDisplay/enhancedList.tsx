@@ -1,4 +1,11 @@
 import {
+	Add as AddIcon,
+	Close as CloseIcon,
+	Edit as EditIcon,
+	ExpandMore as ExpandMoreIcon,
+	Menu as MenuIcon
+} from '@mui/icons-material';
+import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
@@ -10,14 +17,7 @@ import {
 	Paper,
 	Typography,
 	useTheme
-} from '@material-ui/core';
-import {
-	Add as AddIcon,
-	Close as CloseIcon,
-	Edit as EditIcon,
-	ExpandMore as ExpandMoreIcon,
-	Menu as MenuIcon
-} from '@material-ui/icons';
+} from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
 import { ReactSortable } from 'react-sortablejs';
@@ -58,13 +58,15 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 				<IconButton className='sortHandle'><MenuIcon/></IconButton>
 			</ListItemIcon>}
 			{renderRow( item, index, removeEditing
-				? () => _deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected )
+				? () => _deleteRow( data, setData, editable, selectable,
+					item, index, selected, totalSelected )
 				: undefined )}
 			{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? data.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
-				<IconButton onClick={( { stopPropagation } ) => {
-					stopPropagation();
-					_deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected );
+				<IconButton onClick={( e ) => {
+					e.stopPropagation();
+					_deleteRow( data, setData, editable, selectable,
+						item, index, selected, totalSelected );
 				}}>
 					<CloseIcon/>
 				</IconButton>
@@ -75,28 +77,24 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 			const selected = selectable?.selected.includes( item?.id || index );
 			return renderPanel
 				? <Accordion>
-					<AccordionSummary
-						expandIcon={<ExpandMoreIcon/>}
-						classes={{
-							root   : 'iconSpace',
-							content: 'center'
-						}}>
+					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
 						{row( item, index, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
 						{renderPanel( item, index )}
 					</AccordionDetails>
 				</Accordion>
-				: selectable ? <ListItemButton
-					divider
-					selected={selected}
-					onClick={selectable?.setSelected
-					&& ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}
-					className='iconSpace'>
-					{row( item, index, selected )}
-				</ListItemButton> : <ListItem divider className={removeEditing || editing ? 'iconSpace' : undefined}>
-					{row( item, index, selected )}
-				</ListItem>;
+				: selectable?.setSelected
+					? <ListItemButton
+						divider
+						selected={selected}
+						onClick={() => _selectRow( selectable,
+							item, index, selected, totalSelected )}>
+						{row( item, index, selected )}
+					</ListItemButton>
+					: <ListItem divider selected={selected}>
+						{row( item, index, selected )}
+					</ListItem>;
 		};
 		
 		const transition = <TransitionGroup component={null}>
@@ -125,9 +123,12 @@ const EnhancedList = React.memo( function EnhancedList<Item extends { id?: strin
 	
 	return <List
 		sx={{
-			'& .center'   : { alignItems: 'center' },
-			'& .iconSpace': removeEditing || editing ? { px: 1 } : undefined,
-			'& .slide'    : {
+			'& .MuiAccordionSummary-content': { alignItems: 'center' },
+			[ '& .MuiAccordionSummary-root,' +
+			' & .MuiListItem-root,' +
+			' & .MuiListItemButton-root' ]  :
+				removeEditing || editing ? { px: 1 } : undefined,
+			'& .slide'                      : {
 				'&-enter'       : { opacity: 0 },
 				'&-enter-active': {
 					opacity   : 1,

@@ -1,4 +1,4 @@
-import { Alert, AlertColor, Grow, Snackbar, Theme, useMediaQuery } from '@material-ui/core';
+import { Alert, AlertColor, Grow, Snackbar, Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
 
 type C = {

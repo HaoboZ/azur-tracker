@@ -1,4 +1,4 @@
-import { Box, Container, ContainerProps, Theme, useMediaQuery } from '@material-ui/core';
+import { Box, Container, ContainerProps, Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
 
 import usePageHeight from '../lib/hooks/usePageHeight';

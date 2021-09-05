@@ -3,7 +3,7 @@ module.exports = {
 	plugins: [ 'lodash', [
 		'babel-plugin-import',
 		{
-			libraryName            : '@material-ui/icons',
+			libraryName            : '@mui/icons-material',
 			libraryDirectory       : '',
 			camel2DashComponentName: false
 		},

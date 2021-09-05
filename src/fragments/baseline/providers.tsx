@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import { StyledEngineProvider, ThemeProvider } from '@material-ui/core';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { Provider as AuthProvider } from 'next-auth/client';
 import React from 'react';
 

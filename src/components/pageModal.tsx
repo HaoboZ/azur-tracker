@@ -1,3 +1,4 @@
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import {
 	Button,
 	Dialog,
@@ -13,8 +14,7 @@ import {
 	Toolbar,
 	Typography,
 	useMediaQuery
-} from '@material-ui/core';
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+} from '@mui/material';
 import React from 'react';
 
 const Transition = React.forwardRef( ( props: GrowProps, ref: React.ForwardedRef<typeof Grow> ) =>

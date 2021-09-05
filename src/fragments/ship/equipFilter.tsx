@@ -1,5 +1,5 @@
-import { Autocomplete, Box, TextField, Typography } from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+import { Search as SearchIcon } from '@mui/icons-material';
+import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 

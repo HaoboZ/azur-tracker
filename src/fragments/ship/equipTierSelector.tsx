@@ -1,4 +1,4 @@
-import { Box, Menu, MenuItem, Typography } from '@material-ui/core';
+import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 

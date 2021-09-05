@@ -1,37 +1,47 @@
 // noinspection SpellCheckingInspection
 
-export const researchShips: Record<string, { name: string, type: number, fate: boolean, url: string }[]> = {
-	'PR1': [
+export const researchData: {
+	name: string,
+	ships: { name: string, type: number, fate: boolean, url: string }[]
+}[] = [ {
+	name : 'PR1',
+	ships: [
 		{ name: 'Neptune', type: 0, fate: true, url: 'HMS_Neptune' },
 		{ name: 'Monarch', type: 0, fate: true, url: 'Monarch' },
 		{ name: 'Ibuki', type: 0, fate: true, url: 'Ibuki' },
 		{ name: 'Izumo', type: 0, fate: true, url: 'Izumo' },
 		{ name: 'Roon', type: 0, fate: true, url: 'Roon' },
 		{ name: 'Saint Louis', type: 0, fate: true, url: 'Saint_Louis' }
-	],
-	'PR2': [
+	]
+}, {
+	name : 'PR2',
+	ships: [
 		{ name: 'Seattle', type: 0, fate: true, url: 'Seattle' },
 		{ name: 'Georgia', type: 0, fate: true, url: 'Georgia' },
 		{ name: 'Kitakaze', type: 0, fate: true, url: 'Kitakaze' },
 		{ name: 'Azuma', type: 1, fate: false, url: 'Azuma' },
 		{ name: 'Friedrich der Groβe', type: 1, fate: false, url: 'Friedrich_der_Grosse' },
 		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
-	],
-	'PR3': [
+	]
+}, {
+	name : 'PR3',
+	ships: [
 		{ name: 'Cheshire', type: 0, fate: true, url: 'Cheshire' },
 		{ name: 'Drake', type: 1, fate: false, url: 'Drake' },
 		{ name: 'Mainz', type: 0, fate: true, url: 'Mainz' },
 		{ name: 'Odin', type: 0, fate: true, url: 'Odin' },
 		{ name: 'Champagne', type: 0, fate: true, url: 'Champagne' }
-	],
-	'PR4': [
+	]
+}, {
+	name : 'PR4',
+	ships: [
 		{ name: 'Anchorage', type: 0, fate: false, url: 'Anchorage' },
 		{ name: 'Hakuryuu', type: 1, fate: false, url: 'Hakuryuu' },
 		{ name: 'Ägir', type: 1, fate: false, url: 'Ägir' },
 		{ name: 'August von Parseval', type: 0, fate: false, url: 'August_von_Parseval' },
 		{ name: 'Marco Polo', type: 0, fate: false, url: 'Marco_Polo' }
 	]
-};
+} ];
 
 export const devLevels = [
 	[ 2, 0, 3, 0 ],

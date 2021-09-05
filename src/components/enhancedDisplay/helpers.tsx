@@ -1,4 +1,4 @@
-import { ListProps, TableContainerProps } from '@material-ui/core';
+import { ListProps, TableContainerProps } from '@mui/material';
 import React from 'react';
 
 import { ActionButtonProps, ActionTitleProps } from '../actionTitle';

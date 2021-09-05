@@ -1,19 +1,19 @@
-import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
+import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { devLevels, fateLevels, researchShips } from '../../data/researchData';
+import { devLevels, fateLevels, researchData } from '../../data/researchData';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
 
-export default function ResearchGroup( { researchData }: { researchData: typeof researchShips[string] } ) {
+export default function ResearchGroup( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {
 	const ships = useSelector( ( { research } ) => research.ships );
 	const dispatch = useDispatch();
 	
 	const { shipData, totalPR, totalDR } = React.useMemo( () => {
 		let totalPR = 0, totalDR = 0;
-		const shipData = researchData.map( ( item ) => {
+		const shipData = researchShips.map( ( item ) => {
 			const ship = ships[ item.name ] || {};
 			const devLevel  = devLevels[ ship.devLevel || 0 ],
 			      fateLevel = fateLevels[ ship.fateLevel || 0 ];
@@ -37,7 +37,7 @@ export default function ResearchGroup( { researchData }: { researchData: typeof 
 	
 	return <>
 		<EnhancedDisplay
-			data={researchData}
+			data={researchShips}
 			extraData={ships}
 			tableProps={{
 				columnHeader: [

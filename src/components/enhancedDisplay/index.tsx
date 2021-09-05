@@ -1,4 +1,4 @@
-import { Theme, useMediaQuery } from '@material-ui/core';
+import { Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
 
 import EnhancedList from './enhancedList';

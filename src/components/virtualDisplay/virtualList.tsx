@@ -1,4 +1,4 @@
-import { List, Paper } from '@material-ui/core';
+import { List, ListItem, ListItemButton, Paper } from '@mui/material';
 import { isEqual } from 'lodash';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
@@ -13,7 +13,7 @@ const VirtualList = React.memo( function VirtualList( {
 	renderRow
 }: {
 	onClick?: ( row: Row ) => void,
-	renderRow: ( props: { row: Row, onClick: ( row: Row ) => void, rowProps } ) => React.ReactNode
+	renderRow: ( row: Row ) => React.ReactNode
 } & TableInstance ) {
 	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
@@ -30,11 +30,18 @@ const VirtualList = React.memo( function VirtualList( {
 				{( { index, style } ) => {
 					const row = rows[ index ];
 					prepareRow( row );
-					return renderRow( {
-						row,
-						onClick,
-						rowProps: row.getRowProps( { style } )
-					} ) as React.ReactElement;
+					return onClick
+						? <ListItemButton
+							divider
+							onClick={() => onClick( row )}
+							{...row.getRowProps( { style } )}>
+							{renderRow( row )}
+						</ListItemButton>
+						: <ListItem
+							divider
+							{...row.getRowProps( { style } )}>
+							{renderRow( row )}
+						</ListItem>;
 				}}
 			</FixedSizeList>}
 		</ReactWindowScroller>

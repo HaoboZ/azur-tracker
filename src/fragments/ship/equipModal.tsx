@@ -10,7 +10,7 @@ import {
 	Link,
 	Switch,
 	Typography
-} from '@material-ui/core';
+} from '@mui/material';
 import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';

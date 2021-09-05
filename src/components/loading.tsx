@@ -1,4 +1,4 @@
-import { Box, BoxProps, CircularProgress, CircularProgressProps } from '@material-ui/core';
+import { Box, BoxProps, CircularProgress, CircularProgressProps } from '@mui/material';
 import React from 'react';
 
 export default function Loading( { delay = 250, children, containerProps, ...props }: {

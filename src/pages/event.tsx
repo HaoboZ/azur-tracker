@@ -1,4 +1,4 @@
-import { Box, Link } from '@material-ui/core';
+import { Box, Link } from '@mui/material';
 import moment from 'moment';
 import Image from 'next/image';
 import React from 'react';

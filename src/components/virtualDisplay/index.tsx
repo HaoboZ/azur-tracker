@@ -1,4 +1,4 @@
-import { Theme, useMediaQuery } from '@material-ui/core';
+import { Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
 
@@ -7,7 +7,7 @@ import VirtualTable from './virtualTable';
 
 export default function VirtualDisplay( { renderRow, ...table }: {
 	onClick?: ( row: Row ) => void,
-	renderRow: React.FunctionComponent<{ row: Row, onClick: ( row: Row ) => void, rowProps }>
+	renderRow: ( row: Row ) => React.ReactNode
 } & TableInstance ) {
 	if ( useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) ) ) {
 		return <VirtualTable {...table}/>;

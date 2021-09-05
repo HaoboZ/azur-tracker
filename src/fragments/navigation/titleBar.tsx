@@ -1,9 +1,9 @@
-import { AppBar, Badge, Box, Button, IconButton, Toolbar } from '@material-ui/core';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
 	BrightnessHigh as BrightnessHighIcon
-} from '@material-ui/icons';
+} from '@mui/icons-material';
+import { AppBar, Badge, Box, Button, IconButton, Toolbar } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

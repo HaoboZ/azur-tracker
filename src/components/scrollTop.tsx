@@ -1,5 +1,5 @@
-import { Fab, useScrollTrigger, Zoom } from '@material-ui/core';
-import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
+import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@mui/icons-material';
+import { Fab, useScrollTrigger, Zoom } from '@mui/material';
 import React from 'react';
 
 export default function ScrollTop() {
