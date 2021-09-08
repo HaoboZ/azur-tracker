@@ -80,7 +80,7 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 		accessor           : 'equip',
 		minWidth           : 20,
 		Cell               : ( { value, row } ) => equipBetter.value[ row.id ]
-			? `+${Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
+			? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
 			: value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
 		className          : ( { row } ) => {
 			if ( equipBetter.value[ row.id ] ) {
