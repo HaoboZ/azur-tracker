@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import eventImage from '../../public/images/event.png';
 import ActionTitle from '../components/actionTitle';
-import PageContainer from '../components/pageContainer';
+import PageContainer from '../components/page/container';
 import eventRef from '../data/eventData';
 import EventFields from '../fragments/event/eventFields';
 import FarmingCalc from '../fragments/event/farmingCalc';

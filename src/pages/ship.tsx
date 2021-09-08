@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import ActionTitle from '../components/actionTitle';
-import PageContainer from '../components/pageContainer';
-import { ModalVariant } from '../components/pageModal';
+import { ModalVariant } from '../components/adaptiveModal';
+import PageContainer from '../components/page/container';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
 import ShipModal from '../fragments/ship/shipModal';

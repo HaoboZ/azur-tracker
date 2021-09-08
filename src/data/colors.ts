@@ -57,7 +57,8 @@ export const
 		'gray'
 	];
 
-export const bgcolorGen = ( theme, backgroundColor ) => ( {
-	backgroundColor: `${backgroundColor} !important`,
-	color          : `${theme.palette.getContrastText( backgroundColor )} !important`
+export const textBgColor = ( theme, backgroundColor ) => ( {
+	color          : `${theme.palette.getContrastText( backgroundColor )} !important`,
+	backgroundColor: `${backgroundColor} !important`
 } );
+

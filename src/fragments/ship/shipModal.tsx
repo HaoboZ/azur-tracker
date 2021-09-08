@@ -16,7 +16,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ModalVariant, PageModalContainer } from '../../components/pageModal';
+import { AdaptiveModalContainer, ModalVariant } from '../../components/adaptiveModal';
 import { rarityColors } from '../../data/colors';
 import { equips, equipsIndex } from '../../data/equipData';
 import shipRef from '../../data/shipData';
@@ -52,7 +52,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		}
 	}, [ ship.tier ] );
 	
-	return <PageModalContainer
+	return <AdaptiveModalContainer
 		onClose={() => controls.closeModal()}
 		title={<Link
 			href={ship.link}
@@ -172,5 +172,5 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 				</Grid>
 			</Grid>
 		</DialogContent>
-	</PageModalContainer>;
+	</AdaptiveModalContainer>;
 }

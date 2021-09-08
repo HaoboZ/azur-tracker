@@ -1,4 +1,5 @@
-import { ServerStyleSheets } from '@mui/styles';
+import createCache from '@emotion/cache';
+import createEmotionServer from '@emotion/server/create-instance';
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
@@ -6,18 +7,26 @@ import React from 'react';
 // noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
 	static async getInitialProps( ctx ) {
-		const sheets = new ServerStyleSheets();
-		const originalRenderPage = ctx.renderPage;
+		const cache = createCache( { key: 'css', prepend: true } );
+		const { extractCriticalToChunks } = createEmotionServer( cache );
 		
+		const originalRenderPage = ctx.renderPage;
 		ctx.renderPage = () => originalRenderPage( {
-			enhanceApp: ( App ) => ( props ) => sheets.collect( <App {...props}/> )
+			enhanceApp: ( App ) => ( props ) => <App cache={cache} {...props}/>
 		} );
 		
 		const initialProps = await Document.getInitialProps( ctx );
 		
+		const emotionStyles = extractCriticalToChunks( initialProps.html );
+		const emotionStyleTags = emotionStyles.styles.map( ( style ) => <style
+			data-emotion={`${style.key} ${style.ids.join( ' ' )}`}
+			key={style.key}
+			dangerouslySetInnerHTML={{ __html: style.css }}
+		/> );
+		
 		return {
 			...initialProps,
-			styles: [ ...React.Children.toArray( initialProps.styles ), sheets.getStyleElement() ]
+			styles: [ ...React.Children.toArray( initialProps.styles ), ...emotionStyleTags ]
 		};
 	}
 	

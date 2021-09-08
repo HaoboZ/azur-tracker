@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SwipeableTabViews from '../../../invoiss-web-app/src/components/swipeableTabViews';
 
 import ActionTitle from '../components/actionTitle';
-import PageContainer from '../components/pageContainer';
-import SwipeableTabViews from '../components/swipeableTabViews';
+import PageContainer from '../components/page/container';
 import { researchData } from '../data/researchData';
 import ResearchGroup from '../fragments/research/researchGroup';
 import { setResearchLastTab } from '../lib/store/reducers/mainReducer';

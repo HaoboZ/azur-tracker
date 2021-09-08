@@ -102,16 +102,16 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 						const tierList = equipTier[ row.values.equipType[ index ] ];
 						const newTier = tierList[ filterValue.id ],
 						      oldTier = tierList[ value[ 0 ] ];
-						// none equipped
-						if ( !value?.[ 0 ] ) return newTier;
-						// is equipped already
-						if ( value[ 0 ] === filterValue.id ) return [ 5, 0 ];
 						// equip not in tier list
 						if ( !newTier ) return false;
+						// none equipped
+						if ( !value?.[ 0 ] ) return [ newTier[ 0 ], 99 ];
+						// is equipped already
+						if ( value[ 0 ] === filterValue.id ) return [ 5, 0 ];
 						// forced BiS
 						if ( value[ 1 ] ) return false;
 						// current equip not in tier list
-						if ( !oldTier ) return newTier;
+						if ( !oldTier ) return [ newTier[ 0 ], 99 ];
 						// remove those that have higher tier
 						if ( oldTier[ 1 ] <= newTier[ 1 ] ) return false;
 						return [ newTier[ 0 ], oldTier[ 1 ] - newTier[ 1 ] ];

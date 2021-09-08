@@ -3,7 +3,7 @@ import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
 import React from 'react';
 
-import PageModal, { PageModalProps } from '../../components/pageModal';
+import AdaptiveModal, { PageModalProps } from '../../components/adaptiveModal';
 
 type Modal = {
 	id: string,
@@ -163,12 +163,12 @@ export default function ModalProvider( { children } ) {
 		{modals.map( ( modal ) => {
 			if ( !modal?.id ) return null;
 			return <ModalControlsContext.Provider key={modal.id} value={modal.props.controls}>
-				<PageModal
+				<AdaptiveModal
 					open={modal.open}
 					onClose={() => modal.props.controls.closeModal()}
 					{...modal.modalProps}>
 					<modal.Component {...modal.props}/>
-				</PageModal>
+				</AdaptiveModal>
 			</ModalControlsContext.Provider>;
 		} )}
 	</ModalContext.Provider>;

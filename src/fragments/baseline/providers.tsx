@@ -1,6 +1,6 @@
-import createCache from '@emotion/cache';
+import createCache, { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import { Provider as AuthProvider } from 'next-auth/client';
 import React from 'react';
 
@@ -10,15 +10,18 @@ import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 import SnackbarProvider from '../../lib/providers/snackbar';
 
-export default function Providers( { pageProps, children }: { pageProps, children?: React.ReactNode } ) {
+const clientCache = createCache( { key: 'css', prepend: true } );
+
+export default function Providers( { pageProps, cache = clientCache, children }: {
+	pageProps,
+	cache: EmotionCache,
+	children?: React.ReactNode
+} ) {
 	const theme = useTheme();
-	
-	const [ cache ] = React.useState( () => createCache( { key: 'css', prepend: true } ) );
 	
 	return <ProviderComposer
 		providers={[
 			// styling
-			provider( StyledEngineProvider, { injectFirst: true } ),
 			provider( CacheProvider, { value: cache } ),
 			provider( ThemeProvider, { theme } ),
 			// app

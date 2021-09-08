@@ -5,11 +5,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import Baseline from '../fragments/baseline';
 import '../fragments/baseline/style.scss';
-import { Icons } from '../lib/icons';
 import { persistor, store } from '../lib/store';
 
 // noinspection JSUnusedGlobalSymbols
-export default function _App( { Component, pageProps } ) {
+export default function _App( { Component, cache, pageProps } ) {
 	return <StoreProvider store={store}>
 		<PersistGate loading={null} persistor={persistor}>
 			<Head>
@@ -21,8 +20,7 @@ export default function _App( { Component, pageProps } ) {
 						user-scalable=no, viewport-fit=cover'
 				/>
 			</Head>
-			<Icons/>
-			<Baseline pageProps={pageProps}>
+			<Baseline pageProps={pageProps} cache={cache}>
 				<Component {...pageProps}/>
 			</Baseline>
 		</PersistGate>

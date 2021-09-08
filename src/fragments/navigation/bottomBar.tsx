@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import usePageHeight from '../../lib/hooks/usePageHeight';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 const items = [
@@ -22,13 +23,17 @@ export default function BottomBar( { children } ) {
 	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const height = usePageHeight();
 	
 	const index = React.useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
 			if ( items[ i ].link === router.asPath ) return i;
 	}, [ router.asPath ] );
 	
-	return <>
+	return <Box
+		pl='env(safe-area-inset-left)'
+		pr='env(safe-area-inset-right)'
+		minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`}>
 		<Box
 			position='fixed'
 			top={0}
@@ -76,5 +81,5 @@ export default function BottomBar( { children } ) {
 				/> )}
 			</BottomNavigation>
 		</AppBar>
-	</>;
+	</Box>;
 }

@@ -34,7 +34,7 @@ export type PageModalProps = {
 	children?: React.ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
-export default function PageModal( { variant = ModalVariant.adaptive, children, ...props }: PageModalProps ) {
+export default function AdaptiveModal( { variant = ModalVariant.adaptive, children, ...props }: PageModalProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
@@ -81,7 +81,7 @@ export default function PageModal( { variant = ModalVariant.adaptive, children, 
 	}
 }
 
-export function PageModalContainer( {
+export function AdaptiveModalContainer( {
 	onClose,
 	variant = ModalVariant.adaptive,
 	title,

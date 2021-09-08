@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ActionTitle from '../components/actionTitle';
 import Link from '../components/link';
-import PageContainer from '../components/pageContainer';
+import PageContainer from '../components/page/container';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/providers/indicator';

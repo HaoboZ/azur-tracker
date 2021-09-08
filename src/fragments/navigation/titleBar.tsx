@@ -8,6 +8,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Link from '../../components/link';
+import usePageHeight from '../../lib/hooks/usePageHeight';
 import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
 
 function LinkItem( { children, href } ) {
@@ -32,8 +33,12 @@ function LinkItem( { children, href } ) {
 export default function TitleBar( { children } ) {
 	const theme = useSelector( ( { main } ) => main.theme );
 	const dispatch = useDispatch();
+	const height = usePageHeight();
 	
-	return <>
+	return <Box
+		pl='env(safe-area-inset-left)'
+		pr='env(safe-area-inset-right)'
+		minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`}>
 		<AppBar
 			position='static'
 			enableColorOnDark
@@ -71,5 +76,5 @@ export default function TitleBar( { children } ) {
 			</Toolbar>
 		</AppBar>
 		{children}
-	</>;
+	</Box>;
 }

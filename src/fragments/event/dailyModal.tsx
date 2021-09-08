@@ -2,10 +2,10 @@ import { DialogContent, Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AdaptiveModalContainer } from '../../components/adaptiveModal';
 
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { PageModalContainer } from '../../components/pageModal';
 import { useModalControls } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
@@ -29,7 +29,7 @@ export default function DailyModal() {
 		setDaily( [ ...daily ] );
 	}
 	
-	return <PageModalContainer
+	return <AdaptiveModalContainer
 		onClose={() => controls.closeModal()}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
@@ -88,5 +88,5 @@ export default function DailyModal() {
 				}}
 			/>
 		</DialogContent>
-	</PageModalContainer>;
+	</AdaptiveModalContainer>;
 }
