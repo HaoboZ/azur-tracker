@@ -39,7 +39,7 @@ export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, 
 			return;
 		}
 		const tier = equipTier[ ship.equipType[ i ] ];
-		eq[ 2 ] = eq[ 0 ] in tier ? tier[ eq[ 0 ] ][ 0 ] + 1 : 6;
+		eq[ 2 ] = tier && eq[ 0 ] in tier ? tier[ eq[ 0 ] ][ 0 ] + 1 : 6;
 	} );
 }
 
