@@ -26,7 +26,7 @@ export enum ModalVariant {
 	center   = 'center'
 }
 
-export type PageModalProps = {
+export type ResponsiveModalProps = {
 	open: boolean,
 	onClose: () => void,
 	// type of modal to be displayed
@@ -34,7 +34,11 @@ export type PageModalProps = {
 	children?: React.ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
-export default function AdaptiveModal( { variant = ModalVariant.adaptive, children, ...props }: PageModalProps ) {
+export default function ResponsiveModal( {
+	variant = ModalVariant.adaptive,
+	children,
+	...props
+}: ResponsiveModalProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
@@ -81,7 +85,7 @@ export default function AdaptiveModal( { variant = ModalVariant.adaptive, childr
 	}
 }
 
-export function AdaptiveModalContainer( {
+export function ResponsiveModalContainer( {
 	onClose,
 	variant = ModalVariant.adaptive,
 	title,
@@ -124,7 +128,7 @@ export function AdaptiveModalContainer( {
 				<IconButton edge='start' color='inherit' onClick={onClose}>
 					<ArrowBackIcon/>
 				</IconButton>
-				<Typography variant='h6' flexGrow={1}>
+				<Typography variant='h3' flexGrow={1}>
 					{title}
 				</Typography>
 				{onSave ? <Button

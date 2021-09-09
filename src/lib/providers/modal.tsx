@@ -3,13 +3,13 @@ import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
 import React from 'react';
 
-import AdaptiveModal, { PageModalProps } from '../../components/adaptiveModal';
+import ResponsiveModal, { ResponsiveModalProps } from '../../components/responsiveModal';
 
 type Modal = {
 	id: string,
 	open: boolean,
 	Component: React.ComponentType,
-	modalProps?: Partial<PageModalProps>,
+	modalProps?: Partial<ResponsiveModalProps>,
 	props?: any
 };
 
@@ -27,7 +27,7 @@ type StaticModalControls<T> = ModalControls & {
 export type DynamicModalControls = {
 	showModal: <T>(
 		Component?: React.ComponentType<T>,
-		modalProps?: Partial<PageModalProps>,
+		modalProps?: Partial<ResponsiveModalProps>,
 		props?: T
 	) => string,
 	closeModal: ( id: string ) => void,
@@ -37,7 +37,7 @@ export type DynamicModalControls = {
 type C1<T> = (
 	id: string,
 	Component: React.ComponentType<T>,
-	modalProps?: Partial<PageModalProps>,
+	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ) => StaticModalControls<T>;
 
@@ -163,12 +163,12 @@ export default function ModalProvider( { children } ) {
 		{modals.map( ( modal ) => {
 			if ( !modal?.id ) return null;
 			return <ModalControlsContext.Provider key={modal.id} value={modal.props.controls}>
-				<AdaptiveModal
+				<ResponsiveModal
 					open={modal.open}
 					onClose={() => modal.props.controls.closeModal()}
 					{...modal.modalProps}>
 					<modal.Component {...modal.props}/>
-				</AdaptiveModal>
+				</ResponsiveModal>
 			</ModalControlsContext.Provider>;
 		} )}
 	</ModalContext.Provider>;
@@ -178,12 +178,12 @@ export default function ModalProvider( { children } ) {
 export function useModal(): DynamicModalControls;
 export function useModal<T>(
 	Component: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: Partial<PageModalProps>,
+	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ): StaticModalControls<T>;
 export function useModal<T>(
 	Component?: React.ComponentType<T & { controls: ModalControls }>,
-	modalProps?: Partial<PageModalProps>,
+	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ) {
 	if ( !Component ) return React.useContext<C2>( ModalContext )();

@@ -1,8 +1,10 @@
 import React from 'react';
 
+import PageContainer from '../components/page/container';
+
 // noinspection JSUnusedGlobalSymbols
 export default function PrivacyPolicy() {
-	return <>
+	return <PageContainer>
 		<h1>Privacy Policy</h1>
 		<p>Last updated: April 04, 2021</p>
 		<p>This Privacy Policy describes Our policies and procedures on the collection, use and
@@ -329,5 +331,5 @@ export default function PrivacyPolicy() {
 		<ul>
 			<li>By email: haobozhang9081@gmail.com</li>
 		</ul>
-	</>;
+	</PageContainer>;
 }

@@ -18,9 +18,9 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ActionTitle from '../components/actionTitle';
 import Link from '../components/link';
 import PageContainer from '../components/page/container';
+import PageTitle from '../components/page/title';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/providers/indicator';
@@ -46,7 +46,7 @@ export default function Home() {
 	
 	// noinspection HtmlUnknownTarget
 	return <PageContainer>
-		<ActionTitle>Azur Lane Tracker</ActionTitle>
+		<PageTitle>Azur Lane Tracker</PageTitle>
 		<List sx={{
 			'& .longText'  : { width: '80%' },
 			'& .longAction': { width: '40%' }

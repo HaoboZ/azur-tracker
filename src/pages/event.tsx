@@ -5,8 +5,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import eventImage from '../../public/images/event.png';
-import ActionTitle from '../components/actionTitle';
 import PageContainer from '../components/page/container';
+import PageTitle from '../components/page/title';
 import eventRef from '../data/eventData';
 import EventFields from '../fragments/event/eventFields';
 import FarmingCalc from '../fragments/event/farmingCalc';
@@ -41,7 +41,7 @@ export default function Event() {
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <PageContainer>
-		<ActionTitle>Event Tracker</ActionTitle>
+		<PageTitle>Event Tracker</PageTitle>
 		<Box
 			display='flex'
 			justifyContent='center'

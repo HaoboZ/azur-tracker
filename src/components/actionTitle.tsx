@@ -10,7 +10,7 @@ export type ActionTitleProps = {
 
 export default function ActionTitle( { children, actions, containerProps, ...props }: ActionTitleProps ) {
 	return <Box display='flex' alignItems='center' p={1} {...containerProps}>
-		<Typography variant='h6' flexGrow={1} {...props}>{children}</Typography>
+		<Typography variant='h3' flexGrow={1} {...props}>{children}</Typography>
 		{Array.isArray( actions ) ? <ButtonGroup>
 			{actions.filter( Boolean ).map( ( { name, ...props }, index ) => <Button
 				key={index}

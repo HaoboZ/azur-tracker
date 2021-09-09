@@ -2,9 +2,9 @@ import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import ActionTitle from '../components/actionTitle';
-import { ModalVariant } from '../components/adaptiveModal';
 import PageContainer from '../components/page/container';
+import PageTitle from '../components/page/title';
+import { ModalVariant } from '../components/responsiveModal';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/ship/filters';
 import ShipModal from '../fragments/ship/shipModal';
@@ -29,7 +29,7 @@ export default function Ship() {
 	}, [] );
 	
 	return <PageContainer>
-		<ActionTitle>Ship Tracker</ActionTitle>
+		<PageTitle>Ship Tracker</PageTitle>
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}

@@ -15,7 +15,7 @@ function LinkItem( { children, href } ) {
 	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	
-	return <Link variant='h6' href={href}>
+	return <Link href={href}>
 		<Badge
 			color='secondary'
 			variant='dot'
@@ -50,7 +50,7 @@ export default function TitleBar( { children } ) {
 			<Toolbar>
 				<Link
 					href='/'
-					variant='h6'
+					variant='h3'
 					sx={{ mr: 3 }}>
 					Azur Lane Tracker
 				</Link>

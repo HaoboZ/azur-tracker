@@ -16,9 +16,13 @@ export default function PageTitle( { actions, listItemProps, children, ...props 
 	listItemProps?: ListItemProps,
 	children?: React.ReactNode
 } & ListItemTextProps ) {
-	return <ListItem ContainerComponent='div' sx={{ px: 0, mb: 2 }} divider {...listItemProps}>
-		{children}
-		<ListItemText primaryTypographyProps={{ variant: 'h1' }} {...props}/>
+	return <ListItem ContainerComponent='div' {...listItemProps}>
+		<ListItemText
+			primaryTypographyProps={{ variant: 'h1' }}
+			primary={children}
+			secondaryTypographyProps={{ variant: 'subtitle1' }}
+			{...props}
+		/>
 		{Array.isArray( actions ) ? <ListItemSecondaryAction>
 			<ButtonGroup>
 				{actions.filter( Boolean ).map( ( { name, ...props }, index ) => <Button

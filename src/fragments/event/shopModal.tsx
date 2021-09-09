@@ -1,10 +1,10 @@
 import { Box, DialogContent, Grid, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AdaptiveModalContainer } from '../../components/adaptiveModal';
 
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
+import { ResponsiveModalContainer } from '../../components/responsiveModal';
 import eventRef from '../../data/eventData';
 import { useModalControls } from '../../lib/providers/modal';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
@@ -24,7 +24,7 @@ export default function ShopModal() {
 		], [ 0, 0 ] ),
 		[ shop ] );
 	
-	return <AdaptiveModalContainer
+	return <ResponsiveModalContainer
 		onClose={() => controls.closeModal()}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
@@ -89,5 +89,5 @@ export default function ShopModal() {
 				}}
 			/>
 		</DialogContent>
-	</AdaptiveModalContainer>;
+	</ResponsiveModalContainer>;
 }

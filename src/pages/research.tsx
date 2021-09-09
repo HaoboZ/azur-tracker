@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ActionTitle from '../components/actionTitle';
 import PageContainer from '../components/page/container';
+import PageTitle from '../components/page/title';
 import SwipeableTabViews from '../components/swipeableTabViews';
 import { researchData } from '../data/researchData';
 import ResearchGroup from '../fragments/research/researchGroup';
@@ -14,7 +14,7 @@ export default function Research() {
 	const dispatch = useDispatch();
 	
 	return <PageContainer>
-		<ActionTitle>Research Tracker</ActionTitle>
+		<PageTitle>Research Tracker</PageTitle>
 		<SwipeableTabViews
 			tab={researchLastTab}
 			setTab={( index ) => dispatch( setResearchLastTab( index ) )}

@@ -20,7 +20,7 @@ export default function EventFields( { time, neededPoints }: {
 	
 	return <Grid container spacing={2} px={2} sx={{ '& .rightInput': { textAlign: 'right' } }}>
 		<Grid item container xs={12} justifyContent='center'>
-			<Typography variant='h6' color='textPrimary'>
+			<Typography variant='h3' color='textPrimary'>
 				{eventRef.name}
 			</Typography>
 		</Grid>
