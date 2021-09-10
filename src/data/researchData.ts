@@ -19,7 +19,7 @@ export const researchData: {
 		{ name: 'Seattle', type: 0, fate: true, url: 'Seattle' },
 		{ name: 'Georgia', type: 0, fate: true, url: 'Georgia' },
 		{ name: 'Kitakaze', type: 0, fate: true, url: 'Kitakaze' },
-		{ name: 'Azuma', type: 1, fate: false, url: 'Azuma' },
+		{ name: 'Azuma', type: 1, fate: true, url: 'Azuma' },
 		{ name: 'Friedrich der Groβe', type: 1, fate: false, url: 'Friedrich_der_Grosse' },
 		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
 	]
@@ -78,10 +78,10 @@ export const devLevels = [
 ];
 
 export const fateLevels = [
-	[ 10, 0 ],
-	[ 20, 10 ],
-	[ 30, 30 ],
-	[ 40, 60 ],
-	[ 65, 100 ],
-	[ 0, 165 ]
+	[ 10, 0, 20, 0 ],
+	[ 20, 10, 30, 20 ],
+	[ 30, 30, 40, 50 ],
+	[ 40, 60, 50, 90 ],
+	[ 65, 100, 75, 140 ],
+	[ 0, 165, 0, 215 ]
 ];

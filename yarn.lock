@@ -1421,6 +1421,53 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dnd-kit/accessibility@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@dnd-kit/accessibility@npm:3.0.0"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: feac6afea07ece1568df38973d7a1a1b994782a6df119983250c3849ca2a3818a7bcc67fe4c5d22b0a1cfde866081644d677d2188abed507b3eccc255da79320
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/core@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "@dnd-kit/core@npm:3.1.1"
+  dependencies:
+    "@dnd-kit/accessibility": ^3.0.0
+    "@dnd-kit/utilities": ^2.0.0
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: e52a49ad1e831644544da0e4a0e2e44621f9bb55754f9498ea5bc915ec6b5c46108444e7d67592f94c517618ef53b569f11ad1846798db31fcdee56a57685334
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/sortable@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@dnd-kit/sortable@npm:4.0.0"
+  dependencies:
+    "@dnd-kit/utilities": ^2.0.0
+    tslib: ^2.0.0
+  peerDependencies:
+    "@dnd-kit/core": ^3.1.0
+    react: ">=16.8.0"
+  checksum: c2c23a1ed4528e8b05901891a1852458d8b201d0fc0848750630f705f8547869078f08f2ac9026e7aede3464a52c6c4dcbc9e6b0e1bcd0c652c77f98f592d8ab
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@dnd-kit/utilities@npm:2.0.0"
+  dependencies:
+    tslib: ^2.0.0
+  checksum: 10173fc8d6fa8e46394ac2b739e443a3254e31854cbdbe810782bb7b6f4b4dd948752c3114479827c0da757e6616dd44a70394b6e8524d807514db0be192b18d
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.3.0":
   version: 11.3.0
   resolution: "@emotion/babel-plugin@npm:11.3.0"
@@ -2789,13 +2836,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sortablejs@npm:^1.10.7":
-  version: 1.10.7
-  resolution: "@types/sortablejs@npm:1.10.7"
-  checksum: c0854b842f0d4b938cb8d0496159bae77b275ed5b5fae8a0faf8d016a51d16906e1b2343f3f09a859a9c6b7ab3409cd7c9577643b249367fbf1756ffe15e4cbb
-  languageName: node
-  linkType: hard
-
 "@types/source-list-map@npm:*":
   version: 0.1.2
   resolution: "@types/source-list-map@npm:0.1.2"
@@ -3526,6 +3566,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "azur-tracker@workspace:."
   dependencies:
+    "@dnd-kit/core": ^3.1.1
+    "@dnd-kit/sortable": ^4.0.0
+    "@dnd-kit/utilities": ^2.0.0
     "@emotion/cache": ^11.4.0
     "@emotion/react": ^11.4.1
     "@emotion/server": ^11.4.0
@@ -3552,7 +3595,6 @@ __metadata:
     "@types/react-table": ^7.7.2
     "@types/react-window": ^1.8.5
     "@types/sass": ^1.16.1
-    "@types/sortablejs": ^1.10.7
     "@typescript-eslint/eslint-plugin": ^4.31.0
     "@typescript-eslint/parser": ^4.31.0
     async-mutex: ^0.3.2
@@ -3579,11 +3621,9 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.5
-    react-sortablejs: ^6.0.0
     react-swipeable-views: ^0.14.0
     react-swipeable-views-utils: ^0.14.0
     react-table: ^7.7.0
-    react-transition-group: ^4.4.2
     react-window: ^1.8.6
     react-window-scroller: ^1.0.10
     redux: ^4.1.1
@@ -3591,7 +3631,6 @@ __metadata:
     redux-persist-transform-compress: ^4.2.0
     sass: ^1.39.0
     smoothscroll-polyfill: ^0.4.4
-    sortablejs: ^1.14.0
     styled-jsx: ^4.0.1
     typescript: ^4.4.2
   languageName: unknown
@@ -4195,13 +4234,6 @@ __metadata:
   version: 2.2.6
   resolution: "classnames@npm:2.2.6"
   checksum: 09a4fda780158aa8399079898eabeeca0c48c28641d9e4de140db7412e5e346843039ded1af0152f755afc2cc246ff8c3d6f227bf0dcb004e070b7fa14ec54cc
-  languageName: node
-  linkType: hard
-
-"classnames@npm:^2.2.6":
-  version: 2.3.1
-  resolution: "classnames@npm:2.3.1"
-  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
   languageName: node
   linkType: hard
 
@@ -9179,21 +9211,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-sortablejs@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "react-sortablejs@npm:6.0.0"
-  dependencies:
-    classnames: ^2.2.6
-    tiny-invariant: ^1.1.0
-  peerDependencies:
-    "@types/sortablejs": ^1.10.0
-    react: ^16.9.0
-    react-dom: ^16.9.0
-    sortablejs: ^1.10.0
-  checksum: 28c496b2e1618996ecf11e5cc3d5560e2f398b53e5a5f86f4e34f02dcca77f1c4cf52c1a2aca41ccd7b4392e82558481929759a11844bcd44727a58ba7b3bd49
-  languageName: node
-  linkType: hard
-
 "react-swipeable-views-core@npm:^0.14.0":
   version: 0.14.0
   resolution: "react-swipeable-views-core@npm:0.14.0"
@@ -9242,7 +9259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-transition-group@npm:^4.4.0, react-transition-group@npm:^4.4.1, react-transition-group@npm:^4.4.2":
+"react-transition-group@npm:^4.4.0, react-transition-group@npm:^4.4.1":
   version: 4.4.2
   resolution: "react-transition-group@npm:4.4.2"
   dependencies:
@@ -9988,13 +10005,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sortablejs@npm:^1.14.0":
-  version: 1.14.0
-  resolution: "sortablejs@npm:1.14.0"
-  checksum: 7b9d2cbb0331f3f259b8703a17174ff46a941b6d59c77c75ca05a5bd484bf2b409a9c1d21344f9c933939880450803b254825c7c7d7f88034e8c7e675420b389
-  languageName: node
-  linkType: hard
-
 "source-list-map@npm:^2.0.0":
   version: 2.0.1
   resolution: "source-list-map@npm:2.0.1"
@@ -10618,13 +10628,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tiny-invariant@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "tiny-invariant@npm:1.1.0"
-  checksum: 27d29bbb9e1d1d86e25766711c28ad91af6d67c87d561167077ac7fbce5212b97bbfe875e70bc369808e075748c825864c9b61f0e9f8652275ec86bcf4dcc924
-  languageName: node
-  linkType: hard
-
 "tmpl@npm:1.0.x":
   version: 1.0.4
   resolution: "tmpl@npm:1.0.4"
@@ -10727,17 +10730,17 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.0.0, tslib@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "tslib@npm:2.3.1"
+  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^2.1.0":
   version: 2.2.0
   resolution: "tslib@npm:2.2.0"
   checksum: a48c9639f7496fa701ea8ffe0561070fcb44c104a59632f7f845c0af00825c99b6373575ec59b2b5cdbfd7505875086dbe5dc83312304d8979f22ce571218ca3
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "tslib@npm:2.3.1"
-  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
   languageName: node
   linkType: hard
 

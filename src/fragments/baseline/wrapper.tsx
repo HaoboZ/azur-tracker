@@ -46,7 +46,6 @@ export default function Wrapper( { children } ) {
 	return <Navigation>
 		<GlobalStyles
 			styles={( theme: Theme ) => ( {
-				'.selectedSort'     : { bgcolor: `${theme.palette.primary.main} !important` },
 				'.numberInput input': {
 					textAlign                        : 'right',
 					MozAppearance                    : 'textfield',

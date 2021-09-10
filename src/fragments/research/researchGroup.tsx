@@ -26,6 +26,7 @@ export default function ResearchGroup( { researchShips }: { researchShips: typeo
 			
 			if ( item.type ) {
 				totalDR += devPrints;
+				if ( item.fate ) totalDR += fatePrints;
 			} else {
 				totalPR += devPrints;
 				if ( item.fate ) totalPR += fatePrints;

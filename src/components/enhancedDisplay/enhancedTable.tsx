@@ -9,22 +9,17 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
-	Typography,
-	useTheme
+	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
-import { ReactSortable } from 'react-sortablejs';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ActionTitle from '../actionTitle';
 import Loading from '../loading';
+import Sortable from '../sortable';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
-const forwardTableBody = React.forwardRef<HTMLTableSectionElement>( ( { children }, ref ) =>
-	<TableBody ref={ref}>{children}</TableBody> );
-
-const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: string }>( {
+const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	title,
 	actionTitleProps,
 	data = [],
@@ -40,22 +35,22 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 	columns,
 	...props
 }: EnhancedDisplayProps<Item> & EnhancedTableProps<Item> ) {
-	const theme = useTheme();
-	
 	const dataItems = React.useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( item, index ) => {
+		const row = ( { ref, style, handle, item, index }: { ref?, style?, handle?, item, index } ) => {
 			const selected = selectable?.selected.includes( item?.id || index );
 			
 			return <TableRow
+				ref={ref}
+				style={style}
 				hover
 				selected={selected}
 				onClick={selectable?.setSelected
 				&& ( () => _selectRow( selectable,
 					item, index, selected, totalSelected ) )}>
-				{sortable && <TableCell className='sortHandle'>
-					<MenuIcon/>
+				{sortable && <TableCell>
+					<MenuIcon {...handle}/>
 				</TableCell>}
 				{columns( item, index ).map( ( cell, index ) => <TableCell key={index}>
 					{cell}
@@ -73,44 +68,20 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 			</TableRow>;
 		};
 		
-		const transition = <TransitionGroup component={null}>
-			{data.map( ( item, index ) => <CSSTransition
-				key={item.id || index}
-				timeout={theme.transitions.duration.standard}
-				classNames='slide'>
-				{row( item, index )}
-			</CSSTransition> )}
-		</TransitionGroup>;
+		const sort = sortable
+			? <Sortable
+				items={data as any}
+				setItems={setData as any}
+				renderItem={( props ) => row( props )}
+			/>
+			: data.map( ( item, index ) => row( { item, index } ) );
 		
-		return sortable
-			? <ReactSortable
-				tag={forwardTableBody}
-				list={data as any}
-				setList={setData as any}
-				handle='.sortHandle'
-				ghostClass='selectedSort'
-				forceFallback
-				animation={theme.transitions.duration.shorter}>
-				{transition}
-			</ReactSortable>
-			: <TableBody>{transition}</TableBody>;
+		return <TableBody>{sort}</TableBody>;
 	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box sx={{
 		'& .minWidth'        : { width: '1%' },
-		'& .sortHandle:hover': { cursor: 'pointer' },
-		'& .slide'           : {
-			'&-enter'       : { opacity: 0 },
-			'&-enter-active': {
-				opacity   : 1,
-				transition: ( { transitions } ) => transitions.create( 'opacity' )
-			},
-			'&-exit'        : { opacity: 1 },
-			'&-exit-active' : {
-				opacity   : 0,
-				transition: ( { transitions } ) => transitions.create( 'opacity' )
-			}
-		}
+		'& .sortHandle:hover': { cursor: 'pointer' }
 	}}>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
@@ -120,7 +91,8 @@ const EnhancedTable = React.memo( function EnhancedTable<Item extends { id?: str
 					'& .MuiTableBody-root .MuiTableRow-root': {
 						':hover'        : selectable ? { cursor: 'pointer' } : undefined,
 						':last-child td': { borderBottom: 0 }
-					}
+					},
+					overflow                                : 'hidden'
 				}}>
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
