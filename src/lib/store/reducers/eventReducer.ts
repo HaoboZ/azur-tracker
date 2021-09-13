@@ -99,14 +99,16 @@ const eventSlice = createSlice( {
 			state.farming = payload;
 		},
 		event_modifyFarming( state, { payload }: PayloadAction<{
-			index: number,
-			item: { points?: number, oil?: number }
+			id: string,
+			points?: number,
+			oil?: number
 		}> ) {
-			if ( 'points' in payload.item ) payload.item.points = Math.max( payload.item.points || 0, 0 );
-			if ( 'oil' in payload.item ) payload.item.oil = Math.max( payload.item.oil || 0, 0 );
+			if ( 'points' in payload ) payload.points = Math.max( payload.points || 0, 0 );
+			if ( 'oil' in payload ) payload.oil = Math.max( payload.oil || 0, 0 );
 			
 			state.farming = [ ...state.farming ];
-			state.farming[ payload.index ] = { ...state.farming[ payload.index ], ...payload.item };
+			const index = state.farming.findIndex( ( { id } ) => id === payload.id );
+			state.farming[ index ] = { ...state.farming[ index ], ...payload };
 		}
 	},
 	extraReducers: {

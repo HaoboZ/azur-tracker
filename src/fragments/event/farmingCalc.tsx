@@ -27,7 +27,7 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 				'Required Plays',
 				'Total Oil Cost'
 			],
-			columns     : ( item, index ) => {
+			columns     : ( item ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return [
@@ -37,8 +37,8 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.points}
 						onChange={( { target } ) => dispatch( event_modifyFarming( {
-							index,
-							item: { points: parseInt( target.value ) }
+							id    : item.id,
+							points: parseInt( target.value )
 						} ) )}
 					/>,
 					<FormattedTextField
@@ -47,8 +47,8 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
 						onChange={( { target } ) => dispatch( event_modifyFarming( {
-							index,
-							item: { oil: parseInt( target.value ) }
+							id : item.id,
+							oil: parseInt( target.value )
 						} ) )}
 					/>,
 					<Typography key='plays'>{plays}</Typography>,
@@ -57,7 +57,7 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 			}
 		}}
 		listProps={{
-			renderRow: ( item, index ) => {
+			renderRow: ( item ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>
@@ -68,8 +68,8 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 							label='Points/Run'
 							value={item.points}
 							onChange={( { target } ) => dispatch( event_modifyFarming( {
-								index,
-								item: { points: parseInt( target.value ) }
+								id    : item.id,
+								points: parseInt( target.value )
 							} ) )}
 						/>
 					</Grid>
@@ -80,8 +80,8 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 							label='Oil/Run'
 							value={item.oil}
 							onChange={( { target } ) => dispatch( event_modifyFarming( {
-								index,
-								item: { oil: parseInt( target.value ) }
+								id : item.id,
+								oil: parseInt( target.value )
 							} ) )}
 						/>
 					</Grid>

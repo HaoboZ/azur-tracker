@@ -49,10 +49,10 @@
 		"redux"                           : "^4.1.1",
 		"redux-persist"                   : "^6.0.0",
 		"redux-persist-transform-compress": "^4.2.0",
-		"sass"                            : "^1.39.0",
+		"sass"                            : "^1.39.2",
 		"smoothscroll-polyfill"           : "^0.4.4",
 		"styled-jsx"                      : "^4.0.1",
-		"typescript"                      : "^4.4.2"
+		"typescript"                      : "^4.4.3"
 	},
 	"devDependencies": {
 		"@next/bundle-analyzer"             : "11.1.2",
@@ -62,7 +62,7 @@
 		"@types/json-stable-stringify"      : "^1.0.33",
 		"@types/lodash"                     : "^4.14.172",
 		"@types/lodash-webpack-plugin"      : "^0.11.6",
-		"@types/node"                       : "^16.9.0",
+		"@types/node"                       : "^16.9.1",
 		"@types/react"                      : "^17.0.20",
 		"@types/react-dom"                  : "^17.0.9",
 		"@types/react-redux"                : "^7.1.18",

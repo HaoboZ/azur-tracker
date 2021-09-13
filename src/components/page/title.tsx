@@ -16,7 +16,7 @@ export default function PageTitle( { actions, listItemProps, children, ...props 
 	listItemProps?: ListItemProps,
 	children?: React.ReactNode
 } & ListItemTextProps ) {
-	return <ListItem ContainerComponent='div' {...listItemProps}>
+	return <ListItem component='div' {...listItemProps as any}>
 		<ListItemText
 			primaryTypographyProps={{ variant: 'h1' }}
 			primary={children}

@@ -38,9 +38,8 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	const dataItems = React.useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( { ref, style, handle, item, index }: { ref?, style?, handle?, item, index } ) => {
-			const selected = selectable?.selected.includes( item?.id || index );
-			
+		const row = ( { item, index, ref, style, handle }: { item, index, ref?, style?, handle? } ) => {
+			const selected = selectable?.selected.includes( item?.id ?? index );
 			return <TableRow
 				ref={ref}
 				style={style}
@@ -68,21 +67,20 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 			</TableRow>;
 		};
 		
-		const sort = sortable
+		return sortable
 			? <Sortable
 				items={data as any}
 				setItems={setData as any}
 				renderItem={( props ) => row( props )}
+				overlayWrapper={( children ) => <Table size='small'>{children}</Table>}
+				overlayWrapperElement='tbody'
 			/>
-			: data.map( ( item, index ) => row( { item, index } ) );
-		
-		return <TableBody>{sort}</TableBody>;
+			: data.map( ( item, index ) => <React.Fragment key={index}>
+				{row( { item, index } )}
+			</React.Fragment> );
 	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
-	return <Box sx={{
-		'& .minWidth'        : { width: '1%' },
-		'& .sortHandle:hover': { cursor: 'pointer' }
-	}}>
+	return <Box sx={{ '& .minWidth': { width: '1%' } }}>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
 			<Table
@@ -110,15 +108,15 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				{loading || !data.length
-					? <TableBody>
-						<TableRow>
+				<TableBody>
+					{loading || !data.length
+						? <TableRow>
 							<TableCell colSpan={columnHeader.length + 2}>
 								{loading ? loadingComponent : emptyComponent}
 							</TableCell>
 						</TableRow>
-					</TableBody>
-					: dataItems}
+						: dataItems}
+				</TableBody>
 			</Table>
 		</TableContainer>
 	</Box>;

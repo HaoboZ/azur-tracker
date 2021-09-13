@@ -1,15 +1,15 @@
 // noinspection SpellCheckingInspection
 
 export default {
-	name   : 'Microlayer Medley Rerun',
-	link   : 'https://azurlane.koumakan.jp/Microlayer_Medley',
-	endDate: '2021-09-01T23:59-07',
+	name   : 'Upon the Shimmering Blue',
+	link   : 'https://azurlane.koumakan.jp/Upon_the_Shimmering_Blue',
+	endDate: '2021-10-06T23:59-07',
 	shop   : [
-		{ name: 'Bremerton', cost: 8000, amount: 5 },
-		{ name: 'Casablanca', cost: 8000, amount: 5 },
+		// { name: 'Bremerton', cost: 8000, amount: 5 },
+		// { name: 'Casablanca', cost: 8000, amount: 5 },
 		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
-		{ name: 'TBM Avenger (VT-18 Squadron)', cost: 2000, amount: 1 },
-		{ name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
+		// { name: 'TBM Avenger (VT-18 Squadron)', cost: 2000, amount: 1 },
+		// { name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Sakura Tech Box', cost: 300, amount: 4 },

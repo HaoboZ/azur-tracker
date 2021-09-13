@@ -49,7 +49,7 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 	const dataItems = React.useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( handle, item, index, selected ) => <>
+		const row = ( item, index, handle, selected ) => <>
 			{!removeEditing && editing && sortable && <ListItemIcon sx={{ pl: 1 }}>
 				<MenuIcon {...handle}/>
 			</ListItemIcon>}
@@ -69,30 +69,36 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 			</ListItemIcon>}
 		</>;
 		
-		const panel = ( { ref, style, handle, item, index }: { ref?, style?, handle?, item, index } ) => {
-			const selected = selectable?.selected.includes( item?.id || index );
+		const panel = ( { item, index, ref, style, handle }: { item, index, ref?, style?, handle? } ) => {
+			const selected = selectable?.selected.includes( item?.id ?? index );
 			return renderPanel
 				? <Accordion ref={ref} style={style}>
 					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-						{row( handle, item, index, selected )}
+						{row( item, index, handle, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
 						{renderPanel( item, index )}
 					</AccordionDetails>
 				</Accordion>
-				: <Paper ref={ref} style={style}>
-					{selectable?.setSelected
-						? <ListItemButton
-							divider
-							selected={selected}
-							onClick={() => _selectRow( selectable,
-								item, index, selected, totalSelected )}>
-							{row( handle, item, index, selected )}
-						</ListItemButton>
-						: <ListItem divider selected={selected}>
-							{row( handle, item, index, selected )}
-						</ListItem>}
-				</Paper>;
+				: selectable?.setSelected
+					? <ListItemButton
+						component={Paper}
+						ref={ref}
+						style={style}
+						divider
+						selected={selected}
+						onClick={() => _selectRow( selectable,
+							item, index, selected, totalSelected )}>
+						{row( item, index, handle, selected )}
+					</ListItemButton>
+					: <ListItem
+						component={Paper}
+						ref={ref}
+						style={style}
+						divider
+						selected={selected}>
+						{row( item, index, handle, selected )}
+					</ListItem>;
 		};
 		
 		return sortable
@@ -101,18 +107,27 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 				setItems={setData as any}
 				renderItem={( props ) => panel( props )}
 			/>
-			: data.map( ( item, index ) => panel( { item, index } ) );
-		// return renderPanel ? sort : <Paper>{sort}</Paper>;
+			: data.map( ( item, index ) => <React.Fragment key={index}>
+				{panel( { item, index } )}
+			</React.Fragment> );
 	}, [ data, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return <List
 		sx={{
-			'& .MuiAccordionSummary-content': { alignItems: 'center' },
+			'& .MuiAccordionSummary-content'                    : { alignItems: 'center' },
 			[ '& .MuiAccordionSummary-root,' +
 			' & .MuiListItem-root,' +
-			' & .MuiListItemButton-root' ]  :
-				removeEditing || editing ? { px: 1 } : undefined,
-			overflow                        : 'hidden'
+			' & .MuiListItemButton-root' ]                      : removeEditing || editing ? { px: 1 } : undefined,
+			[ '& .MuiListItem-root ~ .MuiListItem-root,' +
+			' & .MuiListItemButton-root ~ .MuiListButton-root' ]: {
+				borderTopLeftRadius : 0,
+				borderTopRightRadius: 0
+			},
+			'& .MuiListItem-root:not(:last-of-type)'            : {
+				borderBottomLeftRadius : 0,
+				borderBottomRightRadius: 0
+			},
+			overflow                                            : 'hidden'
 		}}
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
 			actions={!removeEditing && !loading && ( editable || sortable ) ? [

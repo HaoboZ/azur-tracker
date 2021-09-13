@@ -18,7 +18,7 @@ export default function PageSection( { actions, listItemProps, children, ...prop
 	children?: React.ReactNode
 } & ListItemTextProps ) {
 	return <Box display='flex' flexDirection='column'>
-		<ListItem ContainerComponent='div' sx={{ my: 2 }} divider {...listItemProps}>
+		<ListItem component='div' sx={{ my: 2 }} divider {...listItemProps as any}>
 			<ListItemText primaryTypographyProps={{ variant: 'h2' }} {...props}/>
 			{Array.isArray( actions ) ? <ListItemSecondaryAction>
 				<ButtonGroup>
