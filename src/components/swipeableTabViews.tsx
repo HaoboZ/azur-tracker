@@ -1,4 +1,4 @@
-import { Tab, Tabs, TabsProps, useTheme } from '@mui/material';
+import { Box, Tab, Tabs, TabsProps, useTheme } from '@mui/material';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
@@ -24,7 +24,7 @@ export default function SwipeableTabViews( { tab = 0, setTab, renderTabs, render
 		} ), 500 );
 	}, [] );
 	
-	return <>
+	return <Box>
 		<Tabs
 			selectionFollowsFocus
 			value={tabValue}
@@ -41,5 +41,5 @@ export default function SwipeableTabViews( { tab = 0, setTab, renderTabs, render
 			</React.Fragment>}
 			containerStyle={swipeFix}
 		/>
-	</>;
+	</Box>;
 }

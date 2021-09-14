@@ -23,6 +23,7 @@ export default function Sortable<Item extends { id: string }>( {
 	setItems,
 	renderItem,
 	overlayWrapper,
+	overlayStyle,
 	overlayWrapperElement
 }: {
 	items: Item[],
@@ -36,6 +37,7 @@ export default function Sortable<Item extends { id: string }>( {
 		wrapper?: boolean
 	} ) => React.ReactNode,
 	overlayWrapper?: ( children: React.ReactNode ) => React.ReactNode,
+	overlayStyle?: React.CSSProperties,
 	overlayWrapperElement?: keyof JSX.IntrinsicElements
 } ) {
 	const sensors = useSensors(
@@ -45,7 +47,7 @@ export default function Sortable<Item extends { id: string }>( {
 	
 	const [ activeItem, setActiveItem ] = React.useState<{ item: Item, index: number, wrapper: boolean }>( null );
 	
-	const overlay = <DragOverlay wrapperElement={overlayWrapperElement} zIndex={2000}>
+	const overlay = <DragOverlay zIndex={2000} wrapperElement={overlayWrapperElement} style={overlayStyle}>
 		{activeItem ? renderItem( activeItem ) : null}
 	</DragOverlay>;
 	
