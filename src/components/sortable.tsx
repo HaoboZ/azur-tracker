@@ -47,7 +47,10 @@ export default function Sortable<Item extends { id: string }>( {
 	
 	const [ activeItem, setActiveItem ] = React.useState<{ item: Item, index: number, wrapper: boolean }>( null );
 	
-	const overlay = <DragOverlay zIndex={2000} wrapperElement={overlayWrapperElement} style={overlayStyle}>
+	const overlay = <DragOverlay
+		zIndex={2000}
+		wrapperElement={overlayWrapperElement}
+		style={overlayStyle}>
 		{activeItem ? renderItem( activeItem ) : null}
 	</DragOverlay>;
 	

@@ -41,8 +41,9 @@ export type EnhancedListProps<Item> = {
 } & Omit<ListProps, 'title'>;
 
 export type EnhancedTableProps<Item> = {
-	columnHeader: React.ReactNodeArray,
-	columns: ( item: Item, index: number ) => React.ReactNodeArray
+	headers: React.ReactNodeArray,
+	columns: ( item: Item, index: number ) => React.ReactNodeArray,
+	widths?: number[]
 } & Omit<TableContainerProps, 'title'>;
 
 export function _deleteRow( data, setData, editable, selectable,

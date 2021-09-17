@@ -3,12 +3,12 @@
 export default {
 	name   : 'Upon the Shimmering Blue',
 	link   : 'https://azurlane.koumakan.jp/Upon_the_Shimmering_Blue',
-	endDate: '2021-10-06T23:59-07',
+	endDate: '2021-10-03T23:59-07',
 	shop   : [
-		// { name: 'Bremerton', cost: 8000, amount: 5 },
+		{ name: 'Chikuma', cost: 8000, amount: 5 },
 		// { name: 'Casablanca', cost: 8000, amount: 5 },
+		{ name: 'Quintuple 610mm Torpedo', cost: 2000, amount: 1 },
 		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
-		// { name: 'TBM Avenger (VT-18 Squadron)', cost: 2000, amount: 1 },
 		// { name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },

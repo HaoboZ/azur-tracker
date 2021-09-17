@@ -31,8 +31,9 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	loading,
 	loadingComponent = <Loading/>,
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
-	columnHeader,
+	headers,
 	columns,
+	widths,
 	...props
 }: EnhancedDisplayProps<Item> & EnhancedTableProps<Item> ) {
 	const dataItems = React.useMemo( () => {
@@ -80,7 +81,7 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 			</React.Fragment> );
 	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
-	return <Box sx={{ '& .minWidth': { width: '1%' } }}>
+	return <Box sx={{ '& .minWidth': { width: '0.01%' } }}>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
 			<Table
@@ -95,8 +96,11 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
 						{sortable && <TableCell className='minWidth'/>}
-						{columnHeader.map( ( cell, index ) =>
-							<TableCell key={index}>{cell}</TableCell> )}
+						{headers.map( ( cell, index ) => <TableCell
+							key={index}
+							sx={{ width: widths?.[ index ] }}>
+							{cell}
+						</TableCell> )}
 						{Boolean( editable ) && <TableCell className='minWidth'>
 							{!loading && ( editable?.max ? data.length < editable.max : true )
 							&& <IconButton onClick={async () => {
@@ -111,7 +115,7 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 				<TableBody>
 					{loading || !data.length
 						? <TableRow>
-							<TableCell colSpan={columnHeader.length + 2}>
+							<TableCell colSpan={headers.length + 2}>
 								{loading ? loadingComponent : emptyComponent}
 							</TableCell>
 						</TableRow>

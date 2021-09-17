@@ -43,11 +43,11 @@ export default function DailyModal() {
 				}}
 				sortable
 				tableProps={{
-					columnHeader: [
+					headers: [
 						'Name',
 						'Amount'
 					],
-					columns     : ( item, index ) => [
+					columns: ( item, index ) => [
 						<FormattedTextField
 							key='name'
 							type='text'

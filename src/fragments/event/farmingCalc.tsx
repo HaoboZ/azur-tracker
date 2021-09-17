@@ -21,13 +21,13 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 		}}
 		sortable
 		tableProps={{
-			columnHeader: [
+			headers: [
 				'Points/Run',
 				'Oil Cost/Run',
 				'Required Plays',
 				'Total Oil Cost'
 			],
-			columns     : ( item ) => {
+			columns: ( item ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return [

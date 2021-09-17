@@ -43,13 +43,13 @@ export default function ShopModal() {
 				data={eventRef.shop}
 				extraData={shop}
 				tableProps={{
-					columnHeader: [
+					headers: [
 						'Name',
 						'Cost',
 						'Amount',
 						'Wanted'
 					],
-					columns     : ( item ) => [
+					columns: ( item ) => [
 						item.name,
 						item.cost,
 						item.amount,

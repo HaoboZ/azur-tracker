@@ -41,7 +41,7 @@ export default function ResearchGroup( { researchShips }: { researchShips: typeo
 			data={researchShips}
 			extraData={ships}
 			tableProps={{
-				columnHeader: [
+				headers: [
 					'Name',
 					'Dev Level',
 					'Dev Stage',
@@ -50,7 +50,7 @@ export default function ResearchGroup( { researchShips }: { researchShips: typeo
 					'Fate Stage',
 					'Required Prints'
 				],
-				columns     : ( item, index ) => {
+				columns: ( item, index ) => {
 					const ship = ships[ item.name ] || {};
 					const { devLevel, devPrints, fatePrints } = shipData[ index ];
 					return [
