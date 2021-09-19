@@ -68,7 +68,6 @@ export default function Filters( { table }: { table: TableInstance } ) {
 	const globalFilter = useAsyncDebounce( ( value ) =>
 		table.setGlobalFilter( value ), 250 );
 	
-	const [ search, setSearch ] = React.useState( '' );
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
 	const searchRef = React.useRef<HTMLInputElement>();
 	
@@ -107,14 +106,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 					options={searchOptions}
 					fullWidth
 					freeSolo
-					inputValue={search}
-					onInputChange={( e, value ) => {
-						// TODO: temporary fix until mui autocomplete freeSolo works
-						if ( e ) {
-							setSearch( value );
-							globalFilter( value );
-						}
-					}}
+					onInputChange={( e, value ) => globalFilter( value )}
 					renderInput={( params ) => <TextField
 						inputRef={searchRef}
 						{...params}

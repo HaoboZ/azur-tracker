@@ -16,5 +16,6 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
 
-* Fix modal
-* Fix sortable
+* Add body scroll lock for modal
+* disable scroll to close for swipeabledrawer modal
+* Fix modal inputs on ios?

@@ -53,7 +53,7 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 			}
 		},
 		disableGlobalFilter: true,
-		sortType           : 'number'
+		sortType           : 'basic'
 	}, {
 		Header             : 'Love',
 		accessor           : 'love',
