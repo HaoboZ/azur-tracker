@@ -13,3 +13,8 @@ yarn dev
 ```
 
 Open [localhost](http://localhost:3000) with your browser to see the result.
+
+## TODO
+
+* Fix modal
+* Fix sortable

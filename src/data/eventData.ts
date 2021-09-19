@@ -7,9 +7,9 @@ export default {
 	shop   : [
 		{ name: 'Chikuma', cost: 8000, amount: 5 },
 		// { name: 'Casablanca', cost: 8000, amount: 5 },
-		{ name: 'Quintuple 610mm Torpedo', cost: 2000, amount: 1 },
-		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
+		{ name: 'Quintuple 610mm Torpedo', cost: 10000, amount: 1 },
 		// { name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
+		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Sakura Tech Box', cost: 300, amount: 4 },

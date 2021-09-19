@@ -54,7 +54,7 @@ interface Equip {
 	rarity: rarity
 }
 
-export const version = '2021-07-11';
+export const version = '2021-09-18';
 
 // list of equips sorted by type
 export const equips: Equip[] = [
@@ -136,6 +136,14 @@ export const equips: Equip[] = [
 		type  : type.T,
 		rarity: rarity.SR
 	},
+	{
+		id    : 35300,
+		name  : '610mm Quintuple Torpedo Mount',
+		image : '610mm_Quintuple_Torpedo_Mount',
+		type  : type.T,
+		rarity: rarity.UR
+	},
+	
 	{
 		id    : 45040,
 		name  : '533mm Triple Magnetic Torpedo Mount',
@@ -1650,7 +1658,8 @@ let a;
 export const equipTier: Record<string, Record<number, number[]>> = {
 	'T'        : {
 		[ map[ '533mm Quintuple Magnetic Torpedo Mount/UR' ] ]: [ 0, a = 0 ],
-		[ map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ] ]: [ 1, ++a ],
+		[ map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ '610mm Quintuple Torpedo Mount/UR' ] ]         : [ 0, ++a ],
 		[ map[ '533mm Quintuple Torpedo Mount Mk 17/SR' ] ]   : [ 1, ++a ],
 		[ map[ '533mm Quintuple Torpedo Mount/SR' ] ]         : [ 1, ++a ],
 		[ map[ '533mm Quintuple Magnetic Torpedo Mount/SR' ] ]: [ 2, ++a ],

@@ -46,10 +46,10 @@ export default function tableColumns( equipBetter, setEquipBetter ) {
 				return '?';
 			case 6:
 				return 'N';
-			case 0:
+			case -1:
 				return 'EX';
 			default:
-				return value - 1;
+				return value;
 			}
 		},
 		disableGlobalFilter: true,
