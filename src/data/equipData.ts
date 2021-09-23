@@ -54,7 +54,7 @@ interface Equip {
 	rarity: rarity
 }
 
-export const version = '2021-09-18';
+export const version = '2021-09-22';
 
 // list of equips sorted by type
 export const equips: Equip[] = [
