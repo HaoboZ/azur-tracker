@@ -41,7 +41,7 @@ export type ResponsiveModalContainerProps = {
 	onSave?: () => void,
 	keepOpenOnSave?: boolean,
 	children?: React.ReactNode
-} & DialogContentProps;
+} & Omit<DialogContentProps, 'title'>;
 
 export default function ResponsiveModal( {
 	variant = ModalVariant.adaptive,
