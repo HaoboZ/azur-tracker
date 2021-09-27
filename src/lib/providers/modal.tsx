@@ -5,7 +5,7 @@ import React from 'react';
 
 import ResponsiveModal, { ResponsiveModalProps } from '../../components/responsiveModal';
 
-type Modal = {
+type ModalInfo = {
 	id: string,
 	open: boolean,
 	Component: React.ComponentType,
@@ -15,7 +15,6 @@ type Modal = {
 
 export type ModalControls = {
 	closeModal: ( ...args ) => void,
-	modalStatus: () => Modal,
 	events: EventEmitter
 };
 
@@ -31,7 +30,7 @@ export type DynamicModalControls = {
 		props?: T
 	) => string,
 	closeModal: ( id: string ) => void,
-	modalStatus: ( id: string ) => Modal
+	modalInfo: ( id: string ) => Promise<ModalInfo>
 };
 
 type C1<T> = (
@@ -46,21 +45,25 @@ type C2 = () => DynamicModalControls;
 const ModalContext = React.createContext<C1<any> & C2>( () => ( {
 	showModal  : () => null,
 	closeModal : () => null,
-	modalStatus: () => null,
+	modalInfo  : null,
 	removeModal: () => null,
 	events     : null
 } ) );
 ModalContext.displayName = 'Modal';
 
-const ModalControlsContext = React.createContext<ModalControls>( undefined );
+const ModalControlsContext = React.createContext<ModalControls & { modalInfo: ModalInfo }>( {
+	closeModal: () => null,
+	modalInfo : null,
+	events    : null
+} );
 ModalControlsContext.displayName = 'ModalControls';
 
 export default function ModalProvider( { children } ) {
-	const [ modals, setModals ] = React.useState<Modal[]>( [] );
+	const [ modals, setModals ] = React.useState<ModalInfo[]>( [] );
 	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
-			closeModal : ( ...args ) => setModals( ( modals ) => {
+			closeModal: ( ...args ) => setModals( ( modals ) => {
 				const index = modals.findIndex( ( modal ) => modal?.id === id );
 				if ( index === -1 ) return modals;
 				const newModals = [ ...modals ];
@@ -73,8 +76,7 @@ export default function ModalProvider( { children } ) {
 				}
 				return newModals;
 			} ),
-			modalStatus: () => modals.find( ( modal ) => modal?.id === id ),
-			events     : new EventEmitter()
+			events    : new EventEmitter()
 		};
 	}
 	
@@ -99,7 +101,7 @@ export default function ModalProvider( { children } ) {
 	
 	function dynamicControls(): DynamicModalControls {
 		return {
-			showModal  : ( Component, modalProps, props ) => {
+			showModal : ( Component, modalProps, props ) => {
 				const id = nanoid();
 				setModals( ( modals ) => {
 					const newModals = [ ...modals ];
@@ -121,14 +123,15 @@ export default function ModalProvider( { children } ) {
 				} );
 				return id;
 			},
-			closeModal : ( id ) => {
+			closeModal: ( id ) => {
 				const modal = modals.find( ( modal ) => modal?.id === id );
 				modal?.props.controls.closeModal();
 			},
-			modalStatus: ( id ) => {
+			modalInfo : async ( id ) => await new Promise( ( resolve ) => setModals( ( modals ) => {
 				const modal = modals.find( ( modal ) => modal?.id === id );
-				return modal?.props.controls.status();
-			}
+				resolve( modal );
+				return modals;
+			} ) )
 		};
 	}
 	
@@ -162,7 +165,7 @@ export default function ModalProvider( { children } ) {
 		{children}
 		{modals.map( ( modal ) => {
 			if ( !modal?.id ) return null;
-			return <ModalControlsContext.Provider key={modal.id} value={modal.props.controls}>
+			return <ModalControlsContext.Provider key={modal.id} value={{ ...modal.props.controls, modalInfo: modal }}>
 				<ResponsiveModal
 					open={modal.open}
 					onClose={() => modal.props.controls.closeModal()}

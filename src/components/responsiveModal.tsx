@@ -17,6 +17,7 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import React from 'react';
+import { useModalControls } from '../lib/providers/modal';
 
 export enum ModalVariant {
 	adaptive = 'adaptive',
@@ -33,7 +34,7 @@ export type ResponsiveModalProps = {
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
 export type ResponsiveModalContainerProps = {
-	onClose: () => void,
+	onClose?: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
 	title?: React.ReactNode,
@@ -96,7 +97,7 @@ export default function ResponsiveModal( {
 
 export function ResponsiveModalContainer( {
 	onClose,
-	variant = ModalVariant.adaptive,
+	variant,
 	title,
 	onSave,
 	keepOpenOnSave,
@@ -104,6 +105,10 @@ export function ResponsiveModalContainer( {
 	...props
 }: ResponsiveModalContainerProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
+	const { closeModal, modalInfo } = useModalControls();
+	
+	variant = variant ?? modalInfo?.modalProps?.variant ?? ModalVariant.adaptive;
+	onClose = onClose ?? closeModal;
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <>

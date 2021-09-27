@@ -6,11 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { ResponsiveModalContainer } from '../../components/responsiveModal';
-import { useModalControls } from '../../lib/providers/modal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyModal() {
-	const controls = useModalControls();
 	const _daily = useSelector( ( { event } ) => event.daily );
 	const dispatch = useDispatch();
 	
@@ -30,7 +28,6 @@ export default function DailyModal() {
 	}
 	
 	return <ResponsiveModalContainer
-		onClose={() => controls.closeModal()}
 		title='Daily Points'
 		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}
 		sx={{ p: 0 }}>

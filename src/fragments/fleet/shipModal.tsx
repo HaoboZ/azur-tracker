@@ -19,7 +19,7 @@ import { rarityColors } from '../../data/colors';
 import { equips, equipsIndex } from '../../data/equipData';
 import fleetRef from '../../data/fleetData';
 import SVGIcon, { TierIcon } from '../../lib/icons';
-import { useModal, useModalControls } from '../../lib/providers/modal';
+import { useModal } from '../../lib/providers/modal';
 import { fleet_setShip } from '../../lib/store/reducers/fleetReducer';
 import EquipModal from './equipModal';
 
@@ -28,7 +28,6 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	equipBetter?: [ number, number ][],
 	selectedEquip?: typeof equips[number]
 } ) {
-	const controls = useModalControls();
 	const ships = useSelector( ( { fleet } ) => fleet.ships );
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
@@ -48,14 +47,12 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	}, [ ship.tier ] );
 	
 	return <ResponsiveModalContainer
-		onClose={() => controls.closeModal()}
 		title={<Link
 			href={ship.link}
 			target='_blank'
 			color='textPrimary'>
 			<DialogTitle>{ship.name}</DialogTitle>
-		</Link>}
-		variant={ModalVariant.bottom}>
+		</Link>}>
 		<Grid container spacing={2} alignItems='center'>
 			<Grid item xs={4}>
 				<InputLabel shrink>Rarity</InputLabel>

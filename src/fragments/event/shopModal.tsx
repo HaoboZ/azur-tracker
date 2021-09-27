@@ -6,11 +6,9 @@ import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { ResponsiveModalContainer } from '../../components/responsiveModal';
 import eventRef from '../../data/eventData';
-import { useModalControls } from '../../lib/providers/modal';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
 
 export default function ShopModal() {
-	const controls = useModalControls();
 	const _shop = useSelector( ( { event } ) => event.shop );
 	const dispatch = useDispatch();
 	
@@ -25,7 +23,6 @@ export default function ShopModal() {
 		[ shop ] );
 	
 	return <ResponsiveModalContainer
-		onClose={() => controls.closeModal()}
 		title='Shop Items'
 		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}
 		sx={{ p: 0 }}>

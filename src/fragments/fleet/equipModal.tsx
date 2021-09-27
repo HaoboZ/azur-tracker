@@ -29,7 +29,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: typeof fleetRef[string], index: number },
 	selectedEquip?: typeof equips[number]
 } ) {
-	const controls = useModalControls();
+	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
@@ -79,9 +79,9 @@ export default function EquipModal( { info, selectedEquip }: {
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
 			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		}
-		controls.events.on( 'close', close );
+		events.on( 'close', close );
 		return () => {
-			controls.events.off( 'close', close );
+			events.off( 'close', close );
 		};
 	}, [ equip, override ] );
 	
@@ -170,13 +170,13 @@ export default function EquipModal( { info, selectedEquip }: {
 				labelPlacement='start'
 				sx={{ mr: 2 }}
 			/>
-			<Button variant='contained' onClick={() => controls.closeModal()}>
+			<Button variant='contained' onClick={() => closeModal()}>
 				Close
 			</Button>
 			<Button
 				variant='contained'
 				color='error'
-				onClick={() => controls.closeModal( true )}>
+				onClick={() => closeModal( true )}>
 				Cancel
 			</Button>
 		</DialogActions>
