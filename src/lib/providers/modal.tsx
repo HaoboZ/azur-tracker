@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+import { EventEmitter } from 'events';
 import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
 import React from 'react';

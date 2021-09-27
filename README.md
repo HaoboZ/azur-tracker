@@ -18,4 +18,3 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 * Add body scroll lock for modal
 * disable scroll to close for swipeabledrawer modal
-* Fix modal inputs on ios?

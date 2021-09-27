@@ -1,4 +1,5 @@
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
+import Head from 'next/head';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -6,13 +7,13 @@ import PageContainer from '../components/page/container';
 import PageTitle from '../components/page/title';
 import { ModalVariant } from '../components/responsiveModal';
 import VirtualDisplay from '../components/virtualDisplay';
-import Filters from '../fragments/ship/filters';
-import ShipModal from '../fragments/ship/shipModal';
-import useShipTable from '../fragments/ship/useShipTable';
+import Filters from '../fragments/fleet/filters';
+import ShipModal from '../fragments/fleet/shipModal';
+import useFleetTable from '../fragments/fleet/useFleetTable';
 import { useModal } from '../lib/providers/modal';
-import { ship_checkVersion } from '../lib/store/reducers/shipReducer';
+import { fleet_checkVersion } from '../lib/store/reducers/fleetReducer';
 
-export default function Ship() {
+export default function Fleet() {
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
 	
@@ -21,15 +22,16 @@ export default function Ship() {
 		value: Record<string, [ number, number ][]>
 	}>( { filter: undefined, value: {} } );
 	
-	const table = useShipTable( equipBetter, setEquipBetter );
+	const table = useFleetTable( equipBetter, setEquipBetter );
 	
-	// resets ship equip tiers if version changes
+	// resets fleet equip tiers if version changes
 	React.useEffect( () => {
-		dispatch( ship_checkVersion() );
+		dispatch( fleet_checkVersion() );
 	}, [] );
 	
 	return <PageContainer>
-		<PageTitle>Ship Tracker</PageTitle>
+		<Head><title>Azur Lane Tracker - Fleet Tracker</title></Head>
+		<PageTitle>Fleet Tracker</PageTitle>
 		<Filters table={table}/>
 		<VirtualDisplay
 			{...table}

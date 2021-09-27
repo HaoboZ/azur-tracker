@@ -15,6 +15,7 @@ import {
 	ToggleButtonGroup
 } from '@mui/material';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -24,8 +25,8 @@ import PageTitle from '../components/page/title';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useIndicator } from '../lib/providers/indicator';
-import { useSnackbar } from '../lib/providers/snackbar';
 import { event_reset } from '../lib/store/reducers/eventReducer';
+import { fleet_reset } from '../lib/store/reducers/fleetReducer';
 import {
 	setAutoLoad,
 	setAutoLoadInterval,
@@ -34,7 +35,6 @@ import {
 	setTheme
 } from '../lib/store/reducers/mainReducer';
 import { research_reset } from '../lib/store/reducers/researchReducer';
-import { ship_reset } from '../lib/store/reducers/shipReducer';
 
 export default function Home() {
 	const main = useSelector( ( { main } ) => main );
@@ -233,8 +233,8 @@ export default function Home() {
 			</ListItem>
 			<ListItem>
 				<ListItemText
-					primary={<Link href='/ship' underline='always'>
-						Ship Tracker
+					primary={<Link href='/fleet' underline='always'>
+						Fleet Tracker
 					</Link>}
 					secondary='for those who want a fully leveled, fully equipped fleet'
 					classes={{ secondary: 'longText' }}
@@ -245,7 +245,7 @@ export default function Home() {
 						color='error'
 						onClick={() => {
 							if ( confirm( 'Are you sure you want to reset this page?' ) )
-								dispatch( ship_reset() );
+								dispatch( fleet_reset() );
 						}}>
 						Reset
 					</Button>

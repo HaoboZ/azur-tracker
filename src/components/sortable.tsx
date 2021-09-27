@@ -1,108 +1,38 @@
-import {
-	DndContext,
-	DragOverlay,
-	KeyboardSensor,
-	LayoutMeasuringStrategy,
-	PointerSensor,
-	useSensor,
-	useSensors
-} from '@dnd-kit/core';
-import {
-	arrayMove,
-	defaultAnimateLayoutChanges,
-	SortableContext,
-	sortableKeyboardCoordinates,
-	useSortable
-} from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { Portal } from '@mui/material';
+import { styled, useTheme } from '@mui/material';
+import { keyBy, pick } from 'lodash';
 import React from 'react';
+import { ItemInterface, ReactSortable, ReactSortableOptions } from 'react-sortablejs';
 
-export default function Sortable<Item extends { id: string }>( {
-	items,
-	setItems,
-	renderItem,
-	overlayWrapper,
-	overlayStyle,
-	overlayWrapperElement
-}: {
-	items: Item[],
-	setItems: ( items: Item[] ) => void,
-	renderItem: ( props: {
-		item: Item,
-		index: number,
-		ref?: React.RefObject<any>,
-		style?: React.CSSProperties,
-		handle?: React.HTMLAttributes<any>,
-		wrapper?: boolean
-	} ) => React.ReactNode,
-	overlayWrapper?: ( children: React.ReactNode ) => React.ReactNode,
-	overlayStyle?: React.CSSProperties,
-	overlayWrapperElement?: keyof JSX.IntrinsicElements
-} ) {
-	const sensors = useSensors(
-		useSensor( PointerSensor ),
-		useSensor( KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates } )
-	);
-	
-	const [ activeItem, setActiveItem ] = React.useState<{ item: Item, index: number, wrapper: boolean }>( null );
-	
-	const overlay = <DragOverlay
-		zIndex={2000}
-		wrapperElement={overlayWrapperElement}
-		style={overlayStyle}>
-		{activeItem ? renderItem( activeItem ) : null}
-	</DragOverlay>;
-	
-	return <DndContext
-		sensors={sensors}
-		onDragStart={( { active } ) => {
-			const index = items.findIndex( ( { id } ) => id === active.id );
-			if ( index !== -1 ) setActiveItem( { item: items[ index ], index, wrapper: true } );
-		}}
-		onDragEnd={( { active, over } ) => {
-			setActiveItem( null );
-			if ( !over ) return;
-			if ( active.id !== over.id ) {
-				const activeIndex = active.data.current.sortable.index;
-				const overIndex = over.data.current?.sortable.index || 0;
-				setItems( arrayMove( items, activeIndex, overIndex ) );
-			}
-		}}
-		layoutMeasuring={{ strategy: LayoutMeasuringStrategy.BeforeDragging }}>
-		<SortableContext items={items}>
-			{items.map( ( item, index ) => <SortableItem
-				key={item.id}
-				item={item}
-				index={index}
-				renderItem={renderItem}
-				invisible={activeItem && index === activeItem.index}
-			/> )}
-		</SortableContext>
-		<Portal>{overlayWrapper?.( overlay ) ?? overlay}</Portal>
-	</DndContext>;
-}
+const StyledReactSortable = styled( ReactSortable )( {} );
 
-function SortableItem( { item, index, renderItem, invisible }: {
-	item,
-	index: number,
-	renderItem,
-	invisible?: boolean
-} ) {
-	const { attributes, listeners, setNodeRef, transform, transition } = useSortable( {
-		id                  : item.id,
-		animateLayoutChanges: ( args ) => args.isSorting || args.wasSorting ? defaultAnimateLayoutChanges( args ) : true
-	} );
+export default function Sortable<T extends { id }>( { items, setItems, renderItem, ...props }: {
+	items: T[],
+	setItems: ( items: T[] ) => void,
+	renderItem: ( props: { item: T, index: number, handle: React.HTMLAttributes<any> } ) => React.ReactNode,
+	tag?: React.ComponentType | keyof React.ReactHTML
+} & ReactSortableOptions ) {
+	const theme = useTheme();
 	
-	return renderItem( {
-		item,
-		index,
-		ref   : setNodeRef,
-		style : {
-			opacity   : +!invisible,
-			transform : CSS.Transform.toString( transform ),
-			transition: transition ?? undefined
-		},
-		handle: { ...attributes, ...listeners, style: { touchAction: 'none' } }
-	} );
+	const [ list, setList ] = React.useState<ItemInterface[]>( () => items.map( ( item ) => pick( item, 'id' ) ) );
+	
+	React.useEffect( () => {
+		setList( items.map( ( item ) => pick( item, 'id' ) ) );
+	}, [ items ] );
+	
+	const dataKeyed = React.useMemo( () => keyBy<T>( items, ( { id } ) => id ), [ items ] );
+	
+	return <StyledReactSortable
+		list={list}
+		setList={setList}
+		onEnd={() => setItems( list.map( ( { id } ) => dataKeyed[ id ] ) )}
+		handle='.sortable-handle'
+		sx={{ '& .sortable-ghost': { bgcolor: ( { palette } ) => `${palette.primary.main} !important` } }}
+		// ghostClass='selectedSort'
+		// forceFallback
+		animation={theme.transitions.duration.shorter}
+		{...props as any}>
+		{list.map( ( { id }, index ) => <React.Fragment key={id}>
+			{renderItem( { item: dataKeyed[ id ], index, handle: { className: 'sortable-handle' } } )}
+		</React.Fragment> )}
+	</StyledReactSortable>;
 }

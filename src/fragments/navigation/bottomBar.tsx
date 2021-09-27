@@ -16,7 +16,7 @@ const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
 	{ label: 'Event', icon: <EventIcon/>, link: '/event' },
 	{ label: 'Research', icon: <CameraIcon/>, link: '/research' },
-	{ label: 'Ship', icon: <DirectionsBoatIcon/>, link: '/ship' }
+	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, link: '/fleet' }
 ];
 
 export default function BottomBar( { children } ) {
@@ -30,10 +30,7 @@ export default function BottomBar( { children } ) {
 			if ( items[ i ].link === router.asPath ) return i;
 	}, [ router.asPath ] );
 	
-	return <Box
-		pl='env(safe-area-inset-left)'
-		pr='env(safe-area-inset-right)'
-		minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 56}px)`}>
+	return <Box>
 		<Box
 			position='fixed'
 			top={0}
@@ -43,7 +40,12 @@ export default function BottomBar( { children } ) {
 			bgcolor='primary.main'
 		/>
 		<Box width='100%' height='env(safe-area-inset-top)'/>
-		{children}
+		<Box
+			pl='env(safe-area-inset-left)'
+			pr='env(safe-area-inset-right)'
+			minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
+			{children}
+		</Box>
 		<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
 		<AppBar
 			position='fixed'

@@ -39,11 +39,9 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	const dataItems = React.useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( { item, index, ref, style, handle }: { item, index, ref?, style?, handle? } ) => {
+		const row = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			return <TableRow
-				ref={ref}
-				style={style}
 				hover
 				selected={selected}
 				onClick={selectable?.setSelected
@@ -72,13 +70,12 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 			? <Sortable
 				items={data as any}
 				setItems={setData as any}
-				renderItem={( props ) => row( props )}
-				overlayWrapper={( children ) => <Table size='small'>{children}</Table>}
-				overlayWrapperElement='tbody'
+				renderItem={row}
+				tag={TableBody}
 			/>
-			: data.map( ( item, index ) => <React.Fragment key={index}>
+			: data.map( ( item, index ) => <TableBody key={index}>
 				{row( { item, index } )}
-			</React.Fragment> );
+			</TableBody> );
 	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box sx={{ '& .minWidth': { width: '0.01%' } }}>
@@ -112,15 +109,15 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				<TableBody>
-					{loading || !data.length
-						? <TableRow>
+				{loading || !data.length
+					? <TableBody>
+						<TableRow>
 							<TableCell colSpan={headers.length + 2}>
 								{loading ? loadingComponent : emptyComponent}
 							</TableCell>
 						</TableRow>
-						: dataItems}
-				</TableBody>
+					</TableBody>
+					: dataItems}
 			</Table>
 		</TableContainer>
 	</Box>;

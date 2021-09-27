@@ -1,4 +1,4 @@
-import { DialogContent, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,61 +32,60 @@ export default function DailyModal() {
 	return <ResponsiveModalContainer
 		onClose={() => controls.closeModal()}
 		title='Daily Points'
-		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
-		<DialogContent sx={{ p: 0 }}>
-			<EnhancedDisplay
-				title={<Typography>Total Daily: {dailyTotal}</Typography>}
-				data={daily}
-				setData={setDaily}
-				editable={{
-					newData: () => ( { id: nanoid(), name: '', amount: 0 } )
-				}}
-				sortable
-				tableProps={{
-					headers: [
-						'Name',
-						'Amount'
-					],
-					columns: ( item, index ) => [
+		onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}
+		sx={{ p: 0 }}>
+		<EnhancedDisplay
+			title={<Typography>Total Daily: {dailyTotal}</Typography>}
+			data={daily}
+			setData={setDaily}
+			editable={{
+				newData: () => ( { id: nanoid(), name: '', amount: 0 } )
+			}}
+			sortable
+			tableProps={{
+				headers: [
+					'Name',
+					'Amount'
+				],
+				columns: ( item, index ) => [
+					<FormattedTextField
+						key='name'
+						type='text'
+						fullWidth
+						value={item.name}
+						onChange={( { target } ) => modifyItem( index, { name: target.value } )}
+					/>,
+					<FormattedTextField
+						key='amount'
+						type='number'
+						placeholder='0'
+						value={item.amount}
+						onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
+					/>
+				]
+			}}
+			listProps={{
+				renderRow: ( item, index ) => <Grid container spacing={2}>
+					<Grid item xs={9}>
 						<FormattedTextField
-							key='name'
 							type='text'
 							fullWidth
+							label='Name'
 							value={item.name}
 							onChange={( { target } ) => modifyItem( index, { name: target.value } )}
-						/>,
+						/>
+					</Grid>
+					<Grid item xs={3}>
 						<FormattedTextField
-							key='amount'
 							type='number'
+							label='Amount'
 							placeholder='0'
 							value={item.amount}
 							onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
 						/>
-					]
-				}}
-				listProps={{
-					renderRow: ( item, index ) => <Grid container spacing={2}>
-						<Grid item xs={9}>
-							<FormattedTextField
-								type='text'
-								fullWidth
-								label='Name'
-								value={item.name}
-								onChange={( { target } ) => modifyItem( index, { name: target.value } )}
-							/>
-						</Grid>
-						<Grid item xs={3}>
-							<FormattedTextField
-								type='number'
-								label='Amount'
-								placeholder='0'
-								value={item.amount}
-								onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
-							/>
-						</Grid>
 					</Grid>
-				}}
-			/>
-		</DialogContent>
+				</Grid>
+			}}
+		/>
 	</ResponsiveModalContainer>;
 }

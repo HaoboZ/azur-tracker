@@ -17,13 +17,13 @@ import createCompressor from 'redux-persist-transform-compress';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
-import shipRef from '../../data/shipData';
+import fleetRef from '../../data/fleetData';
 import { rootReducer } from './reducers';
-import { getTier } from './reducers/shipReducer';
+import { getTier } from './reducers/fleetReducer';
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-const migrations: Record<string, ( state: RootState ) => RootState> = {
+const migrations: Record<string, ( state: any ) => RootState> = {
 	2: ( state ) => ( {
 		...state,
 		ship: {
@@ -82,7 +82,7 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 		ship: {
 			...state.ship,
 			ships: Object.fromEntries( Object.entries( state.ship.ships ).map( ( ship ) => {
-				getTier( shipRef[ ship[ 0 ] ], ship[ 1 ].equip );
+				getTier( fleetRef[ ship[ 0 ] ], ( ship[ 1 ] as any ).equip );
 				delete ship[ 1 ][ 'tier' ];
 				return ship;
 			} ) )
@@ -94,12 +94,13 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 			...state.main,
 			researchLastTab: 0
 		}
-	} )
+	} ),
+	8: ( state ) => ( { ...state, fleet: state.ship } )
 };
 
 const persistedReducer = process.browser ? persistReducer<RootState>( {
 	key            : 'root',
-	version        : 7,
+	version        : 8,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations as any, { debug: false } ),

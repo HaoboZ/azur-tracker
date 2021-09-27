@@ -3,10 +3,11 @@ import {
 	Button,
 	Dialog,
 	DialogActions,
+	DialogContent,
+	DialogContentProps,
 	DialogProps,
 	DialogTitle,
 	Grow,
-	GrowProps,
 	IconButton,
 	SwipeableDrawer,
 	SwipeableDrawerProps,
@@ -16,9 +17,6 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import React from 'react';
-
-const Transition = React.forwardRef( ( props: GrowProps, ref: React.ForwardedRef<typeof Grow> ) =>
-	<Grow ref={ref} {...props}/> );
 
 export enum ModalVariant {
 	adaptive = 'adaptive',
@@ -34,6 +32,17 @@ export type ResponsiveModalProps = {
 	children?: React.ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
+export type ResponsiveModalContainerProps = {
+	onClose: () => void,
+	// type of modal to be displayed
+	variant?: ModalVariant,
+	title?: React.ReactNode,
+	// renders and called by save button if set
+	onSave?: () => void,
+	keepOpenOnSave?: boolean,
+	children?: React.ReactNode
+} & DialogContentProps;
+
 export default function ResponsiveModal( {
 	variant = ModalVariant.adaptive,
 	children,
@@ -45,7 +54,7 @@ export default function ResponsiveModal( {
 		return <Dialog
 			maxWidth='md'
 			fullWidth
-			TransitionComponent={Transition}
+			TransitionComponent={Grow}
 			disablePortal
 			closeAfterTransition
 			sx={{
@@ -91,23 +100,15 @@ export function ResponsiveModalContainer( {
 	title,
 	onSave,
 	keepOpenOnSave,
-	children
-}: {
-	onClose: () => void,
-	// type of modal to be displayed
-	variant?: ModalVariant,
-	title?: React.ReactNode,
-	// renders and called by save button if set
-	onSave?: () => void,
-	keepOpenOnSave?: boolean,
-	children?: React.ReactNode
-} ) {
+	children,
+	...props
+}: ResponsiveModalContainerProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
 		return <>
 			{title && <DialogTitle>{title}</DialogTitle>}
-			{children}
+			<DialogContent {...props}>{children}</DialogContent>
 			<DialogActions>
 				{onSave ? <Button
 					variant='contained'
@@ -138,7 +139,9 @@ export function ResponsiveModalContainer( {
 						!keepOpenOnSave && onClose();
 					}}>Save</Button> : undefined}
 			</Toolbar>
-			{children}
+			<DialogContent onTouchStart={( e ) => e.stopPropagation()} {...props}>
+				{children}
+			</DialogContent>
 		</>;
 	}
 }

@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
 
 import { equips } from '../../data/equipData';
-import { ship_setFilter } from '../../lib/store/reducers/shipReducer';
+import { fleet_setFilter } from '../../lib/store/reducers/fleetReducer';
 import EquipFilter from './equipFilter';
 
 const searchOptions = [
@@ -62,7 +62,7 @@ const searchOptions = [
 ].map( ( label, id ) => ( { id, label } ) );
 
 export default function Filters( { table }: { table: TableInstance } ) {
-	const { filter, ships } = useSelector( ( { ship } ) => ship );
+	const { filter, ships } = useSelector( ( { fleet } ) => fleet );
 	const dispatch = useDispatch();
 	
 	const globalFilter = useAsyncDebounce( ( value ) =>
@@ -142,7 +142,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.levelMax}
-						onChange={( { target } ) => dispatch( ship_setFilter( { levelMax: target.checked } ) )}
+						onChange={( { target } ) => dispatch( fleet_setFilter( { levelMax: target.checked } ) )}
 					/>}
 					label='Maxed Level'
 				/>
@@ -151,7 +151,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.equipMax}
-						onChange={( { target } ) => dispatch( ship_setFilter( { equipMax: target.checked } ) )}
+						onChange={( { target } ) => dispatch( fleet_setFilter( { equipMax: target.checked } ) )}
 					/>}
 					label='Maxed Equip'
 				/>
@@ -160,7 +160,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 				<FormControlLabel
 					control={<Checkbox
 						checked={filter.level0}
-						onChange={( { target } ) => dispatch( ship_setFilter( { level0: target.checked } ) )}
+						onChange={( { target } ) => dispatch( fleet_setFilter( { level0: target.checked } ) )}
 					/>}
 					label='0 Level'
 				/>

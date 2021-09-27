@@ -10,7 +10,7 @@ export default function PageContainer( { children, sx, ...props }: {
 	
 	return <Container
 		disableGutters={!wide}
-		sx={{ overflowX: 'hidden', minHeight: 'inherit', ...sx }}
+		sx={{ overflowX: 'hidden', ...sx }}
 		{...props}>
 		<ScrollTop/>
 		{children}

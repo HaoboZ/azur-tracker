@@ -35,10 +35,7 @@ export default function TitleBar( { children } ) {
 	const dispatch = useDispatch();
 	const height = usePageHeight();
 	
-	return <Box
-		pl='env(safe-area-inset-left)'
-		pr='env(safe-area-inset-right)'
-		minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height - 64}px)`}>
+	return <Box>
 		<AppBar
 			position='static'
 			enableColorOnDark
@@ -56,7 +53,7 @@ export default function TitleBar( { children } ) {
 				</Link>
 				<LinkItem href='/event'>Event</LinkItem>
 				<LinkItem href='/research'>Research</LinkItem>
-				<LinkItem href='/ship'>Ship</LinkItem>
+				<LinkItem href='/fleet'>Fleet</LinkItem>
 				<Box flexGrow={1}/>
 				<IconButton
 					color='inherit'
@@ -75,6 +72,11 @@ export default function TitleBar( { children } ) {
 				</IconButton>
 			</Toolbar>
 		</AppBar>
-		{children}
+		<Box
+			pl='env(safe-area-inset-left)'
+			pr='env(safe-area-inset-right)'
+			minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
+			{children}
+		</Box>
 	</Box>;
 }

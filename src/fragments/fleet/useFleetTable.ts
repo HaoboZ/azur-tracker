@@ -10,27 +10,27 @@ import {
 	useTable
 } from 'react-table';
 
-import shipRef from '../../data/shipData';
-import tableColumns from './tableColumns';
+import fleetRef from '../../data/fleetData';
+import fleetColumns from './fleetColumns';
 
-export default function useShipTable( equipBetter, setEquipBetter ) {
-	const ship = useSelector( ( { ship } ) => ship );
+export default function useFleetTable( equipBetter, setEquipBetter ) {
+	const fleet = useSelector( ( { fleet } ) => fleet );
 	
 	const tableOptions = React.useMemo( () => ( {
-		columns: tableColumns( equipBetter, setEquipBetter ),
+		columns: fleetColumns( equipBetter, setEquipBetter ),
 		// list of ships with the local data loaded
-		data                  : Object.values( shipRef )
+		data                  : Object.values( fleetRef )
 			.map( ( shipData ) => {
-				const _ship = ship.ships[ shipData.id ];
+				const _ship = fleet.ships[ shipData.id ];
 				shipData.love = _ship?.love || 0;
 				shipData.lvl = _ship?.lvl || 0;
 				shipData.equip = _ship?.equip || new Array( 5 ).fill( [] );
 				return shipData;
 			} )
 			.filter( ( shipData ) => {
-				if ( !ship.filter.levelMax && shipData.lvl === 121 ) return false;
-				if ( !ship.filter.level0 && !shipData.lvl ) return false;
-				return ship.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
+				if ( !fleet.filter.levelMax && shipData.lvl === 121 ) return false;
+				if ( !fleet.filter.level0 && !shipData.lvl ) return false;
+				return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
 			} ),
 		getRowId              : ( { id } ) => id,
 		defaultColumn         : { width: 10 },
@@ -66,7 +66,7 @@ export default function useShipTable( equipBetter, setEquipBetter ) {
 		autoResetSortBy       : false,
 		autoResetGlobalFilter : false,
 		autoResetFilters      : false
-	} as TableOptions<any> ), [ ship, equipBetter ] );
+	} as TableOptions<any> ), [ fleet, equipBetter ] );
 	
 	return useTable(
 		tableOptions,

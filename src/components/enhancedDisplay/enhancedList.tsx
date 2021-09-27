@@ -69,10 +69,10 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 			</ListItemIcon>}
 		</>;
 		
-		const panel = ( { item, index, ref, style, handle }: { item, index, ref?, style?, handle? } ) => {
+		const panel = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			return renderPanel
-				? <Accordion ref={ref} style={style}>
+				? <Accordion>
 					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
 						{row( item, index, handle, selected )}
 					</AccordionSummary>
@@ -83,8 +83,6 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 				: selectable?.setSelected
 					? <ListItemButton
 						component={Paper}
-						ref={ref}
-						style={style}
 						divider
 						selected={selected}
 						onClick={() => _selectRow( selectable,
@@ -93,8 +91,6 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 					</ListItemButton>
 					: <ListItem
 						component={Paper}
-						ref={ref}
-						style={style}
 						divider
 						selected={selected}>
 						{row( item, index, handle, selected )}
@@ -105,7 +101,7 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 			? <Sortable
 				items={data as any}
 				setItems={setData as any}
-				renderItem={( props ) => panel( props )}
+				renderItem={panel}
 			/>
 			: data.map( ( item, index ) => <React.Fragment key={index}>
 				{panel( { item, index } )}

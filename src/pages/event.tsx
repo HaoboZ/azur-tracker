@@ -1,5 +1,6 @@
 import { Box, Link } from '@mui/material';
 import moment from 'moment';
+import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,6 +42,7 @@ export default function Event() {
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <PageContainer>
+		<Head><title>Azur Lane Tracker - Event Tracker</title></Head>
 		<PageTitle>Event Tracker</PageTitle>
 		<Box
 			display='flex'

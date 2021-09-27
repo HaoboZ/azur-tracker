@@ -18,15 +18,15 @@ import { useDispatch } from 'react-redux';
 
 import { rarityColors } from '../../data/colors';
 import { equippable, equips, equipsIndex, equipTier } from '../../data/equipData';
-import shipRef from '../../data/shipData';
+import fleetRef from '../../data/fleetData';
 import { TierIcon } from '../../lib/icons';
 import { useModalControls } from '../../lib/providers/modal';
-import { ship_setShip } from '../../lib/store/reducers/shipReducer';
+import { fleet_setShip } from '../../lib/store/reducers/fleetReducer';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 
 export default function EquipModal( { info, selectedEquip }: {
-	info: { ship: typeof shipRef[string], index: number },
+	info: { ship: typeof fleetRef[string], index: number },
 	selectedEquip?: typeof equips[number]
 } ) {
 	const controls = useModalControls();
@@ -77,7 +77,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			if ( cancel ) return;
 			const newEquip = cloneDeep( info.ship.equip );
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
-			dispatch( ship_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
+			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		}
 		controls.events.on( 'close', close );
 		return () => {

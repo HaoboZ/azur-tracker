@@ -15,7 +15,7 @@ const Rarity = {
 	'Common'    : 4
 };
 
-export default function tableColumns( equipBetter, setEquipBetter ) {
+export default function fleetColumns( equipBetter, setEquipBetter ) {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',

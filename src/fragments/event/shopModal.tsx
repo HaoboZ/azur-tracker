@@ -1,4 +1,4 @@
-import { Box, DialogContent, Grid, ListItemText, Typography } from '@mui/material';
+import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,67 +27,66 @@ export default function ShopModal() {
 	return <ResponsiveModalContainer
 		onClose={() => controls.closeModal()}
 		title='Shop Items'
-		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
-		<DialogContent sx={{ p: 0 }}>
-			<Box mx={2} mt={2}>
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						<Typography>Buyout Price: {buyoutCost}</Typography>
-					</Grid>
-					<Grid item xs={6}>
-						<Typography>Expected Price: {expectedCost}</Typography>
-					</Grid>
+		onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}
+		sx={{ p: 0 }}>
+		<Box mx={2} mt={2}>
+			<Grid container spacing={2}>
+				<Grid item xs={6}>
+					<Typography>Buyout Price: {buyoutCost}</Typography>
 				</Grid>
-			</Box>
-			<EnhancedDisplay
-				data={eventRef.shop}
-				extraData={shop}
-				tableProps={{
-					headers: [
-						'Name',
-						'Cost',
-						'Amount',
-						'Wanted'
-					],
-					columns: ( item ) => [
-						item.name,
-						item.cost,
-						item.amount,
+				<Grid item xs={6}>
+					<Typography>Expected Price: {expectedCost}</Typography>
+				</Grid>
+			</Grid>
+		</Box>
+		<EnhancedDisplay
+			data={eventRef.shop}
+			extraData={shop}
+			tableProps={{
+				headers: [
+					'Name',
+					'Cost',
+					'Amount',
+					'Wanted'
+				],
+				columns: ( item ) => [
+					item.name,
+					item.cost,
+					item.amount,
+					<FormattedTextField
+						key='name'
+						type='number'
+						placeholder='0'
+						value={shop[ item.name ] || 0}
+						onChange={( { target } ) => setShop( {
+							...shop,
+							[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
+						} )}
+					/>
+				]
+			}}
+			listProps={{
+				renderRow: ( item ) => <Grid container spacing={2}>
+					<Grid item xs={9}>
+						<ListItemText
+							primary={item.name}
+							secondary={`cost: ${item.cost} amount: ${item.amount}`}
+						/>
+					</Grid>
+					<Grid item xs={3}>
 						<FormattedTextField
-							key='name'
 							type='number'
+							label='Wanted'
 							placeholder='0'
-							value={shop[ item.name ] || 0}
+							value={shop[ item.name ]}
 							onChange={( { target } ) => setShop( {
 								...shop,
 								[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
 							} )}
 						/>
-					]
-				}}
-				listProps={{
-					renderRow: ( item ) => <Grid container spacing={2}>
-						<Grid item xs={9}>
-							<ListItemText
-								primary={item.name}
-								secondary={`cost: ${item.cost} amount: ${item.amount}`}
-							/>
-						</Grid>
-						<Grid item xs={3}>
-							<FormattedTextField
-								type='number'
-								label='Wanted'
-								placeholder='0'
-								value={shop[ item.name ]}
-								onChange={( { target } ) => setShop( {
-									...shop,
-									[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
-								} )}
-							/>
-						</Grid>
 					</Grid>
-				}}
-			/>
-		</DialogContent>
+				</Grid>
+			}}
+		/>
 	</ResponsiveModalContainer>;
 }

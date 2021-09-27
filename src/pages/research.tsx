@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,6 +15,7 @@ export default function Research() {
 	const dispatch = useDispatch();
 	
 	return <PageContainer>
+		<Head><title>Azur Lane Tracker - Research Tracker</title></Head>
 		<PageTitle>Research Tracker</PageTitle>
 		<SwipeableTabViews
 			tab={researchLastTab}

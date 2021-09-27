@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { equipTier, version } from '../../../data/equipData';
-import shipRef from '../../../data/shipData';
+import fleetRef from '../../../data/fleetData';
 
 type State = {
 	ships: Record<string, {
@@ -43,24 +43,24 @@ export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, 
 	} );
 }
 
-const shipSlice = createSlice( {
-	name         : 'ship',
+const fleetSlice = createSlice( {
+	name         : 'fleet',
 	initialState,
 	reducers     : {
-		ship_reset() {
+		fleet_reset() {
 			return initialState;
 		},
-		ship_checkVersion( state ) {
+		fleet_checkVersion( state ) {
 			if ( state.version !== initialState.version ) {
 				// recalculate equipment tiers
 				for ( const name in state.ships ) {
 					const ship = state.ships[ name ];
-					getTier( shipRef[ name ], ship.equip );
+					getTier( fleetRef[ name ], ship.equip );
 				}
 				state.version = initialState.version;
 			}
 		},
-		ship_setShip( state, { payload }: PayloadAction<{
+		fleet_setShip( state, { payload }: PayloadAction<{
 			name: string,
 			ship: {
 				lvl?: number,
@@ -68,13 +68,13 @@ const shipSlice = createSlice( {
 				equip?: [ number, 0 | 1, number ][]
 			}
 		}> ) {
-			getTier( shipRef[ payload.name ], payload.ship.equip );
+			getTier( fleetRef[ payload.name ], payload.ship.equip );
 			state.ships = {
 				...state.ships,
 				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
 			};
 		},
-		ship_setFilter( state, { payload }: PayloadAction<{
+		fleet_setFilter( state, { payload }: PayloadAction<{
 			levelMax?: boolean,
 			equipMax?: boolean,
 			level0?: boolean
@@ -89,9 +89,9 @@ const shipSlice = createSlice( {
 	}
 } );
 
-export default shipSlice.reducer;
+export default fleetSlice.reducer;
 export const
-	ship_reset        = shipSlice.actions.ship_reset,
-	ship_checkVersion = shipSlice.actions.ship_checkVersion,
-	ship_setShip      = shipSlice.actions.ship_setShip,
-	ship_setFilter    = shipSlice.actions.ship_setFilter;
+	fleet_reset        = fleetSlice.actions.fleet_reset,
+	fleet_checkVersion = fleetSlice.actions.fleet_checkVersion,
+	fleet_setShip      = fleetSlice.actions.fleet_setShip,
+	fleet_setFilter    = fleetSlice.actions.fleet_setFilter;
