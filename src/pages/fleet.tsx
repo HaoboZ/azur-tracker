@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 import PageContainer from '../components/page/container';
 import PageTitle from '../components/page/title';
-import { ModalVariant } from '../components/responsiveModal';
 import VirtualDisplay from '../components/virtualDisplay';
 import Filters from '../fragments/fleet/filters';
 import ShipModal from '../fragments/fleet/shipModal';
@@ -36,7 +35,7 @@ export default function Fleet() {
 		<VirtualDisplay
 			{...table}
 			onClick={( row ) => showModal( ShipModal, {
-				variant: ModalVariant.bottom
+				variant: 'bottom'
 			}, {
 				ship         : row.original as any,
 				equipBetter  : equipBetter.value[ row.id ],

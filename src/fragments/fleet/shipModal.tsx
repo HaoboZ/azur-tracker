@@ -14,7 +14,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ModalVariant, ResponsiveModalContainer } from '../../components/responsiveModal';
+import { ResponsiveModalContainer } from '../../components/responsiveModal';
 import { rarityColors } from '../../data/colors';
 import { equips, equipsIndex } from '../../data/equipData';
 import fleetRef from '../../data/fleetData';
@@ -139,7 +139,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 						flexDirection='column'
 						alignItems='center'
 						onClick={() => showModal( EquipModal, {
-							variant            : ModalVariant.center,
+							variant            : 'center',
 							maxWidth           : 'xs',
 							TransitionComponent: Zoom
 						}, { info: { ship, index }, selectedEquip } )}>

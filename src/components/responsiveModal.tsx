@@ -17,13 +17,10 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import React from 'react';
+
 import { useModalControls } from '../lib/providers/modal';
 
-export enum ModalVariant {
-	adaptive = 'adaptive',
-	bottom   = 'bottom',
-	center   = 'center'
-}
+export type ModalVariant = 'adaptive' | 'bottom' | 'center';
 
 export type ResponsiveModalProps = {
 	open: boolean,
@@ -45,13 +42,13 @@ export type ResponsiveModalContainerProps = {
 } & Omit<DialogContentProps, 'title'>;
 
 export default function ResponsiveModal( {
-	variant = ModalVariant.adaptive,
+	variant = 'adaptive',
 	children,
 	...props
 }: ResponsiveModalProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
-	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
+	if ( variant === 'center' || variant === 'adaptive' && wide ) {
 		return <Dialog
 			maxWidth='md'
 			fullWidth
@@ -81,7 +78,7 @@ export default function ResponsiveModal( {
 				sx: {
 					maxWidth            : '100%',
 					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
-					height              : variant === ModalVariant.bottom ? 'auto' : '100%',
+					height              : variant === 'bottom' ? 'auto' : '100%',
 					left                : 'auto',
 					right               : 'auto',
 					borderTopLeftRadius : 12,
@@ -107,10 +104,10 @@ export function ResponsiveModalContainer( {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	const { closeModal, modalInfo } = useModalControls();
 	
-	variant = variant ?? modalInfo?.modalProps?.variant ?? ModalVariant.adaptive;
+	variant = variant ?? modalInfo?.modalProps?.variant ?? 'adaptive';
 	onClose = onClose ?? closeModal;
 	
-	if ( variant === ModalVariant.center || variant === ModalVariant.adaptive && wide ) {
+	if ( variant === 'center' || variant === 'adaptive' && wide ) {
 		return <>
 			{title && <DialogTitle>{title}</DialogTitle>}
 			<DialogContent {...props}>{children}</DialogContent>
