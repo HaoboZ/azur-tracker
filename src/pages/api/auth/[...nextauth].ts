@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import GoogleProvider from 'next-auth/providers/google';
 
 const GOOGLE_AUTHORIZATION_URL = `https://accounts.google.com/o/oauth2/v2/auth?${
 	new URLSearchParams( {
@@ -11,23 +11,27 @@ const GOOGLE_AUTHORIZATION_URL = `https://accounts.google.com/o/oauth2/v2/auth?$
 // noinspection JSUnusedGlobalSymbols
 export default NextAuth( {
 	providers: [
-		Providers.Google( {
-			clientId        : process.env.GOOGLE_ID,
-			clientSecret    : process.env.GOOGLE_SECRET,
-			authorizationUrl: GOOGLE_AUTHORIZATION_URL,
-			scope           : [
-				'https://www.googleapis.com/auth/userinfo.profile',
-				'https://www.googleapis.com/auth/userinfo.email',
-				'https://www.googleapis.com/auth/drive.appdata'
-			].join( ' ' )
+		GoogleProvider( {
+			clientId     : process.env.GOOGLE_ID,
+			clientSecret : process.env.GOOGLE_SECRET,
+			authorization: {
+				url   : GOOGLE_AUTHORIZATION_URL,
+				params: {
+					scope: [
+						'https://www.googleapis.com/auth/userinfo.profile',
+						'https://www.googleapis.com/auth/userinfo.email',
+						'https://www.googleapis.com/auth/drive.appdata'
+					].join( ' ' )
+				}
+			}
 		} )
 	],
 	callbacks: {
-		async jwt( token, user, account ) {
-			// Initial sign in
+		async jwt( { token, user, account } ) {
+			// initial sign in
 			if ( account && user ) {
 				return {
-					accessToken : account.accessToken,
+					accessToken : account.access_token,
 					refreshToken: account.refresh_token,
 					...user
 				};

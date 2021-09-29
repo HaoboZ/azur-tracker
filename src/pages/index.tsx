@@ -14,7 +14,7 @@ import {
 	ToggleButton,
 	ToggleButtonGroup
 } from '@mui/material';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +39,7 @@ import { research_reset } from '../lib/store/reducers/researchReducer';
 export default function Home() {
 	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();
-	const [ session, loading ] = useSession();
+	const { data, status } = useSession();
 	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
@@ -54,17 +54,18 @@ export default function Home() {
 			<ListItem>
 				{online ? <>
 					<ListItemText classes={{ primary: 'longText' }}>
-						{loading ? 'Loading...' :
-							session ? `Account: ${session.user.email}`
-								: 'Sign in for Cloud Save'}
+						{status === 'loading' && 'Loading...'}
+						{status === 'authenticated' && `Account: ${data.user.email}`}
+						{status === 'unauthenticated' && 'Sign in for Cloud Save'}
 					</ListItemText>
-					{!loading && <ListItemSecondaryAction>
-						{session ? <Button
+					{status !== 'loading' && <ListItemSecondaryAction>
+						{status === 'authenticated' && <Button
 							variant='outlined'
 							color='inherit'
 							onClick={() => signOut()}>
 							Sign Out
-						</Button> : <Button
+						</Button>}
+						{status === 'unauthenticated' && <Button
 							variant='outlined'
 							color='inherit'
 							onClick={() => signIn( 'google' )}>
@@ -133,7 +134,7 @@ export default function Home() {
 								try {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
-									else if ( session ) {
+									else if ( status === 'authenticated' ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( setBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
@@ -153,7 +154,7 @@ export default function Home() {
 								try {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
-									else if ( session ) {
+									else if ( status === 'authenticated' ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( getBackup( await checkDataIntegrity() ) ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
@@ -255,7 +256,6 @@ export default function Home() {
 	</PageContainer>;
 }
 
-// TODO: add back once https://github.com/nextauthjs/next-auth/pull/2228 is merged
 // noinspection JSUnusedGlobalSymbols
 // export const getServerSideProps: GetServerSideProps = async ( context ) => {
 // 	return { props: { session: await getSession( context ) } };

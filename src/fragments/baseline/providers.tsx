@@ -2,7 +2,7 @@ import createCache, { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton, ThemeProvider } from '@mui/material';
-import { Provider as AuthProvider } from 'next-auth/client';
+import { SessionProvider } from 'next-auth/react';
 import { SnackbarProvider } from 'notistack';
 import React from 'react';
 
@@ -20,7 +20,7 @@ export default function Providers( { pageProps, cache = clientCache, children }:
 } ) {
 	const theme = useTheme();
 	
-	const notistackRef = React.useRef<SnackbarProvider>();
+	const snackbarRef = React.useRef<SnackbarProvider>();
 	
 	return <ProviderComposer
 		providers={[
@@ -28,13 +28,13 @@ export default function Providers( { pageProps, cache = clientCache, children }:
 			provider( CacheProvider, { value: cache } ),
 			provider( ThemeProvider, { theme } ),
 			// app
-			provider( AuthProvider, { session: pageProps.session } ),
+			provider( SessionProvider, { session: pageProps.session } ),
 			// content
 			provider( ModalProvider ),
 			provider( SnackbarProvider, {
-				ref             : notistackRef,
+				ref             : snackbarRef,
 				preventDuplicate: true,
-				action          : ( key ) => <IconButton onClick={() => notistackRef.current.closeSnackbar( key )}>
+				action          : ( key ) => <IconButton onClick={() => snackbarRef.current.closeSnackbar( key )}>
 					<CloseIcon/>
 				</IconButton>
 			} ),
