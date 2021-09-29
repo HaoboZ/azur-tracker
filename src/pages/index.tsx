@@ -14,7 +14,8 @@ import {
 	ToggleButton,
 	ToggleButtonGroup
 } from '@mui/material';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { GetServerSideProps } from 'next';
+import { getSession, signIn, signOut, useSession } from 'next-auth/react';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -257,6 +258,6 @@ export default function Home() {
 }
 
 // noinspection JSUnusedGlobalSymbols
-// export const getServerSideProps: GetServerSideProps = async ( context ) => {
-// 	return { props: { session: await getSession( context ) } };
-// };
+export const getServerSideProps: GetServerSideProps = async ( context ) => {
+	return { props: { session: await getSession( context ) } };
+};
