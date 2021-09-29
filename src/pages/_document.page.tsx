@@ -1,6 +1,5 @@
 import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 

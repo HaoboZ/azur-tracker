@@ -9,8 +9,8 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import usePageHeight from '../../lib/hooks/usePageHeight';
-import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
+import usePageHeight from '../../../lib/hooks/usePageHeight';
+import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
 
 const items = [
 	{ label: 'Home', icon: <HomeIcon/>, link: '/' },

@@ -7,9 +7,9 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Link from '../../components/link';
-import usePageHeight from '../../lib/hooks/usePageHeight';
-import { setNewData, setTheme } from '../../lib/store/reducers/mainReducer';
+import Link from '../../../components/link';
+import usePageHeight from '../../../lib/hooks/usePageHeight';
+import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
 
 function LinkItem( { children, href } ) {
 	const newData = useSelector( ( { main } ) => main.newData );

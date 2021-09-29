@@ -77,8 +77,9 @@ module.exports = {
 		'@typescript-eslint/object-curly-spacing'          : [ 'warn', 'always' ],
 		'@typescript-eslint/semi'                          : [ 'warn', 'always' ],
 		// others
-		'import/no-anonymous-default-export': 'off',
-		'react-hooks/exhaustive-deps'       : 'off'
+		'import/no-anonymous-default-export'   : 'off',
+		'react-hooks/exhaustive-deps'          : 'off',
+		'@next/next/no-document-import-in-page': 'off'
 	},
 	overrides    : [
 		{

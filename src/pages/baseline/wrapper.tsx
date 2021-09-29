@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { textBgColor } from '../../data/colors';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import { useIndicator } from '../../lib/providers/indicator';
-import Navigation from '../navigation';
+import Navigation from './navigation';
 
 export default function Wrapper( { children } ) {
 	const { main, ...store } = useSelector( ( state ) => state );

@@ -5,14 +5,15 @@ import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import eventImage from '../../public/images/event.png';
-import PageContainer from '../components/page/container';
-import PageTitle from '../components/page/title';
-import eventRef from '../data/eventData';
-import EventFields from '../fragments/event/eventFields';
-import FarmingCalc from '../fragments/event/farmingCalc';
-import { event_newEvent } from '../lib/store/reducers/eventReducer';
+import eventImage from '../../../public/images/event.png';
+import PageContainer from '../../components/page/container';
+import PageTitle from '../../components/page/title';
+import eventRef from '../../data/eventData';
+import { event_newEvent } from '../../lib/store/reducers/eventReducer';
+import EventFields from './eventFields';
+import FarmingCalc from './farmingCalc';
 
+// noinspection JSUnusedGlobalSymbols
 export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();

@@ -2,12 +2,12 @@ import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PageContainer from '../components/page/container';
-import PageTitle from '../components/page/title';
-import SwipeableTabViews from '../components/swipeableTabViews';
-import { researchData } from '../data/researchData';
-import ResearchGroup from '../fragments/research/researchGroup';
-import { setResearchLastTab } from '../lib/store/reducers/mainReducer';
+import PageContainer from '../../components/page/container';
+import PageTitle from '../../components/page/title';
+import SwipeableTabViews from '../../components/swipeableTabViews';
+import { researchData } from '../../data/researchData';
+import { setResearchLastTab } from '../../lib/store/reducers/mainReducer';
+import ResearchGroup from './researchGroup';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {

@@ -2,10 +2,10 @@ import Head from 'next/head';
 import React from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import Baseline from '../fragments/baseline';
-import '../fragments/baseline/style.scss';
 import { persistor, store } from '../lib/store';
+
+import Baseline from './baseline';
+import './baseline/style.scss';
 
 // noinspection JSUnusedGlobalSymbols
 export default function _App( { Component, cache, pageProps } ) {

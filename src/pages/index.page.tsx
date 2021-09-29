@@ -37,6 +37,7 @@ import {
 } from '../lib/store/reducers/mainReducer';
 import { research_reset } from '../lib/store/reducers/researchReducer';
 
+// noinspection JSUnusedGlobalSymbols
 export default function Home() {
 	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();

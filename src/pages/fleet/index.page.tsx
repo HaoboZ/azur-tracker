@@ -3,15 +3,16 @@ import Head from 'next/head';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import PageContainer from '../components/page/container';
-import PageTitle from '../components/page/title';
-import VirtualDisplay from '../components/virtualDisplay';
-import Filters from '../fragments/fleet/filters';
-import ShipModal from '../fragments/fleet/shipModal';
-import useFleetTable from '../fragments/fleet/useFleetTable';
-import { useModal } from '../lib/providers/modal';
-import { fleet_checkVersion } from '../lib/store/reducers/fleetReducer';
+import PageContainer from '../../components/page/container';
+import PageTitle from '../../components/page/title';
+import VirtualDisplay from '../../components/virtualDisplay';
+import { useModal } from '../../lib/providers/modal';
+import { fleet_checkVersion } from '../../lib/store/reducers/fleetReducer';
+import Filters from './filters';
+import ShipModal from './shipModal';
+import useFleetTable from './useFleetTable';
 
+// noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
