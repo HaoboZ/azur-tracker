@@ -27,13 +27,13 @@ export default NextAuth( {
 		} )
 	],
 	callbacks: {
-		async jwt( { token, user, account } ) {
+		async jwt( { token, account, profile } ) {
 			// initial sign in
-			if ( account && user ) {
+			if ( account && profile ) {
 				return {
 					accessToken : account.access_token,
 					refreshToken: account.refresh_token,
-					...user
+					...profile
 				};
 			}
 			return token;

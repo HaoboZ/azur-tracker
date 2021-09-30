@@ -84,7 +84,7 @@ const fleetSlice = createSlice( {
 	},
 	extraReducers: {
 		import( state, { payload } ) {
-			if ( 'ship' in payload ) return payload.ship;
+			if ( 'fleet' in payload ) return payload.fleet;
 		}
 	}
 } );
