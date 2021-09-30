@@ -33,8 +33,8 @@ export default function DailyModal() {
 		sx={{ p: 0 }}>
 		<EnhancedDisplay
 			title={<Typography>Total Daily: {dailyTotal}</Typography>}
-			data={daily}
-			setData={setDaily}
+			items={daily}
+			setItems={setDaily}
 			editable={{
 				newData: () => ( { id: nanoid(), name: '', amount: 0 } )
 			}}

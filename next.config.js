@@ -1,5 +1,4 @@
 const bundleAnalyzer = require( '@next/bundle-analyzer' );
-const LodashModuleReplacementPlugin = require( 'lodash-webpack-plugin' );
 const withPWA = require( 'next-pwa' );
 const runtimeCaching = require( 'next-pwa/cache' );
 
@@ -9,12 +8,6 @@ module.exports = withBundleAnalyzer( withPWA( {
 	pageExtensions: [ 'page.tsx', 'page.ts', 'page.jsx', 'page.js' ],
 	webpack( config, { webpack } ) {
 		config.plugins.push(
-			new LodashModuleReplacementPlugin( {
-				caching    : true,
-				collections: true,
-				deburring  : true,
-				flattening : true
-			} ),
 			new webpack.IgnorePlugin( {
 				resourceRegExp: /\.(test|spec)\.[jt]sx?$/
 			} )

@@ -1,17 +1,13 @@
-import {
-	Brightness3 as Brightness3Icon,
-	Brightness4 as Brightness4Icon,
-	BrightnessHigh as BrightnessHighIcon
-} from '@mui/icons-material';
-import { AppBar, Badge, Box, Button, IconButton, Toolbar } from '@mui/material';
+import { Settings as SettingsIcon } from '@mui/icons-material';
+import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Link from '../../../components/link';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
-import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
+import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
-function LinkItem( { children, href } ) {
+function LinkItem( { href, children }: { href: string, children: React.ReactNode } ) {
 	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	
@@ -31,8 +27,6 @@ function LinkItem( { children, href } ) {
 }
 
 export default function TitleBar( { children } ) {
-	const theme = useSelector( ( { main } ) => main.theme );
-	const dispatch = useDispatch();
 	const height = usePageHeight();
 	
 	return <Box>
@@ -45,31 +39,18 @@ export default function TitleBar( { children } ) {
 				pr: 'env(safe-area-inset-right)'
 			}}>
 			<Toolbar>
-				<Link
-					href='/'
-					variant='h3'
-					sx={{ mr: 3 }}>
+				<Typography variant='h3' sx={{ mr: 3 }}>
 					Azur Lane Tracker
-				</Link>
-				<LinkItem href='/event'>Event</LinkItem>
+				</Typography>
+				<LinkItem href='/'>Event</LinkItem>
 				<LinkItem href='/research'>Research</LinkItem>
 				<LinkItem href='/fleet'>Fleet</LinkItem>
 				<Box flexGrow={1}/>
-				<IconButton
-					color='inherit'
-					onClick={() => {
-						dispatch( setTheme( {
-							'light'  : 'dark',
-							'dark'   : 'default',
-							'default': 'light'
-						}[ theme ] || 'light' ) );
-					}}>
-					{{
-						'light'  : <BrightnessHighIcon/>,
-						'dark'   : <Brightness3Icon/>,
-						'default': <Brightness4Icon/>
-					}[ theme ] || 'default'}
-				</IconButton>
+				<Link href='/settings'>
+					<IconButton color='inherit'>
+						<SettingsIcon/>
+					</IconButton>
+				</Link>
 			</Toolbar>
 		</AppBar>
 		<Box

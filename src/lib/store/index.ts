@@ -107,7 +107,6 @@ const persistedReducer = process.browser ? persistReducer<RootState>( {
 	transforms     : [ createCompressor() ]
 }, rootReducer ) : rootReducer;
 
-// noinspection JSUnusedGlobalSymbols
 export const store: Store<RootState> = configureStore( {
 	reducer   : persistedReducer,
 	devTools  : process.env.NODE_ENV === 'development',

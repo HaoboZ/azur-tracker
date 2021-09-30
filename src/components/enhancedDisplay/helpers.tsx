@@ -6,11 +6,11 @@ import { ActionButtonProps, ActionTitleProps } from '../actionTitle';
 export type EnhancedDisplayProps<Item> = {
 	title?: React.ReactNode,
 	actionTitleProps?: ActionTitleProps,
-	data: Item[],
+	items: Item[],
 	// extra check for memo, needs to be memoized
 	extraData?: any,
 	// required if sortable is true
-	setData?: ( items: Item[] ) => void,
+	setItems?: ( items: Item[] ) => void,
 	editable?: {
 		// required if setData is set
 		newData?: () => Item | Promise<Item>,

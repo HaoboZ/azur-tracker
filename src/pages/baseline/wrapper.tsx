@@ -47,13 +47,13 @@ export default function Wrapper( { children } ) {
 		<GlobalStyles
 			styles={( theme: Theme ) => ( {
 				'.numberInput input': {
-					textAlign                        : 'right',
-					MozAppearance                    : 'textfield',
-					[ '&::-webkit-outer-spin-button,' +
-					' &::-webkit-inner-spin-button' ]: {
+					'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
 						WebkitAppearance: 'none',
 						m               : 0
-					}
+					},
+					
+					textAlign    : 'right',
+					MozAppearance: 'textfield'
 				},
 				'.color-rainbow'    : {
 					background: `linear-gradient(to bottom right, ${'#afa'} 15%, ${'#aaf'}, ${'#faa'} 85%) !important`,

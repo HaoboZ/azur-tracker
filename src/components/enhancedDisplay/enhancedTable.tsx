@@ -22,9 +22,9 @@ import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from
 const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	title,
 	actionTitleProps,
-	data = [],
+	items = [],
 	extraData,
-	setData,
+	setItems,
 	editable,
 	sortable,
 	selectable,
@@ -54,10 +54,10 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 					{cell}
 				</TableCell> )}
 				{Boolean( editable ) && <TableCell>
-					{( editable?.min ? data.length > editable.min : true )
+					{( editable?.min ? items.length > editable.min : true )
 					&& <IconButton onClick={( e ) => {
 						e.stopPropagation();
-						_deleteRow( data, setData, editable, selectable,
+						_deleteRow( items, setItems, editable, selectable,
 							item, index, selected, totalSelected );
 					}}>
 						<CloseIcon/>
@@ -68,15 +68,15 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 		
 		return sortable
 			? <Sortable
-				items={data as any}
-				setItems={setData as any}
+				items={items}
+				setItems={setItems}
 				renderItem={row}
 				tag={TableBody}
 			/>
-			: data.map( ( item, index ) => <TableBody key={index}>
+			: items.map( ( item, index ) => <TableBody key={index}>
 				{row( { item, index } )}
 			</TableBody> );
-	}, [ data, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
+	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box sx={{ '& .minWidth': { width: '0.01%' } }}>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
@@ -99,17 +99,17 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 							{cell}
 						</TableCell> )}
 						{Boolean( editable ) && <TableCell className='minWidth'>
-							{!loading && ( editable?.max ? data.length < editable.max : true )
+							{!loading && ( editable?.max ? items.length < editable.max : true )
 							&& <IconButton onClick={async () => {
 								editable.onAdd?.();
-								setData?.( [ ...data, { ...await editable.newData() } ] );
+								setItems?.( [ ...items, { ...await editable.newData() } ] );
 							}}>
 								<AddIcon/>
 							</IconButton>}
 						</TableCell>}
 					</TableRow>
 				</TableHead>
-				{loading || !data.length
+				{loading || !items.length
 					? <TableBody>
 						<TableRow>
 							<TableCell colSpan={headers.length + 2}>
@@ -123,6 +123,6 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	</Box>;
 }, ( prevProps, nextProps ) =>
 	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
-	&& Object.is( prevProps.data, nextProps.data )
+	&& Object.is( prevProps.items, nextProps.items )
 	&& Object.is( prevProps.extraData, nextProps.extraData ) );
 export default EnhancedTable;

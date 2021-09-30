@@ -28,9 +28,9 @@ import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from 
 const EnhancedList = React.memo( function EnhancedList<Item>( {
 	title,
 	actionTitleProps,
-	data = [],
+	items = [],
 	extraData,
-	setData,
+	setItems,
 	editable,
 	sortable,
 	selectable,
@@ -54,14 +54,14 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 				<MenuIcon {...handle}/>
 			</ListItemIcon>}
 			{renderRow( item, index, removeEditing
-				? () => _deleteRow( data, setData, editable, selectable,
+				? () => _deleteRow( items, setItems, editable, selectable,
 					item, index, selected, totalSelected )
 				: undefined )}
-			{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? data.length > editable.min : true )
+			{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
 			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
 				<IconButton onClick={( e ) => {
 					e.stopPropagation();
-					_deleteRow( data, setData, editable, selectable,
+					_deleteRow( items, setItems, editable, selectable,
 						item, index, selected, totalSelected );
 				}}>
 					<CloseIcon/>
@@ -99,31 +99,29 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 		
 		return sortable
 			? <Sortable
-				items={data as any}
-				setItems={setData as any}
+				items={items}
+				setItems={setItems}
 				renderItem={panel}
 			/>
-			: data.map( ( item, index ) => <React.Fragment key={index}>
+			: items.map( ( item, index ) => <React.Fragment key={index}>
 				{panel( { item, index } )}
 			</React.Fragment> );
-	}, [ data, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
+	}, [ items, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return <List
 		sx={{
-			'& .MuiAccordionSummary-content'                    : { alignItems: 'center' },
-			[ '& .MuiAccordionSummary-root,' +
-			' & .MuiListItem-root,' +
-			' & .MuiListItemButton-root' ]                      : removeEditing || editing ? { px: 1 } : undefined,
-			[ '& .MuiListItem-root ~ .MuiListItem-root,' +
-			' & .MuiListItemButton-root ~ .MuiListButton-root' ]: {
+			'& .MuiAccordionSummary-root, & .MuiListItem-root, & .MuiListItemButton-root'             : removeEditing || editing ? { px: 1 } : undefined,
+			'& .MuiListItem-root ~ .MuiListItem-root, & .MuiListItemButton-root ~ .MuiListButton-root': {
 				borderTopLeftRadius : 0,
 				borderTopRightRadius: 0
 			},
-			'& .MuiListItem-root:not(:last-of-type)'            : {
+			
+			'& .MuiAccordionSummary-content'        : { alignItems: 'center' },
+			'& .MuiListItem-root:not(:last-of-type)': {
 				borderBottomLeftRadius : 0,
 				borderBottomRightRadius: 0
 			},
-			overflow                                            : 'hidden'
+			overflow                                : 'hidden'
 		}}
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
 			actions={!removeEditing && !loading && ( editable || sortable ) ? [
@@ -134,11 +132,11 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 					startIcon: editing ? <CloseIcon/> : <EditIcon/>,
 					...editButtonProps
 				},
-				( editable?.max ? data.length < editable.max : true ) && {
+				( editable?.max ? items.length < editable.max : true ) && {
 					name     : 'Add',
 					onClick  : async () => {
 						editable.onAdd?.();
-						setData?.( [ ...data, { ...await editable.newData() } ] );
+						setItems?.( [ ...items, { ...await editable.newData() } ] );
 					},
 					color    : 'secondary',
 					startIcon: <AddIcon/>,
@@ -148,12 +146,12 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 			{title}
 		</ActionTitle>}
 		{...props}>
-		{loading || !data.length
+		{loading || !items.length
 			? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
 			: dataItems}
 	</List>;
 }, ( prevProps, nextProps ) =>
 	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
-	&& Object.is( prevProps.data, nextProps.data )
+	&& Object.is( prevProps.items, nextProps.items )
 	&& Object.is( prevProps.extraData, nextProps.extraData ) );
 export default EnhancedList;

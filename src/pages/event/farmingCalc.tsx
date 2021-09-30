@@ -13,9 +13,9 @@ export default function FarmingCalc( { remainingPoints }: { remainingPoints: num
 	
 	return <EnhancedDisplay
 		title='Farming'
-		data={farming}
+		items={farming}
 		extraData={remainingPoints}
-		setData={( items ) => dispatch( event_setFarming( items ) )}
+		setItems={( items ) => dispatch( event_setFarming( items ) )}
 		editable={{
 			newData: () => ( { id: nanoid(), points: 0, oil: 0 } )
 		}}

@@ -1,38 +1,39 @@
-import { styled, useTheme } from '@mui/material';
-import { keyBy, pick } from 'lodash';
+import { styled } from '@mui/material';
+import { omit } from 'lodash';
 import React from 'react';
-import { ItemInterface, ReactSortable, ReactSortableOptions } from 'react-sortablejs';
+import { ReactSortable, ReactSortableProps } from 'react-sortablejs';
 
 const StyledReactSortable = styled( ReactSortable )( {} );
 
-export default function Sortable<T extends { id }>( { items, setItems, renderItem, ...props }: {
-	items: T[],
-	setItems: ( items: T[] ) => void,
-	renderItem: ( props: { item: T, index: number, handle: React.HTMLAttributes<any> } ) => React.ReactNode,
+export default function Sortable<Item extends { id: string | number }>( { items, setItems, renderItem, ...props }: {
+	items: Item[],
+	setItems: ( items: Item[] ) => void,
+	renderItem: ( props: { item: Item, index: number, handle: React.HTMLAttributes<any> } ) => React.ReactNode,
 	tag?: React.ComponentType | keyof React.ReactHTML
-} & ReactSortableOptions ) {
-	const theme = useTheme();
-	
-	const [ list, setList ] = React.useState<ItemInterface[]>( () => items.map( ( item ) => pick( item, 'id' ) ) );
+} & Omit<ReactSortableProps<Item>, 'tag' | 'list' | 'setList'> ) {
+	const [ skip, setSkip ] = React.useState( false );
+	const [ list, setList ] = React.useState<Item[]>( () => [ ...items ] );
 	
 	React.useEffect( () => {
-		setList( items.map( ( item ) => pick( item, 'id' ) ) );
+		if ( skip ) {
+			setSkip( false );
+			return;
+		}
+		setList( [ ...items ] );
 	}, [ items ] );
-	
-	const dataKeyed = React.useMemo( () => keyBy<T>( items, ( { id } ) => id ), [ items ] );
 	
 	return <StyledReactSortable
 		list={list}
-		setList={setList}
-		onEnd={() => setItems( list.map( ( { id } ) => dataKeyed[ id ] ) )}
+		setList={( items: Item[] ) => {
+			setList( items );
+			setItems( items.map( ( item ) => omit( item, [ 'selected', 'chosen', 'filtered' ] ) as Item ) );
+			setSkip( true );
+		}}
 		handle='.sortable-handle'
 		sx={{ '& .sortable-ghost': { bgcolor: ( { palette } ) => `${palette.primary.main} !important` } }}
-		// ghostClass='selectedSort'
-		// forceFallback
-		animation={theme.transitions.duration.shorter}
 		{...props as any}>
-		{list.map( ( { id }, index ) => <React.Fragment key={id}>
-			{renderItem( { item: dataKeyed[ id ], index, handle: { className: 'sortable-handle' } } )}
+		{list.map( ( item, index ) => <React.Fragment key={item.id}>
+			{renderItem( { item, index, handle: { className: 'sortable-handle' } } )}
 		</React.Fragment> )}
 	</StyledReactSortable>;
 }

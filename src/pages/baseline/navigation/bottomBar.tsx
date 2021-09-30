@@ -2,7 +2,7 @@ import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
 	Event as EventIcon,
-	Home as HomeIcon
+	Settings as SettingsIcon
 } from '@mui/icons-material';
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -13,10 +13,10 @@ import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
 
 const items = [
-	{ label: 'Home', icon: <HomeIcon/>, link: '/' },
-	{ label: 'Event', icon: <EventIcon/>, link: '/event' },
+	{ label: 'Event', icon: <EventIcon/>, link: '/' },
 	{ label: 'Research', icon: <CameraIcon/>, link: '/research' },
-	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, link: '/fleet' }
+	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, link: '/fleet' },
+	{ label: 'Settings', icon: <SettingsIcon/>, link: '/settings' }
 ];
 
 export default function BottomBar( { children } ) {

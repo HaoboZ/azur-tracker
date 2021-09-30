@@ -13,7 +13,6 @@ import { event_newEvent } from '../../lib/store/reducers/eventReducer';
 import EventFields from './eventFields';
 import FarmingCalc from './farmingCalc';
 
-// noinspection JSUnusedGlobalSymbols
 export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();

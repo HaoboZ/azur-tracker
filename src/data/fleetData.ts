@@ -1,11 +1,9 @@
-// noinspection SpellCheckingInspection
-
 import { mapValues } from 'lodash';
 
 //([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t(.*)\n
 //'$2':['$3','$4','$5','$6',$7,$8,'$10','$12','$14','$15','$16'],\n
 
-// noinspection JSNonASCIINames, NonAsciiCharacters
+// noinspection JSNonASCIINames, NonAsciiCharacters, SpellCheckingInspection
 const ships = {
 	'Universal_Bulin'               : [ 'Universal Bulin', 'Elite', 'Universal', 'Destroyer', 6, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2' ],
 	'Prototype_Bulin_MKII'          : [ 'Prototype Bulin MKII', 'Super Rare', 'Universal', 'Destroyer', 6, [], 'DD', 'AA/Speed', 'AA/Speed', 'A/DD1', 'A/DD2' ],

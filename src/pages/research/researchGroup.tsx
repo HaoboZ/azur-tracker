@@ -38,7 +38,7 @@ export default function ResearchGroup( { researchShips }: { researchShips: typeo
 	
 	return <>
 		<EnhancedDisplay
-			data={researchShips}
+			items={researchShips}
 			extraData={ships}
 			tableProps={{
 				headers: [

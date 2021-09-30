@@ -37,7 +37,7 @@ export default function ShopModal() {
 			</Grid>
 		</Box>
 		<EnhancedDisplay
-			data={eventRef.shop}
+			items={eventRef.shop}
 			extraData={shop}
 			tableProps={{
 				headers: [
