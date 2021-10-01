@@ -1,12 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
-const GOOGLE_AUTHORIZATION_URL = `https://accounts.google.com/o/oauth2/v2/auth?${
-	new URLSearchParams( {
-		prompt       : 'consent',
-		access_type  : 'offline',
-		response_type: 'code'
-	} )}`;
+const GOOGLE_AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 
 // noinspection JSUnusedGlobalSymbols
 export default NextAuth( {
@@ -17,7 +12,10 @@ export default NextAuth( {
 			authorization: {
 				url   : GOOGLE_AUTHORIZATION_URL,
 				params: {
-					scope: [
+					prompt       : 'consent',
+					access_type  : 'offline',
+					response_type: 'code',
+					scope        : [
 						'https://www.googleapis.com/auth/userinfo.profile',
 						'https://www.googleapis.com/auth/userinfo.email',
 						'https://www.googleapis.com/auth/drive.appdata'
@@ -27,7 +25,8 @@ export default NextAuth( {
 		} )
 	],
 	callbacks: {
-		async jwt( { token, account, profile } ) {
+		async jwt( { token, account, profile, user } ) {
+			console.log( token, account, profile, user );
 			// initial sign in
 			if ( account && profile ) {
 				return {

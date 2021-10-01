@@ -145,7 +145,8 @@ export default function Home() {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 									}
 								} catch ( e ) {
-									enqueueSnackbar( String( e ), { variant: 'error' } );
+									console.log( e );
+									enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 								}
 							}}>
 							Save
@@ -165,7 +166,8 @@ export default function Home() {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
 									}
 								} catch ( e ) {
-									enqueueSnackbar( String( e ), { variant: 'error' } );
+									console.log( Object.entries( e ) );
+									enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 								}
 							}}>
 							Load

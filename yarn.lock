@@ -2760,14 +2760,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.25":
-  version: 17.0.25
-  resolution: "@types/react@npm:17.0.25"
+"@types/react@npm:^17.0.26":
+  version: 17.0.26
+  resolution: "@types/react@npm:17.0.26"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: a5838a943e73c7ab2c188a6e16918d3120ca04e52f03d98d68dd1fe019503c301b1b3fbac0b6330be2b7d4ffba6e227fe43a0a2e716fe9f79000d5e43308039a
+  checksum: 943fe7e912ea6d664910fb9391a96d8f31c985265fb768d448461123dd970080494b7987a9bd54ca664c8675cb09680c8763823ff18622222e302c8d121b7d31
   languageName: node
   linkType: hard
 
@@ -3495,12 +3495,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.4":
-  version: 0.21.4
-  resolution: "axios@npm:0.21.4"
+"axios@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "axios@npm:0.22.0"
   dependencies:
-    follow-redirects: ^1.14.0
-  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
+    follow-redirects: ^1.14.4
+  checksum: 83dc4d02e180f69aa9f0d1d0d50b84ec3603517230d58b4c3720ebd440c7e64ea86c5e892dc6e19061608e8e1103504a709d8baa4051c4b7652101b523d04b63
   languageName: node
   linkType: hard
 
@@ -3533,7 +3533,7 @@ __metadata:
     "@types/lodash": ^4.14.175
     "@types/lodash-webpack-plugin": ^0.11.6
     "@types/node": ^16.10.2
-    "@types/react": ^17.0.25
+    "@types/react": ^17.0.26
     "@types/react-dom": ^17.0.9
     "@types/react-redux": ^7.1.18
     "@types/react-swipeable-views": ^0.13.1
@@ -3545,7 +3545,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^4.32.0
     "@typescript-eslint/parser": ^4.32.0
     async-mutex: ^0.3.2
-    axios: ^0.21.4
+    axios: ^0.22.0
     babel-plugin-import: ^1.13.3
     babel-plugin-lodash: ^3.3.4
     clsx: ^1.1.1
@@ -3553,7 +3553,7 @@ __metadata:
     eslint: ^7.32.0
     eslint-config-next: ^11.1.2
     events: ^3.3.0
-    googleapis: ^87.0.0
+    googleapis: ^88.2.0
     hash-wasm: ^4.9.0
     jest: ^27.2.4
     json-stable-stringify: ^1.0.1
@@ -3563,7 +3563,7 @@ __metadata:
     next: ^11.1.2
     next-auth: 4.0.0-beta.2
     next-pwa: ^5.3.1
-    next-sitemap: ^1.6.168
+    next-sitemap: ^1.6.173
     notistack: ^2.0.2
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -5547,13 +5547,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.0":
-  version: 1.14.3
-  resolution: "follow-redirects@npm:1.14.3"
+"follow-redirects@npm:^1.14.4":
+  version: 1.14.4
+  resolution: "follow-redirects@npm:1.14.4"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: b4d89339afd119b5e6fd92f0e81ae7d3621a5421af7d4a7d94539765c1d5546cf61d2f3219d40596e53c7c253307fbaf5dc772254aa9170fdfe1f9d7731732a9
+  checksum: d4ce74cf5c6f363168b97e706b914eb9ffb6bf4d4c6d8f8330b93088d9b90e566611ddbcf0e42c8ed5fd17598dfeda1d19230d3e9d6d6c6b4d1c10ec3a0b99be
   languageName: node
   linkType: hard
 
@@ -5874,13 +5874,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"googleapis@npm:^87.0.0":
-  version: 87.0.0
-  resolution: "googleapis@npm:87.0.0"
+"googleapis@npm:^88.2.0":
+  version: 88.2.0
+  resolution: "googleapis@npm:88.2.0"
   dependencies:
     google-auth-library: ^7.0.2
     googleapis-common: ^5.0.2
-  checksum: 5dc8e00c7c82072b8f87d303d570527a717f61acefd1ad92916c33014520cbd239429800ad76d48e0becb62098b5f44dbdc1b2cd6cc521de2747cf6febdfee86
+  checksum: dc9a9a597f5b3fba1a67fe6263ba7c2cc354243b538863df04bb851b0a15e6eb41eefc686b311fa36b466e437350a2e31b840bf1d4e2178c59b0e30d1f6ce5d7
   languageName: node
   linkType: hard
 
@@ -8030,9 +8030,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.6.168":
-  version: 1.6.168
-  resolution: "next-sitemap@npm:1.6.168"
+"next-sitemap@npm:^1.6.173":
+  version: 1.6.173
+  resolution: "next-sitemap@npm:1.6.173"
   dependencies:
     "@corex/deepmerge": ^2.6.34
     matcher: ^4.0.0
@@ -8041,7 +8041,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 2bdccf69a355915ed990c9235094cd395d90d1c80052ead8e3b0a16d0d6c4b7f10b7fa66efb3e82139de4bfefcf4b9d5388fa9e56a5db66bd8903accb4e67963
+  checksum: 56cbf6e96fddb70141e35eb8abc77f6ae97cc82668135fa31c635897bc66fe8c4b685510115017682405343fd2c8c3b7b2663da8696faee2dc182ac7767a52d9
   languageName: node
   linkType: hard
 
