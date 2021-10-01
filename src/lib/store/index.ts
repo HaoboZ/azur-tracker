@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { mapValues } from 'lodash';
-import { nanoid } from 'nanoid';
 import { Store } from 'redux';
 import {
 	createMigrate,
@@ -24,59 +23,6 @@ import { getTier } from './reducers/fleetReducer';
 export type RootState = ReturnType<typeof rootReducer>;
 
 const migrations: Record<string, ( state: any ) => RootState> = {
-	2: ( state ) => ( {
-		...state,
-		ship: {
-			...state.ship,
-			ships: mapValues( state.ship.ships, ( ship ) => {
-				if ( ship?.equip ) {
-					ship.equip = ship.equip?.map( ( val ) => {
-						if ( val.length > 1 )
-							val[ 1 ] = +val[ 1 ] as 0 | 1;
-						return val;
-					} );
-				}
-				return ship;
-			} )
-		}
-	} ),
-	3: ( state ) => ( {
-		...state,
-		main: {
-			...state.main,
-			newData: {}
-		}
-	} ),
-	4: ( state ) => ( {
-		...state,
-		event: {
-			...state.event,
-			daily  : state.event.daily.map( ( item ) => ( { ...item, id: nanoid() } ) ),
-			farming: state.event.farming.map( ( item ) => ( { ...item, id: nanoid() } ) )
-		}
-	} ),
-	5: ( state ) => ( {
-		...state,
-		ship: {
-			...state.ship,
-			ships: mapValues( state.ship.ships, ( ship ) => {
-				ship.equip?.forEach( ( equip ) => {
-					switch ( equip[ 0 ] % 10 ) {
-					case 1:
-						equip[ 0 ] -= 1;
-						break;
-					case 2:
-						equip[ 0 ] += 18;
-						break;
-					case 3:
-						equip[ 0 ] += 37;
-						break;
-					}
-				} );
-				return ship;
-			} )
-		}
-	} ),
 	6: ( state ) => ( {
 		...state,
 		ship: {
@@ -95,12 +41,21 @@ const migrations: Record<string, ( state: any ) => RootState> = {
 			researchLastTab: 0
 		}
 	} ),
-	8: ( state ) => ( { ...state, fleet: state.ship } )
+	8: ( state ) => ( { ...state, fleet: state.ship } ),
+	9: ( state ) => ( {
+		...state, fleet: {
+			...state.fleet,
+			ships: mapValues( state.fleet.ships, ( ship ) => {
+				if ( ship.lvl === 121 ) ship.lvl = 120;
+				return ship;
+			} )
+		}
+	} )
 };
 
 const persistedReducer = process.browser ? persistReducer<RootState>( {
 	key            : 'root',
-	version        : 8,
+	version        : 9,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations as any, { debug: false } ),

@@ -71,7 +71,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 		Header             : 'Level',
 		accessor           : 'lvl',
 		minWidth           : 10,
-		Cell               : ( { value } ) => value === 121 ? <SVGIcon name='star'/> : value,
+		Cell               : ( { value } ) => value === 126 ? <SVGIcon name='star'/> : value,
 		disableGlobalFilter: true,
 		sortType           : 'number',
 		sortDescFirst      : true

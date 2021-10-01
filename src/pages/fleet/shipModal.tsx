@@ -118,7 +118,8 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 						<MenuItem value={110}>110</MenuItem>
 						<MenuItem value={115}>115</MenuItem>
 						<MenuItem value={120}>120</MenuItem>
-						<MenuItem value={121}>
+						<MenuItem value={125}>125</MenuItem>
+						<MenuItem value={126}>
 							<svg height={14} width={14}>
 								<use xlinkHref='#star'/>
 							</svg>

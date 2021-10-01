@@ -28,7 +28,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 				return shipData;
 			} )
 			.filter( ( shipData ) => {
-				if ( !fleet.filter.levelMax && shipData.lvl === 121 ) return false;
+				if ( !fleet.filter.levelMax && shipData.lvl === 126 ) return false;
 				if ( !fleet.filter.level0 && !shipData.lvl ) return false;
 				return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
 			} ),
