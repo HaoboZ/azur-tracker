@@ -145,7 +145,6 @@ export default function Home() {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 									}
 								} catch ( e ) {
-									console.log( e );
 									enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 								}
 							}}>
@@ -166,7 +165,6 @@ export default function Home() {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
 									}
 								} catch ( e ) {
-									console.log( Object.entries( e ) );
 									enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 								}
 							}}>

@@ -25,8 +25,7 @@ export default NextAuth( {
 		} )
 	],
 	callbacks: {
-		async jwt( { token, account, profile, user } ) {
-			console.log( token, account, profile, user );
+		async jwt( { token, account, profile } ) {
 			// initial sign in
 			if ( account && profile ) {
 				return {
