@@ -511,7 +511,8 @@ const ships = {
 	'Hiryuu_META'                   : [ 'Hiryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ],
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2' ],
 	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 1, [ 1, 1, 1, 1, 1 ], 'CL', 'DD/Aux', 'AA/Speed', 'A/CL1', 'A/CL2' ],
-	'Souryuu_META'                  : [ 'Souryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ]
+	'Souryuu_META'                  : [ 'Souryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ],
+	'Fusou_META'                    : [ 'Fusou META', 'Elite', 'META', 'Battleship', 7, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ]
 };
 
 export default mapValues( ships, ( val, key ) => ( {

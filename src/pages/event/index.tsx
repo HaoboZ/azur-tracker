@@ -42,7 +42,7 @@ export default function Event() {
 	      remainingPoints = Math.max( neededPoints - event.points, 0 );
 	
 	return <PageContainer>
-		<Head><title>Azur Lane Tracker - Event Tracker</title></Head>
+		<Head><title>Event | Azur Lane Tracker</title></Head>
 		<PageTitle>Event Tracker</PageTitle>
 		<Box
 			display='flex'

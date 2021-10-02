@@ -1,6 +1,5 @@
 const bundleAnalyzer = require( '@next/bundle-analyzer' );
 const withPWA = require( 'next-pwa' );
-const runtimeCaching = require( 'next-pwa/cache' );
 
 const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } );
 // noinspection JSUnusedGlobalSymbols
@@ -16,7 +15,6 @@ module.exports = withBundleAnalyzer( withPWA( {
 	},
 	pwa: {
 		disable: process.env.NODE_ENV === 'development',
-		dest   : 'public',
-		runtimeCaching
+		dest   : 'public'
 	}
 } ) );

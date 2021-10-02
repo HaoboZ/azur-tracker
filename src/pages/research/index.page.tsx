@@ -15,7 +15,7 @@ export default function Research() {
 	const dispatch = useDispatch();
 	
 	return <PageContainer>
-		<Head><title>Azur Lane Tracker - Research Tracker</title></Head>
+		<Head><title>Research | Azur Lane Tracker</title></Head>
 		<PageTitle>Research Tracker</PageTitle>
 		<SwipeableTabViews
 			tab={researchLastTab}

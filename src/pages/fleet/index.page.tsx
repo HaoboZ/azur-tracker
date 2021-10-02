@@ -30,7 +30,7 @@ export default function Fleet() {
 	}, [] );
 	
 	return <PageContainer>
-		<Head><title>Azur Lane Tracker - Fleet Tracker</title></Head>
+		<Head><title>Fleet | Azur Lane Tracker</title></Head>
 		<PageTitle>Fleet Tracker</PageTitle>
 		<Filters table={table}/>
 		<VirtualDisplay

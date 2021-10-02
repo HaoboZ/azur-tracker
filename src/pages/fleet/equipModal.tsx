@@ -37,7 +37,6 @@ export default function EquipModal( { info, selectedEquip }: {
 		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
 		const equipList = equipType ? equips.filter( ( { type } ) => equipType.includes( type ) ) : [];
 		equipList.unshift( equips[ 0 ] );
-		
 		const tierList = equipType ? equipTier[ info?.ship.equipType[ info.index ] ] : [];
 		
 		return [

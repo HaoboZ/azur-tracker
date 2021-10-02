@@ -2265,6 +2265,7 @@ export const equippable = {
 	'DB'   : [ type.DB ],
 	'TB'   : [ type.TB ],
 	'F/DB' : [ type.F, type.DB ],
+	'F/TB' : [ type.F, type.TB ],
 	'DB/TB': [ type.DB, type.TB ],
 	'P'    : [ type.F, type.DB, type.TB ],
 	

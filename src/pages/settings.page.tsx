@@ -48,7 +48,7 @@ export default function Home() {
 	const online = useNetworkStatus();
 	
 	return <PageContainer>
-		<Head><title>Azur Lane Tracker - Settings</title></Head>
+		<Head><title>Settings | Azur Lane Tracker</title></Head>
 		<PageTitle>Settings</PageTitle>
 		<List sx={{
 			'& .longText'  : { width: '80%' },
