@@ -1,5 +1,4 @@
 import { NextApiHandler } from 'next';
-
 import getDrive from '../../lib/google/drive/getDrive';
 import getInfo from '../../lib/google/drive/getInfo';
 

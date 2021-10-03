@@ -9,9 +9,8 @@ import {
 	useSortBy,
 	useTable
 } from 'react-table';
-
-import fleetRef from '../../data/fleetData';
-import fleetColumns from './fleetColumns';
+import fleetColumns from './columns';
+import fleetRef from './data';
 
 export default function useFleetTable( equipBetter, setEquipBetter ) {
 	const fleet = useSelector( ( { fleet } ) => fleet );

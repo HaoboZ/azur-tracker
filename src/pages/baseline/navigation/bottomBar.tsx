@@ -8,7 +8,6 @@ import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@m
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
 

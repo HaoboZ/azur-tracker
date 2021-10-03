@@ -1,9 +1,8 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-
-import { rarityColors } from '../../data/colors';
-import { equips } from '../../data/equipData';
+import { rarityColors } from '../../colors';
+import { equips } from './equipData';
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement,

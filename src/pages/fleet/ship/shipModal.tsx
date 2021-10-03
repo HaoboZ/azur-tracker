@@ -13,14 +13,13 @@ import {
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { ResponsiveModalContainer } from '../../components/responsiveModal';
-import { rarityColors } from '../../data/colors';
-import { equips, equipsIndex } from '../../data/equipData';
-import fleetRef from '../../data/fleetData';
-import SVGIcon, { TierIcon } from '../../lib/icons';
-import { useModal } from '../../lib/providers/modal';
-import { fleet_setShip } from '../../lib/store/reducers/fleetReducer';
+import { ResponsiveModalContainer } from '../../../components/responsiveModal';
+import SVGIcon, { TierIcon } from '../../../lib/icons';
+import { useModal } from '../../../lib/providers/modal';
+import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
+import { rarityColors } from '../../colors';
+import fleetRef from '../data';
+import { equips, equipsIndex } from './equipData';
 import EquipModal from './equipModal';
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {

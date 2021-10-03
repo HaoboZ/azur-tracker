@@ -1,6 +1,5 @@
 import { Container, ContainerProps, Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
-
 import ScrollTop from '../scrollTop';
 
 export default function PageContainer( { children, sx, ...props }: {

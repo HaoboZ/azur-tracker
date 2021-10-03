@@ -1,7 +1,6 @@
 import { Theme, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { Row, TableInstance } from 'react-table';
-
 import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 

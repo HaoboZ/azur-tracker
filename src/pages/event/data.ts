@@ -1,6 +1,6 @@
 // noinspection SpellCheckingInspection
 
-export default {
+const eventData = {
 	name   : 'Upon the Shimmering Blue',
 	link   : 'https://azurlane.koumakan.jp/Upon_the_Shimmering_Blue',
 	endDate: '2021-10-03T23:59-07',
@@ -30,3 +30,4 @@ export default {
 		{ name: 'Oxy-cola', cost: 15, amount: 100 }
 	]
 };
+export default eventData;

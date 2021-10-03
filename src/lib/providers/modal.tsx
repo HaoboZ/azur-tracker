@@ -2,7 +2,6 @@ import { EventEmitter } from 'events';
 import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
 import React from 'react';
-
 import ResponsiveModal, { ResponsiveModalProps } from '../../components/responsiveModal';
 
 type ModalInfo = {

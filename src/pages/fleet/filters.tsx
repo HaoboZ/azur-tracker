@@ -14,10 +14,9 @@ import {
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
-
-import { equips } from '../../data/equipData';
 import { fleet_setFilter } from '../../lib/store/reducers/fleetReducer';
-import EquipFilter from './equipFilter';
+import { equips } from './ship/equipData';
+import EquipFilter from './ship/equipFilter';
 
 const searchOptions = [
 	// rarity

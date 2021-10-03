@@ -17,7 +17,6 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import React from 'react';
-
 import { useModalControls } from '../lib/providers/modal';
 
 export type ModalVariant = 'adaptive' | 'bottom' | 'center';

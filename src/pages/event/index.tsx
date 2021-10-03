@@ -4,14 +4,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import eventImage from '../../../public/images/event.png';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
-import eventRef from '../../data/eventData';
 import { event_newEvent } from '../../lib/store/reducers/eventReducer';
-import EventFields from './eventFields';
-import FarmingCalc from './farmingCalc';
+import eventData from './data';
+import EventFarming from './farming';
+import EventFields from './fields';
 
 export default function Event() {
 	const event = useSelector( ( { event } ) => event );
@@ -21,19 +20,19 @@ export default function Event() {
 	
 	// resets event and changes time
 	React.useEffect( () => {
-		if ( event.name != eventRef.name )
+		if ( event.name != eventData.name )
 			dispatch( event_newEvent() );
 		
 		const interval = setInterval( () => setTime( moment() ), 15 * 1000 );
 		return () => clearInterval( interval );
 	}, [] );
 	
-	if ( event.name != eventRef.name )
+	if ( event.name != eventData.name )
 		return null;
 	
 	// number of days until end of event
 	const remainingDays = Math.floor( Math.max(
-		moment( eventRef.endDate ).local().diff( time, 'day', true )
+		moment( eventData.endDate ).local().diff( time, 'day', true )
 		, 0 ) );
 	
 	// number of points needed until only dailies are enough
@@ -54,7 +53,7 @@ export default function Event() {
 					m       : 'auto'
 				}
 			}}>
-			<Link href={eventRef.link} target='_blank'>
+			<Link href={eventData.link} target='_blank'>
 				<Image src={eventImage} alt='event banner'/>
 			</Link>
 		</Box>
@@ -62,6 +61,6 @@ export default function Event() {
 			time={time}
 			neededPoints={neededPoints}
 		/>
-		<FarmingCalc remainingPoints={remainingPoints}/>
+		<EventFarming remainingPoints={remainingPoints}/>
 	</PageContainer>;
 }

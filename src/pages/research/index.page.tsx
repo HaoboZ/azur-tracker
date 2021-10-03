@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
-import { researchData } from '../../data/researchData';
 import { setResearchLastTab } from '../../lib/store/reducers/mainReducer';
-import ResearchGroup from './researchGroup';
+import { researchData } from './data';
+import ResearchSeries from './series';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {
@@ -21,7 +20,7 @@ export default function Research() {
 			tab={researchLastTab}
 			setTab={( index ) => dispatch( setResearchLastTab( index ) )}
 			renderTabs={researchData.map( ( { name } ) => name )}
-			renderContent={( index ) => <ResearchGroup researchShips={researchData[ index ].ships}/>}
+			renderContent={( index ) => <ResearchSeries researchShips={researchData[ index ].ships}/>}
 			variant='fullWidth'
 		/>
 	</PageContainer>;

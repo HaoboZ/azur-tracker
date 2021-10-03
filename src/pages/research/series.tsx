@@ -1,13 +1,12 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { devLevels, fateLevels, researchData } from '../../data/researchData';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
+import { devLevels, fateLevels, researchData } from './data';
 
-export default function ResearchGroup( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {
+export default function ResearchSeries( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {
 	const ships = useSelector( ( { research } ) => research.ships );
 	const dispatch = useDispatch();
 	

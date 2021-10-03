@@ -2,7 +2,6 @@ import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Link from '../../../components/link';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';

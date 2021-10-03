@@ -5,7 +5,6 @@ import { IconButton, ThemeProvider } from '@mui/material';
 import { SessionProvider } from 'next-auth/react';
 import { SnackbarProvider } from 'notistack';
 import React from 'react';
-
 import useTheme from '../../lib/hooks/useTheme';
 import { provider, ProviderComposer } from '../../lib/providers';
 import IndicatorProvider from '../../lib/providers/indicator';

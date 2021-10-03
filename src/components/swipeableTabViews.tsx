@@ -2,7 +2,6 @@ import { Box, Tab, Tabs, TabsProps, useTheme } from '@mui/material';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
-
 import useControlledState from '../lib/hooks/useControlledState';
 
 const EnhancedSwipeableViews = bindKeyboard( virtualize( SwipeableViews ) );

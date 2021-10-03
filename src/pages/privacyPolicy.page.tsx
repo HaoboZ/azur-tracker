@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PageContainer from '../components/page/container';
 
 // noinspection JSUnusedGlobalSymbols

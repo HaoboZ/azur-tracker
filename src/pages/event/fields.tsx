@@ -2,12 +2,11 @@ import { Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/ma
 import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import FormattedTextField from '../../components/formattedTextField';
-import eventRef from '../../data/eventData';
 import { useModal } from '../../lib/providers/modal';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
+import eventData from './data';
 import ShopModal from './shopModal';
 
 export default function EventFields( { time, neededPoints }: {
@@ -21,7 +20,7 @@ export default function EventFields( { time, neededPoints }: {
 	return <Grid container spacing={2} px={2} sx={{ '& .rightInput': { textAlign: 'right' } }}>
 		<Grid item container xs={12} justifyContent='center'>
 			<Typography variant='h3' color='textPrimary'>
-				{eventRef.name}
+				{eventData.name}
 			</Typography>
 		</Grid>
 		<Grid item sm={4} xs={6}>
@@ -30,11 +29,11 @@ export default function EventFields( { time, neededPoints }: {
 		</Grid>
 		<Grid item sm={4} xs={6}>
 			<InputLabel shrink>End Date</InputLabel>
-			<Typography>{moment( eventRef.endDate ).format( 'l LT' )}</Typography>
+			<Typography>{moment( eventData.endDate ).format( 'l LT' )}</Typography>
 		</Grid>
 		<Grid item container sm={4} xs={12} justifyContent='center' alignItems='center'>
 			<Typography>
-				End{time.isBefore( eventRef.endDate ) ? 's' : 'ed'} {time.to( eventRef.endDate )}
+				End{time.isBefore( eventData.endDate ) ? 's' : 'ed'} {time.to( eventData.endDate )}
 			</Typography>
 		</Grid>
 		<Grid item sm={3} xs={6}>

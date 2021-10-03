@@ -8,7 +8,6 @@ import {
 	ListItemTextProps
 } from '@mui/material';
 import React from 'react';
-
 import { ActionButtonProps } from '../actionTitle';
 
 export default function PageTitle( { actions, listItemProps, children, ...props }: {

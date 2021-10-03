@@ -2,9 +2,8 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-
-import { rarityColors } from '../../data/colors';
-import { equips, typeNames } from '../../data/equipData';
+import { rarityColors } from '../../colors';
+import { equips, typeNames } from './equipData';
 
 export default function EquipFilter( { equipList, value, setValue }: {
 	equipList: typeof equips,

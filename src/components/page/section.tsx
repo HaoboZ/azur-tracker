@@ -9,7 +9,6 @@ import {
 	ListItemTextProps
 } from '@mui/material';
 import React from 'react';
-
 import { ActionButtonProps } from '../actionTitle';
 
 export default function PageSection( { actions, listItemProps, children, ...props }: {

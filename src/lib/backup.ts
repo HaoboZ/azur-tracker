@@ -3,7 +3,6 @@ import axios from 'axios';
 import { md5 } from 'hash-wasm';
 import stringify from 'json-stable-stringify';
 import { isEqual } from 'lodash';
-
 import { store } from './store';
 import { importBackup, setLastSaved, setNewData } from './store/reducers/mainReducer';
 

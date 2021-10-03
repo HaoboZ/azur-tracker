@@ -1,12 +1,11 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { ResponsiveModalContainer } from '../../components/responsiveModal';
-import eventRef from '../../data/eventData';
 import { event_setShop } from '../../lib/store/reducers/eventReducer';
+import eventData from './data';
 
 export default function ShopModal() {
 	const _shop = useSelector( ( { event } ) => event.shop );
@@ -16,7 +15,7 @@ export default function ShopModal() {
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = React.useMemo(
-		() => eventRef.shop.reduce( ( total, item ) => [
+		() => eventData.shop.reduce( ( total, item ) => [
 			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
 			total[ 1 ] + item.cost * item.amount
 		], [ 0, 0 ] ),
@@ -37,7 +36,7 @@ export default function ShopModal() {
 			</Grid>
 		</Box>
 		<EnhancedDisplay
-			items={eventRef.shop}
+			items={eventData.shop}
 			extraData={shop}
 			tableProps={{
 				headers: [

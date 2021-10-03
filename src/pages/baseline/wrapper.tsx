@@ -3,10 +3,9 @@ import { debounce } from 'lodash';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-import { textBgColor } from '../../data/colors';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import { useIndicator } from '../../lib/providers/indicator';
+import { textBgColor } from '../colors';
 import Navigation from './navigation';
 
 export default function Wrapper( { children } ) {

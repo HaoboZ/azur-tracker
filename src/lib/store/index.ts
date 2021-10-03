@@ -15,8 +15,7 @@ import {
 import createCompressor from 'redux-persist-transform-compress';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
-
-import fleetRef from '../../data/fleetData';
+import fleetRef from '../../pages/fleet/data';
 import { rootReducer } from './reducers';
 import { getTier } from './reducers/fleetReducer';
 

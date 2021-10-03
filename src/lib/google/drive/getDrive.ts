@@ -1,6 +1,5 @@
 import { google } from 'googleapis';
 import { getToken } from 'next-auth/jwt';
-
 import { auth } from '../authInstance';
 
 export default async function getDrive( req ) {

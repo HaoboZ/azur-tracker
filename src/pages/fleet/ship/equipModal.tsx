@@ -15,13 +15,12 @@ import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
-import { rarityColors } from '../../data/colors';
-import { equippable, equips, equipsIndex, equipTier } from '../../data/equipData';
-import fleetRef from '../../data/fleetData';
-import { TierIcon } from '../../lib/icons';
-import { useModalControls } from '../../lib/providers/modal';
-import { fleet_setShip } from '../../lib/store/reducers/fleetReducer';
+import { TierIcon } from '../../../lib/icons';
+import { useModalControls } from '../../../lib/providers/modal';
+import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
+import { rarityColors } from '../../colors';
+import fleetRef from '../data';
+import { equippable, equips, equipsIndex, equipTier } from './equipData';
 import EquipFilter from './equipFilter';
 import EquipTierSelector from './equipTierSelector';
 

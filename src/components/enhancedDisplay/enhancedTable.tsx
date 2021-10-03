@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
-
 import ActionTitle from '../actionTitle';
 import Loading from '../loading';
 import Sortable from '../sortable';

@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-
-import eventRef from '../../../data/eventData';
+import eventData from '../../../pages/event/data';
 
 type State = {
 	name: string,
@@ -53,8 +52,8 @@ const initialState: State = {
 function newEvent( state ) {
 	return {
 		...state,
-		name            : eventRef.name,
-		shopExpectedCost: eventRef.shop.reduce( ( total, item ) =>
+		name            : eventData.name,
+		shopExpectedCost: eventData.shop.reduce( ( total, item ) =>
 			total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
 		points          : 0
 	};

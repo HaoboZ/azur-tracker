@@ -2,15 +2,14 @@ import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import Head from 'next/head';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
 import { useModal } from '../../lib/providers/modal';
 import { fleet_checkVersion } from '../../lib/store/reducers/fleetReducer';
 import Filters from './filters';
-import ShipModal from './shipModal';
-import useFleetTable from './useFleetTable';
+import ShipModal from './ship/shipModal';
+import useFleetTable from './useTable';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {

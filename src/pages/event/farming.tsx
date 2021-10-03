@@ -2,12 +2,11 @@ import { Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
 
-export default function FarmingCalc( { remainingPoints }: { remainingPoints: number } ) {
+export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useSelector( ( { event } ) => event.farming );
 	const dispatch = useDispatch();
 	
