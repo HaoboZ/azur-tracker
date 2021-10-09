@@ -54,10 +54,10 @@ interface Equip {
 	rarity: rarity
 }
 
-export const version = '2021-09-22';
+export const version = '2021-10-08';
 
 // list of equips sorted by type
-export const equips: Equip[] = [
+const equipData: Equip[] = [
 	{
 		id    : 0,
 		name  : '',
@@ -1642,13 +1642,14 @@ export const equips: Equip[] = [
 	//endregion
 	// { id: 0, name: '', image: '', type: type.A, rarity: rarity.SR }
 ];
+export default equipData;
 // dictionary of equips to reference by id
-export const equipsIndex: Record<number, Equip> = equips.reduce( ( obj, item ) => {
+export const equipsIndex: Record<number, Equip> = equipData.reduce( ( obj, item ) => {
 	obj[ item.id ] = item;
 	return obj;
 }, {} );
 
-const map = equips.reduce( ( obj, item ) => {
+const map = equipData.reduce( ( obj, item ) => {
 	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
 	return obj;
 }, {} as Record<string, number | string> );
@@ -1727,8 +1728,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	
 	'DD'         : {
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, a = 0 ],
-		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 0, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 0, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
@@ -1797,22 +1798,20 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'DD' ];
 	},
 	'DD/Aux' : {
-		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, a = 0 ],
-		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]           : [ 0, ++a ],
-		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
+		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, ++a ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 1, ++a ],
-		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]            : [ 1, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]           : [ 1, ++a ],
 		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 2, ++a ],
-		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]     : [ 2, ++a ],
+		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]            : [ 3, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]                        : [ 3, ++a ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ] ]            : [ 3, ++a ],
-		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ] ]      : [ 3, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ] ]      : [ 4, ++a ],
 		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]                    : [ 4, ++a ]
 	},
 	'DD/Main': {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
 		[ map[ 'Twin 127mm Secondary Gun Mount/E' ] ]               : [ 1, ++a ],
 		[ map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ] ]    : [ 2, ++a ],
 		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]                    : [ 3, ++a ]
@@ -2041,12 +2040,11 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Advanced Boiler/E' ] ]: [ 1, ++a ]
 	},
 	'A/DD2'  : {
-		[ map[ 'Intel Report - Arctic Stronghold/E' ] ]         : [ 0, a = 0 ],
-		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 1, ++a ],
-		[ map[ 'Autoloader/E' ] ]                               : [ 1, ++a ],
-		[ map[ 'Repair Toolkit/E' ] ]                           : [ 2, ++a ],
-		[ map[ 'Fire Suppressor/R' ] ]                          : [ 3, ++a ],
-		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]             : [ 3, ++a ]
+		[ map[ 'Intel Report - Arctic Stronghold/E' ] ]: [ 0, a = 0 ],
+		[ map[ 'Autoloader/E' ] ]                      : [ 1, ++a ],
+		[ map[ 'Repair Toolkit/E' ] ]                  : [ 2, ++a ],
+		[ map[ 'Fire Suppressor/R' ] ]                 : [ 3, ++a ],
+		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]    : [ 3, ++a ]
 	},
 	'A/DD1/T': {
 		[ map[ 'Repair Toolkit/E' ] ]              : [ 0, a = 0 ],

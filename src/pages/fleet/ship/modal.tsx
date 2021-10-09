@@ -18,14 +18,14 @@ import SVGIcon, { TierIcon } from '../../../lib/icons';
 import { useModal } from '../../../lib/providers/modal';
 import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
-import fleetRef from '../data';
-import { equips, equipsIndex } from './equipData';
-import EquipModal from './equipModal';
+import fleetData from '../data';
+import equipData, { equipsIndex } from './equip/data';
+import EquipModal from './equip/modal';
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
-	ship?: typeof fleetRef[string],
+	ship?: typeof fleetData[string],
 	equipBetter?: [ number, number ][],
-	selectedEquip?: typeof equips[number]
+	selectedEquip?: typeof equipData[number]
 } ) {
 	const ships = useSelector( ( { fleet } ) => fleet.ships );
 	const dispatch = useDispatch();
@@ -128,7 +128,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 			</Grid>
 			<Grid item xs={12} container alignItems='center' justifyContent='center'>
 				{ship.equip.map( ( val, index ) => {
-					const equip = equipsIndex[ val[ 0 ] ] || equips[ 0 ];
+					const equip = equipsIndex[ val[ 0 ] ] || equipData[ 0 ];
 					return <Grid
 						key={index}
 						item

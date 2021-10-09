@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled, useTheme } from '@mui/material';
 import { omit } from 'lodash';
 import React from 'react';
 import { ReactSortable, ReactSortableProps } from 'react-sortablejs';
@@ -11,6 +11,8 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 	renderItem: ( props: { item: Item, index: number, handle: React.HTMLAttributes<any> } ) => React.ReactNode,
 	tag?: React.ComponentType | keyof React.ReactHTML
 } & Omit<ReactSortableProps<Item>, 'tag' | 'list' | 'setList'> ) {
+	const theme = useTheme();
+	
 	const [ skip, setSkip ] = React.useState( false );
 	const [ list, setList ] = React.useState<Item[]>( () => [ ...items ] );
 	
@@ -31,6 +33,7 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 		}}
 		handle='.sortable-handle'
 		sx={{ '& .sortable-ghost': { bgcolor: ( { palette } ) => `${palette.primary.main} !important` } }}
+		animation={theme.transitions.duration.shorter}
 		{...props as any}>
 		{list.map( ( item, index ) => <React.Fragment key={item.id}>
 			{renderItem( { item, index, handle: { className: 'sortable-handle' } } )}

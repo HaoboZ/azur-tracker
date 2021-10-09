@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
-import { devLevels, fateLevels, researchData } from './data';
+import researchData, { devLevels, fateLevels } from './data';
 
 export default function ResearchSeries( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {
 	const ships = useSelector( ( { research } ) => research.ships );

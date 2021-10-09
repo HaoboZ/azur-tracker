@@ -5,7 +5,7 @@ import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
 import { setResearchLastTab } from '../../lib/store/reducers/mainReducer';
-import { researchData } from './data';
+import researchData from './data';
 import ResearchSeries from './series';
 
 // noinspection JSUnusedGlobalSymbols

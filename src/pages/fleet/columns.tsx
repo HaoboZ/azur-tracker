@@ -2,7 +2,7 @@ import React from 'react';
 import { Cell, Column } from 'react-table';
 import SVGIcon, { TierIcon } from '../../lib/icons';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
-import { equippable, equipTier } from './ship/equipData';
+import { equippable, equipTier } from './ship/equip/data';
 
 const Rarity = {
 	'Decisive'  : 0,

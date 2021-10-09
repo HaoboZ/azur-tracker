@@ -15,7 +15,7 @@ import {
 import createCompressor from 'redux-persist-transform-compress';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
-import fleetRef from '../../pages/fleet/data';
+import fleetData from '../../pages/fleet/data';
 import { rootReducer } from './reducers';
 import { getTier } from './reducers/fleetReducer';
 
@@ -27,7 +27,7 @@ const migrations: Record<string, ( state: any ) => RootState> = {
 		ship: {
 			...state.ship,
 			ships: Object.fromEntries( Object.entries( state.ship.ships ).map( ( ship ) => {
-				getTier( fleetRef[ ship[ 0 ] ], ( ship[ 1 ] as any ).equip );
+				getTier( fleetData[ ship[ 0 ] ], ( ship[ 1 ] as any ).equip );
 				delete ship[ 1 ][ 'tier' ];
 				return ship;
 			} ) )

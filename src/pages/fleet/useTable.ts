@@ -10,7 +10,7 @@ import {
 	useTable
 } from 'react-table';
 import fleetColumns from './columns';
-import fleetRef from './data';
+import fleetData from './data';
 
 export default function useFleetTable( equipBetter, setEquipBetter ) {
 	const fleet = useSelector( ( { fleet } ) => fleet );
@@ -18,7 +18,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 	const tableOptions = React.useMemo( () => ( {
 		columns: fleetColumns( equipBetter, setEquipBetter ),
 		// list of ships with the local data loaded
-		data                  : Object.values( fleetRef )
+		data                  : Object.values( fleetData )
 			.map( ( shipData ) => {
 				const _ship = fleet.ships[ shipData.id ];
 				shipData.love = _ship?.love || 0;

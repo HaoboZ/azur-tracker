@@ -15,18 +15,18 @@ import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { TierIcon } from '../../../lib/icons';
-import { useModalControls } from '../../../lib/providers/modal';
-import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
-import { rarityColors } from '../../colors';
-import fleetRef from '../data';
-import { equippable, equips, equipsIndex, equipTier } from './equipData';
-import EquipFilter from './equipFilter';
-import EquipTierSelector from './equipTierSelector';
+import { TierIcon } from '../../../../lib/icons';
+import { useModalControls } from '../../../../lib/providers/modal';
+import { fleet_setShip } from '../../../../lib/store/reducers/fleetReducer';
+import { rarityColors } from '../../../colors';
+import fleetData from '../../data';
+import equipData, { equippable, equipsIndex, equipTier } from './data';
+import EquipFilter from './filter';
+import EquipTierSelector from './tierSelector';
 
 export default function EquipModal( { info, selectedEquip }: {
-	info: { ship: typeof fleetRef[string], index: number },
-	selectedEquip?: typeof equips[number]
+	info: { ship: typeof fleetData[string], index: number },
+	selectedEquip?: typeof equipData[number]
 } ) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
@@ -34,8 +34,8 @@ export default function EquipModal( { info, selectedEquip }: {
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
 		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
-		const equipList = equipType ? equips.filter( ( { type } ) => equipType.includes( type ) ) : [];
-		equipList.unshift( equips[ 0 ] );
+		const equipList = equipType ? equipData.filter( ( { type } ) => equipType.includes( type ) ) : [];
+		equipList.unshift( equipData[ 0 ] );
 		const tierList = equipType ? equipTier[ info?.ship.equipType[ info.index ] ] : [];
 		
 		return [
@@ -50,20 +50,20 @@ export default function EquipModal( { info, selectedEquip }: {
 					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
-			}, [] as ( typeof equips[number] & { tier?: number } )[] )
+			}, [] as ( typeof equipData[number] & { tier?: number } )[] )
 		];
 	}, [] );
 	
 	// equipment currently in that slot
-	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equips[ 0 ];
+	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equipData[ 0 ];
 	// equipment that will go in slot
-	const [ equip, setEquip ] = React.useState<typeof equips[number]>( () => {
+	const [ equip, setEquip ] = React.useState<typeof equipData[number]>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			return selectedEquip;
 		else if ( currentEquip.id )
 			return currentEquip;
 		else
-			return equips[ 0 ];
+			return equipData[ 0 ];
 	} );
 	const [ override, setOverride ] = React.useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
@@ -108,7 +108,7 @@ export default function EquipModal( { info, selectedEquip }: {
 				</Grid>
 				<Grid item container xs={5} justifyContent='center'>
 					<Image
-						onClick={() => setEquip( equips[ 0 ] )}
+						onClick={() => setEquip( equipData[ 0 ] )}
 						src={`/images/equips/${equip.image}.png`}
 						alt={equip.name}
 						height={128}

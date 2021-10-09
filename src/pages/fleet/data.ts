@@ -1,6 +1,6 @@
 import { mapValues } from 'lodash';
 
-//([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t(.*)\n
+//([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\t([^\t]+)\n
 //'$2':['$3','$4','$5','$6',$7,$8,'$10','$12','$14','$15','$16'],\n
 
 // noinspection JSNonASCIINames, NonAsciiCharacters, SpellCheckingInspection
@@ -248,7 +248,7 @@ const ships = {
 	'Umikaze'                       : [ 'Umikaze', 'Elite', 'Sakura Empire', 'Destroyer', 6, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
 	'Shigure'                       : [ 'Shigure', 'Super Rare', 'Sakura Empire', 'Destroyer', 4, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
 	'Yamakaze'                      : [ 'Yamakaze', 'Elite', 'Sakura Empire', 'Destroyer', 6, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
-	'Yuudachi'                      : [ 'Yuudachi', 'Super Rare', 'Sakura Empire', 'Destroyer', 3, [], 'DD/SSpeed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
+	'Yuudachi'                      : [ 'Yuudachi', 'Ultra Rare', 'Sakura Empire', 'Destroyer', 0, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
 	'Kawakaze'                      : [ 'Kawakaze', 'Super Rare', 'Sakura Empire', 'Destroyer', 3, [], 'DD/SSpeed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
 	'Asashio'                       : [ 'Asashio', 'Rare', 'Sakura Empire', 'Destroyer', 6, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
 	'Ooshio'                        : [ 'Ooshio', 'Rare', 'Sakura Empire', 'Destroyer', 6, [], 'DD/Speed', 'T', 'AA/Speed', 'A/DD1/T', 'A/DD2/T' ],
@@ -512,10 +512,10 @@ const ships = {
 	'Ark_Royal_META'                : [ 'Ark Royal META', 'Super Rare', 'META', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'TB', 'TB', 'DB', 'A/CV1', 'A/CV2' ],
 	'Helena_META'                   : [ 'Helena META', 'Super Rare', 'META', 'Light Cruiser', 1, [ 1, 1, 1, 1, 1 ], 'CL', 'DD/Aux', 'AA/Speed', 'A/CL1', 'A/CL2' ],
 	'Souryuu_META'                  : [ 'Souryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ],
-	'Fusou_META'                    : [ 'Fusou META', 'Elite', 'META', 'Battleship', 7, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ]
+	'Fusou_META'                    : [ 'Fusou META', 'Elite', 'META', 'Battleship', 5, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ]
 };
 
-export default mapValues( ships, ( val, key ) => ( {
+const fleetData = mapValues( ships, ( val, key ) => ( {
 	id       : key,
 	name     : val[ 0 ],
 	link     : `https://azurlane.koumakan.jp/${key}`,
@@ -540,3 +540,4 @@ export default mapValues( ships, ( val, key ) => ( {
 	lvl?: number,
 	equip?: [ number, 0 | 1, number ][]
 }>;
+export default fleetData;

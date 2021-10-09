@@ -2,13 +2,13 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { rarityColors } from '../../colors';
-import { equips, typeNames } from './equipData';
+import { rarityColors } from '../../../colors';
+import equipData, { typeNames } from './data';
 
 export default function EquipFilter( { equipList, value, setValue }: {
-	equipList: typeof equips,
-	value?: typeof equips[number],
-	setValue: ( value: typeof equips[number] ) => void
+	equipList: typeof equipData,
+	value?: typeof equipData[number],
+	setValue: ( value: typeof equipData[number] ) => void
 } ) {
 	return <Autocomplete
 		options={equipList}
@@ -16,7 +16,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 		isOptionEqualToValue={( option, value ) => option.id === value?.id}
 		fullWidth
 		value={value}
-		onChange={( e, newValue: typeof equips[number] ) => setValue( newValue || equips[ 0 ] )}
+		onChange={( e, newValue: typeof equipData[number] ) => setValue( newValue || equipData[ 0 ] )}
 		renderOption={( props, option ) => <li {...props} key={option.id}>
 			<Box pr={1}>
 				<Image

@@ -1,6 +1,6 @@
 // noinspection SpellCheckingInspection
 
-export const researchData: {
+const researchData: {
 	name: string,
 	ships: { name: string, type: number, fate: boolean, url: string }[]
 }[] = [ {
@@ -42,6 +42,7 @@ export const researchData: {
 		{ name: 'Marco Polo', type: 0, fate: false, url: 'Marco_Polo' }
 	]
 } ];
+export default researchData;
 
 export const devLevels = [
 	[ 2, 0, 3, 0 ],

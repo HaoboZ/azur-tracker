@@ -15,8 +15,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
 import { fleet_setFilter } from '../../lib/store/reducers/fleetReducer';
-import { equips } from './ship/equipData';
-import EquipFilter from './ship/equipFilter';
+import equipData from './ship/equip/data';
+import EquipFilter from './ship/equip/filter';
 
 const searchOptions = [
 	// rarity
@@ -60,7 +60,7 @@ const searchOptions = [
 	'META'
 ].map( ( label, id ) => ( { id, label } ) );
 
-export default function Filters( { table }: { table: TableInstance } ) {
+export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const { filter, ships } = useSelector( ( { fleet } ) => fleet );
 	const dispatch = useDispatch();
 	
@@ -96,7 +96,7 @@ export default function Filters( { table }: { table: TableInstance } ) {
 		<Grid container spacing={2}>
 			<Grid item md xs={12}>
 				<EquipFilter
-					equipList={equips}
+					equipList={equipData}
 					setValue={( equip ) => table.setFilter( 'equip', equip )}
 				/>
 			</Grid>

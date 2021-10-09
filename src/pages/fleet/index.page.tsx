@@ -7,8 +7,8 @@ import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
 import { useModal } from '../../lib/providers/modal';
 import { fleet_checkVersion } from '../../lib/store/reducers/fleetReducer';
-import Filters from './filters';
-import ShipModal from './ship/shipModal';
+import FleetFilters from './filters';
+import ShipModal from './ship/modal';
 import useFleetTable from './useTable';
 
 // noinspection JSUnusedGlobalSymbols
@@ -31,7 +31,7 @@ export default function Fleet() {
 	return <PageContainer>
 		<Head><title>Fleet | Azur Lane Tracker</title></Head>
 		<PageTitle>Fleet Tracker</PageTitle>
-		<Filters table={table}/>
+		<FleetFilters table={table}/>
 		<VirtualDisplay
 			{...table}
 			onClick={( row ) => showModal( ShipModal, {

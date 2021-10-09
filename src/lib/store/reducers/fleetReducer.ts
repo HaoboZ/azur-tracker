@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import fleetRef from '../../../pages/fleet/data';
-import { equipTier, version } from '../../../pages/fleet/ship/equipData';
+import fleetData from '../../../pages/fleet/data';
+import { equipTier, version } from '../../../pages/fleet/ship/equip/data';
 
 type State = {
 	ships: Record<string, {
@@ -54,7 +54,7 @@ const fleetSlice = createSlice( {
 				// recalculate equipment tiers
 				for ( const name in state.ships ) {
 					const ship = state.ships[ name ];
-					getTier( fleetRef[ name ], ship.equip );
+					getTier( fleetData[ name ], ship.equip );
 				}
 				state.version = initialState.version;
 			}
@@ -67,7 +67,7 @@ const fleetSlice = createSlice( {
 				equip?: [ number, 0 | 1, number ][]
 			}
 		}> ) {
-			getTier( fleetRef[ payload.name ], payload.ship.equip );
+			getTier( fleetData[ payload.name ], payload.ship.equip );
 			state.ships = {
 				...state.ships,
 				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
