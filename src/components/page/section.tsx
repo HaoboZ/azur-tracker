@@ -1,34 +1,17 @@
-import {
-	Box,
-	Button,
-	ButtonGroup,
-	ListItem,
-	ListItemProps,
-	ListItemSecondaryAction,
-	ListItemText,
-	ListItemTextProps
-} from '@mui/material';
+import { Box, ListItem, ListItemProps, ListItemText, ListItemTextProps } from '@mui/material';
 import React from 'react';
-import { ActionButtonProps } from '../actionTitle';
+import Actions, { ActionProps } from '../actions';
 
-export default function PageSection( { actions, listItemProps, children, ...props }: {
-	actions?: ActionButtonProps[] | React.ReactChild,
+export default function PageSection( { actions, listItemProps, children, max, ...props }: {
+	actions?: ActionProps[] | React.ReactChild,
+	max?: number,
 	listItemProps?: ListItemProps,
 	children?: React.ReactNode
 } & ListItemTextProps ) {
 	return <Box display='flex' flexDirection='column'>
 		<ListItem component='div' sx={{ my: 2 }} divider {...listItemProps as any}>
-			<ListItemText primaryTypographyProps={{ variant: 'h2' }} {...props}/>
-			{Array.isArray( actions ) ? <ListItemSecondaryAction>
-				<ButtonGroup>
-					{actions.filter( Boolean ).map( ( { name, ...props }, index ) => <Button
-						key={index}
-						variant='contained'
-						{...props}>
-						{name}
-					</Button> )}
-				</ButtonGroup>
-			</ListItemSecondaryAction> : actions}
+			<ListItemText primaryTypographyProps={{ variant: 'h3' }} {...props}/>
+			{Array.isArray( actions ) ? <Actions items={actions} max={max}/> : actions}
 		</ListItem>
 		{children}
 	</Box>;

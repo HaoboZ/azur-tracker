@@ -19,9 +19,9 @@ import {
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
-import ActionTitle from '../actionTitle';
 import Loading from '../loading';
 import Sortable from '../sortable';
+import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
 
 const EnhancedList = React.memo( function EnhancedList<Item>( {
@@ -125,21 +125,25 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 		subheader={Boolean( title || editable || sortable ) && <ActionTitle
 			actions={!removeEditing && !loading && ( editable || sortable ) ? [
 				sortable && {
-					name     : editing ? 'Cancel' : 'Edit',
-					onClick  : () => setEditing( !editing ),
-					color    : editing ? 'error' : 'info',
-					startIcon: editing ? <CloseIcon/> : <EditIcon/>,
-					...editButtonProps
+					name       : editing ? 'Cancel' : 'Edit',
+					onClick    : () => setEditing( !editing ),
+					buttonProps: {
+						color    : editing ? 'error' : 'info',
+						startIcon: editing ? <CloseIcon/> : <EditIcon/>,
+						...editButtonProps
+					}
 				},
 				( editable?.max ? items.length < editable.max : true ) && {
-					name     : 'Add',
-					onClick  : async () => {
+					name       : 'Add',
+					onClick    : async () => {
 						editable.onAdd?.();
 						setItems?.( [ ...items, { ...await editable.newData() } ] );
 					},
-					color    : 'secondary',
-					startIcon: <AddIcon/>,
-					...addButtonProps
+					buttonProps: {
+						color    : 'secondary',
+						startIcon: <AddIcon/>,
+						...addButtonProps
+					}
 				} ] : undefined}
 			{...actionTitleProps}>
 			{title}

@@ -1,6 +1,6 @@
-import { ListProps, TableContainerProps } from '@mui/material';
+import { ButtonProps, ListProps, TableContainerProps } from '@mui/material';
 import React from 'react';
-import { ActionButtonProps, ActionTitleProps } from '../actionTitle';
+import { ActionTitleProps } from './actionTitle';
 
 export type EnhancedDisplayProps<Item> = {
 	title?: React.ReactNode,
@@ -35,8 +35,8 @@ export type EnhancedListProps<Item> = {
 	renderRow: ( item: Item, index: number, onDelete?: () => void ) => React.ReactNode,
 	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
 	removeEditing?: boolean,
-	addButtonProps?: ActionButtonProps,
-	editButtonProps?: ActionButtonProps
+	addButtonProps?: ButtonProps,
+	editButtonProps?: ButtonProps
 } & Omit<ListProps, 'title'>;
 
 export type EnhancedTableProps<Item> = {

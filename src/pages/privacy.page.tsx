@@ -2,7 +2,7 @@ import React from 'react';
 import PageContainer from '../components/page/container';
 
 // noinspection JSUnusedGlobalSymbols
-export default function PrivacyPolicy() {
+export default function Privacy() {
 	return <PageContainer>
 		<h1>Privacy Policy</h1>
 		<p>Last updated: April 04, 2021</p>

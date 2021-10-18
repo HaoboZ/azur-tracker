@@ -44,6 +44,7 @@ export default function TitleBar( { children } ) {
 				<LinkItem href='/'>Event</LinkItem>
 				<LinkItem href='/research'>Research</LinkItem>
 				<LinkItem href='/fleet'>Fleet</LinkItem>
+				<LinkItem href='/info'>Info</LinkItem>
 				<Box flexGrow={1}/>
 				<Link href='/settings'>
 					<IconButton color='inherit'>

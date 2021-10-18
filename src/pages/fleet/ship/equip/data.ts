@@ -1843,12 +1843,12 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'CL/Main': {
 		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Triple 152mm Main Gun2/E' ] ]                       : [ 0, ++a ],
-		[ map[ 'Twin 152mm Main Gun/E' ] ]                          : [ 0, ++a ],
-		[ map[ 'Twin 150mm SK C/28 Secondary Gun Mount/E' ] ]       : [ 1, ++a ],
-		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]         : [ 1, ++a ],
-		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]           : [ 2, ++a ],
-		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]                 : [ 2, ++a ],
+		[ map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ] ]           : [ 0, ++a ],
+		[ map[ 'Triple 155mm Main Gun Mount/SR' ] ]                 : [ 0, ++a ],
+		[ map[ 'Triple 152mm Main Gun2/E' ] ]                       : [ 1, ++a ],
+		[ map[ 'Twin 152mm Main Gun/E' ] ]                          : [ 1, ++a ],
+		[ map[ 'Twin 150mm SK C/28 Secondary Gun Mount/E' ] ]       : [ 2, ++a ],
+		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]         : [ 2, ++a ],
 		[ map[ 'Triple 152mm Main Gun/E' ] ]                        : [ 3, ++a ]
 	},
 	get 'CL/DD/Main'() {

@@ -1,17 +1,10 @@
-import {
-	Button,
-	ButtonGroup,
-	ListItem,
-	ListItemProps,
-	ListItemSecondaryAction,
-	ListItemText,
-	ListItemTextProps
-} from '@mui/material';
+import { ListItem, ListItemProps, ListItemText, ListItemTextProps } from '@mui/material';
 import React from 'react';
-import { ActionButtonProps } from '../actionTitle';
+import Actions, { ActionProps } from '../actions';
 
-export default function PageTitle( { actions, listItemProps, children, ...props }: {
-	actions?: ActionButtonProps[] | React.ReactChild,
+export default function PageTitle( { actions, listItemProps, children, max, ...props }: {
+	actions?: ActionProps[] | React.ReactChild,
+	max?: number,
 	listItemProps?: ListItemProps,
 	children?: React.ReactNode
 } & ListItemTextProps ) {
@@ -22,15 +15,6 @@ export default function PageTitle( { actions, listItemProps, children, ...props 
 			secondaryTypographyProps={{ variant: 'subtitle1' }}
 			{...props}
 		/>
-		{Array.isArray( actions ) ? <ListItemSecondaryAction>
-			<ButtonGroup>
-				{actions.filter( Boolean ).map( ( { name, ...props }, index ) => <Button
-					key={index}
-					variant='contained'
-					{...props}>
-					{name}
-				</Button> )}
-			</ButtonGroup>
-		</ListItemSecondaryAction> : actions}
+		{Array.isArray( actions ) ? <Actions items={actions} max={max}/> : actions}
 	</ListItem>;
 }

@@ -2,6 +2,7 @@ import {
 	Camera as CameraIcon,
 	DirectionsBoat as DirectionsBoatIcon,
 	Event as EventIcon,
+	Info as InfoIcon,
 	Settings as SettingsIcon
 } from '@mui/icons-material';
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
@@ -15,6 +16,7 @@ const items = [
 	{ label: 'Event', icon: <EventIcon/>, link: '/' },
 	{ label: 'Research', icon: <CameraIcon/>, link: '/research' },
 	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, link: '/fleet' },
+	{ label: 'Info', icon: <InfoIcon/>, link: '/info' },
 	{ label: 'Settings', icon: <SettingsIcon/>, link: '/settings' }
 ];
 

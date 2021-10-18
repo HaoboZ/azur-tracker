@@ -13,9 +13,9 @@ import {
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import React from 'react';
-import ActionTitle from '../actionTitle';
 import Loading from '../loading';
 import Sortable from '../sortable';
+import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
 const EnhancedTable = React.memo( function EnhancedTable<Item>( {
