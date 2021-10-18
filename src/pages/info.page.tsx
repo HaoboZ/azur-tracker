@@ -26,7 +26,7 @@ export default function Info() {
 		<PageTitle>Info</PageTitle>
 		<PageSection primary='OpSi Weakness'>
 			<TableContainer component={Paper}>
-				<Table>
+				<Table size='small'>
 					<TableHead>
 						<TableRow>
 							<TableCell/>
@@ -37,7 +37,7 @@ export default function Info() {
 					<TableBody>
 						{opsi.map( ( [ image, name, weak ], index ) => <TableRow key={index}>
 							<TableCell>
-								<Box sx={{ position: 'relative', height: 50 }}>
+								<Box sx={{ position: 'relative', width: 50, height: 50 }}>
 									<Image src={image} alt={name} layout='fill' objectFit='contain' objectPosition='left'/>
 								</Box>
 							</TableCell>
@@ -48,7 +48,7 @@ export default function Info() {
 				</Table>
 			</TableContainer>
 		</PageSection>
-		<PageSection primary='Farming'>
+		<PageSection primary='Archive Farming'>
 			TBA
 		</PageSection>
 	</PageContainer>;

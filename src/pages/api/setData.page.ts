@@ -5,11 +5,10 @@ import setFile from '../../lib/google/drive/setFile';
 
 const SetData: NextApiHandler = async ( req, res ) => {
 	try {
-		const { modifiedTime } = req.query as Record<string, string>;
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
 		
-		await setFile( drive, file, req.body.data, modifiedTime );
+		await setFile( drive, file, req.body.data, req.body.modifiedTime );
 		res.end();
 	} catch ( e ) {
 		res.status( 400 ).send( String( e ) );
