@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
-import { setNewData, setTheme } from '../../../lib/store/reducers/mainReducer';
+import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
 const items = [
 	{ label: 'Event', icon: <EventIcon/>, link: '/' },
@@ -62,15 +62,8 @@ export default function BottomBar( { children } ) {
 					pb    : 'env(safe-area-inset-bottom)'
 				}}
 				onChange={( e, value ) => {
-					switch ( value ) {
-					case 4:
-						dispatch( setTheme( main.theme === 'dark' ? 'light' : 'dark' ) );
-						break;
-					default:
-						router.push( items[ value ].link ).then();
-						dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
-						break;
-					}
+					router.push( items[ value ].link ).then();
+					dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
 				}}>
 				{items.map( ( item, index ) => <BottomNavigationAction
 					key={index}

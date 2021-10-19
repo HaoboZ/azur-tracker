@@ -72,9 +72,9 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 				renderItem={row}
 				tag={TableBody}
 			/>
-			: items.map( ( item, index ) => <TableBody key={index}>
-				{row( { item, index } )}
-			</TableBody> );
+			: <TableBody>
+				{items.map( ( item, index ) => row( { item, index } ) )}
+			</TableBody>;
 	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box sx={{ '& .minWidth': { width: '0.01%' } }}>
