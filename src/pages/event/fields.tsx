@@ -1,6 +1,5 @@
 import { Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
 import moment from 'moment';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
 import { useModal } from '../../lib/providers/modal';

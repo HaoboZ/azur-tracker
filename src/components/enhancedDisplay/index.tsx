@@ -1,5 +1,4 @@
 import { Theme, useMediaQuery } from '@mui/material';
-import React from 'react';
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 import { EnhancedDisplayProps, EnhancedListProps, EnhancedTableProps } from './helpers';

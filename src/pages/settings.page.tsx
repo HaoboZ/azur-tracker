@@ -18,7 +18,6 @@ import { GetServerSideProps } from 'next';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from '../components/link';
 import PageContainer from '../components/page/container';

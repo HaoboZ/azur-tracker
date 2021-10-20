@@ -1,7 +1,6 @@
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
 import concealmentImage from '../../public/images/other/concealment.png';
 import determinationImage from '../../public/images/other/determination.png';
 import equilibriumImage from '../../public/images/other/equilibrium.png';

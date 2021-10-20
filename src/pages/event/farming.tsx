@@ -1,6 +1,5 @@
 import { Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';

@@ -1,6 +1,5 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 import { rarityColors } from '../../../colors';
 import equipData from './data';
 

@@ -1,5 +1,4 @@
 import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
-import React from 'react';
 import Actions, { ActionProps } from '../actions';
 
 export type ActionTitleProps = {

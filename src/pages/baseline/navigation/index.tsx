@@ -1,5 +1,4 @@
 import { Theme, useMediaQuery } from '@mui/material';
-import React from 'react';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 

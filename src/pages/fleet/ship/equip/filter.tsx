@@ -1,7 +1,6 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 import { rarityColors } from '../../../colors';
 import equipData, { typeNames } from './data';
 

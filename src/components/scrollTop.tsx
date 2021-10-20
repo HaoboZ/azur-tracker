@@ -1,6 +1,5 @@
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@mui/icons-material';
 import { Fab, useScrollTrigger, Zoom } from '@mui/material';
-import React from 'react';
 
 export default function ScrollTop() {
 	const trigger = useScrollTrigger( { disableHysteresis: true } );

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cell, Column } from 'react-table';
 import SVGIcon, { TierIcon } from '../../lib/icons';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
