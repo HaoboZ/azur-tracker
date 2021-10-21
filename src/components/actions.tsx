@@ -1,11 +1,11 @@
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 import { Button, ButtonGroup, ButtonProps, MenuItem, MenuItemProps, MenuList } from '@mui/material';
-import React from 'react';
+import { MouseEventHandler, ReactNode, useMemo } from 'react';
 import ButtonMenu from './buttonMenu';
 
 export type ActionProps = {
-	name: React.ReactNode,
-	onClick?: React.MouseEventHandler,
+	name: ReactNode,
+	onClick?: MouseEventHandler,
 	buttonProps?: ButtonProps,
 	menuItemProps?: MenuItemProps
 };
@@ -15,7 +15,7 @@ export default function Actions( { items, max }: {
 	// max number of buttons displayed
 	max?: number
 } ) {
-	const [ buttons, menu ] = React.useMemo( () => {
+	const [ buttons, menu ] = useMemo( () => {
 		const filtered = items.filter( Boolean );
 		if ( !max || filtered.length <= max ) return [ filtered, [] ];
 		

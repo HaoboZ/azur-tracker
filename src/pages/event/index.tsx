@@ -2,7 +2,7 @@ import { Box, Link } from '@mui/material';
 import moment from 'moment';
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import eventImage from '../../../public/images/event.png';
 import PageContainer from '../../components/page/container';
@@ -16,10 +16,10 @@ export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
 	
-	const [ time, setTime ] = React.useState( moment() );
+	const [ time, setTime ] = useState( moment );
 	
 	// resets event and changes time
-	React.useEffect( () => {
+	useEffect( () => {
 		if ( event.name != eventData.name )
 			dispatch( event_newEvent() );
 		

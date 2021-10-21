@@ -1,12 +1,12 @@
 import { Box, ListItem, ListItemProps, ListItemText, ListItemTextProps } from '@mui/material';
-import React from 'react';
+import { ReactChild, ReactNode } from 'react';
 import Actions, { ActionProps } from '../actions';
 
 export default function PageSection( { actions, listItemProps, children, max, ...props }: {
-	actions?: ActionProps[] | React.ReactChild,
+	actions?: ActionProps[] | ReactChild,
 	max?: number,
 	listItemProps?: ListItemProps,
-	children?: React.ReactNode
+	children?: ReactNode
 } & ListItemTextProps ) {
 	return <Box display='flex' flexDirection='column'>
 		<ListItem component='div' sx={{ my: 2 }} divider {...listItemProps as any}>

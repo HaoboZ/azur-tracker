@@ -1,14 +1,14 @@
 import { Box, BoxProps, CircularProgress, CircularProgressProps } from '@mui/material';
-import React from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export default function Loading( { delay = 250, children, containerProps, ...props }: {
 	delay?: number,
-	children?: React.ReactNode,
+	children?: ReactNode,
 	containerProps?: BoxProps
 } & CircularProgressProps ) {
-	const [ loading, setLoading ] = React.useState( false );
+	const [ loading, setLoading ] = useState( false );
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		setTimeout( () => setLoading( true ), delay );
 	}, [] );
 	

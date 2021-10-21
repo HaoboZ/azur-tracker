@@ -1,11 +1,11 @@
 import { TextField, TextFieldProps } from '@mui/material';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 export default function FormattedTextField( props: TextFieldProps ) {
-	const [ text, setText ] = React.useState( props.value );
-	const [ focused, setFocused ] = React.useState( false );
+	const [ text, setText ] = useState( props.value );
+	const [ focused, setFocused ] = useState( false );
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		if ( !focused ) setText( props.value );
 	}, [ focused, props.value ] );
 	

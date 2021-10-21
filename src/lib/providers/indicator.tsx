@@ -1,14 +1,14 @@
 import { CircularProgress, Fade } from '@mui/material';
-import React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;
-const IndicatorContext = React.createContext<C>( () => null );
+const IndicatorContext = createContext<C>( () => null );
 IndicatorContext.displayName = 'Indicator';
 
 export default function IndicatorProvider( { children } ) {
-	const [ visible, setVisible ] = React.useState( false );
+	const [ visible, setVisible ] = useState( false );
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		if ( !visible ) return;
 		function warn( e ) {
 			e.returnValue = 'Currently saving, are you sure you want to leave?';
@@ -43,7 +43,7 @@ export default function IndicatorProvider( { children } ) {
 }
 
 export function useIndicator() {
-	return React.useContext( IndicatorContext );
+	return useContext( IndicatorContext );
 }
 
 export function withIndicator( Component ) {

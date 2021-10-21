@@ -7,7 +7,7 @@ import {
 } from '@mui/icons-material';
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';
@@ -26,7 +26,7 @@ export default function BottomBar( { children } ) {
 	const router = useRouter();
 	const height = usePageHeight();
 	
-	const index = React.useMemo( () => {
+	const index = useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
 			if ( items[ i ].link === router.asPath ) return i;
 	}, [ router.asPath ] );

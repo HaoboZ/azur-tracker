@@ -1,7 +1,7 @@
 import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import React from 'react';
+import { Children } from 'react';
 
 // noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
@@ -25,7 +25,7 @@ export default class _Document extends Document {
 		
 		return {
 			...initialProps,
-			styles: [ ...React.Children.toArray( initialProps.styles ), ...emotionStyleTags ]
+			styles: [ ...Children.toArray( initialProps.styles ), ...emotionStyleTags ]
 		};
 	}
 	

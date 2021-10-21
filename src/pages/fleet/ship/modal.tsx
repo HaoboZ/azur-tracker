@@ -11,7 +11,7 @@ import {
 	Zoom
 } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResponsiveModalContainer } from '../../../components/responsiveModal';
 import SVGIcon, { TierIcon } from '../../../lib/icons';
@@ -32,7 +32,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const { showModal } = useModal();
 	
 	// calculates tier
-	const tier = React.useMemo( () => {
+	const tier = useMemo( () => {
 		switch ( ship.tier ) {
 		case 7:
 			return '?';

@@ -1,6 +1,6 @@
-import React from 'react';
+import { SVGProps } from 'react';
 
-export default function SVGIcon( { name, ...props }: { name?: string } & React.SVGProps<SVGSVGElement> ) {
+export default function SVGIcon( { name, ...props }: { name?: string } & SVGProps<SVGSVGElement> ) {
 	return <svg height={14} width={14} {...props}>
 		<use href={`#${name}`}/>
 	</svg>;

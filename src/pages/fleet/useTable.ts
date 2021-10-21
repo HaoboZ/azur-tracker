@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import {
 	TableOptions,
@@ -15,7 +15,7 @@ import fleetData from './data';
 export default function useFleetTable( equipBetter, setEquipBetter ) {
 	const fleet = useSelector( ( { fleet } ) => fleet );
 	
-	const tableOptions = React.useMemo( () => ( {
+	const tableOptions = useMemo( () => ( {
 		columns: fleetColumns( equipBetter, setEquipBetter ),
 		// list of ships with the local data loaded
 		data                  : Object.values( fleetData )

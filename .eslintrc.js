@@ -7,9 +7,10 @@ module.exports = {
 	},
 	extends      : [
 		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:react-hooks/recommended'
 		// 'next/core-web-vitals'
 	],
 	settings     : {
@@ -18,7 +19,7 @@ module.exports = {
 	parser       : '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: { jsx: true },
-		ecmaVersion : 12,
+		ecmaVersion : 'latest',
 		sourceType  : 'module'
 	},
 	plugins      : [

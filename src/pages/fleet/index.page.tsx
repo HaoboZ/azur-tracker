@@ -1,6 +1,6 @@
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import Head from 'next/head';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
@@ -16,7 +16,7 @@ export default function Fleet() {
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
 	
-	const [ equipBetter, setEquipBetter ] = React.useState<{
+	const [ equipBetter, setEquipBetter ] = useState<{
 		filter,
 		value: Record<string, [ number, number ][]>
 	}>( { filter: undefined, value: {} } );
@@ -24,7 +24,7 @@ export default function Fleet() {
 	const table = useFleetTable( equipBetter, setEquipBetter );
 	
 	// resets fleet equip tiers if version changes
-	React.useEffect( () => {
+	useEffect( () => {
 		dispatch( fleet_checkVersion() );
 	}, [] );
 	

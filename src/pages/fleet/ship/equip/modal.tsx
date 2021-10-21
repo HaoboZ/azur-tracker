@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
-import React from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TierIcon } from '../../../../lib/icons';
 import { useModalControls } from '../../../../lib/providers/modal';
@@ -32,7 +32,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	const dispatch = useDispatch();
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
-	const [ equipList, equipListIndex, tierList ] = React.useMemo( () => {
+	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
 		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
 		const equipList = equipType ? equipData.filter( ( { type } ) => equipType.includes( type ) ) : [];
 		equipList.unshift( equipData[ 0 ] );
@@ -57,7 +57,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equipData[ 0 ];
 	// equipment that will go in slot
-	const [ equip, setEquip ] = React.useState<typeof equipData[number]>( () => {
+	const [ equip, setEquip ] = useState<typeof equipData[number]>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			return selectedEquip;
 		else if ( currentEquip.id )
@@ -65,11 +65,11 @@ export default function EquipModal( { info, selectedEquip }: {
 		else
 			return equipData[ 0 ];
 	} );
-	const [ override, setOverride ] = React.useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
-	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
+	const [ override, setOverride ] = useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
+	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	
 	// saves info on close
-	React.useEffect( () => {
+	useEffect( () => {
 		function close( cancel ) {
 			setAnchorEl( null );
 			if ( cancel ) return;

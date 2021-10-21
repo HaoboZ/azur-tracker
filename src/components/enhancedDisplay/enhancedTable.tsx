@@ -12,13 +12,13 @@ import {
 	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
-import React from 'react';
+import { memo, useMemo } from 'react';
 import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
-const EnhancedTable = React.memo( function EnhancedTable<Item>( {
+function EnhancedTable<Item>( {
 	title,
 	actionTitleProps,
 	items = [],
@@ -35,7 +35,7 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 	widths,
 	...props
 }: EnhancedDisplayProps<Item> & EnhancedTableProps<Item> ) {
-	const dataItems = React.useMemo( () => {
+	const dataItems = useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( { item, index, handle }: { item, index, handle? } ) => {
@@ -120,8 +120,9 @@ const EnhancedTable = React.memo( function EnhancedTable<Item>( {
 			</Table>
 		</TableContainer>
 	</Box>;
-}, ( prevProps, nextProps ) =>
+}
+
+export default memo( EnhancedTable, ( prevProps, nextProps ) =>
 	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
 	&& Object.is( prevProps.items, nextProps.items )
-	&& Object.is( prevProps.extraData, nextProps.extraData ) );
-export default EnhancedTable;
+	&& Object.is( prevProps.extraData, nextProps.extraData ) ) as typeof EnhancedTable;

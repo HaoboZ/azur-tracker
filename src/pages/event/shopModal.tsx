@@ -1,5 +1,5 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
-import React from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
@@ -11,10 +11,10 @@ export default function ShopModal() {
 	const _shop = useSelector( ( { event } ) => event.shop );
 	const dispatch = useDispatch();
 	
-	const [ shop, setShop ] = React.useState( _shop );
+	const [ shop, setShop ] = useState( _shop );
 	
 	// expected cost to buy wanted items and total cost to buy everything
-	const [ expectedCost, buyoutCost ] = React.useMemo(
+	const [ expectedCost, buyoutCost ] = useMemo(
 		() => eventData.shop.reduce( ( total, item ) => [
 			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
 			total[ 1 ] + item.cost * item.amount

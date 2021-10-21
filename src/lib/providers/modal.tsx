@@ -1,13 +1,13 @@
 import { EventEmitter } from 'events';
 import { isEqual } from 'lodash';
 import { nanoid } from 'nanoid';
-import React from 'react';
+import { ComponentType, createContext, useContext, useEffect, useState } from 'react';
 import ResponsiveModal, { ResponsiveModalProps } from '../../components/responsiveModal';
 
 type ModalInfo = {
 	id: string,
 	open: boolean,
-	Component: React.ComponentType,
+	Component: ComponentType,
 	modalProps?: Partial<ResponsiveModalProps>,
 	props?: any
 };
@@ -24,7 +24,7 @@ type StaticModalControls<T> = ModalControls & {
 
 export type DynamicModalControls = {
 	showModal: <T>(
-		Component?: React.ComponentType<T>,
+		Component?: ComponentType<T>,
 		modalProps?: Partial<ResponsiveModalProps>,
 		props?: T
 	) => string,
@@ -34,14 +34,14 @@ export type DynamicModalControls = {
 
 type C1<T> = (
 	id: string,
-	Component: React.ComponentType<T>,
+	Component: ComponentType<T>,
 	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ) => StaticModalControls<T>;
 
 type C2 = () => DynamicModalControls;
 
-const ModalContext = React.createContext<C1<any> & C2>( () => ( {
+const ModalContext = createContext<C1<any> & C2>( () => ( {
 	showModal  : () => null,
 	closeModal : () => null,
 	modalInfo  : null,
@@ -50,7 +50,7 @@ const ModalContext = React.createContext<C1<any> & C2>( () => ( {
 } ) );
 ModalContext.displayName = 'Modal';
 
-const ModalControlsContext = React.createContext<ModalControls & { modalInfo: ModalInfo }>( {
+const ModalControlsContext = createContext<ModalControls & { modalInfo: ModalInfo }>( {
 	closeModal: () => null,
 	modalInfo : null,
 	events    : null
@@ -58,7 +58,7 @@ const ModalControlsContext = React.createContext<ModalControls & { modalInfo: Mo
 ModalControlsContext.displayName = 'ModalControls';
 
 export default function ModalProvider( { children } ) {
-	const [ modals, setModals ] = React.useState<ModalInfo[]>( [] );
+	const [ modals, setModals ] = useState<ModalInfo[]>( [] );
 	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
@@ -179,23 +179,23 @@ export default function ModalProvider( { children } ) {
 /* eslint-disable react-hooks/rules-of-hooks */
 export function useModal(): DynamicModalControls;
 export function useModal<T>(
-	Component: React.ComponentType<T & { controls: ModalControls }>,
+	Component: ComponentType<T & { controls: ModalControls }>,
 	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ): StaticModalControls<T>;
 export function useModal<T>(
-	Component?: React.ComponentType<T & { controls: ModalControls }>,
+	Component?: ComponentType<T & { controls: ModalControls }>,
 	modalProps?: Partial<ResponsiveModalProps>,
 	props?: T
 ) {
-	if ( !Component ) return React.useContext<C2>( ModalContext )();
+	if ( !Component ) return useContext<C2>( ModalContext )();
 	
-	const [ id ] = React.useState( () => nanoid() );
-	const context = React.useContext<C1<T>>( ModalContext );
+	const [ id ] = useState( () => nanoid() );
+	const context = useContext<C1<T>>( ModalContext );
 	
-	const [ controls, setControls ] = React.useState<StaticModalControls<T>>( {} as never );
+	const [ controls, setControls ] = useState<StaticModalControls<T>>( {} as never );
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		const controls = context( id, Component, modalProps, props );
 		setControls( controls );
 		return controls.removeModal;
@@ -205,7 +205,7 @@ export function useModal<T>(
 }
 
 export function useModalControls() {
-	return React.useContext( ModalControlsContext );
+	return useContext( ModalControlsContext );
 }
 
 export function withModal( Component ) {

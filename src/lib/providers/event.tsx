@@ -1,17 +1,17 @@
 import { EventEmitter } from 'events';
-import React from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const EventContext = React.createContext<EventEmitter>( null );
+const EventContext = createContext<EventEmitter>( null );
 EventContext.displayName = 'Event';
 
 export default function EventProvider( { children } ) {
-	const [ events ] = React.useState( () => new EventEmitter() );
+	const [ events ] = useState( () => new EventEmitter() );
 	
 	return <EventContext.Provider value={events}>{children}</EventContext.Provider>;
 }
 
 export function useEvent() {
-	return React.useContext( EventContext );
+	return useContext( EventContext );
 }
 
 export function withEvent( Component ) {

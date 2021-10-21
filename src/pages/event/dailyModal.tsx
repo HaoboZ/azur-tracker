@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
-import React from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
@@ -11,10 +11,10 @@ export default function DailyModal() {
 	const _daily = useSelector( ( { event } ) => event.daily );
 	const dispatch = useDispatch();
 	
-	const [ daily, setDaily ] = React.useState( _daily );
+	const [ daily, setDaily ] = useState( _daily );
 	
 	// total points gained daily
-	const dailyTotal = React.useMemo(
+	const dailyTotal = useMemo(
 		() => daily.reduce( ( total, item ) => total + +item.amount, 0 ),
 		[ daily ] );
 	

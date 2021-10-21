@@ -16,7 +16,7 @@ import {
 	Typography,
 	useMediaQuery
 } from '@mui/material';
-import React from 'react';
+import { ReactNode } from 'react';
 import { useModalControls } from '../lib/providers/modal';
 
 export type ModalVariant = 'adaptive' | 'bottom' | 'center';
@@ -26,18 +26,18 @@ export type ResponsiveModalProps = {
 	onClose: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
-	children?: React.ReactNode
+	children?: ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
 export type ResponsiveModalContainerProps = {
 	onClose?: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
-	title?: React.ReactNode,
+	title?: ReactNode,
 	// renders and called by save button if set
 	onSave?: () => void,
 	keepOpenOnSave?: boolean,
-	children?: React.ReactNode
+	children?: ReactNode
 } & Omit<DialogContentProps, 'title'>;
 
 export default function ResponsiveModal( {

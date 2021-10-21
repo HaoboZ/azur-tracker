@@ -1,5 +1,5 @@
 import { Box, Tab, Tabs, TabsProps, useTheme } from '@mui/material';
-import React from 'react';
+import { CSSProperties, Fragment, ReactNode, ReactNodeArray, useEffect, useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import useControlledState from '../lib/hooks/useControlledState';
@@ -9,15 +9,15 @@ const EnhancedSwipeableViews = bindKeyboard( virtualize( SwipeableViews ) );
 export default function SwipeableTabViews( { tab = 0, setTab, renderTabs, renderContent, ...props }: {
 	tab?: number,
 	setTab?: ( index: number ) => void,
-	renderTabs: React.ReactNodeArray,
-	renderContent: ( index: number ) => React.ReactNode
+	renderTabs: ReactNodeArray,
+	renderContent: ( index: number ) => ReactNode
 } & TabsProps ) {
 	const theme = useTheme();
 	
 	const [ tabValue, setTabValue ] = useControlledState( tab, setTab );
-	const [ swipeFix, setSwipeFix ] = React.useState<React.CSSProperties>();
+	const [ swipeFix, setSwipeFix ] = useState<CSSProperties>();
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		setTimeout( () => setSwipeFix( {
 			transition: theme.transitions.create( 'transform' )
 		} ), 500 );
@@ -35,9 +35,9 @@ export default function SwipeableTabViews( { tab = 0, setTab, renderTabs, render
 			index={tabValue}
 			onChangeIndex={( index ) => setTabValue( index )}
 			slideCount={renderTabs.length}
-			slideRenderer={( { index } ) => <React.Fragment key={index}>
+			slideRenderer={( { index } ) => <Fragment key={index}>
 				{renderContent( index )}
-			</React.Fragment>}
+			</Fragment>}
 			containerStyle={swipeFix}
 		/>
 	</Box>;

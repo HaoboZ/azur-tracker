@@ -1,9 +1,9 @@
 import { ButtonProps, ListProps, TableContainerProps } from '@mui/material';
-import React from 'react';
+import { ReactNode, ReactNodeArray } from 'react';
 import { ActionTitleProps } from './actionTitle';
 
 export type EnhancedDisplayProps<Item> = {
-	title?: React.ReactNode,
+	title?: ReactNode,
 	actionTitleProps?: ActionTitleProps,
 	items: Item[],
 	// extra check for memo, needs to be memoized
@@ -27,21 +27,21 @@ export type EnhancedDisplayProps<Item> = {
 		max?: number
 	},
 	loading?: boolean,
-	loadingComponent?: React.ReactNode,
-	emptyComponent?: React.ReactNode
+	loadingComponent?: ReactNode,
+	emptyComponent?: ReactNode
 };
 
 export type EnhancedListProps<Item> = {
-	renderRow: ( item: Item, index: number, onDelete?: () => void ) => React.ReactNode,
-	renderPanel?: ( item: Item, index: number ) => React.ReactNode,
+	renderRow: ( item: Item, index: number, onDelete?: () => void ) => ReactNode,
+	renderPanel?: ( item: Item, index: number ) => ReactNode,
 	removeEditing?: boolean,
 	addButtonProps?: ButtonProps,
 	editButtonProps?: ButtonProps
 } & Omit<ListProps, 'title'>;
 
 export type EnhancedTableProps<Item> = {
-	headers: React.ReactNodeArray,
-	columns: ( item: Item, index: number ) => React.ReactNodeArray,
+	headers: ReactNodeArray,
+	columns: ( item: Item, index: number ) => ReactNodeArray,
 	widths?: number[]
 } & Omit<TableContainerProps, 'title'>;
 

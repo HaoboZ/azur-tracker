@@ -11,7 +11,7 @@ import {
 	MenuItem,
 	TextField
 } from '@mui/material';
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
 import { fleet_setFilter } from '../../lib/store/reducers/fleetReducer';
@@ -67,11 +67,11 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const globalFilter = useAsyncDebounce( ( value ) =>
 		table.setGlobalFilter( value ), 250 );
 	
-	const [ anchorEl, setAnchorEl ] = React.useState<HTMLElement>( null );
-	const searchRef = React.useRef<HTMLInputElement>();
+	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
+	const searchRef = useRef<HTMLInputElement>();
 	
 	// keydown listener for search
-	React.useEffect( () => {
+	useEffect( () => {
 		function search( e: KeyboardEvent ) {
 			if ( !searchRef.current ) return;
 			if ( e.ctrlKey && e.key === 'f' ) {
@@ -88,7 +88,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	}, [] );
 	
 	// resets filter when ships change
-	React.useEffect( () => {
+	useEffect( () => {
 		table.setFilter( 'equip', ( filter ) => filter && { ...filter } );
 	}, [ ships ] );
 	

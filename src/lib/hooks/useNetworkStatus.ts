@@ -1,9 +1,9 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useNetworkStatus() {
-	const [ networkStatus, setNetworkStatus ] = React.useState( navigator.onLine );
+	const [ networkStatus, setNetworkStatus ] = useState( navigator.onLine );
 	
-	React.useEffect( () => {
+	useEffect( () => {
 		const updateNetwork = () => setNetworkStatus( navigator.onLine );
 		window.addEventListener( 'online', updateNetwork );
 		window.addEventListener( 'offline', updateNetwork );

@@ -1,10 +1,10 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 export default function usePageHeight() {
-	const [ height, setHeight ] = React.useState( window.innerHeight );
+	const [ height, setHeight ] = useState( window.innerHeight );
 	
 	// window event listener resize event
-	React.useEffect( () => {
+	useEffect( () => {
 		const updateDimensions = () => setHeight( window.innerHeight );
 		window.addEventListener( 'resize', updateDimensions );
 		return () => window.removeEventListener( 'resize', updateDimensions );

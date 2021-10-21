@@ -1,5 +1,5 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import React from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
@@ -10,7 +10,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 	const ships = useSelector( ( { research } ) => research.ships );
 	const dispatch = useDispatch();
 	
-	const { shipData, totalPR, totalDR } = React.useMemo( () => {
+	const { shipData, totalPR, totalDR } = useMemo( () => {
 		let totalPR = 0, totalDR = 0;
 		const shipData = researchShips.map( ( item ) => {
 			const ship = ships[ item.name ] || {};

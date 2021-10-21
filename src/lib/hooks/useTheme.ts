@@ -1,14 +1,14 @@
 import {
 	colors,
 	createTheme,
+	darkScrollbar,
 	PaletteMode,
 	responsiveFontSizes,
-	Theme,
 	ThemeOptions,
 	useMediaQuery
 } from '@mui/material';
 import { merge } from 'lodash';
-import React from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 const commonTheme: ThemeOptions = {
@@ -42,9 +42,16 @@ const lightTheme = responsiveFontSizes( createTheme(
 
 const darkTheme = responsiveFontSizes( createTheme(
 	merge( commonTheme, {
-		palette: {
+		palette   : {
 			mode      : 'dark',
 			background: { paper: colors.grey[ '900' ] }
+		},
+		components: {
+			MuiCssBaseline: {
+				styleOverrides: {
+					body: darkScrollbar()
+				}
+			}
 		}
 	} )
 ) );
@@ -53,7 +60,7 @@ export default function useTheme() {
 	const theme = useSelector( ( { main } ) => main.theme );
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
 	
-	const mode: PaletteMode = React.useMemo( () => {
+	const mode: PaletteMode = useMemo( () => {
 		switch ( theme ) {
 		case 'light':
 		case 'dark':
@@ -64,10 +71,4 @@ export default function useTheme() {
 	}, [ theme, dark ] );
 	
 	return mode === 'dark' ? darkTheme : lightTheme;
-}
-
-declare module '@mui/private-theming' {
-	// noinspection JSUnusedGlobalSymbols
-	interface DefaultTheme extends Theme {
-	}
 }

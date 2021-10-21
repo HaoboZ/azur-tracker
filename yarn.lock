@@ -2625,10 +2625,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.175":
-  version: 4.14.175
-  resolution: "@types/lodash@npm:4.14.175"
-  checksum: 50721f33faa542f1b9f62f2ba769ed353c6036711e92bd89ce569f2ed247e38fb2a2899f6fd46466b1690fea7ae0239471e6a6093c54e8f2b0613e43e8eac19c
+"@types/lodash@npm:^4.14.176":
+  version: 4.14.176
+  resolution: "@types/lodash@npm:4.14.176"
+  checksum: 9e949704dfffab60365b5cdca0477926af6eabe82c64b7be8f74b3a117bb373d58371be962c2b159dd0cf8fad49a7dcacc748564aea4ce6b6883c197a6f0bfa8
   languageName: node
   linkType: hard
 
@@ -2681,12 +2681,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.9":
-  version: 17.0.9
-  resolution: "@types/react-dom@npm:17.0.9"
+"@types/react-dom@npm:^17.0.10":
+  version: 17.0.10
+  resolution: "@types/react-dom@npm:17.0.10"
   dependencies:
     "@types/react": "*"
-  checksum: b7e898e1a22643a371f58e801a3d1d8cf13a82d77063c24be73e840ef8d877ca1d04adc5db168d0dac3167dc050a26b1d70efc5fe8566a7f46a3c488a8322989
+  checksum: cc7d8d5b77ee2f3b989c107abd8ec0f2460ba1b1ee6e6d637124e1939594b5619fa4166ef0ea7632a69b68358e0b71aa618de446ccc416dcc0017175549da601
   languageName: node
   linkType: hard
 
@@ -2711,15 +2711,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-redux@npm:^7.1.19":
-  version: 7.1.19
-  resolution: "@types/react-redux@npm:7.1.19"
+"@types/react-redux@npm:^7.1.20":
+  version: 7.1.20
+  resolution: "@types/react-redux@npm:7.1.20"
   dependencies:
     "@types/hoist-non-react-statics": ^3.3.0
     "@types/react": "*"
     hoist-non-react-statics: ^3.3.0
     redux: ^4.0.0
-  checksum: 32a1b21f6a5e45cd6e78fdb4b86974ea444a35539c3c1270d66132527b2c45051f9642a3e2296616c72407dc019d0629c0183bcca64fbf3ba19443484cb70df7
+  checksum: 5e0405d0d312f1b5e2dd48ab5833d3226295931fe8d276bd0891fafe4dd7ba9efbc74b1e8b30685ba96e9dc1a63d57444ae335785ce6fda96900d5fc9f800dcf
   languageName: node
   linkType: hard
 
@@ -3526,7 +3526,6 @@ __metadata:
     "@mui/icons-material": ^5.0.4
     "@mui/lab": ^5.0.0-alpha.51
     "@mui/material": ^5.0.4
-    "@mui/private-theming": ^5.0.1
     "@mui/system": ^5.0.4
     "@next/bundle-analyzer": ^11.1.2
     "@reduxjs/toolkit": ^1.6.2
@@ -3534,12 +3533,12 @@ __metadata:
     "@types/events": ^3.0.0
     "@types/jest": ^27.0.2
     "@types/json-stable-stringify": ^1.0.33
-    "@types/lodash": ^4.14.175
+    "@types/lodash": ^4.14.176
     "@types/lodash-webpack-plugin": ^0.11.6
     "@types/node": ^16.11.1
     "@types/react": ^17.0.30
-    "@types/react-dom": ^17.0.9
-    "@types/react-redux": ^7.1.19
+    "@types/react-dom": ^17.0.10
+    "@types/react-redux": ^7.1.20
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
     "@types/react-table": ^7.7.7
@@ -3567,7 +3566,7 @@ __metadata:
     next: ^11.1.2
     next-auth: 4.0.0-beta.4
     next-pwa: ^5.4.0
-    next-sitemap: ^1.6.189
+    next-sitemap: ^1.6.192
     notistack: ^2.0.2
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -8042,9 +8041,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.6.189":
-  version: 1.6.189
-  resolution: "next-sitemap@npm:1.6.189"
+"next-sitemap@npm:^1.6.192":
+  version: 1.6.192
+  resolution: "next-sitemap@npm:1.6.192"
   dependencies:
     "@corex/deepmerge": ^2.6.34
     matcher: ^4.0.0
@@ -8053,7 +8052,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 535e9c3a685a2f5cbe895131c342b877a6fe3304880e2e3c562ec63bf943e877b98350510a4f960840e6b8b5d47d526724d34020a5450d1648a42ed58d7ac44c
+  checksum: 96587cf67b056a323b89e2a4b082fdd42e08503f691a145b5af26b6037d73fe31a50d4a3b574a22247dec6b63425858faf4f8a482cb74da938eb3f3a4fb031a6
   languageName: node
   linkType: hard
 

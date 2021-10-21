@@ -1,20 +1,20 @@
 import { List, ListItem, ListItemButton, Paper } from '@mui/material';
 import { isEqual } from 'lodash';
-import React from 'react';
+import { memo, ReactNode } from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
-const VirtualList = React.memo( function VirtualList( {
+function VirtualList<Item extends object>( {
 	getTableProps,
 	rows,
 	prepareRow,
 	onClick,
 	renderRow
 }: {
-	onClick?: ( row: Row ) => void,
-	renderRow: ( row: Row ) => React.ReactNode
-} & TableInstance ) {
+	onClick?: ( row: Row<Item> ) => void,
+	renderRow: ( row: Row<Item> ) => ReactNode
+} & TableInstance<Item> ) {
 	return <Paper square {...getTableProps()}>
 		<ReactWindowScroller>
 			{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
@@ -46,7 +46,8 @@ const VirtualList = React.memo( function VirtualList( {
 			</FixedSizeList>}
 		</ReactWindowScroller>
 	</Paper>;
-}, ( prevProps, nextProps ) =>
+}
+
+export default memo( VirtualList, ( prevProps, nextProps ) =>
 	isEqual( prevProps.state, nextProps.state )
-	&& Object.is( prevProps.rows, nextProps.rows ) );
-export default VirtualList;
+	&& Object.is( prevProps.rows, nextProps.rows ) ) as typeof VirtualList;

@@ -1,12 +1,12 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import React from 'react';
+import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from '../../../components/link';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
-function LinkItem( { href, children }: { href: string, children: React.ReactNode } ) {
+function LinkItem( { href, children }: { href: string, children: ReactNode } ) {
 	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	

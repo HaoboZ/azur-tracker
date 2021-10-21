@@ -1,21 +1,21 @@
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { isEqual } from 'lodash';
-import React from 'react';
+import { memo, useMemo, useRef } from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
-const VirtualTable = React.memo( function VirtualTable( {
+function VirtualTable<Item extends object>( {
 	getTableProps,
 	getTableBodyProps,
 	headerGroups,
 	rows,
 	prepareRow,
 	onClick
-}: { onClick?: ( row: Row ) => void } & TableInstance ) {
-	const bodyRef = React.useRef<HTMLDivElement>();
+}: { onClick?: ( row: Row<Item> ) => void } & TableInstance<Item> ) {
+	const bodyRef = useRef<HTMLDivElement>();
 	
-	const headerStyle = React.useMemo( () => {
+	const headerStyle = useMemo( () => {
 		const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
 		return { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 };
 	}, [ rows ] );
@@ -84,7 +84,8 @@ const VirtualTable = React.memo( function VirtualTable( {
 			</ReactWindowScroller>
 		</TableBody>
 	</Table>;
-}, ( prevProps, nextProps ) =>
+}
+
+export default memo( VirtualTable, ( prevProps, nextProps ) =>
 	isEqual( prevProps.state, nextProps.state )
-	&& Object.is( prevProps.rows, nextProps.rows ) );
-export default VirtualTable;
+	&& Object.is( prevProps.rows, nextProps.rows ) ) as typeof VirtualTable;

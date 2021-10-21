@@ -18,13 +18,13 @@ import {
 	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
-import React from 'react';
+import { Fragment, memo, useMemo, useState } from 'react';
 import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
 
-const EnhancedList = React.memo( function EnhancedList<Item>( {
+function EnhancedList<Item>( {
 	title,
 	actionTitleProps,
 	items = [],
@@ -43,9 +43,9 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 	editButtonProps,
 	...props
 }: EnhancedDisplayProps<Item> & EnhancedListProps<Item> ) {
-	const [ editing, setEditing ] = React.useState( false );
+	const [ editing, setEditing ] = useState( false );
 	
-	const dataItems = React.useMemo( () => {
+	const dataItems = useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, handle, selected ) => <>
@@ -102,9 +102,9 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 				setItems={setItems}
 				renderItem={panel}
 			/>
-			: items.map( ( item, index ) => <React.Fragment key={index}>
+			: items.map( ( item, index ) => <Fragment key={index}>
 				{panel( { item, index } )}
-			</React.Fragment> );
+			</Fragment> );
 	}, [ items, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return <List
@@ -153,8 +153,9 @@ const EnhancedList = React.memo( function EnhancedList<Item>( {
 			? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
 			: dataItems}
 	</List>;
-}, ( prevProps, nextProps ) =>
+}
+
+export default memo( EnhancedList, ( prevProps, nextProps ) =>
 	isEqual( pick( prevProps, [ 'title', 'loading' ] ), pick( nextProps, [ 'title', 'loading' ] ) )
 	&& Object.is( prevProps.items, nextProps.items )
-	&& Object.is( prevProps.extraData, nextProps.extraData ) );
-export default EnhancedList;
+	&& Object.is( prevProps.extraData, nextProps.extraData ) ) as typeof EnhancedList;

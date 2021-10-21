@@ -1,7 +1,7 @@
 import { GlobalStyles, Theme } from '@mui/material';
 import { debounce } from 'lodash';
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import { useIndicator } from '../../lib/providers/indicator';
@@ -13,18 +13,18 @@ export default function Wrapper( { children } ) {
 	const { status } = useSession();
 	const indicator = useIndicator();
 	
-	const delayedSetBackup = React.useCallback(
+	const delayedSetBackup = useCallback(
 		debounce( () => backupMutex.runExclusive( async () =>
 			await indicator( setBackup( await checkDataIntegrity() ) )
 		), main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
 	// auto save
-	React.useEffect( () => {
+	useEffect( () => {
 		if ( main.autoSave && status === 'authenticated' ) delayedSetBackup();
 	}, Object.values( store ) );
 	
 	// load on log
-	React.useEffect( () => {
+	useEffect( () => {
 		( async () => {
 			if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
 				async () => await indicator( getBackup( await checkDataIntegrity() ) )
@@ -33,7 +33,7 @@ export default function Wrapper( { children } ) {
 	}, [ status ] );
 	
 	// auto load
-	React.useEffect( () => {
+	useEffect( () => {
 		const interval = setInterval( async () => {
 			if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
 				async () => await indicator( getBackup( await checkDataIntegrity() ) ) );

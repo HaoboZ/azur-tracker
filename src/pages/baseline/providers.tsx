@@ -4,7 +4,7 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton, ThemeProvider } from '@mui/material';
 import { SessionProvider } from 'next-auth/react';
 import { SnackbarProvider } from 'notistack';
-import React from 'react';
+import { ReactNode, useRef } from 'react';
 import useTheme from '../../lib/hooks/useTheme';
 import { provider, ProviderComposer } from '../../lib/providers';
 import IndicatorProvider from '../../lib/providers/indicator';
@@ -15,11 +15,11 @@ const clientCache = createCache( { key: 'css', prepend: true } );
 export default function Providers( { pageProps, cache = clientCache, children }: {
 	pageProps,
 	cache: EmotionCache,
-	children?: React.ReactNode
+	children?: ReactNode
 } ) {
 	const theme = useTheme();
 	
-	const snackbarRef = React.useRef<SnackbarProvider>();
+	const snackbarRef = useRef<SnackbarProvider>();
 	
 	return <ProviderComposer
 		providers={[
