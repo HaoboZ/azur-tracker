@@ -20,6 +20,7 @@ import { useModalControls } from '../../../../lib/providers/modal';
 import { fleet_setShip } from '../../../../lib/store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
 import fleetData from '../../data';
+import getTier from '../../getTier';
 import equipData, { equippable, equipsIndex, equipTier } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
@@ -75,6 +76,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			if ( cancel ) return;
 			const newEquip = cloneDeep( info.ship.equip );
 			newEquip[ info.index ] = [ equip.id, override, 6 ];
+			getTier( fleetData[ info.ship.id ], newEquip );
 			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		}
 		events.on( 'close', close );

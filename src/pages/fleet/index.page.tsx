@@ -1,18 +1,22 @@
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
+import { cloneDeep } from 'lodash';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
 import { useModal } from '../../lib/providers/modal';
-import { fleet_checkVersion } from '../../lib/store/reducers/fleetReducer';
+import { fleet_setShips, fleet_setVersion, version } from '../../lib/store/reducers/fleetReducer';
+import fleetData from './data';
 import FleetFilters from './filters';
+import getTier from './getTier';
 import ShipModal from './ship/modal';
 import useFleetTable from './useTable';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
+	const fleet = useSelector( ( { fleet } ) => fleet );
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
 	
@@ -25,7 +29,16 @@ export default function Fleet() {
 	
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
-		dispatch( fleet_checkVersion() );
+		if ( fleet.version !== version ) {
+			// recalculate equipment tiers
+			const ships = cloneDeep( fleet.ships );
+			for ( const name in ships ) {
+				const { equip } = ships[ name ];
+				getTier( fleetData[ name ], equip );
+			}
+			dispatch( fleet_setShips( ships ) );
+			dispatch( fleet_setVersion() );
+		}
 	}, [] );
 	
 	return <PageContainer>

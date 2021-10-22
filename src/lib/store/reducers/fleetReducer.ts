@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import fleetData from '../../../pages/fleet/data';
-import { equipTier, version } from '../../../pages/fleet/ship/equip/data';
 
 type State = {
 	ships: Record<string, {
@@ -16,6 +14,8 @@ type State = {
 	version: string
 };
 
+export const version = '2021-10-08';
+
 const initialState: State = {
 	ships : {},
 	filter: {
@@ -26,22 +26,6 @@ const initialState: State = {
 	version
 };
 
-export function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, number ][] ) {
-	equip?.forEach( ( eq, i ) => {
-		if ( !eq ) return;
-		if ( !eq[ 0 ] ) {
-			eq[ 2 ] = 0;
-			return;
-		}
-		if ( eq[ 1 ] ) {
-			eq[ 2 ] = 1;
-			return;
-		}
-		const tier = equipTier[ ship.equipType[ i ] ];
-		eq[ 2 ] = tier && eq[ 0 ] in tier ? tier[ eq[ 0 ] ][ 0 ] + 1 : 6;
-	} );
-}
-
 const fleetSlice = createSlice( {
 	name         : 'fleet',
 	initialState,
@@ -49,15 +33,15 @@ const fleetSlice = createSlice( {
 		fleet_reset() {
 			return initialState;
 		},
-		fleet_checkVersion( state ) {
-			if ( state.version !== initialState.version ) {
-				// recalculate equipment tiers
-				for ( const name in state.ships ) {
-					const ship = state.ships[ name ];
-					getTier( fleetData[ name ], ship.equip );
-				}
-				state.version = initialState.version;
-			}
+		fleet_setVersion( state ) {
+			state.version = initialState.version;
+		},
+		fleet_setShips( state, { payload }: PayloadAction<Record<string, {
+			lvl: number,
+			love: number,
+			equip: [ number, 0 | 1, number ][] // id, override, tier
+		}>> ) {
+			state.ships = payload;
 		},
 		fleet_setShip( state, { payload }: PayloadAction<{
 			name: string,
@@ -67,7 +51,6 @@ const fleetSlice = createSlice( {
 				equip?: [ number, 0 | 1, number ][]
 			}
 		}> ) {
-			getTier( fleetData[ payload.name ], payload.ship.equip );
 			state.ships = {
 				...state.ships,
 				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
@@ -90,7 +73,8 @@ const fleetSlice = createSlice( {
 
 export default fleetSlice.reducer;
 export const
-	fleet_reset        = fleetSlice.actions.fleet_reset,
-	fleet_checkVersion = fleetSlice.actions.fleet_checkVersion,
-	fleet_setShip      = fleetSlice.actions.fleet_setShip,
-	fleet_setFilter    = fleetSlice.actions.fleet_setFilter;
+	fleet_reset      = fleetSlice.actions.fleet_reset,
+	fleet_setVersion = fleetSlice.actions.fleet_setVersion,
+	fleet_setShips   = fleetSlice.actions.fleet_setShips,
+	fleet_setShip    = fleetSlice.actions.fleet_setShip,
+	fleet_setFilter  = fleetSlice.actions.fleet_setFilter;
