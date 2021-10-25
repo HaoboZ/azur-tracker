@@ -12,7 +12,7 @@ import {
 	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
-import { memo, useMemo } from 'react';
+import { Fragment, memo, useMemo } from 'react';
 import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
@@ -73,7 +73,9 @@ function EnhancedTable<Item>( {
 				tag={TableBody}
 			/>
 			: <TableBody>
-				{items.map( ( item, index ) => row( { item, index } ) )}
+				{items.map( ( item, index ) => <Fragment key={index}>
+					{row( { item, index } )}
+				</Fragment> )}
 			</TableBody>;
 	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	

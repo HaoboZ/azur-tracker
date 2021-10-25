@@ -36,7 +36,7 @@ export default function Info() {
 					<TableBody>
 						{opsi.map( ( [ image, name, weak ], index ) => <TableRow key={index}>
 							<TableCell>
-								<Box sx={{ position: 'relative', width: 50, height: 50 }}>
+								<Box sx={{ position: 'relative', width: 64, height: 64 }}>
 									<Image src={image} alt={name} layout='fill' objectFit='contain' objectPosition='left'/>
 								</Box>
 							</TableCell>

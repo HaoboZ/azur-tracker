@@ -22,15 +22,15 @@ function VirtualTable<Item extends object>( {
 	
 	return <TableContainer component={Paper}>
 		<Table
+			component='div'
 			size='small'
 			sx={{
 				'& .MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
 				'& .MuiTableCell-root'      : {
-					display   : 'flex',
-					alignItems: 'center',
-					whiteSpace: 'nowrap',
-					overflow  : 'hidden',
-					px        : 1
+					whiteSpace  : 'nowrap',
+					overflow    : 'hidden',
+					textOverflow: 'ellipsis',
+					px          : 1
 				}
 			}}
 			{...getTableProps()}>

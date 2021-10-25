@@ -17,27 +17,27 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',
-		minWidth: 40
+		width   : 40
 	}, {
 		Header   : 'Rarity',
 		accessor : 'rarity',
-		minWidth : 20,
+		width    : 20,
 		className: ( { value } ) => `color-${rarityColors[ value ]}`,
 		sortType : ( rowA, rowB, columnId ) => Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
 	}, {
 		Header   : 'Faction',
 		accessor : 'faction',
-		minWidth : 20,
+		width    : 20,
 		className: ( { value } ) => `color-${factionColors[ value ]}`
 	}, {
 		Header   : 'Type',
 		accessor : 'type',
-		minWidth : 20,
+		width    : 20,
 		className: ( { value } ) => `color-${typeColors[ value ]}`
 	}, {
 		Header             : 'Tier',
 		accessor           : 'tier',
-		minWidth           : 10,
+		width              : 10,
 		Cell               : ( { value } ) => {
 			switch ( value ) {
 			case 7:
@@ -55,7 +55,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	}, {
 		Header             : 'Love',
 		accessor           : 'love',
-		minWidth           : 10,
+		width              : 10,
 		Cell               : ( { value } ) => [
 			<SVGIcon key='emptyHeart' name='emptyHeart'/>,
 			<SVGIcon key='heart' name='heart'/>,
@@ -68,7 +68,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	}, {
 		Header             : 'Level',
 		accessor           : 'lvl',
-		minWidth           : 10,
+		width              : 10,
 		Cell               : ( { value } ) => value === 126 ? <SVGIcon name='star'/> : value,
 		disableGlobalFilter: true,
 		sortType           : 'number',
@@ -76,10 +76,11 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	}, {
 		Header             : 'Equips',
 		accessor           : 'equip',
-		minWidth           : 20,
+		width              : 20,
 		Cell               : ( { value, row } ) => equipBetter.value[ row.id ]
 			? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
-			: value?.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
+			: value?.some( ( equip ) => equip[ 2 ] )
+			&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
 		className          : ( { row } ) => {
 			if ( equipBetter.value[ row.id ] ) {
 				return `color-${tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`;
