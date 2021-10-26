@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import eventImage from '../../../public/images/event.png';
+import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import { event_newEvent } from '../../lib/store/reducers/eventReducer';
@@ -42,7 +43,19 @@ export default function Event() {
 	
 	return <PageContainer>
 		<Head><title>Event | Azur Lane Tracker</title></Head>
-		<PageTitle>Event Tracker</PageTitle>
+		<PageTitle
+			actions={<HelpTourButton
+				steps={[ {
+					target       : '#first',
+					content      : 'This is a test',
+					disableBeacon: true
+				}, {
+					target : '#second',
+					content: 'This is a test'
+				} ]}
+			/>}>
+			Event Tracker
+		</PageTitle>
 		<Box
 			display='flex'
 			justifyContent='center'

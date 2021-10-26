@@ -34,14 +34,14 @@ export default function Info() {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{opsi.map( ( [ image, name, weak ], index ) => <TableRow key={index}>
+						{opsi.map( ( [ image, ship, weakness ], index ) => <TableRow key={index}>
 							<TableCell>
 								<Box sx={{ position: 'relative', width: 64, height: 64 }}>
-									<Image src={image} alt={name} layout='fill' objectFit='contain' objectPosition='left'/>
+									<Image src={image} alt={ship} layout='fill' objectFit='contain' objectPosition='left'/>
 								</Box>
 							</TableCell>
-							<TableCell>{name}</TableCell>
-							<TableCell>{weak}</TableCell>
+							<TableCell>{ship}</TableCell>
+							<TableCell>{weakness}</TableCell>
 						</TableRow> )}
 					</TableBody>
 				</Table>
