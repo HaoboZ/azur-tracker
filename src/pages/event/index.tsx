@@ -44,6 +44,7 @@ export default function Event() {
 	return <PageContainer>
 		<Head><title>Event | Azur Lane Tracker</title></Head>
 		<PageTitle
+			id='first'
 			actions={<HelpTourButton
 				steps={[ {
 					target       : '#first',
@@ -57,6 +58,7 @@ export default function Event() {
 			Event Tracker
 		</PageTitle>
 		<Box
+			id='second'
 			display='flex'
 			justifyContent='center'
 			sx={{
