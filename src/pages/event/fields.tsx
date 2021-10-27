@@ -1,4 +1,4 @@
-import { Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
+import { Box, Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
@@ -35,7 +35,7 @@ export default function EventFields( { time, neededPoints }: {
 				End{time.isBefore( eventData.endDate ) ? 's' : 'ed'} {time.to( eventData.endDate )}
 			</Typography>
 		</Grid>
-		<Grid item sm={3} xs={6}>
+		<Grid id='shop' item sm={3} xs={6}>
 			<FormattedTextField
 				type='text'
 				label='Shop Cost'
@@ -48,7 +48,7 @@ export default function EventFields( { time, neededPoints }: {
 				onClick={() => showModal( ShopModal )}
 			/>
 		</Grid>
-		<Grid item sm={3} xs={6}>
+		<Grid id='daily' item sm={3} xs={6}>
 			<TextField
 				type='text'
 				label='Daily Points'
@@ -61,11 +61,13 @@ export default function EventFields( { time, neededPoints }: {
 				onClick={() => showModal( DailyModal )}
 			/>
 		</Grid>
-		<Grid item sm={3} xs={6}>
-			<InputLabel shrink>Required Points</InputLabel>
-			<Typography>{neededPoints} Points</Typography>
+		<Grid id='required' item sm={3} xs={6}>
+			<Box>
+				<InputLabel shrink>Required Points</InputLabel>
+				<Typography>{neededPoints} Points</Typography>
+			</Box>
 		</Grid>
-		<Grid item sm={3} xs={6}>
+		<Grid id='current' item sm={3} xs={6}>
 			<FormattedTextField
 				type='number'
 				label='Current Points'

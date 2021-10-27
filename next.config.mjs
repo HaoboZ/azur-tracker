@@ -1,9 +1,9 @@
-const bundleAnalyzer = require( '@next/bundle-analyzer' );
-const withPWA = require( 'next-pwa' );
+import bundleAnalyzer from '@next/bundle-analyzer';
+import withPWA from 'next-pwa';
 
 const withBundleAnalyzer = bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } );
 // noinspection JSUnusedGlobalSymbols
-module.exports = withBundleAnalyzer( withPWA( {
+export default withBundleAnalyzer( withPWA( {
 	pageExtensions: [ 'page.tsx', 'page.ts', 'page.jsx', 'page.js' ],
 	webpack( config, { webpack } ) {
 		config.plugins.push(
@@ -13,7 +13,8 @@ module.exports = withBundleAnalyzer( withPWA( {
 		);
 		return config;
 	},
-	pwa: {
+	swcMinify: process.env.NODE_ENV !== 'development',
+	pwa      : {
 		disable: process.env.NODE_ENV === 'development',
 		dest   : 'public'
 	}

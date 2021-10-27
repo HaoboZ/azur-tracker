@@ -1,8 +1,9 @@
-import { ListItemSecondaryAction, ListItemText } from '@mui/material';
+import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import { cloneDeep } from 'lodash';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
@@ -43,7 +44,26 @@ export default function Fleet() {
 	
 	return <PageContainer>
 		<Head><title>Fleet | Azur Lane Tracker</title></Head>
-		<PageTitle>Fleet Tracker</PageTitle>
+		<PageTitle actions={<HelpTourButton
+			steps={[ {
+				target   : '#help',
+				content  : <>
+					<Typography>This page will help you</Typography>
+					<ul style={{ textAlign: 'start' }}>
+						<li>track ship information (levels, affection)</li>
+						<li>sort your fleet easily</li>
+						<li>and have decent equips by tier</li>
+					</ul>
+					<Typography>For people who want every ship to equip good stuff and level up everyone</Typography>
+				</>,
+				placement: 'center'
+			}/*, {
+				target : '#farmOil',
+				content: <Typography>
+					Calculates amount of oil needed.
+				</Typography>
+			}*/ ]}
+		/>}>Fleet Tracker</PageTitle>
 		<FleetFilters table={table}/>
 		<VirtualDisplay
 			{...table}

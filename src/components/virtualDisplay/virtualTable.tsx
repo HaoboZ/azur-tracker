@@ -27,6 +27,8 @@ function VirtualTable<Item extends object>( {
 			sx={{
 				'& .MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
 				'& .MuiTableCell-root'      : {
+					display     : 'flex',
+					alignItems  : 'center',
 					whiteSpace  : 'nowrap',
 					overflow    : 'hidden',
 					textOverflow: 'ellipsis',

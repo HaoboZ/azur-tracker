@@ -25,12 +25,13 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 				'Required Plays',
 				'Total Oil Cost'
 			],
-			columns: ( item ) => {
+			columns: ( item, index ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return [
 					<FormattedTextField
 						key='points'
+						id={!index ? 'farmPoints' : undefined}
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.points}
@@ -41,6 +42,7 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 					/>,
 					<FormattedTextField
 						key='oil'
+						id={!index ? 'farmCost' : undefined}
 						type='number'
 						inputProps={{ inputMode: 'numeric' }}
 						value={item.oil}
@@ -49,18 +51,23 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 							oil: parseInt( target.value )
 						} ) )}
 					/>,
-					<Typography key='plays'>{plays}</Typography>,
-					<Typography key='cost'>{isFinite( oil ) ? oil : Infinity}</Typography>
+					<Typography key='plays' id={!index ? 'farmPlays' : undefined}>
+						{plays}
+					</Typography>,
+					<Typography key='cost' id={!index ? 'farmOil' : undefined}>
+						{isFinite( oil ) ? oil : Infinity}
+					</Typography>
 				];
 			}
 		}}
 		listProps={{
-			renderRow: ( item ) => {
+			renderRow: ( item, index ) => {
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>
 					<Grid item xs>
 						<FormattedTextField
+							id={!index ? 'farmPoints' : undefined}
 							type='number'
 							inputProps={{ inputMode: 'numeric' }}
 							label='Points/Run'
@@ -73,6 +80,7 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 					</Grid>
 					<Grid item xs>
 						<FormattedTextField
+							id={!index ? 'farmCost' : undefined}
 							type='number'
 							inputProps={{ inputMode: 'numeric' }}
 							label='Oil/Run'
@@ -84,8 +92,12 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 						/>
 					</Grid>
 					<Grid item xs={5}>
-						<Typography>{plays} Play{plays === 1 ? '' : 's'}</Typography>
-						<Typography>{isFinite( oil ) ? oil : Infinity} Oil Cost</Typography>
+						<Typography id={!index ? 'farmPlays' : undefined}>
+							{plays} Play{plays === 1 ? '' : 's'}
+						</Typography>
+						<Typography id={!index ? 'farmOil' : undefined}>
+							{isFinite( oil ) ? oil : Infinity} Oil Cost
+						</Typography>
 					</Grid>
 				</Grid>;
 			}

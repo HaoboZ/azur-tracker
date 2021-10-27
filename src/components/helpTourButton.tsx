@@ -51,10 +51,13 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 			{...props}
 		/>
 		<IconButton
+			id='help'
 			{...buttonProps}
 			onClick={( e ) => {
 				buttonProps?.onClick?.( e );
 				setTourOpen( true );
-			}}><HelpIcon/></IconButton>
+			}}>
+			<HelpIcon/>
+		</IconButton>
 	</>;
 }
