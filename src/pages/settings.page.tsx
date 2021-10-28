@@ -15,7 +15,7 @@ import {
 	ToggleButtonGroup
 } from '@mui/material';
 import { GetServerSideProps } from 'next';
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
@@ -261,5 +261,7 @@ export default function Home() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getServerSideProps: GetServerSideProps = async ( context ) => {
-	return { props: { session: await getServerSession( context, authOptions ) } };
+	const val = await getServerSession( context, authOptions );
+	console.log( val );
+	return { props: { session: val } };
 };
