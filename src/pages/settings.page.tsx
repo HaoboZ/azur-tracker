@@ -15,7 +15,8 @@ import {
 	ToggleButtonGroup
 } from '@mui/material';
 import { GetServerSideProps } from 'next';
-import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,6 +36,7 @@ import {
 	setTheme
 } from '../lib/store/reducers/mainReducer';
 import { research_reset } from '../lib/store/reducers/researchReducer';
+import { authOptions } from './api/auth/[...nextauth].page';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
@@ -259,5 +261,5 @@ export default function Home() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getServerSideProps: GetServerSideProps = async ( context ) => {
-	return { props: { session: await getSession( context ) } };
+	return { props: { session: await getServerSession( context, authOptions ) } };
 };

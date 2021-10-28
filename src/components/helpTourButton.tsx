@@ -45,7 +45,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 					primaryColor   : theme.palette.primary.main,
 					textColor      : theme.palette.text.primary,
 					spotlightShadow: theme.shadows[ 1 ],
-					zIndex         : 1500
+					zIndex         : theme.zIndex.tooltip
 				}
 			}}
 			{...props}

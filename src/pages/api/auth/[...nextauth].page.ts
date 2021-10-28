@@ -1,10 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
 const GOOGLE_AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 
-// noinspection JSUnusedGlobalSymbols
-export default NextAuth( {
+export const authOptions: NextAuthOptions = {
 	providers: [
 		GoogleProvider( {
 			clientId     : process.env.GOOGLE_ID,
@@ -38,4 +37,6 @@ export default NextAuth( {
 		}
 	},
 	secret   : process.env.SECRET
-} );
+};
+// noinspection JSUnusedGlobalSymbols
+export default NextAuth( authOptions );

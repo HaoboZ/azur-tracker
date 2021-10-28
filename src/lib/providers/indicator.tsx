@@ -33,7 +33,7 @@ export default function IndicatorProvider( { children } ) {
 				size={20}
 				sx={{
 					position: 'fixed',
-					zIndex  : 1500,
+					zIndex  : 'tooltip',
 					bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
 					right   : 'calc(env(safe-area-inset-right) + 10px)'
 				}}

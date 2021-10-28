@@ -35,7 +35,7 @@ export default function BottomBar( { children } ) {
 		<Box
 			position='fixed'
 			top={0}
-			zIndex={1100}
+			zIndex='appBar'
 			width='100%'
 			height='env(safe-area-inset-top)'
 			bgcolor='primary.main'

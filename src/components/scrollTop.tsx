@@ -10,7 +10,7 @@ export default function ScrollTop() {
 			size='medium'
 			sx={{
 				position: 'fixed',
-				zIndex  : 1400,
+				zIndex  : 'snackbar',
 				bottom  : 'calc(env(safe-area-inset-bottom) + 24px)',
 				right   : 'calc(env(safe-area-inset-right) + 24px)',
 				mb      : {
