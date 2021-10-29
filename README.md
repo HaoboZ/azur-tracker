@@ -16,5 +16,5 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 
 ## TODO
 
-* Add body scroll lock for modal
-* disable scroll to close for swipeabledrawer modal
+* next-auth use getServerSession when fully released
+* next-pwa remove buildExcludes when fixed
