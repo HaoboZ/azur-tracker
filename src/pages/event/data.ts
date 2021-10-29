@@ -1,15 +1,15 @@
 // noinspection SpellCheckingInspection
 
 const eventData = {
-	name   : 'Upon the Shimmering Blue',
-	link   : 'https://azurlane.koumakan.jp/Upon_the_Shimmering_Blue',
-	endDate: '2021-10-03T23:59-07',
+	name   : 'Skybound Oratorio Rerun',
+	link   : 'https://azurlane.koumakan.jp/Skybound_Oratorio',
+	endDate: '2021-11-10T23:59-07',
 	shop   : [
-		{ name: 'Chikuma', cost: 8000, amount: 5 },
-		// { name: 'Casablanca', cost: 8000, amount: 5 },
-		{ name: 'Quintuple 610mm Torpedo', cost: 10000, amount: 1 },
-		// { name: 'PBY-5A Catalina', cost: 1000, amount: 1 },
+		{ name: 'Jeanne d\'Arc', cost: 8000, amount: 5 },
+		{ name: 'Béarn', cost: 4000, amount: 5 },
 		{ name: 'Gear Skin Box', cost: 2000, amount: 10 },
+		{ name: 'Twin 203mm Main Gun (Mle 1924) T3 Design', cost: 135, amount: 15 },
+		{ name: 'T3 Quadruple 380mm Main Gun (Mle 1935) T3 Design', cost: 135, amount: 15 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Sakura Tech Box', cost: 300, amount: 4 },

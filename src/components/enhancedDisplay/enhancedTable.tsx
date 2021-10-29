@@ -1,6 +1,7 @@
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material';
 import {
 	Box,
+	Collapse,
 	IconButton,
 	Paper,
 	Table,
@@ -9,14 +10,33 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	TableRowProps,
 	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
-import { Fragment, memo, useMemo } from 'react';
+import { Fragment, memo, useMemo, useState } from 'react';
 import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
+
+function ExpandRow( { children, renderPanel, ...props }: {
+	renderPanel
+} & TableRowProps ) {
+	const [ open, setOpen ] = useState( false );
+	
+	return <>
+		<TableRow
+			{...props}
+			onClick={renderPanel || props.onClick ? ( e ) => {
+				setOpen( ( open ) => !open );
+				props.onClick?.( e );
+			} : undefined}>{children}</TableRow>
+		{renderPanel && <Collapse in={open}>
+			<TableRow><TableCell>{renderPanel}</TableCell></TableRow>
+		</Collapse>}
+	</>;
+}
 
 function EnhancedTable<Item>( {
 	title,
@@ -27,6 +47,7 @@ function EnhancedTable<Item>( {
 	editable,
 	sortable,
 	selectable,
+	renderPanel,
 	loading,
 	loadingComponent = <Loading/>,
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
@@ -40,9 +61,10 @@ function EnhancedTable<Item>( {
 		
 		const row = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
-			return <TableRow
+			return <ExpandRow
 				hover
 				selected={selected}
+				renderPanel={renderPanel?.( item, index )}
 				onClick={selectable?.setSelected
 				&& ( () => _selectRow( selectable,
 					item, index, selected, totalSelected ) )}>
@@ -62,7 +84,7 @@ function EnhancedTable<Item>( {
 						<CloseIcon/>
 					</IconButton>}
 				</TableCell>}
-			</TableRow>;
+			</ExpandRow>;
 		};
 		
 		return sortable
@@ -79,27 +101,25 @@ function EnhancedTable<Item>( {
 			</TableBody>;
 	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
-	return <Box sx={{ '& .minWidth': { width: '0.01%' } }}>
+	return <Box>
 		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
 		<TableContainer component={Paper} {...props}>
 			<Table
 				size='small'
 				sx={{
-					'& .MuiTableBody-root .MuiTableRow-root': {
-						':hover'        : selectable ? { cursor: 'pointer' } : undefined,
-						':last-child td': { borderBottom: 0 }
-					},
-					overflow                                : 'hidden'
+					'& .MuiTableRow-hover:hover'                       : selectable ? { cursor: 'pointer' } : undefined,
+					'& .MuiTableRow-root:last-child .MuiTableCell-root': { borderBottom: 0 },
+					overflow                                           : 'hidden'
 				}}>
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
-						{sortable && <TableCell className='minWidth'/>}
+						{sortable && <TableCell/>}
 						{headers.map( ( cell, index ) => <TableCell
 							key={index}
 							sx={{ width: widths?.[ index ] }}>
 							{cell}
 						</TableCell> )}
-						{Boolean( editable ) && <TableCell className='minWidth'>
+						{Boolean( editable ) && <TableCell>
 							{!loading && ( editable?.max ? items.length < editable.max : true )
 							&& <IconButton onClick={async () => {
 								editable.onAdd?.();

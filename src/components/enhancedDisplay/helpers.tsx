@@ -1,5 +1,5 @@
 import { ButtonProps, ListProps, TableContainerProps } from '@mui/material';
-import { ReactNode, ReactNodeArray } from 'react';
+import { ReactNode } from 'react';
 import { ActionTitleProps } from './actionTitle';
 
 export type EnhancedDisplayProps<Item> = {
@@ -40,9 +40,11 @@ export type EnhancedListProps<Item> = {
 } & Omit<ListProps, 'title'>;
 
 export type EnhancedTableProps<Item> = {
-	headers: ReactNodeArray,
-	columns: ( item: Item, index: number ) => ReactNodeArray,
-	widths?: number[]
+	headers: ReactNode[],
+	columns: ( item: Item, index: number ) => ReactNode[],
+	widths?: number[],
+	// cannot be sortable
+	renderPanel?: ( item: Item, index: number ) => ReactNode
 } & Omit<TableContainerProps, 'title'>;
 
 export function _deleteRow( data, setData, editable, selectable,

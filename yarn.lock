@@ -2690,12 +2690,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sass@npm:^1.16.1":
-  version: 1.16.1
-  resolution: "@types/sass@npm:1.16.1"
+"@types/sass@npm:^1.43.0":
+  version: 1.43.0
+  resolution: "@types/sass@npm:1.43.0"
   dependencies:
     "@types/node": "*"
-  checksum: 3f86d2eaf4988a2775fc0fc164d35e73ce82d71228191da7b11d97ad5e8ac129f1c5f798307e31482f8cfebab758bd3b24e731860bed81afe5a1bbe13fa2b2df
+  checksum: a362349c157fb319f2f27fa1fc0f2e0dee3d8fb249b6914047a227319f08197bc3f0a5e909a520478ed9048a241dbf53b75ecb58b299077bd3efd8324a44f297
   languageName: node
   linkType: hard
 
@@ -3391,7 +3391,7 @@ __metadata:
     "@types/react-swipeable-views-utils": ^0.13.3
     "@types/react-table": ^7.7.7
     "@types/react-window": ^1.8.5
-    "@types/sass": ^1.16.1
+    "@types/sass": ^1.43.0
     "@types/sortablejs": ^1.10.7
     "@typescript-eslint/eslint-plugin": ^5.2.0
     "@typescript-eslint/parser": ^5.2.0
@@ -3426,7 +3426,7 @@ __metadata:
     react-table: ^7.7.0
     react-window: ^1.8.6
     react-window-scroller: ^1.0.10
-    redux: ^4.1.1
+    redux: ^4.1.2
     redux-persist: ^6.0.0
     redux-persist-transform-compress: ^4.2.0
     sass: ^1.43.4
@@ -9046,12 +9046,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.0, redux@npm:^4.1.0, redux@npm:^4.1.1":
+"redux@npm:^4.0.0, redux@npm:^4.1.0":
   version: 4.1.1
   resolution: "redux@npm:4.1.1"
   dependencies:
     "@babel/runtime": ^7.9.2
   checksum: 99519438a5d20b69404ad3816307ccc189f16df04b64c50d82c415ec488ea68b656d7a2fc81b6345e8d90f095344dfea68246500f72613d76464986660bc0485
+  languageName: node
+  linkType: hard
+
+"redux@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "redux@npm:4.1.2"
+  dependencies:
+    "@babel/runtime": ^7.9.2
+  checksum: 6a839cee5bd580c5298d968e9e2302150e961318253819bcd97f9d945a5a409559eacddf6026f4118bb68b681c593d90e8a2c5bbf278f014aff9bf0d2d8fa084
   languageName: node
   linkType: hard
 

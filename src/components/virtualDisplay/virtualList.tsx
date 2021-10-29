@@ -6,7 +6,6 @@ import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 
 function VirtualList<Item extends object>( {
-	getTableProps,
 	rows,
 	prepareRow,
 	onClick,
@@ -15,7 +14,7 @@ function VirtualList<Item extends object>( {
 	onClick?: ( row: Row<Item> ) => void,
 	renderRow: ( row: Row<Item> ) => ReactNode
 } & TableInstance<Item> ) {
-	return <Paper square {...getTableProps()}>
+	return <Paper square>
 		<ReactWindowScroller>
 			{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
 				ref={ref}
@@ -31,15 +30,10 @@ function VirtualList<Item extends object>( {
 					const row = rows[ index ];
 					prepareRow( row );
 					return onClick
-						? <ListItemButton
-							divider
-							onClick={() => onClick( row )}
-							{...row.getRowProps( { style } )}>
+						? <ListItemButton divider onClick={() => onClick( row )} style={style}>
 							{renderRow( row )}
 						</ListItemButton>
-						: <ListItem
-							divider
-							{...row.getRowProps( { style } )}>
+						: <ListItem divider style={style}>
 							{renderRow( row )}
 						</ListItem>;
 				}}
