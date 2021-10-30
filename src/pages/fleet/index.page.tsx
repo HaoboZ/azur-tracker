@@ -1,5 +1,6 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import { cloneDeep } from 'lodash';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,8 +13,9 @@ import { fleet_setShips, fleet_setVersion, version } from '../../lib/store/reduc
 import fleetData from './data';
 import FleetFilters from './filters';
 import getTier from './getTier';
-import ShipModal from './ship/modal';
 import useFleetTable from './useTable';
+
+const ShipModal = dynamic( () => import( './ship/modal' ) );
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {

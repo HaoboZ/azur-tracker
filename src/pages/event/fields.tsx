@@ -1,12 +1,14 @@
 import { Box, Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
 import moment from 'moment';
+import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
 import { useModal } from '../../lib/providers/modal';
 import { event_setPoints } from '../../lib/store/reducers/eventReducer';
-import DailyModal from './dailyModal';
 import eventData from './data';
-import ShopModal from './shopModal';
+
+const ShopModal = dynamic( () => import( './shopModal' ) );
+const DailyModal = dynamic( () => import( './dailyModal' ) );
 
 export default function EventFields( { time, neededPoints }: {
 	time: moment.Moment,
