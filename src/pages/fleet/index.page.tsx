@@ -72,7 +72,7 @@ export default function Fleet() {
 			onClick={( row ) => showModal( ShipModal, {
 				variant: 'bottom'
 			}, {
-				ship         : row.original as any,
+				ship         : row.original,
 				equipBetter  : equipBetter.value[ row.id ],
 				selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
 			} )}

@@ -4,12 +4,12 @@ import { nanoid } from 'nanoid';
 import { ComponentType, createContext, useContext, useEffect, useState } from 'react';
 import ResponsiveModal, { ResponsiveModalProps } from '../../components/responsiveModal';
 
-type ModalInfo = {
+type ModalInfo<T> = {
 	id: string,
 	open: boolean,
 	Component: ComponentType,
 	modalProps?: Partial<ResponsiveModalProps>,
-	props?: any
+	props?: T
 };
 
 export type ModalControls = {
@@ -29,7 +29,7 @@ export type DynamicModalControls = {
 		props?: T
 	) => string,
 	closeModal: ( id: string ) => void,
-	modalInfo: ( id: string ) => Promise<ModalInfo>
+	modalInfo: <T>( id: string ) => Promise<ModalInfo<T>>
 };
 
 type C1<T> = (
@@ -50,7 +50,7 @@ const ModalContext = createContext<C1<any> & C2>( () => ( {
 } ) );
 ModalContext.displayName = 'Modal';
 
-const ModalControlsContext = createContext<ModalControls & { modalInfo: ModalInfo }>( {
+const ModalControlsContext = createContext<ModalControls & { modalInfo: ModalInfo<any> }>( {
 	closeModal: () => null,
 	modalInfo : null,
 	events    : null
@@ -58,7 +58,7 @@ const ModalControlsContext = createContext<ModalControls & { modalInfo: ModalInf
 ModalControlsContext.displayName = 'ModalControls';
 
 export default function ModalProvider( { children } ) {
-	const [ modals, setModals ] = useState<ModalInfo[]>( [] );
+	const [ modals, setModals ] = useState<ModalInfo<any>[]>( [] );
 	
 	function controls( id: string, remove?: boolean ): ModalControls {
 		return {
@@ -135,7 +135,7 @@ export default function ModalProvider( { children } ) {
 	}
 	
 	return <ModalContext.Provider value={( id?, Component?, modalProps?, props? ) => {
-		if ( !id ) return dynamicControls() as any;
+		if ( !id ) return dynamicControls();
 		
 		const index = modals.findIndex( ( modal ) => modal?.id === id );
 		let modalControls: ModalControls;

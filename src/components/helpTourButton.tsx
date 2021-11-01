@@ -1,5 +1,6 @@
 import { Help as HelpIcon } from '@mui/icons-material';
 import { IconButton, IconButtonProps, useTheme } from '@mui/material';
+import { includes } from 'lodash';
 import { useState } from 'react';
 import Joyride, { ACTIONS, EVENTS, Props } from 'react-joyride';
 
@@ -20,7 +21,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 					setStepIndex( 0 );
 					break;
 				case ACTIONS.NEXT:
-					if ( ![ EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND ].includes( type as any ) ) break;
+					if ( !includes( [ EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND ], type ) ) break;
 					if ( index === size - 1 ) {
 						setTourOpen( false );
 						setStepIndex( 0 );
@@ -29,7 +30,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 					}
 					break;
 				case ACTIONS.PREV:
-					if ( ![ EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND ].includes( type as any ) ) break;
+					if ( !includes( [ EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND ], type ) ) break;
 					setStepIndex( index - 1 );
 				}
 			}}

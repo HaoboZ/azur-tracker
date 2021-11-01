@@ -5,11 +5,11 @@ import Actions, { ActionProps } from '../actions';
 export default function PageSection( { actions, listItemProps, children, max, ...props }: {
 	actions?: ActionProps[] | ReactChild,
 	max?: number,
-	listItemProps?: ListItemProps,
+	listItemProps?: ListItemProps<'div'>,
 	children?: ReactNode
 } & ListItemTextProps ) {
 	return <Box display='flex' flexDirection='column'>
-		<ListItem component='div' sx={{ my: 2 }} divider {...listItemProps as any}>
+		<ListItem component='div' sx={{ my: 2 }} divider {...listItemProps}>
 			<ListItemText primaryTypographyProps={{ variant: 'h3' }} {...props}/>
 			{Array.isArray( actions ) ? <Actions items={actions} max={max}/> : actions}
 		</ListItem>

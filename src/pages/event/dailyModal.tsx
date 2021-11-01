@@ -18,11 +18,11 @@ export default function DailyModal() {
 		() => daily.reduce( ( total, item ) => total + +item.amount, 0 ),
 		[ daily ] );
 	
-	function modifyItem( index: number, item: { id?: string, name?: string, amount?: string | number } ) {
-		if ( 'amount' in item && typeof item.amount === 'number' ) {
+	function modifyItem( index: number, item: { id?: string, name?: string, amount?: number } ) {
+		if ( 'amount' in item ) {
 			item.amount = Math.max( item.amount || 0, 0 );
 		}
-		daily[ index ] = { ...daily[ index ], ...item } as any;
+		daily[ index ] = { ...daily[ index ], ...item };
 		setDaily( [ ...daily ] );
 	}
 	

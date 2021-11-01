@@ -12,7 +12,7 @@ export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
 	const data = stringify( state );
-	const { data: { action } } = await axios.post<any>( '/api/checkData', {
+	const { data: { action } } = await axios.post( '/api/checkData', {
 		checksum : await md5( data ),
 		lastSaved: main.lastSaved
 	} );
@@ -49,7 +49,7 @@ export async function getBackup( integrity, check = true ) {
 			return;
 		}
 	}
-	const { data: { data, lastSaved } } = await axios.get<any>( '/api/getData' );
+	const { data: { data, lastSaved } } = await axios.get( '/api/getData' );
 	store.dispatch( setLastSaved( lastSaved ) );
 	const state = store.getState();
 	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );

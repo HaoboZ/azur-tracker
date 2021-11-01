@@ -164,7 +164,7 @@ export default function EquipModal( { info, selectedEquip }: {
 			<FormControlLabel
 				control={<Switch
 					checked={Boolean( override )}
-					onChange={( { target } ) => setOverride( +target.checked as any )}
+					onChange={( { target } ) => setOverride( +target.checked as 0 | 1 )}
 				/>}
 				label='Force BiS'
 				labelPlacement='start'

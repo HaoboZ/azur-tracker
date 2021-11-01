@@ -5,10 +5,10 @@ import Actions, { ActionProps } from '../actions';
 export default function PageTitle( { actions, listItemProps, children, max, ...props }: {
 	actions?: ActionProps[] | ReactChild,
 	max?: number,
-	listItemProps?: ListItemProps,
+	listItemProps?: ListItemProps<'div'>,
 	children?: ReactNode
 } & ListItemTextProps ) {
-	return <ListItem component='div' {...listItemProps as any}>
+	return <ListItem component='div' {...listItemProps}>
 		<ListItemText
 			primaryTypographyProps={{ variant: 'h1' }}
 			primary={children}
