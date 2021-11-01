@@ -84,7 +84,7 @@ export default function Event() {
 			}, {
 				target : '#farmPoints',
 				content: <Typography>
-					Enter the number points you get for farming a stage.
+					Select the stage or enter the number points you get for farming a stage.
 				</Typography>
 			}, {
 				target : '#farmCost',

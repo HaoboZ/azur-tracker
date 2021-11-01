@@ -1,9 +1,10 @@
-import { Grid, Typography } from '@mui/material';
+import { Autocomplete, Grid, MenuItem, TextField, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
+import eventData from './data';
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useSelector( ( { event } ) => event.farming );
@@ -29,16 +30,23 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 				const plays = Math.ceil( remainingPoints ? remainingPoints / item.points : 0 ),
 				      oil   = plays * item.oil;
 				return [
-					<FormattedTextField
+					<Autocomplete
 						key='points'
 						id={!index ? 'farmPoints' : undefined}
-						type='number'
-						inputProps={{ inputMode: 'numeric' }}
-						value={item.points}
-						onChange={( { target } ) => dispatch( event_modifyFarming( {
+						freeSolo
+						autoSelect
+						value={item.points.toString()}
+						onChange={( e, value ) => dispatch( event_modifyFarming( {
 							id    : item.id,
-							points: parseInt( target.value )
+							points: parseInt( value )
 						} ) )}
+						options={Object.keys( eventData.stages ).reverse()}
+						renderOption={( props, option ) => <MenuItem {...props}>{eventData.stages[ option ]}</MenuItem>}
+						renderInput={( params ) => <TextField
+							{...params}
+							type='number'
+							inputProps={{ ...params.inputProps, inputMode: 'numeric' }}
+						/>}
 					/>,
 					<FormattedTextField
 						key='oil'
@@ -66,16 +74,24 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 				      oil   = plays * item.oil;
 				return <Grid container spacing={2}>
 					<Grid item xs>
-						<FormattedTextField
+						<Autocomplete
+							key='points'
 							id={!index ? 'farmPoints' : undefined}
-							type='number'
-							inputProps={{ inputMode: 'numeric' }}
-							label='Points/Run'
-							value={item.points}
-							onChange={( { target } ) => dispatch( event_modifyFarming( {
+							freeSolo
+							autoSelect
+							value={item.points.toString()}
+							onChange={( e, value ) => dispatch( event_modifyFarming( {
 								id    : item.id,
-								points: parseInt( target.value )
+								points: parseInt( value )
 							} ) )}
+							options={Object.keys( eventData.stages )}
+							renderOption={( props, option ) => <MenuItem {...props}>{eventData.stages[ option ]}</MenuItem>}
+							renderInput={( params ) => <TextField
+								{...params}
+								type='number'
+								inputProps={{ ...params.inputProps, inputMode: 'numeric' }}
+								label='Points/Run'
+							/>}
 						/>
 					</Grid>
 					<Grid item xs>

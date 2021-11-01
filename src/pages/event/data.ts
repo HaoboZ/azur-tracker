@@ -28,6 +28,20 @@ const eventData = {
 		{ name: 'Coins', cost: 500, amount: 5 },
 		{ name: 'Oil', cost: 450, amount: 5 },
 		{ name: 'Oxy-cola', cost: 15, amount: 100 }
-	]
+	],
+	stages : {
+		30 : 'A1',
+		40 : 'A2',
+		50 : 'A3',
+		60 : 'B1',
+		70 : 'B2',
+		80 : 'B3',
+		90 : 'C1',
+		100: 'C2',
+		110: 'C3',
+		120: 'D1',
+		150: 'D2',
+		180: 'D3'
+	}
 };
 export default eventData;
