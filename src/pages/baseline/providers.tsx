@@ -5,8 +5,8 @@ import { IconButton, ThemeProvider } from '@mui/material';
 import { SessionProvider } from 'next-auth/react';
 import { SnackbarProvider } from 'notistack';
 import { ReactNode, useRef } from 'react';
+import { component, ComponentComposer } from '../../lib/helpers/chainedCall';
 import useTheme from '../../lib/hooks/useTheme';
-import { provider, ProviderComposer } from '../../lib/providers';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 
@@ -21,24 +21,24 @@ export default function Providers( { pageProps, cache = clientCache, children }:
 	
 	const snackbarRef = useRef<SnackbarProvider>();
 	
-	return <ProviderComposer
-		providers={[
+	return <ComponentComposer
+		components={[
 			// styling
-			provider( CacheProvider, { value: cache } ),
-			provider( ThemeProvider, { theme } ),
+			component( CacheProvider, { value: cache } ),
+			component( ThemeProvider, { theme } ),
 			// app
-			provider( SessionProvider, { session: pageProps.session } ),
+			component( SessionProvider, { session: pageProps.session } ),
 			// content
-			provider( ModalProvider ),
-			provider( SnackbarProvider, {
+			component( ModalProvider ),
+			component( SnackbarProvider, {
 				ref             : snackbarRef,
 				preventDuplicate: true,
 				action          : ( key ) => <IconButton onClick={() => snackbarRef.current.closeSnackbar( key )}>
 					<CloseIcon/>
 				</IconButton>
 			} ),
-			provider( IndicatorProvider )
+			component( IndicatorProvider )
 		]}>
 		{children}
-	</ProviderComposer>;
+	</ComponentComposer>;
 }
