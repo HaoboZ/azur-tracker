@@ -30,7 +30,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 					}
 					break;
 				case ACTIONS.PREV:
-					if ( !includes( [ EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND ], type ) ) break;
+					if ( !includes( [ EVENTS.STEP_BEFORE, EVENTS.TARGET_NOT_FOUND ], type ) ) break;
 					setStepIndex( index - 1 );
 				}
 			}}

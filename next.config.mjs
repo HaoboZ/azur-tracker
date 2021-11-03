@@ -7,8 +7,12 @@ import withPWA from 'next-pwa';
  */
 const nextConfig = {
 	pageExtensions: [ 'page.tsx', 'page.ts', 'page.jsx', 'page.js' ],
+	/**
+	 * @param {import('webpack').webpack.Configuration} config
+	 * @param {import('webpack')} webpack
+	 * @returns {import('webpack').webpack.Configuration}
+	 */
 	webpack( config, { webpack } ) {
-		config.optimization.minimize = false;
 		config.plugins.push(
 			new webpack.IgnorePlugin( {
 				resourceRegExp: /\.(test|spec)\.[jt]sx?$/
