@@ -2591,12 +2591,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.10":
-  version: 17.0.10
-  resolution: "@types/react-dom@npm:17.0.10"
+"@types/react-dom@npm:^17.0.11":
+  version: 17.0.11
+  resolution: "@types/react-dom@npm:17.0.11"
   dependencies:
     "@types/react": "*"
-  checksum: cc7d8d5b77ee2f3b989c107abd8ec0f2460ba1b1ee6e6d637124e1939594b5619fa4166ef0ea7632a69b68358e0b71aa618de446ccc416dcc0017175549da601
+  checksum: 4d5730dffbef86c887cecad7e3cecda424ce6a64d0b5441c63b5b015d48219868660a2bb1aa15e897e565ad8867fa6b885d4358b04e1c4e589ba4c07c3fda55c
   languageName: node
   linkType: hard
 
@@ -2668,7 +2668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^17.0.33":
+"@types/react@npm:*":
   version: 17.0.33
   resolution: "@types/react@npm:17.0.33"
   dependencies:
@@ -2676,6 +2676,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 5f53f3dae034229ff1eccb5de1c16d046696e883f8eae81b86e95c532798e655015e4edff8a6c9ec8f1c0ef12bb60dec43622d06256ba33ba6069e67a74b8d4e
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.34":
+  version: 17.0.34
+  resolution: "@types/react@npm:17.0.34"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 16729ad7d50922ccbf8eb93874d7781dc2f1c64edc78134b5edc7154839d41e9fe320eb1c11ad2d1c9bf28b99cb1febda344509c1fda025955a5c2b43c688c8f
   languageName: node
   linkType: hard
 
@@ -3373,8 +3384,8 @@ __metadata:
     "@types/lodash": ^4.14.176
     "@types/lodash-webpack-plugin": ^0.11.6
     "@types/node": ^16.11.6
-    "@types/react": ^17.0.33
-    "@types/react-dom": ^17.0.10
+    "@types/react": ^17.0.34
+    "@types/react-dom": ^17.0.11
     "@types/react-redux": ^7.1.20
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
@@ -3404,7 +3415,7 @@ __metadata:
     next-auth: 4.0.0-beta.6
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.0
-    next-sitemap: ^1.6.199
+    next-sitemap: ^1.6.203
     notistack: ^2.0.3
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -7739,9 +7750,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.6.199":
-  version: 1.6.199
-  resolution: "next-sitemap@npm:1.6.199"
+"next-sitemap@npm:^1.6.203":
+  version: 1.6.203
+  resolution: "next-sitemap@npm:1.6.203"
   dependencies:
     "@corex/deepmerge": ^2.6.34
     matcher: ^4.0.0
@@ -7750,7 +7761,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: bc9cd4316a22eb4ae4637c198c2970af89ac821bf51a635058f15946de57d0577df6fe764e0443ddd093ad4d512b12497aa6649efdf48918e9872667816f843e
+  checksum: a083a5ab9e6dc6345dcb27207d31a46dd4f84ff3cc7fa673038ed82d9961cbb7481958e35e67f6febff659d4e99749ab3256bab1263917f4e842d82147ab49b4
   languageName: node
   linkType: hard
 
