@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -6,7 +7,7 @@ import Baseline from './baseline';
 import './baseline/style.scss';
 
 // noinspection JSUnusedGlobalSymbols
-export default function _App( { Component, cache, pageProps } ) {
+export default function _App( { Component, pageProps }: AppProps ) {
 	return <StoreProvider store={store}>
 		<PersistGate loading={null} persistor={persistor}>
 			<Head>
@@ -18,7 +19,7 @@ export default function _App( { Component, cache, pageProps } ) {
 						user-scalable=no, viewport-fit=cover'
 				/>
 			</Head>
-			<Baseline pageProps={pageProps} cache={cache}>
+			<Baseline pageProps={pageProps}>
 				<Component {...pageProps}/>
 			</Baseline>
 		</PersistGate>

@@ -6,12 +6,12 @@ import { Children } from 'react';
 // noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
 	static async getInitialProps( ctx ) {
-		const cache = createCache( { key: 'css', prepend: true } );
-		const { extractCriticalToChunks } = createEmotionServer( cache );
+		const emotionCache = createCache( { key: 'css', prepend: true } );
+		const { extractCriticalToChunks } = createEmotionServer( emotionCache );
 		
 		const originalRenderPage = ctx.renderPage;
 		ctx.renderPage = () => originalRenderPage( {
-			enhanceApp: ( App ) => ( props ) => <App cache={cache} {...props}/>
+			enhanceApp: ( App ) => ( props ) => <App {...props} pageProps={{ ...props.pageProps, emotionCache }}/>
 		} );
 		
 		const initialProps = await Document.getInitialProps( ctx );
