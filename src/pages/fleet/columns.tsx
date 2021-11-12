@@ -1,7 +1,8 @@
+import { Star as StarIcon } from '@mui/icons-material';
 import { Cell, Column } from 'react-table';
-import SVGIcon, { TierIcon } from '../../lib/icons';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import { equippable, equipTier } from './ship/equip/data';
+import { AffinityIcons, TierIcon } from './tierIcon';
 
 const Rarity = {
 	'Decisive'  : 0,
@@ -17,28 +18,38 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',
-		width   : 40
+		width   : 40,
+		props   : { style: { minWidth: '80px' } }
 	}, {
-		Header   : 'Rarity',
-		accessor : 'rarity',
-		width    : 20,
-		className: ( { value } ) => `color-${rarityColors[ value ]}`,
-		sortType : ( rowA, rowB, columnId ) => Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
+		Header  : 'Rarity',
+		accessor: 'rarity',
+		width   : 20,
+		props   : ( cell ) => ( {
+			className: cell && `color-${rarityColors[ cell.value ]}`,
+			style    : { minWidth: '80px' }
+		} ),
+		sortType: ( rowA, rowB, columnId ) => Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
 	}, {
-		Header   : 'Faction',
-		accessor : 'faction',
-		width    : 20,
-		className: ( { value } ) => `color-${factionColors[ value ]}`
+		Header  : 'Faction',
+		accessor: 'faction',
+		width   : 20,
+		props   : ( cell ) => ( {
+			className: cell && `color-${factionColors[ cell.value ]}`,
+			style    : { minWidth: '90px' }
+		} )
 	}, {
-		Header   : 'Type',
-		accessor : 'type',
-		width    : 20,
-		className: ( { value } ) => `color-${typeColors[ value ]}`
+		Header  : 'Type',
+		accessor: 'type',
+		width   : 20,
+		props   : ( cell ) => ( {
+			className: cell && `color-${typeColors[ cell.value ]}`,
+			style    : { minWidth: '73px' }
+		} )
 	}, {
-		Header             : 'Tier',
-		accessor           : 'tier',
-		width              : 10,
-		Cell               : ( { value } ) => {
+		Header  : 'Tier',
+		accessor: 'tier',
+		width   : 10,
+		Cell( { value } ) {
 			switch ( value ) {
 			case 7:
 				return '?';
@@ -50,42 +61,48 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 				return value;
 			}
 		},
+		props              : { style: { minWidth: '68px' } },
 		disableGlobalFilter: true,
 		sortType           : 'basic'
 	}, {
-		Header             : 'Love',
-		accessor           : 'love',
-		width              : 10,
-		Cell               : ( { value } ) => [
-			<SVGIcon key='emptyHeart' name='emptyHeart'/>,
-			<SVGIcon key='heart' name='heart'/>,
-			<SVGIcon key='ring' name='ring'/>,
-			<><SVGIcon name='ring'/><SVGIcon name='heart'/></>
-		][ value ],
-		disableGlobalFilter: true,
-		sortType           : 'number',
-		sortDescFirst      : true
-	}, {
-		Header             : 'Level',
-		accessor           : 'lvl',
-		width              : 10,
-		Cell               : ( { value } ) => value === 126 ? <SVGIcon name='star'/> : value,
-		disableGlobalFilter: true,
-		sortType           : 'number',
-		sortDescFirst      : true
-	}, {
-		Header             : 'Equips',
-		accessor           : 'equip',
-		width              : 20,
-		Cell               : ( { value, row } ) => equipBetter.value[ row.id ]
-			? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
-			: value?.some( ( equip ) => equip[ 2 ] )
-			&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> ),
-		className          : ( { row } ) => {
-			if ( equipBetter.value[ row.id ] ) {
-				return `color-${tierColors[ Math.min( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`;
-			}
+		Header  : 'Love',
+		accessor: 'love',
+		width   : 10,
+		Cell( { value } ) {
+			return AffinityIcons[ value ];
 		},
+		props              : { style: { minWidth: '73px' } },
+		disableGlobalFilter: true,
+		sortType           : 'number',
+		sortDescFirst      : true
+	}, {
+		Header  : 'Level',
+		accessor: 'lvl',
+		width   : 10,
+		Cell( { value } ) {
+			return value === 126 ? <StarIcon fontSize='small'/> : value;
+		},
+		props              : { style: { minWidth: '76px' } },
+		disableGlobalFilter: true,
+		sortType           : 'number',
+		sortDescFirst      : true
+	}, {
+		Header  : 'Equips',
+		accessor: 'equip',
+		width   : 25,
+		Cell( { value, row } ) {
+			return equipBetter.value[ row.id ]
+				? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
+				: value?.some( ( equip ) => equip[ 2 ] )
+				&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
+		},
+		props              : ( cell ) => ( {
+			className: cell && equipBetter.value[ cell.row.id ]
+				? `color-${tierColors[ Math.min( ...equipBetter.value[ cell.row.id ]
+					.filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`
+				: undefined,
+			style    : { minWidth: '116px' }
+		} ),
 		disableGlobalFilter: true,
 		filter             : ( rows, id, filterValue ) => {
 			if ( !filterValue?.id ) {
@@ -126,5 +143,5 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	}, {
 		accessor           : 'equipType',
 		disableGlobalFilter: true
-	} ] as ( Column<any> & { className?: ( cell: Cell ) => string } )[];
+	} ] as ( Column<any> & { props?: ( cell: Cell<any> ) => any } )[];
 }

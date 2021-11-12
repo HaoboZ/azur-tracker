@@ -2657,12 +2657,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-table@npm:^7.7.7":
-  version: 7.7.7
-  resolution: "@types/react-table@npm:7.7.7"
+"@types/react-table@npm:^7.7.8":
+  version: 7.7.8
+  resolution: "@types/react-table@npm:7.7.8"
   dependencies:
     "@types/react": "*"
-  checksum: d990239f1676e58b9444ff147b6b4b1cf2f2590f5a575fb2d5688581b298b4ccdfa5f58438fd459278efb321201c4bb7a4eb28f82f63ffa4d5ea2c806ec221b5
+  checksum: 8ee32341a2f20001d6b8ec80709a786391fde033e71634f8b3e5e2108532e123322bac8522583274f52b8901045085f9185b8a9e25717595589641d551bb2ce3
   languageName: node
   linkType: hard
 
@@ -3405,7 +3405,7 @@ __metadata:
     "@types/react-redux": ^7.1.20
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
-    "@types/react-table": ^7.7.7
+    "@types/react-table": ^7.7.8
     "@types/react-window": ^1.8.5
     "@types/sass": ^1.43.0
     "@types/sortablejs": ^1.10.7

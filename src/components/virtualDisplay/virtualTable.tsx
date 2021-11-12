@@ -76,7 +76,6 @@ function VirtualTable<Item extends object>( {
 								{row.cells.map( ( cell, i ) => <TableCell
 									key={i}
 									component='div'
-									className={( cell.column as any ).className?.( cell )}
 									{...cell.getCellProps()}>
 									{cell.render( 'Cell' )}
 								</TableCell> )}

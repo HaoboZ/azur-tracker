@@ -664,15 +664,15 @@ const equipData: Equip[] = [
 	},
 	{
 		id    : 90880,
-		name  : 'Twin 203mm Mle 1924 Main Gun Mount',
-		image : 'Twin_203mm_(Mle_1924)',
+		name  : 'Twin 203mm Mle 1931 Main Gun Mount',
+		image : 'Twin_203mm_(Mle_1931)',
 		type  : type.CA,
 		rarity: rarity.E
 	},
 	{
 		id    : 90900,
-		name  : 'Twin 203mm Mle 1924 Main Gun Mount',
-		image : 'Twin_203mm_(Mle_1924)',
+		name  : 'Twin 203mm Mle 1931 Main Gun Mount',
+		image : 'Twin_203mm_(Mle_1931)',
 		type  : type.CA,
 		rarity: rarity.SR
 	},
@@ -1865,7 +1865,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]            : [ 1, ++a ],
 		[ map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Twin 203mm (SK C/34)/SR' ] ]                         : [ 1, ++a ],
-		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]           : [ 2, ++a ],
+		[ map[ 'Twin 203mm Mle 1931 Main Gun Mount/SR' ] ]           : [ 2, ++a ],
 		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]  : [ 2, ++a ],
 		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]        : [ 3, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]                : [ 3, ++a ],
@@ -1873,7 +1873,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 203mm Naval Gun Mount/E' ] ]                    : [ 4, ++a ]
 	},
 	'CA/HE'      : {
-		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]         : [ 0, a = 0 ],
+		[ map[ 'Twin 203mm Mle 1931 Main Gun Mount/SR' ] ]         : [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]      : [ 2, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]              : [ 2, ++a ],
@@ -1893,7 +1893,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]            : [ 1, ++a ],
 		[ map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Twin 203mm (SK C/34)/SR' ] ]                         : [ 1, ++a ],
-		[ map[ 'Twin 203mm Mle 1924 Main Gun Mount/SR' ] ]           : [ 2, ++a ],
+		[ map[ 'Twin 203mm Mle 1931 Main Gun Mount/SR' ] ]           : [ 2, ++a ],
 		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]  : [ 2, ++a ],
 		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]        : [ 3, ++a ],
 		[ map[ 'Prototype Triple 203mm AA Gun/SR' ] ]                : [ 3, ++a ],

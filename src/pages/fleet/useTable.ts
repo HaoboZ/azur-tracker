@@ -9,6 +9,7 @@ import {
 	useSortBy,
 	useTable
 } from 'react-table';
+import { useColumnProps } from '../../lib/plugins/useColumnProps';
 import fleetColumns from './columns';
 import fleetData from './data';
 
@@ -73,6 +74,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 		useRowState,
 		useFilters,
 		useGlobalFilter,
-		useSortBy
+		useSortBy,
+		useColumnProps
 	);
 }

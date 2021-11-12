@@ -1,3 +1,4 @@
+import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import {
 	Box,
 	DialogTitle,
@@ -14,11 +15,11 @@ import Image from 'next/image';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResponsiveModalContainer } from '../../../components/responsiveModal';
-import SVGIcon, { TierIcon } from '../../../lib/icons';
 import { useModal } from '../../../lib/providers/modal';
 import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import fleetData from '../data';
+import { AffinityIcons, TierIcon } from '../tierIcon';
 import equipData, { equipsIndex } from './equip/data';
 import EquipModal from './equip/modal';
 
@@ -80,19 +81,9 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							name: ship.id,
 							ship: { love: target.value as number }
 						} ) )}>
-						<MenuItem value={0}>
-							<SVGIcon name='emptyHeart'/>
-						</MenuItem>
-						<MenuItem value={1}>
-							<SVGIcon name='heart'/>
-						</MenuItem>
-						<MenuItem value={2}>
-							<SVGIcon name='ring'/>
-						</MenuItem>
-						<MenuItem value={3}>
-							<SVGIcon name='ring'/>
-							<SVGIcon name='heart'/>
-						</MenuItem>
+						{AffinityIcons.map( ( icon, i ) => <MenuItem key={i} value={i}>
+							{icon}
+						</MenuItem> )}
 					</Select>
 				</FormControl>
 			</Grid>
@@ -119,9 +110,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 						<MenuItem value={120}>120</MenuItem>
 						<MenuItem value={125}>125</MenuItem>
 						<MenuItem value={126}>
-							<svg height={14} width={14}>
-								<use xlinkHref='#star'/>
-							</svg>
+							<StarIcon fontSize='small'/>
 						</MenuItem>
 					</Select>
 				</FormControl>
@@ -151,10 +140,10 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 							layout='intrinsic'
 							className={`color-${rarityColors[ equip.rarity ]}`}
 						/>
-						<Box>
+						<Box display='flex' alignItems='center'>
 							<TierIcon tier={val[ 2 ]}/>
 							{equipBetter[ index ]?.[ 1 ] ? <>
-								<SVGIcon name='arrow'/>
+								<ArrowForwardIcon fontSize='inherit'/>
 								<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
 							</> : undefined}
 						</Box>
