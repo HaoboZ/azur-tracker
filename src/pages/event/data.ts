@@ -2,7 +2,7 @@
 
 const eventData = {
 	name   : 'Skybound Oratorio Rerun',
-	link   : 'https://azurlane.koumakan.jp/Skybound_Oratorio',
+	link   : 'https://azurlane.koumakan.jp/wiki/Skybound_Oratorio',
 	endDate: '2021-11-10T23:59-07',
 	shop   : [
 		{ name: 'Jeanne d\'Arc', cost: 8000, amount: 5 },

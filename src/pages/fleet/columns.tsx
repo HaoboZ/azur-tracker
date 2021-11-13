@@ -1,5 +1,6 @@
 import { Star as StarIcon } from '@mui/icons-material';
-import { Cell, Column } from 'react-table';
+import { Box } from '@mui/material';
+import { Column } from 'react-table';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import { equippable, equipTier } from './ship/equip/data';
 import { AffinityIcons, TierIcon } from './tierIcon';
@@ -14,16 +15,30 @@ const Rarity = {
 	'Common'    : 4
 };
 
-export default function fleetColumns( equipBetter, setEquipBetter ) {
+export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>[] {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',
 		width   : 40,
-		props   : { style: { minWidth: '80px' } }
+		Cell( { value } ) {
+			return <Box sx={{
+				whiteSpace  : 'nowrap',
+				overflow    : 'hidden',
+				textOverflow: 'ellipsis'
+			}}>{value}</Box>;
+		},
+		props: { style: { minWidth: '80px' } }
 	}, {
 		Header  : 'Rarity',
 		accessor: 'rarity',
 		width   : 20,
+		Cell( { value } ) {
+			return <Box sx={{
+				whiteSpace  : 'nowrap',
+				overflow    : 'hidden',
+				textOverflow: 'ellipsis'
+			}}>{value}</Box>;
+		},
 		props   : ( cell ) => ( {
 			className: cell && `color-${rarityColors[ cell.value ]}`,
 			style    : { minWidth: '80px' }
@@ -33,7 +48,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 		Header  : 'Faction',
 		accessor: 'faction',
 		width   : 20,
-		props   : ( cell ) => ( {
+		Cell( { value } ) {
+			return <Box sx={{
+				whiteSpace  : 'nowrap',
+				overflow    : 'hidden',
+				textOverflow: 'ellipsis'
+			}}>{value}</Box>;
+		},
+		props: ( cell ) => ( {
 			className: cell && `color-${factionColors[ cell.value ]}`,
 			style    : { minWidth: '90px' }
 		} )
@@ -41,7 +63,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 		Header  : 'Type',
 		accessor: 'type',
 		width   : 20,
-		props   : ( cell ) => ( {
+		Cell( { value } ) {
+			return <Box sx={{
+				whiteSpace  : 'nowrap',
+				overflow    : 'hidden',
+				textOverflow: 'ellipsis'
+			}}>{value}</Box>;
+		},
+		props: ( cell ) => ( {
 			className: cell && `color-${typeColors[ cell.value ]}`,
 			style    : { minWidth: '73px' }
 		} )
@@ -143,5 +172,5 @@ export default function fleetColumns( equipBetter, setEquipBetter ) {
 	}, {
 		accessor           : 'equipType',
 		disableGlobalFilter: true
-	} ] as ( Column<any> & { props?: ( cell: Cell<any> ) => any } )[];
+	} ];
 }

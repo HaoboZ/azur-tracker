@@ -9,7 +9,7 @@ import {
 	useSortBy,
 	useTable
 } from 'react-table';
-import { useColumnProps } from '../../lib/plugins/useColumnProps';
+import useColumnProps from '../../lib/helpers/useColumnProps';
 import fleetColumns from './columns';
 import fleetData from './data';
 

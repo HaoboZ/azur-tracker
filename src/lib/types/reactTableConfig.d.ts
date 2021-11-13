@@ -49,6 +49,7 @@ import {
 	UseSortByOptions,
 	UseSortByState
 } from 'react-table';
+import { UseColumnPropsColumnOptions } from '../helpers/useColumnProps';
 
 declare module 'react-table' {
 	export interface TableOptions<D extends Record<string, unknown>>
@@ -101,7 +102,8 @@ declare module 'react-table' {
 			UseGlobalFiltersColumnOptions<D>,
 			UseGroupByColumnOptions<D>,
 			UseResizeColumnsColumnOptions<D>,
-			UseSortByColumnOptions<D> {
+			UseSortByColumnOptions<D>,
+			UseColumnPropsColumnOptions<D> {
 	}
 	
 	export interface ColumnInstance<D extends Record<string, unknown> = Record<string, unknown>>
