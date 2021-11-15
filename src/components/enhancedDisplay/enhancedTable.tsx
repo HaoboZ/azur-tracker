@@ -61,17 +61,19 @@ function EnhancedTable<Item>( {
 		
 		const row = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
+			
 			return <ExpandRow
 				hover
 				selected={selected}
 				renderPanel={renderPanel?.( item, index )}
-				onClick={selectable?.setSelected
-				&& ( () => _selectRow( selectable,
+				onClick={selectable?.setSelected && ( () => _selectRow( selectable,
 					item, index, selected, totalSelected ) )}>
 				{sortable && <TableCell>
 					<MenuIcon {...handle}/>
 				</TableCell>}
-				{columns( item, index ).map( ( cell, index ) => <TableCell key={index} {...cellProps?.[ index ]}>
+				{columns( item, index ).filter( Boolean ).map( ( cell, index ) => <TableCell
+					key={index}
+					{...cellProps?.[ index ]}>
 					{cell}
 				</TableCell> )}
 				{Boolean( editable ) && <TableCell>
@@ -114,7 +116,7 @@ function EnhancedTable<Item>( {
 				<TableHead sx={{ bgcolor: 'action.focus' }}>
 					<TableRow>
 						{sortable && <TableCell/>}
-						{headers.map( ( cell, index ) => <TableCell
+						{headers.filter( Boolean ).map( ( cell, index ) => <TableCell
 							key={index}
 							{...cellProps?.[ index ]}>
 							{cell}
