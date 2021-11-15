@@ -24,8 +24,6 @@ const getFooterProps: FooterPropGetter<any> = ( props, { column } ) => [
 	( typeof column.props === 'function' ? column.props?.() : column.props ) || {}
 ];
 
-// export interface UseColumnPropsColumnOptions<D extends object> {
 export type UseColumnPropsColumnOptions<D extends object> = Partial<{
 	props: ( ( cell?: Cell<D> ) => HTMLAttributes<HTMLDivElement> ) | HTMLAttributes<HTMLDivElement>
 }>;
-// }

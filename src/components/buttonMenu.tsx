@@ -16,8 +16,6 @@ export default function ButtonMenu( { children, onClick, menuProps, renderMenu, 
 				onClick?.( e );
 			}}>{children}</Button>
 		<Menu
-			// anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-			// transformOrigin={{ vertical: 'top', horizontal: 'right' }}
 			anchorEl={anchorEl}
 			open={Boolean( anchorEl )}
 			onClose={() => setAnchorEl( null )}
