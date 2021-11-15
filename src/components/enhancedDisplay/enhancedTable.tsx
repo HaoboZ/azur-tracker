@@ -53,7 +53,7 @@ function EnhancedTable<Item>( {
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	headers,
 	columns,
-	widths,
+	cellProps,
 	...props
 }: EnhancedDisplayProps<Item> & EnhancedTableProps<Item> ) {
 	const dataItems = useMemo( () => {
@@ -71,7 +71,7 @@ function EnhancedTable<Item>( {
 				{sortable && <TableCell>
 					<MenuIcon {...handle}/>
 				</TableCell>}
-				{columns( item, index ).map( ( cell, index ) => <TableCell key={index}>
+				{columns( item, index ).map( ( cell, index ) => <TableCell key={index} {...cellProps?.[ index ]}>
 					{cell}
 				</TableCell> )}
 				{Boolean( editable ) && <TableCell>
@@ -116,7 +116,7 @@ function EnhancedTable<Item>( {
 						{sortable && <TableCell/>}
 						{headers.map( ( cell, index ) => <TableCell
 							key={index}
-							sx={{ width: widths?.[ index ] }}>
+							{...cellProps?.[ index ]}>
 							{cell}
 						</TableCell> )}
 						{Boolean( editable ) && <TableCell>

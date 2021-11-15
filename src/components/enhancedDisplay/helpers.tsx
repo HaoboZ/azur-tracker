@@ -1,4 +1,4 @@
-import { ButtonProps, ListProps, TableContainerProps } from '@mui/material';
+import { ButtonProps, ListProps, TableCellProps, TableContainerProps } from '@mui/material';
 import { ReactNode } from 'react';
 import { ActionTitleProps } from './actionTitle';
 
@@ -42,7 +42,7 @@ export type EnhancedListProps<Item> = {
 export type EnhancedTableProps<Item> = {
 	headers: ReactNode[],
 	columns: ( item: Item, index: number ) => ReactNode[],
-	widths?: number[],
+	cellProps?: TableCellProps[],
 	// cannot be sortable
 	renderPanel?: ( item: Item, index: number ) => ReactNode
 } & Omit<TableContainerProps, 'title'>;
