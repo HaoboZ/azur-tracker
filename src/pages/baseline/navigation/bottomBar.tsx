@@ -67,6 +67,7 @@ export default function BottomBar( { children } ) {
 				}}>
 				{items.map( ( item, index ) => <BottomNavigationAction
 					key={index}
+					sx={{ minWidth: 0 }}
 					label={item.label}
 					icon={<Badge
 						color='secondary'
