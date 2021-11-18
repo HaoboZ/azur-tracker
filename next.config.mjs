@@ -29,7 +29,11 @@ export default withPlugins( [
 		pwa: {
 			disable      : process.env.NODE_ENV === 'development',
 			dest         : 'public',
-			buildExcludes: [ /middleware-manifest.json$/ ]
+			buildExcludes: [
+				/middleware-manifest.json$/,
+				/_middleware.js$/,
+				/_middleware.js.map$/
+			]
 		}
 	}
 ], nextConfig );

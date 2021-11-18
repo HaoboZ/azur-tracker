@@ -122,7 +122,7 @@ export default function EquipModal( { info, selectedEquip }: {
 				<Grid item container xs={5} justifyContent='center'>
 					<Link
 						target='_blank'
-						href={`https://azurlane.koumakan.jp/wiki/${unescape( currentEquip.image.replace( '$', '%' ) )}`}
+						href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( currentEquip.image.replace( '$', '%' ) )}`}
 						align='center'
 						color='textPrimary'>
 						{currentEquip.name}
@@ -132,7 +132,7 @@ export default function EquipModal( { info, selectedEquip }: {
 				<Grid item container xs={5} justifyContent='center'>
 					<Link
 						target='_blank'
-						href={`https://azurlane.koumakan.jp/wiki/${unescape( equip.image.replace( '$', '%' ) )}`}
+						href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( equip.image.replace( '$', '%' ) )}`}
 						align='center'
 						color='textPrimary'>
 						{equip.name}

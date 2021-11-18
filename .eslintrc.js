@@ -6,12 +6,8 @@ module.exports = {
 		jest   : true
 	},
 	extends      : [
-		'eslint:recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:react/recommended',
-		'plugin:react/jsx-runtime',
-		'plugin:react-hooks/recommended'
-		// 'next/core-web-vitals'
+		'next/core-web-vitals',
+		'plugin:@typescript-eslint/recommended'
 	],
 	settings     : {
 		react: { version: 'detect' }

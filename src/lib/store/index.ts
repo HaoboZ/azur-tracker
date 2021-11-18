@@ -39,14 +39,14 @@ const migrations: Record<string, ( state: any ) => RootState> = {
 	} )
 };
 
-const persistedReducer = process.browser ? persistReducer<RootState>( {
+const persistedReducer = typeof window === 'undefined' ? rootReducer : persistReducer<RootState>( {
 	key            : 'root',
 	version        : 9,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations as any, { debug: false } ),
 	transforms     : [ createCompressor() ]
-}, rootReducer ) : rootReducer;
+}, rootReducer );
 
 export const store: Store<RootState> = configureStore( {
 	reducer   : persistedReducer,
@@ -58,7 +58,7 @@ export const store: Store<RootState> = configureStore( {
 	} )
 } );
 
-export const persistor = process.browser ? persistStore( store ) : undefined;
+export const persistor = typeof window === 'undefined' ? undefined : persistStore( store );
 
 declare module 'react-redux' {
 	// noinspection JSUnusedGlobalSymbols
