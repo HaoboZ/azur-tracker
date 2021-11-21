@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { mapValues } from 'lodash';
-import { Store } from 'redux';
 import {
 	createMigrate,
 	FLUSH,
@@ -13,13 +12,15 @@ import {
 	REHYDRATE
 } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
+import { PersistedState } from 'redux-persist/es/types';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './reducers';
 
-export type RootState = ReturnType<typeof rootReducer>;
+type RootState = ReturnType<typeof rootReducer>;
+type State = RootState & PersistedState;
 
-const migrations: Record<string, ( state: any ) => RootState> = {
+const migrations: Record<string, ( state: State ) => State> = {
 	7: ( state ) => ( {
 		...state,
 		main: {
@@ -27,7 +28,7 @@ const migrations: Record<string, ( state: any ) => RootState> = {
 			researchLastTab: 0
 		}
 	} ),
-	8: ( state ) => ( { ...state, fleet: state.ship } ),
+	8: ( state ) => ( { ...state, fleet: state[ 'ship' ] } ),
 	9: ( state ) => ( {
 		...state, fleet: {
 			...state.fleet,
@@ -39,16 +40,16 @@ const migrations: Record<string, ( state: any ) => RootState> = {
 	} )
 };
 
-const persistedReducer = typeof window === 'undefined' ? rootReducer : persistReducer<RootState>( {
+const persistedReducer = persistReducer<RootState>( {
 	key            : 'root',
 	version        : 9,
 	storage,
 	stateReconciler: autoMergeLevel2,
-	migrate        : createMigrate( migrations as any, { debug: false } ),
+	migrate        : createMigrate( migrations, { debug: false } ),
 	transforms     : [ createCompressor() ]
 }, rootReducer );
 
-export const store: Store<RootState> = configureStore( {
+export const store = configureStore( {
 	reducer   : persistedReducer,
 	devTools  : process.env.NODE_ENV === 'development',
 	middleware: ( getDefaultMiddleware ) => getDefaultMiddleware( {
@@ -58,10 +59,10 @@ export const store: Store<RootState> = configureStore( {
 	} )
 } );
 
-export const persistor = typeof window === 'undefined' ? undefined : persistStore( store );
+export const persistor = persistStore( store );
 
 declare module 'react-redux' {
 	// noinspection JSUnusedGlobalSymbols
-	interface DefaultRootState extends RootState {
+	interface DefaultRootState extends State {
 	}
 }

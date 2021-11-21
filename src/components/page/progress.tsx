@@ -71,8 +71,8 @@ export default function PageProgress( {
 	return <GlobalStyles
 		styles={{
 			'#nprogress': {
-				pointerEvents: 'none',
-				'.bar'       : {
+				pointerEvents  : 'none',
+				'.bar'         : {
 					background: theme.palette.primary.main,
 					position  : 'fixed',
 					zIndex    : theme.zIndex.tooltip,
@@ -81,17 +81,16 @@ export default function PageProgress( {
 					width     : '100%',
 					height    : height
 				},
-				'.peg': {
+				'.peg'         : {
 					display  : 'block',
 					position : 'absolute',
 					right    : 0,
 					width    : '100%',
 					height   : '100%',
 					boxShadow: `0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main}`,
-					opacity  : 0.1,
-					transform: 'rotate(3deg) translate(0px, -4px)'
+					opacity  : 0.1
 				},
-				'.spinner': {
+				'.spinner'     : {
 					display : 'block',
 					position: 'fixed',
 					zIndex  : theme.zIndex.tooltip,

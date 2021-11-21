@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import event from './eventReducer';
 import fleet from './fleetReducer';
 import main from './mainReducer';
