@@ -47,6 +47,7 @@ export const
 		'Hololive'           : 'hololive',
 		'Venus Vacation'     : 'venus',
 		'The Idolmaster'     : 'idolmaster',
+		'SSSS'               : 'ssss',
 		'META'               : 'meta'
 	},
 	tierColors    = [

@@ -27,13 +27,8 @@ export default withPlugins( [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	withPWA, {
 		pwa: {
-			disable      : process.env.NODE_ENV === 'development',
-			dest         : 'public',
-			buildExcludes: [
-				/middleware-manifest.json$/,
-				/_middleware.js$/,
-				/_middleware.js.map$/
-			]
+			disable: process.env.NODE_ENV === 'development',
+			dest   : 'public'
 		}
 	}
 ], nextConfig );

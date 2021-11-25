@@ -78,6 +78,7 @@ export default function Wrapper( { children } ) {
 				'.color-hololive'  : textBgColor( theme, '#8ee7f1' ),
 				'.color-venus'     : textBgColor( theme, '#ffc0cb' ),
 				'.color-idolmaster': textBgColor( theme, '#f8bde9' ),
+				// '.color-ssss'      : textBgColor( theme, '#f8bde9' ),
 				'.color-meta'      : textBgColor( theme, '#808080' )
 			} )}
 		/>
