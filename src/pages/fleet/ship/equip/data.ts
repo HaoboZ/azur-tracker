@@ -1555,6 +1555,12 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
+	{ id: 89300, name: 'Battle Tracto Max', image: 'Battle_Tracto_Max', type: type.A, rarity: rarity.SR },
+	{ id: 89320, name: 'Gridman Calibur', image: 'Gridman_Calibur', type: type.A, rarity: rarity.SR },
+	{ id: 89340, name: 'Buster Borr', image: 'Buster_Borr', type: type.A, rarity: rarity.SR },
+	{ id: 89360, name: 'Sky Vitter', image: 'Sky_Vitter', type: type.A, rarity: rarity.SR },
+	{ id: 89380, name: 'Dynamic Cannon', image: 'Dynamic_Cannon', type: type.A, rarity: rarity.SR },
+	{ id: 89400, name: 'Goldburn', image: 'Goldburn', type: type.A, rarity: rarity.SR },
 	//endregion
 	//region ASW Auxilliary
 	{
@@ -1655,7 +1661,7 @@ const map = equipData.reduce( ( obj, item ) => {
 let a;
 // tiers of equipment by slot
 export const equipTier: Record<string, Record<number, number[]>> = {
-	'T'        : {
+	'T': {
 		[ map[ '533mm Quintuple Magnetic Torpedo Mount/UR' ] ]: [ 0, a = 0 ],
 		[ map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ '610mm Quintuple Torpedo Mount/UR' ] ]         : [ 0, ++a ],
@@ -1673,6 +1679,10 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ '533mm Quadruple Torpedo Mount Mk IX/E' ] ]    : [ 4, ++a ],
 		[ map[ '610mm Quadruple Torpedo Mount/E' ] ]          : [ 4, ++a ]
 	},
+	get 'T/A'() {
+		return this[ 'T' ];
+	},
+	
 	'AA/Damage': {
 		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]            : [ 0, a = 0 ],
 		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]                      : [ 0, ++a ],
@@ -1723,12 +1733,15 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 134mm AA Gun Mount/SR' ] ]                  : [ 3, ++a ],
 		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]        : [ 4, ++a ]
 	},
+	get 'AA/A'() {
+		return this[ 'AA' ];
+	},
 	
 	'DD'         : {
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, a = 0 ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 0, ++a ],
-		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
+		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, ++a ],
+		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 1, ++a ],
 		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
 		[ map[ 'Single 138.6mm Mle 1927 Naval Gun/E' ] ]            : [ 2, ++a ],
@@ -1741,16 +1754,20 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'DD/Speed'   : {
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, a = 0 ],
-		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 1, ++a ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
+		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]           : [ 1, ++a ],
-		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 2, ++a ],
+		[ map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ] ]     : [ 2, ++a ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 2, ++a ],
+		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]     : [ 2, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]                        : [ 3, ++a ],
+		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]                    : [ 3, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]            : [ 3, ++a ],
 		[ map[ 'Single 130mm Naval Gun/E' ] ]                       : [ 4, ++a ]
 	},
 	'DD/SSpeed'  : {
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]        : [ 0, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]      : [ 1, ++a ],
 		[ map[ '76mm AA Gun/R' ] ]                             : [ 2, ++a ],
 		[ map[ 'Single 120mm QF Mark IX Naval Gun/R' ] ]       : [ 2, ++a ],
@@ -1853,6 +1870,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'CL/Main' ];
 	},
 	get 'CL/AA'() {
+		return this[ 'CL' ];
+	},
+	get 'CL/A'() {
 		return this[ 'CL' ];
 	},
 	get 'CL/DB'() {
@@ -2219,11 +2239,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 
 // type of weapon that can be equipped at each slot
 export const equippable = {
-	'T'        : [ type.T ],
+	'T'  : [ type.T ],
+	'T/A': [ type.T, type.A ],
+	
 	'AA/Damage': [ type.AA ],
 	'AA'       : [ type.AA ],
 	'AA/Speed' : [ type.AA ],
 	'AA/Main'  : [ type.AA ],
+	'AA/A'     : [ type.AA, type.A ],
 	
 	'DD'         : [ type.DD ],
 	'DD/Speed'   : [ type.DD ],
@@ -2243,6 +2266,7 @@ export const equippable = {
 	'CL/Main'   : [ type.CL ],
 	'CL/DD/Main': [ type.CL ],
 	'CL/AA'     : [ type.CL, type.AA ],
+	'CL/A'      : [ type.CL, type.A ],
 	'CL/DB'     : [ type.CL, type.DB ],
 	
 	'CA'         : [ type.CA ],
