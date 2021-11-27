@@ -4,7 +4,7 @@ import getInfo from '../../lib/google/drive/getInfo';
 
 const CheckData: NextApiHandler = async ( req, res ) => {
 	try {
-		const { checksum, lastSaved } = req.query;
+		const { checksum, lastSaved } = req.body;
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );
 		

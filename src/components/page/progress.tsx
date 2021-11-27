@@ -2,6 +2,7 @@ import { GlobalStyles, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import NProgress, { NProgressOptions } from 'nprogress';
 import { useEffect, useRef, useState } from 'react';
+import useEventEffect from '../../lib/hooks/useEventEffect';
 
 export default function PageProgress( {
 	startPosition = 0.3,
@@ -26,46 +27,41 @@ export default function PageProgress( {
 	const startTimer = useRef<any>();
 	const endTimer = useRef<any>();
 	
+	const clearTimers = () => {
+		clearTimeout( startTimer.current );
+		clearTimeout( endTimer.current );
+	};
+	
+	const routeChangeStart = ( _, { shallow } ) => {
+		if ( !shallow || showOnShallow ) {
+			clearTimers();
+			startTimer.current = setTimeout( () => {
+				clearTimers();
+				NProgress.set( startPosition );
+				NProgress.start();
+				setIsActive( true );
+			}, startDelayMs );
+		}
+	};
+	
+	const routeChangeEnd = ( _, { shallow } ) => {
+		if ( !shallow || showOnShallow ) {
+			clearTimers();
+			endTimer.current = setTimeout( () => {
+				setIsActive( ( isActive ) => {
+					if ( isActive ) NProgress.done( true );
+					return false;
+				} );
+			}, stopDelayMs );
+		}
+	};
+	
+	useEventEffect( router.events, 'routeChangeStart', routeChangeStart, [] );
+	useEventEffect( router.events, 'routeChangeComplete', routeChangeEnd, [] );
+	useEventEffect( router.events, 'routeChangeError', routeChangeEnd, [] );
+	
 	useEffect( () => {
 		if ( options ) NProgress.configure( options );
-		
-		const clearTimers = () => {
-			clearTimeout( startTimer.current );
-			clearTimeout( endTimer.current );
-		};
-		
-		const routeChangeStart = ( _, { shallow } ) => {
-			if ( !shallow || showOnShallow ) {
-				clearTimers();
-				startTimer.current = setTimeout( () => {
-					clearTimers();
-					NProgress.set( startPosition );
-					NProgress.start();
-					setIsActive( true );
-				}, startDelayMs );
-			}
-		};
-		
-		const routeChangeEnd = ( _, { shallow } ) => {
-			if ( !shallow || showOnShallow ) {
-				clearTimers();
-				endTimer.current = setTimeout( () => {
-					setIsActive( ( isActive ) => {
-						if ( isActive ) NProgress.done( true );
-						return false;
-					} );
-				}, stopDelayMs );
-			}
-		};
-		
-		router.events.on( 'routeChangeStart', routeChangeStart );
-		router.events.on( 'routeChangeComplete', routeChangeEnd );
-		router.events.on( 'routeChangeError', routeChangeEnd );
-		return () => {
-			router.events.off( 'routeChangeStart', routeChangeStart );
-			router.events.off( 'routeChangeComplete', routeChangeEnd );
-			router.events.off( 'routeChangeError', routeChangeEnd );
-		};
 	}, [ options ] );
 	
 	return <GlobalStyles

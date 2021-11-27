@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
+import useIntervalEffect from '../../lib/hooks/useIntervalEffect';
 import { useIndicator } from '../../lib/providers/indicator';
 import { textBgColor } from '../colors';
 import Navigation from './navigation';
@@ -13,10 +14,9 @@ export default function Wrapper( { children } ) {
 	const { status } = useSession();
 	const indicator = useIndicator();
 	
-	const delayedSetBackup = useCallback(
-		debounce( () => backupMutex.runExclusive( async () =>
-			await indicator( setBackup( await checkDataIntegrity() ) )
-		), main.autoSaveInterval ), [ main.autoSaveInterval ] );
+	const delayedSetBackup = useCallback( debounce( () => backupMutex.runExclusive(
+		async () => await indicator( setBackup( await checkDataIntegrity() ) )
+	), main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
 	// auto save
 	useEffect( () => {
@@ -33,13 +33,11 @@ export default function Wrapper( { children } ) {
 	}, [ status ] );
 	
 	// auto load
-	useEffect( () => {
-		const interval = setInterval( async () => {
-			if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
-				async () => await indicator( getBackup( await checkDataIntegrity() ) ) );
-		}, main.autoLoadInterval );
-		return () => clearInterval( interval );
-	}, [ main.autoLoadInterval ] );
+	useIntervalEffect( async () => {
+		if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
+			async () => await indicator( getBackup( await checkDataIntegrity() ) )
+		);
+	}, main.autoLoadInterval, [ main.autoLoadInterval ] );
 	
 	// noinspection ES6RedundantNestingInTemplateLiteral
 	return <Navigation>
@@ -79,7 +77,7 @@ export default function Wrapper( { children } ) {
 				'.color-venus'     : textBgColor( theme, '#ffc0cb' ),
 				'.color-idolmaster': textBgColor( theme, '#f8bde9' ),
 				// '.color-ssss'      : textBgColor( theme, '#f8bde9' ),
-				'.color-meta'      : textBgColor( theme, '#808080' )
+				'.color-meta': textBgColor( theme, '#808080' )
 			} )}
 		/>
 		{children}

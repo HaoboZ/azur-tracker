@@ -41,6 +41,7 @@ export async function setBackup( integrity ) {
 
 export async function getBackup( integrity, check = true ) {
 	if ( !integrity ) return;
+	console.log( 'loading' );
 	if ( check ) {
 		const { action } = integrity;
 		if ( !action ) return;

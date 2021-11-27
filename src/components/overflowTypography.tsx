@@ -1,5 +1,6 @@
 import { Tooltip, TooltipProps, Typography, TypographyProps } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import useEventEffect from '../lib/hooks/useEventEffect';
 
 export default function OverflowTypography( { children, tooltipProps, ...props }: {
 	tooltipProps: TooltipProps
@@ -8,12 +9,10 @@ export default function OverflowTypography( { children, tooltipProps, ...props }
 	
 	const [ overFlowed, setOverFlowed ] = useState( false );
 	
-	useEffect( () => {
-		const checkOverflow = () => setOverFlowed( contentRef.current.scrollWidth > contentRef.current.clientWidth );
-		checkOverflow();
-		window.addEventListener( 'resize', checkOverflow );
-		return () => window.removeEventListener( 'resize', checkOverflow );
-	}, [ contentRef.current ] );
+	useEventEffect( window, 'resize', () => {
+		if ( !contentRef.current ) return;
+		setOverFlowed( contentRef.current.scrollWidth > contentRef.current.clientWidth );
+	}, [ contentRef.current ], true );
 	
 	return <Tooltip title={children} disableHoverListener={!overFlowed} arrow {...tooltipProps}>
 		<Typography

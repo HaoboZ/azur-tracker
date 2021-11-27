@@ -56,13 +56,7 @@ interface Equip {
 
 // list of equips sorted by type
 const equipData: Equip[] = [
-	{
-		id    : 0,
-		name  : '',
-		image : 'Azur_Lane_Wiki',
-		type  : undefined as type,
-		rarity: undefined as rarity
-	},
+	{ id: 0, name: '', image: 'Azur_Lane_Wiki', type: undefined as type, rarity: undefined as rarity },
 	//region Torpedo
 	{
 		id    : 5140,
@@ -221,20 +215,8 @@ const equipData: Equip[] = [
 		type  : type.AA,
 		rarity: rarity.SR
 	},
-	{
-		id    : 26540,
-		name  : 'Twin 113mm AA Gun Mount',
-		image : 'Twin_113mm_AA_(QF_Mark_I)',
-		type  : type.AA,
-		rarity: rarity.SR
-	},
-	{
-		id    : 26600,
-		name  : 'Twin 40mm Bofors STAAG',
-		image : 'Twin_40mm_Bofors_STAAG',
-		type  : type.AA,
-		rarity: rarity.SR
-	},
+	{ id: 26540, name: 'Twin 113mm AA Gun Mount', image: 'Twin_113mm_AA_(QF_Mark_I)', type: type.AA, rarity: rarity.SR },
+	{ id: 26600, name: 'Twin 40mm Bofors STAAG', image: 'Twin_40mm_Bofors_STAAG', type: type.AA, rarity: rarity.SR },
 	{
 		id    : 26620,
 		name  : 'Twin 40mm Bofors "Hazemeyer" AA Gun Mount',
@@ -242,13 +224,7 @@ const equipData: Equip[] = [
 		type  : type.AA,
 		rarity: rarity.SR
 	},
-	{
-		id    : 26640,
-		name  : 'Twin 134mm AA Gun Mount',
-		image : 'Twin_134mm_AA_(QF_Mark_I)',
-		type  : type.AA,
-		rarity: rarity.SR
-	},
+	{ id: 26640, name: 'Twin 134mm AA Gun Mount', image: 'Twin_134mm_AA_(QF_Mark_I)', type: type.AA, rarity: rarity.SR },
 	{
 		id    : 26660,
 		name  : 'Sextuple 40mm Bofors AA Gun Mount',
@@ -271,11 +247,10 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
-		id   : 36660,
-		name : 'Twin 127mm Type 89 AA Gun Mount',
-		image: 'Twin_127mm_AA_(Type_89_A1_Mod_2)',
-		type : type.AA,
-		
+		id    : 36660,
+		name  : 'Twin 127mm Type 89 AA Gun Mount',
+		image : 'Twin_127mm_AA_(Type_89_A1_Mod_2)',
+		type  : type.AA,
 		rarity: rarity.SR
 	},
 	{
@@ -329,13 +304,7 @@ const equipData: Equip[] = [
 		type  : type.DD,
 		rarity: rarity.E
 	},
-	{
-		id    : 11040,
-		name  : '76mm AA Gun',
-		image : 'Single_76mm_(3$22$2F50_caliber_gun)',
-		type  : type.DD,
-		rarity: rarity.R
-	},
+	{ id: 11040, name: '76mm AA Gun', image: 'Single_76mm_(3$22$2F50_caliber_gun)', type: type.DD, rarity: rarity.R },
 	{
 		id    : 11140,
 		name  : 'Single 127mm Main Gun',
@@ -371,13 +340,7 @@ const equipData: Equip[] = [
 		type  : type.DD,
 		rarity: rarity.R
 	},
-	{
-		id    : 21440,
-		name  : 'Twin 120mm Main Gun Mount',
-		image : 'Twin_120mm_(QF_Mark_XII)',
-		type  : type.DD,
-		rarity: rarity.E
-	},
+	{ id: 21440, name: 'Twin 120mm Main Gun Mount', image: 'Twin_120mm_(QF_Mark_XII)', type: type.DD, rarity: rarity.E },
 	{
 		id    : 21460,
 		name  : 'Twin 120mm Mk XI Dual-Purpose Gun Mount',
@@ -478,13 +441,7 @@ const equipData: Equip[] = [
 		type  : type.CL,
 		rarity: rarity.SR
 	},
-	{
-		id    : 22140,
-		name  : 'Twin 152mm Main Gun',
-		image : 'Twin_152mm_(BL_6$22_Mk_XXIII)',
-		type  : type.CL,
-		rarity: rarity.E
-	},
+	{ id: 22140, name: 'Twin 152mm Main Gun', image: 'Twin_152mm_(BL_6$22_Mk_XXIII)', type: type.CL, rarity: rarity.E },
 	{
 		id    : 22240,
 		name  : 'Triple 152mm Main Gun2',
@@ -620,20 +577,8 @@ const equipData: Equip[] = [
 		type  : type.CB,
 		rarity: rarity.SR
 	},
-	{
-		id    : 43020,
-		name  : 'Twin 203mm (SK C/34)',
-		image : 'Twin_203mm_(SK_C$2F34)',
-		type  : type.CA,
-		rarity: rarity.E
-	},
-	{
-		id    : 43040,
-		name  : 'Twin 203mm (SK C/34)',
-		image : 'Twin_203mm_(SK_C$2F34)',
-		type  : type.CA,
-		rarity: rarity.SR
-	},
+	{ id: 43020, name: 'Twin 203mm (SK C/34)', image: 'Twin_203mm_(SK_C$2F34)', type: type.CA, rarity: rarity.E },
+	{ id: 43040, name: 'Twin 203mm (SK C/34)', image: 'Twin_203mm_(SK_C$2F34)', type: type.CA, rarity: rarity.SR },
 	{
 		id    : 43060,
 		name  : 'Prototype Triple 203mm SK C/34 Main Gun Mount',
@@ -741,13 +686,7 @@ const equipData: Equip[] = [
 		type  : type.BB,
 		rarity: rarity.SR
 	},
-	{
-		id    : 24220,
-		name  : 'Triple 406mm Main Gun',
-		image : 'Triple_406mm_(BL_16$22_Mk_I)',
-		type  : type.BB,
-		rarity: rarity.E
-	},
+	{ id: 24220, name: 'Triple 406mm Main Gun', image: 'Triple_406mm_(BL_16$22_Mk_I)', type: type.BB, rarity: rarity.E },
 	{
 		id    : 24240,
 		name  : 'Triple 406mm Main Gun',
@@ -878,59 +817,17 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{ id: 17320, name: 'F6F Hellcat', image: 'Grumman_F6F_Hellcat', type: type.F, rarity: rarity.E },
-	{
-		id    : 17340,
-		name  : 'F6F Hellcat',
-		image : 'Grumman_F6F_Hellcat',
-		type  : type.F,
-		rarity: rarity.SR
-	},
-	{
-		id    : 17360,
-		name  : 'F7F Tigercat',
-		image : 'Grumman_F7F_Tigercat',
-		type  : type.F,
-		rarity: rarity.SR
-	},
-	{
-		id    : 17380,
-		name  : 'F8F Bearcat',
-		image : 'Grumman_F8F_Bearcat',
-		type  : type.F,
-		rarity: rarity.SR
-	},
-	{
-		id    : 27060,
-		name  : 'Seafire FR.47',
-		image : 'Supermarine_Seafire_FR_Mk_47',
-		type  : type.F,
-		rarity: rarity.SR
-	},
+	{ id: 17340, name: 'F6F Hellcat', image: 'Grumman_F6F_Hellcat', type: type.F, rarity: rarity.SR },
+	{ id: 17360, name: 'F7F Tigercat', image: 'Grumman_F7F_Tigercat', type: type.F, rarity: rarity.SR },
+	{ id: 17380, name: 'F8F Bearcat', image: 'Grumman_F8F_Bearcat', type: type.F, rarity: rarity.SR },
+	{ id: 27060, name: 'Seafire FR.47', image: 'Supermarine_Seafire_FR_Mk_47', type: type.F, rarity: rarity.SR },
 	{ id: 27120, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.E },
 	{ id: 27140, name: 'Seafang', image: 'Supermarine_Seafang', type: type.F, rarity: rarity.SR },
 	{ id: 27300, name: 'Sea Fury', image: 'Hawker_Sea_Fury', type: type.F, rarity: rarity.SR },
-	{
-		id    : 27320,
-		name  : 'Sea Hornet',
-		image : 'De_Havilland_Sea_Hornet',
-		type  : type.F,
-		rarity: rarity.SR
-	},
-	{
-		id    : 37340,
-		name  : 'A7M Reppuu',
-		image : 'Mitsubishi_A7M_Reppuu',
-		type  : type.F,
-		rarity: rarity.SR
-	},
+	{ id: 27320, name: 'Sea Hornet', image: 'De_Havilland_Sea_Hornet', type: type.F, rarity: rarity.SR },
+	{ id: 37340, name: 'A7M Reppuu', image: 'Mitsubishi_A7M_Reppuu', type: type.F, rarity: rarity.SR },
 	{ id: 37240, name: 'Type 0 Fighter Model 52', image: 'Mitsubishi_A6M5_Zero', type: type.F, rarity: rarity.SR },
-	{
-		id    : 37320,
-		name  : 'A7M Reppuu',
-		image : 'Mitsubishi_A7M_Reppuu',
-		type  : type.F,
-		rarity: rarity.E
-	},
+	{ id: 37320, name: 'A7M Reppuu', image: 'Mitsubishi_A7M_Reppuu', type: type.F, rarity: rarity.E },
 	{
 		id    : 37400,
 		name  : 'Kawanishi N1K3-A Shiden Kai 2',
@@ -938,13 +835,7 @@ const equipData: Equip[] = [
 		type  : type.F,
 		rarity: rarity.SR
 	},
-	{
-		id    : 47140,
-		name  : 'Messerschmitt Me-155A',
-		image : 'Messerschmitt_Me-155A',
-		type  : type.F,
-		rarity: rarity.SR
-	},
+	{ id: 47140, name: 'Messerschmitt Me-155A', image: 'Messerschmitt_Me-155A', type: type.F, rarity: rarity.SR },
 	{
 		id    : 47160,
 		name  : 'Prototype BF-109G',
@@ -961,34 +852,10 @@ const equipData: Equip[] = [
 		type  : type.DB,
 		rarity: rarity.SR
 	},
-	{
-		id    : 19140,
-		name  : 'SB2C Helldiver',
-		image : 'Curtiss_SB2C_Helldiver',
-		type  : type.DB,
-		rarity: rarity.E
-	},
-	{
-		id    : 19160,
-		name  : 'Experimental XSB3C-1',
-		image : 'Curtiss_XSB3C_(Experimental)',
-		type  : type.DB,
-		rarity: rarity.SR
-	},
-	{
-		id    : 19240,
-		name  : 'BTD-1 Destroyer',
-		image : 'Douglas_BTD-1_Destroyer',
-		type  : type.DB,
-		rarity: rarity.SR
-	},
-	{
-		id    : 29200,
-		name  : 'Firefly',
-		image : 'Fairey_Firefly',
-		type  : type.DB,
-		rarity: rarity.SR
-	},
+	{ id: 19140, name: 'SB2C Helldiver', image: 'Curtiss_SB2C_Helldiver', type: type.DB, rarity: rarity.E },
+	{ id: 19160, name: 'Experimental XSB3C-1', image: 'Curtiss_XSB3C_(Experimental)', type: type.DB, rarity: rarity.SR },
+	{ id: 19240, name: 'BTD-1 Destroyer', image: 'Douglas_BTD-1_Destroyer', type: type.DB, rarity: rarity.SR },
+	{ id: 29200, name: 'Firefly', image: 'Fairey_Firefly', type: type.DB, rarity: rarity.SR },
 	{
 		id    : 29300,
 		name  : 'Barracuda (831 Squadron)',
@@ -997,13 +864,7 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{ id: 39140, name: 'Suisei', image: 'Yokosuka_D4Y_Suisei', type: type.DB, rarity: rarity.SR },
-	{
-		id    : 39160,
-		name  : 'Suisei Model 12A',
-		image : 'Yokosuka_Suisei_Model_12A',
-		type  : type.DB,
-		rarity: rarity.SR
-	},
+	{ id: 39160, name: 'Suisei Model 12A', image: 'Yokosuka_Suisei_Model_12A', type: type.DB, rarity: rarity.SR },
 	{
 		id    : 39340,
 		name  : 'Prototype Tenrai',
@@ -1011,13 +872,7 @@ const equipData: Equip[] = [
 		type  : type.DB,
 		rarity: rarity.UR
 	},
-	{
-		id    : 49040,
-		name  : 'Ju-87C Dive Bomber',
-		image : 'Junkers_Ju-87C',
-		type  : type.DB,
-		rarity: rarity.E
-	},
+	{ id: 49040, name: 'Ju-87C Dive Bomber', image: 'Junkers_Ju-87C', type: type.DB, rarity: rarity.E },
 	//endregion
 	//region Torpedo Bomber
 	{
@@ -1034,13 +889,7 @@ const equipData: Equip[] = [
 		type  : type.TB,
 		rarity: rarity.SR
 	},
-	{
-		id    : 18220,
-		name  : 'XTB2D-1 Skypirate',
-		image : 'Douglas_XTB2D-1_Skypirate',
-		type  : type.TB,
-		rarity: rarity.SR
-	},
+	{ id: 18220, name: 'XTB2D-1 Skypirate', image: 'Douglas_XTB2D-1_Skypirate', type: type.TB, rarity: rarity.SR },
 	{
 		id    : 28060,
 		name  : 'Swordfish (818 Squad)',
@@ -1051,42 +900,12 @@ const equipData: Equip[] = [
 	{ id: 28400, name: 'Wyvern', image: 'Westland_Wyvern', type: type.TB, rarity: rarity.UR },
 	{ id: 28120, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.E },
 	{ id: 28140, name: 'Barracuda', image: 'Fairey_Barracuda', type: type.TB, rarity: rarity.SR },
-	{
-		id    : 28200,
-		name  : 'Blackburn Firebrand',
-		image : 'Blackburn_Firebrand',
-		type  : type.TB,
-		rarity: rarity.SR
-	},
+	{ id: 28200, name: 'Blackburn Firebrand', image: 'Blackburn_Firebrand', type: type.TB, rarity: rarity.SR },
 	{ id: 28220, name: 'Firecrest', image: 'Blackburn_Firecrest', type: type.TB, rarity: rarity.SR },
-	{
-		id    : 28340,
-		name  : 'Albacore',
-		image : 'Fairey_Albacore',
-		type  : type.TB,
-		rarity: rarity.E
-	},
-	{
-		id    : 38140,
-		name  : 'Tenzan',
-		image : 'Nakajima_B6N_Tenzan',
-		type  : type.TB,
-		rarity: rarity.E
-	},
-	{
-		id    : 38160,
-		name  : 'Tenzan Kai',
-		image : 'Nakajima_B6N2_Tenzan_Model_12A',
-		type  : type.TB,
-		rarity: rarity.E
-	},
-	{
-		id    : 38240,
-		name  : 'Aichi B7A Ryusei',
-		image : 'Aichi_B7A_Ryusei',
-		type  : type.TB,
-		rarity: rarity.SR
-	},
+	{ id: 28340, name: 'Albacore', image: 'Fairey_Albacore', type: type.TB, rarity: rarity.E },
+	{ id: 38140, name: 'Tenzan', image: 'Nakajima_B6N_Tenzan', type: type.TB, rarity: rarity.E },
+	{ id: 38160, name: 'Tenzan Kai', image: 'Nakajima_B6N2_Tenzan_Model_12A', type: type.TB, rarity: rarity.E },
+	{ id: 38240, name: 'Aichi B7A Ryusei', image: 'Aichi_B7A_Ryusei', type: type.TB, rarity: rarity.SR },
 	{
 		id    : 38300,
 		name  : 'Prototype Saiun Kai',
@@ -1094,44 +913,14 @@ const equipData: Equip[] = [
 		type  : type.TB,
 		rarity: rarity.SR
 	},
-	{
-		id    : 38220,
-		name  : 'Aichi B7A Ryusei',
-		image : 'Aichi_B7A_Ryusei',
-		type  : type.TB,
-		rarity: rarity.E
-	},
+	{ id: 38220, name: 'Aichi B7A Ryusei', image: 'Aichi_B7A_Ryusei', type: type.TB, rarity: rarity.E },
 	{ id: 48040, name: 'Ju-87 D-4', image: 'Junkers_Ju-87_D-4', type: type.TB, rarity: rarity.SR },
 	//endregion
 	//region Seaplane
-	{
-		id    : 37420,
-		name  : 'Type 2 Seaplane Fighter',
-		image : 'Nakajima_A6M2-N',
-		type  : type.SP,
-		rarity: rarity.E
-	},
-	{
-		id    : 37440,
-		name  : 'N1K1 Kyoufuu',
-		image : 'Kawanishi_N1K1_Kyoufuu',
-		type  : type.SP,
-		rarity: rarity.E
-	},
-	{
-		id    : 39240,
-		name  : 'Aichi E16A Zuiun',
-		image : 'Aichi_E16A_Zuiun',
-		type  : type.SSP,
-		rarity: rarity.E
-	},
-	{
-		id    : 39320,
-		name  : 'Suisei Model 21',
-		image : 'Yokosuka_Suisei_Model_21',
-		type  : type.SP,
-		rarity: rarity.SR
-	},
+	{ id: 37420, name: 'Type 2 Seaplane Fighter', image: 'Nakajima_A6M2-N', type: type.SP, rarity: rarity.E },
+	{ id: 37440, name: 'N1K1 Kyoufuu', image: 'Kawanishi_N1K1_Kyoufuu', type: type.SP, rarity: rarity.E },
+	{ id: 39240, name: 'Aichi E16A Zuiun', image: 'Aichi_E16A_Zuiun', type: type.SSP, rarity: rarity.E },
+	{ id: 39320, name: 'Suisei Model 21', image: 'Yokosuka_Suisei_Model_21', type: type.SP, rarity: rarity.SR },
 	{ id: 39300, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SSP, rarity: rarity.E },
 	//endregion
 	//region Submarine Torpedo
@@ -1214,50 +1003,14 @@ const equipData: Equip[] = [
 	},
 	//endregion
 	//region Auxilliary
-	{
-		id    : 500,
-		name  : 'Beaver Squad Tag',
-		image : 'Little_Beaver_Squadron_Tag',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 500, name: 'Beaver Squad Tag', image: 'Little_Beaver_Squadron_Tag', type: type.A, rarity: rarity.SR },
 	{ id: 520, name: 'Pearl\'s Tears', image: 'Pearl_Tears', type: type.A, rarity: rarity.SR },
-	{
-		id    : 540,
-		name  : 'Healing Cat\'s Paw',
-		image : 'Healing_Cat\'s_Paw',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 580,
-		name  : 'Type 91 AP Shell',
-		image : 'Type_91_Armor_Piercing_Shell',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 600,
-		name  : 'Type 1 AP Shell',
-		image : 'Type_1_Armor_Piercing_Shell',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 620,
-		name  : 'Super Heavy Shell',
-		image : 'Super_Heavy_Shell',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 540, name: 'Healing Cat\'s Paw', image: 'Healing_Cat\'s_Paw', type: type.A, rarity: rarity.SR },
+	{ id: 580, name: 'Type 91 AP Shell', image: 'Type_91_Armor_Piercing_Shell', type: type.A, rarity: rarity.E },
+	{ id: 600, name: 'Type 1 AP Shell', image: 'Type_1_Armor_Piercing_Shell', type: type.A, rarity: rarity.SR },
+	{ id: 620, name: 'Super Heavy Shell', image: 'Super_Heavy_Shell', type: type.A, rarity: rarity.SR },
 	{ id: 640, name: 'Z Flag', image: 'Z_Flag', type: type.A, rarity: rarity.UR },
-	{
-		id    : 660,
-		name  : '100/150 Aviation Fuel',
-		image : '100$2F150_Aviation_Gasoline',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 660, name: '100/150 Aviation Fuel', image: '100$2F150_Aviation_Gasoline', type: type.A, rarity: rarity.E },
 	{ id: 680, name: 'Homing Beacon', image: 'Homing_Beacon', type: type.A, rarity: rarity.E },
 	{
 		id    : 700,
@@ -1266,20 +1019,8 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.E
 	},
-	{
-		id    : 720,
-		name  : 'Certificate of Sponsorship',
-		image : 'Unfulfilled_Promise',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 760,
-		name  : 'NY City Coast Recon Report',
-		image : 'NY_City_Coast_Recon_Report',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 720, name: 'Certificate of Sponsorship', image: 'Unfulfilled_Promise', type: type.A, rarity: rarity.SR },
+	{ id: 760, name: 'NY City Coast Recon Report', image: 'NY_City_Coast_Recon_Report', type: type.A, rarity: rarity.E },
 	{
 		id    : 780,
 		name  : 'Intel Report - Arctic Stronghold',
@@ -1294,13 +1035,7 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.E
 	},
-	{
-		id    : 820,
-		name  : 'Frontier Medal',
-		image : 'Frontier_Medal',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 820, name: 'Frontier Medal', image: 'Frontier_Medal', type: type.A, rarity: rarity.SR },
 	{
 		id    : 840,
 		name  : 'Eagle Union Elite Damage Control',
@@ -1308,13 +1043,7 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
-	{
-		id    : 860,
-		name  : 'Washington Naval Treaty',
-		image : 'Washington_Naval_Treaty',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 860, name: 'Washington Naval Treaty', image: 'Washington_Naval_Treaty', type: type.A, rarity: rarity.SR },
 	{
 		id    : 880,
 		name  : 'Nelson\'s Pennant of Victory',
@@ -1323,13 +1052,7 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{ id: 960, name: 'FuMO 25', image: 'Funkmess-Ortung_25_Radar', type: type.A, rarity: rarity.SR },
-	{
-		id    : 1040,
-		name  : 'Ship Maintenance Facility',
-		image : 'Ship_Maintenance_Crane',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 1040, name: 'Ship Maintenance Facility', image: 'Ship_Maintenance_Crane', type: type.A, rarity: rarity.SR },
 	{ id: 1120, name: 'Air Radar', image: 'Air_Radar', type: type.A, rarity: rarity.E },
 	{
 		id    : 1160,
@@ -1338,13 +1061,7 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
-	{
-		id    : 1240,
-		name  : 'Fire Control Radar',
-		image : 'Fire_Control_Radar',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 1240, name: 'Fire Control Radar', image: 'Fire_Control_Radar', type: type.A, rarity: rarity.E },
 	{
 		id    : 1260,
 		name  : 'High Standard Fire-Control Radar',
@@ -1352,36 +1069,12 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
-	{
-		id    : 1340,
-		name  : 'Anti-Torpedo Bulge',
-		image : 'Anti-Torpedo_Bulge',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 1420,
-		name  : 'Steam Catapult',
-		image : 'Steam_Catapult',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 1440,
-		name  : 'Steam Catapult',
-		image : 'Steam_Catapult',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 1340, name: 'Anti-Torpedo Bulge', image: 'Anti-Torpedo_Bulge', type: type.A, rarity: rarity.E },
+	{ id: 1420, name: 'Steam Catapult', image: 'Steam_Catapult', type: type.A, rarity: rarity.E },
+	{ id: 1440, name: 'Steam Catapult', image: 'Steam_Catapult', type: type.A, rarity: rarity.SR },
 	{ id: 1520, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.E },
 	{ id: 1540, name: 'SG Radar', image: 'SG_Radar', type: type.A, rarity: rarity.SR },
-	{
-		id    : 1740,
-		name  : 'Hydraulic Steering Gear',
-		image : 'Hydraulic_Steering_Gear',
-		type  : type.A,
-		rarity: rarity.R
-	},
+	{ id: 1740, name: 'Hydraulic Steering Gear', image: 'Hydraulic_Steering_Gear', type: type.A, rarity: rarity.R },
 	{
 		id    : 1760,
 		name  : 'High Performance Hydraulic Steering Gear',
@@ -1389,45 +1082,15 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
-	{
-		id    : 1840,
-		name  : 'Advanced Boiler',
-		image : 'Improved_Boiler',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 1940,
-		name  : 'Naval Camouflage',
-		image : 'Naval_Camouflage',
-		type  : type.A,
-		rarity: rarity.R
-	},
-	{
-		id    : 1960,
-		name  : 'Ocean Soul Camouflage',
-		image : 'Ocean_Soul_Camouflage',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 1840, name: 'Advanced Boiler', image: 'Improved_Boiler', type: type.A, rarity: rarity.E },
+	{ id: 1940, name: 'Naval Camouflage', image: 'Naval_Camouflage', type: type.A, rarity: rarity.R },
+	{ id: 1960, name: 'Ocean Soul Camouflage', image: 'Ocean_Soul_Camouflage', type: type.A, rarity: rarity.E },
 	{ id: 2040, name: 'Fuel Filter', image: 'Fuel_Filter', type: type.A, rarity: rarity.E },
-	{
-		id    : 2140,
-		name  : 'Aviation Oil Tank',
-		image : 'Drop_Tank',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 2140, name: 'Aviation Oil Tank', image: 'Drop_Tank', type: type.A, rarity: rarity.E },
 	{ id: 2240, name: 'Autoloader', image: 'Autoloader', type: type.A, rarity: rarity.E },
 	{ id: 2340, name: 'Gyroscope', image: 'Gyroscope', type: type.A, rarity: rarity.E },
 	{ id: 2440, name: 'Repair Toolkit', image: 'Repair_Toolkit', type: type.A, rarity: rarity.E },
-	{
-		id    : 2540,
-		name  : 'Fire Suppressor',
-		image : 'Fire_Extinguisher',
-		type  : type.A,
-		rarity: rarity.R
-	},
+	{ id: 2540, name: 'Fire Suppressor', image: 'Fire_Extinguisher', type: type.A, rarity: rarity.R },
 	{
 		id    : 2640,
 		name  : 'Type 93 Pure Oxygen Torpedo',
@@ -1435,13 +1098,7 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.UR
 	},
-	{
-		id    : 2740,
-		name  : '533mm Magnetic Torpedo',
-		image : '533mm_Magnetic_Torpedo',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 2740, name: '533mm Magnetic Torpedo', image: '533mm_Magnetic_Torpedo', type: type.A, rarity: rarity.SR },
 	{
 		id    : 2800,
 		name  : 'Type 94 Anti-Air Fire Control System',
@@ -1456,105 +1113,27 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.E
 	},
-	{
-		id    : 3120,
-		name  : 'Improved Snorkel',
-		image : 'Improved_Snorkel',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 3140,
-		name  : 'Improved Storage Battery',
-		image : 'Improved_Storage_Battery',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 3200,
-		name  : 'VH Armor Plating',
-		image : 'VH_Armor_Plating',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 3220,
-		name  : 'VC Armor Plating',
-		image : 'VC_Armor_Plating',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 3300,
-		name  : 'Seal of the Four Gods',
-		image : 'Seal_of_the_Four_Gods',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 15500,
-		name  : 'PBY-5A Catalina',
-		image : 'Consolidated_PBY-5A_Catalina',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 89000,
-		name  : 'Random Word Generator',
-		image : 'Random_Word_Generator',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 89040,
-		name  : 'Intelligence Chip',
-		image : 'Intelligence_Chip',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 3120, name: 'Improved Snorkel', image: 'Improved_Snorkel', type: type.A, rarity: rarity.SR },
+	{ id: 3140, name: 'Improved Storage Battery', image: 'Improved_Storage_Battery', type: type.A, rarity: rarity.SR },
+	{ id: 3200, name: 'VH Armor Plating', image: 'VH_Armor_Plating', type: type.A, rarity: rarity.SR },
+	{ id: 3220, name: 'VC Armor Plating', image: 'VC_Armor_Plating', type: type.A, rarity: rarity.E },
+	{ id: 3300, name: 'Seal of the Four Gods', image: 'Seal_of_the_Four_Gods', type: type.A, rarity: rarity.SR },
+	{ id: 15500, name: 'PBY-5A Catalina', image: 'Consolidated_PBY-5A_Catalina', type: type.A, rarity: rarity.E },
+	{ id: 89000, name: 'Random Word Generator', image: 'Random_Word_Generator', type: type.A, rarity: rarity.SR },
+	{ id: 89040, name: 'Intelligence Chip', image: 'Intelligence_Chip', type: type.A, rarity: rarity.SR },
 	{ id: 89060, name: 'Team Emblem', image: 'Team_Emblem', type: type.A, rarity: rarity.SR },
 	{ id: 89080, name: 'Gamers Mark', image: 'Gamers_Mark', type: type.A, rarity: rarity.SR },
 	{ id: 89020, name: 'Pyoko-Pyoko', image: 'Pyoko-Pyoko', type: type.A, rarity: rarity.SR },
 	{ id: 89100, name: 'Corn Lantern', image: 'Corn_Lantern', type: type.A, rarity: rarity.SR },
-	{
-		id    : 89140,
-		name  : 'White-Hot Verheerender',
-		image : 'White-Hot_Verheerender',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 89160,
-		name  : 'Sacred Lumière',
-		image : 'Sacred_Lumière',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 89180,
-		name  : 'Resplendent Astrum',
-		image : 'Resplendent_Astrum',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 89140, name: 'White-Hot Verheerender', image: 'White-Hot_Verheerender', type: type.A, rarity: rarity.SR },
+	{ id: 89160, name: 'Sacred Lumière', image: 'Sacred_Lumière', type: type.A, rarity: rarity.SR },
+	{ id: 89180, name: 'Resplendent Astrum', image: 'Resplendent_Astrum', type: type.A, rarity: rarity.SR },
 	{ id: 89260, name: 'Heart Key', image: 'Heart_Key', type: type.A, rarity: rarity.SR },
 	{ id: 89280, name: 'Shining Bracelet', image: 'Shining_Bracelet', type: type.A, rarity: rarity.SR },
 	{ id: 89120, name: 'Ankimo', image: 'Ankimo', type: type.A, rarity: rarity.SR },
 	{ id: 89200, name: 'Cosmic Kicks', image: 'Cosmic_Kicks', type: type.A, rarity: rarity.SR },
-	{
-		id    : 89220,
-		name  : 'Celestial Body',
-		image : 'Celestial_Body',
-		type  : type.A,
-		rarity: rarity.SR
-	},
-	{
-		id    : 89240,
-		name  : 'Awakening Pearl',
-		image : 'Awakening_Pearl',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 89220, name: 'Celestial Body', image: 'Celestial_Body', type: type.A, rarity: rarity.SR },
+	{ id: 89240, name: 'Awakening Pearl', image: 'Awakening_Pearl', type: type.A, rarity: rarity.SR },
 	{ id: 89300, name: 'Battle Tracto Max', image: 'Battle_Tracto_Max', type: type.A, rarity: rarity.SR },
 	{ id: 89320, name: 'Gridman Calibur', image: 'Gridman_Calibur', type: type.A, rarity: rarity.SR },
 	{ id: 89340, name: 'Buster Borr', image: 'Buster_Borr', type: type.A, rarity: rarity.SR },
@@ -1563,28 +1142,10 @@ const equipData: Equip[] = [
 	{ id: 89400, name: 'Goldburn', image: 'Goldburn', type: type.A, rarity: rarity.SR },
 	//endregion
 	//region ASW Auxilliary
-	{
-		id    : 740,
-		name  : 'Fl 282 Kolibri',
-		image : 'Flettner_Fl_282_Kolibri',
-		type  : type.A,
-		rarity: rarity.E
-	},
+	{ id: 740, name: 'Fl 282 Kolibri', image: 'Flettner_Fl_282_Kolibri', type: type.A, rarity: rarity.E },
 	{ id: 2940, name: 'Basic Sonar', image: 'Basic_Sonar', type: type.A, rarity: rarity.E },
-	{
-		id    : 3020,
-		name  : 'Advanced Sonar',
-		image : 'Improved_Sonar',
-		type  : type.A,
-		rarity: rarity.E
-	},
-	{
-		id    : 3040,
-		name  : 'Advanced Sonar',
-		image : 'Improved_Sonar',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 3020, name: 'Advanced Sonar', image: 'Improved_Sonar', type: type.A, rarity: rarity.E },
+	{ id: 3040, name: 'Advanced Sonar', image: 'Improved_Sonar', type: type.A, rarity: rarity.SR },
 	{
 		id    : 4140,
 		name  : 'Improved Depth Charge Projector',
@@ -1606,13 +1167,7 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.E
 	},
-	{
-		id    : 25800,
-		name  : '"Hedgehog" Anti-Submarine Mortar',
-		image : 'Hedgehog',
-		type  : type.A,
-		rarity: rarity.SR
-	},
+	{ id: 25800, name: '"Hedgehog" Anti-Submarine Mortar', image: 'Hedgehog', type: type.A, rarity: rarity.SR },
 	//endregion
 	//region Cargo
 	{
@@ -1636,13 +1191,7 @@ const equipData: Equip[] = [
 		type  : type.C,
 		rarity: rarity.E
 	},
-	{
-		id    : 3540,
-		name  : 'Torpedo Materials (Cargo)',
-		image : 'Torpedo_Materials_(Cargo)',
-		type  : type.C,
-		rarity: rarity.E
-	}
+	{ id: 3540, name: 'Torpedo Materials (Cargo)', image: 'Torpedo_Materials_(Cargo)', type: type.C, rarity: rarity.E }
 	//endregion
 	// { id: 0, name: '', image: '', type: type.A, rarity: rarity.SR }
 ];

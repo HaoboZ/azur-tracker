@@ -8,6 +8,7 @@ import eventImage from '../../../public/images/event.png';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
+import useIntervalEffect from '../../lib/hooks/useIntervalEffect';
 import { event_newEvent } from '../../lib/store/reducers/eventReducer';
 import eventData from './data';
 import EventFarming from './farming';
@@ -19,14 +20,13 @@ export default function Event() {
 	
 	const [ time, setTime ] = useState( moment );
 	
-	// resets event and changes time
+	// resets event
 	useEffect( () => {
 		if ( event.name != eventData.name )
 			dispatch( event_newEvent() );
-		
-		const interval = setInterval( () => setTime( moment() ), 15 * 1000 );
-		return () => clearInterval( interval );
 	}, [] );
+	
+	useIntervalEffect( () => setTime( moment() ), 15 * 1000, [] );
 	
 	if ( event.name != eventData.name )
 		return null;

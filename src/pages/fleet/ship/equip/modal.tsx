@@ -13,8 +13,9 @@ import {
 } from '@mui/material';
 import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import useEventEffect from '../../../../lib/hooks/useEventEffect';
 import { useModalControls } from '../../../../lib/providers/modal';
 import { fleet_setShip } from '../../../../lib/store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
@@ -70,8 +71,8 @@ export default function EquipModal( { info, selectedEquip }: {
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	
 	// saves info on close
-	useEffect( () => {
-		function close( cancel ) {
+	useEventEffect( events, 'close', ( cancel ) => {
+		if ( info?.ship.equip[ info.index ][ 0 ] !== equip.id ) {
 			setAnchorEl( null );
 			if ( cancel ) return;
 			const newEquip = cloneDeep( info.ship.equip );
@@ -79,10 +80,6 @@ export default function EquipModal( { info, selectedEquip }: {
 			getTier( fleetData[ info.ship.id ], newEquip );
 			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 		}
-		events.on( 'close', close );
-		return () => {
-			events.off( 'close', close );
-		};
 	}, [ equip, override ] );
 	
 	return <>

@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import useEventEffect from './useEventEffect';
 
 export default function usePageHeight() {
 	const [ height, setHeight ] = useState( window.innerHeight );
 	
 	// window event listener resize event
-	useEffect( () => {
-		const updateDimensions = () => setHeight( window.innerHeight );
-		window.addEventListener( 'resize', updateDimensions );
-		return () => window.removeEventListener( 'resize', updateDimensions );
-	}, [] );
+	useEventEffect( window, 'resize', () => setHeight( window.innerHeight ), [] );
 	
 	return height;
 }
