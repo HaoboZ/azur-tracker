@@ -19,7 +19,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 	const tableOptions = useMemo( () => ( {
 		columns: fleetColumns( equipBetter, setEquipBetter ),
 		// list of ships with the local data loaded
-		data                  : Object.values( fleetData )
+		data   : Object.values( fleetData )
 			.map( ( shipData ) => {
 				const _ship = fleet.ships[ shipData.id ];
 				shipData.love = _ship?.love || 0;
@@ -32,13 +32,13 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 				if ( !fleet.filter.level0 && !shipData.lvl ) return false;
 				return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
 			} ),
-		getRowId              : ( { id } ) => id,
-		defaultColumn         : { width: 10 },
-		initialState          : {
+		getRowId     : ( { id } ) => id,
+		defaultColumn: { width: 10 },
+		initialState : {
 			hiddenColumns: [ 'equipType' ],
 			sortBy       : [ { id: 'tier' }, { id: 'lvl', desc: true } ]
 		},
-		filterTypes           : {
+		filterTypes: {
 			// case insensitive ignores accents in strings
 			normal: ( rows, ids, filterValue ) => {
 				try {

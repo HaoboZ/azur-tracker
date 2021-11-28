@@ -21,11 +21,11 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'name',
 		width   : 40,
 		Cell( { value } ) {
-			return <Box sx={{
+			return <Box sx={ {
 				whiteSpace  : 'nowrap',
 				overflow    : 'hidden',
 				textOverflow: 'ellipsis'
-			}}>{value}</Box>;
+			} }>{ value }</Box>;
 		},
 		props: { style: { minWidth: '80px' } }
 	}, {
@@ -33,13 +33,13 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'rarity',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={{
+			return <Box sx={ {
 				whiteSpace  : 'nowrap',
 				overflow    : 'hidden',
 				textOverflow: 'ellipsis'
-			}}>{value}</Box>;
+			} }>{ value }</Box>;
 		},
-		props   : ( cell ) => ( {
+		props: ( cell ) => ( {
 			className: cell && `color-${rarityColors[ cell.value ]}`,
 			style    : { minWidth: '80px' }
 		} ),
@@ -49,11 +49,11 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'faction',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={{
+			return <Box sx={ {
 				whiteSpace  : 'nowrap',
 				overflow    : 'hidden',
 				textOverflow: 'ellipsis'
-			}}>{value}</Box>;
+			} }>{ value }</Box>;
 		},
 		props: ( cell ) => ( {
 			className: cell && `color-${factionColors[ cell.value ]}`,
@@ -64,11 +64,11 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'type',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={{
+			return <Box sx={ {
 				whiteSpace  : 'nowrap',
 				overflow    : 'hidden',
 				textOverflow: 'ellipsis'
-			}}>{value}</Box>;
+			} }>{ value }</Box>;
 		},
 		props: ( cell ) => ( {
 			className: cell && `color-${typeColors[ cell.value ]}`,
@@ -123,14 +123,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 			return equipBetter.value[ row.id ]
 				? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
 				: value?.some( ( equip ) => equip[ 2 ] )
-				&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
+				&& value.map( ( equip, i ) => <TierIcon key={ i } tier={ equip[ 2 ] }/> );
 		},
-		props              : ( cell ) => ( {
+		props: ( cell ) => ( {
 			className: cell && equipBetter.value[ cell.row.id ]
 				? `color-${tierColors[ Math.min( ...equipBetter.value[ cell.row.id ]
 					.filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`
 				: undefined,
-			style    : { minWidth: '116px' }
+			style: { minWidth: '116px' }
 		} ),
 		disableGlobalFilter: true,
 		filter             : ( rows, id, filterValue ) => {
@@ -168,7 +168,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 				return rows.filter( ( { id } ) => newEquipBetter[ id ].some( Boolean ) );
 			}
 		},
-		disableSortBy      : true
+		disableSortBy: true
 	}, {
 		accessor           : 'equipType',
 		disableGlobalFilter: true

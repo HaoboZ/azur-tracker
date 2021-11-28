@@ -11,16 +11,16 @@ export default class _Document extends Document {
 		
 		const originalRenderPage = ctx.renderPage;
 		ctx.renderPage = () => originalRenderPage( {
-			enhanceApp: ( App ) => ( props ) => <App {...props} pageProps={{ ...props.pageProps, emotionCache }}/>
+			enhanceApp: ( App ) => ( props ) => <App { ...props } pageProps={ { ...props.pageProps, emotionCache } }/>
 		} );
 		
 		const initialProps = await Document.getInitialProps( ctx );
 		
 		const emotionStyles = extractCriticalToChunks( initialProps.html );
 		const emotionStyleTags = emotionStyles.styles.map( ( style ) => <style
-			data-emotion={`${style.key} ${style.ids.join( ' ' )}`}
-			key={style.key}
-			dangerouslySetInnerHTML={{ __html: style.css }}
+			key={ style.key }
+			data-emotion={ `${style.key} ${style.ids.join( ' ' )}` }
+			dangerouslySetInnerHTML={ { __html: style.css } }
 		/> );
 		
 		return {

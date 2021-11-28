@@ -13,8 +13,8 @@ type State = {
 };
 
 const initialState: State = {
-	name            : '',
-	shop            : {
+	name: '',
+	shop: {
 		'Gear Skin Box'                       : 0,
 		'T4 Eagle Tech Box'                   : 0,
 		'T4 Royal Tech Box'                   : 0,
@@ -42,9 +42,9 @@ const initialState: State = {
 		{ id: nanoid(), name: 'Sortie and clear 1 non-event Hard Mode Stage', amount: 150 },
 		{ id: nanoid(), name: 'SP Stage', amount: 800 }
 	],
-	dailyExpected   : 1550,
-	points          : 0,
-	farming         : [
+	dailyExpected: 1550,
+	points       : 0,
+	farming      : [
 		{ id: nanoid(), points: 180, oil: 10 + 25 * 6 + 40 }
 	]
 };
@@ -55,14 +55,14 @@ function newEvent( state ) {
 		name            : eventData.name,
 		shopExpectedCost: eventData.shop.reduce( ( total, item ) =>
 			total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
-		points          : 0
+		points: 0
 	};
 }
 
 const eventSlice = createSlice( {
-	name         : 'event',
+	name    : 'event',
 	initialState,
-	reducers     : {
+	reducers: {
 		event_reset() {
 			return newEvent( initialState );
 		},

@@ -10,16 +10,16 @@ function LinkItem( { href, children }: { href: string, children: ReactNode } ) {
 	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	
-	return <Link href={href}>
+	return <Link href={ href }>
 		<Badge
 			color='secondary'
 			variant='dot'
-			sx={{ mr: 3 }}
-			invisible={!newData[ href.substring( 1 ) ]}>
+			sx={ { mr: 3 } }
+			invisible={ !newData[ href.substring( 1 ) ] }>
 			<Button
 				color='inherit'
-				onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
-				{children}
+				onClick={ () => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) ) }>
+				{ children }
 			</Button>
 		</Badge>
 	</Link>;
@@ -30,22 +30,22 @@ export default function TitleBar( { children } ) {
 	
 	return <Box>
 		<AppBar
-			position='static'
 			enableColorOnDark
-			sx={{
+			position='static'
+			sx={ {
 				pt: 'env(safe-area-inset-top)',
 				pl: 'env(safe-area-inset-left)',
 				pr: 'env(safe-area-inset-right)'
-			}}>
+			} }>
 			<Toolbar>
-				<Typography variant='h3' sx={{ mr: 3 }}>
+				<Typography variant='h3' sx={ { mr: 3 } }>
 					Azur Lane Tracker
 				</Typography>
 				<LinkItem href='/'>Event</LinkItem>
 				<LinkItem href='/research'>Research</LinkItem>
 				<LinkItem href='/fleet'>Fleet</LinkItem>
 				<LinkItem href='/info'>Info</LinkItem>
-				<Box flexGrow={1}/>
+				<Box flexGrow={ 1 }/>
 				<Link href='/settings'>
 					<IconButton color='inherit'>
 						<SettingsIcon/>
@@ -56,8 +56,8 @@ export default function TitleBar( { children } ) {
 		<Box
 			pl='env(safe-area-inset-left)'
 			pr='env(safe-area-inset-right)'
-			minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
-			{children}
+			minHeight={ `min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)` }>
+			{ children }
 		</Box>
 	</Box>;
 }

@@ -16,7 +16,7 @@ export default function Loading( { delay = 250, children, containerProps, ...pro
 	
 	if ( children ) return children as JSX.Element;
 	
-	return <Box textAlign='center' py={2} {...containerProps}>
-		<CircularProgress {...props}/>
+	return <Box textAlign='center' py={ 2 } { ...containerProps }>
+		<CircularProgress { ...props }/>
 	</Box>;
 }

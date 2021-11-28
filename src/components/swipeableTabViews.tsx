@@ -26,19 +26,19 @@ export default function SwipeableTabViews( { tab = 0, setTab, renderTabs, render
 	return <Box>
 		<Tabs
 			selectionFollowsFocus
-			value={tabValue}
-			onChange={( e, index ) => setTabValue( +index )}
-			{...props}>
-			{renderTabs.map( ( label, index ) => <Tab key={index} label={label}/> )}
+			value={ tabValue }
+			onChange={ ( e, index ) => setTabValue( +index ) }
+			{ ...props }>
+			{ renderTabs.map( ( label, index ) => <Tab key={ index } label={ label }/> ) }
 		</Tabs>
 		<EnhancedSwipeableViews
-			index={tabValue}
-			onChangeIndex={( index ) => setTabValue( index )}
-			slideCount={renderTabs.length}
-			slideRenderer={( { index } ) => <Fragment key={index}>
-				{renderContent( index )}
-			</Fragment>}
-			containerStyle={swipeFix}
+			index={ tabValue }
+			slideCount={ renderTabs.length }
+			slideRenderer={ ( { index } ) => <Fragment key={ index }>
+				{ renderContent( index ) }
+			</Fragment> }
+			containerStyle={ swipeFix }
+			onChangeIndex={ ( index ) => setTabValue( index ) }
 		/>
 	</Box>;
 }

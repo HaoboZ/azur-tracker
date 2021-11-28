@@ -10,30 +10,30 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 	setEquip: ( id: number ) => void
 } ) {
 	return <Menu
-		anchorEl={anchorEl}
 		keepMounted
-		open={Boolean( anchorEl )}
-		onClose={closeAnchor}
-		PaperProps={{ sx: { maxHeight: 400, width: 300 } }}>
-		{equipList.map( ( equip ) => <MenuItem
-			key={equip.id}
-			sx={{ whiteSpace: 'normal' }}
-			onClick={() => {
+		anchorEl={ anchorEl }
+		open={ Boolean( anchorEl ) }
+		PaperProps={ { sx: { maxHeight: 400, width: 300 } } }
+		onClose={ closeAnchor }>
+		{ equipList.map( ( equip ) => <MenuItem
+			key={ equip.id }
+			sx={ { whiteSpace: 'normal' } }
+			onClick={ () => {
 				setEquip( equip.id );
 				closeAnchor();
-			}}>
-			{equip.tier && <Typography>{equip.tier}</Typography>}
-			<Box px={1}>
+			} }>
+			{ equip.tier && <Typography>{ equip.tier }</Typography> }
+			<Box px={ 1 }>
 				<Image
-					src={`/images/equips/${equip.image}.png`}
-					alt={equip.name}
+					src={ `/images/equips/${equip.image}.png` }
+					alt={ equip.name }
 					layout='fixed'
-					height={50}
-					width={50}
-					className={`color-${rarityColors[ equip.rarity ]}`}
+					height={ 50 }
+					width={ 50 }
+					className={ `color-${rarityColors[ equip.rarity ]}` }
 				/>
 			</Box>
-			<Typography>{equip.name}</Typography>
-		</MenuItem> )}
+			<Typography>{ equip.name }</Typography>
+		</MenuItem> ) }
 	</Menu>;
 }

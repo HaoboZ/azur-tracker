@@ -37,9 +37,9 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 	
 	return <>
 		<EnhancedDisplay
-			items={researchShips}
-			extraData={ships}
-			tableProps={{
+			items={ researchShips }
+			extraData={ ships }
+			tableProps={ {
 				headers: [
 					'Name',
 					'Dev Level',
@@ -55,162 +55,162 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 					return [
 						<>
 							<Avatar
-								src={`/images/ships/${item.url}.png`}
-								alt={item.name}
+								src={ `/images/ships/${ item.url }.png` }
+								alt={ item.name }
 								variant='rounded'
-								sx={{ width: 60, height: 60 }}
+								sx={ { width: 60, height: 60 } }
 							/>
-							<Typography>{item.name}</Typography>
+							<Typography>{ item.name }</Typography>
 						</>,
 						<FormattedTextField
 							key='devLevel'
 							type='number'
-							inputProps={{ inputMode: 'numeric' }}
-							value={ship.devLevel || 0}
-							onChange={( { target } ) => dispatch( research_modifyShip( {
+							inputProps={ { inputMode: 'numeric' } }
+							value={ ship.devLevel || 0 }
+							onChange={ ( { target } ) => dispatch( research_modifyShip( {
 								ship: item.name,
 								item: { devLevel: parseInt( target.value ) }
-							} ) )}
+							} ) ) }
 						/>,
 						<FormattedTextField
 							key='devStage'
 							type='number'
 							inputMode='numeric'
 							className='numberInput'
-							InputProps={{
+							InputProps={ {
 								endAdornment: <InputAdornment position='end'>
-									/{devLevel[ item.type * 2 ] * 10}
+									/{ devLevel[ item.type * 2 ] * 10 }
 								</InputAdornment>
-							}}
-							value={ship.devStage || 0}
-							onChange={( { target } ) => dispatch( research_modifyShip( {
+							} }
+							value={ ship.devStage || 0 }
+							onChange={ ( { target } ) => dispatch( research_modifyShip( {
 								ship  : item.name,
 								item  : { devStage: parseInt( target.value ) },
 								maxDev: devLevel[ item.type * 2 ] * 10
-							} ) )}
+							} ) ) }
 						/>,
-						<Typography key='devPrints'>{devPrints}</Typography>,
+						<Typography key='devPrints'>{ devPrints }</Typography>,
 						...item.fate ? [
 							<FormattedTextField
 								key='fateLevel'
 								type='number'
-								inputProps={{ inputMode: 'numeric' }}
-								value={ship.fateLevel || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								inputProps={ { inputMode: 'numeric' } }
+								value={ ship.fateLevel || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
 									item: { fateLevel: parseInt( target.value ) }
-								} ) )}
+								} ) ) }
 							/>,
 							<FormattedTextField
 								key='fateStage'
 								type='number'
 								inputMode='numeric'
 								className='numberInput'
-								InputProps={{
+								InputProps={ {
 									endAdornment: <InputAdornment position='end'>%</InputAdornment>
-								}}
-								value={ship.fateStage || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								} }
+								value={ ship.fateStage || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
 									item: { fateStage: parseInt( target.value ) }
-								} ) )}
+								} ) ) }
 							/>,
-							<Typography key='fatePrints'>{fatePrints}</Typography>
+							<Typography key='fatePrints'>{ fatePrints }</Typography>
 						] : Array( 3 )
 					];
 				}
-			}}
-			listProps={{
+			} }
+			listProps={ {
 				renderRow: ( item, index ) => {
 					const { devPrints, fatePrints } = shipData[ index ];
 					return <>
 						<ListItemAvatar>
 							<Avatar
-								src={`/images/ships/${item.url}.png`}
-								alt={item.name}
+								src={ `/images/ships/${ item.url }.png` }
+								alt={ item.name }
 								variant='rounded'
 							/>
 						</ListItemAvatar>
 						<ListItemText
-							primary={item.name}
-							secondary={`Needs: ${devPrints + fatePrints} Prints`}
+							primary={ item.name }
+							secondary={ `Needs: ${ devPrints + fatePrints } Prints` }
 						/>
 					</>;
 				},
 				renderPanel( item, index ) {
 					const ship = ships[ item.name ] || {};
 					const { devLevel } = shipData[ index ];
-					return <Grid container spacing={2}>
-						<Grid item xs={6}>
+					return <Grid container spacing={ 2 }>
+						<Grid item xs={ 6 }>
 							<FormattedTextField
 								type='number'
 								size='small'
-								inputProps={{ inputMode: 'numeric' }}
-								InputProps={{
+								inputProps={ { inputMode: 'numeric' } }
+								InputProps={ {
 									startAdornment: <InputAdornment position='start'>Dev Level</InputAdornment>
-								}}
-								value={ship.devLevel || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								} }
+								value={ ship.devLevel || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
 									item: { devLevel: parseInt( target.value ) }
-								} ) )}
+								} ) ) }
 							/>
 							<FormattedTextField
 								type='number'
 								size='small'
 								inputMode='numeric'
 								className='numberInput'
-								InputProps={{
+								InputProps={ {
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment  : <InputAdornment position='end'>
-										/{devLevel[ item.type * 2 ] * 10}
+										/{ devLevel[ item.type * 2 ] * 10 }
 									</InputAdornment>
-								}}
-								value={ship.devStage || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								} }
+								value={ ship.devStage || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship  : item.name,
 									item  : { devStage: parseInt( target.value ) },
 									maxDev: devLevel[ item.type * 2 ] * 10
-								} ) )}
-								onFocus={( { target } ) => target.select()}
+								} ) ) }
+								onFocus={ ( { target } ) => target.select() }
 							/>
 						</Grid>
-						{item.fate && <Grid item xs={6}>
+						{ item.fate && <Grid item xs={ 6 }>
 							<FormattedTextField
 								type='number'
 								size='small'
-								inputProps={{ inputMode: 'numeric' }}
-								InputProps={{
+								inputProps={ { inputMode: 'numeric' } }
+								InputProps={ {
 									startAdornment: <InputAdornment position='start'>Fate Level</InputAdornment>
-								}}
-								value={ship.fateLevel || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								} }
+								value={ ship.fateLevel || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
 									item: { fateLevel: parseInt( target.value ) }
-								} ) )}
+								} ) ) }
 							/>
 							<FormattedTextField
 								type='number'
 								size='small'
 								inputMode='numeric'
 								className='numberInput'
-								InputProps={{
+								InputProps={ {
 									startAdornment: <InputAdornment position='start'>Stage</InputAdornment>,
 									endAdornment  : <InputAdornment position='end'>%</InputAdornment>
-								}}
-								value={ship.fateStage || 0}
-								onChange={( { target } ) => dispatch( research_modifyShip( {
+								} }
+								value={ ship.fateStage || 0 }
+								onChange={ ( { target } ) => dispatch( research_modifyShip( {
 									ship: item.name,
 									item: { fateStage: parseInt( target.value ) }
-								} ) )}
-								onFocus={( { target } ) => target.select()}
+								} ) ) }
+								onFocus={ ( { target } ) => target.select() }
 							/>
-						</Grid>}
+						</Grid> }
 					</Grid>;
 				}
-			}}
+			} }
 		/>
-		<Typography>Priority Prints Total: {totalPR}</Typography>
-		<Typography>Decisive Prints Total: {totalDR}</Typography>
+		<Typography>Priority Prints Total: { totalPR }</Typography>
+		<Typography>Decisive Prints Total: { totalDR }</Typography>
 	</>;
 }

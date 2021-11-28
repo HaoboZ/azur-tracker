@@ -47,43 +47,43 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	}, [ ship.tier ] );
 	
 	return <ResponsiveModalContainer
-		title={<Link
-			href={ship.link}
+		title={ <Link
+			href={ ship.link }
 			target='_blank'
 			color='textPrimary'>
-			<DialogTitle>{ship.name}</DialogTitle>
-		</Link>}>
-		<Grid container spacing={2} alignItems='center'>
-			<Grid item xs={4}>
+			<DialogTitle>{ ship.name }</DialogTitle>
+		</Link> }>
+		<Grid container spacing={ 2 } alignItems='center'>
+			<Grid item xs={ 4 }>
 				<InputLabel shrink>Rarity</InputLabel>
-				<Typography>{ship.rarity}</Typography>
+				<Typography>{ ship.rarity }</Typography>
 			</Grid>
-			<Grid item xs={4}>
+			<Grid item xs={ 4 }>
 				<InputLabel shrink>Faction</InputLabel>
-				<Typography>{ship.faction}</Typography>
+				<Typography>{ ship.faction }</Typography>
 			</Grid>
-			<Grid item xs={4}>
+			<Grid item xs={ 4 }>
 				<InputLabel shrink>Type</InputLabel>
-				<Typography>{ship.type}</Typography>
+				<Typography>{ ship.type }</Typography>
 			</Grid>
-			<Grid item xs={3}>
-				<Typography>Tier: {tier}</Typography>
+			<Grid item xs={ 3 }>
+				<Typography>Tier: { tier }</Typography>
 			</Grid>
 			<Grid item xs>
 				<FormControl fullWidth>
 					<InputLabel>Love</InputLabel>
 					<Select
-						label='Love'
 						fullWidth
-						value={ships[ ship.id ]?.love || 0}
-						SelectDisplayProps={{ style: { textAlign: 'center' } }}
-						onChange={( { target } ) => dispatch( fleet_setShip( {
+						label='Love'
+						value={ ships[ ship.id ]?.love || 0 }
+						SelectDisplayProps={ { style: { textAlign: 'center' } } }
+						onChange={ ( { target } ) => dispatch( fleet_setShip( {
 							name: ship.id,
 							ship: { love: target.value as number }
-						} ) )}>
-						{AffinityIcons.map( ( icon, i ) => <MenuItem key={i} value={i}>
-							{icon}
-						</MenuItem> )}
+						} ) ) }>
+						{ AffinityIcons.map( ( icon, i ) => <MenuItem key={ i } value={ i }>
+							{ icon }
+						</MenuItem> ) }
 					</Select>
 				</FormControl>
 			</Grid>
@@ -91,64 +91,64 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 				<FormControl fullWidth>
 					<InputLabel>Max Level</InputLabel>
 					<Select
-						label='Max Level'
 						fullWidth
-						value={ships[ ship.id ]?.lvl || 0}
-						SelectDisplayProps={{ style: { textAlign: 'center' } }}
-						onChange={( { target } ) => dispatch( fleet_setShip( {
+						label='Max Level'
+						value={ ships[ ship.id ]?.lvl || 0 }
+						SelectDisplayProps={ { style: { textAlign: 'center' } } }
+						onChange={ ( { target } ) => dispatch( fleet_setShip( {
 							name: ship.id,
 							ship: { lvl: target.value as number }
-						} ) )}>
-						<MenuItem value={0}>0</MenuItem>
-						<MenuItem value={70}>70</MenuItem>
-						<MenuItem value={80}>80</MenuItem>
-						<MenuItem value={90}>90</MenuItem>
-						<MenuItem value={100}>100</MenuItem>
-						<MenuItem value={105}>105</MenuItem>
-						<MenuItem value={110}>110</MenuItem>
-						<MenuItem value={115}>115</MenuItem>
-						<MenuItem value={120}>120</MenuItem>
-						<MenuItem value={125}>125</MenuItem>
-						<MenuItem value={126}>
+						} ) ) }>
+						<MenuItem value={ 0 }>0</MenuItem>
+						<MenuItem value={ 70 }>70</MenuItem>
+						<MenuItem value={ 80 }>80</MenuItem>
+						<MenuItem value={ 90 }>90</MenuItem>
+						<MenuItem value={ 100 }>100</MenuItem>
+						<MenuItem value={ 105 }>105</MenuItem>
+						<MenuItem value={ 110 }>110</MenuItem>
+						<MenuItem value={ 115 }>115</MenuItem>
+						<MenuItem value={ 120 }>120</MenuItem>
+						<MenuItem value={ 125 }>125</MenuItem>
+						<MenuItem value={ 126 }>
 							<StarIcon fontSize='small'/>
 						</MenuItem>
 					</Select>
 				</FormControl>
 			</Grid>
-			<Grid item xs={12} container alignItems='center' justifyContent='center'>
-				{ship.equip.map( ( val, index ) => {
+			<Grid item container xs={ 12 } alignItems='center' justifyContent='center'>
+				{ ship.equip.map( ( val, index ) => {
 					const equip = equipsIndex[ val[ 0 ] ] || equipData[ 0 ];
 					return <Grid
-						key={index}
+						key={ index }
 						item
-						xs={4}
 						sm
-						p={1}
+						xs={ 4 }
+						p={ 1 }
 						display='flex'
 						flexDirection='column'
 						alignItems='center'
-						onClick={() => showModal( EquipModal, {
+						onClick={ () => showModal( EquipModal, {
 							variant            : 'center',
 							maxWidth           : 'xs',
 							TransitionComponent: Zoom
-						}, { info: { ship, index }, selectedEquip } )}>
+						}, { info: { ship, index }, selectedEquip } ) }>
 						<Image
-							src={`/images/equips/${equip.image}.png`}
-							alt={equip.name}
-							height={128}
-							width={128}
+							src={ `/images/equips/${equip.image}.png` }
+							alt={ equip.name }
+							height={ 128 }
+							width={ 128 }
 							layout='intrinsic'
-							className={`color-${rarityColors[ equip.rarity ]}`}
+							className={ `color-${rarityColors[ equip.rarity ]}` }
 						/>
 						<Box display='flex' alignItems='center'>
-							<TierIcon tier={val[ 2 ]}/>
-							{equipBetter[ index ]?.[ 1 ] ? <>
+							<TierIcon tier={ val[ 2 ] }/>
+							{ equipBetter[ index ]?.[ 1 ] ? <>
 								<ArrowForwardIcon fontSize='inherit'/>
-								<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
-							</> : undefined}
+								<TierIcon tier={ equipBetter[ index ][ 0 ] + 1 }/>
+							</> : undefined }
 						</Box>
 					</Grid>;
-				} )}
+				} ) }
 			</Grid>
 		</Grid>
 	</ResponsiveModalContainer>;

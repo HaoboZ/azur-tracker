@@ -16,28 +16,28 @@ function VirtualList<Item extends object>( {
 } & TableInstance<Item> ) {
 	return <Paper square>
 		<ReactWindowScroller>
-			{( { ref, outerRef, style, onScroll } ) => <FixedSizeList
-				ref={ref}
-				outerRef={outerRef}
-				style={style}
-				onScroll={onScroll}
-				innerElementType={List}
-				height={window.innerHeight}
+			{ ( { ref, outerRef, style, onScroll } ) => <FixedSizeList
+				ref={ ref }
+				outerRef={ outerRef }
+				style={ style }
+				innerElementType={ List }
+				height={ window.innerHeight }
 				width='100%'
-				itemCount={rows.length}
-				itemSize={50}>
-				{( { index, style } ) => {
+				itemCount={ rows.length }
+				itemSize={ 50 }
+				onScroll={ onScroll }>
+				{ ( { index, style } ) => {
 					const row = rows[ index ];
 					prepareRow( row );
 					return onClick
-						? <ListItemButton divider onClick={() => onClick( row )} style={style}>
-							{renderRow( row )}
+						? <ListItemButton divider style={ style } onClick={ () => onClick( row ) }>
+							{ renderRow( row ) }
 						</ListItemButton>
-						: <ListItem divider style={style}>
-							{renderRow( row )}
+						: <ListItem divider style={ style }>
+							{ renderRow( row ) }
 						</ListItem>;
-				}}
-			</FixedSizeList>}
+				} }
+			</FixedSizeList> }
 		</ReactWindowScroller>
 	</Paper>;
 }

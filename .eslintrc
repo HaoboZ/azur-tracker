@@ -11,27 +11,57 @@
 	],
 	"parser"       : "@typescript-eslint/parser",
 	"parserOptions": {
+		"project"     : "./tsconfig.json",
 		"ecmaFeatures": { "jsx": true },
 		"sourceType"  : "module"
 	},
 	"plugins"      : [ "@typescript-eslint" ],
 	"rules"        : {
-		// possible errors
+		// suggestions
+		"arrow-body-style"                                 : "warn",
+		"dot-notation"                                     : "off", // typescript
+		"eqeqeq"                                           : "warn",
 		"no-empty"                                         : [ "warn", { "allowEmptyCatch": true } ],
-		// stylistic issues
+		"no-useless-computed-key"                          : [ "warn", { "enforceForClassMembers": true } ],
+		"no-var"                                           : "warn",
+		"quote-props"                                      : [ "warn", "consistent-as-needed" ],
+		// layout & formatting
 		"array-bracket-spacing"                            : [ "warn", "always" ],
 		"arrow-parens"                                     : [ "warn", "always" ],
-		"comma-dangle"                                     : "off",
-		"indent"                                           : [ "warn", "tab", { "VariableDeclarator": "first" } ],
+		"arrow-spacing"                                    : [ "warn", { "before": true, "after": true } ],
+		"comma-dangle"                                     : "off", // typescript
+		"comma-spacing"                                    : "off", // typescript
+		"comma-style"                                      : "warn",
+		"computed-property-spacing"                        : [ "warn", "always" ],
+		"dot-location"                                     : [ "warn", "property" ],
+		"eol-last"                                         : "warn",
+		"func-call-spacing"                                : "off", // typescript
+		"indent"                                           : "off", // typescript
 		"jsx-quotes"                                       : [ "warn", "prefer-single" ],
-		"key-spacing"                                      : [ "off", { "align": "colon" } ],
-		"no-extra-parens"                                  : "off",
+		"key-spacing"                                      : [ "warn", { "align": "colon" } ],
+		"keyword-spacing"                                  : "off", // typescript
+		"no-extra-parens"                                  : "off", // typescript
 		"no-mixed-spaces-and-tabs"                         : [ "warn", "smart-tabs" ],
+		"no-multi-spaces"                                  : [
+			"warn",
+			{ "exceptions": { "VariableDeclarator": true, "ImportDeclaration": true } }
+		],
+		"no-multiple-empty-lines"                          : [ "warn", { "max": 1 } ],
 		"no-trailing-spaces"                               : [ "warn", { "skipBlankLines": true } ],
-		"object-curly-spacing"                             : "off",
-		"quotes"                                           : [ "warn", "single" ],
-		"semi"                                             : "off",
+		"no-whitespace-before-property"                    : "warn",
+		"object-curly-newline"                             : "warn",
+		"object-curly-spacing"                             : "off", // typescript
+		"object-property-newline"                          : [ "warn", { "allowAllPropertiesOnSameLine": true } ],
+		"operator-linebreak"                               : [ "warn", "before" ],
+		"quotes"                                           : "off", // typescript
+		"rest-spread-spacing"                              : "warn",
+		"semi"                                             : "off", // typescript
+		"semi-spacing"                                     : "warn",
+		"semi-style"                                       : "warn",
+		"space-before-blocks"                              : "warn",
+		"space-before-function-paren"                      : "off", // typescript
 		"space-in-parens"                                  : [ "warn", "always" ],
+		"switch-colon-spacing"                             : "warn",
 		// react
 		"react/display-name"                               : "off",
 		"react/function-component-definition"              : [
@@ -40,42 +70,69 @@
 		],
 		"react/no-unescaped-entities"                      : "off",
 		"react/prop-types"                                 : "off",
+		"react/jsx-boolean-value"                          : "warn",
 		"react/jsx-closing-bracket-location"               : [
 			"warn",
 			{ "selfClosing": "line-aligned", "nonEmpty": "after-props" }
 		],
-		"react/jsx-curly-brace-presence"                   : [ "warn", "never" ],
-		"react/jsx-curly-newline"                          : [ "warn", "consistent" ],
-		"react/jsx-curly-spacing"                          : [ "warn", "never" ],
-		"react/jsx-equals-spacing"                         : [ "warn", "never" ],
-		"react/jsx-first-prop-new-line"                    : [ "warn", "multiline-multiprop" ],
+		//		"react/jsx-closing-tag-location"                   : "warn",
+		"react/jsx-curly-brace-presence"                   : "warn",
+		"react/jsx-curly-newline"                          : "warn",
+		"react/jsx-curly-spacing"                          : [ "warn", { "when": "always", "children": true } ],
+		"react/jsx-equals-spacing"                         : "warn",
+		"react/jsx-first-prop-new-line"                    : "warn",
 		"react/jsx-indent"                                 : [ "warn", "tab", { "indentLogicalExpressions": true } ],
-		"react/jsx-tag-spacing"                            : [
-			"warn", {
-				"closingSlash"     : "never",
-				"beforeSelfClosing": "never",
-				"afterOpening"     : "never",
-				"beforeClosing"    : "never"
-			}
+		"react/jsx-no-useless-fragment"                    : [ "warn", { "allowExpressions": true } ],
+		"react/jsx-props-no-multi-spaces"                  : "warn",
+		"react/jsx-sort-props"                             : [
+			"warn",
+			{ "callbacksLast": true, "shorthandFirst": true, "noSortAlphabetically": true, "reservedFirst": true }
 		],
-		// typescript
+		"react/jsx-tag-spacing"                            : [
+			"warn",
+			{ "closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "never" }
+		],
+		//		"react/jsx-wrap-multilines"                        : [
+		//			"warn", {
+		//				"declaration": "parens-new-line",
+		//				"assignment" : "parens-new-line",
+		//				"return"     : "parens-new-line",
+		//				"arrow"      : "parens-new-line",
+		//				"condition"  : "parens-new-line",
+		//				"logical"    : "parens-new-line",
+		//				"prop"       : "parens-new-line"
+		//			}
+		//		],
+		// typescript types
 		"@typescript-eslint/ban-ts-comment"                : "off",
 		"@typescript-eslint/ban-types"                     : "off",
-		"@typescript-eslint/comma-dangle"                  : [ "warn", "never" ],
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/member-delimiter-style"        : [
-			"warn", {
+			"warn",
+			{
 				"multiline" : { "delimiter": "comma", "requireLast": false },
 				"singleline": { "delimiter": "comma", "requireLast": false }
 			}
 		],
 		"@typescript-eslint/no-empty-interface"            : [ "warn", { "allowSingleExtends": true } ],
 		"@typescript-eslint/no-explicit-any"               : "off",
-		"@typescript-eslint/no-extra-parens"               : [ "warn", "all" ],
 		"@typescript-eslint/no-non-null-assertion"         : "off",
 		"@typescript-eslint/no-unused-vars"                : [ "warn", { "ignoreRestSiblings": true } ],
+		// typescript extensions
+		"@typescript-eslint/comma-dangle"                  : [ "warn", "never" ],
+		"@typescript-eslint/comma-spacing"                 : "warn",
+		"@typescript-eslint/dot-notation"                  : "warn",
+		"@typescript-eslint/func-call-spacing"             : "warn",
+		"@typescript-eslint/indent"                        : [ "warn", "tab", { "VariableDeclarator": "first" } ],
+		"@typescript-eslint/keyword-spacing"               : "warn",
+		"@typescript-eslint/no-extra-parens"               : [ "warn", "all", { "ignoreJSX": "all" } ],
 		"@typescript-eslint/object-curly-spacing"          : [ "warn", "always" ],
+		"@typescript-eslint/quotes"                        : [ "warn", "single" ],
 		"@typescript-eslint/semi"                          : [ "warn", "always" ],
+		"@typescript-eslint/space-before-function-paren"   : [
+			"warn",
+			{ "anonymous": "never", "named": "never", "asyncArrow": "always" }
+		],
 		// others
 		"import/no-anonymous-default-export"               : "off",
 		"react-hooks/exhaustive-deps"                      : "off"

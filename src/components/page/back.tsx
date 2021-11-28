@@ -6,7 +6,7 @@ export default function PageBack( { name, ...props }: { name?: string } & Button
 	const router = useRouter();
 	
 	return <Button
-		startIcon={<ArrowBackIcon/>}
-		onClick={() => router.back()}
-		{...props}>{name}</Button>;
+		startIcon={ <ArrowBackIcon/> }
+		onClick={ () => router.back() }
+		{ ...props }>{ name }</Button>;
 }

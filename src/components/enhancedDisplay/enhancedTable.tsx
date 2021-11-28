@@ -27,14 +27,14 @@ function ExpandRow( { children, renderPanel, ...props }: {
 	
 	return <>
 		<TableRow
-			{...props}
-			onClick={renderPanel || props.onClick ? ( e ) => {
+			{ ...props }
+			onClick={ renderPanel || props.onClick ? ( e ) => {
 				setOpen( ( open ) => !open );
 				props.onClick?.( e );
-			} : undefined}>{children}</TableRow>
-		{renderPanel && <Collapse in={open}>
-			<TableRow><TableCell>{renderPanel}</TableCell></TableRow>
-		</Collapse>}
+			} : undefined }>{ children }</TableRow>
+		{ renderPanel && <Collapse in={ open }>
+			<TableRow><TableCell>{ renderPanel }</TableCell></TableRow>
+		</Collapse> }
 	</>;
 }
 
@@ -50,7 +50,7 @@ function EnhancedTable<Item>( {
 	renderPanel,
 	loading,
 	loadingComponent = <Loading/>,
-	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
+	emptyComponent = <Typography textAlign='center' py={ 2 }>No Items</Typography>,
 	headers,
 	columns,
 	cellProps,
@@ -64,83 +64,83 @@ function EnhancedTable<Item>( {
 			
 			return <ExpandRow
 				hover
-				selected={selected}
-				renderPanel={renderPanel?.( item, index )}
-				onClick={selectable?.setSelected && ( () => _selectRow( selectable,
-					item, index, selected, totalSelected ) )}>
-				{sortable && <TableCell>
-					<MenuIcon {...handle}/>
-				</TableCell>}
-				{columns( item, index ).filter( Boolean ).map( ( cell, index ) => <TableCell
-					key={index}
-					{...cellProps?.[ index ]}>
-					{cell}
-				</TableCell> )}
-				{Boolean( editable ) && <TableCell>
-					{( editable?.min ? items.length > editable.min : true )
-					&& <IconButton onClick={( e ) => {
+				selected={ selected }
+				renderPanel={ renderPanel?.( item, index ) }
+				onClick={ selectable?.setSelected && ( () => _selectRow( selectable,
+					item, index, selected, totalSelected ) ) }>
+				{ sortable && <TableCell>
+					<MenuIcon { ...handle }/>
+				</TableCell> }
+				{ columns( item, index ).filter( Boolean ).map( ( cell, index ) => <TableCell
+					key={ index }
+					{ ...cellProps?.[ index ] }>
+					{ cell }
+				</TableCell> ) }
+				{ Boolean( editable ) && <TableCell>
+					{ ( editable?.min ? items.length > editable.min : true )
+					&& <IconButton onClick={ ( e ) => {
 						e.stopPropagation();
 						_deleteRow( items, setItems, editable, selectable,
 							item, index, selected, totalSelected );
-					}}>
+					} }>
 						<CloseIcon/>
-					</IconButton>}
-				</TableCell>}
+					</IconButton> }
+				</TableCell> }
 			</ExpandRow>;
 		};
 		
 		return sortable
 			? <Sortable
-				items={items}
-				setItems={setItems}
-				renderItem={row}
-				tag={TableBody}
+				items={ items }
+				setItems={ setItems }
+				renderItem={ row }
+				tag={ TableBody }
 			/>
 			: <TableBody>
-				{items.map( ( item, index ) => <Fragment key={index}>
-					{row( { item, index } )}
-				</Fragment> )}
+				{ items.map( ( item, index ) => <Fragment key={ index }>
+					{ row( { item, index } ) }
+				</Fragment> ) }
 			</TableBody>;
 	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return <Box>
-		{title && <ActionTitle {...actionTitleProps}>{title}</ActionTitle>}
-		<TableContainer component={Paper} {...props}>
+		{ title && <ActionTitle { ...actionTitleProps }>{ title }</ActionTitle> }
+		<TableContainer component={ Paper } { ...props }>
 			<Table
 				size='small'
-				sx={{
+				sx={ {
 					'& .MuiTableRow-hover:hover'                       : selectable ? { cursor: 'pointer' } : undefined,
 					'& .MuiTableRow-root:last-child .MuiTableCell-root': { borderBottom: 0 },
-					overflow                                           : 'hidden'
-				}}>
-				<TableHead sx={{ bgcolor: 'action.focus' }}>
+					'overflow'                                         : 'hidden'
+				} }>
+				<TableHead sx={ { bgcolor: 'action.focus' } }>
 					<TableRow>
-						{sortable && <TableCell/>}
-						{headers.filter( Boolean ).map( ( cell, index ) => <TableCell
-							key={index}
-							{...cellProps?.[ index ]}>
-							{cell}
-						</TableCell> )}
-						{Boolean( editable ) && <TableCell>
-							{!loading && ( editable?.max ? items.length < editable.max : true )
-							&& <IconButton onClick={async () => {
+						{ sortable && <TableCell/> }
+						{ headers.filter( Boolean ).map( ( cell, index ) => <TableCell
+							key={ index }
+							{ ...cellProps?.[ index ] }>
+							{ cell }
+						</TableCell> ) }
+						{ Boolean( editable ) && <TableCell>
+							{ !loading && ( editable?.max ? items.length < editable.max : true )
+							&& <IconButton onClick={ async () => {
 								editable.onAdd?.();
 								setItems?.( [ ...items, { ...await editable.newData() } ] );
-							}}>
+							} }>
 								<AddIcon/>
-							</IconButton>}
-						</TableCell>}
+							</IconButton> }
+						</TableCell> }
 					</TableRow>
 				</TableHead>
-				{loading || !items.length
+				{ loading || !items.length
 					? <TableBody>
 						<TableRow>
-							<TableCell colSpan={headers.length + 2}>
-								{loading ? loadingComponent : emptyComponent}
+							<TableCell colSpan={ headers.length + 2 }>
+								{ loading ? loadingComponent : emptyComponent }
 							</TableCell>
 						</TableRow>
 					</TableBody>
-					: dataItems}
+					: dataItems }
 			</Table>
 		</TableContainer>
 	</Box>;

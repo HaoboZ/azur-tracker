@@ -28,9 +28,10 @@ const migrations: Record<string, ( state: State ) => State> = {
 			researchLastTab: 0
 		}
 	} ),
-	8: ( state ) => ( { ...state, fleet: state[ 'ship' ] } ),
+	8: ( state ) => ( { ...state, fleet: state.ship } ),
 	9: ( state ) => ( {
-		...state, fleet: {
+		...state,
+		fleet: {
 			...state.fleet,
 			ships: mapValues( state.fleet.ships, ( ship ) => {
 				if ( ship.lvl === 121 ) ship.lvl = 120;

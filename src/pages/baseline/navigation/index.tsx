@@ -6,8 +6,8 @@ export default function Navigation( { children } ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( wide ) {
-		return <TitleBar>{children}</TitleBar>;
+		return <TitleBar>{ children }</TitleBar>;
 	} else {
-		return <BottomBar>{children}</BottomBar>;
+		return <BottomBar>{ children }</BottomBar>;
 	}
 }

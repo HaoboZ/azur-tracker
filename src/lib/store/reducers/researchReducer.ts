@@ -14,9 +14,9 @@ const initialState: State = {
 };
 
 const researchSlice = createSlice( {
-	name         : 'research',
+	name    : 'research',
 	initialState,
-	reducers     : {
+	reducers: {
 		research_reset() {
 			return initialState;
 		},

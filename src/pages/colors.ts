@@ -32,12 +32,12 @@ export const
 		'Munition Ship'         : 'aqua'
 	},
 	factionColors = {
-		'Universal'          : 'gray',
-		'Eagle Union'        : 'blue',
+		'Universal'          : 'rainbow',
+		'Eagle Union'        : 'eagle',
 		'Royal Navy'         : 'royal',
 		'Sakura Empire'      : 'sakura',
-		'Ironblood'          : 'red',
-		'Dragon Empery'      : 'purple',
+		'Ironblood'          : 'iron',
+		'Dragon Empery'      : 'dragon',
 		'Sardegna Empire'    : 'sardegna',
 		'Northern Parliament': 'northern',
 		'Iris Libre'         : 'iris',

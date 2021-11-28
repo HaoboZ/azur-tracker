@@ -49,31 +49,30 @@ export default function ResponsiveModal( {
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
 		return <Dialog
-			maxWidth='md'
 			fullWidth
-			TransitionComponent={Grow}
 			disablePortal
 			closeAfterTransition
-			sx={{
+			maxWidth='md'
+			TransitionComponent={ Grow }
+			sx={ {
 				'& .MuiDialog-paper': {
 					ml: 'env(safe-area-inset-left)',
 					mr: 'env(safe-area-inset-right)',
 					mt: 'env(safe-area-inset-top)',
 					mb: 'env(safe-area-inset-bottom)'
 				}
-			}}
-			{...props}>
-			{children}
+			} }
+			{ ...props }>
+			{ children }
 		</Dialog>;
 	} else {
 		return <SwipeableDrawer
-			anchor='bottom'
-			onOpen={() => null}
 			disableSwipeToOpen
 			disablePortal
 			closeAfterTransition
-			sx={{ display: 'flex', justifyContent: 'center' }}
-			PaperProps={{
+			anchor='bottom'
+			sx={ { display: 'flex', justifyContent: 'center' } }
+			PaperProps={ {
 				sx: {
 					maxWidth            : '100%',
 					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
@@ -84,9 +83,10 @@ export default function ResponsiveModal( {
 					borderTopRightRadius: 12,
 					width               : ( { breakpoints } ) => breakpoints.values.md
 				}
-			}}
-			{...props}>
-			{children}
+			} }
+			onOpen={ () => null }
+			{ ...props }>
+			{ children }
 		</SwipeableDrawer>;
 	}
 }
@@ -108,40 +108,40 @@ export function ResponsiveModalContainer( {
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
 		return <>
-			{title && <DialogTitle>{title}</DialogTitle>}
-			<DialogContent {...props}>{children}</DialogContent>
+			{ title && <DialogTitle>{ title }</DialogTitle> }
+			<DialogContent { ...props }>{ children }</DialogContent>
 			<DialogActions>
-				{onSave ? <Button
+				{ onSave ? <Button
 					variant='contained'
-					onClick={async () => {
+					onClick={ async () => {
 						await onSave();
 						!keepOpenOnSave && onClose();
-					}}>
+					} }>
 					Save
-				</Button> : undefined}
-				<Button variant='contained' color='error' onClick={onClose}>
-					{onSave ? 'Cancel' : 'Close'}
+				</Button> : undefined }
+				<Button variant='contained' color='error' onClick={ onClose }>
+					{ onSave ? 'Cancel' : 'Close' }
 				</Button>
 			</DialogActions>
 		</>;
 	} else {
 		return <>
 			<Toolbar>
-				<IconButton edge='start' color='inherit' onClick={onClose}>
+				<IconButton edge='start' color='inherit' onClick={ onClose }>
 					<ArrowBackIcon/>
 				</IconButton>
-				<Typography variant='h3' flexGrow={1}>
-					{title}
+				<Typography variant='h3' flexGrow={ 1 }>
+					{ title }
 				</Typography>
-				{onSave ? <Button
+				{ onSave ? <Button
 					variant='contained'
-					onClick={async () => {
+					onClick={ async () => {
 						await onSave();
 						!keepOpenOnSave && onClose();
-					}}>Save</Button> : undefined}
+					} }>Save</Button> : undefined }
 			</Toolbar>
-			<DialogContent onTouchStart={( e ) => e.stopPropagation()} {...props}>
-				{children}
+			<DialogContent onTouchStart={ ( e ) => e.stopPropagation() } { ...props }>
+				{ children }
 			</DialogContent>
 		</>;
 	}

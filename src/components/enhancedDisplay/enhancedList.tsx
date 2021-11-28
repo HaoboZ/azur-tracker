@@ -35,7 +35,7 @@ function EnhancedList<Item>( {
 	selectable,
 	loading,
 	loadingComponent = <Loading/>,
-	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
+	emptyComponent = <Typography textAlign='center' py={ 2 }>No Items</Typography>,
 	renderRow,
 	renderPanel,
 	removeEditing,
@@ -49,66 +49,66 @@ function EnhancedList<Item>( {
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, handle, selected ) => <>
-			{!removeEditing && editing && sortable && <ListItemIcon sx={{ pl: 1 }}>
-				<MenuIcon {...handle}/>
-			</ListItemIcon>}
-			{renderRow( item, index, removeEditing
+			{ !removeEditing && editing && sortable && <ListItemIcon sx={ { pl: 1 } }>
+				<MenuIcon { ...handle }/>
+			</ListItemIcon> }
+			{ renderRow( item, index, removeEditing
 				? () => _deleteRow( items, setItems, editable, selectable,
 					item, index, selected, totalSelected )
-				: undefined )}
-			{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
-			&& <ListItemIcon sx={{ minWidth: 'unset' }}>
-				<IconButton onClick={( e ) => {
+				: undefined ) }
+			{ !removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
+			&& <ListItemIcon sx={ { minWidth: 'unset' } }>
+				<IconButton onClick={ ( e ) => {
 					e.stopPropagation();
 					_deleteRow( items, setItems, editable, selectable,
 						item, index, selected, totalSelected );
-				}}>
+				} }>
 					<CloseIcon/>
 				</IconButton>
-			</ListItemIcon>}
+			</ListItemIcon> }
 		</>;
 		
 		const panel = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			return renderPanel
 				? <Accordion>
-					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-						{row( item, index, handle, selected )}
+					<AccordionSummary expandIcon={ <ExpandMoreIcon/> }>
+						{ row( item, index, handle, selected ) }
 					</AccordionSummary>
 					<AccordionDetails>
-						{renderPanel( item, index )}
+						{ renderPanel( item, index ) }
 					</AccordionDetails>
 				</Accordion>
 				: selectable?.setSelected
 					? <ListItemButton
-						component={Paper}
 						divider
-						selected={selected}
-						onClick={() => _selectRow( selectable,
-							item, index, selected, totalSelected )}>
-						{row( item, index, handle, selected )}
+						component={ Paper }
+						selected={ selected }
+						onClick={ () => _selectRow( selectable,
+							item, index, selected, totalSelected ) }>
+						{ row( item, index, handle, selected ) }
 					</ListItemButton>
 					: <ListItem
-						component={Paper}
 						divider
-						selected={selected}>
-						{row( item, index, handle, selected )}
+						component={ Paper }
+						selected={ selected }>
+						{ row( item, index, handle, selected ) }
 					</ListItem>;
 		};
 		
 		return sortable
 			? <Sortable
-				items={items}
-				setItems={setItems}
-				renderItem={panel}
+				items={ items }
+				setItems={ setItems }
+				renderItem={ panel }
 			/>
-			: items.map( ( item, index ) => <Fragment key={index}>
-				{panel( { item, index } )}
+			: items.map( ( item, index ) => <Fragment key={ index }>
+				{ panel( { item, index } ) }
 			</Fragment> );
 	}, [ items, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return <List
-		sx={{
+		sx={ {
 			'& .MuiAccordionSummary-root, & .MuiListItem-root, & .MuiListItemButton-root'             : removeEditing || editing ? { px: 1 } : undefined,
 			'& .MuiListItem-root ~ .MuiListItem-root, & .MuiListItemButton-root ~ .MuiListButton-root': {
 				borderTopLeftRadius : 0,
@@ -120,10 +120,10 @@ function EnhancedList<Item>( {
 				borderBottomLeftRadius : 0,
 				borderBottomRightRadius: 0
 			},
-			overflow                                : 'hidden'
-		}}
-		subheader={Boolean( title || editable || sortable ) && <ActionTitle
-			actions={!removeEditing && !loading && ( editable || sortable ) ? [
+			'overflow': 'hidden'
+		} }
+		subheader={ Boolean( title || editable || sortable ) && <ActionTitle
+			actions={ !removeEditing && !loading && ( editable || sortable ) ? [
 				sortable && {
 					name       : editing ? 'Cancel' : 'Edit',
 					onClick    : () => setEditing( !editing ),
@@ -134,8 +134,8 @@ function EnhancedList<Item>( {
 					}
 				},
 				( editable?.max ? items.length < editable.max : true ) && {
-					name       : 'Add',
-					onClick    : async () => {
+					name   : 'Add',
+					onClick: async () => {
 						editable.onAdd?.();
 						setItems?.( [ ...items, { ...await editable.newData() } ] );
 					},
@@ -144,14 +144,14 @@ function EnhancedList<Item>( {
 						startIcon: <AddIcon/>,
 						...addButtonProps
 					}
-				} ] : undefined}
-			{...actionTitleProps}>
-			{title}
-		</ActionTitle>}
-		{...props}>
-		{loading || !items.length
-			? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
-			: dataItems}
+				} ] : undefined }
+			{ ...actionTitleProps }>
+			{ title }
+		</ActionTitle> }
+		{ ...props }>
+		{ loading || !items.length
+			? <Paper>{ loading ? loadingComponent : emptyComponent }</Paper>
+			: dataItems }
 	</List>;
 }
 

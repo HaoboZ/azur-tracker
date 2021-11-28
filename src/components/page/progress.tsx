@@ -65,9 +65,9 @@ export default function PageProgress( {
 	}, [ options ] );
 	
 	return <GlobalStyles
-		styles={{
+		styles={ {
 			'#nprogress': {
-				pointerEvents  : 'none',
+				'pointerEvents': 'none',
 				'.bar'         : {
 					background: theme.palette.primary.main,
 					position  : 'fixed',
@@ -77,7 +77,7 @@ export default function PageProgress( {
 					width     : '100%',
 					height    : height
 				},
-				'.peg'         : {
+				'.peg': {
 					display  : 'block',
 					position : 'absolute',
 					right    : 0,
@@ -86,7 +86,7 @@ export default function PageProgress( {
 					boxShadow: `0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main}`,
 					opacity  : 0.1
 				},
-				'.spinner'     : {
+				'.spinner': {
 					display : 'block',
 					position: 'fixed',
 					zIndex  : theme.zIndex.tooltip,
@@ -105,8 +105,8 @@ export default function PageProgress( {
 				}
 			},
 			'.nprogress_custom_parent': {
-				overflow    : 'hidden',
-				position    : 'relative',
+				'overflow'  : 'hidden',
+				'position'  : 'relative',
 				'#nprogress': {
 					'.spinner, .bar': {
 						position: 'absolute'
@@ -117,6 +117,6 @@ export default function PageProgress( {
 				'0%'  : { transform: 'rotate(0deg)' },
 				'100%': { transform: 'rotate(360deg)' }
 			}
-		}}
+		} }
 	/>;
 }

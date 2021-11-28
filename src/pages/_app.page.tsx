@@ -8,8 +8,8 @@ import './baseline/style.scss';
 
 // noinspection JSUnusedGlobalSymbols
 export default function _App( { Component, pageProps }: AppProps ) {
-	return <StoreProvider store={store}>
-		<PersistGate loading={null} persistor={persistor}>
+	return <StoreProvider store={ store }>
+		<PersistGate loading={ null } persistor={ persistor }>
 			<Head>
 				<title>Azur Lane Tracker</title>
 				<meta
@@ -19,8 +19,8 @@ export default function _App( { Component, pageProps }: AppProps ) {
 						user-scalable=no, viewport-fit=cover'
 				/>
 			</Head>
-			<Baseline pageProps={pageProps}>
-				<Component {...pageProps}/>
+			<Baseline pageProps={ pageProps }>
+				<Component { ...pageProps }/>
 			</Baseline>
 		</PersistGate>
 	</StoreProvider>;

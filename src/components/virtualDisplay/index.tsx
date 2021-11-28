@@ -9,8 +9,8 @@ export default function VirtualDisplay<Item extends object>( { renderRow, ...tab
 	renderRow: ( row: Row<Item> ) => ReactNode
 } & TableInstance<Item> ) {
 	if ( useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) ) ) {
-		return <VirtualTable {...table}/>;
+		return <VirtualTable { ...table }/>;
 	} else {
-		return <VirtualList {...table} renderRow={renderRow}/>;
+		return <VirtualList { ...table } renderRow={ renderRow }/>;
 	}
 }

@@ -22,13 +22,13 @@ export default function Event() {
 	
 	// resets event
 	useEffect( () => {
-		if ( event.name != eventData.name )
+		if ( event.name !== eventData.name )
 			dispatch( event_newEvent() );
 	}, [] );
 	
 	useIntervalEffect( () => setTime( moment() ), 15 * 1000, [] );
 	
-	if ( event.name != eventData.name )
+	if ( event.name !== eventData.name )
 		return null;
 	
 	// number of days until end of event
@@ -43,12 +43,12 @@ export default function Event() {
 	
 	return <PageContainer>
 		<Head><title>Event | Azur Lane Tracker</title></Head>
-		<PageTitle actions={<HelpTourButton
-			steps={[ {
-				target   : '#help',
-				content  : <>
+		<PageTitle actions={ <HelpTourButton
+			steps={ [ {
+				target : '#help',
+				content: <>
 					<Typography>This page will help you</Typography>
-					<ul style={{ textAlign: 'start' }}>
+					<ul style={ { textAlign: 'start' } }>
 						<li>track event information</li>
 						<li>buy what you want from the shop</li>
 						<li>and farm stages</li>
@@ -101,26 +101,26 @@ export default function Event() {
 				content: <Typography>
 					Calculates amount of oil needed.
 				</Typography>
-			} ]}
-		/>}>Event Tracker</PageTitle>
+			} ] }
+		/> }>Event Tracker</PageTitle>
 		<Box
 			display='flex'
 			justifyContent='center'
-			sx={{
+			sx={ {
 				'& img': {
 					width   : '100%',
 					maxWidth: 700,
 					m       : 'auto'
 				}
-			}}>
-			<Link href={eventData.link} target='_blank'>
-				<Image src={eventImage} alt='event banner'/>
+			} }>
+			<Link href={ eventData.link } target='_blank'>
+				<Image src={ eventImage } alt='event banner'/>
 			</Link>
 		</Box>
 		<EventFields
-			time={time}
-			neededPoints={neededPoints}
+			time={ time }
+			neededPoints={ neededPoints }
 		/>
-		<EventFarming remainingPoints={remainingPoints}/>
+		<EventFarming remainingPoints={ remainingPoints }/>
 	</PageContainer>;
 }

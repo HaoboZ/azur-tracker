@@ -31,13 +31,13 @@ const eventData = {
 		{ name: 'Oil', cost: 450, amount: 5 },
 		{ name: 'Oxy-cola', cost: 15, amount: 100 }
 	],
-	stages : {
-		30: 'T1',
+	stages: {
+		30 : 'T1',
 		// 40 : 'A2',
 		// 50 : 'A3',
 		// 60 : 'B1',
 		// 70 : 'B2',
-		80: 'T2',
+		80 : 'T2',
 		// 90 : 'C1',
 		// 100: 'C2',
 		// 110: 'C3',
