@@ -38,7 +38,7 @@
 		"func-call-spacing"                                : "off", // typescript
 		"indent"                                           : "off", // typescript
 		"jsx-quotes"                                       : [ "warn", "prefer-single" ],
-		"key-spacing"                                      : [ "warn", { "align": "colon" } ],
+		"key-spacing"                                      : [ "off", { "align": "colon" } ],
 		"keyword-spacing"                                  : "off", // typescript
 		"no-extra-parens"                                  : "off", // typescript
 		"no-mixed-spaces-and-tabs"                         : [ "warn", "smart-tabs" ],
@@ -62,6 +62,7 @@
 		"space-before-function-paren"                      : "off", // typescript
 		"space-in-parens"                                  : [ "warn", "always" ],
 		"switch-colon-spacing"                             : "warn",
+		"template-curly-spacing"                           : [ "warn", "always" ],
 		// react
 		"react/display-name"                               : "off",
 		"react/function-component-definition"              : [

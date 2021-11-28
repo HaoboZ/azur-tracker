@@ -47,8 +47,8 @@ export default function Event() {
 			<PageTitle actions={ (
 				<HelpTourButton
 					steps={ [ {
-						target : '#help',
-						content: (
+						target   : '#help',
+						content  : (
 							<>
 								<Typography>This page will help you</Typography>
 								<ul style={ { textAlign: 'start' } }>

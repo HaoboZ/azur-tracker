@@ -12,7 +12,7 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 const commonTheme: ThemeOptions = {
-	palette: {
+	palette   : {
 		primary  : { main: colors.lightBlue[ '600' ] },
 		secondary: { main: colors.red[ '900' ] }
 	},
@@ -42,7 +42,7 @@ const lightTheme = responsiveFontSizes( createTheme(
 
 const darkTheme = responsiveFontSizes( createTheme(
 	merge( commonTheme, {
-		palette: {
+		palette   : {
 			mode      : 'dark',
 			background: { paper: colors.grey[ '900' ] }
 		},

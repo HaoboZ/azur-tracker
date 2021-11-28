@@ -50,8 +50,8 @@ export default function Fleet() {
 			<PageTitle actions={ (
 				<HelpTourButton
 					steps={ [ {
-						target : '#help',
-						content: (
+						target   : '#help',
+						content  : (
 							<>
 								<Typography>This page will help you</Typography>
 								<ul style={ { textAlign: 'start' } }>

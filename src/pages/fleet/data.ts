@@ -545,7 +545,7 @@ const ships = {
 const fleetData = mapValues( ships, ( val, key ) => ( {
 	id       : key,
 	name     : val[ 0 ],
-	link     : `https://azurlane.koumakan.jp/wiki/${key}`,
+	link     : `https://azurlane.koumakan.jp/wiki/${ key }`,
 	rarity   : val[ 1 ],
 	faction  : val[ 2 ],
 	type     : val[ 3 ],

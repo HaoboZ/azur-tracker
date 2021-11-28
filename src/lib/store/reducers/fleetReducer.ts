@@ -27,9 +27,9 @@ const initialState: State = {
 };
 
 const fleetSlice = createSlice( {
-	name    : 'fleet',
+	name         : 'fleet',
 	initialState,
-	reducers: {
+	reducers     : {
 		fleet_reset() {
 			return initialState;
 		},

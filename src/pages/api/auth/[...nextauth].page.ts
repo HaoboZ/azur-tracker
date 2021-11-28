@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
 			return token;
 		}
 	},
-	secret: process.env.SECRET
+	secret   : process.env.SECRET
 };
 // noinspection JSUnusedGlobalSymbols
 export default NextAuth( authOptions );

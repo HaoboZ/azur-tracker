@@ -1203,7 +1203,7 @@ export const equipsIndex: Record<number, Equip> = equipData.reduce( ( obj, item 
 }, {} );
 
 const map = equipData.reduce( ( obj, item ) => {
-	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
+	obj[ `${ item.name }/${ rarity[ item.rarity ] }` ] = item.id;
 	return obj;
 }, {} as Record<string, number | string> );
 
@@ -1246,7 +1246,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ],
 		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]                : [ 4, ++a ]
 	},
-	'AA': {
+	'AA'       : {
 		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]            : [ 0, a = 0 ],
 		[ map[ 'Prototype Twin 90mm Model 1939 High Angle Gun/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ] ]           : [ 0, ++a ],
@@ -1261,7 +1261,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ],
 		[ map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ] ]                : [ 4, ++a ]
 	},
-	'AA/Speed': {
+	'AA/Speed' : {
 		[ map[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ] ]          : [ 0, a = 0 ],
 		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]              : [ 0, ++a ],
 		[ map[ 'Twin 40mm Bofors Type 5 AA Gun Mount/SR' ] ]         : [ 1, ++a ],
@@ -1272,7 +1272,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Prototype Twin 90mm Model 1939 High Angle Gun/SR' ] ]: [ 4, ++a ],
 		[ map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ] ]            : [ 4, ++a ]
 	},
-	'AA/Main': {
+	'AA/Main'  : {
 		[ map[ 'Twin 40mm Bofors STAAG/SR' ] ]                   : [ 0, a = 0 ],
 		[ map[ 'Twin 40mm Bofors "Hazemeyer" AA Gun Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ] ]          : [ 1, ++a ],
@@ -1286,7 +1286,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.AA;
 	},
 	
-	'DD': {
+	'DD'         : {
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, a = 0 ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, ++a ],
@@ -1301,7 +1301,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Single 127mm Main Gun/E' ] ]                        : [ 3, ++a ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ] ]      : [ 4, ++a ]
 	},
-	'DD/Speed': {
+	'DD/Speed'   : {
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, a = 0 ],
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
@@ -1314,7 +1314,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]            : [ 3, ++a ],
 		[ map[ 'Single 130mm Naval Gun/E' ] ]                       : [ 4, ++a ]
 	},
-	'DD/SSpeed': {
+	'DD/SSpeed'  : {
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]        : [ 0, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]      : [ 1, ++a ],
@@ -1322,13 +1322,13 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Single 120mm QF Mark IX Naval Gun/R' ] ]       : [ 2, ++a ],
 		[ map[ 'Single 127mm Main Gun/E' ] ]                   : [ 3, ++a ]
 	},
-	'DD/SSSpeed': {
+	'DD/SSSpeed' : {
 		[ map[ '76mm AA Gun/R' ] ]                             : [ 0, a = 0 ],
 		[ map[ 'Single 120mm QF Mark IX Naval Gun/R' ] ]       : [ 0, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]      : [ 2, ++a ]
 	},
-	'DD/AP': {
+	'DD/AP'      : {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 1, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 2, ++a ],
@@ -1361,7 +1361,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'T/DD'() {
 		return this.DD;
 	},
-	'DD/Aux': {
+	'DD/Aux' : {
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, ++a ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 1, ++a ],
@@ -1380,14 +1380,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ] ]    : [ 2, ++a ],
 		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]                    : [ 3, ++a ]
 	},
-	'DD/Sub': {
+	'DD/Sub' : {
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]      : [ 0, a = 0 ],
 		[ map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Twin 120mm Main Gun Mount/E' ] ]               : [ 1, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/E' ] ]       : [ 2, ++a ]
 	},
 	
-	'CL': {
+	'CL'     : {
 		[ map[ 'Prototype Triple 152mm DP Mk 17 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/SR' ] ]         : [ 0, ++a ],
 		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]  : [ 1, ++a ],
@@ -1399,7 +1399,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 155mm Main Gun Mount/E' ] ]                    : [ 4, ++a ],
 		[ map[ 'Single 150mm SK C/28 Main Gun Mount/E' ] ]            : [ 4, ++a ]
 	},
-	'CL/AP': {
+	'CL/AP'  : {
 		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]      : [ 0, ++a ],
 		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]         : [ 1, ++a ],
@@ -1428,7 +1428,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this[ 'CL/Main' ];
 	},
 	
-	'CA': {
+	'CA'         : {
 		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]        : [ 0, a = 0 ],
 		[ map[ 'Prototype Twin 234mm Main Gun Mount/SR' ] ]          : [ 0, ++a ],
 		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]            : [ 1, ++a ],
@@ -1441,7 +1441,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Twin 203mm (SK C/34)/E' ] ]                          : [ 4, ++a ],
 		[ map[ 'Twin 203mm Naval Gun Mount/E' ] ]                    : [ 4, ++a ]
 	},
-	'CA/HE': {
+	'CA/HE'      : {
 		[ map[ 'Twin 203mm Mle 1931 Main Gun Mount/SR' ] ]         : [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ] ]      : [ 2, ++a ],
@@ -1455,7 +1455,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ] ]            : [ 2, ++a ],
 		[ map[ 'Twin 203mm (SK C/34)/E' ] ]                          : [ 3, ++a ]
 	},
-	'CA/CB': {
+	'CA/CB'      : {
 		[ map[ 'Prototype Triple 234mm Main Gun Mount/UR' ] ]        : [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]           : [ 0, ++a ],
 		[ map[ 'Prototype Twin 234mm Main Gun Mount/SR' ] ]          : [ 0, ++a ],
@@ -1472,7 +1472,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'CA/CL'() {
 		return this.CA;
 	},
-	'CB/CA': {
+	'CB/CA'   : {
 		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]          : [ 1, ++a ]
 	},
@@ -1482,7 +1482,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]                : [ 2, ++a ]
 	},
 	
-	'BB/Damage': {
+	'BB/Damage'  : {
 		[ map[ 'Triple 406mm MK7 Main Gun/UR' ] ]                : [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 381mm AA Gun/SR' ] ]            : [ 0, ++a ],
 		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ] : [ 1, ++a ],
@@ -1491,7 +1491,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Prototype Triple 410mm Main Gun Mount/SR' ] ]    : [ 3, ++a ],
 		[ map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ] ]      : [ 3, ++a ]
 	},
-	'BB/Speed': {
+	'BB/Speed'   : {
 		[ map[ 'Prototype 406mm SK C/34 Main Gun Mount/SR' ] ]            : [ 0, a = 0 ],
 		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (BB)/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Prototype Twin 457mm Mk A Main Gun Mount/UR' ] ]          : [ 1, ++a ],
@@ -1510,7 +1510,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ] ]           : [ 3, ++a ]
 	},
 	
-	'F': {
+	'F' : {
 		[ map[ 'F7F Tigercat/SR' ] ]                 : [ 0, a = 0 ],
 		[ map[ 'Sea Hornet/SR' ] ]                   : [ 0, ++a ],
 		[ map[ 'Prototype BF-109G/SR' ] ]            : [ 1, ++a ],
@@ -1543,22 +1543,22 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Barracuda (831 Squadron)/SR' ] ]         : [ 3, ++a ]
 	},
 	'TB': {
-		[ map[ 'Wyvern/UR' ] ]                        : [ 0, a = 0 ],
-		[ map[ 'XTB2D-1 Skypirate/SR' ] ]             : [ 0, ++a ],
+		[ map[ 'Wyvern/UR' ] ]           : [ 0, a = 0 ],
+		[ map[ 'XTB2D-1 Skypirate/SR' ] ]: [ 0, ++a ],
 		// [ map[ 'Aichi B7A Ryusei/SR' ] ]:               [ 0, ++a ],
 		// [ map[ 'Prototype Saiun Kai/SR' ] ]:            [ 0, ++a ],
 		// [ map[ 'Ju-87 D-4/SR' ] ]:                      [ 0, ++a ],
-		[ map[ 'Barracuda/SR' ] ]                     : [ 1, ++a ],
-		[ map[ 'Firecrest/SR' ] ]                     : [ 1, ++a ],
-		[ map[ 'Blackburn Firebrand/SR' ] ]           : [ 1, ++a ],
+		[ map[ 'Barracuda/SR' ] ]          : [ 1, ++a ],
+		[ map[ 'Firecrest/SR' ] ]          : [ 1, ++a ],
+		[ map[ 'Blackburn Firebrand/SR' ] ]: [ 1, ++a ],
 		// [ map[ 'Tenzan Kai/E' ] ]:                      [ 1, ++a ],
 		[ map[ 'TBM Avenger (VT-18 Squadron)/SR' ] ]  : [ 2, ++a ],
 		[ map[ 'TBD Devastator (VT-8 Squadron)/SR' ] ]: [ 2, ++a ],
 		[ map[ 'Barracuda/E' ] ]                      : [ 3, ++a ],
 		// [ map[ 'Aichi B7A Ryusei/E' ] ]:                [ 3, ++a ],
 		// [ map[ 'Tenzan/E' ] ]:             [ 3, ++a ],
-		[ map[ 'Swordfish (818 Squad)/SR' ] ]         : [ 4, ++a ],
-		[ map[ 'Albacore/E' ] ]                       : [ 4, ++a ]
+		[ map[ 'Swordfish (818 Squad)/SR' ] ]: [ 4, ++a ],
+		[ map[ 'Albacore/E' ] ]              : [ 4, ++a ]
 	},
 	get 'F/DB'() {
 		return this.F;
@@ -1573,7 +1573,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.F;
 	},
 	
-	'SP': {
+	'SP' : {
 		[ map[ 'Suisei Model 21/SR' ] ]       : [ 0, a = 0 ],
 		[ map[ 'Seiran/E' ] ]                 : [ 1, ++a ],
 		[ map[ 'Aichi E16A Zuiun/E' ] ]       : [ 2, ++a ],
@@ -1584,7 +1584,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Seiran/E' ] ]          : [ 0, a = 0 ],
 		[ map[ 'Aichi E16A Zuiun/E' ] ]: [ 1, ++a ]
 	},
-	'ST': {
+	'ST' : {
 		[ map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ] ]   : [ 0, a = 0 ],
 		[ map[ 'G7e Acoustic Homing Submarine Torpedo/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Mark 16 Submarine Torpedo/SR' ] ]            : [ 0, ++a ],
@@ -1597,16 +1597,16 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Mark 16 Submarine Torpedo/E' ] ]             : [ 2, ++a ],
 		[ map[ 'Type 95 Submarine Torpedo/E' ] ]             : [ 2, ++a ]
 	},
-	'SS': {
+	'SS' : {
 		[ map[ 'Twin 203mm Mle 1924 Submarine Gun Mount/R' ] ]: [ 0, 0 ]
 	},
 	
-	'A/DD1': {
+	'A/DD1'  : {
 		[ map[ 'Repair Toolkit/E' ] ] : [ 0, a = 0 ],
 		[ map[ 'Pyoko-Pyoko/SR' ] ]   : [ 0, ++a ],
 		[ map[ 'Advanced Boiler/E' ] ]: [ 1, ++a ]
 	},
-	'A/DD2': {
+	'A/DD2'  : {
 		[ map[ 'Intel Report - Arctic Stronghold/E' ] ]: [ 0, a = 0 ],
 		[ map[ 'Autoloader/E' ] ]                      : [ 1, ++a ],
 		[ map[ 'Repair Toolkit/E' ] ]                  : [ 2, ++a ],
@@ -1625,12 +1625,12 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Autoloader/E' ] ]                  : [ 2, ++a ],
 		[ map[ 'Fire Suppressor/R' ] ]             : [ 3, ++a ]
 	},
-	'A/CL1': {
+	'A/CL1'  : {
 		[ map[ 'Repair Toolkit/E' ] ]    : [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]       : [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 2, ++a ]
 	},
-	'A/CL2': {
+	'A/CL2'  : {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Beaver Squad Tag/SR' ] ]                        : [ 0, ++a ],
 		[ map[ 'High Performance Air Radar/SR' ] ]              : [ 0, ++a ],
@@ -1653,12 +1653,12 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Naval Camouflage/R' ] ]                         : [ 2, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]             : [ 3, ++a ]
 	},
-	'A/CA1': {
+	'A/CA1'  : {
 		[ map[ 'Repair Toolkit/E' ] ]    : [ 0, a = 0 ],
 		[ map[ 'Fuel Filter/E' ] ]       : [ 1, ++a ],
 		[ map[ 'Anti-Torpedo Bulge/E' ] ]: [ 2, ++a ]
 	},
-	'A/CA2': {
+	'A/CA2'  : {
 		[ map[ 'High Performance Hydraulic Steering Gear/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Beaver Squad Tag/SR' ] ]                        : [ 0, ++a ],
 		[ map[ 'Cosmic Kicks/SR' ] ]                            : [ 0, ++a ],
@@ -1686,7 +1686,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Gyroscope/E' ] ]                                : [ 3, ++a ],
 		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]             : [ 3, ++a ]
 	},
-	'A/CB1': {
+	'A/CB1'  : {
 		[ map[ 'VH Armor Plating/SR' ] ] : [ 0, a = 0 ],
 		[ map[ 'Repair Toolkit/E' ] ]    : [ 1, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]       : [ 2, ++a ],
@@ -1738,7 +1738,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Pressure-Resistant Hull Design/E' ] ]: [ 0, ++a ],
 		[ map[ 'Autoloader/E' ] ]                    : [ 1, ++a ]
 	},
-	'A/AR': {
+	'A/AR' : {
 		[ map[ 'High Performance Air Radar/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Ship Maintenance Facility/SR' ] ] : [ 0, ++a ],
 		[ map[ 'Fuel Filter/E' ] ]                : [ 1, ++a ]

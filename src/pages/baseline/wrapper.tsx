@@ -53,18 +53,18 @@ export default function Wrapper( { children } ) {
 						'textAlign'    : 'right',
 						'MozAppearance': 'textfield'
 					},
-					'.color-rainbow': {
+					'.color-rainbow'    : {
 						background: `linear-gradient(to bottom right, ${ '#aaffaa' } 15%, ${ '#aaaaff' }, ${ '#ffaaaa' } 85%) !important`,
 						color     : 'black !important'
 					},
-					'.color-gray'  : textBgColor( theme, '#cccccc' ),
-					'.color-blue'  : textBgColor( theme, '#9fe8ff' ),
-					'.color-purple': textBgColor( theme, '#c4adff' ),
-					'.color-yellow': textBgColor( theme, '#eeee99' ),
-					'.color-orange': textBgColor( theme, '#ffd192' ),
-					'.color-red'   : textBgColor( theme, '#ff8d8d' ),
-					'.color-green' : textBgColor( theme, '#98fb98' ),
-					'.color-aqua'  : textBgColor( theme, '#76ffdd' ),
+					'.color-gray'       : textBgColor( theme, '#cccccc' ),
+					'.color-blue'       : textBgColor( theme, '#9fe8ff' ),
+					'.color-purple'     : textBgColor( theme, '#c4adff' ),
+					'.color-yellow'     : textBgColor( theme, '#eeee99' ),
+					'.color-orange'     : textBgColor( theme, '#ffd192' ),
+					'.color-red'        : textBgColor( theme, '#ff8d8d' ),
+					'.color-green'      : textBgColor( theme, '#98fb98' ),
+					'.color-aqua'       : textBgColor( theme, '#76ffdd' ),
 					
 					'.color-eagle'     : textBgColor( theme, '#9fe8ff' ),
 					'.color-royal'     : textBgColor( theme, '#000080' ),

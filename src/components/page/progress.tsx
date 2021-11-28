@@ -67,7 +67,7 @@ export default function PageProgress( {
 	return (
 		<GlobalStyles
 			styles={ {
-				'#nprogress': {
+				'#nprogress'                  : {
 					'pointerEvents': 'none',
 					'.bar'         : {
 						background: theme.palette.primary.main,
@@ -78,7 +78,7 @@ export default function PageProgress( {
 						width     : '100%',
 						height    : height
 					},
-					'.peg': {
+					'.peg'         : {
 						display  : 'block',
 						position : 'absolute',
 						right    : 0,
@@ -87,7 +87,7 @@ export default function PageProgress( {
 						boxShadow: `0 0 10px ${ theme.palette.primary.main }, 0 0 5px ${ theme.palette.primary.main }`,
 						opacity  : 0.1
 					},
-					'.spinner': {
+					'.spinner'     : {
 						display : 'block',
 						position: 'fixed',
 						zIndex  : theme.zIndex.tooltip,
@@ -105,7 +105,7 @@ export default function PageProgress( {
 						animation      : 'nprogress-spinner 400ms linear infinite'
 					}
 				},
-				'.nprogress_custom_parent': {
+				'.nprogress_custom_parent'    : {
 					'overflow'  : 'hidden',
 					'position'  : 'relative',
 					'#nprogress': {

@@ -8,7 +8,8 @@ export function component<T extends keyof JSX.IntrinsicElements | JSXElementCons
 }
 
 export function ComponentComposer( { components, children }: { components: any[], children: ReactNode } ) {
-	return components.reduceRight( ( children, [ Component, props ] ) => <Component { ...props }>{ children }</Component>, children );
+	return components.reduceRight( ( children, [ Component, props ] ) =>
+		<Component { ...props }>{ children }</Component>, children );
 }
 
 export function chain( func, args ) {

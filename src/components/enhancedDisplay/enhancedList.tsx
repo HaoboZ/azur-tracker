@@ -137,7 +137,7 @@ function EnhancedList<Item>( {
 					borderBottomLeftRadius : 0,
 					borderBottomRightRadius: 0
 				},
-				'overflow': 'hidden'
+				'overflow'                              : 'hidden'
 			} }
 			subheader={ Boolean( title || editable || sortable ) && (
 				<ActionTitle
@@ -152,8 +152,8 @@ function EnhancedList<Item>( {
 							}
 						},
 						( editable?.max ? items.length < editable.max : true ) && {
-							name   : 'Add',
-							onClick: async () => {
+							name       : 'Add',
+							onClick    : async () => {
 								editable.onAdd?.();
 								setItems?.( [ ...items, { ...await editable.newData() } ] );
 							},

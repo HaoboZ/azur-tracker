@@ -73,14 +73,14 @@ export default function ModalProvider( { children } ) {
 				}
 				return newModals;
 			} ),
-			events: new EventEmitter()
+			events    : new EventEmitter()
 		};
 	}
 	
 	function staticControls( id, controls ): StaticModalControls<any> {
 		return {
 			...controls,
-			showModal: ( props, ...args ) => setModals( ( modals ) => {
+			showModal  : ( props, ...args ) => setModals( ( modals ) => {
 				const index = modals.findIndex( ( modal ) => modal?.id === id );
 				if ( index === -1 ) return modals;
 				const newModals = [ ...modals ];
@@ -98,7 +98,7 @@ export default function ModalProvider( { children } ) {
 	
 	function dynamicControls(): DynamicModalControls {
 		return {
-			showModal: ( Component, modalProps, props ) => {
+			showModal : ( Component, modalProps, props ) => {
 				const id = nanoid();
 				setModals( ( modals ) => {
 					const newModals = [ ...modals ];
@@ -124,7 +124,7 @@ export default function ModalProvider( { children } ) {
 				const modal = modals.find( ( modal ) => modal?.id === id );
 				modal?.props.controls.closeModal();
 			},
-			modalInfo: async ( id ) => await new Promise( ( resolve ) => setModals( ( modals ) => {
+			modalInfo : async ( id ) => await new Promise( ( resolve ) => setModals( ( modals ) => {
 				const modal = modals.find( ( modal ) => modal?.id === id );
 				resolve( modal );
 				return modals;
