@@ -132,46 +132,50 @@ export default function ModalProvider( { children } ) {
 		};
 	}
 	
-	return <ModalContext.Provider value={ ( id?, Component?, modalProps?, props? ) => {
-		if ( !id ) return dynamicControls();
-		
-		const index = modals.findIndex( ( modal ) => modal?.id === id );
-		let modalControls: ModalControls;
-		setModals( ( modals ) => {
-			const newModals = [ ...modals ];
-			if ( index === -1 ) {
-				modalControls = controls( id );
-				newModals.push( {
-					id,
-					open : false,
-					Component,
-					modalProps,
-					props: { ...props, controls: modalControls }
-				} );
-			} else {
-				modalControls = newModals[ index ]?.props.controls;
-				if ( !isEqual( modalProps, newModals[ index ]?.modalProps ) )
-					newModals[ index ] = { ...newModals[ index ], Component, modalProps };
-				else
-					return modals;
-			}
-			return newModals;
-		} );
-		return staticControls( id, modalControls ) as any;
-	} }>
-		{ children }
-		{ modals.map( ( modal ) => {
-			if ( !modal?.id ) return null;
-			return <ModalControlsContext.Provider key={ modal.id } value={ { ...modal.props.controls, modalInfo: modal } }>
-				<ResponsiveModal
-					open={ modal.open }
-					onClose={ () => modal.props.controls.closeModal() }
-					{ ...modal.modalProps }>
-					<modal.Component { ...modal.props }/>
-				</ResponsiveModal>
-			</ModalControlsContext.Provider>;
-		} ) }
-	</ModalContext.Provider>;
+	return (
+		<ModalContext.Provider value={ ( id?, Component?, modalProps?, props? ) => {
+			if ( !id ) return dynamicControls();
+			
+			const index = modals.findIndex( ( modal ) => modal?.id === id );
+			let modalControls: ModalControls;
+			setModals( ( modals ) => {
+				const newModals = [ ...modals ];
+				if ( index === -1 ) {
+					modalControls = controls( id );
+					newModals.push( {
+						id,
+						open : false,
+						Component,
+						modalProps,
+						props: { ...props, controls: modalControls }
+					} );
+				} else {
+					modalControls = newModals[ index ]?.props.controls;
+					if ( !isEqual( modalProps, newModals[ index ]?.modalProps ) )
+						newModals[ index ] = { ...newModals[ index ], Component, modalProps };
+					else
+						return modals;
+				}
+				return newModals;
+			} );
+			return staticControls( id, modalControls ) as any;
+		} }>
+			{ children }
+			{ modals.map( ( modal ) => {
+				if ( !modal?.id ) return null;
+				return (
+					<ModalControlsContext.Provider key={ modal.id } value={ { ...modal.props.controls, modalInfo: modal } }>
+						<ResponsiveModal
+							open={ modal.open }
+							onClose={ () => modal.props.controls.closeModal() }
+							{ ...modal.modalProps }>
+							<modal.Component { ...modal.props }/>
+						</ResponsiveModal>
+					</ModalControlsContext.Provider>
+				);
+			} ) }
+		</ModalContext.Provider>
+	);
 }
 
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -207,7 +211,9 @@ export function useModalControls() {
 }
 
 export function withModal( Component ) {
-	return ( props ) => <ModalContext.Consumer>
-		{ ( modal: C2 ) => <Component modal={ modal } { ...props }/> }
-	</ModalContext.Consumer>;
+	return ( props ) => (
+		<ModalContext.Consumer>
+			{ ( modal: C2 ) => <Component modal={ modal } { ...props }/> }
+		</ModalContext.Consumer>
+	);
 }

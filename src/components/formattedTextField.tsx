@@ -9,21 +9,23 @@ export default function FormattedTextField( props: TextFieldProps ) {
 		if ( !focused ) setText( props.value );
 	}, [ focused, props.value ] );
 	
-	return <TextField
-		{ ...props }
-		value={ text }
-		onFocus={ ( e ) => {
-			setFocused( true );
-			props.onFocus?.( e );
-		} }
-		onChange={ ( e ) => {
-			setText( e.target.value );
-			props.onChange?.( e );
-		} }
-		onBlur={ ( e ) => {
-			setText( props.value );
-			setFocused( false );
-			props.onBlur?.( e );
-		} }
-	/>;
+	return (
+		<TextField
+			{ ...props }
+			value={ text }
+			onFocus={ ( e ) => {
+				setFocused( true );
+				props.onFocus?.( e );
+			} }
+			onChange={ ( e ) => {
+				setText( e.target.value );
+				props.onChange?.( e );
+			} }
+			onBlur={ ( e ) => {
+				setText( props.value );
+				setFocused( false );
+				props.onBlur?.( e );
+			} }
+		/>
+	);
 }

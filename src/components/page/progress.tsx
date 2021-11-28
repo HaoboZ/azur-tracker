@@ -64,59 +64,61 @@ export default function PageProgress( {
 		if ( options ) NProgress.configure( options );
 	}, [ options ] );
 	
-	return <GlobalStyles
-		styles={ {
-			'#nprogress': {
-				'pointerEvents': 'none',
-				'.bar'         : {
-					background: theme.palette.primary.main,
-					position  : 'fixed',
-					zIndex    : theme.zIndex.tooltip,
-					top       : 0,
-					left      : 0,
-					width     : '100%',
-					height    : height
-				},
-				'.peg': {
-					display  : 'block',
-					position : 'absolute',
-					right    : 0,
-					width    : '100%',
-					height   : '100%',
-					boxShadow: `0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main}`,
-					opacity  : 0.1
-				},
-				'.spinner': {
-					display : 'block',
-					position: 'fixed',
-					zIndex  : theme.zIndex.tooltip,
-					top     : 15,
-					right   : 15
-				},
-				'.spinner-icon': {
-					width          : 18,
-					height         : 18,
-					boxSizing      : 'border-box',
-					border         : 'solid 2px transparent',
-					borderTopColor : theme.palette.primary.main,
-					borderLeftColor: theme.palette.primary.main,
-					borderRadius   : '50%',
-					animation      : 'nprogress-spinner 400ms linear infinite'
-				}
-			},
-			'.nprogress_custom_parent': {
-				'overflow'  : 'hidden',
-				'position'  : 'relative',
+	return (
+		<GlobalStyles
+			styles={ {
 				'#nprogress': {
-					'.spinner, .bar': {
-						position: 'absolute'
+					'pointerEvents': 'none',
+					'.bar'         : {
+						background: theme.palette.primary.main,
+						position  : 'fixed',
+						zIndex    : theme.zIndex.tooltip,
+						top       : 0,
+						left      : 0,
+						width     : '100%',
+						height    : height
+					},
+					'.peg': {
+						display  : 'block',
+						position : 'absolute',
+						right    : 0,
+						width    : '100%',
+						height   : '100%',
+						boxShadow: `0 0 10px ${ theme.palette.primary.main }, 0 0 5px ${ theme.palette.primary.main }`,
+						opacity  : 0.1
+					},
+					'.spinner': {
+						display : 'block',
+						position: 'fixed',
+						zIndex  : theme.zIndex.tooltip,
+						top     : 15,
+						right   : 15
+					},
+					'.spinner-icon': {
+						width          : 18,
+						height         : 18,
+						boxSizing      : 'border-box',
+						border         : 'solid 2px transparent',
+						borderTopColor : theme.palette.primary.main,
+						borderLeftColor: theme.palette.primary.main,
+						borderRadius   : '50%',
+						animation      : 'nprogress-spinner 400ms linear infinite'
 					}
+				},
+				'.nprogress_custom_parent': {
+					'overflow'  : 'hidden',
+					'position'  : 'relative',
+					'#nprogress': {
+						'.spinner, .bar': {
+							position: 'absolute'
+						}
+					}
+				},
+				'@keyframes nprogress-spinner': {
+					'0%'  : { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
-			},
-			'@keyframes nprogress-spinner': {
-				'0%'  : { transform: 'rotate(0deg)' },
-				'100%': { transform: 'rotate(360deg)' }
-			}
-		} }
-	/>;
+			} }
+		/>
+	);
 }

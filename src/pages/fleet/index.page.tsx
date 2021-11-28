@@ -44,52 +44,65 @@ export default function Fleet() {
 		}
 	}, [] );
 	
-	return <PageContainer>
-		<Head><title>Fleet | Azur Lane Tracker</title></Head>
-		<PageTitle actions={ <HelpTourButton
-			steps={ [ {
-				target : '#help',
-				content: <>
-					<Typography>This page will help you</Typography>
-					<ul style={ { textAlign: 'start' } }>
-						<li>track ship information (levels, affection)</li>
-						<li>sort your fleet easily</li>
-						<li>and have decent equips by tier</li>
-					</ul>
-					<Typography>For people who want every ship to equip good stuff and level up everyone</Typography>
-				</>,
-				placement: 'center'
-			}/*, {
+	return (
+		<PageContainer>
+			<Head><title>Fleet | Azur Lane Tracker</title></Head>
+			<PageTitle actions={ (
+				<HelpTourButton
+					steps={ [ {
+						target : '#help',
+						content: (
+							<>
+								<Typography>This page will help you</Typography>
+								<ul style={ { textAlign: 'start' } }>
+									<li>track ship information (levels, affection)</li>
+									<li>sort your fleet easily</li>
+									<li>and have decent equips by tier</li>
+								</ul>
+								<Typography>For people who want every ship to equip good stuff and level up
+									everyone
+								</Typography>
+							</>
+						),
+						placement: 'center'
+					}/*, {
 				target : '#farmOil',
 				content: <Typography>
 					Calculates amount of oil needed.
 				</Typography>
 			}*/ ] }
-		/> }>Fleet Tracker</PageTitle>
-		<FleetFilters table={ table }/>
-		<VirtualDisplay
-			{ ...table }
-			renderRow={ ( row ) => <>
-				<ListItemText
-					primary={ <>
-						{ row.values.name }
-						{ ' - Tier: ' }{ row.cells[ 4 ].render( 'Cell' ) }
-						{ ' - ' }{ row.cells[ 6 ].render( 'Cell' ) }
-						{ ' / ' }{ row.cells[ 5 ].render( 'Cell' ) }
-					</> }
-					secondary={ `${row.values.rarity} - ${row.values.faction} - ${row.values.type}` }
 				/>
-				<ListItemSecondaryAction className={ ( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] ) }>
-					{ row.cells[ 7 ].render( 'Cell' ) }
-				</ListItemSecondaryAction>
-			</> }
-			onClick={ ( row ) => showModal( ShipModal, {
-				variant: 'bottom'
-			}, {
-				ship         : row.original,
-				equipBetter  : equipBetter.value[ row.id ],
-				selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
-			} ) }
-		/>
-	</PageContainer>;
+			) }>Fleet Tracker
+			</PageTitle>
+			<FleetFilters table={ table }/>
+			<VirtualDisplay
+				{ ...table }
+				renderRow={ ( row ) => (
+					<>
+						<ListItemText
+							primary={ (
+								<>
+									{ row.values.name }
+									{ ' - Tier: ' }{ row.cells[ 4 ].render( 'Cell' ) }
+									{ ' - ' }{ row.cells[ 6 ].render( 'Cell' ) }
+									{ ' / ' }{ row.cells[ 5 ].render( 'Cell' ) }
+								</>
+							) }
+							secondary={ `${ row.values.rarity } - ${ row.values.faction } - ${ row.values.type }` }
+						/>
+						<ListItemSecondaryAction className={ ( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] ) }>
+							{ row.cells[ 7 ].render( 'Cell' ) }
+						</ListItemSecondaryAction>
+					</>
+				) }
+				onClick={ ( row ) => showModal( ShipModal, {
+					variant: 'bottom'
+				}, {
+					ship         : row.original,
+					equipBetter  : equipBetter.value[ row.id ],
+					selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
+				} ) }
+			/>
+		</PageContainer>
+	);
 }

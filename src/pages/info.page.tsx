@@ -20,35 +20,45 @@ const opsi: [ StaticImageData, string, string ][] = [
 
 // noinspection JSUnusedGlobalSymbols
 export default function Info() {
-	return <PageContainer>
-		<Head><title>Info | Azur Lane Tracker</title></Head>
-		<PageTitle>Info</PageTitle>
-		<PageSection primary='OpSi Weakness'>
-			<TableContainer component={ Paper }>
-				<Table size='small'>
-					<TableHead>
-						<TableRow>
-							<TableCell/>
-							<TableCell>Ship</TableCell>
-							<TableCell>Weakness</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{ opsi.map( ( [ image, ship, weakness ], index ) => <TableRow key={ index }>
-							<TableCell>
-								<Box sx={ { position: 'relative', width: 64, height: 64 } }>
-									<Image src={ image } alt={ ship } layout='fill' objectFit='contain' objectPosition='left'/>
-								</Box>
-							</TableCell>
-							<TableCell>{ ship }</TableCell>
-							<TableCell>{ weakness }</TableCell>
-						</TableRow> ) }
-					</TableBody>
-				</Table>
-			</TableContainer>
-		</PageSection>
-		<PageSection primary='Archive Farming'>
-			TBA
-		</PageSection>
-	</PageContainer>;
+	return (
+		<PageContainer>
+			<Head><title>Info | Azur Lane Tracker</title></Head>
+			<PageTitle>Info</PageTitle>
+			<PageSection primary='OpSi Weakness'>
+				<TableContainer component={ Paper }>
+					<Table size='small'>
+						<TableHead>
+							<TableRow>
+								<TableCell/>
+								<TableCell>Ship</TableCell>
+								<TableCell>Weakness</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{ opsi.map( ( [ image, ship, weakness ], index ) => (
+								<TableRow key={ index }>
+									<TableCell>
+										<Box sx={ { position: 'relative', width: 64, height: 64 } }>
+											<Image
+												src={ image }
+												alt={ ship }
+												layout='fill'
+												objectFit='contain'
+												objectPosition='left'
+											/>
+										</Box>
+									</TableCell>
+									<TableCell>{ ship }</TableCell>
+									<TableCell>{ weakness }</TableCell>
+								</TableRow>
+							) ) }
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</PageSection>
+			<PageSection primary='Archive Farming'>
+				TBA
+			</PageSection>
+		</PageContainer>
+	);
 }

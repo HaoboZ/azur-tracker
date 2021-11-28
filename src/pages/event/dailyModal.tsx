@@ -26,62 +26,66 @@ export default function DailyModal() {
 		setDaily( [ ...daily ] );
 	}
 	
-	return <ResponsiveModalContainer
-		title='Daily Points'
-		sx={ { p: 0 } }
-		onSave={ () => dispatch( event_setDaily( { daily, total: dailyTotal } ) ) }>
-		<EnhancedDisplay
-			sortable
-			title={ <Typography>Total Daily: { dailyTotal }</Typography> }
-			items={ daily }
-			setItems={ setDaily }
-			editable={ {
-				newData: () => ( { id: nanoid(), name: '', amount: 0 } )
-			} }
-			tableProps={ {
-				headers: [
-					'Name',
-					'Amount'
-				],
-				columns: ( item, index ) => [
-					<FormattedTextField
-						key='name'
-						fullWidth
-						type='text'
-						value={ item.name }
-						onChange={ ( { target } ) => modifyItem( index, { name: target.value } ) }
-					/>,
-					<FormattedTextField
-						key='amount'
-						type='number'
-						placeholder='0'
-						value={ item.amount }
-						onChange={ ( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } ) }
-					/>
-				]
-			} }
-			listProps={ {
-				renderRow: ( item, index ) => <Grid container spacing={ 2 }>
-					<Grid item xs={ 9 }>
+	return (
+		<ResponsiveModalContainer
+			title='Daily Points'
+			sx={ { p: 0 } }
+			onSave={ () => dispatch( event_setDaily( { daily, total: dailyTotal } ) ) }>
+			<EnhancedDisplay
+				sortable
+				title={ <Typography>Total Daily: { dailyTotal }</Typography> }
+				items={ daily }
+				setItems={ setDaily }
+				editable={ {
+					newData: () => ( { id: nanoid(), name: '', amount: 0 } )
+				} }
+				tableProps={ {
+					headers: [
+						'Name',
+						'Amount'
+					],
+					columns: ( item, index ) => [
 						<FormattedTextField
+							key='name'
 							fullWidth
 							type='text'
-							label='Name'
 							value={ item.name }
 							onChange={ ( { target } ) => modifyItem( index, { name: target.value } ) }
-						/>
-					</Grid>
-					<Grid item xs={ 3 }>
+						/>,
 						<FormattedTextField
+							key='amount'
 							type='number'
-							label='Amount'
 							placeholder='0'
 							value={ item.amount }
 							onChange={ ( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } ) }
 						/>
-					</Grid>
-				</Grid>
-			} }
-		/>
-	</ResponsiveModalContainer>;
+					]
+				} }
+				listProps={ {
+					renderRow: ( item, index ) => (
+						<Grid container spacing={ 2 }>
+							<Grid item xs={ 9 }>
+								<FormattedTextField
+									fullWidth
+									type='text'
+									label='Name'
+									value={ item.name }
+									onChange={ ( { target } ) => modifyItem( index, { name: target.value } ) }
+								/>
+							</Grid>
+							<Grid item xs={ 3 }>
+								<FormattedTextField
+									type='number'
+									label='Amount'
+									placeholder='0'
+									value={ item.amount }
+									onChange={ ( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } ) }
+								/>
+							</Grid>
+						</Grid>
+					)
+				} }
+			/>
+		</ResponsiveModalContainer>
+	);
 }

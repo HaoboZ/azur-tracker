@@ -15,29 +15,31 @@ export default function IndicatorProvider( { children } ) {
 		setVisible( false );
 	}, [ visible ] );
 	
-	return <IndicatorContext.Provider value={ async ( promise ) => {
-		setVisible( true );
-		if ( promise ) {
-			promise.finally( () => setVisible( false ) );
-		} else {
-			setTimeout( () => setVisible( false ), 1000 );
-		}
-		return await promise;
-	} }>
-		{ children }
-		<Fade mountOnEnter unmountOnExit in={ visible }>
-			<CircularProgress
-				color='secondary'
-				size={ 20 }
-				sx={ {
-					position: 'fixed',
-					zIndex  : 'tooltip',
-					bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
-					right   : 'calc(env(safe-area-inset-right) + 10px)'
-				} }
-			/>
-		</Fade>
-	</IndicatorContext.Provider>;
+	return (
+		<IndicatorContext.Provider value={ async ( promise ) => {
+			setVisible( true );
+			if ( promise ) {
+				promise.finally( () => setVisible( false ) );
+			} else {
+				setTimeout( () => setVisible( false ), 1000 );
+			}
+			return await promise;
+		} }>
+			{ children }
+			<Fade mountOnEnter unmountOnExit in={ visible }>
+				<CircularProgress
+					color='secondary'
+					size={ 20 }
+					sx={ {
+						position: 'fixed',
+						zIndex  : 'tooltip',
+						bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
+						right   : 'calc(env(safe-area-inset-right) + 10px)'
+					} }
+				/>
+			</Fade>
+		</IndicatorContext.Provider>
+	);
 }
 
 export function useIndicator() {
@@ -45,7 +47,9 @@ export function useIndicator() {
 }
 
 export function withIndicator( Component ) {
-	return ( props ) => <IndicatorContext.Consumer>
-		{ ( indicator ) => <Component indicator={ indicator } { ...props }/> }
-	</IndicatorContext.Consumer>;
+	return ( props ) => (
+		<IndicatorContext.Consumer>
+			{ ( indicator ) => <Component indicator={ indicator } { ...props }/> }
+		</IndicatorContext.Consumer>
+	);
 }

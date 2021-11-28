@@ -48,46 +48,50 @@ export default function ResponsiveModal( {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
-		return <Dialog
-			fullWidth
-			disablePortal
-			closeAfterTransition
-			maxWidth='md'
-			TransitionComponent={ Grow }
-			sx={ {
-				'& .MuiDialog-paper': {
-					ml: 'env(safe-area-inset-left)',
-					mr: 'env(safe-area-inset-right)',
-					mt: 'env(safe-area-inset-top)',
-					mb: 'env(safe-area-inset-bottom)'
-				}
-			} }
-			{ ...props }>
-			{ children }
-		</Dialog>;
+		return (
+			<Dialog
+				fullWidth
+				disablePortal
+				closeAfterTransition
+				maxWidth='md'
+				TransitionComponent={ Grow }
+				sx={ {
+					'& .MuiDialog-paper': {
+						ml: 'env(safe-area-inset-left)',
+						mr: 'env(safe-area-inset-right)',
+						mt: 'env(safe-area-inset-top)',
+						mb: 'env(safe-area-inset-bottom)'
+					}
+				} }
+				{ ...props }>
+				{ children }
+			</Dialog>
+		);
 	} else {
-		return <SwipeableDrawer
-			disableSwipeToOpen
-			disablePortal
-			closeAfterTransition
-			anchor='bottom'
-			sx={ { display: 'flex', justifyContent: 'center' } }
-			PaperProps={ {
-				sx: {
-					maxWidth            : '100%',
-					maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
-					height              : variant === 'bottom' ? 'auto' : '100%',
-					left                : 'auto',
-					right               : 'auto',
-					borderTopLeftRadius : 12,
-					borderTopRightRadius: 12,
-					width               : ( { breakpoints } ) => breakpoints.values.md
-				}
-			} }
-			onOpen={ () => null }
-			{ ...props }>
-			{ children }
-		</SwipeableDrawer>;
+		return (
+			<SwipeableDrawer
+				disableSwipeToOpen
+				disablePortal
+				closeAfterTransition
+				anchor='bottom'
+				sx={ { display: 'flex', justifyContent: 'center' } }
+				PaperProps={ {
+					sx: {
+						maxWidth            : '100%',
+						maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
+						height              : variant === 'bottom' ? 'auto' : '100%',
+						left                : 'auto',
+						right               : 'auto',
+						borderTopLeftRadius : 12,
+						borderTopRightRadius: 12,
+						width               : ( { breakpoints } ) => breakpoints.values.md
+					}
+				} }
+				onOpen={ () => null }
+				{ ...props }>
+				{ children }
+			</SwipeableDrawer>
+		);
 	}
 }
 
@@ -107,42 +111,51 @@ export function ResponsiveModalContainer( {
 	onClose = onClose ?? closeModal;
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
-		return <>
-			{ title && <DialogTitle>{ title }</DialogTitle> }
-			<DialogContent { ...props }>{ children }</DialogContent>
-			<DialogActions>
-				{ onSave ? <Button
-					variant='contained'
-					onClick={ async () => {
-						await onSave();
-						!keepOpenOnSave && onClose();
-					} }>
-					Save
-				</Button> : undefined }
-				<Button variant='contained' color='error' onClick={ onClose }>
-					{ onSave ? 'Cancel' : 'Close' }
-				</Button>
-			</DialogActions>
-		</>;
+		return (
+			<>
+				{ title && <DialogTitle>{ title }</DialogTitle> }
+				<DialogContent { ...props }>{ children }</DialogContent>
+				<DialogActions>
+					{ onSave ? (
+						<Button
+							variant='contained'
+							onClick={ async () => {
+								await onSave();
+								!keepOpenOnSave && onClose();
+							} }>
+							Save
+						</Button>
+					) : undefined }
+					<Button variant='contained' color='error' onClick={ onClose }>
+						{ onSave ? 'Cancel' : 'Close' }
+					</Button>
+				</DialogActions>
+			</>
+		);
 	} else {
-		return <>
-			<Toolbar>
-				<IconButton edge='start' color='inherit' onClick={ onClose }>
-					<ArrowBackIcon/>
-				</IconButton>
-				<Typography variant='h3' flexGrow={ 1 }>
-					{ title }
-				</Typography>
-				{ onSave ? <Button
-					variant='contained'
-					onClick={ async () => {
-						await onSave();
-						!keepOpenOnSave && onClose();
-					} }>Save</Button> : undefined }
-			</Toolbar>
-			<DialogContent onTouchStart={ ( e ) => e.stopPropagation() } { ...props }>
-				{ children }
-			</DialogContent>
-		</>;
+		return (
+			<>
+				<Toolbar>
+					<IconButton edge='start' color='inherit' onClick={ onClose }>
+						<ArrowBackIcon/>
+					</IconButton>
+					<Typography variant='h3' flexGrow={ 1 }>
+						{ title }
+					</Typography>
+					{ onSave ? (
+						<Button
+							variant='contained'
+							onClick={ async () => {
+								await onSave();
+								!keepOpenOnSave && onClose();
+							} }>Save
+						</Button>
+					) : undefined }
+				</Toolbar>
+				<DialogContent onTouchStart={ ( e ) => e.stopPropagation() } { ...props }>
+					{ children }
+				</DialogContent>
+			</>
+		);
 	}
 }

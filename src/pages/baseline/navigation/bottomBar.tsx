@@ -31,52 +31,58 @@ export default function BottomBar( { children } ) {
 			if ( items[ i ].link === router.asPath ) return i;
 	}, [ router.asPath ] );
 	
-	return <Box>
-		<Box
-			position='fixed'
-			top={ 0 }
-			zIndex='appBar'
-			width='100%'
-			height='env(safe-area-inset-top)'
-			bgcolor='primary.main'
-		/>
-		<Box width='100%' height='env(safe-area-inset-top)'/>
-		<Box
-			pl='env(safe-area-inset-left)'
-			pr='env(safe-area-inset-right)'
-			minHeight={ `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)` }>
-			{ children }
+	return (
+		<Box>
+			<Box
+				position='fixed'
+				top={ 0 }
+				zIndex='appBar'
+				width='100%'
+				height='env(safe-area-inset-top)'
+				bgcolor='primary.main'
+			/>
+			<Box width='100%' height='env(safe-area-inset-top)'/>
+			<Box
+				pl='env(safe-area-inset-left)'
+				pr='env(safe-area-inset-right)'
+				minHeight={ `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)` }>
+				{ children }
+			</Box>
+			<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
+			<AppBar
+				position='fixed'
+				color='inherit'
+				sx={ { top: 'auto', bottom: 0 } }>
+				<BottomNavigation
+					showLabels
+					value={ index }
+					sx={ {
+						height: 'calc(env(safe-area-inset-bottom) + 56px)',
+						pl    : 'env(safe-area-inset-left)',
+						pr    : 'env(safe-area-inset-right)',
+						pb    : 'env(safe-area-inset-bottom)'
+					} }
+					onChange={ ( e, value ) => {
+						router.push( items[ value ].link ).then();
+						dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
+					} }>
+					{ items.map( ( item, index ) => (
+						<BottomNavigationAction
+							key={ index }
+							sx={ { minWidth: 0 } }
+							label={ item.label }
+							icon={ (
+								<Badge
+									color='secondary'
+									variant='dot'
+									invisible={ !main.newData[ item.link.substring( 1 ) ] }>
+									{ item.icon }
+								</Badge>
+							) }
+						/>
+					) ) }
+				</BottomNavigation>
+			</AppBar>
 		</Box>
-		<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
-		<AppBar
-			position='fixed'
-			color='inherit'
-			sx={ { top: 'auto', bottom: 0 } }>
-			<BottomNavigation
-				showLabels
-				value={ index }
-				sx={ {
-					height: 'calc(env(safe-area-inset-bottom) + 56px)',
-					pl    : 'env(safe-area-inset-left)',
-					pr    : 'env(safe-area-inset-right)',
-					pb    : 'env(safe-area-inset-bottom)'
-				} }
-				onChange={ ( e, value ) => {
-					router.push( items[ value ].link ).then();
-					dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
-				} }>
-				{ items.map( ( item, index ) => <BottomNavigationAction
-					key={ index }
-					sx={ { minWidth: 0 } }
-					label={ item.label }
-					icon={ <Badge
-						color='secondary'
-						variant='dot'
-						invisible={ !main.newData[ item.link.substring( 1 ) ] }>
-						{ item.icon }
-					</Badge> }
-				/> ) }
-			</BottomNavigation>
-		</AppBar>
-	</Box>;
+	);
 }

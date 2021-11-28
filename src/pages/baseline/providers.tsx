@@ -17,24 +17,28 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	
 	const snackbarRef = useRef<SnackbarProvider>();
 	
-	return <ComponentComposer
-		components={ [
-			// styling
-			component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
-			component( ThemeProvider, { theme } ),
-			// app
-			component( SessionProvider, { session: pageProps.session } ),
-			// content
-			component( ModalProvider ),
-			component( SnackbarProvider, {
-				ref             : snackbarRef,
-				preventDuplicate: true,
-				action          : ( key ) => <IconButton onClick={ () => snackbarRef.current.closeSnackbar( key ) }>
-					<CloseIcon/>
-				</IconButton>
-			} ),
-			component( IndicatorProvider )
-		] }>
-		{ children }
-	</ComponentComposer>;
+	return (
+		<ComponentComposer
+			components={ [
+				// styling
+				component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
+				component( ThemeProvider, { theme } ),
+				// app
+				component( SessionProvider, { session: pageProps.session } ),
+				// content
+				component( ModalProvider ),
+				component( SnackbarProvider, {
+					ref             : snackbarRef,
+					preventDuplicate: true,
+					action          : ( key ) => (
+						<IconButton onClick={ () => snackbarRef.current.closeSnackbar( key ) }>
+							<CloseIcon/>
+						</IconButton>
+					)
+				} ),
+				component( IndicatorProvider )
+			] }>
+			{ children }
+		</ComponentComposer>
+	);
 }

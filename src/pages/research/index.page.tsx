@@ -12,15 +12,17 @@ export default function Research() {
 	const researchLastTab = useSelector( ( { main } ) => main.researchLastTab );
 	const dispatch = useDispatch();
 	
-	return <PageContainer>
-		<Head><title>Research | Azur Lane Tracker</title></Head>
-		<PageTitle>Research Tracker</PageTitle>
-		<SwipeableTabViews
-			tab={ researchLastTab }
-			setTab={ ( index ) => dispatch( setResearchLastTab( index ) ) }
-			renderTabs={ researchData.map( ( { name } ) => name ) }
-			renderContent={ ( index ) => <ResearchSeries researchShips={ researchData[ index ].ships }/> }
-			variant='fullWidth'
-		/>
-	</PageContainer>;
+	return (
+		<PageContainer>
+			<Head><title>Research | Azur Lane Tracker</title></Head>
+			<PageTitle>Research Tracker</PageTitle>
+			<SwipeableTabViews
+				tab={ researchLastTab }
+				setTab={ ( index ) => dispatch( setResearchLastTab( index ) ) }
+				renderTabs={ researchData.map( ( { name } ) => name ) }
+				renderContent={ ( index ) => <ResearchSeries researchShips={ researchData[ index ].ships }/> }
+				variant='fullWidth'
+			/>
+		</PageContainer>
+	);
 }

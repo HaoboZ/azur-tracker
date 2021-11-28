@@ -75,7 +75,7 @@
 			"warn",
 			{ "selfClosing": "line-aligned", "nonEmpty": "after-props" }
 		],
-		//		"react/jsx-closing-tag-location"                   : "warn",
+		"react/jsx-closing-tag-location"                   : "warn",
 		"react/jsx-curly-brace-presence"                   : "warn",
 		"react/jsx-curly-newline"                          : "warn",
 		"react/jsx-curly-spacing"                          : [ "warn", { "when": "always", "children": true } ],
@@ -92,17 +92,17 @@
 			"warn",
 			{ "closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "never" }
 		],
-		//		"react/jsx-wrap-multilines"                        : [
-		//			"warn", {
-		//				"declaration": "parens-new-line",
-		//				"assignment" : "parens-new-line",
-		//				"return"     : "parens-new-line",
-		//				"arrow"      : "parens-new-line",
-		//				"condition"  : "parens-new-line",
-		//				"logical"    : "parens-new-line",
-		//				"prop"       : "parens-new-line"
-		//			}
-		//		],
+		"react/jsx-wrap-multilines"                        : [
+			"warn", {
+				"declaration": "parens-new-line",
+				"assignment" : "parens-new-line",
+				"return"     : "parens-new-line",
+				"arrow"      : "parens-new-line",
+				"condition"  : "parens-new-line",
+				"logical"    : "parens-new-line",
+				"prop"       : "parens-new-line"
+			}
+		],
 		// typescript types
 		"@typescript-eslint/ban-ts-comment"                : "off",
 		"@typescript-eslint/ban-types"                     : "off",

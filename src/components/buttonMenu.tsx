@@ -7,20 +7,23 @@ export default function ButtonMenu( { children, onClick, menuProps, renderMenu, 
 } & ButtonProps ) {
 	const [ anchorEl, setAnchorEl ] = useState( null );
 	
-	return <>
-		<Button
-			{ ...props }
-			onClick={ ( e ) => {
-				e.stopPropagation();
-				setAnchorEl( e.currentTarget );
-				onClick?.( e );
-			} }>{ children }</Button>
-		<Menu
-			anchorEl={ anchorEl }
-			open={ Boolean( anchorEl ) }
-			onClose={ () => setAnchorEl( null ) }
-			{ ...menuProps }>
-			{ renderMenu( () => setAnchorEl( null ) ) }
-		</Menu>
-	</>;
+	return (
+		<>
+			<Button
+				{ ...props }
+				onClick={ ( e ) => {
+					e.stopPropagation();
+					setAnchorEl( e.currentTarget );
+					onClick?.( e );
+				} }>{ children }
+			</Button>
+			<Menu
+				anchorEl={ anchorEl }
+				open={ Boolean( anchorEl ) }
+				onClose={ () => setAnchorEl( null ) }
+				{ ...menuProps }>
+				{ renderMenu( () => setAnchorEl( null ) ) }
+			</Menu>
+		</>
+	);
 }

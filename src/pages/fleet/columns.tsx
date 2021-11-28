@@ -21,11 +21,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'name',
 		width   : 40,
 		Cell( { value } ) {
-			return <Box sx={ {
-				whiteSpace  : 'nowrap',
-				overflow    : 'hidden',
-				textOverflow: 'ellipsis'
-			} }>{ value }</Box>;
+			return (
+				<Box sx={ {
+					whiteSpace  : 'nowrap',
+					overflow    : 'hidden',
+					textOverflow: 'ellipsis'
+				} }>{ value }
+				</Box>
+			);
 		},
 		props: { style: { minWidth: '80px' } }
 	}, {
@@ -33,11 +36,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'rarity',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={ {
-				whiteSpace  : 'nowrap',
-				overflow    : 'hidden',
-				textOverflow: 'ellipsis'
-			} }>{ value }</Box>;
+			return (
+				<Box sx={ {
+					whiteSpace  : 'nowrap',
+					overflow    : 'hidden',
+					textOverflow: 'ellipsis'
+				} }>{ value }
+				</Box>
+			);
 		},
 		props: ( cell ) => ( {
 			className: cell && `color-${rarityColors[ cell.value ]}`,
@@ -49,11 +55,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'faction',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={ {
-				whiteSpace  : 'nowrap',
-				overflow    : 'hidden',
-				textOverflow: 'ellipsis'
-			} }>{ value }</Box>;
+			return (
+				<Box sx={ {
+					whiteSpace  : 'nowrap',
+					overflow    : 'hidden',
+					textOverflow: 'ellipsis'
+				} }>{ value }
+				</Box>
+			);
 		},
 		props: ( cell ) => ( {
 			className: cell && `color-${factionColors[ cell.value ]}`,
@@ -64,11 +73,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 		accessor: 'type',
 		width   : 20,
 		Cell( { value } ) {
-			return <Box sx={ {
-				whiteSpace  : 'nowrap',
-				overflow    : 'hidden',
-				textOverflow: 'ellipsis'
-			} }>{ value }</Box>;
+			return (
+				<Box sx={ {
+					whiteSpace  : 'nowrap',
+					overflow    : 'hidden',
+					textOverflow: 'ellipsis'
+				} }>{ value }
+				</Box>
+			);
 		},
 		props: ( cell ) => ( {
 			className: cell && `color-${typeColors[ cell.value ]}`,

@@ -82,100 +82,106 @@ export default function EquipModal( { info, selectedEquip }: {
 		}
 	}, [ equip, override ] );
 	
-	return <>
-		<DialogTitle>Switch Equipment</DialogTitle>
-		<DialogContent>
-			<Grid container alignItems='center' justifyContent='center'>
-				{ info?.ship.special[ info.index ]
-					? <Grid item xs={ 12 } component={ Box } pb={ 2 }>
-						<Alert severity='warning' variant='filled'>
-							Special Equip Slot (Check Skills & Equipment)
-						</Alert>
-					</Grid> : undefined }
-				<Grid item container xs={ 5 } justifyContent='center'>
-					<Image
-						src={ `/images/equips/${currentEquip.image}.png` }
-						alt={ currentEquip.name }
-						height={ 128 }
-						width={ 128 }
-						layout='intrinsic'
-						className={ `color-${rarityColors[ currentEquip.rarity ]}` }
-					/>
+	return (
+		<>
+			<DialogTitle>Switch Equipment</DialogTitle>
+			<DialogContent>
+				<Grid container alignItems='center' justifyContent='center'>
+					{ info?.ship.special[ info.index ]
+						? (
+							<Grid item xs={ 12 } component={ Box } pb={ 2 }>
+								<Alert severity='warning' variant='filled'>
+									Special Equip Slot (Check Skills & Equipment)
+								</Alert>
+							</Grid>
+						) : undefined }
+					<Grid item container xs={ 5 } justifyContent='center'>
+						<Image
+							src={ `/images/equips/${ currentEquip.image }.png` }
+							alt={ currentEquip.name }
+							height={ 128 }
+							width={ 128 }
+							layout='intrinsic'
+							className={ `color-${ rarityColors[ currentEquip.rarity ] }` }
+						/>
+					</Grid>
+					<Grid item xs={ 2 }>
+						<Typography variant='h4' align='center'>⇒</Typography>
+					</Grid>
+					<Grid item container xs={ 5 } justifyContent='center'>
+						<Image
+							src={ `/images/equips/${ equip.image }.png` }
+							alt={ equip.name }
+							height={ 128 }
+							width={ 128 }
+							layout='intrinsic'
+							className={ `color-${ rarityColors[ equip.rarity ] }` }
+							onClick={ () => setEquip( equipData[ 0 ] ) }
+						/>
+					</Grid>
+					<Grid item container xs={ 5 } justifyContent='center'>
+						<Link
+							target='_blank'
+							href={ `https://azurlane.koumakan.jp/wiki/${ decodeURIComponent( currentEquip.image.replace( '$', '%' ) ) }` }
+							align='center'
+							color='textPrimary'>
+							{ currentEquip.name }
+						</Link>
+					</Grid>
+					<Grid item xs={ 2 }/>
+					<Grid item container xs={ 5 } justifyContent='center'>
+						<Link
+							target='_blank'
+							href={ `https://azurlane.koumakan.jp/wiki/${ decodeURIComponent( equip.image.replace( '$', '%' ) ) }` }
+							align='center'
+							color='textPrimary'>
+							{ equip.name }
+						</Link>
+					</Grid>
+					<Grid item container xs={ 12 } md={ 6 } justifyContent='center'>
+						<Button
+							variant='outlined'
+							onClick={ ( { currentTarget } ) => setAnchorEl( currentTarget ) }>
+							Equipment Tier
+						</Button>
+						<EquipTierSelector
+							anchorEl={ anchorEl }
+							closeAnchor={ () => setAnchorEl( null ) }
+							equipList={ tierList }
+							setEquip={ ( id ) => setEquip( equipListIndex[ id ] ) }
+						/>
+					</Grid>
+					<Grid item xs={ 12 } md={ 6 }>
+						<EquipFilter
+							equipList={ equipList }
+							value={ equip }
+							setValue={ setEquip }
+						/>
+					</Grid>
 				</Grid>
-				<Grid item xs={ 2 }>
-					<Typography variant='h4' align='center'>⇒</Typography>
-				</Grid>
-				<Grid item container xs={ 5 } justifyContent='center'>
-					<Image
-						src={ `/images/equips/${equip.image}.png` }
-						alt={ equip.name }
-						height={ 128 }
-						width={ 128 }
-						layout='intrinsic'
-						className={ `color-${rarityColors[ equip.rarity ]}` }
-						onClick={ () => setEquip( equipData[ 0 ] ) }
-					/>
-				</Grid>
-				<Grid item container xs={ 5 } justifyContent='center'>
-					<Link
-						target='_blank'
-						href={ `https://azurlane.koumakan.jp/wiki/${decodeURIComponent( currentEquip.image.replace( '$', '%' ) )}` }
-						align='center'
-						color='textPrimary'>
-						{ currentEquip.name }
-					</Link>
-				</Grid>
-				<Grid item xs={ 2 }/>
-				<Grid item container xs={ 5 } justifyContent='center'>
-					<Link
-						target='_blank'
-						href={ `https://azurlane.koumakan.jp/wiki/${decodeURIComponent( equip.image.replace( '$', '%' ) )}` }
-						align='center'
-						color='textPrimary'>
-						{ equip.name }
-					</Link>
-				</Grid>
-				<Grid item container xs={ 12 } md={ 6 } justifyContent='center'>
-					<Button
-						variant='outlined'
-						onClick={ ( { currentTarget } ) => setAnchorEl( currentTarget ) }>
-						Equipment Tier
-					</Button>
-					<EquipTierSelector
-						anchorEl={ anchorEl }
-						closeAnchor={ () => setAnchorEl( null ) }
-						equipList={ tierList }
-						setEquip={ ( id ) => setEquip( equipListIndex[ id ] ) }
-					/>
-				</Grid>
-				<Grid item xs={ 12 } md={ 6 }>
-					<EquipFilter
-						equipList={ equipList }
-						value={ equip }
-						setValue={ setEquip }
-					/>
-				</Grid>
-			</Grid>
-		</DialogContent>
-		<DialogActions>
-			<FormControlLabel
-				control={ <Switch
-					checked={ Boolean( override ) }
-					onChange={ ( { target } ) => setOverride( +target.checked as 0 | 1 ) }
-				/> }
-				label='Force BiS'
-				labelPlacement='start'
-				sx={ { mr: 2 } }
-			/>
-			<Button variant='contained' onClick={ () => closeModal() }>
-				Close
-			</Button>
-			<Button
-				variant='contained'
-				color='error'
-				onClick={ () => closeModal( true ) }>
-				Cancel
-			</Button>
-		</DialogActions>
-	</>;
+			</DialogContent>
+			<DialogActions>
+				<FormControlLabel
+					control={ (
+						<Switch
+							checked={ Boolean( override ) }
+							onChange={ ( { target } ) => setOverride( +target.checked as 0 | 1 ) }
+						/>
+					) }
+					label='Force BiS'
+					labelPlacement='start'
+					sx={ { mr: 2 } }
+				/>
+				<Button variant='contained' onClick={ () => closeModal() }>
+					Close
+				</Button>
+				<Button
+					variant='contained'
+					color='error'
+					onClick={ () => closeModal( true ) }>
+					Cancel
+				</Button>
+			</DialogActions>
+		</>
+	);
 }

@@ -15,7 +15,9 @@ export function useEvent() {
 }
 
 export function withEvent( Component ) {
-	return ( props ) => <EventContext.Consumer>
-		{ ( event ) => <Component event={ event } { ...props }/> }
-	</EventContext.Consumer>;
+	return ( props ) => (
+		<EventContext.Consumer>
+			{ ( event ) => <Component event={ event } { ...props }/> }
+		</EventContext.Consumer>
+	);
 }

@@ -7,11 +7,13 @@ export default function PageContainer( { children, sx, ...props }: {
 } & ContainerProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
-	return <Container
-		disableGutters={ !wide }
-		sx={ { overflowX: 'hidden', ...sx } }
-		{ ...props }>
-		<ScrollTop/>
-		{ children }
-	</Container>;
+	return (
+		<Container
+			disableGutters={ !wide }
+			sx={ { overflowX: 'hidden', ...sx } }
+			{ ...props }>
+			<ScrollTop/>
+			{ children }
+		</Container>
+	);
 }
