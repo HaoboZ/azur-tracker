@@ -3466,7 +3466,7 @@ __metadata:
     moment: ^2.29.1
     nanoid: ^3.1.30
     next: ^12.0.5-canary.12
-    next-auth: 4.0.1
+    next-auth: ^4.0.1
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.1
     next-sitemap: ^1.6.203
@@ -7863,7 +7863,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:4.0.1":
+"next-auth@npm:^4.0.1":
   version: 4.0.1
   resolution: "next-auth@npm:4.0.1"
   dependencies:
