@@ -19,7 +19,7 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 	
 	return (
 		<ComponentComposer
-			components={ [
+			components={[
 				// styling
 				component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
 				component( ThemeProvider, { theme } ),
@@ -31,14 +31,14 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 					ref             : snackbarRef,
 					preventDuplicate: true,
 					action          : ( key ) => (
-						<IconButton onClick={ () => snackbarRef.current.closeSnackbar( key ) }>
+						<IconButton onClick={() => snackbarRef.current.closeSnackbar( key )}>
 							<CloseIcon/>
 						</IconButton>
 					)
 				} ),
 				component( IndicatorProvider )
-			] }>
-			{ children }
+			]}>
+			{children}
 		</ComponentComposer>
 	);
 }

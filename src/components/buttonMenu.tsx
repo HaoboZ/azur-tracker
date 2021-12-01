@@ -10,19 +10,19 @@ export default function ButtonMenu( { children, onClick, menuProps, renderMenu, 
 	return (
 		<>
 			<Button
-				{ ...props }
-				onClick={ ( e ) => {
+				{...props}
+				onClick={( e ) => {
 					e.stopPropagation();
 					setAnchorEl( e.currentTarget );
 					onClick?.( e );
-				} }>{ children }
+				}}>{children}
 			</Button>
 			<Menu
-				anchorEl={ anchorEl }
-				open={ Boolean( anchorEl ) }
-				onClose={ () => setAnchorEl( null ) }
-				{ ...menuProps }>
-				{ renderMenu( () => setAnchorEl( null ) ) }
+				anchorEl={anchorEl}
+				open={Boolean( anchorEl )}
+				onClose={() => setAnchorEl( null )}
+				{...menuProps}>
+				{renderMenu( () => setAnchorEl( null ) )}
 			</Menu>
 		</>
 	);

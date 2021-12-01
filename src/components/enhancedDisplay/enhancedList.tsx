@@ -35,7 +35,7 @@ function EnhancedList<Item>( {
 	selectable,
 	loading,
 	loadingComponent = <Loading/>,
-	emptyComponent = <Typography textAlign='center' py={ 2 }>No Items</Typography>,
+	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	renderRow,
 	renderPanel,
 	removeEditing,
@@ -50,27 +50,27 @@ function EnhancedList<Item>( {
 		
 		const row = ( item, index, handle, selected ) => (
 			<>
-				{ !removeEditing && editing && sortable && (
-					<ListItemIcon sx={ { pl: 1 } }>
-						<MenuIcon { ...handle }/>
+				{!removeEditing && editing && sortable && (
+					<ListItemIcon sx={{ pl: 1 }}>
+						<MenuIcon {...handle}/>
 					</ListItemIcon>
-				) }
-				{ renderRow( item, index, removeEditing
+				)}
+				{renderRow( item, index, removeEditing
 					? () => _deleteRow( items, setItems, editable, selectable,
 						item, index, selected, totalSelected )
-					: undefined ) }
-				{ !removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
-				&& (
-					<ListItemIcon sx={ { minWidth: 'unset' } }>
-						<IconButton onClick={ ( e ) => {
-							e.stopPropagation();
-							_deleteRow( items, setItems, editable, selectable,
-								item, index, selected, totalSelected );
-						} }>
-							<CloseIcon/>
-						</IconButton>
-					</ListItemIcon>
-				) }
+					: undefined )}
+				{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
+					&& (
+						<ListItemIcon sx={{ minWidth: 'unset' }}>
+							<IconButton onClick={( e ) => {
+								e.stopPropagation();
+								_deleteRow( items, setItems, editable, selectable,
+									item, index, selected, totalSelected );
+							}}>
+								<CloseIcon/>
+							</IconButton>
+						</ListItemIcon>
+					)}
 			</>
 		);
 		
@@ -79,11 +79,11 @@ function EnhancedList<Item>( {
 			return renderPanel
 				? (
 					<Accordion>
-						<AccordionSummary expandIcon={ <ExpandMoreIcon/> }>
-							{ row( item, index, handle, selected ) }
+						<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+							{row( item, index, handle, selected )}
 						</AccordionSummary>
 						<AccordionDetails>
-							{ renderPanel( item, index ) }
+							{renderPanel( item, index )}
 						</AccordionDetails>
 					</Accordion>
 				)
@@ -91,19 +91,19 @@ function EnhancedList<Item>( {
 					? (
 						<ListItemButton
 							divider
-							component={ Paper }
-							selected={ selected }
-							onClick={ () => _selectRow( selectable,
-								item, index, selected, totalSelected ) }>
-							{ row( item, index, handle, selected ) }
+							component={Paper}
+							selected={selected}
+							onClick={() => _selectRow( selectable,
+								item, index, selected, totalSelected )}>
+							{row( item, index, handle, selected )}
 						</ListItemButton>
 					)
 					: (
 						<ListItem
 							divider
-							component={ Paper }
-							selected={ selected }>
-							{ row( item, index, handle, selected ) }
+							component={Paper}
+							selected={selected}>
+							{row( item, index, handle, selected )}
 						</ListItem>
 					);
 		};
@@ -111,21 +111,21 @@ function EnhancedList<Item>( {
 		return sortable
 			? (
 				<Sortable
-					items={ items }
-					setItems={ setItems }
-					renderItem={ panel }
+					items={items}
+					setItems={setItems}
+					renderItem={panel}
 				/>
 			)
 			: items.map( ( item, index ) => (
-				<Fragment key={ index }>
-					{ panel( { item, index } ) }
+				<Fragment key={index}>
+					{panel( { item, index } )}
 				</Fragment>
 			) );
 	}, [ items, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return (
 		<List
-			sx={ {
+			sx={{
 				'& .MuiAccordionSummary-root, & .MuiListItem-root, & .MuiListItemButton-root'             : removeEditing || editing ? { px: 1 } : undefined,
 				'& .MuiListItem-root ~ .MuiListItem-root, & .MuiListItemButton-root ~ .MuiListButton-root': {
 					borderTopLeftRadius : 0,
@@ -138,10 +138,10 @@ function EnhancedList<Item>( {
 					borderBottomRightRadius: 0
 				},
 				'overflow'                              : 'hidden'
-			} }
-			subheader={ Boolean( title || editable || sortable ) && (
+			}}
+			subheader={Boolean( title || editable || sortable ) && (
 				<ActionTitle
-					actions={ !removeEditing && !loading && ( editable || sortable ) ? [
+					actions={!removeEditing && !loading && ( editable || sortable ) ? [
 						sortable && {
 							name       : editing ? 'Cancel' : 'Edit',
 							onClick    : () => setEditing( !editing ),
@@ -162,15 +162,16 @@ function EnhancedList<Item>( {
 								startIcon: <AddIcon/>,
 								...addButtonProps
 							}
-						} ] : undefined }
-					{ ...actionTitleProps }>
-					{ title }
+						}
+					] : undefined}
+					{...actionTitleProps}>
+					{title}
 				</ActionTitle>
-			) }
-			{ ...props }>
-			{ loading || !items.length
-				? <Paper>{ loading ? loadingComponent : emptyComponent }</Paper>
-				: dataItems }
+			)}
+			{...props}>
+			{loading || !items.length
+				? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
+				: dataItems}
 		</List>
 	);
 }

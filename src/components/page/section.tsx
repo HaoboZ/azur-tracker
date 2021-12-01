@@ -10,11 +10,11 @@ export default function PageSection( { actions, listItemProps, children, max, ..
 } & ListItemTextProps ) {
 	return (
 		<Box display='flex' flexDirection='column'>
-			<ListItem divider component='div' sx={ { my: 2 } } { ...listItemProps }>
-				<ListItemText primaryTypographyProps={ { variant: 'h3' } } { ...props }/>
-				{ Array.isArray( actions ) ? <Actions items={ actions } max={ max }/> : actions }
+			<ListItem divider component='div' sx={{ my: 2 }} {...listItemProps}>
+				<ListItemText primaryTypographyProps={{ variant: 'h3' }} {...props}/>
+				{Array.isArray( actions ) ? <Actions items={actions} max={max}/> : actions}
 			</ListItem>
-			{ children }
+			{children}
 		</Box>
 	);
 }

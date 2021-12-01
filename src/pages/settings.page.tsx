@@ -15,7 +15,8 @@ import {
 	ToggleButtonGroup
 } from '@mui/material';
 import { GetServerSideProps } from 'next';
-import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,6 +36,7 @@ import {
 	setTheme
 } from '../lib/store/reducers/mainReducer';
 import { research_reset } from '../lib/store/reducers/researchReducer';
+import { authOptions } from './api/auth/[...nextauth].page';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
@@ -49,42 +51,42 @@ export default function Home() {
 		<PageContainer>
 			<Head><title>Settings | Azur Lane Tracker</title></Head>
 			<PageTitle>Settings</PageTitle>
-			<List sx={ {
+			<List sx={{
 				'& .longText'  : { width: '80%' },
 				'& .longAction': { width: '40%' }
-			} }>
+			}}>
 				<ListItem>
-					{ online
+					{online
 						? (
 							<>
-								<ListItemText classes={ { primary: 'longText' } }>
-									{ status === 'loading' && 'Loading...' }
-									{ status === 'authenticated' && `Account: ${ data.user.email }` }
-									{ status === 'unauthenticated' && 'Sign in for Cloud Save' }
+								<ListItemText classes={{ primary: 'longText' }}>
+									{status === 'loading' && 'Loading...'}
+									{status === 'authenticated' && `Account: ${ data.user.email }`}
+									{status === 'unauthenticated' && 'Sign in for Cloud Save'}
 								</ListItemText>
-								{ status !== 'loading' && (
+								{status !== 'loading' && (
 									<ListItemSecondaryAction>
-										{ status === 'authenticated' && (
+										{status === 'authenticated' && (
 											<Button
 												variant='outlined'
 												color='inherit'
-												onClick={ () => signOut() }>
+												onClick={() => signOut()}>
 												Sign Out
 											</Button>
-										) }
-										{ status === 'unauthenticated' && (
+										)}
+										{status === 'unauthenticated' && (
 											<Button
 												variant='outlined'
 												color='inherit'
-												onClick={ () => signIn( 'google' ) }>
+												onClick={() => signIn( 'google' )}>
 												Sign In
 											</Button>
-										) }
+										)}
 									</ListItemSecondaryAction>
-								) }
+								)}
 							</>
 						)
-						: <ListItemText>Offline</ListItemText> }
+						: <ListItemText>Offline</ListItemText>}
 				</ListItem>
 				<ListItem>
 					<ListItemText>Auto Backup</ListItemText>
@@ -92,14 +94,14 @@ export default function Home() {
 						<ToggleButtonGroup size='small'>
 							<ToggleButton
 								value='autoSave'
-								selected={ main.autoSave }
-								onClick={ () => dispatch( setAutoSave( !main.autoSave ) ) }>
+								selected={main.autoSave}
+								onClick={() => dispatch( setAutoSave( !main.autoSave ) )}>
 								Save
 							</ToggleButton>
 							<ToggleButton
 								value='autoLoad'
-								selected={ main.autoLoad }
-								onClick={ () => dispatch( setAutoLoad( !main.autoLoad ) ) }>
+								selected={main.autoLoad}
+								onClick={() => dispatch( setAutoLoad( !main.autoLoad ) )}>
 								Load
 							</ToggleButton>
 						</ToggleButtonGroup>
@@ -110,13 +112,13 @@ export default function Home() {
 					<ListItemSecondaryAction className='longAction'>
 						<Slider
 							marks
-							value={ main.autoSaveInterval }
+							value={main.autoSaveInterval}
 							valueLabelDisplay='auto'
-							valueLabelFormat={ ( value ) => value / 1000 }
-							step={ 500 }
-							min={ 500 }
-							max={ 5000 }
-							onChange={ ( e, val: number ) => dispatch( setAutoSaveInterval( val ) ) }
+							valueLabelFormat={( value ) => value / 1000}
+							step={500}
+							min={500}
+							max={5000}
+							onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
 						/>
 					</ListItemSecondaryAction>
 				</ListItem>
@@ -125,13 +127,13 @@ export default function Home() {
 					<ListItemSecondaryAction className='longAction'>
 						<Slider
 							marks
-							value={ main.autoLoadInterval }
+							value={main.autoLoadInterval}
 							valueLabelDisplay='auto'
-							valueLabelFormat={ ( value ) => value / 1000 }
-							step={ 2500 }
-							min={ 5000 }
-							max={ 30000 }
-							onChange={ ( e, val: number ) => dispatch( setAutoLoadInterval( val ) ) }
+							valueLabelFormat={( value ) => value / 1000}
+							step={2500}
+							min={5000}
+							max={30000}
+							onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
 						/>
 					</ListItemSecondaryAction>
 				</ListItem>
@@ -142,7 +144,7 @@ export default function Home() {
 							<Button
 								variant='outlined'
 								color='inherit'
-								onClick={ async () => {
+								onClick={async () => {
 									try {
 										if ( !online )
 											enqueueSnackbar( 'Offline' );
@@ -157,13 +159,13 @@ export default function Home() {
 									} catch ( e ) {
 										enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 									}
-								} }>
+								}}>
 								Save
 							</Button>
 							<Button
 								variant='outlined'
 								color='inherit'
-								onClick={ async () => {
+								onClick={async () => {
 									try {
 										if ( !online )
 											enqueueSnackbar( 'Offline' );
@@ -178,7 +180,7 @@ export default function Home() {
 									} catch ( e ) {
 										enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
 									}
-								} }>
+								}}>
 								Load
 							</Button>
 						</ButtonGroup>
@@ -187,20 +189,20 @@ export default function Home() {
 				<ListItem>
 					<ListItemText>Theme</ListItemText>
 					<ListItemSecondaryAction>
-						<ToggleButtonGroup exclusive value={ main.theme }>
+						<ToggleButtonGroup exclusive value={main.theme}>
 							<ToggleButton
 								value='default'
-								onClick={ () => dispatch( setTheme( 'default' ) ) }>
+								onClick={() => dispatch( setTheme( 'default' ) )}>
 								<Brightness4Icon/>
 							</ToggleButton>
 							<ToggleButton
 								value='light'
-								onClick={ () => dispatch( setTheme( 'light' ) ) }>
+								onClick={() => dispatch( setTheme( 'light' ) )}>
 								<BrightnessHighIcon/>
 							</ToggleButton>
 							<ToggleButton
 								value='dark'
-								onClick={ () => dispatch( setTheme( 'dark' ) ) }>
+								onClick={() => dispatch( setTheme( 'dark' ) )}>
 								<Brightness3Icon/>
 							</ToggleButton>
 						</ToggleButtonGroup>
@@ -208,66 +210,66 @@ export default function Home() {
 				</ListItem>
 				<ListItem>
 					<ListItemText
-						primary={ (
+						primary={(
 							<Link href='/event' underline='always'>
 								Event Tracker
 							</Link>
-						) }
+						)}
 						secondary='calculates farming runs for any stage until you reach your target points'
-						classes={ { secondary: 'longText' } }
+						classes={{ secondary: 'longText' }}
 					/>
 					<ListItemSecondaryAction>
 						<Button
 							variant='contained'
 							color='error'
-							onClick={ () => {
+							onClick={() => {
 								if ( confirm( 'Are you sure you want to reset this page?' ) )
 									dispatch( event_reset() );
-							} }>
+							}}>
 							Reset
 						</Button>
 					</ListItemSecondaryAction>
 				</ListItem>
 				<ListItem>
 					<ListItemText
-						primary={ (
+						primary={(
 							<Link href='/research' underline='always'>
 								Research Tracker
 							</Link>
-						) }
+						)}
 						secondary='calculates number of strengthening units for pr ships until max'
-						classes={ { secondary: 'longText' } }
+						classes={{ secondary: 'longText' }}
 					/>
 					<ListItemSecondaryAction>
 						<Button
 							variant='contained'
 							color='error'
-							onClick={ () => {
+							onClick={() => {
 								if ( confirm( 'Are you sure you want to reset this page?' ) )
 									dispatch( research_reset() );
-							} }>
+							}}>
 							Reset
 						</Button>
 					</ListItemSecondaryAction>
 				</ListItem>
 				<ListItem>
 					<ListItemText
-						primary={ (
+						primary={(
 							<Link href='/fleet' underline='always'>
 								Fleet Tracker
 							</Link>
-						) }
+						)}
 						secondary='for those who want a fully leveled, fully equipped fleet'
-						classes={ { secondary: 'longText' } }
+						classes={{ secondary: 'longText' }}
 					/>
 					<ListItemSecondaryAction>
 						<Button
 							variant='contained'
 							color='error'
-							onClick={ () => {
+							onClick={() => {
 								if ( confirm( 'Are you sure you want to reset this page?' ) )
 									dispatch( fleet_reset() );
-							} }>
+							}}>
 							Reset
 						</Button>
 					</ListItemSecondaryAction>
@@ -279,4 +281,4 @@ export default function Home() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getServerSideProps: GetServerSideProps = async ( context ) =>
-	( { props: { session: await getSession( context ) } } );
+	( { props: { session: await getServerSession( context, authOptions ) } } );

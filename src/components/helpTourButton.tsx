@@ -16,9 +16,9 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 				continuous
 				scrollToFirstStep
 				disableOverlayClose
-				run={ tourOpen }
-				stepIndex={ stepIndex }
-				callback={ ( { action, type, index, size } ) => {
+				run={tourOpen}
+				stepIndex={stepIndex}
+				callback={( { action, type, index, size } ) => {
 					switch ( action ) {
 					case ACTIONS.CLOSE:
 						setTourOpen( false );
@@ -37,9 +37,9 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 						if ( !includes( [ EVENTS.STEP_BEFORE, EVENTS.TARGET_NOT_FOUND ], type ) ) break;
 						setStepIndex( index - 1 );
 					}
-				} }
-				locale={ { last: 'Finish' } }
-				styles={ {
+				}}
+				locale={{ last: 'Finish' }}
+				styles={{
 					options: {
 						arrowColor     : theme.palette.background.paper,
 						backgroundColor: theme.palette.background.paper,
@@ -49,16 +49,16 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 						spotlightShadow: theme.shadows[ 1 ],
 						zIndex         : theme.zIndex.tooltip
 					}
-				} }
-				{ ...props }
+				}}
+				{...props}
 			/>
 			<IconButton
 				id='help'
-				{ ...buttonProps }
-				onClick={ ( e ) => {
+				{...buttonProps}
+				onClick={( e ) => {
 					buttonProps?.onClick?.( e );
 					setTourOpen( true );
-				} }>
+				}}>
 				<HelpIcon/>
 			</IconButton>
 		</>

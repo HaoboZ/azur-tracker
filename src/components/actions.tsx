@@ -26,36 +26,36 @@ export default function Actions( { items, max }: {
 	
 	return (
 		<ButtonGroup>
-			{ buttons.map( ( { name, onClick, buttonProps }, index ) => (
+			{buttons.map( ( { name, onClick, buttonProps }, index ) => (
 				<Button
-					key={ index }
+					key={index}
 					variant='outlined'
-					onClick={ onClick }
-					{ ...buttonProps }>
-					{ name }
+					onClick={onClick}
+					{...buttonProps}>
+					{name}
 				</Button>
-			) ) }
-			{ Boolean( menu.length ) && (
+			) )}
+			{Boolean( menu.length ) && (
 				<ButtonMenu
 					variant='outlined'
-					renderMenu={ ( closeMenu ) => (
+					renderMenu={( closeMenu ) => (
 						<MenuList>
-							{ menu.map( ( { name, onClick, menuItemProps }, index ) => (
+							{menu.map( ( { name, onClick, menuItemProps }, index ) => (
 								<MenuItem
-									key={ index }
-									onClick={ ( e ) => {
+									key={index}
+									onClick={( e ) => {
 										onClick( e );
 										closeMenu();
-									} }
-									{ ...menuItemProps }>
-									{ name }
+									}}
+									{...menuItemProps}>
+									{name}
 								</MenuItem>
-							) ) }
+							) )}
 						</MenuList>
-					) }>
+					)}>
 					<MoreHorizIcon/>
 				</ButtonMenu>
-			) }
+			)}
 		</ButtonGroup>
 	);
 }

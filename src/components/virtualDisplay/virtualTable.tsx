@@ -21,75 +21,75 @@ function VirtualTable<Item extends object>( {
 	}, [ rows ] );
 	
 	return (
-		<TableContainer component={ Paper }>
+		<TableContainer component={Paper}>
 			<Table
 				component='div'
 				size='small'
-				sx={ {
+				sx={{
 					'& .MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
 					'& .MuiTableCell-root'      : {
 						display   : 'flex',
 						alignItems: 'center',
 						px        : 1
 					}
-				} }
-				{ ...getTableProps() }>
+				}}
+				{...getTableProps()}>
 				<TableHead component='div'>
-					{ headerGroups.map( ( headerGroup ) => (
+					{headerGroups.map( ( headerGroup ) => (
 						<TableRow
-							key={ headerGroup.id }
+							key={headerGroup.id}
 							component='div'
-							{ ...headerGroup.getHeaderGroupProps( { style: headerStyle } ) }>
-							{ headerGroup.headers.map( ( column ) => (
+							{...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
+							{headerGroup.headers.map( ( column ) => (
 								<TableCell
-									key={ column.id }
+									key={column.id}
 									component='div'
-									{ ...column.getHeaderProps( column.getSortByToggleProps() ) }>
+									{...column.getHeaderProps( column.getSortByToggleProps() )}>
 									<TableSortLabel
-										active={ column.isSorted }
-										hideSortIcon={ !column.canSort }
-										direction={ column.isSortedDesc ? 'desc' : 'asc' }>
-										{ column.render( 'Header' ) }
+										active={column.isSorted}
+										hideSortIcon={!column.canSort}
+										direction={column.isSortedDesc ? 'desc' : 'asc'}>
+										{column.render( 'Header' )}
 									</TableSortLabel>
 								</TableCell>
-							) ) }
+							) )}
 						</TableRow>
-					) ) }
+					) )}
 				</TableHead>
-				<TableBody ref={ bodyRef } component='div' { ...getTableBodyProps() }>
+				<TableBody ref={bodyRef} component='div' {...getTableBodyProps()}>
 					<ReactWindowScroller>
-						{ ( { ref, outerRef, style, onScroll } ) => (
+						{( { ref, outerRef, style, onScroll } ) => (
 							<FixedSizeList
-								ref={ ref }
-								outerRef={ outerRef }
-								style={ style }
-								height={ window.innerHeight }
+								ref={ref}
+								outerRef={outerRef}
+								style={style}
+								height={window.innerHeight}
 								width='100%'
-								itemCount={ rows.length }
-								itemSize={ 35 }
-								onScroll={ onScroll }>
-								{ ( { index, style } ) => {
+								itemCount={rows.length}
+								itemSize={35}
+								onScroll={onScroll}>
+								{( { index, style } ) => {
 									const row = rows[ index ];
 									prepareRow( row );
 									return (
 										<TableRow
 											hover
 											component='div'
-											onClick={ () => onClick?.( row ) }
-											{ ...row.getRowProps( { style } ) }>
-											{ row.cells.map( ( cell, i ) => (
+											onClick={() => onClick?.( row )}
+											{...row.getRowProps( { style } )}>
+											{row.cells.map( ( cell, i ) => (
 												<TableCell
-													key={ i }
+													key={i}
 													component='div'
-													{ ...cell.getCellProps() }>
-													{ cell.render( 'Cell' ) }
+													{...cell.getCellProps()}>
+													{cell.render( 'Cell' )}
 												</TableCell>
-											) ) }
+											) )}
 										</TableRow>
 									);
-								} }
+								}}
 							</FixedSizeList>
-						) }
+						)}
 					</ReactWindowScroller>
 				</TableBody>
 			</Table>

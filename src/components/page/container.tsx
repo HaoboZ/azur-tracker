@@ -9,11 +9,11 @@ export default function PageContainer( { children, sx, ...props }: {
 	
 	return (
 		<Container
-			disableGutters={ !wide }
-			sx={ { overflowX: 'hidden', ...sx } }
-			{ ...props }>
+			disableGutters={!wide}
+			sx={{ overflowX: 'hidden', ...sx }}
+			{...props}>
 			<ScrollTop/>
-			{ children }
+			{children}
 		</Container>
 	);
 }

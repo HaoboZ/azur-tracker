@@ -35,7 +35,7 @@ export default function BottomBar( { children } ) {
 		<Box>
 			<Box
 				position='fixed'
-				top={ 0 }
+				top={0}
 				zIndex='appBar'
 				width='100%'
 				height='env(safe-area-inset-top)'
@@ -45,42 +45,42 @@ export default function BottomBar( { children } ) {
 			<Box
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={ `min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)` }>
-				{ children }
+				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)`}>
+				{children}
 			</Box>
 			<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
 			<AppBar
 				position='fixed'
 				color='inherit'
-				sx={ { top: 'auto', bottom: 0 } }>
+				sx={{ top: 'auto', bottom: 0 }}>
 				<BottomNavigation
 					showLabels
-					value={ index }
-					sx={ {
+					value={index}
+					sx={{
 						height: 'calc(env(safe-area-inset-bottom) + 56px)',
 						pl    : 'env(safe-area-inset-left)',
 						pr    : 'env(safe-area-inset-right)',
 						pb    : 'env(safe-area-inset-bottom)'
-					} }
-					onChange={ ( e, value ) => {
+					}}
+					onChange={( e, value ) => {
 						router.push( items[ value ].link ).then();
 						dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
-					} }>
-					{ items.map( ( item, index ) => (
+					}}>
+					{items.map( ( item, index ) => (
 						<BottomNavigationAction
-							key={ index }
-							sx={ { minWidth: 0 } }
-							label={ item.label }
-							icon={ (
+							key={index}
+							sx={{ minWidth: 0 }}
+							label={item.label}
+							icon={(
 								<Badge
 									color='secondary'
 									variant='dot'
-									invisible={ !main.newData[ item.link.substring( 1 ) ] }>
-									{ item.icon }
+									invisible={!main.newData[ item.link.substring( 1 ) ]}>
+									{item.icon}
 								</Badge>
-							) }
+							)}
 						/>
-					) ) }
+					) )}
 				</BottomNavigation>
 			</AppBar>
 		</Box>

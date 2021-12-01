@@ -7,7 +7,7 @@ EventContext.displayName = 'Event';
 export default function EventProvider( { children } ) {
 	const [ events ] = useState( () => new EventEmitter() );
 	
-	return <EventContext.Provider value={ events }>{ children }</EventContext.Provider>;
+	return <EventContext.Provider value={events}>{children}</EventContext.Provider>;
 }
 
 export function useEvent() {
@@ -17,7 +17,7 @@ export function useEvent() {
 export function withEvent( Component ) {
 	return ( props ) => (
 		<EventContext.Consumer>
-			{ ( event ) => <Component event={ event } { ...props }/> }
+			{( event ) => <Component event={event} {...props}/>}
 		</EventContext.Consumer>
 	);
 }

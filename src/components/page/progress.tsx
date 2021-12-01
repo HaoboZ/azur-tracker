@@ -66,7 +66,7 @@ export default function PageProgress( {
 	
 	return (
 		<GlobalStyles
-			styles={ {
+			styles={{
 				'#nprogress'                  : {
 					'pointerEvents': 'none',
 					'.bar'         : {
@@ -118,7 +118,7 @@ export default function PageProgress( {
 					'0%'  : { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
 				}
-			} }
+			}}
 		/>
 	);
 }

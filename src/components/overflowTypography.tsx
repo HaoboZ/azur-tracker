@@ -15,17 +15,17 @@ export default function OverflowTypography( { children, tooltipProps, ...props }
 	}, [ contentRef.current ], true );
 	
 	return (
-		<Tooltip arrow title={ children } disableHoverListener={ !overFlowed } { ...tooltipProps }>
+		<Tooltip arrow title={children} disableHoverListener={!overFlowed} {...tooltipProps}>
 			<Typography
-				ref={ contentRef }
-				{ ...props }
-				sx={ {
+				ref={contentRef}
+				{...props}
+				sx={{
 					whiteSpace  : 'nowrap',
 					overflow    : 'hidden',
 					textOverflow: 'ellipsis',
 					...props.sx
-				} }>
-				{ children }
+				}}>
+				{children}
 			</Typography>
 		</Tooltip>
 	);

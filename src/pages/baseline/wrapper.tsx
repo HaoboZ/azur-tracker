@@ -43,7 +43,7 @@ export default function Wrapper( { children } ) {
 	return (
 		<Navigation>
 			<GlobalStyles
-				styles={ ( theme: Theme ) => ( {
+				styles={( theme: Theme ) => ( {
 					'.numberInput input': {
 						'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
 							WebkitAppearance: 'none',
@@ -82,9 +82,9 @@ export default function Wrapper( { children } ) {
 					'.color-idolmaster': textBgColor( theme, '#f8bde9' ),
 					'.color-ssss'      : textBgColor( theme, '#2b2b2b' ),
 					'.color-meta'      : textBgColor( theme, '#808080' )
-				} ) }
+				} )}
 			/>
-			{ children }
+			{children}
 		</Navigation>
 	);
 }

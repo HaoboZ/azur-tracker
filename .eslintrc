@@ -79,7 +79,7 @@
 		"react/jsx-closing-tag-location"                   : "warn",
 		"react/jsx-curly-brace-presence"                   : "warn",
 		"react/jsx-curly-newline"                          : "warn",
-		"react/jsx-curly-spacing"                          : [ "warn", { "when": "always", "children": true } ],
+		"react/jsx-curly-spacing"                          : [ "warn", { "children": true } ],
 		"react/jsx-equals-spacing"                         : "warn",
 		"react/jsx-first-prop-new-line"                    : "warn",
 		"react/jsx-indent"                                 : [ "warn", "tab", { "indentLogicalExpressions": true } ],

@@ -25,7 +25,7 @@ export default function Info() {
 			<Head><title>Info | Azur Lane Tracker</title></Head>
 			<PageTitle>Info</PageTitle>
 			<PageSection primary='OpSi Weakness'>
-				<TableContainer component={ Paper }>
+				<TableContainer component={Paper}>
 					<Table size='small'>
 						<TableHead>
 							<TableRow>
@@ -35,23 +35,23 @@ export default function Info() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{ opsi.map( ( [ image, ship, weakness ], index ) => (
-								<TableRow key={ index }>
+							{opsi.map( ( [ image, ship, weakness ], index ) => (
+								<TableRow key={index}>
 									<TableCell>
-										<Box sx={ { position: 'relative', width: 64, height: 64 } }>
+										<Box sx={{ position: 'relative', width: 64, height: 64 }}>
 											<Image
-												src={ image }
-												alt={ ship }
+												src={image}
+												alt={ship}
 												layout='fill'
 												objectFit='contain'
 												objectPosition='left'
 											/>
 										</Box>
 									</TableCell>
-									<TableCell>{ ship }</TableCell>
-									<TableCell>{ weakness }</TableCell>
+									<TableCell>{ship}</TableCell>
+									<TableCell>{weakness}</TableCell>
 								</TableRow>
-							) ) }
+							) )}
 						</TableBody>
 					</Table>
 				</TableContainer>

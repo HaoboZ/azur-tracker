@@ -17,10 +17,10 @@ export default function Research() {
 			<Head><title>Research | Azur Lane Tracker</title></Head>
 			<PageTitle>Research Tracker</PageTitle>
 			<SwipeableTabViews
-				tab={ researchLastTab }
-				setTab={ ( index ) => dispatch( setResearchLastTab( index ) ) }
-				renderTabs={ researchData.map( ( { name } ) => name ) }
-				renderContent={ ( index ) => <ResearchSeries researchShips={ researchData[ index ].ships }/> }
+				tab={researchLastTab}
+				setTab={( index ) => dispatch( setResearchLastTab( index ) )}
+				renderTabs={researchData.map( ( { name } ) => name )}
+				renderContent={( index ) => <ResearchSeries researchShips={researchData[ index ].ships}/>}
 				variant='fullWidth'
 			/>
 		</PageContainer>

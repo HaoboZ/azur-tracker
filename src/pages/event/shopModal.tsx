@@ -24,22 +24,22 @@ export default function ShopModal() {
 	return (
 		<ResponsiveModalContainer
 			title='Shop Items'
-			sx={ { p: 0 } }
-			onSave={ () => dispatch( event_setShop( { shop, total: expectedCost } ) ) }>
-			<Box mx={ 2 } mt={ 2 }>
-				<Grid container spacing={ 2 }>
-					<Grid item xs={ 6 }>
-						<Typography>Buyout Price: { buyoutCost }</Typography>
+			sx={{ p: 0 }}
+			onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
+			<Box mx={2} mt={2}>
+				<Grid container spacing={2}>
+					<Grid item xs={6}>
+						<Typography>Buyout Price: {buyoutCost}</Typography>
 					</Grid>
-					<Grid item xs={ 6 }>
-						<Typography>Expected Price: { expectedCost }</Typography>
+					<Grid item xs={6}>
+						<Typography>Expected Price: {expectedCost}</Typography>
 					</Grid>
 				</Grid>
 			</Box>
 			<EnhancedDisplay
-				items={ eventData.shop }
-				extraData={ shop }
-				tableProps={ {
+				items={eventData.shop}
+				extraData={shop}
+				tableProps={{
 					headers: [
 						'Name',
 						'Cost',
@@ -54,38 +54,38 @@ export default function ShopModal() {
 							key='name'
 							type='number'
 							placeholder='0'
-							value={ shop[ item.name ] || 0 }
-							onChange={ ( { target } ) => setShop( {
+							value={shop[ item.name ] || 0}
+							onChange={( { target } ) => setShop( {
 								...shop,
 								[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
-							} ) }
+							} )}
 						/>
 					]
-				} }
-				listProps={ {
+				}}
+				listProps={{
 					renderRow: ( item ) => (
-						<Grid container spacing={ 2 }>
-							<Grid item xs={ 9 }>
+						<Grid container spacing={2}>
+							<Grid item xs={9}>
 								<ListItemText
-									primary={ item.name }
-									secondary={ `cost: ${ item.cost } amount: ${ item.amount }` }
+									primary={item.name}
+									secondary={`cost: ${ item.cost } amount: ${ item.amount }`}
 								/>
 							</Grid>
-							<Grid item xs={ 3 }>
+							<Grid item xs={3}>
 								<FormattedTextField
 									type='number'
 									label='Wanted'
 									placeholder='0'
-									value={ shop[ item.name ] }
-									onChange={ ( { target } ) => setShop( {
+									value={shop[ item.name ]}
+									onChange={( { target } ) => setShop( {
 										...shop,
 										[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
-									} ) }
+									} )}
 								/>
 							</Grid>
 						</Grid>
 					)
-				} }
+				}}
 			/>
 		</ResponsiveModalContainer>
 	);
