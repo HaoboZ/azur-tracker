@@ -10,13 +10,15 @@ export default function useEventEffect(
 	callOnce?: boolean
 ) {
 	useEffect( () => {
-		const add = event.on || event.addListener || event.addEventListener;
-		const remove = event.off || event.removeListener || event.removeEventListener;
+		// eslint-disable-next-line @typescript-eslint/dot-notation
+		const add = event[ 'on' ] || event[ 'addListener' ] || event[ 'addEventListener' ];
+		// eslint-disable-next-line @typescript-eslint/dot-notation
+		const remove = event[ 'off' ] || event[ 'removeListener' ] || event[ 'removeEventListener' ];
 		
 		if ( callOnce ) listener();
-		add( eventName, listener );
+		add.bind( event )( eventName, listener );
 		return () => {
-			remove( eventName, listener );
+			remove.bind( event )( eventName, listener );
 		};
 	}, deps );
 }

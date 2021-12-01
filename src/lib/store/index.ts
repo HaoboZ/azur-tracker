@@ -28,7 +28,8 @@ const migrations: Record<string, ( state: State ) => State> = {
 			researchLastTab: 0
 		}
 	} ),
-	8: ( state ) => ( { ...state, fleet: state.ship } ),
+	// eslint-disable-next-line @typescript-eslint/dot-notation
+	8: ( state ) => ( { ...state, fleet: state[ 'ship' ] } ),
 	9: ( state ) => ( {
 		...state,
 		fleet: {
