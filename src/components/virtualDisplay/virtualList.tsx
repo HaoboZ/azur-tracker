@@ -31,17 +31,15 @@ function VirtualList<Item extends object>( {
 						{( { index, style } ) => {
 							const row = rows[ index ];
 							prepareRow( row );
-							return onClick
-								? (
-									<ListItemButton divider style={style} onClick={() => onClick( row )}>
-										{renderRow( row )}
-									</ListItemButton>
-								)
-								: (
-									<ListItem divider style={style}>
-										{renderRow( row )}
-									</ListItem>
-								);
+							return onClick ? (
+								<ListItemButton divider style={style} onClick={() => onClick( row )}>
+									{renderRow( row )}
+								</ListItemButton>
+							) : (
+								<ListItem divider style={style}>
+									{renderRow( row )}
+								</ListItem>
+							);
 						}}
 					</FixedSizeList>
 				)}

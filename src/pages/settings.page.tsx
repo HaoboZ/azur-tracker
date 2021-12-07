@@ -20,8 +20,8 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from '../components/link';
 import PageContainer from '../components/page/container';
+import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
@@ -56,37 +56,35 @@ export default function Home() {
 				'& .longAction': { width: '40%' }
 			}}>
 				<ListItem>
-					{online
-						? (
-							<>
-								<ListItemText classes={{ primary: 'longText' }}>
-									{status === 'loading' && 'Loading...'}
-									{status === 'authenticated' && `Account: ${ data.user.email }`}
-									{status === 'unauthenticated' && 'Sign in for Cloud Save'}
-								</ListItemText>
-								{status !== 'loading' && (
-									<ListItemSecondaryAction>
-										{status === 'authenticated' && (
-											<Button
-												variant='outlined'
-												color='inherit'
-												onClick={() => signOut()}>
-												Sign Out
-											</Button>
-										)}
-										{status === 'unauthenticated' && (
-											<Button
-												variant='outlined'
-												color='inherit'
-												onClick={() => signIn( 'google' )}>
-												Sign In
-											</Button>
-										)}
-									</ListItemSecondaryAction>
-								)}
-							</>
-						)
-						: <ListItemText>Offline</ListItemText>}
+					{online ? (
+						<>
+							<ListItemText classes={{ primary: 'longText' }}>
+								{status === 'loading' && 'Loading...'}
+								{status === 'authenticated' && `Account: ${ data.user.email }`}
+								{status === 'unauthenticated' && 'Sign in for Cloud Save'}
+							</ListItemText>
+							{status !== 'loading' && (
+								<ListItemSecondaryAction>
+									{status === 'authenticated' && (
+										<Button
+											variant='outlined'
+											color='inherit'
+											onClick={() => signOut()}>
+											Sign Out
+										</Button>
+									)}
+									{status === 'unauthenticated' && (
+										<Button
+											variant='outlined'
+											color='inherit'
+											onClick={() => signIn( 'google' )}>
+											Sign In
+										</Button>
+									)}
+								</ListItemSecondaryAction>
+							)}
+						</>
+					) : <ListItemText>Offline</ListItemText>}
 				</ListItem>
 				<ListItem>
 					<ListItemText>Auto Backup</ListItemText>
@@ -211,9 +209,9 @@ export default function Home() {
 				<ListItem>
 					<ListItemText
 						primary={(
-							<Link href='/event' underline='always'>
+							<PageLink href='/event' underline='always'>
 								Event Tracker
-							</Link>
+							</PageLink>
 						)}
 						secondary='calculates farming runs for any stage until you reach your target points'
 						classes={{ secondary: 'longText' }}
@@ -233,9 +231,9 @@ export default function Home() {
 				<ListItem>
 					<ListItemText
 						primary={(
-							<Link href='/research' underline='always'>
+							<PageLink href='/research' underline='always'>
 								Research Tracker
-							</Link>
+							</PageLink>
 						)}
 						secondary='calculates number of strengthening units for pr ships until max'
 						classes={{ secondary: 'longText' }}
@@ -255,9 +253,9 @@ export default function Home() {
 				<ListItem>
 					<ListItemText
 						primary={(
-							<Link href='/fleet' underline='always'>
+							<PageLink href='/fleet' underline='always'>
 								Fleet Tracker
-							</Link>
+							</PageLink>
 						)}
 						secondary='for those who want a fully leveled, fully equipped fleet'
 						classes={{ secondary: 'longText' }}

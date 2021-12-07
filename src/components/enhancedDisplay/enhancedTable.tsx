@@ -104,24 +104,22 @@ function EnhancedTable<Item>( {
 			);
 		};
 		
-		return sortable
-			? (
-				<Sortable
-					items={items}
-					setItems={setItems}
-					renderItem={row}
-					tag={TableBody}
-				/>
-			)
-			: (
-				<TableBody>
-					{items.map( ( item, index ) => (
-						<Fragment key={index}>
-							{row( { item, index } )}
-						</Fragment>
-					) )}
-				</TableBody>
-			);
+		return sortable ? (
+			<Sortable
+				items={items}
+				setItems={setItems}
+				renderItem={row}
+				tag={TableBody}
+			/>
+		) : (
+			<TableBody>
+				{items.map( ( item, index ) => (
+					<Fragment key={index}>
+						{row( { item, index } )}
+					</Fragment>
+				) )}
+			</TableBody>
+		);
 	}, [ items, extraData, columns, Boolean( editable ), sortable, selectable?.selected ] );
 	
 	return (
@@ -160,17 +158,15 @@ function EnhancedTable<Item>( {
 							)}
 						</TableRow>
 					</TableHead>
-					{loading || !items.length
-						? (
-							<TableBody>
-								<TableRow>
-									<TableCell colSpan={headers.length + 2}>
-										{loading ? loadingComponent : emptyComponent}
-									</TableCell>
-								</TableRow>
-							</TableBody>
-						)
-						: dataItems}
+					{loading || !items.length ? (
+						<TableBody>
+							<TableRow>
+								<TableCell colSpan={headers.length + 2}>
+									{loading ? loadingComponent : emptyComponent}
+								</TableCell>
+							</TableRow>
+						</TableBody>
+					) : dataItems}
 				</Table>
 			</TableContainer>
 		</Box>

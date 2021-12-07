@@ -40,11 +40,7 @@ export type ResponsiveModalContainerProps = {
 	children?: ReactNode
 } & Omit<DialogContentProps, 'title'>;
 
-export default function ResponsiveModal( {
-	variant = 'adaptive',
-	children,
-	...props
-}: ResponsiveModalProps ) {
+export default function ResponsiveModal( { variant = 'adaptive', children, ...props }: ResponsiveModalProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {

@@ -76,51 +76,45 @@ function EnhancedList<Item>( {
 		
 		const panel = ( { item, index, handle }: { item, index, handle? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
-			return renderPanel
-				? (
-					<Accordion>
-						<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-							{row( item, index, handle, selected )}
-						</AccordionSummary>
-						<AccordionDetails>
-							{renderPanel( item, index )}
-						</AccordionDetails>
-					</Accordion>
-				)
-				: selectable?.setSelected
-					? (
-						<ListItemButton
-							divider
-							component={Paper}
-							selected={selected}
-							onClick={() => _selectRow( selectable,
-								item, index, selected, totalSelected )}>
-							{row( item, index, handle, selected )}
-						</ListItemButton>
-					)
-					: (
-						<ListItem
-							divider
-							component={Paper}
-							selected={selected}>
-							{row( item, index, handle, selected )}
-						</ListItem>
-					);
+			return renderPanel ? (
+				<Accordion>
+					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+						{row( item, index, handle, selected )}
+					</AccordionSummary>
+					<AccordionDetails>
+						{renderPanel( item, index )}
+					</AccordionDetails>
+				</Accordion>
+			) : selectable?.setSelected ? (
+				<ListItemButton
+					divider
+					component={Paper}
+					selected={selected}
+					onClick={() => _selectRow( selectable,
+						item, index, selected, totalSelected )}>
+					{row( item, index, handle, selected )}
+				</ListItemButton>
+			) : (
+				<ListItem
+					divider
+					component={Paper}
+					selected={selected}>
+					{row( item, index, handle, selected )}
+				</ListItem>
+			);
 		};
 		
-		return sortable
-			? (
-				<Sortable
-					items={items}
-					setItems={setItems}
-					renderItem={panel}
-				/>
-			)
-			: items.map( ( item, index ) => (
-				<Fragment key={index}>
-					{panel( { item, index } )}
-				</Fragment>
-			) );
+		return sortable ? (
+			<Sortable
+				items={items}
+				setItems={setItems}
+				renderItem={panel}
+			/>
+		) : items.map( ( item, index ) => (
+			<Fragment key={index}>
+				{panel( { item, index } )}
+			</Fragment>
+		) );
 	}, [ items, extraData, Boolean( editable ), sortable, editing, removeEditing, selectable?.selected ] );
 	
 	return (

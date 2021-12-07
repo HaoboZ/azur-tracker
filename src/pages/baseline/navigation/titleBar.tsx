@@ -2,7 +2,7 @@ import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from '../../../components/link';
+import { PageLinkComponent } from '../../../components/page/link';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
@@ -11,19 +11,19 @@ function LinkItem( { href, children }: { href: string, children: ReactNode } ) {
 	const dispatch = useDispatch();
 	
 	return (
-		<Link href={href}>
-			<Badge
-				color='secondary'
-				variant='dot'
-				sx={{ mr: 3 }}
-				invisible={!newData[ href.substring( 1 ) ]}>
-				<Button
-					color='inherit'
-					onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
-					{children}
-				</Button>
-			</Badge>
-		</Link>
+		<Badge
+			color='secondary'
+			variant='dot'
+			sx={{ mr: 3 }}
+			invisible={!newData[ href.substring( 1 ) ]}>
+			<Button
+				component={PageLinkComponent}
+				href={href}
+				color='inherit'
+				onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
+				{children}
+			</Button>
+		</Badge>
 	);
 }
 
@@ -49,11 +49,9 @@ export default function TitleBar( { children } ) {
 					<LinkItem href='/fleet'>Fleet</LinkItem>
 					<LinkItem href='/info'>Info</LinkItem>
 					<Box flexGrow={1}/>
-					<Link href='/settings'>
-						<IconButton color='inherit'>
-							<SettingsIcon/>
-						</IconButton>
-					</Link>
+					<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
+						<SettingsIcon/>
+					</IconButton>
 				</Toolbar>
 			</AppBar>
 			<Box
