@@ -13,13 +13,12 @@ const nextConfig = {
 	 * @returns {import('webpack').webpack.Configuration}
 	 */
 	webpack( config, { webpack } ) {
-		config.plugins.push(
-			new webpack.IgnorePlugin( {
-				resourceRegExp: /\.(test|spec)\.[jt]sx?$/
-			} )
-		);
+		config.plugins.push( new webpack.IgnorePlugin( {
+			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
+		} ) );
 		return config;
-	}
+	},
+	typescript: { ignoreBuildErrors: true }
 };
 
 // noinspection JSUnusedGlobalSymbols
