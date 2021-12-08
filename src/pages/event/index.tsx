@@ -130,7 +130,7 @@ export default function Event() {
 				display='flex'
 				justifyContent='center'
 				sx={{
-					'& img': {
+					img: {
 						width   : '100%',
 						maxWidth: 700,
 						m       : 'auto'

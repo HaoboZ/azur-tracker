@@ -52,8 +52,8 @@ export default function Home() {
 			<Head><title>Settings | Azur Lane Tracker</title></Head>
 			<PageTitle>Settings</PageTitle>
 			<List sx={{
-				'& .longText'  : { width: '80%' },
-				'& .longAction': { width: '40%' }
+				'.longText'  : { width: '80%' },
+				'.longAction': { width: '40%' }
 			}}>
 				<ListItem>
 					{online ? (

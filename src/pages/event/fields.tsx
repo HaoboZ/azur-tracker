@@ -19,7 +19,7 @@ export default function EventFields( { time, neededPoints }: {
 	const { showModal } = useModal();
 	
 	return (
-		<Grid container spacing={2} px={2} sx={{ '& .rightInput': { textAlign: 'right' } }}>
+		<Grid container spacing={2} px={2} sx={{ '.rightInput': { textAlign: 'right' } }}>
 			<Grid item container xs={12} justifyContent='center'>
 				<Typography variant='h3' color='textPrimary'>
 					{eventData.name}

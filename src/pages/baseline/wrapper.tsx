@@ -45,7 +45,7 @@ export default function Wrapper( { children } ) {
 			<GlobalStyles
 				styles={( theme: Theme ) => ( {
 					'.numberInput input': {
-						'&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+						'::-webkit-outer-spin-button, ::-webkit-inner-spin-button': {
 							WebkitAppearance: 'none',
 							m               : 0
 						},

@@ -43,8 +43,7 @@
 		"no-extra-parens"                                  : "off", // typescript
 		"no-mixed-spaces-and-tabs"                         : [ "warn", "smart-tabs" ],
 		"no-multi-spaces"                                  : [
-			"warn",
-			{ "exceptions": { "VariableDeclarator": true, "ImportDeclaration": true } }
+			"warn", { "exceptions": { "VariableDeclarator": true, "ImportDeclaration": true } }
 		],
 		"no-multiple-empty-lines"                          : [ "warn", { "max": 1 } ],
 		"no-trailing-spaces"                               : [ "warn", { "skipBlankLines": true } ],
@@ -66,15 +65,13 @@
 		// react
 		"react/display-name"                               : "off",
 		"react/function-component-definition"              : [
-			"warn",
-			{ "namedComponents": "function-declaration", "unnamedComponents": "arrow-function" }
+			"warn", { "namedComponents": "function-declaration", "unnamedComponents": "arrow-function" }
 		],
 		"react/no-unescaped-entities"                      : "off",
 		"react/prop-types"                                 : "off",
 		"react/jsx-boolean-value"                          : "warn",
 		"react/jsx-closing-bracket-location"               : [
-			"warn",
-			{ "selfClosing": "line-aligned", "nonEmpty": "after-props" }
+			"warn", { "selfClosing": "line-aligned", "nonEmpty": "after-props" }
 		],
 		"react/jsx-closing-tag-location"                   : "warn",
 		"react/jsx-curly-brace-presence"                   : "warn",
@@ -86,12 +83,20 @@
 		"react/jsx-no-useless-fragment"                    : [ "warn", { "allowExpressions": true } ],
 		"react/jsx-props-no-multi-spaces"                  : "warn",
 		"react/jsx-sort-props"                             : [
-			"warn",
-			{ "callbacksLast": true, "shorthandFirst": true, "noSortAlphabetically": true, "reservedFirst": true }
+			"warn", {
+				"callbacksLast"       : true,
+				"shorthandFirst"      : true,
+				"noSortAlphabetically": true,
+				"reservedFirst"       : true
+			}
 		],
 		"react/jsx-tag-spacing"                            : [
-			"warn",
-			{ "closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "never" }
+			"warn", {
+				"closingSlash"     : "never",
+				"beforeSelfClosing": "never",
+				"afterOpening"     : "never",
+				"beforeClosing"    : "never"
+			}
 		],
 		"react/jsx-wrap-multilines"                        : [
 			"warn", {
@@ -109,8 +114,7 @@
 		"@typescript-eslint/ban-types"                     : "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/member-delimiter-style"        : [
-			"warn",
-			{
+			"warn", {
 				"multiline" : { "delimiter": "comma", "requireLast": false },
 				"singleline": { "delimiter": "comma", "requireLast": false }
 			}

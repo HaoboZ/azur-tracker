@@ -52,7 +52,7 @@ export default function ResponsiveModal( { variant = 'adaptive', children, ...pr
 				maxWidth='md'
 				TransitionComponent={Grow}
 				sx={{
-					'& .MuiDialog-paper': {
+					'.MuiDialog-paper': {
 						ml: 'env(safe-area-inset-left)',
 						mr: 'env(safe-area-inset-right)',
 						mt: 'env(safe-area-inset-top)',

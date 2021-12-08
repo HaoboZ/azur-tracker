@@ -33,7 +33,7 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 				setSkip( true );
 			}}
 			handle='.sortable-handle'
-			sx={{ '& .sortable-ghost': { bgcolor: ( { palette } ) => `${ palette.primary.main } !important` } }}
+			sx={{ '.sortable-ghost': { bgcolor: ( { palette } ) => `${ palette.primary.main } !important` } }}
 			animation={theme.transitions.duration.shorter}
 			{...props as any}>
 			{list.map( ( item, index ) => (

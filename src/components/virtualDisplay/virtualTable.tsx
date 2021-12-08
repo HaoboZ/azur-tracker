@@ -26,12 +26,8 @@ function VirtualTable<Item extends object>( {
 				component='div'
 				size='small'
 				sx={{
-					'& .MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
-					'& .MuiTableCell-root'      : {
-						display   : 'flex',
-						alignItems: 'center',
-						px        : 1
-					}
+					'.MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
+					'.MuiTableCell-root'      : { display: 'flex', alignItems: 'center', px: 1 }
 				}}
 				{...getTableProps()}>
 				<TableHead component='div'>

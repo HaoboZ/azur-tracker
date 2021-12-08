@@ -59,18 +59,17 @@ function EnhancedList<Item>( {
 					? () => _deleteRow( items, setItems, editable, selectable,
 						item, index, selected, totalSelected )
 					: undefined )}
-				{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true )
-					&& (
-						<ListItemIcon sx={{ minWidth: 'unset' }}>
-							<IconButton onClick={( e ) => {
-								e.stopPropagation();
-								_deleteRow( items, setItems, editable, selectable,
-									item, index, selected, totalSelected );
-							}}>
-								<CloseIcon/>
-							</IconButton>
-						</ListItemIcon>
-					)}
+				{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true ) && (
+					<ListItemIcon sx={{ minWidth: 'unset' }}>
+						<IconButton onClick={( e ) => {
+							e.stopPropagation();
+							_deleteRow( items, setItems, editable, selectable,
+								item, index, selected, totalSelected );
+						}}>
+							<CloseIcon/>
+						</IconButton>
+					</ListItemIcon>
+				)}
 			</>
 		);
 		
@@ -78,7 +77,7 @@ function EnhancedList<Item>( {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			return renderPanel ? (
 				<Accordion>
-					<AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+					<AccordionSummary className='listItem' expandIcon={<ExpandMoreIcon/>}>
 						{row( item, index, handle, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
@@ -89,6 +88,7 @@ function EnhancedList<Item>( {
 				<ListItemButton
 					divider
 					component={Paper}
+					className='listItem'
 					selected={selected}
 					onClick={() => _selectRow( selectable,
 						item, index, selected, totalSelected )}>
@@ -98,6 +98,7 @@ function EnhancedList<Item>( {
 				<ListItem
 					divider
 					component={Paper}
+					className='listItem'
 					selected={selected}>
 					{row( item, index, handle, selected )}
 				</ListItem>
@@ -120,18 +121,11 @@ function EnhancedList<Item>( {
 	return (
 		<List
 			sx={{
-				'& .MuiAccordionSummary-root, & .MuiListItem-root, & .MuiListItemButton-root'             : removeEditing || editing ? { px: 1 } : undefined,
-				'& .MuiListItem-root ~ .MuiListItem-root, & .MuiListItemButton-root ~ .MuiListButton-root': {
-					borderTopLeftRadius : 0,
-					borderTopRightRadius: 0
-				},
-				
-				'& .MuiAccordionSummary-content'        : { alignItems: 'center' },
-				'& .MuiListItem-root:not(:last-of-type)': {
-					borderBottomLeftRadius : 0,
-					borderBottomRightRadius: 0
-				},
-				'overflow'                              : 'hidden'
+				'.listItem'                    : removeEditing || editing ? { px: 1 } : undefined,
+				'.listItem:not(:first-of-type)': { borderTopLeftRadius: 0, borderTopRightRadius: 0 },
+				'.listItem:not(:last-of-type)' : { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 },
+				'.MuiAccordionSummary-content' : { alignItems: 'center' },
+				'overflow'                     : 'hidden'
 			}}
 			subheader={Boolean( title || editable || sortable ) && (
 				<ActionTitle

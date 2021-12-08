@@ -88,16 +88,15 @@ function EnhancedTable<Item>( {
 					) )}
 					{Boolean( editable ) && (
 						<TableCell>
-							{( editable?.min ? items.length > editable.min : true )
-								&& (
-									<IconButton onClick={( e ) => {
-										e.stopPropagation();
-										_deleteRow( items, setItems, editable, selectable,
-											item, index, selected, totalSelected );
-									}}>
-										<CloseIcon/>
-									</IconButton>
-								)}
+							{( editable?.min ? items.length > editable.min : true ) && (
+								<IconButton onClick={( e ) => {
+									e.stopPropagation();
+									_deleteRow( items, setItems, editable, selectable,
+										item, index, selected, totalSelected );
+								}}>
+									<CloseIcon/>
+								</IconButton>
+							)}
 						</TableCell>
 					)}
 				</ExpandRow>
@@ -129,9 +128,9 @@ function EnhancedTable<Item>( {
 				<Table
 					size='small'
 					sx={{
-						'& .MuiTableRow-hover:hover'                       : selectable ? { cursor: 'pointer' } : undefined,
-						'& .MuiTableRow-root:last-child .MuiTableCell-root': { borderBottom: 0 },
-						'overflow'                                         : 'hidden'
+						'.MuiTableRow-hover:hover'                       : selectable ? { cursor: 'pointer' } : undefined,
+						'.MuiTableRow-root:last-child .MuiTableCell-root': { borderBottom: 0 },
+						'overflow'                                       : 'hidden'
 					}}>
 					<TableHead sx={{ bgcolor: 'action.focus' }}>
 						<TableRow>
@@ -145,15 +144,14 @@ function EnhancedTable<Item>( {
 							) )}
 							{Boolean( editable ) && (
 								<TableCell>
-									{!loading && ( editable?.max ? items.length < editable.max : true )
-										&& (
-											<IconButton onClick={async () => {
-												editable.onAdd?.();
-												setItems?.( [ ...items, { ...await editable.newData() } ] );
-											}}>
-												<AddIcon/>
-											</IconButton>
-										)}
+									{!loading && ( editable?.max ? items.length < editable.max : true ) && (
+										<IconButton onClick={async () => {
+											editable.onAdd?.();
+											setItems?.( [ ...items, { ...await editable.newData() } ] );
+										}}>
+											<AddIcon/>
+										</IconButton>
+									)}
 								</TableCell>
 							)}
 						</TableRow>

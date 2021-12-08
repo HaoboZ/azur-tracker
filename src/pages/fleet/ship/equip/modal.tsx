@@ -87,14 +87,13 @@ export default function EquipModal( { info, selectedEquip }: {
 			<DialogTitle>Switch Equipment</DialogTitle>
 			<DialogContent>
 				<Grid container alignItems='center' justifyContent='center'>
-					{info?.ship.special[ info.index ]
-						? (
-							<Grid item xs={12} component={Box} pb={2}>
-								<Alert severity='warning' variant='filled'>
-									Special Equip Slot (Check Skills & Equipment)
-								</Alert>
-							</Grid>
-						) : undefined}
+					{info?.ship.special[ info.index ] ? (
+						<Grid item xs={12} component={Box} pb={2}>
+							<Alert severity='warning' variant='filled'>
+								Special Equip Slot (Check Skills & Equipment)
+							</Alert>
+						</Grid>
+					) : undefined}
 					<Grid item container xs={5} justifyContent='center'>
 						<Image
 							src={`/images/equips/${ currentEquip.image }.png`}
