@@ -20,7 +20,7 @@ const researchData: {
 		{ name: 'Georgia', type: 0, fate: true, url: 'Georgia' },
 		{ name: 'Kitakaze', type: 0, fate: true, url: 'Kitakaze' },
 		{ name: 'Azuma', type: 1, fate: true, url: 'Azuma' },
-		{ name: 'Friedrich der Groβe', type: 1, fate: false, url: 'Friedrich_der_Grosse' },
+		{ name: 'Friedrich der Große', type: 1, fate: false, url: 'Friedrich_der_Große' },
 		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
 	]
 }, {

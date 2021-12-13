@@ -490,7 +490,7 @@ const ships = {
 	'Ritsuko_Akizuki'               : [ 'Ritsuko Akizuki', 'Elite', 'The Idolmaster', 'Munition Ship', 2, [], 'DD', 'AA', 'C', 'A/AE1', 'A/AE2' ],
 	'Ami_Futami'                    : [ 'Ami Futami', 'Elite', 'The Idolmaster', 'Submarine', 3, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2' ],
 	'Mami_Futami'                   : [ 'Mami Futami', 'Elite', 'The Idolmaster', 'Submarine', 3, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2' ],
-	'Rikka_Takarada'                : [ 'Rikka Takarada', 'Super Rare', 'SSSS', 'Light Cruiser', 0, [], 'CL/A', 'T/A', 'AA/A', 'A/CL1/T', 'A/CL2/T' ],
+	'Rikka_Takarada'                : [ 'Rikka Takarada', 'Super Rare', 'SSSS', 'Light Cruiser', 0, [ 1, 1, 1, 1, 1 ], 'CL/A', 'T/A', 'AA/A', 'A/CL1/T', 'A/CL2/T' ],
 	'Akane_Shinjo'                  : [ 'Akane Shinjo', 'Super Rare', 'SSSS', 'Battleship', 1, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Hass'                          : [ 'Hass', 'Elite', 'SSSS', 'Light Cruiser', 5, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T' ],
 	'Namiko'                        : [ 'Namiko', 'Elite', 'SSSS', 'Heavy Cruiser', 5, [], 'CA', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T' ],
