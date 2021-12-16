@@ -1,7 +1,7 @@
 import { Button, ButtonProps, Menu, MenuProps } from '@mui/material';
 import { ReactNode, useState } from 'react';
 
-export default function ButtonMenu( { children, onClick, menuProps, renderMenu, ...props }: {
+export default function ButtonMenu( { onClick, menuProps, renderMenu, ...props }: {
 	renderMenu: ( closeMenu: () => void ) => ReactNode,
 	menuProps?: MenuProps
 } & ButtonProps ) {
@@ -15,8 +15,8 @@ export default function ButtonMenu( { children, onClick, menuProps, renderMenu, 
 					e.stopPropagation();
 					setAnchorEl( e.currentTarget );
 					onClick?.( e );
-				}}>{children}
-			</Button>
+				}}
+			/>
 			<Menu
 				anchorEl={anchorEl}
 				open={Boolean( anchorEl )}

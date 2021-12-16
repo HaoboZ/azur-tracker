@@ -20,9 +20,7 @@ import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
 
-function ExpandRow( { children, renderPanel, ...props }: {
-	renderPanel
-} & TableRowProps ) {
+function ExpandRow( { renderPanel, ...props }: { renderPanel } & TableRowProps ) {
 	const [ open, setOpen ] = useState( false );
 	
 	return (
@@ -32,8 +30,8 @@ function ExpandRow( { children, renderPanel, ...props }: {
 				onClick={renderPanel || props.onClick ? ( e ) => {
 					setOpen( ( open ) => !open );
 					props.onClick?.( e );
-				} : undefined}>{children}
-			</TableRow>
+				} : undefined}
+			/>
 			{renderPanel && (
 				<Collapse in={open}>
 					<TableRow><TableCell>{renderPanel}</TableCell></TableRow>

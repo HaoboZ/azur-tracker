@@ -471,6 +471,13 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
+		id    : 32260,
+		name  : 'Prototype Triple 155mm Kai Naval Gun Mount',
+		image : 'Triple_155mm_(3rd_Year_Type)_Kai',
+		type  : type.CL,
+		rarity: rarity.SR
+	},
+	{
 		id    : 42040,
 		name  : 'Single 150mm SK C/28 Main Gun Mount',
 		image : 'Single_150mm_(SK_C$2F28)',
@@ -577,6 +584,13 @@ const equipData: Equip[] = [
 		type  : type.CB,
 		rarity: rarity.SR
 	},
+	{
+		id    : 42080,
+		name  : 'Prototype Twin 150mm SK C/28 Main Gun Mount',
+		image : 'Twin_150mm_(SK_C/28_Prototype)',
+		type  : type.CB,
+		rarity: rarity.SR
+	},
 	{ id: 43020, name: 'Twin 203mm (SK C/34)', image: 'Twin_203mm_(SK_C$2F34)', type: type.CA, rarity: rarity.E },
 	{ id: 43040, name: 'Twin 203mm (SK C/34)', image: 'Twin_203mm_(SK_C$2F34)', type: type.CA, rarity: rarity.SR },
 	{
@@ -671,6 +685,13 @@ const equipData: Equip[] = [
 		image : 'Twin_457mm_(Mark_A_Prototype)',
 		type  : type.BB,
 		rarity: rarity.UR
+	},
+	{
+		id    : 14520,
+		name  : 'Prototype Twin 406mm Mk4 Main Gun Mount',
+		image : 'Twin_406mm_(16$22$2F56_Mk_4_Prototype)',
+		type  : type.BB,
+		rarity: rarity.SR
 	},
 	{
 		id    : 24040,
@@ -972,6 +993,13 @@ const equipData: Equip[] = [
 		image : 'Submarine-mounted_Type_95_Oxygen_Torpedo',
 		type  : type.ST,
 		rarity: rarity.SR
+	},
+	{
+		id    : 35580,
+		name  : 'Type 95 Kai Pure Oxygen Submarine Torpedo',
+		image : 'Submarine-mounted_Type_95_Kai_Pure_Oxygen_Torpedo',
+		type  : type.ST,
+		rarity: rarity.UR
 	},
 	{
 		id    : 35560,
@@ -1390,6 +1418,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	'CL'     : {
 		[ map[ 'Prototype Triple 152mm DP Mk 17 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 152mm B-38 MK 5 Main Gun Mount/SR' ] ]         : [ 0, ++a ],
+		[ map[ 'Prototype Triple 155mm Kai Naval Gun Mount/SR' ] ]    : [ 0, ++a ],
 		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]  : [ 1, ++a ],
 		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]        : [ 1, ++a ],
 		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]           : [ 2, ++a ],
@@ -1401,6 +1430,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'CL/AP'  : {
 		[ map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
+		[ map[ 'Prototype Twin 150mm SK C/28 Main Gun Mount/SR' ] ] : [ 0, ++a ],
 		[ map[ 'Triple 152mm Model 1934 Main Gun Mount/SR' ] ]      : [ 0, ++a ],
 		[ map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ] ]         : [ 1, ++a ],
 		[ map[ 'Single 150mm SK C/28 Main Gun Mount/E' ] ]          : [ 2, ++a ]

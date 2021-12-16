@@ -27,7 +27,8 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 						whiteSpace  : 'nowrap',
 						overflow    : 'hidden',
 						textOverflow: 'ellipsis'
-					}}>{value}
+					}}>
+						{value}
 					</Box>
 				);
 			},
@@ -42,7 +43,8 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 						whiteSpace  : 'nowrap',
 						overflow    : 'hidden',
 						textOverflow: 'ellipsis'
-					}}>{value}
+					}}>
+						{value}
 					</Box>
 				);
 			},
@@ -61,7 +63,8 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 						whiteSpace  : 'nowrap',
 						overflow    : 'hidden',
 						textOverflow: 'ellipsis'
-					}}>{value}
+					}}>
+						{value}
 					</Box>
 				);
 			},
@@ -79,7 +82,8 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 						whiteSpace  : 'nowrap',
 						overflow    : 'hidden',
 						textOverflow: 'ellipsis'
-					}}>{value}
+					}}>
+						{value}
 					</Box>
 				);
 			},

@@ -9,7 +9,8 @@ export default function PageBack( { name, ...props }: { name?: string } & Button
 		<Button
 			startIcon={<ArrowBackIcon/>}
 			onClick={() => router.back()}
-			{...props}>{name}
+			{...props}>
+			{name}
 		</Button>
 	);
 }

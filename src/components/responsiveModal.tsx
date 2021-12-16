@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { ReactNode } from 'react';
 import { useModalControls } from '../lib/providers/modal';
+import AsyncLoadingButton from './asyncLoadingButton';
 
 export type ModalVariant = 'adaptive' | 'bottom' | 'center';
 
@@ -40,7 +41,7 @@ export type ResponsiveModalContainerProps = {
 	children?: ReactNode
 } & Omit<DialogContentProps, 'title'>;
 
-export default function ResponsiveModal( { variant = 'adaptive', children, ...props }: ResponsiveModalProps ) {
+export default function ResponsiveModal( { variant = 'adaptive', ...props }: ResponsiveModalProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
@@ -59,9 +60,8 @@ export default function ResponsiveModal( { variant = 'adaptive', children, ...pr
 						mb: 'env(safe-area-inset-bottom)'
 					}
 				}}
-				{...props}>
-				{children}
-			</Dialog>
+				{...props}
+			/>
 		);
 	} else {
 		return (
@@ -84,9 +84,8 @@ export default function ResponsiveModal( { variant = 'adaptive', children, ...pr
 					}
 				}}
 				onOpen={() => null}
-				{...props}>
-				{children}
-			</SwipeableDrawer>
+				{...props}
+			/>
 		);
 	}
 }
@@ -97,7 +96,6 @@ export function ResponsiveModalContainer( {
 	title,
 	onSave,
 	keepOpenOnSave,
-	children,
 	...props
 }: ResponsiveModalContainerProps ) {
 	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
@@ -110,17 +108,17 @@ export function ResponsiveModalContainer( {
 		return (
 			<>
 				{title && <DialogTitle>{title}</DialogTitle>}
-				<DialogContent {...props}>{children}</DialogContent>
+				<DialogContent {...props}/>
 				<DialogActions>
 					{onSave ? (
-						<Button
+						<AsyncLoadingButton
 							variant='contained'
 							onClick={async () => {
 								await onSave();
 								!keepOpenOnSave && onClose();
 							}}>
 							Save
-						</Button>
+						</AsyncLoadingButton>
 					) : undefined}
 					<Button variant='contained' color='error' onClick={onClose}>
 						{onSave ? 'Cancel' : 'Close'}
@@ -139,18 +137,16 @@ export function ResponsiveModalContainer( {
 						{title}
 					</Typography>
 					{onSave ? (
-						<Button
+						<AsyncLoadingButton
 							variant='contained'
 							onClick={async () => {
 								await onSave();
 								!keepOpenOnSave && onClose();
 							}}>Save
-						</Button>
+						</AsyncLoadingButton>
 					) : undefined}
 				</Toolbar>
-				<DialogContent onTouchStart={( e ) => e.stopPropagation()} {...props}>
-					{children}
-				</DialogContent>
+				<DialogContent onTouchStart={( e ) => e.stopPropagation()} {...props}/>
 			</>
 		);
 	}

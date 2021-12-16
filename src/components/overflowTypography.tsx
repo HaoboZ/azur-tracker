@@ -2,7 +2,7 @@ import { Tooltip, TooltipProps, Typography, TypographyProps } from '@mui/materia
 import { useRef, useState } from 'react';
 import useEventEffect from '../lib/hooks/useEventEffect';
 
-export default function OverflowTypography( { children, tooltipProps, ...props }: {
+export default function OverflowTypography( { tooltipProps, ...props }: {
 	tooltipProps: TooltipProps
 } & TypographyProps ) {
 	const contentRef = useRef<HTMLElement>();
@@ -15,7 +15,7 @@ export default function OverflowTypography( { children, tooltipProps, ...props }
 	}, [ contentRef.current ], true );
 	
 	return (
-		<Tooltip arrow title={children} disableHoverListener={!overFlowed} {...tooltipProps}>
+		<Tooltip arrow title={props.children} disableHoverListener={!overFlowed} {...tooltipProps}>
 			<Typography
 				ref={contentRef}
 				{...props}
@@ -24,9 +24,8 @@ export default function OverflowTypography( { children, tooltipProps, ...props }
 					overflow    : 'hidden',
 					textOverflow: 'ellipsis',
 					...props.sx
-				}}>
-				{children}
-			</Typography>
+				}}
+			/>
 		</Tooltip>
 	);
 }

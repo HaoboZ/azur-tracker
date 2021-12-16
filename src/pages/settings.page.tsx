@@ -20,6 +20,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
+import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
@@ -66,20 +67,20 @@ export default function Home() {
 							{status !== 'loading' && (
 								<ListItemSecondaryAction>
 									{status === 'authenticated' && (
-										<Button
+										<AsyncLoadingButton
 											variant='outlined'
 											color='inherit'
 											onClick={() => signOut()}>
 											Sign Out
-										</Button>
+										</AsyncLoadingButton>
 									)}
 									{status === 'unauthenticated' && (
-										<Button
+										<AsyncLoadingButton
 											variant='outlined'
 											color='inherit'
 											onClick={() => signIn( 'google' )}>
 											Sign In
-										</Button>
+										</AsyncLoadingButton>
 									)}
 								</ListItemSecondaryAction>
 							)}
@@ -139,7 +140,7 @@ export default function Home() {
 					<ListItemText>Manual Backup</ListItemText>
 					<ListItemSecondaryAction>
 						<ButtonGroup>
-							<Button
+							<AsyncLoadingButton
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
@@ -155,12 +156,12 @@ export default function Home() {
 											enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 										}
 									} catch ( e ) {
-										enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
+										enqueueSnackbar( e?.response?.data || e?.message || e, { variant: 'error' } );
 									}
 								}}>
 								Save
-							</Button>
-							<Button
+							</AsyncLoadingButton>
+							<AsyncLoadingButton
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
@@ -180,7 +181,7 @@ export default function Home() {
 									}
 								}}>
 								Load
-							</Button>
+							</AsyncLoadingButton>
 						</ButtonGroup>
 					</ListItemSecondaryAction>
 				</ListItem>
