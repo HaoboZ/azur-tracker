@@ -491,7 +491,7 @@ const ships = {
 	'Ami_Futami'                    : [ 'Ami Futami', 'Elite', 'The Idolmaster', 'Submarine', 3, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2' ],
 	'Mami_Futami'                   : [ 'Mami Futami', 'Elite', 'The Idolmaster', 'Submarine', 3, [], 'ST', 'ST', 'DD/Sub', 'A/SS1', 'A/SS2' ],
 	'Rikka_Takarada'                : [ 'Rikka Takarada', 'Super Rare', 'SSSS', 'Light Cruiser', 0, [], 'CL/A', 'T/A', 'AA/A', 'A/CL1/T', 'A/CL2/T' ],
-	'Akane_Shinjo'                  : [ 'Akane Shinjo', 'Super Rare', 'SSSS', 'Battleship', 1, [], 'BB/Speed', 'DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
+	'Akane_Shinjo'                  : [ 'Akane Shinjo', 'Super Rare', 'SSSS', 'Battleship', 1, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Hass'                          : [ 'Hass', 'Elite', 'SSSS', 'Light Cruiser', 5, [], 'CL', 'T', 'AA', 'A/CL1/T', 'A/CL2/T' ],
 	'Namiko'                        : [ 'Namiko', 'Elite', 'SSSS', 'Heavy Cruiser', 5, [], 'CA', 'T', 'AA/Speed', 'A/CA1/T', 'A/CA2/T' ],
 	'Yume_Minami'                   : [ 'Yume Minami', 'Super Rare', 'SSSS', 'Heavy Cruiser', 0, [], 'CA', 'DD/Aux', 'AA', 'A/CA1', 'A/CA2' ],
@@ -525,7 +525,7 @@ const ships = {
 	'Souryuu_META'                  : [ 'Souryuu META', 'Super Rare', 'META', 'Aircraft Carrier', 1, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ],
 	'Fusou_META'                    : [ 'Fusou META', 'Elite', 'META', 'Battleship', 5, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Hiyou_META'                    : [ 'Hiyou META', 'Elite', 'META', 'Light Aircraft Carrier', 6, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ],
-	'Gneisenau_META'                : [ 'Gneisenau', 'Super Rare', 'META', 'Battlecruiser', 1, [ 1, 1, 1, 1, 1 ], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ]
+	'Gneisenau_META'                : [ 'Gneisenau META', 'Super Rare', 'META', 'Battlecruiser', 1, [ 1, 1, 1, 1, 1 ], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ]
 };
 
 const fleetData = mapValues( ships, ( val, key ) => ( {

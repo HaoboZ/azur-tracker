@@ -17,8 +17,8 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import { ReactNode } from 'react';
-import { useModalControls } from '../lib/providers/modal';
-import AsyncLoadingButton from './asyncLoadingButton';
+import AsyncLoadingButton from '../../../components/asyncLoadingButton';
+import { useModalControls } from './index';
 
 export type ModalVariant = 'adaptive' | 'bottom' | 'center';
 

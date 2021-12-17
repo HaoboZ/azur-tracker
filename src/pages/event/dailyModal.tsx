@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { ResponsiveModalContainer } from '../../components/responsiveModal';
+import { ResponsiveModalContainer } from '../../lib/providers/modal/responsiveModal';
 import { event_setDaily } from '../../lib/store/reducers/eventReducer';
 
 export default function DailyModal() {

@@ -11,6 +11,7 @@ export type PageLinkComponentProps =
 	NextLinkProps
 	& { sx?: SxProps }
 	& Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>;
+
 export const PageLinkComponent = forwardRef<HTMLAnchorElement, PageLinkComponentProps>( function ( {
 	href,
 	as,

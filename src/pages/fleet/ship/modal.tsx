@@ -14,8 +14,8 @@ import {
 import Image from 'next/image';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ResponsiveModalContainer } from '../../../components/responsiveModal';
 import { useModal } from '../../../lib/providers/modal';
+import { ResponsiveModalContainer } from '../../../lib/providers/modal/responsiveModal';
 import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import fleetData from '../data';
