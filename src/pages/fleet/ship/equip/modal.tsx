@@ -72,14 +72,15 @@ export default function EquipModal( { info, selectedEquip }: {
 	
 	// saves info on close
 	useEventEffect( events, 'close', ( cancel ) => {
-		if ( info?.ship.equip[ info.index ][ 0 ] !== equip.id ) {
-			setAnchorEl( null );
-			if ( cancel ) return;
-			const newEquip = cloneDeep( info.ship.equip );
-			newEquip[ info.index ] = [ equip.id, override, 6 ];
-			getTier( fleetData[ info.ship.id ], newEquip );
-			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
-		}
+		setAnchorEl( null );
+		if ( cancel ) return;
+		if ( info?.ship.equip[ info.index ][ 0 ] === equip.id && info?.ship.equip[ info.index ][ 1 ] === override )
+			return;
+		
+		const newEquip = cloneDeep( info.ship.equip );
+		newEquip[ info.index ] = [ equip.id, override, 6 ];
+		getTier( fleetData[ info.ship.id ], newEquip );
+		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
 	}, [ equip, override ] );
 	
 	return (

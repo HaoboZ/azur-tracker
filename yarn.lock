@@ -2617,10 +2617,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.0":
-  version: 17.0.0
-  resolution: "@types/node@npm:17.0.0"
-  checksum: 30970a70c2eb78dbe80613d73243c255aaa9ce057d9e8595069ca0aef0363db0af45dc0d35f445cc804576a99df2970c170130663d76cd60319b779872e92ad6
+"@types/node@npm:^17.0.1":
+  version: 17.0.1
+  resolution: "@types/node@npm:17.0.1"
+  checksum: 16a5aa2778e1e49443d272f0da20af66c143337ddb14d9f36d5e7eb1e11ebbf195769d3d495ec5456ec94fe3d0e703c5df1ac279a05c7dc2a1220474467c1103
   languageName: node
   linkType: hard
 
@@ -3441,7 +3441,7 @@ __metadata:
     "@types/json-stable-stringify": ^1.0.33
     "@types/lodash": ^4.14.178
     "@types/lodash-webpack-plugin": ^0.11.6
-    "@types/node": ^17.0.0
+    "@types/node": ^17.0.1
     "@types/nprogress": ^0.2.0
     "@types/react": ^17.0.37
     "@types/react-dom": ^17.0.11
@@ -3460,7 +3460,7 @@ __metadata:
     babel-plugin-lodash: ^3.3.4
     clsx: ^1.1.1
     cross-env: ^7.0.3
-    eslint: ^8.4.1
+    eslint: ^8.5.0
     eslint-config-next: ^12.0.7
     events: ^3.3.0
     googleapis: ^92.0.0
@@ -5104,9 +5104,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.4.1":
-  version: 8.4.1
-  resolution: "eslint@npm:8.4.1"
+"eslint@npm:^8.5.0":
+  version: 8.5.0
+  resolution: "eslint@npm:8.5.0"
   dependencies:
     "@eslint/eslintrc": ^1.0.5
     "@humanwhocodes/config-array": ^0.9.2
@@ -5148,7 +5148,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: d962cd7cd0f68ddc2412f47154b8992ad3af987cf47fa6e60e51a2b7d32a91f934388f7d29e2c45b16b7ac69f0d220d0a483189ec6ba43a8a480110c34f158f9
+  checksum: c1a9e26070520a308cc30b62ba0d37d5b115ed23987a93219819537bdea9398e6ebe57c27d97be36ecc83b5162c72e82ecb0a9e5b44b7992980f9be90eb5c4b3
   languageName: node
   linkType: hard
 

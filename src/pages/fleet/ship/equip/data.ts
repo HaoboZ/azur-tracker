@@ -587,7 +587,7 @@ const equipData: Equip[] = [
 	{
 		id    : 42080,
 		name  : 'Prototype Twin 150mm SK C/28 Main Gun Mount',
-		image : 'Twin_150mm_(SK_C/28_Prototype)',
+		image : 'Twin_150mm_(SK_C$2F28_Prototype)',
 		type  : type.CB,
 		rarity: rarity.SR
 	},
