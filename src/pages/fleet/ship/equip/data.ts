@@ -1615,17 +1615,18 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Aichi E16A Zuiun/E' ] ]: [ 1, ++a ]
 	},
 	'ST' : {
-		[ map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ] ]   : [ 0, a = 0 ],
-		[ map[ 'G7e Acoustic Homing Submarine Torpedo/SR' ] ]: [ 0, ++a ],
-		[ map[ 'Mark 16 Submarine Torpedo/SR' ] ]            : [ 0, ++a ],
-		[ map[ 'Type 96 Submarine Torpedo/SR' ] ]            : [ 1, ++a ],
-		[ map[ 'Mark 28 Submarine Torpedo/SR' ] ]            : [ 1, ++a ],
-		[ map[ 'Type 95 Submarine Torpedo/SR' ] ]            : [ 1, ++a ],
-		[ map[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ] ]    : [ 1, ++a ],
-		[ map[ 'G7e Acoustic Homing Submarine Torpedo/E' ] ] : [ 2, ++a ],
-		[ map[ 'G7a Submarine Torpedo/E' ] ]                 : [ 2, ++a ],
-		[ map[ 'Mark 16 Submarine Torpedo/E' ] ]             : [ 2, ++a ],
-		[ map[ 'Type 95 Submarine Torpedo/E' ] ]             : [ 2, ++a ]
+		[ map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ] ]       : [ 0, a = 0 ],
+		[ map[ 'G7e Acoustic Homing Submarine Torpedo/SR' ] ]    : [ 0, ++a ],
+		[ map[ 'Type 95 Kai Pure Oxygen Submarine Torpedo/UR' ] ]: [ 0, ++a ],
+		[ map[ 'Mark 16 Submarine Torpedo/SR' ] ]                : [ 0, ++a ],
+		[ map[ 'Type 96 Submarine Torpedo/SR' ] ]                : [ 1, ++a ],
+		[ map[ 'Mark 28 Submarine Torpedo/SR' ] ]                : [ 1, ++a ],
+		[ map[ 'Type 95 Submarine Torpedo/SR' ] ]                : [ 1, ++a ],
+		[ map[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ] ]        : [ 1, ++a ],
+		[ map[ 'G7e Acoustic Homing Submarine Torpedo/E' ] ]     : [ 2, ++a ],
+		[ map[ 'G7a Submarine Torpedo/E' ] ]                     : [ 2, ++a ],
+		[ map[ 'Mark 16 Submarine Torpedo/E' ] ]                 : [ 2, ++a ],
+		[ map[ 'Type 95 Submarine Torpedo/E' ] ]                 : [ 2, ++a ]
 	},
 	'SS' : {
 		[ map[ 'Twin 203mm Mle 1924 Submarine Gun Mount/R' ] ]: [ 0, 0 ]
@@ -1764,8 +1765,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		[ map[ 'Fuel Filter/E' ] ]                 : [ 1, ++a ]
 	},
 	'A/SS2': {
-		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]  : [ 0, a = 0 ],
-		[ map[ 'Pressure-Resistant Hull Design/E' ] ]: [ 0, ++a ],
+		[ map[ 'Pressure-Resistant Hull Design/E' ] ]: [ 0, a = 0 ],
+		[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]  : [ 0, ++a ],
 		[ map[ 'Autoloader/E' ] ]                    : [ 1, ++a ]
 	},
 	'A/AR' : {

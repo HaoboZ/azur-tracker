@@ -14,7 +14,7 @@ type State = {
 	version: string
 };
 
-export const version = '2021-10-08';
+export const version = '2021-12-28';
 
 const initialState: State = {
 	ships : {},
