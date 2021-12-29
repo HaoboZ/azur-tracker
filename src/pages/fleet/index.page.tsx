@@ -37,7 +37,10 @@ export default function Fleet() {
 			const ships = cloneDeep( fleet.ships );
 			for ( const name in ships ) {
 				const { equip } = ships[ name ];
-				getTier( fleetData[ name ], equip );
+				if ( name in fleetData )
+					getTier( fleetData[ name ], equip );
+				else
+					delete fleetData[ name ];
 			}
 			dispatch( fleet_setShips( ships ) );
 			dispatch( fleet_setVersion() );
@@ -66,15 +69,18 @@ export default function Fleet() {
 								</>
 							),
 							placement: 'center'
-						}/*, {
-				target : '#farmOil',
-				content: <Typography>
-					Calculates amount of oil needed.
-				</Typography>
-			}*/
+						}, {
+							target : '#farmOil',
+							content: (
+								<Typography>
+									Calculates amount of oil needed.
+								</Typography>
+							)
+						}
 					]}
 				/>
-			)}>Fleet Tracker
+			)}>
+				Fleet Tracker
 			</PageTitle>
 			<FleetFilters table={table}/>
 			<VirtualDisplay

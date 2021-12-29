@@ -26,7 +26,6 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 				// app
 				component( SessionProvider, { session: pageProps.session } ),
 				// content
-				component( ModalProvider ),
 				component( SnackbarProvider, {
 					ref             : snackbarRef,
 					preventDuplicate: true,
@@ -36,7 +35,8 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 						</IconButton>
 					)
 				} ),
-				component( IndicatorProvider )
+				component( IndicatorProvider ),
+				component( ModalProvider )
 			]}>
 			{children}
 		</ComponentComposer>
