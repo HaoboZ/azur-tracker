@@ -9,7 +9,7 @@ const nextConfig = {
 	pageExtensions: [ 'page.tsx', 'page.ts', 'page.jsx', 'page.js' ],
 	/**
 	 * @param {import('webpack').webpack.Configuration} config
-	 * @param {import('webpack')} webpack
+	 * @param {import('webpack')} context
 	 * @returns {import('webpack').webpack.Configuration}
 	 */
 	webpack( config, { webpack } ) {
