@@ -56,7 +56,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						return [
 							<>
 								<Avatar
-									src={`/images/ships/${ item.url }.png`}
+									src={`/images/ships/${ item.image }.png`}
 									alt={item.name}
 									variant='rounded'
 									sx={{ width: 60, height: 60 }}
@@ -130,7 +130,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 							<>
 								<ListItemAvatar>
 									<Avatar
-										src={`/images/ships/${ item.url }.png`}
+										src={`/images/ships/${ item.image }.png`}
 										alt={item.name}
 										variant='rounded'
 									/>

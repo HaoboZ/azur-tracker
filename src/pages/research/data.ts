@@ -1,45 +1,67 @@
 // noinspection SpellCheckingInspection
+import Anchorage from '../../../public/images/ships/Anchorage.png';
+import August_von_Parseval from '../../../public/images/ships/August_von_Parseval.png';
+import Azuma from '../../../public/images/ships/Azuma.png';
+import Champagne from '../../../public/images/ships/Champagne.png';
+import Cheshire from '../../../public/images/ships/Cheshire.png';
+import Drake from '../../../public/images/ships/Drake.png';
+import Friedrich_der_Grosse from '../../../public/images/ships/Friedrich_der_Große.png';
+import Gascogne from '../../../public/images/ships/Gascogne.png';
+import Georgia from '../../../public/images/ships/Georgia.png';
+import Hakuryuu from '../../../public/images/ships/Hakuryuu.png';
+import Neptune from '../../../public/images/ships/HMS_Neptune.png';
+import Ibuki from '../../../public/images/ships/Ibuki.png';
+import Izumo from '../../../public/images/ships/Izumo.png';
+import Kitakaze from '../../../public/images/ships/Kitakaze.png';
+import Mainz from '../../../public/images/ships/Mainz.png';
+import Marco_Polo from '../../../public/images/ships/Marco_Polo.png';
+import Monarch from '../../../public/images/ships/Monarch.png';
+import Odin from '../../../public/images/ships/Odin.png';
+import Roon from '../../../public/images/ships/Roon.png';
+import Saint_Louis from '../../../public/images/ships/Saint_Louis.png';
+import Seattle from '../../../public/images/ships/Seattle.png';
+import Agir from '../../../public/images/ships/Ägir.png';
 
 const researchData: {
 	name: string,
-	ships: { name: string, type: number, fate: boolean, url: string }[]
+	ships: { name: string, type: number, fate: boolean, image: StaticImageData, url: string }[]
 }[] = [ {
 	name : 'PR1',
 	ships: [
-		{ name: 'Neptune', type: 0, fate: true, url: 'HMS_Neptune' },
-		{ name: 'Monarch', type: 0, fate: true, url: 'Monarch' },
-		{ name: 'Ibuki', type: 0, fate: true, url: 'Ibuki' },
-		{ name: 'Izumo', type: 0, fate: true, url: 'Izumo' },
-		{ name: 'Roon', type: 0, fate: true, url: 'Roon' },
-		{ name: 'Saint Louis', type: 0, fate: true, url: 'Saint_Louis' }
+		{ name: 'Neptune', type: 0, fate: true, image: Neptune, url: 'HMS_Neptune' },
+		{ name: 'Monarch', type: 0, fate: true, image: Monarch, url: 'Monarch' },
+		{ name: 'Ibuki', type: 0, fate: true, image: Ibuki, url: 'Ibuki' },
+		{ name: 'Izumo', type: 0, fate: true, image: Izumo, url: 'Izumo' },
+		{ name: 'Roon', type: 0, fate: true, image: Roon, url: 'Roon' },
+		{ name: 'Saint Louis', type: 0, fate: true, image: Saint_Louis, url: 'Saint_Louis' }
 	]
 }, {
 	name : 'PR2',
 	ships: [
-		{ name: 'Seattle', type: 0, fate: true, url: 'Seattle' },
-		{ name: 'Georgia', type: 0, fate: true, url: 'Georgia' },
-		{ name: 'Kitakaze', type: 0, fate: true, url: 'Kitakaze' },
-		{ name: 'Azuma', type: 1, fate: true, url: 'Azuma' },
-		{ name: 'Friedrich der Große', type: 1, fate: false, url: 'Friedrich_der_Große' },
-		{ name: 'Gascogne', type: 0, fate: true, url: 'Gascogne' }
+		{ name: 'Seattle', type: 0, fate: true, image: Seattle, url: 'Seattle' },
+		{ name: 'Georgia', type: 0, fate: true, image: Georgia, url: 'Georgia' },
+		{ name: 'Kitakaze', type: 0, fate: true, image: Kitakaze, url: 'Kitakaze' },
+		{ name: 'Azuma', type: 1, fate: true, image: Azuma, url: 'Azuma' },
+		{ name: 'Friedrich der Große', type: 1, fate: false, image: Friedrich_der_Grosse, url: 'Friedrich_der_Große' },
+		{ name: 'Gascogne', type: 0, fate: true, image: Gascogne, url: 'Gascogne' }
 	]
 }, {
 	name : 'PR3',
 	ships: [
-		{ name: 'Cheshire', type: 0, fate: true, url: 'Cheshire' },
-		{ name: 'Drake', type: 1, fate: false, url: 'Drake' },
-		{ name: 'Mainz', type: 0, fate: true, url: 'Mainz' },
-		{ name: 'Odin', type: 0, fate: true, url: 'Odin' },
-		{ name: 'Champagne', type: 0, fate: true, url: 'Champagne' }
+		{ name: 'Cheshire', type: 0, fate: true, image: Cheshire, url: 'Cheshire' },
+		{ name: 'Drake', type: 1, fate: false, image: Drake, url: 'Drake' },
+		{ name: 'Mainz', type: 0, fate: true, image: Mainz, url: 'Mainz' },
+		{ name: 'Odin', type: 0, fate: true, image: Odin, url: 'Odin' },
+		{ name: 'Champagne', type: 0, fate: true, image: Champagne, url: 'Champagne' }
 	]
 }, {
 	name : 'PR4',
 	ships: [
-		{ name: 'Anchorage', type: 0, fate: false, url: 'Anchorage' },
-		{ name: 'Hakuryuu', type: 1, fate: false, url: 'Hakuryuu' },
-		{ name: 'Ägir', type: 1, fate: false, url: 'Ägir' },
-		{ name: 'August von Parseval', type: 0, fate: false, url: 'August_von_Parseval' },
-		{ name: 'Marco Polo', type: 0, fate: false, url: 'Marco_Polo' }
+		{ name: 'Anchorage', type: 0, fate: false, image: Anchorage, url: 'Anchorage' },
+		{ name: 'Hakuryuu', type: 1, fate: false, image: Hakuryuu, url: 'Hakuryuu' },
+		{ name: 'Ägir', type: 1, fate: false, image: Agir, url: 'Ägir' },
+		{ name: 'August von Parseval', type: 0, fate: false, image: August_von_Parseval, url: 'August_von_Parseval' },
+		{ name: 'Marco Polo', type: 0, fate: false, image: Marco_Polo, url: 'Marco_Polo' }
 	]
 } ];
 export default researchData;
