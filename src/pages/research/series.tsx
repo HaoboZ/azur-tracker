@@ -1,4 +1,5 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import Image from 'next/image';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
@@ -55,12 +56,9 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						const { devLevel, devPrints, fatePrints } = shipData[ index ];
 						return [
 							<>
-								<Avatar
-									src={`/images/ships/${ item.image }.png`}
-									alt={item.name}
-									variant='rounded'
-									sx={{ width: 60, height: 60 }}
-								/>
+								<Avatar variant='rounded' sx={{ width: 60, height: 60 }}>
+									<Image src={item.image} alt={item.name}/>
+								</Avatar>
 								<Typography>{item.name}</Typography>
 							</>,
 							<FormattedTextField
@@ -129,11 +127,9 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						return (
 							<>
 								<ListItemAvatar>
-									<Avatar
-										src={`/images/ships/${ item.image }.png`}
-										alt={item.name}
-										variant='rounded'
-									/>
+									<Avatar variant='rounded'>
+										<Image src={item.image} alt={item.name}/>
+									</Avatar>
 								</ListItemAvatar>
 								<ListItemText
 									primary={item.name}

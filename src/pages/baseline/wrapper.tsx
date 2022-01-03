@@ -80,7 +80,7 @@ export default function Wrapper( { children } ) {
 					'.color-hololive'  : textBgColor( theme, '#8ee7f1' ),
 					'.color-venus'     : textBgColor( theme, '#f5497f' ),
 					'.color-idolmaster': textBgColor( theme, '#f8bde9' ),
-					'.color-ssss'      : textBgColor( theme, '#2b2b2b' ),
+					'.color-ssss'      : textBgColor( theme, '#6B6C65' ),
 					'.color-meta'      : textBgColor( theme, '#808080' )
 				} )}
 			/>
