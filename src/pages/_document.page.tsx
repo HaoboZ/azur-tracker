@@ -44,7 +44,7 @@ export default class _Document extends Document {
 					<link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png'/>
 					<meta name='theme-color' content='#039be5'/>
 					{/*ios*/}
-					<link rel='apple-touch-icon' href='/icons/apple-icon-180.png'/>
+					<link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
 					<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
 					{/*safari*/}
