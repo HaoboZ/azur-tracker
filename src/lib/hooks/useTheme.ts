@@ -51,6 +51,11 @@ const darkTheme = responsiveFontSizes( createTheme(
 				styleOverrides: {
 					body: darkScrollbar()
 				}
+			},
+			MuiAppBar     : {
+				styleOverrides: {
+					root: { backgroundImage: 'none' }
+				}
 			}
 		}
 	} )
