@@ -6,10 +6,10 @@ import withPWA from 'next-pwa';
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-	pageExtensions: [ 'page.tsx', 'page.ts', 'page.jsx', 'page.js' ],
+	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
 	/**
 	 * @param {import('webpack').webpack.Configuration} config
-	 * @param {import('webpack')} context
+	 * @param {unknown} context
 	 * @returns {import('webpack').webpack.Configuration}
 	 */
 	webpack( config, { webpack } ) {
@@ -18,6 +18,11 @@ const nextConfig = {
 		} ) );
 		return config;
 	},
+	images    : process.env.STATIC ? {
+		loader : 'imgix',
+		domains: [ 'https://azurlanetracker.vercel.app' ],
+		path   : 'https://azurlanetracker.vercel.app'
+	} : undefined,
 	typescript: { ignoreBuildErrors: true }
 };
 
@@ -26,7 +31,7 @@ export default withPlugins( [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	withPWA, {
 		pwa: {
-			disable: process.env.NODE_ENV === 'development',
+			disable: Boolean( process.env.STATIC ) || process.env.NODE_ENV === 'development',
 			dest   : 'public'
 		}
 	}
