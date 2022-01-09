@@ -45,15 +45,15 @@ export function withAuth( Component ) {
 }
 
 export async function login( width = 400, height = 550 ) {
-	const win = window.open( '', '_blank', Object.entries( {
+	const win = window.open( '', undefined, Object.entries( {
 		width,
 		height,
 		left    : window.top.outerWidth / 2 + window.top.screenX - width / 2,
 		top     : window.top.outerHeight / 2 + window.top.screenY - height / 2,
-		toolbar : 0,
-		menubar : 0,
-		location: 0,
-		noopener: false
+		toolbar : false,
+		menubar : false,
+		location: false
+		// noopener: false
 	} ).map( ( val ) => val.join( '=' ) ).join( ',' ) );
 	const { data } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login` );
 	win.location.href = data;
