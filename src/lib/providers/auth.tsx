@@ -45,8 +45,7 @@ export function withAuth( Component ) {
 }
 
 export async function login( width = 400, height = 550 ) {
-	const { data } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login` );
-	window.open( data, undefined, Object.entries( {
+	const win = window.open( '', '_blank', Object.entries( {
 		width,
 		height,
 		left    : window.top.outerWidth / 2 + window.top.screenX - width / 2,
@@ -55,6 +54,8 @@ export async function login( width = 400, height = 550 ) {
 		menubar : 0,
 		location: 0
 	} ).map( ( val ) => val.join( '=' ) ).join( ',' ) );
+	const { data } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login` );
+	win.location.href = data;
 	// @ts-ignore
 	window.authenticate = async ( tokens: Credentials ) => {
 		await signInWithCredential( auth, GoogleAuthProvider.credential( tokens.id_token, tokens.access_token ) );
