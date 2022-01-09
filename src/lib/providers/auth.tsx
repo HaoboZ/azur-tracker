@@ -52,7 +52,8 @@ export async function login( width = 400, height = 550 ) {
 		top     : window.top.outerHeight / 2 + window.top.screenY - height / 2,
 		toolbar : 0,
 		menubar : 0,
-		location: 0
+		location: 0,
+		noopener: false
 	} ).map( ( val ) => val.join( '=' ) ).join( ',' ) );
 	const { data } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login` );
 	win.location.href = data;
