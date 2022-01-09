@@ -96,7 +96,7 @@ export default function Fleet() {
 									{' / '}{row.cells[ 5 ].render( 'Cell' )}
 								</>
 							)}
-							secondary={`${ row.values.rarity } - ${ row.values.faction } - ${ row.values.type }`}
+							secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
 						/>
 						<ListItemSecondaryAction className={( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] )}>
 							{row.cells[ 7 ].render( 'Cell' )}

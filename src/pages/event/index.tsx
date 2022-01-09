@@ -136,7 +136,7 @@ export default function Event() {
 						m       : 'auto'
 					}
 				}}>
-				<Link href={eventData.link} target='_blank'>
+				<Link href={eventData.href} target='_blank'>
 					<Image src={eventImage} alt='event banner'/>
 				</Link>
 			</Box>

@@ -18,7 +18,6 @@ export default function AsyncLoadingButton( { onClick, ...props }: LoadingButton
 					enqueueSnackbar( e?.response?.data || e?.message || e, { variant: 'error' } );
 				} finally {
 					setLoading( false );
-					
 				}
 			}}
 			{...props}

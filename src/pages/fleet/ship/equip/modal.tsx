@@ -97,12 +97,12 @@ export default function EquipModal( { info, selectedEquip }: {
 					) : undefined}
 					<Grid item container xs={5} justifyContent='center'>
 						<Image
-							src={`/images/equips/${ currentEquip.image }.png`}
+							src={`/images/equips/${currentEquip.image}.png`}
 							alt={currentEquip.name}
 							height={128}
 							width={128}
 							layout='intrinsic'
-							className={`color-${ rarityColors[ currentEquip.rarity ] }`}
+							className={`color-${rarityColors[ currentEquip.rarity ]}`}
 						/>
 					</Grid>
 					<Grid item xs={2}>
@@ -110,19 +110,19 @@ export default function EquipModal( { info, selectedEquip }: {
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
 						<Image
-							src={`/images/equips/${ equip.image }.png`}
+							src={`/images/equips/${equip.image}.png`}
 							alt={equip.name}
 							height={128}
 							width={128}
 							layout='intrinsic'
-							className={`color-${ rarityColors[ equip.rarity ] }`}
+							className={`color-${rarityColors[ equip.rarity ]}`}
 							onClick={() => setEquip( equipData[ 0 ] )}
 						/>
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
 						<Link
 							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${ decodeURIComponent( currentEquip.image.replaceAll( '$', '%' ) ) }`}
+							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( currentEquip.image.replaceAll( '$', '%' ) )}`}
 							align='center'
 							color='textPrimary'>
 							{currentEquip.name}
@@ -132,7 +132,7 @@ export default function EquipModal( { info, selectedEquip }: {
 					<Grid item container xs={5} justifyContent='center'>
 						<Link
 							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${ decodeURIComponent( equip.image.replaceAll( '$', '%' ) ) }`}
+							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( equip.image.replaceAll( '$', '%' ) )}`}
 							align='center'
 							color='textPrimary'>
 							{equip.name}

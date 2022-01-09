@@ -1,17 +1,17 @@
 import { GlobalStyles, Theme } from '@mui/material';
 import { debounce } from 'lodash';
-import { useSession } from 'next-auth/react';
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import useIntervalEffect from '../../lib/hooks/useIntervalEffect';
+import { useAuth } from '../../lib/providers/auth';
 import { useIndicator } from '../../lib/providers/indicator';
 import { textBgColor } from '../colors';
 import Navigation from './navigation';
 
 export default function Wrapper( { children } ) {
 	const { main, ...store } = useSelector( ( state ) => state );
-	const { status } = useSession();
+	const user = useAuth();
 	const indicator = useIndicator();
 	
 	const delayedSetBackup = useCallback( debounce( () => backupMutex.runExclusive(
@@ -20,24 +20,22 @@ export default function Wrapper( { children } ) {
 	
 	// auto save
 	useEffect( () => {
-		if ( main.autoSave && status === 'authenticated' ) delayedSetBackup();
+		if ( main.autoSave && user ) delayedSetBackup();
 	}, Object.values( store ) );
+	
+	async function loadData() {
+		if ( main.autoLoad && user ) await backupMutex.runExclusive(
+			async () => await indicator( getBackup( await checkDataIntegrity() ) )
+		);
+	}
 	
 	// load on log
 	useEffect( () => {
-		( async () => {
-			if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
-				async () => await indicator( getBackup( await checkDataIntegrity() ) )
-			);
-		} )();
-	}, [ status ] );
+		loadData().then();
+	}, [ user ] );
 	
 	// auto load
-	useIntervalEffect( async () => {
-		if ( main.autoLoad && status === 'authenticated' ) await backupMutex.runExclusive(
-			async () => await indicator( getBackup( await checkDataIntegrity() ) )
-		);
-	}, main.autoLoadInterval, [ main.autoLoadInterval ] );
+	useIntervalEffect( loadData, main.autoLoadInterval, [ main.autoLoadInterval ] );
 	
 	// noinspection ES6RedundantNestingInTemplateLiteral
 	return (
@@ -54,7 +52,7 @@ export default function Wrapper( { children } ) {
 						'MozAppearance': 'textfield'
 					},
 					'.color-rainbow'    : {
-						background: `linear-gradient(to bottom right, ${ '#aaffaa' } 15%, ${ '#aaaaff' }, ${ '#ffaaaa' } 85%) !important`,
+						background: `linear-gradient(to bottom right, ${'#aaffaa'} 15%, ${'#aaaaff'}, ${'#ffaaaa'} 85%) !important`,
 						color     : 'black !important'
 					},
 					'.color-gray'       : textBgColor( theme, '#cccccc' ),

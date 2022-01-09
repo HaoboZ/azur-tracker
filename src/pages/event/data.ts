@@ -2,7 +2,7 @@
 
 const eventData = {
 	name   : 'Tower of Transcendence',
-	link   : 'https://azurlane.koumakan.jp/wiki/Tower_of_Transcendence',
+	href   : 'https://azurlane.koumakan.jp/wiki/Tower_of_Transcendence',
 	endDate: '2022-01-12T23:59-07',
 	shop   : [
 		{ name: 'Magdeburg', cost: 8000, amount: 5 },

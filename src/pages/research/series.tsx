@@ -133,7 +133,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 								</ListItemAvatar>
 								<ListItemText
 									primary={item.name}
-									secondary={`Needs: ${ devPrints + fatePrints } Prints`}
+									secondary={`Needs: ${devPrints + fatePrints} Prints`}
 								/>
 							</>
 						);

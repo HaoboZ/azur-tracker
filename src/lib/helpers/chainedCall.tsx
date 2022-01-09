@@ -4,12 +4,14 @@ export function component<T extends keyof JSX.IntrinsicElements | JSXElementCons
 	component: T,
 	props?: Omit<ComponentProps<T>, 'children'>
 ) {
-	return [ component, props ];
+	return { component, props };
 }
 
 export function ComponentComposer( { components, children }: { components: any[], children: ReactNode } ) {
-	return components.reduceRight( ( children, [ Component, props ] ) =>
-		<Component {...props}>{children}</Component>, children );
+	return components.reduceRight( ( children, { component, props } ) => {
+		const Component = component;
+		return <Component {...props}>{children}</Component>;
+	}, children );
 }
 
 export function chain( func, args ) {

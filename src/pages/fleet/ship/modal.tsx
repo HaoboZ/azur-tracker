@@ -50,7 +50,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 		<ResponsiveModalContainer
 			title={(
 				<Link
-					href={ship.link}
+					href={ship.href}
 					target='_blank'
 					color='textPrimary'>
 					<DialogTitle>{ship.name}</DialogTitle>
@@ -139,12 +139,12 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 									TransitionComponent: Zoom
 								}, { info: { ship, index }, selectedEquip } )}>
 								<Image
-									src={`/images/equips/${ equip.image }.png`}
+									src={`/images/equips/${equip.image}.png`}
 									alt={equip.name}
 									height={128}
 									width={128}
 									layout='intrinsic'
-									className={`color-${ rarityColors[ equip.rarity ] }`}
+									className={`color-${rarityColors[ equip.rarity ]}`}
 								/>
 								<Box display='flex' alignItems='center'>
 									<TierIcon tier={val[ 2 ]}/>

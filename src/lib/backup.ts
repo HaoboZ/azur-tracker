@@ -12,7 +12,7 @@ export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
 	const data = stringify( state );
-	const { data: { action } } = await axios.post( `${ process.env.NEXT_PUBLIC_SERVER_URL }/api/checkData`, {
+	const { data: { action } } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/drive/checkData`, {
 		checksum : await md5( data ),
 		lastSaved: main.lastSaved
 	} );
@@ -33,7 +33,7 @@ export async function setBackup( integrity ) {
 		return;
 	}
 	store.dispatch( setLastSaved( new Date().toISOString() ) );
-	await axios.post( `${ process.env.NEXT_PUBLIC_SERVER_URL }/api/setData`, {
+	await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/drive/setData`, {
 		modifiedTime: store.getState().main.lastSaved,
 		data
 	} );
@@ -49,7 +49,7 @@ export async function getBackup( integrity, check = true ) {
 			return;
 		}
 	}
-	const { data: { data, lastSaved } } = await axios.get( `${ process.env.NEXT_PUBLIC_SERVER_URL }/api/getData` );
+	const { data: { data, lastSaved } } = await axios.get( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/drive/getData` );
 	store.dispatch( setLastSaved( lastSaved ) );
 	const state = store.getState();
 	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );

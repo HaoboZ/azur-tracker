@@ -20,7 +20,7 @@ export default class _Document extends Document {
 		const emotionStyleTags = emotionStyles.styles.map( ( style ) => (
 			<style
 				key={style.key}
-				data-emotion={`${ style.key } ${ style.ids.join( ' ' ) }`}
+				data-emotion={`${style.key} ${style.ids.join( ' ' )}`}
 				dangerouslySetInnerHTML={{ __html: style.css }}
 			/>
 		) );

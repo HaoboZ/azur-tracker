@@ -27,12 +27,12 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 					{equip.tier && <Typography>{equip.tier}</Typography>}
 					<Box px={1}>
 						<Image
-							src={`/images/equips/${ equip.image }.png`}
+							src={`/images/equips/${equip.image}.png`}
 							alt={equip.name}
 							layout='fixed'
 							height={50}
 							width={50}
-							className={`color-${ rarityColors[ equip.rarity ] }`}
+							className={`color-${rarityColors[ equip.rarity ]}`}
 						/>
 					</Box>
 					<Typography>{equip.name}</Typography>

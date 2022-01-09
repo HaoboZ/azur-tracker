@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next';
-import getDrive from '../../lib/google/drive/getDrive';
-import getInfo from '../../lib/google/drive/getInfo';
-import setFile from '../../lib/google/drive/setFile';
+import getDrive from '../../../lib/firebase/drive/getDrive';
+import getInfo from '../../../lib/firebase/drive/getInfo';
+import setFile from '../../../lib/firebase/drive/setFile';
 
 const SetData: NextApiHandler = async ( req, res ) => {
 	try {

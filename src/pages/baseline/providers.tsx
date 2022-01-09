@@ -2,11 +2,11 @@ import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton, ThemeProvider } from '@mui/material';
-import { SessionProvider } from 'next-auth/react';
 import { SnackbarProvider } from 'notistack';
 import { ReactNode, useRef } from 'react';
 import { component, ComponentComposer } from '../../lib/helpers/chainedCall';
 import useTheme from '../../lib/hooks/useTheme';
+import AuthProvider from '../../lib/providers/auth';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 
@@ -24,7 +24,7 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 				component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
 				component( ThemeProvider, { theme } ),
 				// app
-				component( SessionProvider, { session: pageProps.session } ),
+				component( AuthProvider ),
 				// content
 				component( SnackbarProvider, {
 					ref             : snackbarRef,

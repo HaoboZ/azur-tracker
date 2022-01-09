@@ -61,7 +61,7 @@
 		"space-before-function-paren"                      : "off", // typescript
 		"space-in-parens"                                  : [ "warn", "always" ],
 		"switch-colon-spacing"                             : "warn",
-		"template-curly-spacing"                           : [ "warn", "always" ],
+		"template-curly-spacing"                           : [ "warn", "never" ],
 		// react
 		"react/display-name"                               : "off",
 		"react/function-component-definition"              : [

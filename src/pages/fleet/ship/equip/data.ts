@@ -1231,7 +1231,7 @@ export const equipsIndex: Record<number, Equip> = equipData.reduce( ( obj, item 
 }, {} );
 
 const map = equipData.reduce( ( obj, item ) => {
-	obj[ `${ item.name }/${ rarity[ item.rarity ] }` ] = item.id;
+	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
 	return obj;
 }, {} as Record<string, number | string> );
 

@@ -7,7 +7,7 @@ const isProd: boolean = process.env.NODE_ENV === 'production';
 if ( isProd ) {
 	serve( { directory: 'app' } );
 } else {
-	app.setPath( 'userData', `${ app.getPath( 'userData' ) } (development)` );
+	app.setPath( 'userData', `${app.getPath( 'userData' )} (development)` );
 }
 
 ( async () => {
@@ -25,7 +25,7 @@ if ( isProd ) {
 		await mainWindow.loadURL( 'app://-' );
 	} else {
 		const port = process.argv[ 2 ];
-		await mainWindow.loadURL( `http://localhost:${ port }` );
+		await mainWindow.loadURL( `http://localhost:${port}` );
 		mainWindow.webContents.openDevTools();
 	}
 } )();

@@ -23,7 +23,7 @@ module.exports = {
 	},
 	output      : {
 		filename: '[name]',
-		path    : `${ __dirname }/build/mobile`
+		path    : `${__dirname}/build/mobile`
 	},
 	plugins     : [
 		new CopyPlugin( {

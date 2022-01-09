@@ -20,12 +20,12 @@ export default function EquipFilter( { equipList, value, setValue }: {
 				<li {...props} key={option.id}>
 					<Box pr={1}>
 						<Image
-							src={`/images/equips/${ option.image }.png`}
+							src={`/images/equips/${option.image}.png`}
 							alt={option.name}
 							layout='fixed'
 							height={50}
 							width={50}
-							className={`color-${ rarityColors[ option.rarity ] }`}
+							className={`color-${rarityColors[ option.rarity ]}`}
 						/>
 					</Box>
 					<Typography>{option.name}</Typography>

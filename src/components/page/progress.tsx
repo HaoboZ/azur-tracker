@@ -84,7 +84,7 @@ export default function PageProgress( {
 						right    : 0,
 						width    : '100%',
 						height   : '100%',
-						boxShadow: `0 0 10px ${ theme.palette.primary.main }, 0 0 5px ${ theme.palette.primary.main }`,
+						boxShadow: `0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main}`,
 						opacity  : 0.1
 					},
 					'.spinner'     : {

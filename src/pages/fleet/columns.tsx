@@ -49,7 +49,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 				);
 			},
 			props   : ( cell ) => ( {
-				className: cell && `color-${ rarityColors[ cell.value ] }`,
+				className: cell && `color-${rarityColors[ cell.value ]}`,
 				style    : { minWidth: '80px' }
 			} ),
 			sortType: ( rowA, rowB, columnId ) => Rarity[ rowA.values[ columnId ] ] - Rarity[ rowB.values[ columnId ] ]
@@ -69,7 +69,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 				);
 			},
 			props: ( cell ) => ( {
-				className: cell && `color-${ factionColors[ cell.value ] }`,
+				className: cell && `color-${factionColors[ cell.value ]}`,
 				style    : { minWidth: '90px' }
 			} )
 		}, {
@@ -88,7 +88,7 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 				);
 			},
 			props: ( cell ) => ( {
-				className: cell && `color-${ typeColors[ cell.value ] }`,
+				className: cell && `color-${typeColors[ cell.value ]}`,
 				style    : { minWidth: '73px' }
 			} )
 		}, {
@@ -138,14 +138,14 @@ export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>
 			width   : 25,
 			Cell( { value, row } ) {
 				return equipBetter.value[ row.id ]
-					? `+${ Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) ) }`
+					? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
 					: value?.some( ( equip ) => equip[ 2 ] )
 					&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
 			},
 			props              : ( cell ) => ( {
 				className: cell && equipBetter.value[ cell.row.id ]
-					? `color-${ tierColors[ Math.min( ...equipBetter.value[ cell.row.id ]
-						.filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ] }`
+					? `color-${tierColors[ Math.min( ...equipBetter.value[ cell.row.id ]
+						.filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`
 					: undefined,
 				style    : { minWidth: '116px' }
 			} ),

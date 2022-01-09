@@ -13,11 +13,11 @@ import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
 const items = [
-	{ label: 'Event', icon: <EventIcon/>, link: '/' },
-	{ label: 'Research', icon: <CameraIcon/>, link: '/research' },
-	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, link: '/fleet' },
-	{ label: 'Info', icon: <InfoIcon/>, link: '/info' },
-	{ label: 'Settings', icon: <SettingsIcon/>, link: '/settings' }
+	{ label: 'Event', icon: <EventIcon/>, href: '/', store: 'event' },
+	{ label: 'Research', icon: <CameraIcon/>, href: '/research', store: 'research' },
+	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, href: '/fleet', store: 'fleet' },
+	{ label: 'Info', icon: <InfoIcon/>, href: '/info' },
+	{ label: 'Settings', icon: <SettingsIcon/>, href: '/settings' }
 ];
 
 export default function BottomBar( { children } ) {
@@ -28,7 +28,7 @@ export default function BottomBar( { children } ) {
 	
 	const index = useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
-			if ( items[ i ].link === router.asPath ) return i;
+			if ( items[ i ].href === router.asPath ) return i;
 	}, [ router.asPath ] );
 	
 	return (
@@ -45,7 +45,7 @@ export default function BottomBar( { children } ) {
 			<Box
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)`}>
+				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
 				{children}
 			</Box>
 			<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
@@ -63,8 +63,10 @@ export default function BottomBar( { children } ) {
 						pb    : 'env(safe-area-inset-bottom)'
 					}}
 					onChange={( e, value ) => {
-						router.push( items[ value ].link ).then();
-						dispatch( setNewData( { [ items[ value ].link.substring( 1 ) ]: false } ) );
+						const item = items[ value ];
+						router.push( item.href ).then();
+						if ( 'store' in item )
+							dispatch( setNewData( { [ item.store ]: false } ) );
 					}}>
 					{items.map( ( item, index ) => (
 						<BottomNavigationAction
@@ -75,7 +77,7 @@ export default function BottomBar( { children } ) {
 								<Badge
 									color='secondary'
 									variant='dot'
-									invisible={!main.newData[ item.link.substring( 1 ) ]}>
+									invisible={!main.newData[ item.store ]}>
 									{item.icon}
 								</Badge>
 							)}

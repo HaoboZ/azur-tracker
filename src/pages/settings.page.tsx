@@ -14,7 +14,6 @@ import {
 	ToggleButton,
 	ToggleButtonGroup
 } from '@mui/material';
-import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,6 +23,7 @@ import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
+import { login, logout, useAuth } from '../lib/providers/auth';
 import { useIndicator } from '../lib/providers/indicator';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import { fleet_reset } from '../lib/store/reducers/fleetReducer';
@@ -40,7 +40,7 @@ import { research_reset } from '../lib/store/reducers/researchReducer';
 export default function Settings() {
 	const main = useSelector( ( { main } ) => main );
 	const dispatch = useDispatch();
-	const { data, status } = useSession();
+	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
@@ -57,30 +57,25 @@ export default function Settings() {
 					{online ? (
 						<>
 							<ListItemText classes={{ primary: 'longText' }}>
-								{status === 'loading' && 'Loading...'}
-								{status === 'authenticated' && `Account: ${ data.user.email }`}
-								{status === 'unauthenticated' && 'Sign in for Cloud Save'}
+								{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
 							</ListItemText>
-							{status !== 'loading' && (
-								<ListItemSecondaryAction>
-									{status === 'authenticated' && (
-										<AsyncLoadingButton
-											variant='outlined'
-											color='inherit'
-											onClick={() => signOut()}>
-											Sign Out
-										</AsyncLoadingButton>
-									)}
-									{status === 'unauthenticated' && (
-										<AsyncLoadingButton
-											variant='outlined'
-											color='inherit'
-											onClick={() => signIn( 'google' )}>
-											Sign In
-										</AsyncLoadingButton>
-									)}
-								</ListItemSecondaryAction>
-							)}
+							<ListItemSecondaryAction>
+								{user ? (
+									<AsyncLoadingButton
+										variant='outlined'
+										color='inherit'
+										onClick={() => logout()}>
+										Sign Out
+									</AsyncLoadingButton>
+								) : (
+									<AsyncLoadingButton
+										variant='outlined'
+										color='inherit'
+										onClick={() => login()}>
+										Sign In
+									</AsyncLoadingButton>
+								)}
+							</ListItemSecondaryAction>
 						</>
 					) : <ListItemText>Offline</ListItemText>}
 				</ListItem>
@@ -141,19 +136,15 @@ export default function Settings() {
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
-									try {
-										if ( !online )
-											enqueueSnackbar( 'Offline' );
-										else if ( status === 'authenticated' ) {
-											await backupMutex.runExclusive( async () =>
-												await indicator( setBackup( await checkDataIntegrity() ) )
-											);
-											enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
-										} else {
-											enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
-										}
-									} catch ( e ) {
-										enqueueSnackbar( e?.response?.data || e?.message || e, { variant: 'error' } );
+									if ( !online )
+										enqueueSnackbar( 'Offline' );
+									else if ( user ) {
+										await backupMutex.runExclusive( async () =>
+											await indicator( setBackup( await checkDataIntegrity() ) )
+										);
+										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
+									} else {
+										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
 									}
 								}}>
 								Save
@@ -162,19 +153,15 @@ export default function Settings() {
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
-									try {
-										if ( !online )
-											enqueueSnackbar( 'Offline' );
-										else if ( status === 'authenticated' ) {
-											await backupMutex.runExclusive( async () =>
-												await indicator( getBackup( await checkDataIntegrity() ) )
-											);
-											enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
-										} else {
-											enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
-										}
-									} catch ( e ) {
-										enqueueSnackbar( e?.response?.data ?? String( e ), { variant: 'error' } );
+									if ( !online )
+										enqueueSnackbar( 'Offline' );
+									else if ( user ) {
+										await backupMutex.runExclusive( async () =>
+											await indicator( getBackup( await checkDataIntegrity() ) )
+										);
+										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
+									} else {
+										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
 									}
 								}}>
 								Load
@@ -274,7 +261,3 @@ export default function Settings() {
 		</PageContainer>
 	);
 }
-
-// noinspection JSUnusedGlobalSymbols
-// export const getServerSideProps: GetServerSideProps = async ( context ) =>
-// 	( { props: { session: await getServerSession( context, authOptions ) } } );

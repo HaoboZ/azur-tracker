@@ -536,7 +536,7 @@ const ships = {
 const fleetData = mapValues( ships, ( val, key ) => ( {
 	id       : key,
 	name     : val[ 0 ],
-	link     : `https://azurlane.koumakan.jp/wiki/${ key }`,
+	href     : `https://azurlane.koumakan.jp/wiki/${key}`,
 	rarity   : val[ 1 ],
 	faction  : val[ 2 ],
 	type     : val[ 3 ],
@@ -546,7 +546,7 @@ const fleetData = mapValues( ships, ( val, key ) => ( {
 } ) ) as Record<string, {
 	id: string,
 	name: string,
-	link: string,
+	href: string,
 	rarity: string,
 	faction: string,
 	type: string,

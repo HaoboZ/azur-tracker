@@ -6,7 +6,7 @@ import { PageLinkComponent } from '../../../components/page/link';
 import usePageHeight from '../../../lib/hooks/usePageHeight';
 import { setNewData } from '../../../lib/store/reducers/mainReducer';
 
-function LinkItem( { href, children }: { href: string, children: ReactNode } ) {
+function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
 	const newData = useSelector( ( { main } ) => main.newData );
 	const dispatch = useDispatch();
 	
@@ -15,12 +15,14 @@ function LinkItem( { href, children }: { href: string, children: ReactNode } ) {
 			color='secondary'
 			variant='dot'
 			sx={{ mr: 3 }}
-			invisible={!newData[ href.substring( 1 ) ]}>
+			invisible={!newData[ store ]}>
 			<Button
 				component={PageLinkComponent}
 				href={href}
 				color='inherit'
-				onClick={() => dispatch( setNewData( { [ href.substring( 1 ) ]: false } ) )}>
+				onClick={() => {
+					if ( store ) dispatch( setNewData( { [ store ]: false } ) );
+				}}>
 				{children}
 			</Button>
 		</Badge>
@@ -44,9 +46,9 @@ export default function TitleBar( { children } ) {
 					<Typography variant='h3' sx={{ mr: 3 }}>
 						Azur Lane Tracker
 					</Typography>
-					<LinkItem href='/'>Event</LinkItem>
-					<LinkItem href='/research'>Research</LinkItem>
-					<LinkItem href='/fleet'>Fleet</LinkItem>
+					<LinkItem href='/' store='event'>Event</LinkItem>
+					<LinkItem href='/research' store='research'>Research</LinkItem>
+					<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
 					<LinkItem href='/info'>Info</LinkItem>
 					<Box flexGrow={1}/>
 					<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
@@ -57,7 +59,7 @@ export default function TitleBar( { children } ) {
 			<Box
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${ height }px)`}>
+				minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${height}px)`}>
 				{children}
 			</Box>
 		</Box>

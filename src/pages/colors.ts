@@ -59,6 +59,6 @@ export const
 	];
 
 export const textBgColor = ( theme, backgroundColor ) => ( {
-	color          : `${ theme.palette.getContrastText( backgroundColor ) } !important`,
-	backgroundColor: `${ backgroundColor } !important`
+	color          : `${theme.palette.getContrastText( backgroundColor )} !important`,
+	backgroundColor: `${backgroundColor} !important`
 } );
