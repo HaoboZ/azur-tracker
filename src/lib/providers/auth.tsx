@@ -62,7 +62,6 @@ export async function login( width = 400, height = 550 ) {
 		await signInWithCredential( auth, GoogleAuthProvider.credential( tokens.id_token, tokens.access_token ) );
 		Cookies.set( 'access_token', tokens.access_token, { expires: new Date( 32503708800000 ) } );
 		Cookies.set( 'refresh_token', tokens.refresh_token, { expires: new Date( 32503708800000 ) } );
-		return 'You can close this window now';
 	};
 }
 
