@@ -4565,7 +4565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cors@npm:^2":
+"@types/cors@npm:^2.8.12":
   version: 2.8.12
   resolution: "@types/cors@npm:2.8.12"
   checksum: 8c45f112c7d1d2d831b4b266f2e6ed33a1887a35dcbfe2a18b28370751fababb7cd045e745ef84a523c33a25932678097bf79afaa367c6cb3fa0daa7a6438257
@@ -6121,7 +6121,7 @@ __metadata:
     "@mui/material": ^5.2.7
     "@next/bundle-analyzer": ^12.0.7
     "@reduxjs/toolkit": ^1.7.1
-    "@types/cors": ^2
+    "@types/cors": ^2.8.12
     "@types/eslint": ^8.2.2
     "@types/events": ^3.0.0
     "@types/jest": ^27.4.0
