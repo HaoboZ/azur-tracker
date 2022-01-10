@@ -45,15 +45,15 @@ export function withAuth( Component ) {
 }
 
 export async function login( width = 400, height = 550 ) {
-	const win = window.open( '', undefined, Object.entries( {
+	const win = window.open( 'http://192.168.100.183:3000/api/test', undefined, Object.entries( {
 		width,
 		height,
 		left    : window.top.outerWidth / 2 + window.top.screenX - width / 2,
 		top     : window.top.outerHeight / 2 + window.top.screenY - height / 2,
 		toolbar : false,
 		menubar : false,
-		location: false
-		// noopener: false
+		location: false,
+		noopener: false
 	} ).map( ( val ) => val.join( '=' ) ).join( ',' ) );
 	const { data } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login` );
 	win.location.href = data;
@@ -62,6 +62,7 @@ export async function login( width = 400, height = 550 ) {
 		await signInWithCredential( auth, GoogleAuthProvider.credential( tokens.id_token, tokens.access_token ) );
 		Cookies.set( 'access_token', tokens.access_token, { expires: new Date( 32503708800000 ) } );
 		Cookies.set( 'refresh_token', tokens.refresh_token, { expires: new Date( 32503708800000 ) } );
+		return 'You can close this window now';
 	};
 }
 
