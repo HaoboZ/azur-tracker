@@ -45,7 +45,7 @@ export function withAuth( Component ) {
 }
 
 export async function login( width = 400, height = 550 ) {
-	const win = window.open( 'http://192.168.100.183:3000/api/test', undefined, Object.entries( {
+	const win = window.open( '', undefined, Object.entries( {
 		width,
 		height,
 		left    : window.top.outerWidth / 2 + window.top.screenX - width / 2,
