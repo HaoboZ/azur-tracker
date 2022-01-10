@@ -1,8 +1,10 @@
 import { NextApiHandler } from 'next';
-import oAuthClient from '../../../lib/firebase/oAuthClient';
+import { oAuthClient } from '../../../lib/firebase/server';
+import { checkCors } from '../cors';
 
 const callback: NextApiHandler = async ( req, res ) => {
 	try {
+		await checkCors( req, res );
 		const { tokens } = await oAuthClient.getToken( req.query.code as string );
 		res.send( `<script defer>
 	window.onload = async () => {

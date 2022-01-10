@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import oAuthClient from '../oAuthClient';
+import { oAuthClient } from '../server';
 
 export default async function getDrive( req ) {
 	oAuthClient.setCredentials( {

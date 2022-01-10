@@ -17,7 +17,7 @@ if ( isProd ) {
 		width         : 1000,
 		height        : 600,
 		webPreferences: {
-			devTools: false
+			// devTools: false
 		}
 	} );
 	

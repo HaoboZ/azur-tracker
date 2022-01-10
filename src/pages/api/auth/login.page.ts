@@ -1,8 +1,10 @@
 import { NextApiHandler } from 'next';
-import oAuthClient from '../../../lib/firebase/oAuthClient';
+import { oAuthClient } from '../../../lib/firebase/server';
+import { checkCors } from '../cors';
 
 const login: NextApiHandler = async ( req, res ) => {
 	try {
+		await checkCors( req, res );
 		const url = oAuthClient.generateAuthUrl( {
 			access_type : 'offline',
 			prompt      : 'consent',

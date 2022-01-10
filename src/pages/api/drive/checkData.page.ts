@@ -1,9 +1,11 @@
 import { NextApiHandler } from 'next';
 import getDrive from '../../../lib/firebase/drive/getDrive';
 import getInfo from '../../../lib/firebase/drive/getInfo';
+import { checkCors } from '../cors';
 
 const CheckData: NextApiHandler = async ( req, res ) => {
 	try {
+		await checkCors( req, res );
 		const { checksum, lastSaved } = req.body;
 		const drive = await getDrive( req );
 		const file = await getInfo( drive, 'data.json' );

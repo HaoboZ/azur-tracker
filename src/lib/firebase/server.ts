@@ -1,4 +1,5 @@
 import { cert, getApps, initializeApp } from 'firebase-admin/app';
+import { google } from 'googleapis';
 
 export const initialize = () => getApps()[ 0 ] || initializeApp( {
 	credential : cert( {
@@ -8,3 +9,9 @@ export const initialize = () => getApps()[ 0 ] || initializeApp( {
 	} ),
 	databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL
 }, 'azurLaneTracker' );
+
+export const oAuthClient = new google.auth.OAuth2(
+	process.env.GOOGLE_CLIENT_ID,
+	process.env.GOOGLE_CLIENT_SECRET,
+	`${process.env.GOOGLE_CLIENT_REDIRECT_URI}/api/auth/callback`
+);
