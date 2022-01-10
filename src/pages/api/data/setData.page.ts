@@ -19,7 +19,8 @@ const SetData: NextApiHandler = async ( req, res ) => {
 			checksum : hash( req.body.data ),
 			timestamp: req.body.timestamp
 		};
-		if ( JSON.stringify( data ).length > 20000 ) throw 'Too Large';
+		// console.log( JSON.stringify( data ).length );
+		// if ( JSON.stringify( data ).length > 20000 ) throw 'Too Large';
 		
 		const ref = db.ref( uid );
 		await ref.set( data );

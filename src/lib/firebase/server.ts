@@ -7,4 +7,4 @@ export const initialize = () => getApps()[ 0 ] || initializeApp( {
 		privateKey : process.env.FIREBASE_PRIVATE_KEY?.replace( /\\n/g, '\n' )
 	} ),
 	databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL
-}, 'azurLaneTracker' );
+} );

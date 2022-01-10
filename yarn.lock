@@ -4761,6 +4761,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/json-stringify-safe@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@types/json-stringify-safe@npm:5.0.0"
+  checksum: 2822c9341119f53ded3b98b9686199bf13f9ff25ebeeab409ceb02167c2d5872455bdad2a2fcc0d88bd71b35696bf63d3378c7b9ab0e3f09ebbf9775e46cefdd
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -6069,6 +6076,7 @@ __metadata:
     "@types/events": ^3.0.0
     "@types/jest": ^27.4.0
     "@types/js-cookie": ^3.0.1
+    "@types/json-stringify-safe": ^5.0.0
     "@types/lodash": ^4.14.178
     "@types/node": ^17.0.8
     "@types/nprogress": ^0.2.0
@@ -6103,6 +6111,7 @@ __metadata:
     firebase-admin: ^10.0.1
     jest: ^27.4.7
     js-cookie: ^3.0.1
+    json-stringify-safe: ^5.0.1
     lodash: ^4.17.21
     moment: ^2.29.1
     nanoid: ^3.1.30

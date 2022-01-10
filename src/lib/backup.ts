@@ -1,6 +1,7 @@
 import { Mutex } from 'async-mutex';
 import axios from 'axios';
-import { isEqual, omit } from 'lodash';
+import stringify from 'json-stringify-safe';
+import { isEqual, mapValues } from 'lodash';
 import hash from 'object-hash';
 import { store } from './store';
 import { importBackup, setLastSaved, setNewData } from './store/reducers/mainReducer';
@@ -9,11 +10,10 @@ export const backupMutex = new Mutex();
 
 export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
-	const { main } = store.getState();
-	const data = omit( JSON.parse( localStorage.getItem( 'persist:root' ) ), 'main' );
-	const checksum = hash( data );
+	const { main, ...state } = store.getState();
+	const data = mapValues( state, ( value ) => stringify( value ) );
 	const { data: { action } } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/data/checkData`, {
-		checksum,
+		checksum : hash( data ),
 		timestamp: main.lastSaved
 	} );
 	
@@ -50,10 +50,11 @@ export async function getBackup( integrity, check = true ) {
 		}
 	}
 	const { data: { data, timestamp } } = await axios.get( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/data/getData` );
+	const newData = mapValues( data, ( value ) => JSON.parse( value ) );
 	store.dispatch( setLastSaved( timestamp ) );
 	const state = store.getState();
-	const changed = Object.keys( data ).filter( ( item ) => !isEqual( state[ item ], data[ item ] ) );
+	const changed = Object.keys( newData ).filter( ( key ) => !isEqual( state[ key ], newData[ key ] ) );
 	// noinspection CommaExpressionJS, JSRemoveUnnecessaryParentheses
 	store.dispatch( setNewData( changed.reduce( ( o, k ) => ( o[ k ] = true, o ), {} ) ) );
-	store.dispatch( importBackup( data ) );
+	store.dispatch( importBackup( newData ) );
 }
