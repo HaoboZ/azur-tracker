@@ -3,7 +3,6 @@ import { getDatabase } from 'firebase-admin/database';
 import { NextApiHandler } from 'next';
 import hash from 'object-hash';
 import { initialize } from '../../../lib/firebase/server';
-import { checkCors } from '../cors';
 
 const app = initialize();
 const auth = getAuth( app );
@@ -11,7 +10,6 @@ const db = getDatabase( app );
 
 const SetData: NextApiHandler = async ( req, res ) => {
 	try {
-		await checkCors( req, res );
 		const { uid } = await auth.verifyIdToken( req.cookies.id_token, true );
 		
 		const data = {
@@ -19,8 +17,7 @@ const SetData: NextApiHandler = async ( req, res ) => {
 			checksum : hash( req.body.data ),
 			timestamp: req.body.timestamp
 		};
-		// console.log( JSON.stringify( data ).length );
-		// if ( JSON.stringify( data ).length > 20000 ) throw 'Too Large';
+		if ( JSON.stringify( data ).length > 20000 ) throw 'Size Exceeded';
 		
 		const ref = db.ref( uid );
 		await ref.set( data );

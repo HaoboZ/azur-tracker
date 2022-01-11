@@ -2,7 +2,6 @@ import { getAuth } from 'firebase-admin/auth';
 import { getDatabase } from 'firebase-admin/database';
 import { NextApiHandler } from 'next';
 import { initialize } from '../../../lib/firebase/server';
-import { checkCors } from '../cors';
 
 const app = initialize();
 const auth = getAuth( app );
@@ -10,7 +9,6 @@ const db = getDatabase( app );
 
 const GetData: NextApiHandler = async ( req, res ) => {
 	try {
-		await checkCors( req, res );
 		const { uid } = await auth.verifyIdToken( req.cookies.id_token, true );
 		
 		const ref = db.ref( uid );

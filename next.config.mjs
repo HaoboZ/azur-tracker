@@ -7,11 +7,6 @@ import withPWA from 'next-pwa';
  */
 const nextConfig = {
 	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
-	/**
-	 * @param {import('webpack').webpack.Configuration} config
-	 * @param {unknown} context
-	 * @returns {import('webpack').webpack.Configuration}
-	 */
 	webpack( config, { webpack } ) {
 		config.plugins.push( new webpack.IgnorePlugin( {
 			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
@@ -23,7 +18,12 @@ const nextConfig = {
 		domains: [ 'https://azurlanetracker.vercel.app' ],
 		path   : 'https://azurlanetracker.vercel.app'
 	} : undefined,
-	typescript: { ignoreBuildErrors: true }
+	typescript: { ignoreBuildErrors: true },
+	headers   : async () => [ {
+		// matching all API routes
+		source : '/api/:path*',
+		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
+	} ]
 };
 
 // noinspection JSUnusedGlobalSymbols
