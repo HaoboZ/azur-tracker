@@ -8,7 +8,7 @@ const callback: NextApiHandler = async ( req, res ) => {
 		
 		res.send( `<script defer>
 	window.onload = async () => {
-		await window.opener.authenticate( ${JSON.stringify( tokens )} );
+		window.parent.postMessage( ${JSON.stringify( tokens )}, '*' );
 		window.close();
 	};
 </script>` );
