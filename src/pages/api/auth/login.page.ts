@@ -4,8 +4,6 @@ import { oAuthClient } from '../../../lib/firebase/oAuthClient';
 const login: NextApiHandler = async ( req, res ) => {
 	try {
 		const url = oAuthClient.generateAuthUrl( {
-			access_type : 'offline',
-			prompt      : 'consent',
 			scope       : [
 				'https://www.googleapis.com/auth/userinfo.email',
 				'https://www.googleapis.com/auth/userinfo.profile'
