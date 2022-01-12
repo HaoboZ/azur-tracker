@@ -1,6 +1,6 @@
 import { GlobalStyles, Theme } from '@mui/material';
 import { debounce } from 'lodash';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../../lib/backup';
 import useIntervalEffect from '../../lib/hooks/useIntervalEffect';
@@ -14,17 +14,25 @@ export default function Wrapper( { children } ) {
 	const user = useAuth();
 	const indicator = useIndicator();
 	
-	const delayedSetBackup = useCallback( debounce( () => backupMutex.runExclusive(
-		async () => await indicator( setBackup( await checkDataIntegrity() ) )
-	), main.autoSaveInterval ), [ main.autoSaveInterval ] );
+	const [ blocked, setBlocked ] = useState( false );
+	
+	const delayedSetBackup = useCallback( debounce( async () => {
+		await backupMutex.runExclusive(
+			async () => await indicator( setBackup( await checkDataIntegrity() ) )
+		);
+		setBlocked( false );
+	}, main.autoSaveInterval ), [ main.autoSaveInterval ] );
 	
 	// auto save
 	useEffect( () => {
-		if ( main.autoSave && user?.emailVerified ) delayedSetBackup();
+		if ( main.autoSave && user?.emailVerified ) {
+			setBlocked( true );
+			delayedSetBackup();
+		}
 	}, Object.values( store ) );
 	
 	async function loadData() {
-		if ( main.autoLoad && user?.emailVerified ) await backupMutex.runExclusive(
+		if ( main.autoLoad && user?.emailVerified && !blocked ) await backupMutex.runExclusive(
 			async () => await indicator( getBackup( await checkDataIntegrity() ) )
 		);
 	}

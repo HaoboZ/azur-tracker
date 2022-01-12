@@ -12,6 +12,7 @@ export const backupMutex = new Mutex();
 export async function checkDataIntegrity() {
 	if ( !navigator.onLine ) return;
 	const { main, ...state } = store.getState();
+	
 	const data = mapValues( state, ( value ) => compressToUTF16( stringify( value ) ) );
 	const { data: { action } } = await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/data/check`, {
 		checksum : hash( data ),
