@@ -1,15 +1,17 @@
 import { Typography } from '@mui/material';
-import { signInWithPopup, signOut, User } from 'firebase/auth';
+import { sendEmailVerification, User } from 'firebase/auth';
 import Cookies from 'js-cookie';
+import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/client';
-import { googleProvider } from '../firebase/googleProvider';
+import AsyncLoadingButton from '../../../components/asyncLoadingButton';
+import { auth } from '../../firebase/client';
 
 const AuthContext = createContext<User>( undefined );
 AuthContext.displayName = 'Auth';
 
 export default function AuthProvider( { children } ) {
+	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const [ user, loading, error ] = useAuthState( auth );
 	
 	useEffect( () => {
@@ -19,6 +21,17 @@ export default function AuthProvider( { children } ) {
 			if ( token ) Cookies.set( 'id_token', token );
 			else Cookies.remove( 'id_token' );
 		} )();
+		if ( !user || user.emailVerified ) return;
+		const key = enqueueSnackbar( 'Email Not Verified', {
+			variant: 'warning',
+			action : (
+				<AsyncLoadingButton onClick={() => sendEmailVerification( user )}>
+					Resend Email
+				</AsyncLoadingButton>
+			),
+			persist: true
+		} );
+		return () => closeSnackbar( key );
 	}, [ user ] );
 	
 	if ( loading ) return null;
@@ -41,12 +54,4 @@ export function withAuth( Component ) {
 			{( user ) => <Component user={user} {...props}/>}
 		</AuthContext.Consumer>
 	);
-}
-
-export async function login() {
-	await signInWithPopup( auth, googleProvider );
-}
-
-export async function logout() {
-	await signOut( auth );
 }

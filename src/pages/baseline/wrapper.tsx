@@ -20,11 +20,11 @@ export default function Wrapper( { children } ) {
 	
 	// auto save
 	useEffect( () => {
-		if ( main.autoSave && user ) delayedSetBackup();
+		if ( main.autoSave && user?.emailVerified ) delayedSetBackup();
 	}, Object.values( store ) );
 	
 	async function loadData() {
-		if ( main.autoLoad && user ) await backupMutex.runExclusive(
+		if ( main.autoLoad && user?.emailVerified ) await backupMutex.runExclusive(
 			async () => await indicator( getBackup( await checkDataIntegrity() ) )
 		);
 	}

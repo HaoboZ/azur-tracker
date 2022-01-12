@@ -1,23 +1,23 @@
 import { EventEmitter } from 'events';
 import { createContext, useContext, useState } from 'react';
 
-const EventContext = createContext<EventEmitter>( null );
-EventContext.displayName = 'Event';
+const EventsContext = createContext<EventEmitter>( null );
+EventsContext.displayName = 'Events';
 
 export default function EventsProvider( { children } ) {
 	const [ events ] = useState( () => new EventEmitter() );
 	
-	return <EventContext.Provider value={events}>{children}</EventContext.Provider>;
+	return <EventsContext.Provider value={events}>{children}</EventsContext.Provider>;
 }
 
 export function useEvents() {
-	return useContext( EventContext );
+	return useContext( EventsContext );
 }
 
 export function withEvents( Component ) {
 	return ( props ) => (
-		<EventContext.Consumer>
+		<EventsContext.Consumer>
 			{( event ) => <Component event={event} {...props}/>}
-		</EventContext.Consumer>
+		</EventsContext.Consumer>
 	);
 }

@@ -10,7 +10,8 @@ const db = getDatabase( app );
 
 const SetData: NextApiHandler = async ( req, res ) => {
 	try {
-		const { uid } = await auth.verifyIdToken( req.cookies.id_token, true );
+		const { uid, email_verified } = await auth.verifyIdToken( req.cookies.id_token, true );
+		if ( !email_verified ) throw new Error( 'Email not verified' );
 		
 		const data = {
 			data     : req.body.data,

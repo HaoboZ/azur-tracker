@@ -9,7 +9,8 @@ const db = getDatabase( app );
 
 const GetData: NextApiHandler = async ( req, res ) => {
 	try {
-		const { uid } = await auth.verifyIdToken( req.cookies.id_token, true );
+		const { uid, email_verified } = await auth.verifyIdToken( req.cookies.id_token, true );
+		if ( !email_verified ) throw new Error( 'Email not verified' );
 		
 		const ref = db.ref( uid );
 		const data = ( await ref.child( 'data' ).get() ).val();

@@ -7,6 +7,7 @@ import { ReactNode, useRef } from 'react';
 import { component, ComponentComposer } from '../../lib/helpers/chainedCall';
 import useTheme from '../../lib/hooks/useTheme';
 import AuthProvider from '../../lib/providers/auth';
+import EventsProvider from '../../lib/providers/event';
 import IndicatorProvider from '../../lib/providers/indicator';
 import ModalProvider from '../../lib/providers/modal';
 
@@ -23,9 +24,8 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 				// styling
 				component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
 				component( ThemeProvider, { theme } ),
-				// app
-				component( AuthProvider ),
-				// content
+				// static
+				component( EventsProvider ),
 				component( SnackbarProvider, {
 					ref             : snackbarRef,
 					preventDuplicate: true,
@@ -36,6 +36,8 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 					)
 				} ),
 				component( IndicatorProvider ),
+				component( AuthProvider ),
+				// interactive
 				component( ModalProvider )
 			]}>
 			{children}

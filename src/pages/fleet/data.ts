@@ -382,7 +382,7 @@ const ships = {
 	'Gneisenau'                     : [ 'Gneisenau', 'Elite', 'Ironblood', 'Battlecruiser', 6, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Bismarck'                      : [ 'Bismarck', 'Super Rare', 'Ironblood', 'Battleship', 1, [ 0, 1, 0, 1, 1 ], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Tirpitz'                       : [ 'Tirpitz', 'Super Rare', 'Ironblood', 'Battleship', 4, [], 'BB/Damage', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
-	'Ulrich_von_Hutten'             : [ 'Ulrich von Hutten', 'Ultra Rare', 'Ironblood', 'Battleship', 0, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
+	'Ulrich_von_Hutten'             : [ 'Ulrich von Hutten', 'Ultra Rare', 'Ironblood', 'Battleship', -1, [], 'BB/Speed', 'CL/DD/Main', 'AA/Main', 'A/BB1', 'A/BB2' ],
 	'Weser'                         : [ 'Weser', 'Elite', 'Ironblood', 'Light Aircraft Carrier', 5, [], 'F', 'DB', 'AA/Main', 'A/CV1', 'A/CV2' ],
 	'Elbe'                          : [ 'Elbe', 'Elite', 'Ironblood', 'Light Aircraft Carrier', 4, [], 'F', 'DB', 'AA/Main', 'A/CV1', 'A/CV2' ],
 	'Graf_Zeppelin'                 : [ 'Graf Zeppelin', 'Super Rare', 'Ironblood', 'Aircraft Carrier', 2, [ 1, 1, 1 ], 'F', 'DB', 'DB/TB', 'A/CV1', 'A/CV2' ],

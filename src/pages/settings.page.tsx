@@ -23,7 +23,8 @@ import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
 import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
-import { login, logout, useAuth } from '../lib/providers/auth';
+import { useAuth } from '../lib/providers/auth';
+import useAuthButton from '../lib/providers/auth/button';
 import { useIndicator } from '../lib/providers/indicator';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import { fleet_reset } from '../lib/store/reducers/fleetReducer';
@@ -44,6 +45,7 @@ export default function Settings() {
 	const { enqueueSnackbar } = useSnackbar();
 	const indicator = useIndicator();
 	const online = useNetworkStatus();
+	const authButton = useAuthButton();
 	
 	return (
 		<PageContainer>
@@ -60,21 +62,7 @@ export default function Settings() {
 								{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
 							</ListItemText>
 							<ListItemSecondaryAction>
-								{user ? (
-									<AsyncLoadingButton
-										variant='outlined'
-										color='inherit'
-										onClick={() => logout()}>
-										Sign Out
-									</AsyncLoadingButton>
-								) : (
-									<AsyncLoadingButton
-										variant='outlined'
-										color='inherit'
-										onClick={() => login()}>
-										Sign In
-									</AsyncLoadingButton>
-								)}
+								{authButton}
 							</ListItemSecondaryAction>
 						</>
 					) : <ListItemText>Offline</ListItemText>}
@@ -138,7 +126,7 @@ export default function Settings() {
 								onClick={async () => {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
-									else if ( user ) {
+									else if ( user?.emailVerified ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( setBackup( await checkDataIntegrity() ) )
 										);
@@ -155,7 +143,7 @@ export default function Settings() {
 								onClick={async () => {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
-									else if ( user ) {
+									else if ( user?.emailVerified ) {
 										await backupMutex.runExclusive( async () =>
 											await indicator( getBackup( await checkDataIntegrity() ) )
 										);

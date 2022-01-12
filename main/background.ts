@@ -1,6 +1,6 @@
-import { app } from 'electron';
+import { app, shell } from 'electron';
 import serve from 'electron-serve';
-import { createWindow } from './helpers';
+import createWindow from './helpers/createWindow';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -21,8 +21,13 @@ if ( isProd ) {
 		}
 	} );
 	
+	mainWindow.webContents.on( 'will-navigate', ( e, url ) => {
+		e.preventDefault();
+		shell.openExternal( url );
+	} );
+	
 	if ( isProd ) {
-		await mainWindow.loadURL( 'app://-' );
+		await mainWindow.loadURL( 'app://./index.html' );
 	} else {
 		const port = process.argv[ 2 ];
 		await mainWindow.loadURL( `http://localhost:${port}` );
