@@ -3963,7 +3963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-redux@npm:^7.1.20, @types/react-redux@npm:^7.1.21":
+"@types/react-redux@npm:^7.1.20":
   version: 7.1.21
   resolution: "@types/react-redux@npm:7.1.21"
   dependencies:
@@ -3972,6 +3972,18 @@ __metadata:
     hoist-non-react-statics: ^3.3.0
     redux: ^4.0.0
   checksum: 5104e818ef718d2ed454a66da0fd5a61350aa67b948d117f1d93a6135d9808f9f90a60ffcc97a4b008059048cc154a6fc2c24cc57db4e76b6e89e207edb48023
+  languageName: node
+  linkType: hard
+
+"@types/react-redux@npm:^7.1.22":
+  version: 7.1.22
+  resolution: "@types/react-redux@npm:7.1.22"
+  dependencies:
+    "@types/hoist-non-react-statics": ^3.3.0
+    "@types/react": "*"
+    hoist-non-react-statics: ^3.3.0
+    redux: ^4.0.0
+  checksum: eef458c0cda27eabd8d458b7fc40553aab8d2f218145b896b9059b86d88680ae479079aee13683f2a0f35774f20346b732e91182252402bd8777455e004561c9
   languageName: node
   linkType: hard
 
@@ -4983,7 +4995,7 @@ __metadata:
     "@types/object-hash": ^2.2.1
     "@types/react": ^17.0.38
     "@types/react-dom": ^17.0.11
-    "@types/react-redux": ^7.1.21
+    "@types/react-redux": ^7.1.22
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
     "@types/react-table": ^7.7.9
@@ -4998,8 +5010,8 @@ __metadata:
     babel-plugin-lodash: ^3.3.4
     clsx: ^1.1.1
     cross-env: ^7.0.3
-    electron: ^16.0.6
-    electron-builder: ^22.14.12
+    electron: ^16.0.7
+    electron-builder: ^22.14.13
     electron-serve: ^1.1.0
     electron-store: ^8.0.1
     eslint: ^8.6.0
@@ -5014,18 +5026,18 @@ __metadata:
     lodash: ^4.17.21
     lz-string: ^1.4.4
     moment: ^2.29.1
-    nanoid: ^3.1.30
+    nanoid: ^3.1.31
     next: ^12.0.7
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.4
-    next-sitemap: ^1.8.4
+    next-sitemap: ^1.8.7
     nextron: ^7.1.0
     notistack: ^2.0.3
     nprogress: ^0.2.0
     object-hash: ^2.2.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-firebase-hooks: ^4.0.1
+    react-firebase-hooks: ^4.0.2
     react-firebaseui: ^6.0.0
     react-joyride: ^2.3.2
     react-redux: ^7.2.6
@@ -6818,7 +6830,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-builder@npm:^22.14.12":
+"electron-builder@npm:^22.14.13":
   version: 22.14.13
   resolution: "electron-builder@npm:22.14.13"
   dependencies:
@@ -6897,7 +6909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^16.0.6":
+"electron@npm:^16.0.7":
   version: 16.0.7
   resolution: "electron@npm:16.0.7"
   dependencies:
@@ -10748,7 +10760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.23, nanoid@npm:^3.1.30":
+"nanoid@npm:^3.1.23, nanoid@npm:^3.1.31":
   version: 3.1.31
   resolution: "nanoid@npm:3.1.31"
   bin:
@@ -10836,7 +10848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^1.8.4":
+"next-sitemap@npm:^1.8.7":
   version: 1.8.7
   resolution: "next-sitemap@npm:1.8.7"
   dependencies:
@@ -11995,7 +12007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-firebase-hooks@npm:^4.0.1":
+"react-firebase-hooks@npm:^4.0.2":
   version: 4.0.2
   resolution: "react-firebase-hooks@npm:4.0.2"
   peerDependencies:

@@ -19,7 +19,8 @@ export default function LoginModal() {
 			<StyledFirebaseAuth
 				firebaseAuth={auth}
 				uiConfig={{
-					signInFlow      : 'popup',
+					// @ts-ignore
+					signInFlow      : window.navigator.standalone ? 'redirect' : 'popup',
 					privacyPolicyUrl: '/privacy',
 					tosUrl          : '/tos',
 					signInOptions   : [
