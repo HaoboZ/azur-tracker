@@ -10,7 +10,6 @@ import {
 	ListItem,
 	ListItemSecondaryAction,
 	ListItemText,
-	Slider,
 	ToggleButton,
 	ToggleButtonGroup
 } from '@mui/material';
@@ -21,20 +20,14 @@ import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
-import { backupMutex, checkDataIntegrity, getBackup, setBackup } from '../lib/backup';
+import { getBackup, setBackup } from '../lib/firebase/storage';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useAuth } from '../lib/providers/auth';
 import useAuthButton from '../lib/providers/auth/button';
 import { useIndicator } from '../lib/providers/indicator';
 import { event_reset } from '../lib/store/reducers/eventReducer';
 import { fleet_reset } from '../lib/store/reducers/fleetReducer';
-import {
-	setAutoLoad,
-	setAutoLoadInterval,
-	setAutoSave,
-	setAutoSaveInterval,
-	setTheme
-} from '../lib/store/reducers/mainReducer';
+import { setAutoLoad, setAutoSave, setTheme } from '../lib/store/reducers/mainReducer';
 import { research_reset } from '../lib/store/reducers/researchReducer';
 
 // noinspection JSUnusedGlobalSymbols
@@ -87,36 +80,6 @@ export default function Settings() {
 					</ListItemSecondaryAction>
 				</ListItem>
 				<ListItem>
-					<ListItemText>Auto Save Interval (secs)</ListItemText>
-					<ListItemSecondaryAction className='longAction'>
-						<Slider
-							marks
-							value={main.autoSaveInterval}
-							valueLabelDisplay='auto'
-							valueLabelFormat={( value ) => value / 1000}
-							step={500}
-							min={500}
-							max={5000}
-							onChange={( e, val: number ) => dispatch( setAutoSaveInterval( val ) )}
-						/>
-					</ListItemSecondaryAction>
-				</ListItem>
-				<ListItem>
-					<ListItemText>Auto Load Interval (secs)</ListItemText>
-					<ListItemSecondaryAction className='longAction'>
-						<Slider
-							marks
-							value={main.autoLoadInterval}
-							valueLabelDisplay='auto'
-							valueLabelFormat={( value ) => value / 1000}
-							step={2500}
-							min={5000}
-							max={30000}
-							onChange={( e, val: number ) => dispatch( setAutoLoadInterval( val ) )}
-						/>
-					</ListItemSecondaryAction>
-				</ListItem>
-				<ListItem>
 					<ListItemText>Manual Backup</ListItemText>
 					<ListItemSecondaryAction>
 						<ButtonGroup>
@@ -127,9 +90,7 @@ export default function Settings() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( user?.emailVerified ) {
-										await backupMutex.runExclusive( async () =>
-											await indicator( setBackup( await checkDataIntegrity() ) )
-										);
+										await indicator( setBackup() );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -144,9 +105,7 @@ export default function Settings() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( user?.emailVerified ) {
-										await backupMutex.runExclusive( async () =>
-											await indicator( getBackup( await checkDataIntegrity() ) )
-										);
+										await indicator( getBackup() );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
