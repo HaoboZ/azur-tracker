@@ -20,7 +20,7 @@ import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
-import { getBackup, setBackup } from '../lib/firebase/storage';
+import { getData, setData } from '../lib/firebase/storage';
 import useNetworkStatus from '../lib/hooks/useNetworkStatus';
 import { useAuth } from '../lib/providers/auth';
 import useAuthButton from '../lib/providers/auth/button';
@@ -90,7 +90,7 @@ export default function Settings() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( user?.emailVerified ) {
-										await indicator( setBackup() );
+										await indicator( setData() );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -105,7 +105,7 @@ export default function Settings() {
 									if ( !online )
 										enqueueSnackbar( 'Offline' );
 									else if ( user?.emailVerified ) {
-										await indicator( getBackup() );
+										await indicator( getData() );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );

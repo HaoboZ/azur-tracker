@@ -4,7 +4,7 @@ import { debounce } from 'lodash';
 import { useCallback, useEffect } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { useSelector } from 'react-redux';
-import { getBackup, setBackup } from '../../lib/firebase/storage';
+import { getData, setData } from '../../lib/firebase/storage';
 import { useAuth } from '../../lib/providers/auth';
 import { useIndicator } from '../../lib/providers/indicator';
 
@@ -16,18 +16,18 @@ export default function AutoData() {
 	const user = useAuth();
 	const [ value, loading, error ] = useObjectVal( ref( db, `${user.uid}/timestamp` ) );
 	
-	const delayedSetBackup = useCallback( debounce( () => indicator( setBackup() ), 1000 ), [] );
+	const delayedSetBackup = useCallback( debounce( () => indicator( setData() ), 1000 ), [] );
 	
 	// save
 	useEffect( () => {
-		console.log( value, main.lastSaved );
+		if ( !value || loading || error ) return;
 		if ( main.autoSave && value <= main.lastSaved ) delayedSetBackup();
 	}, [ stringify( state ) ] );
 	
 	// load
 	useEffect( () => {
 		if ( !value || loading || error ) return;
-		if ( main.autoLoad && value > main.lastSaved ) getBackup().then();
+		if ( main.autoLoad && value > main.lastSaved ) getData().then();
 	}, [ value ] );
 	
 	return null;

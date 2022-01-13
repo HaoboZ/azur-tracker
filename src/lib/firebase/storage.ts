@@ -8,7 +8,7 @@ import { auth } from './client';
 
 const db = getDatabase();
 
-export async function setBackup() {
+export async function setData() {
 	if ( !auth.currentUser?.uid ) return;
 	const readRef = ref( db, `${auth.currentUser.uid}/timestamp` );
 	const snapshot = await get( readRef );
@@ -30,7 +30,7 @@ export async function setBackup() {
 	} );
 }
 
-export async function getBackup() {
+export async function getData() {
 	const dbRef = ref( db, auth.currentUser?.uid );
 	const snapshot = await get( dbRef );
 	if ( !snapshot.exists() ) return;
