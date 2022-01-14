@@ -2,6 +2,7 @@ import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
+import info from '../../package.json';
 
 // noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
@@ -38,6 +39,10 @@ export default class _Document extends Document {
 				<Head>
 					<meta charSet='utf-8'/>
 					<link rel='manifest' href='/app.webmanifest'/>
+					{/*seo*/}
+					<meta name='description' content={info.description}/>
+					<meta name='keywords' content={info.keywords.join( ', ' )}/>
+					<meta name='author' content={info.author}/>
 					
 					{/*web*/}
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>

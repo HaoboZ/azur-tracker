@@ -54,6 +54,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 			/>
 			<IconButton
 				id='help'
+				name='help'
 				{...buttonProps}
 				onClick={( e ) => {
 					buttonProps?.onClick?.( e );
