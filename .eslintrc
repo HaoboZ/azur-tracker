@@ -79,6 +79,7 @@
 		"react/jsx-curly-spacing"                          : [ "warn", { "children": true } ],
 		"react/jsx-equals-spacing"                         : "warn",
 		"react/jsx-first-prop-new-line"                    : "warn",
+		"react/jsx-fragments"                              : [ "warn", "element" ],
 		"react/jsx-indent"                                 : [ "warn", "tab", { "indentLogicalExpressions": true } ],
 		"react/jsx-no-useless-fragment"                    : [ "warn", { "allowExpressions": true } ],
 		"react/jsx-props-no-multi-spaces"                  : "warn",

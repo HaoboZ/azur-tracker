@@ -49,7 +49,7 @@ function EnhancedList<Item>( {
 		const totalSelected = selectable?.selected.length;
 		
 		const row = ( item, index, handle, selected ) => (
-			<>
+			<Fragment>
 				{!removeEditing && editing && sortable && (
 					<ListItemIcon sx={{ pl: 1 }}>
 						<MenuIcon {...handle}/>
@@ -70,7 +70,7 @@ function EnhancedList<Item>( {
 						</IconButton>
 					</ListItemIcon>
 				)}
-			</>
+			</Fragment>
 		);
 		
 		const panel = ( { item, index, handle }: { item, index, handle? } ) => {

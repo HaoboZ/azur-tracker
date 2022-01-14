@@ -5,6 +5,7 @@ import {
 	PaletteMode,
 	responsiveFontSizes,
 	ThemeOptions,
+	ThemeProvider as MuiThemeProvider,
 	useMediaQuery
 } from '@mui/material';
 import { merge } from 'lodash';
@@ -61,7 +62,7 @@ const darkTheme = responsiveFontSizes( createTheme(
 	} )
 ) );
 
-export default function useTheme() {
+export default function ThemeProvider( { children } ) {
 	const theme = useSelector( ( { main } ) => main.theme );
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
 	
@@ -75,5 +76,9 @@ export default function useTheme() {
 		}
 	}, [ theme, dark ] );
 	
-	return mode === 'dark' ? darkTheme : lightTheme;
+	return (
+		<MuiThemeProvider theme={mode === 'dark' ? darkTheme : lightTheme}>
+			{children}
+		</MuiThemeProvider>
+	);
 }

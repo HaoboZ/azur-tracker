@@ -5,7 +5,10 @@ export default function usePageHeight() {
 	const [ height, setHeight ] = useState( window.innerHeight );
 	
 	// window event listener resize event
-	useEventEffect( window, 'resize', () => setHeight( window.innerHeight ), [] );
+	useEventEffect( window, {
+		name    : 'resize',
+		listener: () => setHeight( window.innerHeight )
+	}, [] );
 	
 	return height;
 }

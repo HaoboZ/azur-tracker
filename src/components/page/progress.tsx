@@ -56,9 +56,18 @@ export default function PageProgress( {
 		}
 	};
 	
-	useEventEffect( router.events, 'routeChangeStart', routeChangeStart, [] );
-	useEventEffect( router.events, 'routeChangeComplete', routeChangeEnd, [] );
-	useEventEffect( router.events, 'routeChangeError', routeChangeEnd, [] );
+	useEventEffect( router.events, {
+		name    : 'routeChangeStart',
+		listener: routeChangeStart
+	}, [] );
+	useEventEffect( router.events, {
+		name    : 'routeChangeComplete',
+		listener: routeChangeEnd
+	}, [] );
+	useEventEffect( router.events, {
+		name    : 'routeChangeError',
+		listener: routeChangeEnd
+	}, [] );
 	
 	useEffect( () => {
 		if ( options ) NProgress.configure( options );

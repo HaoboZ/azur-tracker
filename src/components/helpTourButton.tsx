@@ -1,7 +1,7 @@
 import { Help as HelpIcon } from '@mui/icons-material';
 import { IconButton, IconButtonProps, useTheme } from '@mui/material';
 import { includes } from 'lodash';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Joyride, { ACTIONS, EVENTS, Props } from 'react-joyride';
 
 export default function HelpTourButton( { buttonProps, ...props }: { buttonProps?: IconButtonProps } & Props ) {
@@ -11,7 +11,7 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 	const [ stepIndex, setStepIndex ] = useState( 0 );
 	
 	return (
-		<>
+		<Fragment>
 			<Joyride
 				continuous
 				scrollToFirstStep
@@ -61,6 +61,6 @@ export default function HelpTourButton( { buttonProps, ...props }: { buttonProps
 				}}>
 				<HelpIcon/>
 			</IconButton>
-		</>
+		</Fragment>
 	);
 }

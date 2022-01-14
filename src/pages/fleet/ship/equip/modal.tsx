@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { cloneDeep, reduce } from 'lodash';
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useEventEffect from '../../../../lib/hooks/useEventEffect';
 import { useModalControls } from '../../../../lib/providers/modal';
@@ -71,20 +71,23 @@ export default function EquipModal( { info, selectedEquip }: {
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	
 	// saves info on close
-	useEventEffect( events, 'close', ( cancel ) => {
-		setAnchorEl( null );
-		if ( cancel ) return;
-		if ( info?.ship.equip[ info.index ][ 0 ] === equip.id && info?.ship.equip[ info.index ][ 1 ] === override )
-			return;
-		
-		const newEquip = cloneDeep( info.ship.equip );
-		newEquip[ info.index ] = [ equip.id, override, 6 ];
-		getTier( fleetData[ info.ship.id ], newEquip );
-		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
+	useEventEffect( events, {
+		name    : 'close',
+		listener: ( cancel ) => {
+			setAnchorEl( null );
+			if ( cancel ) return;
+			if ( info?.ship.equip[ info.index ][ 0 ] === equip.id && info?.ship.equip[ info.index ][ 1 ] === override )
+				return;
+			
+			const newEquip = cloneDeep( info.ship.equip );
+			newEquip[ info.index ] = [ equip.id, override, 6 ];
+			getTier( fleetData[ info.ship.id ], newEquip );
+			dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
+		}
 	}, [ equip, override ] );
 	
 	return (
-		<>
+		<Fragment>
 			<DialogTitle>Switch Equipment</DialogTitle>
 			<DialogContent>
 				<Grid container alignItems='center' justifyContent='center'>
@@ -182,6 +185,6 @@ export default function EquipModal( { info, selectedEquip }: {
 					Cancel
 				</Button>
 			</DialogActions>
-		</>
+		</Fragment>
 	);
 }

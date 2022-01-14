@@ -12,7 +12,7 @@ import {
 	Zoom
 } from '@mui/material';
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../../lib/providers/modal';
 import { ResponsiveModalContainer } from '../../../lib/providers/modal/responsiveModal';
@@ -149,10 +149,10 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								<Box display='flex' alignItems='center'>
 									<TierIcon tier={val[ 2 ]}/>
 									{equipBetter[ index ]?.[ 1 ] ? (
-										<>
+										<Fragment>
 											<ArrowForwardIcon fontSize='inherit'/>
 											<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
-										</>
+										</Fragment>
 									) : undefined}
 								</Box>
 							</Grid>

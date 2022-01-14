@@ -24,7 +24,7 @@ function ExpandRow( { renderPanel, ...props }: { renderPanel } & TableRowProps )
 	const [ open, setOpen ] = useState( false );
 	
 	return (
-		<>
+		<Fragment>
 			<TableRow
 				{...props}
 				onClick={renderPanel || props.onClick ? ( e ) => {
@@ -37,7 +37,7 @@ function ExpandRow( { renderPanel, ...props }: { renderPanel } & TableRowProps )
 					<TableRow><TableCell>{renderPanel}</TableCell></TableRow>
 				</Collapse>
 			)}
-		</>
+		</Fragment>
 	);
 }
 

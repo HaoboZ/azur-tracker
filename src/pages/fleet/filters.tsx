@@ -72,15 +72,18 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const searchRef = useRef<HTMLInputElement>();
 	
 	// keydown listener for search
-	useEventEffect( window, 'keydown', ( e: KeyboardEvent ) => {
-		if ( !searchRef.current ) return;
-		if ( e.ctrlKey && e.key === 'f' ) {
-			if ( document.activeElement === searchRef.current ) {
-				searchRef.current.select();
-			} else {
-				searchRef.current.focus();
+	useEventEffect( window, {
+		name    : 'keydown',
+		listener: ( e: KeyboardEvent ) => {
+			if ( !searchRef.current ) return;
+			if ( e.ctrlKey && e.key === 'f' ) {
+				if ( document.activeElement === searchRef.current ) {
+					searchRef.current.select();
+				} else {
+					searchRef.current.focus();
+				}
+				e.preventDefault();
 			}
-			e.preventDefault();
 		}
 	}, [] );
 	

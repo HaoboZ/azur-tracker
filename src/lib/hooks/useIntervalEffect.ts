@@ -2,12 +2,17 @@ import { DependencyList, useEffect } from 'react';
 
 export default function useIntervalEffect<TArgs extends any[]>(
 	callback: ( ...args: TArgs ) => void,
-	ms?: number,
-	deps?: DependencyList,
-	...args: TArgs
+	options: {
+		ms?: number,
+		args?: TArgs,
+		disabled?: boolean
+	},
+	deps?: DependencyList
 ) {
 	useEffect( () => {
-		const interval = setInterval( callback, ms, ...args );
+		if ( options.disabled ) return;
+		
+		const interval = setInterval( callback, options.ms, ...options.args ?? [] );
 		return () => clearInterval( interval );
-	}, deps );
+	}, [ options.ms, options.disabled, ...options.args ?? [], ...deps ?? [] ] );
 }

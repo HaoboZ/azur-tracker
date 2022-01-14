@@ -1,5 +1,5 @@
 import { Button, ButtonProps, Menu, MenuProps } from '@mui/material';
-import { ReactNode, useState } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
 
 export default function ButtonMenu( { onClick, menuProps, renderMenu, ...props }: {
 	renderMenu: ( closeMenu: () => void ) => ReactNode,
@@ -8,7 +8,7 @@ export default function ButtonMenu( { onClick, menuProps, renderMenu, ...props }
 	const [ anchorEl, setAnchorEl ] = useState( null );
 	
 	return (
-		<>
+		<Fragment>
 			<Button
 				{...props}
 				onClick={( e ) => {
@@ -24,6 +24,6 @@ export default function ButtonMenu( { onClick, menuProps, renderMenu, ...props }
 				{...menuProps}>
 				{renderMenu( () => setAnchorEl( null ) )}
 			</Menu>
-		</>
+		</Fragment>
 	);
 }

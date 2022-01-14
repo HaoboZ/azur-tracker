@@ -5,6 +5,7 @@ import {
 	Star as StarIcon
 } from '@mui/icons-material';
 import { SvgIcon, SvgIconProps } from '@mui/material';
+import { Fragment } from 'react';
 
 function RingIcon( props: SvgIconProps ) {
 	return (
@@ -30,8 +31,8 @@ export const AffinityIcons = [
 	<FavoriteBorderIcon key='none' fontSize='small'/>,
 	<FavoriteIcon key='love' fontSize='small'/>,
 	<RingIcon key='married' fontSize='small'/>,
-	<>
+	<Fragment key='max'>
 		<RingIcon fontSize='small'/>
 		<FavoriteIcon fontSize='small'/>
-	</>
+	</Fragment>
 ];

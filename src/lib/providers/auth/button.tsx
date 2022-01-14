@@ -12,7 +12,10 @@ export default function useAuthButton() {
 	const events = useEvents();
 	const { showModal } = useModal( LoginModal, { maxWidth: 'xs' } );
 	
-	useEventEffect( events, 'showAuth', () => showModal() );
+	useEventEffect( events, {
+		name    : 'showAuth',
+		listener: () => showModal()
+	} );
 	
 	return user ? (
 		<AsyncLoadingButton

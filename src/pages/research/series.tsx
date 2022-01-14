@@ -1,6 +1,6 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
@@ -37,7 +37,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 	}, [ ships ] );
 	
 	return (
-		<>
+		<Fragment>
 			<EnhancedDisplay
 				items={researchShips}
 				extraData={ships}
@@ -55,12 +55,12 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						const ship = ships[ item.name ] || {};
 						const { devLevel, devPrints, fatePrints } = shipData[ index ];
 						return [
-							<>
+							<Fragment key='ship'>
 								<Avatar variant='rounded' sx={{ width: 60, height: 60 }}>
 									<Image src={item.image} alt={item.name}/>
 								</Avatar>
 								<Typography>{item.name}</Typography>
-							</>,
+							</Fragment>,
 							<FormattedTextField
 								key='devLevel'
 								type='number'
@@ -125,7 +125,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 					renderRow: ( item, index ) => {
 						const { devPrints, fatePrints } = shipData[ index ];
 						return (
-							<>
+							<Fragment>
 								<ListItemAvatar>
 									<Avatar variant='rounded'>
 										<Image src={item.image} alt={item.name}/>
@@ -135,7 +135,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 									primary={item.name}
 									secondary={`Needs: ${devPrints + fatePrints} Prints`}
 								/>
-							</>
+							</Fragment>
 						);
 					},
 					renderPanel( item, index ) {
@@ -219,6 +219,6 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 			/>
 			<Typography>Priority Prints Total: {totalPR}</Typography>
 			<Typography>Decisive Prints Total: {totalDR}</Typography>
-		</>
+		</Fragment>
 	);
 }

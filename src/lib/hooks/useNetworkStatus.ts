@@ -4,8 +4,14 @@ import useEventEffect from './useEventEffect';
 export default function useNetworkStatus() {
 	const [ networkStatus, setNetworkStatus ] = useState( navigator.onLine );
 	
-	useEventEffect( window, 'online', () => setNetworkStatus( navigator.onLine ), [] );
-	useEventEffect( window, 'offline', () => setNetworkStatus( navigator.onLine ), [] );
+	useEventEffect( window, {
+		name    : 'online',
+		listener: () => setNetworkStatus( navigator.onLine )
+	}, [] );
+	useEventEffect( window, {
+		name    : 'offline',
+		listener: () => setNetworkStatus( navigator.onLine )
+	}, [] );
 	
 	return networkStatus;
 }

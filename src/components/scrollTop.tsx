@@ -14,10 +14,7 @@ export default function ScrollTop() {
 					zIndex  : 'snackbar',
 					bottom  : 'calc(env(safe-area-inset-bottom) + 24px)',
 					right   : 'calc(env(safe-area-inset-right) + 24px)',
-					mb      : {
-						xs: 8,
-						sm: 0
-					}
+					mb      : { xs: 8, sm: 0 }
 				}}
 				onClick={() => window.scrollTo( { top: 0, behavior: 'smooth' } )}>
 				<KeyboardArrowUpIcon/>

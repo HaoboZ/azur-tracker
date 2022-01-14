@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
+import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
@@ -50,14 +51,14 @@ export default function Settings() {
 			}}>
 				<ListItem>
 					{online ? (
-						<>
+						<Fragment>
 							<ListItemText classes={{ primary: 'longText' }}>
 								{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
 							</ListItemText>
 							<ListItemSecondaryAction>
 								{authButton}
 							</ListItemSecondaryAction>
-						</>
+						</Fragment>
 					) : <ListItemText>Offline</ListItemText>}
 				</ListItem>
 				<ListItem>

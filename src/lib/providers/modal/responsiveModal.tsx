@@ -16,7 +16,7 @@ import {
 	Typography,
 	useMediaQuery
 } from '@mui/material';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import AsyncLoadingButton from '../../../components/asyncLoadingButton';
 import { useModalControls } from './index';
 
@@ -106,7 +106,7 @@ export function ResponsiveModalContainer( {
 	
 	if ( variant === 'center' || variant === 'adaptive' && wide ) {
 		return (
-			<>
+			<Fragment>
 				{title && <DialogTitle>{title}</DialogTitle>}
 				<DialogContent {...props}/>
 				<DialogActions>
@@ -124,11 +124,11 @@ export function ResponsiveModalContainer( {
 						{onSave ? 'Cancel' : 'Close'}
 					</Button>
 				</DialogActions>
-			</>
+			</Fragment>
 		);
 	} else {
 		return (
-			<>
+			<Fragment>
 				<Toolbar>
 					<IconButton edge='start' color='inherit' onClick={onClose}>
 						<ArrowBackIcon/>
@@ -147,7 +147,7 @@ export function ResponsiveModalContainer( {
 					) : undefined}
 				</Toolbar>
 				<DialogContent onTouchStart={( e ) => e.stopPropagation()} {...props}/>
-			</>
+			</Fragment>
 		);
 	}
 }

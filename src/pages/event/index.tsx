@@ -2,7 +2,7 @@ import { Box, Link, Typography } from '@mui/material';
 import moment from 'moment';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import eventImage from '../../../public/images/event.jpg';
 import HelpTourButton from '../../components/helpTourButton';
@@ -26,7 +26,7 @@ export default function Event() {
 			dispatch( event_newEvent() );
 	}, [] );
 	
-	useIntervalEffect( () => setTime( moment() ), 15 * 1000, [] );
+	useIntervalEffect( () => setTime( moment() ), { ms: 15 * 1000 }, [] );
 	
 	if ( event.name !== eventData.name )
 		return null;
@@ -49,7 +49,7 @@ export default function Event() {
 					steps={[ {
 						target   : '#help',
 						content  : (
-							<>
+							<Fragment>
 								<Typography>This page will help you</Typography>
 								<ul style={{ textAlign: 'start' }}>
 									<li>track event information</li>
@@ -57,26 +57,26 @@ export default function Event() {
 									<li>and farm stages</li>
 								</ul>
 								<Typography>WITHOUT creating spreadsheets</Typography>
-							</>
+							</Fragment>
 						),
 						placement: 'center'
 					}, {
 						target : '#shop .MuiTextField-root',
 						content: (
-							<>
+							<Fragment>
 								<Typography>Open to change what you are aiming to buy from the shop.</Typography>
 								<br/>
 								<Typography>This shows the total amount of points needed.</Typography>
-							</>
+							</Fragment>
 						)
 					}, {
 						target : '#daily .MuiTextField-root',
 						content: (
-							<>
+							<Fragment>
 								<Typography>Open to change how many points you get daily. (missions, 3x, ...)</Typography>
 								<br/>
 								<Typography>This shows the total amount of points per day.</Typography>
-							</>
+							</Fragment>
 						)
 					}, {
 						target : '#required .MuiBox-root',

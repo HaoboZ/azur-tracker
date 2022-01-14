@@ -2,7 +2,7 @@ import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material
 import { cloneDeep } from 'lodash';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
@@ -56,7 +56,7 @@ export default function Fleet() {
 						{
 							target   : '#help',
 							content  : (
-								<>
+								<Fragment>
 									<Typography>This page will help you</Typography>
 									<ul style={{ textAlign: 'start' }}>
 										<li>track ship information (levels, affection)</li>
@@ -66,7 +66,7 @@ export default function Fleet() {
 									<Typography>For people who want every ship to equip good stuff and level up
 										everyone
 									</Typography>
-								</>
+								</Fragment>
 							),
 							placement: 'center'
 						}, {
@@ -86,22 +86,22 @@ export default function Fleet() {
 			<VirtualDisplay
 				{...table}
 				renderRow={( row ) => (
-					<>
+					<Fragment>
 						<ListItemText
 							primary={(
-								<>
+								<Fragment>
 									{row.values.name}
 									{' - Tier: '}{row.cells[ 4 ].render( 'Cell' )}
 									{' - '}{row.cells[ 6 ].render( 'Cell' )}
 									{' / '}{row.cells[ 5 ].render( 'Cell' )}
-								</>
+								</Fragment>
 							)}
 							secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
 						/>
 						<ListItemSecondaryAction className={( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] )}>
 							{row.cells[ 7 ].render( 'Cell' )}
 						</ListItemSecondaryAction>
-					</>
+					</Fragment>
 				)}
 				onClick={( row ) => showModal( ShipModal, {
 					variant: 'bottom'

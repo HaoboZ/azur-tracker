@@ -1,6 +1,5 @@
 import { Typography } from '@mui/material';
 import { sendEmailVerification, User } from 'firebase/auth';
-import Cookies from 'js-cookie';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -18,8 +17,8 @@ export default function AuthProvider( { children } ) {
 		if ( loading || error ) return;
 		( async () => {
 			const token = await user?.getIdToken();
-			if ( token ) Cookies.set( 'id_token', token );
-			else Cookies.remove( 'id_token' );
+			if ( token ) localStorage.setItem( 'id_token', token );
+			else localStorage.removeItem( 'id_token' );
 		} )();
 		if ( !user || user.emailVerified ) return;
 		const key = enqueueSnackbar( 'Email Not Verified', {
