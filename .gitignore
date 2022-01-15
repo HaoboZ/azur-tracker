@@ -17,10 +17,6 @@ node_modules
 .next
 /out
 
-# production
-/build
-/app
-
 # misc
 .DS_Store
 *.pem

@@ -29,9 +29,8 @@
 	"exclude"        : [
 		"node_modules",
 		"out",
-		"build",
-		"app",
 		"android",
-		"ios"
+		"ios",
+		"electron"
 	]
 }

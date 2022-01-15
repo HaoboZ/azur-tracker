@@ -1,8 +1,13 @@
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import SplashProvider, { CompleteSplash } from '../lib/providers/splash';
 import Baseline from './baseline';
 import './baseline/style.scss';
+
+if ( typeof window !== 'undefined' ) {
+	defineCustomElements( window );
+}
 
 // noinspection JSUnusedGlobalSymbols
 export default function _App( { Component, pageProps }: AppProps ) {

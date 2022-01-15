@@ -1,23 +1,31 @@
-import { Backdrop, CircularProgress, Stack, useMediaQuery } from '@mui/material';
+import { Backdrop, LinearProgress, linearProgressClasses, Stack, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import { createContext, useContext, useEffect, useState } from 'react';
 import Icon from '../../../public/icons/icon-192x192.png';
 
-type C = () => void;
-const SplashContext = createContext<C>( () => null );
+type C = { setText: ( text: string ) => void, complete: () => void };
+const SplashContext = createContext<C>( { setText: () => null, complete: () => null } );
 SplashContext.displayName = 'Splash';
 
 export default function SplashProvider( { children } ) {
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
 	
 	const [ loading, setLoading ] = useState( true );
+	const [ text, setText ] = useState( '' );
 	
 	return (
-		<SplashContext.Provider value={() => setLoading( false )}>
+		<SplashContext.Provider value={{ complete: () => setLoading( false ), setText }}>
 			<Backdrop appear open={loading} sx={{ zIndex: 'tooltip', backgroundColor: dark ? 'black' : 'white' }}>
-				<Stack spacing={4} alignItems='center'>
-					<Image src={Icon} alt='icon' width={128} height={128}/>
-					<CircularProgress/>
+				<Stack alignItems='center' width={256}>
+					<Image priority src={Icon} alt='icon' width={128} height={128}/>
+					<Typography mt={2} mb={.5} color={dark ? 'white' : 'black'}>{text}</Typography>
+					<LinearProgress
+						sx={{
+							width                              : '100%',
+							borderRadius                       : 1,
+							[ `.${linearProgressClasses.bar}` ]: { borderRadius: 1 }
+						}}
+					/>
 				</Stack>
 			</Backdrop>
 			{children}
@@ -26,9 +34,17 @@ export default function SplashProvider( { children } ) {
 }
 
 export function CompleteSplash() {
-	const completeSplash = useContext( SplashContext );
+	const { complete } = useContext( SplashContext );
 	
-	useEffect( () => completeSplash(), [] );
+	useEffect( () => complete(), [] );
+	
+	return null;
+}
+
+export function useSplashText( text: string ) {
+	const { setText } = useContext( SplashContext );
+	
+	useEffect( () => setText( text ), [] );
 	
 	return null;
 }

@@ -39,7 +39,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 			sortBy       : [ { id: 'tier' }, { id: 'lvl', desc: true } ]
 		},
 		filterTypes           : {
-			// case insensitive ignores accents in strings
+			// case-insensitive ignores accents in strings
 			normal: ( rows, ids, filterValue ) => {
 				try {
 					const regex = new RegExp( filterValue, 'i' );
