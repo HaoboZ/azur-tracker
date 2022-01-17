@@ -3,6 +3,7 @@ import {
 	Button,
 	Dialog,
 	DialogActions,
+	dialogClasses,
 	DialogContent,
 	DialogContentProps,
 	DialogProps,
@@ -11,22 +12,23 @@ import {
 	IconButton,
 	SwipeableDrawer,
 	SwipeableDrawerProps,
-	Theme,
 	Toolbar,
-	Typography,
-	useMediaQuery
+	Typography
 } from '@mui/material';
 import { Fragment, ReactNode } from 'react';
-import AsyncLoadingButton from '../../../components/asyncLoadingButton';
+import AsyncLoadingButton from '../../components/asyncLoadingButton';
+import { useWideMedia } from '../../hooks/useWideMedia';
 import { useModalControls } from './index';
 
-export type ModalVariant = 'adaptive' | 'bottom' | 'center';
+export type ModalVariant = 'adaptive' | 'modal' | 'drawer';
 
 export type ResponsiveModalProps = {
 	open: boolean,
 	onClose: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
+	// only affects drawer variant
+	bottom?: boolean,
 	children?: ReactNode
 } & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
 
@@ -34,6 +36,8 @@ export type ResponsiveModalContainerProps = {
 	onClose?: () => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
+	// only affects drawer variant
+	bottom?: boolean,
 	title?: ReactNode,
 	// renders and called by save button if set
 	onSave?: () => void,
@@ -41,10 +45,10 @@ export type ResponsiveModalContainerProps = {
 	children?: ReactNode
 } & Omit<DialogContentProps, 'title'>;
 
-export default function ResponsiveModal( { variant = 'adaptive', ...props }: ResponsiveModalProps ) {
-	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
+export default function ResponsiveModal( { variant = 'adaptive', bottom, ...props }: ResponsiveModalProps ) {
+	const wide = useWideMedia();
 	
-	if ( variant === 'center' || variant === 'adaptive' && wide ) {
+	if ( variant === 'modal' || variant === 'adaptive' && wide ) {
 		return (
 			<Dialog
 				fullWidth
@@ -53,7 +57,7 @@ export default function ResponsiveModal( { variant = 'adaptive', ...props }: Res
 				maxWidth='md'
 				TransitionComponent={Grow}
 				sx={{
-					'.MuiDialog-paper': {
+					[ `.${dialogClasses.paper}` ]: {
 						ml: 'env(safe-area-inset-left)',
 						mr: 'env(safe-area-inset-right)',
 						mt: 'env(safe-area-inset-top)',
@@ -75,7 +79,7 @@ export default function ResponsiveModal( { variant = 'adaptive', ...props }: Res
 					sx: {
 						maxWidth            : '100%',
 						maxHeight           : 'calc(100vh - env(safe-area-inset-top) - 32px)',
-						height              : variant === 'bottom' ? 'auto' : '100%',
+						height              : bottom ? 'auto' : '100%',
 						left                : 'auto',
 						right               : 'auto',
 						borderTopLeftRadius : 12,
@@ -98,13 +102,13 @@ export function ResponsiveModalContainer( {
 	keepOpenOnSave,
 	...props
 }: ResponsiveModalContainerProps ) {
-	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
+	const wide = useWideMedia();
 	const { closeModal, modalInfo } = useModalControls();
 	
 	variant = variant ?? modalInfo?.modalProps?.variant ?? 'adaptive';
 	onClose = onClose ?? closeModal;
 	
-	if ( variant === 'center' || variant === 'adaptive' && wide ) {
+	if ( variant === 'modal' || variant === 'adaptive' && wide ) {
 		return (
 			<Fragment>
 				{title && <DialogTitle>{title}</DialogTitle>}

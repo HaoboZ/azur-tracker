@@ -1,11 +1,9 @@
-import { Theme, useMediaQuery } from '@mui/material';
+import { useWideMedia } from '../../../hooks/useWideMedia';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
 export default function Navigation( { children } ) {
-	const wide = useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) );
-	
-	if ( wide ) {
+	if ( useWideMedia() ) {
 		return <TitleBar>{children}</TitleBar>;
 	} else {
 		return <BottomBar>{children}</BottomBar>;

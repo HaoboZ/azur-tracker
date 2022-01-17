@@ -8,8 +8,8 @@ import eventImage from '../../../public/images/event.jpg';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
-import useIntervalEffect from '../../lib/hooks/useIntervalEffect';
-import { event_newEvent } from '../../lib/store/reducers/eventReducer';
+import useIntervalEffect from '../../hooks/useIntervalEffect';
+import { event_newEvent } from '../../store/reducers/eventReducer';
 import eventData from './data';
 import EventFarming from './farming';
 import EventFields from './fields';
@@ -61,7 +61,7 @@ export default function Event() {
 						),
 						placement: 'center'
 					}, {
-						target : '#shop .MuiTextField-root',
+						target : '#shop',
 						content: (
 							<Fragment>
 								<Typography>Open to change what you are aiming to buy from the shop.</Typography>
@@ -70,7 +70,7 @@ export default function Event() {
 							</Fragment>
 						)
 					}, {
-						target : '#daily .MuiTextField-root',
+						target : '#daily',
 						content: (
 							<Fragment>
 								<Typography>Open to change how many points you get daily. (missions, 3x, ...)</Typography>
@@ -79,16 +79,15 @@ export default function Event() {
 							</Fragment>
 						)
 					}, {
-						target : '#required .MuiBox-root',
+						target : '#required',
 						content: (
 							<Typography>
 								This is the calculated value of how many points you need by the end of today to get all items
-								from
-								shop when event ends.
+								from shop when event ends.
 							</Typography>
 						)
 					}, {
-						target : '#current .MuiTextField-root',
+						target : '#current',
 						content: (
 							<Typography>
 								Enter the number of points you currently have.

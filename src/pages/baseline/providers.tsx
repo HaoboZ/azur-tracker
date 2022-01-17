@@ -1,4 +1,4 @@
-import createCache from '@emotion/cache';
+import createCache, { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
@@ -6,17 +6,20 @@ import { SnackbarProvider } from 'notistack';
 import { ReactNode, useRef } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { component, ComponentComposer } from '../../lib/helpers/chainedCall';
-import AuthProvider from '../../lib/providers/auth';
-import EventsProvider from '../../lib/providers/event';
-import IndicatorProvider from '../../lib/providers/indicator';
-import ModalProvider from '../../lib/providers/modal';
-import ThemeProvider from '../../lib/providers/theme';
-import { persistor, store } from '../../lib/store';
+import { component, ComponentComposer } from '../../helpers/chainedCall';
+import AuthProvider from '../../providers/auth';
+import EventsProvider from '../../providers/event';
+import IndicatorProvider from '../../providers/indicator';
+import ModalProvider from '../../providers/modal';
+import ThemeProvider from '../../providers/theme';
+import { persistor, store } from '../../store';
 
 const clientCache = createCache( { key: 'css', prepend: true } );
 
-export default function Providers( { pageProps, children }: { pageProps, children?: ReactNode } ) {
+export default function Providers( { emotionCache, children }: {
+	emotionCache: EmotionCache,
+	children: ReactNode
+} ) {
 	const snackbarRef = useRef<SnackbarProvider>();
 	
 	return (
@@ -26,7 +29,7 @@ export default function Providers( { pageProps, children }: { pageProps, childre
 				component( StoreProvider, { store } ),
 				component( PersistGate, { loading: null, persistor } ),
 				// styling
-				component( CacheProvider, { value: pageProps.emotionCache || clientCache } ),
+				component( CacheProvider, { value: emotionCache || clientCache } ),
 				component( ThemeProvider ),
 				// static
 				component( EventsProvider ),

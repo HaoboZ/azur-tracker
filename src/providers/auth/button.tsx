@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import AsyncLoadingButton from '../../../components/asyncLoadingButton';
+import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { auth } from '../../firebase/client';
 import useEventEffect from '../../hooks/useEventEffect';
 import { useEvents } from '../event';

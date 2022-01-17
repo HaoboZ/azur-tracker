@@ -12,7 +12,12 @@ export default class _Document extends Document {
 		
 		const originalRenderPage = ctx.renderPage;
 		ctx.renderPage = () => originalRenderPage( {
-			enhanceApp: ( App ) => ( props ) => <App {...props} pageProps={{ ...props.pageProps, emotionCache }}/>
+			enhanceApp: ( App ) => ( props ) => (
+				<App
+					{...props}
+					emotionCache={emotionCache}
+				/>
+			)
 		} );
 		
 		const initialProps = await Document.getInitialProps( ctx );
@@ -44,7 +49,7 @@ export default class _Document extends Document {
 					<meta name='keywords' content={info.keywords.join( ', ' )}/>
 					<meta name='author' content={info.author}/>
 					
-					{/*web*/}
+					{/*pwa*/}
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>
 					<link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png'/>
 					<meta name='theme-color' content='#039be5'/>

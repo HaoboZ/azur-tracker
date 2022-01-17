@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { event_modifyFarming, event_setFarming } from '../../lib/store/reducers/eventReducer';
+import { event_modifyFarming, event_setFarming } from '../../store/reducers/eventReducer';
 import eventData from './data';
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {

@@ -3,8 +3,8 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mu
 import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PageLinkComponent } from '../../../components/page/link';
-import usePageHeight from '../../../lib/hooks/usePageHeight';
-import { setNewData } from '../../../lib/store/reducers/mainReducer';
+import usePageHeight from '../../../hooks/usePageHeight';
+import { setNewData } from '../../../store/reducers/mainReducer';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
 	const newData = useSelector( ( { main } ) => main.newData );

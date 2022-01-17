@@ -4,9 +4,9 @@ import { debounce } from 'lodash';
 import { useCallback, useEffect } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { useSelector } from 'react-redux';
-import { getData, setData } from '../../lib/firebase/storage';
-import { useAuth } from '../../lib/providers/auth';
-import { useIndicator } from '../../lib/providers/indicator';
+import { getData, setData } from '../../firebase/storage';
+import { useAuth } from '../../providers/auth';
+import { useIndicator } from '../../providers/indicator';
 
 const db = getDatabase();
 

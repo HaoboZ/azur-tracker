@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import eventData from '../../../pages/event/data';
+import eventData from '../../pages/event/data';
 
 type State = {
 	name: string,

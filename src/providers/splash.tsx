@@ -1,7 +1,7 @@
 import { Backdrop, LinearProgress, linearProgressClasses, Stack, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import { createContext, useContext, useEffect, useState } from 'react';
-import Icon from '../../../public/icons/icon-192x192.png';
+import Icon from '../../public/icons/icon-192x192.png';
 
 type C = { setText: ( text: string ) => void, complete: () => void };
 const SplashContext = createContext<C>( { setText: () => null, complete: () => null } );

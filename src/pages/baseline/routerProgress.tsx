@@ -2,9 +2,9 @@ import { GlobalStyles, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import NProgress, { NProgressOptions } from 'nprogress';
 import { useEffect, useRef, useState } from 'react';
-import useEventEffect from '../../lib/hooks/useEventEffect';
+import useEventEffect from '../../hooks/useEventEffect';
 
-export default function PageProgress( {
+export default function RouterProgress( {
 	startPosition = 0.3,
 	startDelayMs = 200,
 	stopDelayMs = 200,

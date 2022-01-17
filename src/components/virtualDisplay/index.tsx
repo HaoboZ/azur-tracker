@@ -1,6 +1,6 @@
-import { Theme, useMediaQuery } from '@mui/material';
 import { ReactNode } from 'react';
 import { Row, TableInstance } from 'react-table';
+import { useWideMedia } from '../../hooks/useWideMedia';
 import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 
@@ -8,7 +8,7 @@ export default function VirtualDisplay<Item extends object>( { renderRow, ...tab
 	onClick?: ( row: Row<Item> ) => void,
 	renderRow: ( row: Row<Item> ) => ReactNode
 } & TableInstance<Item> ) {
-	if ( useMediaQuery<Theme>( ( { breakpoints } ) => breakpoints.up( 'sm' ) ) ) {
+	if ( useWideMedia() ) {
 		return <VirtualTable {...table}/>;
 	} else {
 		return <VirtualList {...table} renderRow={renderRow}/>;

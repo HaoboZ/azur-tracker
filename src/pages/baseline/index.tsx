@@ -1,14 +1,18 @@
+import { EmotionCache } from '@emotion/cache';
 import { CssBaseline } from '@mui/material';
 import { ReactNode } from 'react';
-import PageProgress from '../../components/page/progress';
 import Providers from './providers';
+import RouterProgress from './routerProgress';
 import Wrapper from './wrapper';
 
-export default function Baseline( { pageProps, children }: { pageProps, children?: ReactNode } ) {
+export default function Baseline( { emotionCache, children }: {
+	emotionCache: EmotionCache,
+	children: ReactNode
+} ) {
 	return (
-		<Providers pageProps={pageProps}>
+		<Providers emotionCache={emotionCache}>
 			<CssBaseline/>
-			<PageProgress/>
+			<RouterProgress/>
 			<Wrapper>{children}</Wrapper>
 		</Providers>
 	);

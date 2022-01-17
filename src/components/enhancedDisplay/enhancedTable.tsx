@@ -7,9 +7,11 @@ import {
 	Table,
 	TableBody,
 	TableCell,
+	tableCellClasses,
 	TableContainer,
 	TableHead,
 	TableRow,
+	tableRowClasses,
 	TableRowProps,
 	Typography
 } from '@mui/material';
@@ -126,9 +128,9 @@ function EnhancedTable<Item>( {
 				<Table
 					size='small'
 					sx={{
-						'.MuiTableRow-hover:hover'                       : selectable ? { cursor: 'pointer' } : undefined,
-						'.MuiTableRow-root:last-child .MuiTableCell-root': { borderBottom: 0 },
-						'overflow'                                       : 'hidden'
+						[ `.${tableRowClasses.hover}:hover` ]                              : selectable ? { cursor: 'pointer' } : undefined,
+						[ `.${tableRowClasses.root}:last-child .${tableCellClasses.root}` ]: { borderBottom: 0 },
+						overflow                                                           : 'hidden'
 					}}>
 					<TableHead sx={{ bgcolor: 'action.focus' }}>
 						<TableRow>

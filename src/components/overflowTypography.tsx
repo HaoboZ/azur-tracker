@@ -1,6 +1,6 @@
 import { Tooltip, TooltipProps, Typography, TypographyProps } from '@mui/material';
 import { useRef, useState } from 'react';
-import useEventEffect from '../lib/hooks/useEventEffect';
+import useEventEffect from '../hooks/useEventEffect';
 
 export default function OverflowTypography( { tooltipProps, ...props }: {
 	tooltipProps?: TooltipProps

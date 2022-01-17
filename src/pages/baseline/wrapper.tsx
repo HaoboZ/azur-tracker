@@ -1,4 +1,4 @@
-import { useAuth } from '../../lib/providers/auth';
+import { useAuth } from '../../providers/auth';
 import AutoData from './autoData';
 import Navigation from './navigation';
 

@@ -3,8 +3,8 @@ import moment from 'moment';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
-import { useModal } from '../../lib/providers/modal';
-import { event_setPoints } from '../../lib/store/reducers/eventReducer';
+import { useModal } from '../../providers/modal';
+import { event_setPoints } from '../../store/reducers/eventReducer';
 import eventData from './data';
 
 const ShopModal = dynamic( () => import( './shopModal' ) );
@@ -38,8 +38,9 @@ export default function EventFields( { time, neededPoints }: {
 					End{time.isBefore( eventData.endDate ) ? 's' : 'ed'} {time.to( eventData.endDate )}
 				</Typography>
 			</Grid>
-			<Grid item id='shop' sm={3} xs={6}>
+			<Grid item sm={3} xs={6}>
 				<FormattedTextField
+					id='shop'
 					type='text'
 					label='Shop Cost'
 					inputProps={{ className: 'rightInput' }}
@@ -51,8 +52,9 @@ export default function EventFields( { time, neededPoints }: {
 					onClick={() => showModal( ShopModal )}
 				/>
 			</Grid>
-			<Grid item id='daily' sm={3} xs={6}>
+			<Grid item sm={3} xs={6}>
 				<TextField
+					id='daily'
 					type='text'
 					label='Daily Points'
 					inputProps={{ className: 'rightInput' }}
@@ -64,14 +66,15 @@ export default function EventFields( { time, neededPoints }: {
 					onClick={() => showModal( DailyModal )}
 				/>
 			</Grid>
-			<Grid item id='required' sm={3} xs={6}>
-				<Box>
+			<Grid item sm={3} xs={6}>
+				<Box id='required'>
 					<InputLabel shrink>Required Points</InputLabel>
 					<Typography>{neededPoints} Points</Typography>
 				</Box>
 			</Grid>
-			<Grid item id='current' sm={3} xs={6}>
+			<Grid item sm={3} xs={6}>
 				<FormattedTextField
+					id='current'
 					type='number'
 					label='Current Points'
 					inputMode='numeric'

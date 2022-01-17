@@ -9,8 +9,8 @@ import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@m
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import usePageHeight from '../../../lib/hooks/usePageHeight';
-import { setNewData } from '../../../lib/store/reducers/mainReducer';
+import usePageHeight from '../../../hooks/usePageHeight';
+import { setNewData } from '../../../store/reducers/mainReducer';
 
 const items = [
 	{ label: 'Event', icon: <EventIcon/>, href: '/', store: 'event' },

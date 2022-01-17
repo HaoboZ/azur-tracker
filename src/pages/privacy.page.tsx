@@ -89,8 +89,8 @@ export default function Privacy() {
 				<li>
 					<p>
 						<strong>Website</strong> refers to Azur Lane Tracker, accessible from
-						<a href='https://azur-lane-tracker.vercel.app/' rel='external nofollow noopener noreferrer' target='_blank'>
-							https://azur-lane-tracker.vercel.app/
+						<a href='https://azurlanetracker.vercel.app/' rel='external nofollow noopener noreferrer' target='_blank'>
+							https://azurlanetracker.vercel.app/
 						</a>
 					</p>
 				</li>

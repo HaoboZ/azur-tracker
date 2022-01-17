@@ -14,9 +14,9 @@ import {
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from '../../../lib/providers/modal';
-import { ResponsiveModalContainer } from '../../../lib/providers/modal/responsiveModal';
-import { fleet_setShip } from '../../../lib/store/reducers/fleetReducer';
+import { useModal } from '../../../providers/modal';
+import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
+import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import fleetData from '../data';
 import { AffinityIcons, TierIcon } from '../tierIcon';
@@ -134,7 +134,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								flexDirection='column'
 								alignItems='center'
 								onClick={() => showModal( EquipModal, {
-									variant            : 'center',
+									variant            : 'modal',
 									maxWidth           : 'xs',
 									TransitionComponent: Zoom
 								}, { info: { ship, index }, selectedEquip } )}>

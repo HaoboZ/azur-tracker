@@ -9,6 +9,7 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
+	accordionSummaryClasses,
 	IconButton,
 	List,
 	ListItem,
@@ -121,11 +122,13 @@ function EnhancedList<Item>( {
 	return (
 		<List
 			sx={{
-				'.listItem'                    : removeEditing || editing ? { px: 1 } : undefined,
-				'.listItem:not(:first-of-type)': { borderTopLeftRadius: 0, borderTopRightRadius: 0 },
-				'.listItem:not(:last-of-type)' : { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 },
-				'.MuiAccordionSummary-content' : { alignItems: 'center' },
-				'overflow'                     : 'hidden'
+				'.listItem'                              : {
+					...removeEditing || editing ? { px: 1 } : undefined,
+					':not(:first-of-type)': { borderTopLeftRadius: 0, borderTopRightRadius: 0 },
+					':not(:last-of-type)' : { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }
+				},
+				[ `.${accordionSummaryClasses.content}` ]: { alignItems: 'center' },
+				'overflow'                               : 'hidden'
 			}}
 			subheader={Boolean( title || editable || sortable ) && (
 				<ActionTitle

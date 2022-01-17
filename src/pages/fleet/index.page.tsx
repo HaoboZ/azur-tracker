@@ -8,8 +8,8 @@ import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
-import { useModal } from '../../lib/providers/modal';
-import { fleet_setShips, fleet_setVersion, version } from '../../lib/store/reducers/fleetReducer';
+import { useModal } from '../../providers/modal';
+import { fleet_setShips, fleet_setVersion, version } from '../../store/reducers/fleetReducer';
 import fleetData from './data';
 import FleetFilters from './filters';
 import getTier from './getTier';
@@ -104,7 +104,8 @@ export default function Fleet() {
 					</Fragment>
 				)}
 				onClick={( row ) => showModal( ShipModal, {
-					variant: 'bottom'
+					variant: 'drawer',
+					bottom : true
 				}, {
 					ship         : row.original,
 					equipBetter  : equipBetter.value[ row.id ],

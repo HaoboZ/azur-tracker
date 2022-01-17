@@ -14,8 +14,8 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
-import useEventEffect from '../../lib/hooks/useEventEffect';
-import { fleet_setFilter } from '../../lib/store/reducers/fleetReducer';
+import useEventEffect from '../../hooks/useEventEffect';
+import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import equipData from './ship/equip/data';
 import EquipFilter from './ship/equip/filter';
 

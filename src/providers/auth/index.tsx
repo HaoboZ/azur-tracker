@@ -3,7 +3,7 @@ import { sendEmailVerification, User } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import AsyncLoadingButton from '../../../components/asyncLoadingButton';
+import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { auth } from '../../firebase/client';
 
 const AuthContext = createContext<User>( undefined );

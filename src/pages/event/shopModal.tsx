@@ -3,8 +3,8 @@ import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { ResponsiveModalContainer } from '../../lib/providers/modal/responsiveModal';
-import { event_setShop } from '../../lib/store/reducers/eventReducer';
+import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
+import { event_setShop } from '../../store/reducers/eventReducer';
 import eventData from './data';
 
 export default function ShopModal() {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
-import { setResearchLastTab } from '../../lib/store/reducers/mainReducer';
+import { setResearchLastTab } from '../../store/reducers/mainReducer';
 import researchData from './data';
 import ResearchSeries from './series';
 

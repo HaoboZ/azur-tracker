@@ -1,3 +1,4 @@
+import { Dialog } from '@capacitor/dialog';
 import stringify from 'fast-json-stable-stringify';
 import { get, getDatabase, ref, set } from 'firebase/database';
 import { isEqual, mapValues } from 'lodash';
@@ -15,8 +16,12 @@ export async function setData() {
 	const timestamp = snapshot.val();
 	
 	const { main, ...state } = store.getState();
-	if ( timestamp > main.lastSaved && !confirm( 'Conflicts found, override cloud data?' ) ) {
-		return;
+	if ( timestamp > main.lastSaved ) {
+		const { value } = await Dialog.confirm( {
+			title  : 'Conflicts Found',
+			message: 'Data conflicts with cloud data.\nOverride cloud data?'
+		} );
+		if ( !value ) return;
 	}
 	
 	const data = mapValues( state, ( value ) => compressToUTF16( stringify( value ) ) );

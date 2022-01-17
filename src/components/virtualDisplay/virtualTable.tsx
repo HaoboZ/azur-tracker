@@ -1,4 +1,15 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@mui/material';
+import {
+	Paper,
+	Table,
+	TableBody,
+	TableCell,
+	tableCellClasses,
+	TableContainer,
+	TableHead,
+	TableRow,
+	tableRowClasses,
+	TableSortLabel
+} from '@mui/material';
 import { isEqual } from 'lodash';
 import { memo, useMemo, useRef } from 'react';
 import { Row, TableInstance } from 'react-table';
@@ -26,8 +37,8 @@ function VirtualTable<Item extends object>( {
 				component='div'
 				size='small'
 				sx={{
-					'.MuiTableRow-hover:hover': onClick ? { cursor: 'pointer' } : undefined,
-					'.MuiTableCell-root'      : { display: 'flex', alignItems: 'center', px: 1 }
+					[ `.${tableRowClasses.hover}:hover` ]: onClick ? { cursor: 'pointer' } : undefined,
+					[ `.${tableCellClasses.root}` ]      : { display: 'flex', alignItems: 'center', px: 1 }
 				}}
 				{...getTableProps()}>
 				<TableHead component='div'>

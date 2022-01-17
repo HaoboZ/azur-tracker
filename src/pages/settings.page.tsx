@@ -1,3 +1,4 @@
+import { Dialog } from '@capacitor/dialog';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
@@ -15,21 +16,20 @@ import {
 } from '@mui/material';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
-import { getData, setData } from '../lib/firebase/storage';
-import useNetworkStatus from '../lib/hooks/useNetworkStatus';
-import { useAuth } from '../lib/providers/auth';
-import useAuthButton from '../lib/providers/auth/button';
-import { useIndicator } from '../lib/providers/indicator';
-import { event_reset } from '../lib/store/reducers/eventReducer';
-import { fleet_reset } from '../lib/store/reducers/fleetReducer';
-import { setAutoLoad, setAutoSave, setTheme } from '../lib/store/reducers/mainReducer';
-import { research_reset } from '../lib/store/reducers/researchReducer';
+import { getData, setData } from '../firebase/storage';
+import useNetworkStatus from '../hooks/useNetworkStatus';
+import { useAuth } from '../providers/auth';
+import useAuthButton from '../providers/auth/button';
+import { useIndicator } from '../providers/indicator';
+import { event_reset } from '../store/reducers/eventReducer';
+import { fleet_reset } from '../store/reducers/fleetReducer';
+import { setAutoLoad, setAutoSave, setTheme } from '../store/reducers/mainReducer';
+import { research_reset } from '../store/reducers/researchReducer';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Settings() {
@@ -45,22 +45,21 @@ export default function Settings() {
 		<PageContainer>
 			<Head><title>Settings | Azur Lane Tracker</title></Head>
 			<PageTitle>Settings</PageTitle>
-			<List sx={{
-				'.longText'  : { width: '80%' },
-				'.longAction': { width: '40%' }
-			}}>
-				<ListItem>
-					{online ? (
-						<Fragment>
-							<ListItemText classes={{ primary: 'longText' }}>
-								{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
-							</ListItemText>
-							<ListItemSecondaryAction>
-								{authButton}
-							</ListItemSecondaryAction>
-						</Fragment>
-					) : <ListItemText>Offline</ListItemText>}
-				</ListItem>
+			<List sx={{ '.longText': { width: '80%' } }}>
+				{online ? (
+					<ListItem>
+						<ListItemText classes={{ primary: 'longText' }}>
+							{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
+						</ListItemText>
+						<ListItemSecondaryAction>
+							{authButton}
+						</ListItemSecondaryAction>
+					</ListItem>
+				) : (
+					<ListItem>
+						<ListItemText>Offline</ListItemText>
+					</ListItem>
+				)}
 				<ListItem>
 					<ListItemText>Auto Backup</ListItemText>
 					<ListItemSecondaryAction>
@@ -153,9 +152,12 @@ export default function Settings() {
 						<Button
 							variant='contained'
 							color='error'
-							onClick={() => {
-								if ( confirm( 'Are you sure you want to reset this page?' ) )
-									dispatch( event_reset() );
+							onClick={async () => {
+								const { value } = await Dialog.confirm( {
+									title  : 'Reset',
+									message: 'Are you sure you want to reset this page?'
+								} );
+								if ( value ) dispatch( event_reset() );
 							}}>
 							Reset
 						</Button>
@@ -175,9 +177,12 @@ export default function Settings() {
 						<Button
 							variant='contained'
 							color='error'
-							onClick={() => {
-								if ( confirm( 'Are you sure you want to reset this page?' ) )
-									dispatch( research_reset() );
+							onClick={async () => {
+								const { value } = await Dialog.confirm( {
+									title  : 'Reset',
+									message: 'Are you sure you want to reset this page?'
+								} );
+								if ( value ) dispatch( research_reset() );
 							}}>
 							Reset
 						</Button>
@@ -197,9 +202,12 @@ export default function Settings() {
 						<Button
 							variant='contained'
 							color='error'
-							onClick={() => {
-								if ( confirm( 'Are you sure you want to reset this page?' ) )
-									dispatch( fleet_reset() );
+							onClick={async () => {
+								const { value } = await Dialog.confirm( {
+									title  : 'Reset',
+									message: 'Are you sure you want to reset this page?'
+								} );
+								if ( value ) dispatch( fleet_reset() );
 							}}>
 							Reset
 						</Button>

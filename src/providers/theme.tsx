@@ -1,3 +1,4 @@
+import { StatusBar, Style } from '@capacitor/status-bar';
 import {
 	colors,
 	createTheme,
@@ -9,7 +10,7 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import { merge } from 'lodash';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 const commonTheme: ThemeOptions = {
@@ -75,6 +76,15 @@ export default function ThemeProvider( { children } ) {
 			return dark ? 'dark' : 'light';
 		}
 	}, [ theme, dark ] );
+	
+	useEffect( () => {
+		( async () => {
+			try {
+				await StatusBar.setStyle( { style: mode === 'dark' ? Style.Dark : Style.Light } );
+			} catch {
+			}
+		} )();
+	}, [ mode ] );
 	
 	return (
 		<MuiThemeProvider theme={mode === 'dark' ? darkTheme : lightTheme}>

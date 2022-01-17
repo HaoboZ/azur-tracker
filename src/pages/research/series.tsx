@@ -4,7 +4,7 @@ import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import { research_modifyShip } from '../../lib/store/reducers/researchReducer';
+import { research_modifyShip } from '../../store/reducers/researchReducer';
 import researchData, { devLevels, fateLevels } from './data';
 
 export default function ResearchSeries( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {

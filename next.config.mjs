@@ -8,6 +8,7 @@ import withPWA from 'next-pwa';
 const nextConfig = {
 	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
 	webpack( config, { webpack } ) {
+		// noinspection JSUnresolvedFunction
 		config.plugins.push( new webpack.IgnorePlugin( {
 			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
 		} ) );

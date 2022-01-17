@@ -1,16 +1,19 @@
+import { EmotionCache } from '@emotion/cache';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import SplashProvider, { CompleteSplash } from '../lib/providers/splash';
+import SplashProvider, { CompleteSplash } from '../providers/splash';
 import Baseline from './baseline';
 import './baseline/style.scss';
 
 if ( typeof window !== 'undefined' ) {
-	defineCustomElements( window );
+	defineCustomElements( window ).then();
 }
 
 // noinspection JSUnusedGlobalSymbols
-export default function _App( { Component, pageProps }: AppProps ) {
+export default function _App( { Component, pageProps, emotionCache }: {
+	emotionCache: EmotionCache
+} & AppProps ) {
 	return (
 		<SplashProvider>
 			<Head>
@@ -22,7 +25,7 @@ export default function _App( { Component, pageProps }: AppProps ) {
 						user-scalable=no, viewport-fit=cover'
 				/>
 			</Head>
-			<Baseline pageProps={pageProps}>
+			<Baseline emotionCache={emotionCache}>
 				<CompleteSplash/>
 				<Component {...pageProps}/>
 			</Baseline>

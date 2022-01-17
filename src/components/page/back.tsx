@@ -1,16 +1,72 @@
+import { Dialog } from '@capacitor/dialog';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
-import { Button, ButtonProps } from '@mui/material';
+import { Breadcrumbs, Button } from '@mui/material';
+import { startCase } from 'lodash';
 import { useRouter } from 'next/router';
+import { MouseEventHandler, useMemo } from 'react';
+import { useWideMedia } from '../../hooks/useWideMedia';
+import PageLink, { PageLinkComponent } from './link';
 
-export default function PageBack( { name, ...props }: { name?: string } & ButtonProps ) {
+export default function PageBack( { confirm, onClick, back }: {
+	confirm?: boolean,
+	onClick?: MouseEventHandler<HTMLButtonElement>,
+	back?: boolean
+} ) {
 	const router = useRouter();
+	const wide = useWideMedia();
 	
-	return (
-		<Button
-			startIcon={<ArrowBackIcon/>}
-			onClick={() => router.back()}
-			{...props}>
-			{name}
-		</Button>
-	);
+	const routes = useMemo( () => {
+		let href = '';
+		const names = router.pathname.split( '/' );
+		const paths = router.route.split( '/' );
+		
+		return paths.reduce( ( arr, path, index ) => {
+			if ( !path || index === paths.length - 1 ) return arr;
+			href += `/${names[ index ]}`;
+			path = path.replace( /[\[\]]+/g, '' );
+			arr.push( { name: startCase( path ), href } );
+			return arr;
+		}, [] as { name: string, href: string }[] );
+	}, [ router.asPath ] );
+	
+	const clickListener = async ( e ) => {
+		if ( confirm ) {
+			const { value } = await Dialog.confirm( {
+				title  : 'Confirm',
+				message: 'Are you sure you want to leave?'
+			} );
+			if ( !value ) throw 'cancel';
+		}
+		
+		await onClick?.( e );
+		if ( back ) router.back();
+	};
+	
+	if ( !back && wide ) {
+		return (
+			<Breadcrumbs>
+				{routes.map( ( { href, name }, index ) => (
+					<PageLink
+						key={index}
+						underline='none'
+						color='primary'
+						href={href}
+						onClick={clickListener}>
+						{name}
+					</PageLink>
+				) )}
+			</Breadcrumbs>
+		);
+	} else {
+		const path = routes.at( -1 );
+		return (
+			<Button
+				component={PageLinkComponent}
+				href={back ? undefined : path?.href}
+				startIcon={<ArrowBackIcon/>}
+				onClick={clickListener}>
+				{back ? 'Back' : path?.name}
+			</Button>
+		);
+	}
 }
