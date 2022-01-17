@@ -6,7 +6,7 @@ import { SnackbarProvider } from 'notistack';
 import { ReactNode, useRef } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { component, ComponentComposer } from '../../helpers/chainedCall';
+import ComponentComposer, { component } from '../../helpers/componentComposer';
 import AuthProvider from '../../providers/auth';
 import EventsProvider from '../../providers/event';
 import IndicatorProvider from '../../providers/indicator';

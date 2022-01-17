@@ -21,13 +21,13 @@ export default function AutoData() {
 	// save
 	useEffect( () => {
 		if ( !value || loading || error ) return;
-		if ( main.autoSave && value <= main.lastSaved ) delayedSetBackup();
+		if ( main.autoSave && value <= main.timestamp ) delayedSetBackup();
 	}, [ stringify( state ) ] );
 	
 	// load
 	useEffect( () => {
 		if ( !value || loading || error ) return;
-		if ( main.autoLoad && value > main.lastSaved ) getData().then();
+		if ( main.autoLoad && value > main.timestamp ) getData().then();
 	}, [ value ] );
 	
 	return null;

@@ -4,7 +4,7 @@ import { get, getDatabase, ref, set } from 'firebase/database';
 import { isEqual, mapValues } from 'lodash';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import { store } from '../store';
-import { importBackup, setLastSaved, setNewData } from '../store/reducers/mainReducer';
+import { importBackup, setNewData, setTimestamp } from '../store/reducers/mainReducer';
 import { auth } from './client';
 
 const db = getDatabase();
@@ -16,7 +16,7 @@ export async function setData() {
 	const timestamp = snapshot.val();
 	
 	const { main, ...state } = store.getState();
-	if ( timestamp > main.lastSaved ) {
+	if ( timestamp > main.timestamp ) {
 		const { value } = await Dialog.confirm( {
 			title  : 'Conflicts Found',
 			message: 'Data conflicts with cloud data.\nOverride cloud data?'
@@ -26,7 +26,7 @@ export async function setData() {
 	
 	const data = mapValues( state, ( value ) => compressToUTF16( stringify( value ) ) );
 	const newTimestamp = new Date().toISOString();
-	store.dispatch( setLastSaved( newTimestamp ) );
+	store.dispatch( setTimestamp( newTimestamp ) );
 	
 	const writeRef = ref( db, auth.currentUser.uid );
 	await set( writeRef, {
@@ -42,7 +42,7 @@ export async function getData() {
 	const { data, timestamp } = snapshot.val() ?? {};
 	
 	const newData = mapValues( data, ( value ) => JSON.parse( decompressFromUTF16( value ) ) );
-	store.dispatch( setLastSaved( timestamp ) );
+	store.dispatch( setTimestamp( timestamp ) );
 	const state = store.getState();
 	const changed = Object.keys( newData ).filter( ( key ) => !isEqual( state[ key ], newData[ key ] ) );
 	// noinspection CommaExpressionJS, JSRemoveUnnecessaryParentheses

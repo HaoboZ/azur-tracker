@@ -6,11 +6,13 @@ type State = {
 		devStage?: number,
 		fateLevel?: number,
 		fateStage?: number
-	}>
+	}>,
+	lastTab: number
 };
 
 const initialState: State = {
-	ships: {}
+	ships  : {},
+	lastTab: 0
 };
 
 const researchSlice = createSlice( {
@@ -47,6 +49,9 @@ const researchSlice = createSlice( {
 				...state.ships,
 				[ payload.ship ]: { ...state.ships[ payload.ship ], ...payload.item }
 			};
+		},
+		research_setLastTab( state, { payload }: PayloadAction<number> ) {
+			state.lastTab = payload;
 		}
 	},
 	extraReducers: {
@@ -59,4 +64,5 @@ const researchSlice = createSlice( {
 export default researchSlice.reducer;
 export const
 	research_reset      = researchSlice.actions.research_reset,
-	research_modifyShip = researchSlice.actions.research_modifyShip;
+	research_modifyShip = researchSlice.actions.research_modifyShip,
+	research_setLastTab = researchSlice.actions.research_setLastTab;

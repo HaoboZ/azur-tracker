@@ -1,3 +1,4 @@
+import { Storage } from '@capacitor/storage';
 import { Typography } from '@mui/material';
 import { sendEmailVerification, User } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
@@ -17,8 +18,8 @@ export default function AuthProvider( { children } ) {
 		if ( loading || error ) return;
 		( async () => {
 			const token = await user?.getIdToken();
-			if ( token ) localStorage.setItem( 'id_token', token );
-			else localStorage.removeItem( 'id_token' );
+			if ( token ) await Storage.set( { key: 'id_token', value: token } );
+			else await Storage.remove( { key: 'id_token' } );
 		} )();
 		if ( !user || user.emailVerified ) return;
 		const key = enqueueSnackbar( 'Email Not Verified', {

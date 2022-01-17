@@ -1415,6 +1415,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/storage@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@capacitor/storage@npm:1.2.3"
+  peerDependencies:
+    "@capacitor/core": ^3.0.0
+  checksum: 4d903ec0ca617d2b7b91c2f3ad1c346d88d915762f7a3d302b0a9955fee9cfdb1483f1b8ad5bd9726c80e87b80cb53bd851cb85f1cc9ae0870b6370c61475e88
+  languageName: node
+  linkType: hard
+
 "@corex/deepmerge@npm:^2.6.148":
   version: 2.6.148
   resolution: "@corex/deepmerge@npm:2.6.148"
@@ -4159,15 +4168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.24.0":
-  version: 0.24.0
-  resolution: "axios@npm:0.24.0"
-  dependencies:
-    follow-redirects: ^1.14.4
-  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
-  languageName: node
-  linkType: hard
-
 "axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -4185,6 +4185,7 @@ __metadata:
     "@capacitor/core": ^3.3.4
     "@capacitor/dialog": ^1.0.6
     "@capacitor/status-bar": ^1.0.6
+    "@capacitor/storage": ^1.2.3
     "@emotion/cache": ^11.7.1
     "@emotion/react": ^11.7.1
     "@emotion/server": ^11.4.0
@@ -4213,10 +4214,8 @@ __metadata:
     "@types/sortablejs": ^1.10.7
     "@typescript-eslint/eslint-plugin": ^5.9.1
     "@typescript-eslint/parser": ^5.9.1
-    axios: ^0.24.0
     babel-plugin-import: ^1.13.3
     babel-plugin-lodash: ^3.3.4
-    clsx: ^1.1.1
     cross-env: ^7.0.3
     eslint: ^8.7.0
     eslint-config-next: ^12.0.8
@@ -6104,16 +6103,6 @@ __metadata:
   version: 3.2.4
   resolution: "flatted@npm:3.2.4"
   checksum: 7d33846428ab337ec81ef9b8b9103894c1c81f5f67feb32bd4ed106fbc47da60d56edb42efd36c9f1f30a010272aeccd34ec1ffacfe9dfdff19673b1d4df481b
-  languageName: node
-  linkType: hard
-
-"follow-redirects@npm:^1.14.4":
-  version: 1.14.7
-  resolution: "follow-redirects@npm:1.14.7"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: f6d03e5e30877431065bca0d1b2e3db93949eb799d368a5c07ea8a4b71205f0349a3f8f0191bf13a07c93885522834dca1dc8e527dc99a772c6911fba24edc5f
   languageName: node
   linkType: hard
 

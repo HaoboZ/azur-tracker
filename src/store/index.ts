@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues } from 'lodash';
+import { mapValues, omit } from 'lodash';
 import {
 	createMigrate,
 	FLUSH,
@@ -21,16 +21,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type State = RootState & PersistedState;
 
 const migrations: Record<string, ( state: State ) => State> = {
-	7: ( state ) => ( {
-		...state,
-		main: {
-			...state.main,
-			researchLastTab: 0
-		}
-	} ),
-	// eslint-disable-next-line @typescript-eslint/dot-notation
-	8: ( state ) => ( { ...state, fleet: state[ 'ship' ] } ),
-	9: ( state ) => ( {
+	9 : ( state ) => ( {
 		...state,
 		fleet: {
 			...state.fleet,
@@ -38,6 +29,14 @@ const migrations: Record<string, ( state: State ) => State> = {
 				if ( ship.lvl === 121 ) ship.lvl = 120;
 				return ship;
 			} )
+		}
+	} ),
+	10: ( state ) => ( {
+		...state,
+		main: {
+			...omit( state.main, 'lastSaved' ),
+			// eslint-disable-next-line @typescript-eslint/dot-notation
+			timestamp: state.main[ 'lastSaved' ]
 		}
 	} )
 };
