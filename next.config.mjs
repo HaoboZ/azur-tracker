@@ -14,13 +14,13 @@ const nextConfig = {
 		} ) );
 		return config;
 	},
-	images    : process.env.STATIC ? {
+	images: process.env.STATIC ? {
 		loader : 'imgix',
 		domains: [ 'https://azurlanetracker.vercel.app' ],
 		path   : 'https://azurlanetracker.vercel.app'
 	} : undefined,
-	typescript: { ignoreBuildErrors: true },
-	headers   : async () => [ {
+	// typescript: { ignoreBuildErrors: true },
+	headers: async () => [ {
 		// matching all API routes
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]

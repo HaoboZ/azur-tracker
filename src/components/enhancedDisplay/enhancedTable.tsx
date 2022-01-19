@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import { Fragment, memo, useMemo, useState } from 'react';
-import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
@@ -53,8 +52,6 @@ function EnhancedTable<Item>( {
 	sortable,
 	selectable,
 	renderPanel,
-	loading,
-	loadingComponent = <Loading/>,
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	headers,
 	columns,
@@ -144,7 +141,7 @@ function EnhancedTable<Item>( {
 							) )}
 							{Boolean( editable ) && (
 								<TableCell>
-									{!loading && ( editable?.max ? items.length < editable.max : true ) && (
+									{( editable?.max ? items.length < editable.max : true ) && (
 										<IconButton onClick={async () => {
 											editable.onAdd?.();
 											setItems?.( [ ...items, { ...await editable.newData() } ] );
@@ -156,11 +153,11 @@ function EnhancedTable<Item>( {
 							)}
 						</TableRow>
 					</TableHead>
-					{loading || !items.length ? (
+					{!items.length ? (
 						<TableBody>
 							<TableRow>
 								<TableCell colSpan={headers.length + 2}>
-									{loading ? loadingComponent : emptyComponent}
+									{emptyComponent}
 								</TableCell>
 							</TableRow>
 						</TableBody>

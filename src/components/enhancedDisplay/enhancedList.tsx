@@ -20,7 +20,6 @@ import {
 } from '@mui/material';
 import { isEqual, pick } from 'lodash';
 import { Fragment, memo, useMemo, useState } from 'react';
-import Loading from '../loading';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
@@ -34,8 +33,6 @@ function EnhancedList<Item>( {
 	editable,
 	sortable,
 	selectable,
-	loading,
-	loadingComponent = <Loading/>,
 	emptyComponent = <Typography textAlign='center' py={2}>No Items</Typography>,
 	renderRow,
 	renderPanel,
@@ -132,7 +129,7 @@ function EnhancedList<Item>( {
 			}}
 			subheader={Boolean( title || editable || sortable ) && (
 				<ActionTitle
-					actions={!removeEditing && !loading && ( editable || sortable ) ? [
+					actions={!removeEditing && ( editable || sortable ) ? [
 						sortable && {
 							name       : editing ? 'Cancel' : 'Edit',
 							onClick    : () => setEditing( !editing ),
@@ -160,8 +157,8 @@ function EnhancedList<Item>( {
 				</ActionTitle>
 			)}
 			{...props}>
-			{loading || !items.length
-				? <Paper>{loading ? loadingComponent : emptyComponent}</Paper>
+			{!items.length
+				? <Paper>{emptyComponent}</Paper>
 				: dataItems}
 		</List>
 	);

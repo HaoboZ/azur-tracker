@@ -26,8 +26,6 @@ export type EnhancedDisplayProps<Item> = {
 		min?: number,
 		max?: number
 	},
-	loading?: boolean,
-	loadingComponent?: ReactNode,
 	emptyComponent?: ReactNode
 };
 

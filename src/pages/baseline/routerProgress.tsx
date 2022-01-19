@@ -1,58 +1,27 @@
-import { GlobalStyles, useTheme } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import { useRouter } from 'next/router';
-import NProgress, { NProgressOptions } from 'nprogress';
-import { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
+import Progress from '../../components/loaders/progress';
 import useEventEffect from '../../hooks/useEventEffect';
 
-export default function RouterProgress( {
-	startPosition = 0.3,
-	startDelayMs = 200,
-	stopDelayMs = 200,
-	height = 2,
-	showOnShallow = true,
-	options
-}: {
-	startPosition?: number,
-	startDelayMs?: number,
-	stopDelayMs?: number,
-	height?: number,
-	showOnShallow?: boolean,
-	options?: Partial<NProgressOptions>
+export default function RouterProgress( { showOnShallow = true }: {
+	showOnShallow?: boolean
 } ) {
-	const theme = useTheme();
 	const router = useRouter();
 	
-	const [ , setIsActive ] = useState( false );
-	
-	const startTimer = useRef<any>();
-	const endTimer = useRef<any>();
-	
-	const clearTimers = () => {
-		clearTimeout( startTimer.current );
-		clearTimeout( endTimer.current );
-	};
+	const [ key, setKey ] = useState( 0 );
+	const [ isActive, setIsActive ] = useState( false );
 	
 	const routeChangeStart = ( _, { shallow } ) => {
 		if ( !shallow || showOnShallow ) {
-			clearTimers();
-			startTimer.current = setTimeout( () => {
-				clearTimers();
-				NProgress.set( startPosition );
-				NProgress.start();
-				setIsActive( true );
-			}, startDelayMs );
+			setIsActive( true );
+			setKey( ( key ) => key + 1 );
 		}
 	};
 	
 	const routeChangeEnd = ( _, { shallow } ) => {
 		if ( !shallow || showOnShallow ) {
-			clearTimers();
-			endTimer.current = setTimeout( () => {
-				setIsActive( ( isActive ) => {
-					if ( isActive ) NProgress.done( true );
-					return false;
-				} );
-			}, stopDelayMs );
+			setIsActive( false );
 		}
 	};
 	
@@ -69,65 +38,16 @@ export default function RouterProgress( {
 		listener: routeChangeEnd
 	}, [] );
 	
-	useEffect( () => {
-		if ( options ) NProgress.configure( options );
-	}, [ options ] );
-	
 	return (
-		<GlobalStyles
-			styles={{
-				'#nprogress'                  : {
-					'pointerEvents': 'none',
-					'.bar'         : {
-						background: theme.palette.primary.main,
-						position  : 'fixed',
-						zIndex    : theme.zIndex.tooltip,
-						top       : 0,
-						left      : 0,
-						width     : '100%',
-						height    : height
-					},
-					'.peg'         : {
-						display  : 'block',
-						position : 'absolute',
-						right    : 0,
-						width    : '100%',
-						height   : '100%',
-						boxShadow: `0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main}`,
-						opacity  : 0.1
-					},
-					'.spinner'     : {
-						display : 'block',
-						position: 'fixed',
-						zIndex  : theme.zIndex.tooltip,
-						top     : 15,
-						right   : 15
-					},
-					'.spinner-icon': {
-						width          : 18,
-						height         : 18,
-						boxSizing      : 'border-box',
-						border         : 'solid 2px transparent',
-						borderTopColor : theme.palette.primary.main,
-						borderLeftColor: theme.palette.primary.main,
-						borderRadius   : '50%',
-						animation      : 'nprogress-spinner 400ms linear infinite'
-					}
-				},
-				'.nprogress_custom_parent'    : {
-					'overflow'  : 'hidden',
-					'position'  : 'relative',
-					'#nprogress': {
-						'.spinner, .bar': {
-							position: 'absolute'
-						}
-					}
-				},
-				'@keyframes nprogress-spinner': {
-					'0%'  : { transform: 'rotate(0deg)' },
-					'100%': { transform: 'rotate(360deg)' }
-				}
-			}}
-		/>
+		<Progress key={key} isLoading={isActive}>
+			{( progress ) => (
+				<LinearProgress
+					variant='determinate'
+					color='secondary'
+					value={progress * 100}
+					sx={{ position: 'absolute', width: '100%' }}
+				/>
+			)}
+		</Progress>
 	);
 }
