@@ -7,7 +7,10 @@ export function component<T extends keyof JSX.IntrinsicElements | JSXElementCons
 	return { component, props };
 }
 
-export default function ComponentComposer( { components, children }: { components: any[], children: ReactNode } ) {
+export default function ComponentComposer( { components, children }: {
+	components: any[],
+	children: ReactNode
+} ) {
 	return components.reduceRight( ( children, { component, props } ) => {
 		const Component = component;
 		return <Component {...props}>{children}</Component>;

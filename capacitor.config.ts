@@ -6,6 +6,5 @@ const config: CapacitorConfig = {
 	webDir           : 'out',
 	bundledWebRuntime: false
 };
-
 // noinspection JSUnusedGlobalSymbols
 export default config;

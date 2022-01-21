@@ -76,5 +76,4 @@ const PageLink = forwardRef<HTMLAnchorElement, PageLinkProps>( function ( props,
 		/>
 	);
 } );
-
 export default PageLink;
