@@ -136,8 +136,9 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								onClick={() => showModal( EquipModal, {
 									variant            : 'modal',
 									maxWidth           : 'xs',
-									TransitionComponent: Zoom
-								}, { info: { ship, index }, selectedEquip } )}>
+									TransitionComponent: Zoom,
+									props              : { info: { ship, index }, selectedEquip }
+								} )}>
 								<Image
 									src={`/images/equips/${equip.image}.png`}
 									alt={equip.name}

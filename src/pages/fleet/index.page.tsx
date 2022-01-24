@@ -105,11 +105,12 @@ export default function Fleet() {
 				)}
 				onClick={( row ) => showModal( ShipModal, {
 					variant: 'drawer',
-					bottom : true
-				}, {
-					ship         : row.original,
-					equipBetter  : equipBetter.value[ row.id ],
-					selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
+					bottom : true,
+					props  : {
+						ship         : row.original,
+						equipBetter  : equipBetter.value[ row.id ],
+						selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
+					}
 				} )}
 			/>
 		</PageContainer>

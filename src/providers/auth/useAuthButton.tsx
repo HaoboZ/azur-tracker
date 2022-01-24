@@ -12,11 +12,14 @@ const auth = getAuth( app );
 export default function useAuthButton() {
 	const user = useAuth();
 	const events = useEvents();
-	const { showModal } = useModal( LoginModal, { maxWidth: 'xs' } );
+	const { showModal } = useModal();
 	
 	useEventEffect( events, {
 		name    : 'showAuth',
-		listener: () => showModal()
+		listener: () => showModal( LoginModal, {
+			id      : 'login',
+			maxWidth: 'xs'
+		} )
 	} );
 	
 	return user ? (
