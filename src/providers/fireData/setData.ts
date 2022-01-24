@@ -20,7 +20,6 @@ export default async function setData( key: string ) {
 	
 	// conditions
 	const state = store.getState();
-	if ( timestamp === state[ key ].timestamp ) return;
 	if ( timestamp > state[ key ].timestamp ) {
 		const { value } = await Dialog.confirm( {
 			title  : 'Conflicts Found',
@@ -32,8 +31,8 @@ export default async function setData( key: string ) {
 	// write
 	const data = compressToUTF16( stringify( omit( state[ key ], 'timestamp' ) ) );
 	const newTimestamp = new Date().toISOString();
-	const writeRef = ref( db, `${auth.currentUser.uid}/${key}` );
-	await set( writeRef, { timestamp: newTimestamp, data } );
 	store.dispatch( importBackup( key, { timestamp: newTimestamp } ) );
 	store.dispatch( setNewData( { [ key ]: false } ) );
+	const writeRef = ref( db, `${auth.currentUser.uid}/${key}` );
+	await set( writeRef, { timestamp: newTimestamp, data } );
 }
