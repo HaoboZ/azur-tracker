@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
+	timestamp: string,
 	ships: Record<string, {
 		lvl: number,
 		love: number,
@@ -17,8 +18,9 @@ type State = {
 export const version = '2021-12-28';
 
 const initialState: State = {
-	ships : {},
-	filter: {
+	timestamp: new Date( 0 ).toISOString(),
+	ships    : {},
+	filter   : {
 		levelMax: true,
 		equipMax: true,
 		level0  : true
@@ -65,8 +67,8 @@ const fleetSlice = createSlice( {
 		}
 	},
 	extraReducers: {
-		import( state, { payload } ) {
-			if ( 'fleet' in payload ) return payload.fleet;
+		import( state, { payload }: PayloadAction<{ key, data }> ) {
+			if ( payload.key === 'fleet' ) return { ...state, ...payload.data };
 		}
 	}
 } );

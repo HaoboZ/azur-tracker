@@ -1,11 +1,13 @@
-import { signOut } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
-import { auth } from '../../firebase/client';
+import { app } from '../../firebase/client';
 import useEventEffect from '../../hooks/useEventEffect';
 import { useEvents } from '../event';
 import { useModal } from '../modal';
 import { useAuth } from './index';
-import LoginModal from './login';
+import LoginModal from './loginModal';
+
+const auth = getAuth( app );
 
 export default function useAuthButton() {
 	const user = useAuth();

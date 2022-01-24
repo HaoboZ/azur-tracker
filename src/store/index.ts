@@ -33,17 +33,16 @@ const migrations: Record<string, ( state: State ) => State> = {
 	} ),
 	10: ( state ) => ( {
 		...state,
-		main: {
-			...omit( state.main, 'lastSaved' ),
-			// eslint-disable-next-line @typescript-eslint/dot-notation
-			timestamp: state.main[ 'lastSaved' ]
-		}
+		main    : omit( state.main, 'lastSaved' ),
+		event   : { ...state.event, timestamp: new Date( 0 ).toISOString() },
+		research: { ...state.research, timestamp: new Date( 0 ).toISOString() },
+		fleet   : { ...state.fleet, timestamp: new Date( 0 ).toISOString() }
 	} )
 };
 
 const persistedReducer = persistReducer<RootState>( {
 	key            : 'root',
-	version        : 9,
+	version        : 10,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations, { debug: false } ),

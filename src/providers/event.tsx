@@ -17,7 +17,7 @@ export function useEvents() {
 export function withEvents( Component ) {
 	return ( props ) => (
 		<EventsContext.Consumer>
-			{( event ) => <Component event={event} {...props}/>}
+			{( events ) => <Component events={events} {...props}/>}
 		</EventsContext.Consumer>
 	);
 }

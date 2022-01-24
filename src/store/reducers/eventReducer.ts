@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import eventData from '../../pages/event/data';
 
 type State = {
+	timestamp: string,
 	name: string,
 	shop: Record<string, number>,
 	shopExpectedCost: number,
@@ -13,6 +14,7 @@ type State = {
 };
 
 const initialState: State = {
+	timestamp       : new Date( 0 ).toISOString(),
 	name            : '',
 	shop            : {
 		'Gear Skin Box'                       : 0,
@@ -111,8 +113,8 @@ const eventSlice = createSlice( {
 		}
 	},
 	extraReducers: {
-		import( state, { payload } ) {
-			if ( 'event' in payload ) return payload.event;
+		import( state, { payload }: PayloadAction<{ key, data }> ) {
+			if ( payload.key === 'event' ) return { ...state, ...payload.data };
 		}
 	}
 } );

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
+	timestamp: string,
 	ships: Record<string, {
 		devLevel?: number,
 		devStage?: number,
@@ -11,8 +12,9 @@ type State = {
 };
 
 const initialState: State = {
-	ships  : {},
-	lastTab: 0
+	timestamp: new Date( 0 ).toISOString(),
+	ships    : {},
+	lastTab  : 0
 };
 
 const researchSlice = createSlice( {
@@ -55,8 +57,8 @@ const researchSlice = createSlice( {
 		}
 	},
 	extraReducers: {
-		import( state, { payload } ) {
-			if ( 'research' in payload ) return payload.research;
+		import( state, { payload }: PayloadAction<{ key, data }> ) {
+			if ( payload.key === 'research' ) return { ...state, ...payload.data };
 		}
 	}
 } );

@@ -1079,6 +1079,13 @@ const equipData: Equip[] = [
 		type  : type.A,
 		rarity: rarity.SR
 	},
+	{
+		id    : 940,
+		name  : 'Action Report: Operation AF',
+		image : 'Action_Report$3A_Operation_AF',
+		type  : type.A,
+		rarity: rarity.E
+	},
 	{ id: 960, name: 'FuMO 25', image: 'Funkmess-Ortung_25_Radar', type: type.A, rarity: rarity.SR },
 	{ id: 1040, name: 'Ship Maintenance Facility', image: 'Ship_Maintenance_Crane', type: type.A, rarity: rarity.SR },
 	{ id: 1120, name: 'Air Radar', image: 'Air_Radar', type: type.A, rarity: rarity.E },

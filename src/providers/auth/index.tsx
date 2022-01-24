@@ -1,11 +1,13 @@
 import { Storage } from '@capacitor/storage';
 import { Typography } from '@mui/material';
-import { sendEmailVerification, User } from 'firebase/auth';
+import { getAuth, onIdTokenChanged, sendEmailVerification, User } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
-import { auth } from '../../firebase/client';
+import { app } from '../../firebase/client';
+
+const auth = getAuth( app );
 
 const AuthContext = createContext<User>( undefined );
 AuthContext.displayName = 'Auth';
@@ -14,22 +16,23 @@ export default function AuthProvider( { children } ) {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const [ user, loading, error ] = useAuthState( auth );
 	
+	useEffect( () => onIdTokenChanged( auth, async ( user ) => {
+		const token = await user?.getIdToken();
+		if ( token ) await Storage.set( { key: 'id_token', value: token } );
+		else await Storage.remove( { key: 'id_token' } );
+	} ), [] );
+	
 	useEffect( () => {
 		if ( loading || error ) return;
-		( async () => {
-			const token = await user?.getIdToken();
-			if ( token ) await Storage.set( { key: 'id_token', value: token } );
-			else await Storage.remove( { key: 'id_token' } );
-		} )();
 		if ( !user || user.emailVerified ) return;
 		const key = enqueueSnackbar( 'Email Not Verified', {
 			variant: 'warning',
+			persist: true,
 			action : (
 				<AsyncLoadingButton onClick={() => sendEmailVerification( user )}>
 					Resend Email
 				</AsyncLoadingButton>
-			),
-			persist: true
+			)
 		} );
 		return () => closeSnackbar( key );
 	}, [ user ] );

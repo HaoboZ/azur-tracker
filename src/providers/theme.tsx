@@ -10,6 +10,7 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import { merge } from 'lodash';
+import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -64,30 +65,30 @@ const darkTheme = responsiveFontSizes( createTheme(
 ) );
 
 export default function ThemeProvider( { children } ) {
-	const theme = useSelector( ( { main } ) => main.theme );
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
+	const themeMode = useSelector( ( { main } ) => main.theme );
 	
 	const mode: PaletteMode = useMemo( () => {
-		switch ( theme ) {
+		switch ( themeMode ) {
 		case 'light':
 		case 'dark':
-			return theme;
+			return themeMode;
 		default:
 			return dark ? 'dark' : 'light';
 		}
-	}, [ theme, dark ] );
+	}, [ themeMode, dark ] );
 	
 	useEffect( () => {
-		( async () => {
-			try {
-				await StatusBar.setStyle( { style: mode === 'dark' ? Style.Dark : Style.Light } );
-			} catch {
-			}
-		} )();
+		StatusBar.setStyle( { style: mode === 'dark' ? Style.Dark : Style.Light } ).catch( () => null );
 	}, [ mode ] );
 	
+	const theme = mode === 'dark' ? darkTheme : lightTheme;
+	
 	return (
-		<MuiThemeProvider theme={mode === 'dark' ? darkTheme : lightTheme}>
+		<MuiThemeProvider theme={theme}>
+			<Head>
+				<meta key='theme' name='theme-color' content={theme.palette.primary.main}/>
+			</Head>
 			{children}
 		</MuiThemeProvider>
 	);
