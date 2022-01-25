@@ -22,7 +22,7 @@ const researchSlice = createSlice( {
 	initialState,
 	reducers     : {
 		research_reset() {
-			return initialState;
+			return { ...initialState, timestamp: new Date().toISOString() };
 		},
 		research_modifyShip( state, { payload }: PayloadAction<{
 			ship: string,
@@ -34,6 +34,7 @@ const researchSlice = createSlice( {
 			},
 			maxDev?: number
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			const { item, maxDev } = payload;
 			if ( 'devStage' in item ) {
 				item.devStage = Math.min( Math.max( item.devStage, 0 ), maxDev );
@@ -53,6 +54,7 @@ const researchSlice = createSlice( {
 			};
 		},
 		research_setLastTab( state, { payload }: PayloadAction<number> ) {
+			state.timestamp = new Date().toISOString();
 			state.lastTab = payload;
 		}
 	},

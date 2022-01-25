@@ -33,9 +33,10 @@ const fleetSlice = createSlice( {
 	initialState,
 	reducers     : {
 		fleet_reset() {
-			return initialState;
+			return { ...initialState, timestamp: new Date().toISOString() };
 		},
 		fleet_setVersion( state ) {
+			state.timestamp = new Date().toISOString();
 			state.version = initialState.version;
 		},
 		fleet_setShips( state, { payload }: PayloadAction<Record<string, {
@@ -43,6 +44,7 @@ const fleetSlice = createSlice( {
 			love: number,
 			equip: [ number, 0 | 1, number ][] // id, override, tier
 		}>> ) {
+			state.timestamp = new Date().toISOString();
 			state.ships = payload;
 		},
 		fleet_setShip( state, { payload }: PayloadAction<{
@@ -53,6 +55,7 @@ const fleetSlice = createSlice( {
 				equip?: [ number, 0 | 1, number ][]
 			}
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			state.ships = {
 				...state.ships,
 				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
@@ -63,6 +66,7 @@ const fleetSlice = createSlice( {
 			equipMax?: boolean,
 			level0?: boolean
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			state.filter = { ...state.filter, ...payload };
 		}
 	},

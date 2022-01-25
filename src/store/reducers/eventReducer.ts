@@ -66,15 +66,17 @@ const eventSlice = createSlice( {
 	initialState,
 	reducers     : {
 		event_reset() {
-			return newEvent( initialState );
+			return newEvent( { ...initialState, timestamp: new Date().toISOString() } );
 		},
 		event_newEvent( state ) {
+			state.timestamp = new Date().toISOString();
 			return newEvent( state );
 		},
 		event_setShop( state, { payload }: PayloadAction<{
 			shop: Record<string, number>,
 			total: number
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			state.shop = payload.shop;
 			state.shopExpectedCost = payload.total;
 		},
@@ -86,10 +88,12 @@ const eventSlice = createSlice( {
 			}[],
 			total: number
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			state.daily = payload.daily;
 			state.dailyExpected = payload.total;
 		},
 		event_setPoints( state, { payload }: PayloadAction<number> ) {
+			state.timestamp = new Date().toISOString();
 			state.points = Math.max( payload || 0, 0 );
 		},
 		event_setFarming( state, { payload }: PayloadAction<{
@@ -97,6 +101,7 @@ const eventSlice = createSlice( {
 			points: number,
 			oil: number
 		}[]> ) {
+			state.timestamp = new Date().toISOString();
 			state.farming = payload;
 		},
 		event_modifyFarming( state, { payload }: PayloadAction<{
@@ -104,6 +109,7 @@ const eventSlice = createSlice( {
 			points?: number,
 			oil?: number
 		}> ) {
+			state.timestamp = new Date().toISOString();
 			if ( 'points' in payload ) payload.points = Math.max( payload.points || 0, 0 );
 			if ( 'oil' in payload ) payload.oil = Math.max( payload.oil || 0, 0 );
 			

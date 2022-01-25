@@ -6,7 +6,7 @@ import { omit } from 'lodash';
 import { compressToUTF16 } from 'lz-string';
 import { app } from '../../firebase/client';
 import { store } from '../../store';
-import { importBackup, setNewData } from '../../store/reducers/mainReducer';
+import { setNewData } from '../../store/reducers/mainReducer';
 
 const auth = getAuth( app );
 const db = getDatabase( app );
@@ -30,9 +30,7 @@ export default async function setData( key: string ) {
 	
 	// write
 	const data = compressToUTF16( stringify( omit( state[ key ], 'timestamp' ) ) );
-	const newTimestamp = new Date().toISOString();
-	store.dispatch( importBackup( key, { timestamp: newTimestamp } ) );
-	store.dispatch( setNewData( { [ key ]: false } ) );
 	const writeRef = ref( db, `${auth.currentUser.uid}/${key}` );
-	await set( writeRef, { timestamp: newTimestamp, data } );
+	await set( writeRef, { timestamp: state[ key ].timestamp, data } );
+	store.dispatch( setNewData( { [ key ]: false } ) );
 }

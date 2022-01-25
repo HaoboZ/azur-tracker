@@ -1,7 +1,7 @@
 import stringify from 'fast-json-stable-stringify';
 import { getDatabase, ref } from 'firebase/database';
 import { debounce, omit } from 'lodash';
-import { createContext, Fragment, ReactNode, useCallback, useEffect, useState } from 'react';
+import { Fragment, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { useSelector } from 'react-redux';
 import { app } from '../../firebase/client';
@@ -10,18 +10,16 @@ import { useIndicator } from '../indicator';
 import getData from './getData';
 import setData from './setData';
 
-type C = () => void;
-const FireDataContext = createContext<C>( () => null );
-FireDataContext.displayName = 'FireData';
-
 const db = getDatabase( app );
 
 export default function FireDataProvider( { children, keys }: { children: ReactNode, keys: string[] } ) {
 	const auth = useAuth();
 	
+	const memoedKeys = useMemo( () => keys, [] );
+	
 	return (
 		<Fragment>
-			{auth?.emailVerified ? <Internal keys={keys}>{children}</Internal> : children}
+			{auth?.emailVerified ? <Internal keys={memoedKeys}>{children}</Internal> : children}
 		</Fragment>
 	);
 }
