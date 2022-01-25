@@ -54,6 +54,7 @@ const initialState: State = {
 function newEvent( state ) {
 	return {
 		...state,
+		timestamp       : new Date().toISOString(),
 		name            : eventData.name,
 		shopExpectedCost: eventData.shop.reduce( ( total, item ) =>
 			total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
@@ -66,10 +67,9 @@ const eventSlice = createSlice( {
 	initialState,
 	reducers     : {
 		event_reset() {
-			return newEvent( { ...initialState, timestamp: new Date().toISOString() } );
+			return newEvent( initialState );
 		},
 		event_newEvent( state ) {
-			state.timestamp = new Date().toISOString();
 			return newEvent( state );
 		},
 		event_setShop( state, { payload }: PayloadAction<{
