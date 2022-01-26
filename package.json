@@ -20,11 +20,11 @@
 		"export"   : "next export",
 		"capacitor": "cross-env STATIC=1 next build && cross-env STATIC=1 next export && cap sync && cap sync electron",
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
-		"android"  : "cap open android",
-		"electron" : "cap open electron"
+		"android"  : "cap open android"
 	},
 	"packageManager" : "yarn@3.1.1",
 	"dependencies"   : {
+		"@capacitor/app"                  : "^1.1.0",
 		"@capacitor/core"                 : "^3.4.0",
 		"@capacitor/dialog"               : "^1.0.7",
 		"@capacitor/status-bar"           : "^1.0.7",
@@ -67,7 +67,6 @@
 		"sortablejs"                      : "^1.14.0"
 	},
 	"devDependencies": {
-		"@capacitor-community/electron"     : "^4.1.0",
 		"@capacitor/android"                : "^3.4.0",
 		"@capacitor/cli"                    : "^3.4.0",
 		"@next/bundle-analyzer"             : "^12.0.8",
@@ -76,7 +75,7 @@
 		"@types/jest"                       : "^27.4.0",
 		"@types/lodash"                     : "^4.14.178",
 		"@types/lz-string"                  : "^1.3.34",
-		"@types/node"                       : "^17.0.11",
+		"@types/node"                       : "^17.0.12",
 		"@types/react"                      : "^17.0.38",
 		"@types/react-dom"                  : "^17.0.11",
 		"@types/react-redux"                : "^7.1.22",
@@ -97,7 +96,7 @@
 		"jest"                              : "^27.4.7",
 		"next-compose-plugins"              : "^2.2.1",
 		"next-pwa"                          : "^5.4.4",
-		"next-sitemap"                      : "^2.0.2",
+		"next-sitemap"                      : "^2.0.7",
 		"typescript"                        : "^4.5.5"
 	}
 }
