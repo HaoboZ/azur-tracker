@@ -14,7 +14,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance, useAsyncDebounce } from 'react-table';
-import useEventEffect from '../../hooks/useEventEffect';
+import useEventListener from '../../hooks/useEventListener';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import equipData from './ship/equip/data';
 import EquipFilter from './ship/equip/filter';
@@ -72,20 +72,17 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const searchRef = useRef<HTMLInputElement>();
 	
 	// keydown listener for search
-	useEventEffect( window, {
-		name    : 'keydown',
-		listener: ( e: KeyboardEvent ) => {
-			if ( !searchRef.current ) return;
-			if ( e.ctrlKey && e.key === 'f' ) {
-				if ( document.activeElement === searchRef.current ) {
-					searchRef.current.select();
-				} else {
-					searchRef.current.focus();
-				}
-				e.preventDefault();
+	useEventListener( window, 'keydown', ( e: KeyboardEvent ) => {
+		if ( !searchRef.current ) return;
+		if ( e.ctrlKey && e.key === 'f' ) {
+			if ( document.activeElement === searchRef.current ) {
+				searchRef.current.select();
+			} else {
+				searchRef.current.focus();
 			}
+			e.preventDefault();
 		}
-	}, [] );
+	} );
 	
 	// resets filter when ships change
 	useEffect( () => {

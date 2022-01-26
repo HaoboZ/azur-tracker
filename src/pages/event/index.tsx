@@ -8,7 +8,7 @@ import eventImage from '../../../public/images/event.jpg';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
-import useIntervalEffect from '../../hooks/useIntervalEffect';
+import useInterval from '../../hooks/useInterval';
 import { event_newEvent } from '../../store/reducers/eventReducer';
 import eventData from './data';
 import EventFarming from './farming';
@@ -26,7 +26,7 @@ export default function Event() {
 			dispatch( event_newEvent() );
 	}, [] );
 	
-	useIntervalEffect( () => setTime( moment() ), { ms: 15 * 1000 }, [] );
+	useInterval( () => setTime( moment() ), { ms: 15 * 1000 }, [] );
 	
 	if ( event.name !== eventData.name )
 		return null;

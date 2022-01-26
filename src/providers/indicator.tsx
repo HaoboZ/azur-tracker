@@ -1,6 +1,6 @@
 import { CircularProgress, Fade } from '@mui/material';
 import { createContext, useContext, useState } from 'react';
-import useEventEffect from '../hooks/useEventEffect';
+import useEventListener from '../hooks/useEventListener';
 
 type C = <T>( promise?: Promise<T> ) => Promise<T>;
 const IndicatorContext = createContext<C>( () => null );
@@ -9,14 +9,11 @@ IndicatorContext.displayName = 'Indicator';
 export default function IndicatorProvider( { children } ) {
 	const [ visible, setVisible ] = useState( false );
 	
-	useEventEffect( window, {
-		name    : 'beforeunload',
-		listener: ( e: BeforeUnloadEvent ) => {
-			if ( !visible ) return;
-			e.returnValue = 'Currently saving, are you sure you want to leave?';
-			setVisible( false );
-		}
-	}, [ visible ] );
+	useEventListener( window, 'beforeunload', ( e: BeforeUnloadEvent ) => {
+		if ( !visible ) return;
+		e.returnValue = 'Currently saving, are you sure you want to leave?';
+		setVisible( false );
+	}, { dependencies: [ visible ] } );
 	
 	return (
 		<IndicatorContext.Provider value={async ( promise ) => {

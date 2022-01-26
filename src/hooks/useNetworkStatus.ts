@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import useEventEffect from './useEventEffect';
+import useEventListener from './useEventListener';
 
 export default function useNetworkStatus() {
 	const [ networkStatus, setNetworkStatus ] = useState( navigator.onLine );
 	
-	useEventEffect( window, {
-		name    : 'online',
-		listener: () => setNetworkStatus( navigator.onLine )
-	}, [] );
-	useEventEffect( window, {
-		name    : 'offline',
-		listener: () => setNetworkStatus( navigator.onLine )
-	}, [] );
+	useEventListener( window, 'online', () => setNetworkStatus( navigator.onLine ) );
+	useEventListener( window, 'offline', () => setNetworkStatus( navigator.onLine ) );
 	
 	return networkStatus;
 }

@@ -1,7 +1,6 @@
 import { getAuth, signOut } from 'firebase/auth';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { app } from '../../firebase/client';
-import useEventEffect from '../../hooks/useEventEffect';
 import { useEvents } from '../event';
 import { useModal } from '../modal';
 import { useAuth } from './index';
@@ -11,16 +10,12 @@ const auth = getAuth( app );
 
 export default function useAuthButton() {
 	const user = useAuth();
-	const events = useEvents();
 	const { showModal } = useModal();
 	
-	useEventEffect( events, {
-		name    : 'showAuth',
-		listener: () => showModal( LoginModal, {
-			id      : 'login',
-			maxWidth: 'xs'
-		} )
-	} );
+	useEvents( 'showAuth', () => showModal( LoginModal, {
+		id      : 'login',
+		maxWidth: 'xs'
+	} ) );
 	
 	return user ? (
 		<AsyncLoadingButton

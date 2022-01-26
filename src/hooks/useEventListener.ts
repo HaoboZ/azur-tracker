@@ -1,15 +1,15 @@
 import { DependencyList, useEffect } from 'react';
 
-export default function useEventEffect(
+export default function useEventListener(
 	event: { on: Function, off: Function }
 	| { addListener: Function, removeListener: Function }
 	| { addEventListener: Function, removeEventListener: Function },
+	name: string | symbol | keyof WindowEventMap,
+	listener: ( ...args: any[] ) => void,
 	options: {
-		name: string | symbol | keyof WindowEventMap,
-		listener: ( ...args: any[] ) => void,
-		callOnce?: boolean
-	},
-	deps?: DependencyList
+		callOnce?: boolean,
+		dependencies?: DependencyList
+	}
 ) {
 	useEffect( () => {
 		// @ts-ignore
@@ -17,10 +17,10 @@ export default function useEventEffect(
 		// @ts-ignore
 		const remove = event.off || event.removeListener || event.removeEventListener;
 		
-		if ( options.callOnce ) options.listener();
-		add.bind( event )( options.name, options.listener );
+		if ( options?.callOnce ) listener();
+		add.bind( event )( name, listener );
 		return () => {
-			remove.bind( event )( options.name, options.listener );
+			remove.bind( event )( name, listener );
 		};
-	}, deps );
+	}, options?.dependencies || [] );
 }

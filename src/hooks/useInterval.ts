@@ -1,6 +1,6 @@
 import { DependencyList, useEffect } from 'react';
 
-export default function useIntervalEffect<TArgs extends any[]>(
+export default function useInterval<TArgs extends any[]>(
 	callback: ( ...args: TArgs ) => void,
 	options: { ms?: number, args?: TArgs, disabled?: boolean },
 	deps?: DependencyList

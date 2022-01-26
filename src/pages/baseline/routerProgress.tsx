@@ -2,7 +2,7 @@ import { LinearProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Progress from '../../components/loaders/progress';
-import useEventEffect from '../../hooks/useEventEffect';
+import useEventListener from '../../hooks/useEventListener';
 
 export default function RouterProgress( { showOnShallow = true }: {
 	showOnShallow?: boolean
@@ -25,18 +25,9 @@ export default function RouterProgress( { showOnShallow = true }: {
 		}
 	};
 	
-	useEventEffect( router.events, {
-		name    : 'routeChangeStart',
-		listener: routeChangeStart
-	}, [] );
-	useEventEffect( router.events, {
-		name    : 'routeChangeComplete',
-		listener: routeChangeEnd
-	}, [] );
-	useEventEffect( router.events, {
-		name    : 'routeChangeError',
-		listener: routeChangeEnd
-	}, [] );
+	useEventListener( router.events, 'routeChangeStart', routeChangeStart );
+	useEventListener( router.events, 'routeChangeComplete', routeChangeEnd );
+	useEventListener( router.events, 'routeChangeError', routeChangeEnd );
 	
 	return (
 		<Progress key={key} isLoading={isActive}>
