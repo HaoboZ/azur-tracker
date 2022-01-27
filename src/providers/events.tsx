@@ -11,21 +11,18 @@ export default function EventsProvider( { children } ) {
 	return <EventsContext.Provider value={events}>{children}</EventsContext.Provider>;
 }
 
-export function useEvents(): EventEmitter;
-export function useEvents(
-	name: string | symbol | keyof WindowEventMap,
-	listener: ( ...args: any[] ) => void,
-	options?: { callOnce?: boolean, dependencies?: DependencyList }
-);
 export function useEvents(
 	name?: string | symbol | keyof WindowEventMap,
 	listener?: ( ...args: any[] ) => void,
 	options?: { callOnce?: boolean, dependencies?: DependencyList }
 ) {
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	if ( !name ) return useContext( EventsContext );
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	return useEventListener( useContext( EventsContext ), name, listener, options );
+	const events = useContext( EventsContext );
+	
+	if ( name && listener ) {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		useEventListener( events, name, listener, options );
+	}
+	return events;
 }
 
 export function withEvents( Component ) {

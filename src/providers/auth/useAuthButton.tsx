@@ -1,7 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { app } from '../../firebase/client';
-import { useEvents } from '../event';
+import { useEvents } from '../events';
 import { useModal } from '../modal';
 import { useAuth } from './index';
 import LoginModal from './loginModal';

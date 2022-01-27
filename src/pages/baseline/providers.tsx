@@ -8,7 +8,7 @@ import { Provider as StoreProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import ComponentComposer, { component } from '../../helpers/componentComposer';
 import AuthProvider from '../../providers/auth';
-import EventsProvider from '../../providers/event';
+import EventsProvider from '../../providers/events';
 import FireDataProvider from '../../providers/fireData';
 import IndicatorProvider from '../../providers/indicator';
 import ModalProvider from '../../providers/modal';
