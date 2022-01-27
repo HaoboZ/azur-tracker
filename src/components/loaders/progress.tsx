@@ -12,10 +12,11 @@ export default function Progress( { isLoading, delay, children }: {
 	const { isFinished, progress } = useNProgress( { isAnimating } );
 	
 	return (
-		<Box sx={{
-			opacity   : isFinished ? 0 : 1,
-			transition: ( { transitions } ) => transitions.create( 'opacity' )
-		}}>
+		<Box
+			sx={{
+				opacity   : isFinished ? 0 : 1,
+				transition: ( { transitions } ) => transitions.create( 'opacity' )
+			}}>
 			{children( progress )}
 		</Box>
 	);

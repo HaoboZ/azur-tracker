@@ -1,4 +1,4 @@
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, linearProgressClasses } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Progress from '../../components/loaders/progress';
@@ -9,13 +9,11 @@ export default function RouterProgress( { showOnShallow = true }: {
 } ) {
 	const router = useRouter();
 	
-	const [ key, setKey ] = useState( 0 );
 	const [ isActive, setIsActive ] = useState( false );
 	
 	const routeChangeStart = ( _, { shallow } ) => {
 		if ( !shallow || showOnShallow ) {
 			setIsActive( true );
-			setKey( ( key ) => key + 1 );
 		}
 	};
 	
@@ -30,13 +28,19 @@ export default function RouterProgress( { showOnShallow = true }: {
 	useEventListener( router.events, 'routeChangeError', routeChangeEnd );
 	
 	return (
-		<Progress key={key} isLoading={isActive}>
+		<Progress isLoading={isActive}>
 			{( progress ) => (
 				<LinearProgress
 					variant='determinate'
 					color='secondary'
 					value={progress * 100}
-					sx={{ position: 'absolute', width: '100%' }}
+					sx={{
+						'position'            : 'absolute',
+						'width'               : '100%',
+						'&[aria-valuenow="0"]': {
+							[ `.${linearProgressClasses.bar}` ]: { transition: 'none' }
+						}
+					}}
 				/>
 			)}
 		</Progress>
