@@ -41,8 +41,7 @@ export function CompleteSplash() {
 	return null;
 }
 
-export function useSplashText( text: string ) {
+export function useSplashText() {
 	const { setText } = useContext( SplashContext );
-	
-	useEffect( () => setText( text ), [] );
+	return setText;
 }

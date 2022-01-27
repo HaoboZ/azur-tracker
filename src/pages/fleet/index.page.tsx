@@ -1,5 +1,5 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
@@ -63,8 +63,8 @@ export default function Fleet() {
 										<li>sort your fleet easily</li>
 										<li>and have decent equips by tier</li>
 									</ul>
-									<Typography>For people who want every ship to equip good stuff and level up
-										everyone
+									<Typography>
+										For people who want every ship to equip good stuff and level up everyone
 									</Typography>
 								</Fragment>
 							),

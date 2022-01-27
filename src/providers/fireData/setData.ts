@@ -2,7 +2,7 @@ import { Dialog } from '@capacitor/dialog';
 import stringify from 'fast-json-stable-stringify';
 import { getAuth } from 'firebase/auth';
 import { get, getDatabase, ref, set } from 'firebase/database';
-import { omit } from 'lodash';
+import { omit } from 'lodash-es';
 import { compressToUTF16 } from 'lz-string';
 import { app } from '../../firebase/client';
 import { store } from '../../store';
@@ -20,6 +20,7 @@ export default async function setData( key: string ) {
 	
 	// conditions
 	const state = store.getState();
+	if ( timestamp === state[ key ].timestamp ) return;
 	if ( timestamp > state[ key ].timestamp ) {
 		const { value } = await Dialog.confirm( {
 			title  : 'Conflicts Found',

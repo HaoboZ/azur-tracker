@@ -1,18 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import useDebounce from './useDebounce';
 
 export default function useLoading( isLoading?: boolean, delay = 250 ) {
 	const [ loading, setLoading ] = useState( false );
 	
-	const timeout = useRef<NodeJS.Timeout>();
+	const isLoadingDebounced = useDebounce( isLoading, delay );
 	
 	useEffect( () => {
-		setLoading( false );
-		if ( isLoading ) {
-			timeout.current = setTimeout( () => setLoading( true ), delay );
-		} else {
-			clearTimeout( timeout.current );
-		}
-	}, [ isLoading ] );
+		setLoading( isLoading && isLoadingDebounced );
+	}, [ isLoading, isLoadingDebounced ] );
 	
 	return loading;
 }

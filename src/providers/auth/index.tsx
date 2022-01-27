@@ -6,6 +6,7 @@ import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { app } from '../../firebase/client';
+import { useSplashText } from '../splash';
 
 const auth = getAuth( app );
 
@@ -13,6 +14,7 @@ const AuthContext = createContext<User>( undefined );
 AuthContext.displayName = 'Auth';
 
 export default function AuthProvider( { children } ) {
+	const setText = useSplashText();
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const [ user, loading, error ] = useAuthState( auth );
 	
@@ -36,6 +38,10 @@ export default function AuthProvider( { children } ) {
 		} );
 		return () => closeSnackbar( key );
 	}, [ user ] );
+	
+	useEffect( () => {
+		if ( loading ) setText( 'Authenticating...' );
+	}, [ loading ] );
 	
 	if ( loading ) return null;
 	if ( error ) return <Typography>Error: {error.message}</Typography>;

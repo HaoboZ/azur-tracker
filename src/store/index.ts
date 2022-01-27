@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues, omit } from 'lodash';
+import { mapValues, omit } from 'lodash-es';
 import {
 	createMigrate,
 	FLUSH,

@@ -13,7 +13,8 @@ import {
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TableInstance, useAsyncDebounce } from 'react-table';
+import { TableInstance } from 'react-table';
+import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import equipData from './ship/equip/data';
@@ -65,8 +66,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const { filter, ships } = useSelector( ( { fleet } ) => fleet );
 	const dispatch = useDispatch();
 	
-	const globalFilter = useAsyncDebounce( ( value ) =>
-		table.setGlobalFilter( value ), 250 );
+	const globalFilter = useDebounce( table.setGlobalFilter );
 	
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	const searchRef = useRef<HTMLInputElement>();

@@ -39,7 +39,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 			return '?';
 		case 6:
 			return 'N';
-		case 0:
+		case -1:
 			return 'EX';
 		default:
 			return ship.tier - 1;

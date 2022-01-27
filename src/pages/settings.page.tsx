@@ -26,7 +26,6 @@ import { useAuth } from '../providers/auth';
 import useAuthButton from '../providers/auth/useAuthButton';
 import getData from '../providers/fireData/getData';
 import setData from '../providers/fireData/setData';
-import { useIndicator } from '../providers/indicator';
 import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
 import { setAutoLoad, setAutoSave, setTheme } from '../store/reducers/mainReducer';
@@ -38,7 +37,6 @@ export default function Settings() {
 	const dispatch = useDispatch();
 	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
-	const indicator = useIndicator();
 	const online = useNetworkStatus();
 	const authButton = useAuthButton();
 	
@@ -91,7 +89,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await indicator( Promise.all( [ 'event', 'research', 'fleet' ].map( setData ) ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( setData ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -106,7 +104,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await indicator( Promise.all( [ 'event', 'research', 'fleet' ].map( getData ) ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( getData ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );

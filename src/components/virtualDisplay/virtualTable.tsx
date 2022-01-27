@@ -10,7 +10,7 @@ import {
 	tableRowClasses,
 	TableSortLabel
 } from '@mui/material';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { memo, useMemo, useRef } from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';

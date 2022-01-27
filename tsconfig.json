@@ -21,9 +21,9 @@
 	},
 	"include"        : [
 		"next-env.d.ts",
-		"src/**/*",
-		"next-sitemap.config.js",
-		"capacitor.config.ts"
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.js"
 	],
 	"exclude"        : [
 		"node_modules",

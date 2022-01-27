@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material';
-import { omit } from 'lodash';
+import { isEqual, map, omit } from 'lodash-es';
 import { ComponentType, Fragment, HTMLAttributes, ReactHTML, ReactNode, useEffect, useState } from 'react';
 import { ReactSortable, ReactSortableProps } from 'react-sortablejs';
 
@@ -28,6 +28,7 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 		<StyledReactSortable
 			list={list}
 			setList={( items: Item[] ) => {
+				if ( isEqual( map( list, 'id' ), map( items, 'id' ) ) ) return;
 				setList( items );
 				setItems( items.map( ( item ) => omit( item, [ 'selected', 'chosen', 'filtered' ] ) as Item ) );
 				setSkip( true );

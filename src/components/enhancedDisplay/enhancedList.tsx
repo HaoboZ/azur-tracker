@@ -18,7 +18,7 @@ import {
 	Paper,
 	Typography
 } from '@mui/material';
-import { isEqual, pick } from 'lodash';
+import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';

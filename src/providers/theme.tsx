@@ -9,7 +9,7 @@ import {
 	ThemeProvider as MuiThemeProvider,
 	useMediaQuery
 } from '@mui/material';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';

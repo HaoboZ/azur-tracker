@@ -1,6 +1,6 @@
 import { Help as HelpIcon } from '@mui/icons-material';
 import { IconButton, IconButtonProps, useTheme } from '@mui/material';
-import { includes } from 'lodash';
+import { includes } from 'lodash-es';
 import { Fragment, useState } from 'react';
 import Joyride, { ACTIONS, EVENTS, Props } from 'react-joyride';
 

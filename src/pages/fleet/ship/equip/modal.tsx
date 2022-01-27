@@ -11,7 +11,7 @@ import {
 	Switch,
 	Typography
 } from '@mui/material';
-import { cloneDeep, reduce } from 'lodash';
+import { cloneDeep, reduce } from 'lodash-es';
 import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';

@@ -1,14 +1,18 @@
-import { throttle, ThrottleSettings } from 'lodash';
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import { DebouncedFunc, throttle, ThrottleSettings } from 'lodash-es';
 import { useCallback, useEffect, useState } from 'react';
 
-export default function useThrottle<S>( value?: S, delay = 250, options?: ThrottleSettings ) {
-	const [ debouncedValue, setDebouncedValue ] = useState( value );
+export default function useThrottle<T>( value: T, delay = 250, options?: ThrottleSettings ): T extends ( ...args: any ) => any ? DebouncedFunc<T> : T {
+	if ( typeof value === 'function' ) return useCallback( throttle( value as any, delay, options ), [ delay ] ) as any;
 	
-	const setValueThrottled = useCallback( throttle( setDebouncedValue, delay, options ), [ delay ] );
+	const [ throttledValue, setThrottledValue ] = useState( value );
+	
+	const setValueThrottled = useCallback( throttle( setThrottledValue, delay, options ), [ delay ] );
 	
 	useEffect( () => {
 		setValueThrottled( value );
 	}, [ value ] );
 	
-	return debouncedValue;
+	return throttledValue as any;
 }

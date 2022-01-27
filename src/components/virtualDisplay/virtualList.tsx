@@ -1,5 +1,5 @@
 import { List, ListItem, ListItemButton, Paper } from '@mui/material';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { memo, ReactNode } from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
