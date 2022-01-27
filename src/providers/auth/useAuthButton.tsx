@@ -9,13 +9,14 @@ import LoginModal from './loginModal';
 const auth = getAuth( app );
 
 export default function useAuthButton() {
+	const events = useEvents();
 	const user = useAuth();
 	const { showModal } = useModal();
 	
 	useEvents( 'showAuth', () => showModal( LoginModal, {
 		id      : 'login',
 		maxWidth: 'xs'
-	} ) );
+	} ), {} );
 	
 	return user ? (
 		<AsyncLoadingButton

@@ -6,7 +6,7 @@ export default function useEventListener(
 	| { addEventListener: Function, removeEventListener: Function },
 	name: string | symbol | keyof WindowEventMap,
 	listener: ( ...args: any[] ) => void,
-	options: {
+	options?: {
 		callOnce?: boolean,
 		dependencies?: DependencyList
 	}
