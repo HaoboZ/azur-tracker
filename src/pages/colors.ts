@@ -15,20 +15,21 @@ export const rarityColors = {
 	'N'         : 'gray'
 };
 export const typeColors = {
-	'Destroyer'             : 'blue',
-	'Light Cruiser'         : 'orange',
-	'Heavy Cruiser'         : 'orange',
-	'Large Cruiser'         : 'orange',
-	'Battlecruiser'         : 'red',
-	'Battleship'            : 'red',
-	'Aviation Battleship'   : 'red',
-	'Light Aircraft Carrier': 'purple',
-	'Aircraft Carrier'      : 'purple',
-	'Monitor'               : 'red',
-	'Submarine'             : 'green',
-	'Submarine Carrier'     : 'green',
-	'Repair Ship'           : 'aqua',
-	'Munition Ship'         : 'aqua'
+	'Destroyer'               : 'blue',
+	'Guided Missile Destroyer': 'blue',
+	'Light Cruiser'           : 'orange',
+	'Heavy Cruiser'           : 'orange',
+	'Large Cruiser'           : 'orange',
+	'Battlecruiser'           : 'red',
+	'Battleship'              : 'red',
+	'Aviation Battleship'     : 'red',
+	'Light Aircraft Carrier'  : 'purple',
+	'Aircraft Carrier'        : 'purple',
+	'Monitor'                 : 'red',
+	'Submarine'               : 'green',
+	'Submarine Carrier'       : 'green',
+	'Repair Ship'             : 'aqua',
+	'Munition Ship'           : 'aqua'
 };
 export const factionColors = {
 	'Universal'          : 'rainbow',

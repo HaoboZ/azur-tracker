@@ -15,7 +15,11 @@ export default function SplashProvider( { children } ) {
 	
 	return (
 		<SplashContext.Provider value={{ complete: () => setLoading( false ), setText }}>
-			<Backdrop appear open={loading} sx={{ zIndex: 'appBar', backgroundColor: dark ? 'black' : 'white' }}>
+			<Backdrop
+				appear
+				easing={{ enter: 'none' }}
+				open={loading}
+				sx={{ zIndex: 'appBar', backgroundColor: dark ? 'black' : 'white' }}>
 				<Stack alignItems='center' width={256}>
 					<Image priority src={Icon} alt='icon' width={128} height={128}/>
 					<Typography mt={2} mb={.5} color={dark ? 'white' : 'black'}>{text}</Typography>

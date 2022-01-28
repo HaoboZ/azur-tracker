@@ -31,6 +31,7 @@ const searchOptions = [
 	'Common',
 	// types
 	'Destroyer',
+	'Guided Missile Destroyer',
 	'Light Cruiser',
 	'Heavy Cruiser',
 	'Large Cruiser',
