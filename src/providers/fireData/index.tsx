@@ -52,6 +52,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 		
 		// save
 		useEffect( () => {
+			if ( loaded < keys.length ) return;
 			if ( main.autoSave ) {
 				setSaving( true );
 				delayedSetData( key );

@@ -3165,9 +3165,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanem/react-nprogress@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "@tanem/react-nprogress@npm:4.0.4"
+"@tanem/react-nprogress@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@tanem/react-nprogress@npm:4.0.5"
   dependencies:
     "@babel/runtime": ^7.16.7
     hoist-non-react-statics: ^3.3.2
@@ -3175,7 +3175,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 2443a65eebd7e8de4cbbd486b37203760d65426bfb079f5162e4b631a4a8b0a0384df4519b6cc10dc8bf89546526111758c91371661264a1e71c3ea01ed89158
+  checksum: e70617fc9755dce6464c7ac16ce29ca02f76c13d2f73c50eec754d945860feda58965cc0fdc854a6e1c9fc75a0880bba54bfdd253c487cd31c2810a94e32d903
   languageName: node
   linkType: hard
 
@@ -4247,7 +4247,7 @@ __metadata:
     "@mui/material": ^5.3.1
     "@next/bundle-analyzer": ^12.0.9
     "@reduxjs/toolkit": ^1.7.1
-    "@tanem/react-nprogress": ^4.0.4
+    "@tanem/react-nprogress": ^4.0.5
     "@types/eslint": ^8.4.1
     "@types/events": ^3.0.0
     "@types/jest": ^27.4.0
@@ -4268,7 +4268,7 @@ __metadata:
     babel-plugin-import: ^1.13.3
     cordova-res: ^0.15.4
     cross-env: ^7.0.3
-    eslint: ^8.7.0
+    eslint: ^8.8.0
     eslint-config-next: ^12.0.9
     events: ^3.3.0
     fast-json-stable-stringify: ^2.1.0
@@ -4282,7 +4282,7 @@ __metadata:
     next: ^12.0.9
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.4
-    next-sitemap: ^2.0.7
+    next-sitemap: ^2.0.11
     notistack: ^2.0.3
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -5754,9 +5754,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.7.0":
-  version: 8.7.0
-  resolution: "eslint@npm:8.7.0"
+"eslint@npm:^8.8.0":
+  version: 8.8.0
+  resolution: "eslint@npm:8.8.0"
   dependencies:
     "@eslint/eslintrc": ^1.0.5
     "@humanwhocodes/config-array": ^0.9.2
@@ -5795,7 +5795,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 1c80375a48b0fe3ccae3c6354323e4f0e92e970f23abc5b9705b90b7aef514b69ebd0a63e74962d30789986c91fa41c0e25cd2f98f19e9e2a2d36aafdfc9ccc9
+  checksum: 41a7e85bf84cf9f2d758ef3e8d08020a39a2836703728b59535684681349bd021c2c6e24174462b844a914870d707d2151e0371198899d957b444de91adaa435
   languageName: node
   linkType: hard
 
@@ -8640,9 +8640,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "next-sitemap@npm:2.0.7"
+"next-sitemap@npm:^2.0.11":
+  version: 2.0.11
+  resolution: "next-sitemap@npm:2.0.11"
   dependencies:
     "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.5
@@ -8650,7 +8650,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 1fa544c0075159ec395636c1a1ee476f4a52ac05c74abcebada0333219ebf615bd93bfe34f58473cfe700e9035c90153555ccb8f54f5e6c5951945f45488eae6
+  checksum: 8e88e1856472dc1a0a1b6f7eef3d49dcfaf6235b874be00301d56b3b7cfef98df9e3f60efc66a519c2af8943763fb970c66763033b7290bc6ecabd850b725911
   languageName: node
   linkType: hard
 
