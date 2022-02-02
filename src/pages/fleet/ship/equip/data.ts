@@ -181,6 +181,15 @@ const equipData: Equip[] = [
 		rarity: rarity.UR
 	},
 	//endregion
+	//region Missile
+	{
+		id    : 96000,
+		name  : 'SY-1 Missile',
+		image : 'SY-1_Missile',
+		type  : type.M,
+		rarity: rarity.SR
+	},
+	//endregion
 	//region Anti-Air
 	{
 		id    : 16080,
@@ -1612,12 +1621,15 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.F;
 	},
 	
-	'SP' : {
+	'SP': {
 		[ map[ 'Suisei Model 21/SR' ] ]       : [ 0, a = 0 ],
 		[ map[ 'Seiran/E' ] ]                 : [ 1, ++a ],
 		[ map[ 'Aichi E16A Zuiun/E' ] ]       : [ 2, ++a ],
 		[ map[ 'N1K1 Kyoufuu/E' ] ]           : [ 3, ++a ],
 		[ map[ 'Type 2 Seaplane Fighter/E' ] ]: [ 3, ++a ]
+	},
+	get 'SP/DD'() {
+		return this.SP;
 	},
 	'SSP': {
 		[ map[ 'Seiran/E' ] ]          : [ 0, a = 0 ],
@@ -1878,10 +1890,11 @@ export const equippable = {
 	'DB/TB': [ type.DB, type.TB ],
 	'P'    : [ type.F, type.DB, type.TB ],
 	
-	'SP' : [ type.SP, type.SSP ],
-	'SSP': [ type.SSP ],
-	'ST' : [ type.ST ],
-	'SS' : [ type.SS ],
+	'SP'   : [ type.SP, type.SSP ],
+	'SP/DD': [ type.SP, type.SSP, type.DD ],
+	'SSP'  : [ type.SSP ],
+	'ST'   : [ type.ST ],
+	'SS'   : [ type.SS ],
 	
 	'A/DD1'  : [ type.A ],
 	'A/DD2'  : [ type.A ],

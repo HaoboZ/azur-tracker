@@ -11,6 +11,7 @@ import {
 	ListItem,
 	ListItemSecondaryAction,
 	ListItemText,
+	Switch,
 	ToggleButton,
 	ToggleButtonGroup
 } from '@mui/material';
@@ -28,7 +29,7 @@ import getData from '../providers/fireData/getData';
 import setData from '../providers/fireData/setData';
 import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
-import { setAutoLoad, setAutoSave, setTheme } from '../store/reducers/mainReducer';
+import { setAutoBackup, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
 
 // noinspection JSUnusedGlobalSymbols
@@ -62,20 +63,10 @@ export default function Settings() {
 				<ListItem>
 					<ListItemText>Auto Backup</ListItemText>
 					<ListItemSecondaryAction>
-						<ToggleButtonGroup size='small'>
-							<ToggleButton
-								value='autoSave'
-								selected={main.autoSave}
-								onClick={() => dispatch( setAutoSave( !main.autoSave ) )}>
-								Save
-							</ToggleButton>
-							<ToggleButton
-								value='autoLoad'
-								selected={main.autoLoad}
-								onClick={() => dispatch( setAutoLoad( !main.autoLoad ) )}>
-								Load
-							</ToggleButton>
-						</ToggleButtonGroup>
+						<Switch
+							checked={main.autoBackup}
+							onChange={( event ) => dispatch( setAutoBackup( event.target.checked ) )}
+						/>
 					</ListItemSecondaryAction>
 				</ListItem>
 				<ListItem>

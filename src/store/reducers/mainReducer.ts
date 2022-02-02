@@ -7,15 +7,13 @@ export function importBackup( key, data ) {
 type State = {
 	newData: Record<string, boolean>,
 	theme: string,
-	autoSave: boolean,
-	autoLoad: boolean
+	autoBackup: boolean
 };
 
 const initialState: State = {
-	newData : {},
-	theme   : 'default',
-	autoSave: true,
-	autoLoad: true
+	newData   : {},
+	theme     : 'default',
+	autoBackup: true
 };
 
 const mainSlice = createSlice( {
@@ -28,18 +26,14 @@ const mainSlice = createSlice( {
 		setTheme( state, { payload }: PayloadAction<string> ) {
 			state.theme = payload;
 		},
-		setAutoSave( state, { payload }: PayloadAction<boolean> ) {
-			state.autoSave = payload;
-		},
-		setAutoLoad( state, { payload }: PayloadAction<boolean> ) {
-			state.autoLoad = payload;
+		setAutoBackup( state, { payload }: PayloadAction<boolean> ) {
+			state.autoBackup = payload;
 		}
 	}
 } );
 
 export default mainSlice.reducer;
 export const
-	setNewData  = mainSlice.actions.setNewData,
-	setTheme    = mainSlice.actions.setTheme,
-	setAutoSave = mainSlice.actions.setAutoSave,
-	setAutoLoad = mainSlice.actions.setAutoLoad;
+	setNewData    = mainSlice.actions.setNewData,
+	setTheme      = mainSlice.actions.setTheme,
+	setAutoBackup = mainSlice.actions.setAutoBackup;

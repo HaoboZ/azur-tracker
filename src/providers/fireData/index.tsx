@@ -53,7 +53,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 		// save
 		useEffect( () => {
 			if ( loaded < keys.length ) return;
-			if ( main.autoSave ) {
+			if ( main.autoBackup ) {
 				setSaving( true );
 				delayedSetData( key );
 			}
@@ -63,7 +63,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 		useEffect( () => {
 			if ( !value ) return;
 			( async () => {
-				if ( main.autoLoad && value > state[ key ].timestamp ) await getData( key );
+				if ( main.autoBackup && value > state[ key ].timestamp ) await getData( key );
 				setLoaded( ( loaded ) => loaded + 1 );
 			} )();
 		}, [ value ] );

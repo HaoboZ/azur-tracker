@@ -37,12 +37,20 @@ const migrations: Record<string, ( state: State ) => State> = {
 		event   : { ...state.event, timestamp: new Date( 0 ).toISOString() },
 		research: { ...state.research, timestamp: new Date( 0 ).toISOString() },
 		fleet   : { ...state.fleet, timestamp: new Date( 0 ).toISOString() }
+	} ),
+	11: ( state ) => ( {
+		...state,
+		main: {
+			...omit( state.main, [ 'autoSave', 'autoLoad' ] ) as any,
+			// @ts-ignore
+			autoBackup: state.main.autoSave
+		}
 	} )
 };
 
 const persistedReducer = persistReducer<RootState>( {
 	key            : 'root',
-	version        : 10,
+	version        : 11,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations, { debug: false } ),
