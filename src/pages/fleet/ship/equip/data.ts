@@ -1277,6 +1277,9 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	get 'T/A'() {
 		return this.T;
 	},
+	'M': {
+		[ map[ 'SY-1 Missile/SR' ] ]: [ 0, a = 0 ]
+	},
 	
 	'AA/Damage': {
 		[ map[ 'Sextuple 40mm Bofors AA Gun Mount/SR' ] ]            : [ 0, a = 0 ],
@@ -1842,6 +1845,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 export const equippable = {
 	'T'  : [ type.T ],
 	'T/A': [ type.T, type.A ],
+	
+	'M': [ type.M ],
 	
 	'AA/Damage': [ type.AA ],
 	'AA'       : [ type.AA ],
