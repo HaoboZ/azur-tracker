@@ -1278,7 +1278,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.T;
 	},
 	'M': {
-		[ map[ 'SY-1 Missile/SR' ] ]: [ 0, a = 0 ]
+		[ map[ 'SY-1 Missile/SR' ] ]: [ 0, 0 ]
 	},
 	
 	'AA/Damage': {
