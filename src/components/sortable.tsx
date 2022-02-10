@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material';
-import { isEqual, map, omit } from 'lodash-es';
+import { cloneDeep, isEqual, map, omit } from 'lodash-es';
 import { ComponentType, Fragment, HTMLAttributes, ReactHTML, ReactNode, useEffect, useState } from 'react';
 import { ReactSortable, ReactSortableProps } from 'react-sortablejs';
 
@@ -14,14 +14,14 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 	const theme = useTheme();
 	
 	const [ skip, setSkip ] = useState( false );
-	const [ list, setList ] = useState<Item[]>( () => [ ...items ] );
+	const [ list, setList ] = useState<Item[]>( () => cloneDeep( items ) );
 	
 	useEffect( () => {
 		if ( skip ) {
 			setSkip( false );
 			return;
 		}
-		setList( [ ...items ] );
+		setList( cloneDeep( items ) );
 	}, [ items ] );
 	
 	return (
