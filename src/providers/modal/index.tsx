@@ -59,7 +59,7 @@ export default function ModalProvider( { children } ) {
 	
 	return (
 		<ModalContext.Provider value={{
-			showModal : ( Component, { id = nanoid(), props, ...modalProps } ) => {
+			showModal : ( Component, { id = nanoid(), props, ...modalProps } = {} ) => {
 				setModals( ( modals ) => {
 					const index = modals.findIndex( ( modal ) => modal?.id === id );
 					const newModals = [ ...modals ];
