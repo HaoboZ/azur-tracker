@@ -10,7 +10,7 @@ jobs:
       steps:
          -  uses: actions/checkout@v2
          -  name: build
-         -  run: |
+            run: |
                yarn
                npm run build
                npm run export
