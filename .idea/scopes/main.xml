@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="main" pattern="file[azur-tracker]:src//*||file[azur-tracker]:public//*||file:package.json||file:next.config.mjs" />
+</component>
