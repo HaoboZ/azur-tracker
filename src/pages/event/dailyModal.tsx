@@ -1,4 +1,5 @@
 import { Grid, Typography } from '@mui/material';
+import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +12,7 @@ export default function DailyModal() {
 	const _daily = useSelector( ( { event } ) => event.daily );
 	const dispatch = useDispatch();
 	
-	const [ daily, setDaily ] = useState( _daily );
+	const [ daily, setDaily ] = useState( () => cloneDeep( _daily ) );
 	
 	// total points gained daily
 	const dailyTotal = useMemo(

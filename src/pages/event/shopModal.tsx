@@ -1,4 +1,5 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
+import { cloneDeep } from 'lodash-es';
 import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
@@ -11,7 +12,7 @@ export default function ShopModal() {
 	const _shop = useSelector( ( { event } ) => event.shop );
 	const dispatch = useDispatch();
 	
-	const [ shop, setShop ] = useState( _shop );
+	const [ shop, setShop ] = useState( () => cloneDeep( _shop ) );
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = useMemo(
