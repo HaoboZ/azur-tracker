@@ -3,7 +3,7 @@
 const eventData = {
 	name   : 'Northern Overture Rerun',
 	href   : 'https://azurlane.koumakan.jp/wiki/Northern_Overture_Rerun',
-	endDate: '2022-02-16T23:59-07',
+	endDate: new Date( '2022-02-16T23:59-07:00' ),
 	shop   : [
 		{ name: 'Chapayev', cost: 8000, amount: 5 },
 		{ name: 'Minsk', cost: 4000, amount: 5 },

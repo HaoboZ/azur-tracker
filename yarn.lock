@@ -4288,6 +4288,7 @@ __metadata:
     babel-plugin-import: ^1.13.3
     cordova-res: ^0.15.4
     cross-env: ^7.0.3
+    date-fns: ^2.28.0
     eslint: ^8.9.0
     eslint-config-next: ^12.0.10
     events: ^3.3.0
@@ -4297,7 +4298,6 @@ __metadata:
     jest: ^27.5.1
     lodash-es: ^4.17.21
     lz-string: ^1.4.4
-    moment: ^2.29.1
     nanoid: ^3.2.0
     next: ^12.0.10
     next-compose-plugins: ^2.2.1
@@ -5135,6 +5135,13 @@ __metadata:
   version: 2.1.0
   resolution: "date-and-time@npm:2.1.0"
   checksum: dd73e8966e0c1042b909d57a91849ddcd1f81e3f6575e59e19f6b20d0e92d8ccf886e191c6aa1d004d3f66bec5517a34beea2cb51e8796c66228c413dc577647
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.28.0":
+  version: 2.28.0
+  resolution: "date-fns@npm:2.28.0"
+  checksum: a0516b2e4f99b8bffc6cc5193349f185f195398385bdcaf07f17c2c4a24473c99d933eb0018be4142a86a6d46cb0b06be6440ad874f15e795acbedd6fd727a1f
   languageName: node
   linkType: hard
 
@@ -8562,13 +8569,6 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: a96865108c6c3b1b8e1d5e9f11843de1e077e57737602de1b82030815f311be11f96f09cce59bd5b903d0b29834733e5313f9301e3ed6d6f6fba2eae0df4298f
-  languageName: node
-  linkType: hard
-
-"moment@npm:^2.29.1":
-  version: 2.29.1
-  resolution: "moment@npm:2.29.1"
-  checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
   languageName: node
   linkType: hard
 

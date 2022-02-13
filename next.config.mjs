@@ -16,8 +16,8 @@ const nextConfig = {
 	},
 	images    : process.env.STATIC ? {
 		loader : 'imgix',
-		domains: [ 'https://azurlanetracker.vercel.app' ],
-		path   : 'https://azurlanetracker.vercel.app'
+		domains: [ process.env.NEXT_PUBLIC_SERVER_URL ],
+		path   : process.env.NEXT_PUBLIC_SERVER_URL
 	} : undefined,
 	typescript: { ignoreBuildErrors: true },
 	headers   : async () => [ {

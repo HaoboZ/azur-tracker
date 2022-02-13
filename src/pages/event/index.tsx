@@ -1,5 +1,5 @@
 import { Box, Link, Typography } from '@mui/material';
-import moment from 'moment';
+import { differenceInDays } from 'date-fns';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
@@ -18,7 +18,7 @@ export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
 	
-	const [ time, setTime ] = useState( moment );
+	const [ time, setTime ] = useState( () => new Date() );
 	
 	// resets event
 	useEffect( () => {
@@ -26,15 +26,13 @@ export default function Event() {
 			dispatch( event_newEvent() );
 	}, [] );
 	
-	useInterval( () => setTime( moment() ), { ms: 15 * 1000 }, [] );
+	useInterval( () => setTime( new Date() ), { ms: 15 * 1000 }, [] );
 	
 	if ( event.name !== eventData.name )
 		return null;
 	
 	// number of days until end of event
-	const remainingDays = Math.floor( Math.max(
-		moment( eventData.endDate ).local().diff( time, 'day', true )
-		, 0 ) );
+	const remainingDays = Math.max( differenceInDays( eventData.endDate, time ), 0 );
 	
 	// number of points needed until only dailies are enough
 	const neededPoints    = event.shopExpectedCost - remainingDays * event.dailyExpected,
