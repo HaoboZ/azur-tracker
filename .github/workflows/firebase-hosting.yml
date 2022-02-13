@@ -10,10 +10,8 @@ jobs:
       steps:
          -  uses: actions/checkout@v2
          -  name: build
-            env:
-               ENV: ${{secrets.ENV}}
             run: |
-               echo $ENV >> .env
+               echo ${{$secrets.ENV}} >> .env
                yarn
                npm run build
                npm run export
