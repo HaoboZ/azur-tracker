@@ -13,8 +13,8 @@ jobs:
             run: |
                echo '${{ secrets.ENV }}' > .env
                yarn
-               npm run build
-               npm run export
+               yarn build
+               yarn export
          -  name: deploy
             uses: FirebaseExtended/action-hosting-deploy@v0
             with:
