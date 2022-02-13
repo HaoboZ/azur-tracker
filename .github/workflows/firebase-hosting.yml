@@ -10,12 +10,9 @@ jobs:
       steps:
          -  uses: actions/checkout@v2
          -  name: build
-            #            env:
-            #               env_file: ${{ secrets.ENV }}
+            env:
+               temp: ${{ secrets.ENV }}
             run: |
-               temp=`cat << EOF
-               ${{ secrets.ENV }}
-               EOF`
                echo "$temp" > .env
                yarn
                yarn build
