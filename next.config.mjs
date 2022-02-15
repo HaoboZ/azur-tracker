@@ -14,7 +14,7 @@ const nextConfig = {
 		} ) );
 		return config;
 	},
-	images    : process.env.STATIC ? {
+	images    : process.env.NEXT_PUBLIC_SERVER_URL ? {
 		loader : 'imgix',
 		domains: [ process.env.NEXT_PUBLIC_SERVER_URL ],
 		path   : process.env.NEXT_PUBLIC_SERVER_URL
@@ -32,7 +32,7 @@ export default withPlugins( [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	withPWA, {
 		pwa: {
-			disable: Boolean( process.env.STATIC ) || process.env.NODE_ENV === 'development',
+			disable: Boolean( process.env.NEXT_PUBLIC_SERVER_URL ) || process.env.NODE_ENV === 'development',
 			dest   : 'public'
 		}
 	}

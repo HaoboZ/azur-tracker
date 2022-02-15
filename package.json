@@ -17,8 +17,8 @@
 		"analyze"  : "cross-env ANALYZE=true next build",
 		"test"     : "jest",
 		"start"    : "next start",
-		"export"   : "cross-env STATIC=1 next export",
-		"capacitor": "next build && cross-env STATIC=1 next export && cap sync",
+		"export"   : "next export",
+		"capacitor": "next build && next export && cap sync",
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android"  : "cap open android"
 	},
