@@ -46,7 +46,7 @@
 		"firebase-admin"                  : "^10.0.2",
 		"lodash-es"                       : "^4.17.21",
 		"lz-string"                       : "^1.4.4",
-		"nanoid"                          : "^3.2.0",
+		"nanoid"                          : "^3.3.0",
 		"next"                            : "^12.0.10",
 		"notistack"                       : "^2.0.3",
 		"react"                           : "^17.0.2",
