@@ -1,0 +1,22 @@
+name: Update Dependencies
+
+on:
+   schedule:
+      -  cron: '0 2 * * *'
+   workflow_dispatch:
+jobs:
+   update:
+      runs-on: ubuntu-latest
+      steps:
+         -  uses: actions/checkout@v2
+         -  name: upgrade
+            run: |
+               yarn up '*'
+               yarn up '@*/*'
+         -  name: create pull request
+            uses: peter-evans/create-pull-request@v3
+            with:
+               commit-message: Update all dependencies
+               branch: automatic_dependency_updates
+               title: Update all dependencies
+               body: An automatic update of all dependencies.
