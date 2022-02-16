@@ -5,6 +5,7 @@ import neatJSON from './neatJSON';
 const file = fs.readFileSync( argv[ 2 ], { encoding: 'utf8' } ).toString();
 
 fs.writeFileSync( argv[ 2 ], neatJSON( JSON.parse( file ), {
+	wrap       : true,
 	indent     : '\t',
 	aligned    : true,
 	padding    : 1,
