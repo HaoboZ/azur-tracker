@@ -13,6 +13,7 @@ jobs:
             run: |
                yarn up '*'
                yarn up '@*/*'
+               yarn dlx ts-node -P tools/tsconfig.json tools/formatJSON/index.ts package.json
          -  name: create pull request
             uses: peter-evans/create-pull-request@v3
             with:
