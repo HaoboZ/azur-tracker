@@ -159,5 +159,6 @@ ${opts.indentLast ? indent2 : indent}}`;
 		}
 	}
 	
-	return build( value, '' );
+	return `${build( value, '' )}
+`;
 }
