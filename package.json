@@ -12,15 +12,16 @@
 	"version"        : "5.0.5",
 	"private"        : true,
 	"scripts"        : {
-		"dev"      : "next dev",
-		"build"    : "next build && next-sitemap --config next-sitemap.config.js",
-		"analyze"  : "cross-env ANALYZE=true next build",
-		"test"     : "jest",
-		"start"    : "next start",
-		"export"   : "next export",
-		"capacitor": "next build && next export && cap sync",
-		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
-		"android"  : "cap open android"
+		"postinstall": "yarn dlx ts-node -P tools/tsconfig.json tools/formatJSON package.json",
+		"dev"        : "next dev",
+		"build"      : "next build && next-sitemap --config next-sitemap.config.js",
+		"analyze"    : "cross-env ANALYZE=true next build",
+		"test"       : "jest",
+		"start"      : "next start",
+		"export"     : "next export",
+		"capacitor"  : "next build && next export && cap sync",
+		"icons"      : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
+		"android"    : "cap open android"
 	},
 	"packageManager" : "yarn@3.1.1",
 	"dependencies"   : {
