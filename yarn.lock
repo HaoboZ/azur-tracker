@@ -1277,6 +1277,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.17.2":
+  version: 7.17.2
+  resolution: "@babel/runtime@npm:7.17.2"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: a48702d271ecc59c09c397856407afa29ff980ab537b3da58eeee1aeaa0f545402d340a1680c9af58aec94dfdcbccfb6abb211991b74686a86d03d3f6956cacd
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.16.7, @babel/template@npm:^7.3.3":
   version: 7.16.7
   resolution: "@babel/template@npm:7.16.7"
@@ -3174,17 +3183,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanem/react-nprogress@npm:^4.0.7":
-  version: 4.0.7
-  resolution: "@tanem/react-nprogress@npm:4.0.7"
+"@tanem/react-nprogress@npm:^4.0.8":
+  version: 4.0.8
+  resolution: "@tanem/react-nprogress@npm:4.0.8"
   dependencies:
-    "@babel/runtime": ^7.17.0
+    "@babel/runtime": ^7.17.2
     hoist-non-react-statics: ^3.3.2
     prop-types: ^15.8.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 54a22a3bfef7be8f78830c90f10875b17c9e57452285da25f013c35575abb23fc7528f428523949f1f7f6c92526ea59148a330505bdb39e6ee33f2dec6a72851
+  checksum: a99f9da0c7435b3fd536994020dbafbcd08618dde569ba1410142509f3b0ebce45337b6a98c778af6a35119a7f54bd787cbc1f7dde9333847fb98ce0a4ff060c
   languageName: node
   linkType: hard
 
@@ -4267,7 +4276,7 @@ __metadata:
     "@mui/material": ^5.4.2
     "@next/bundle-analyzer": ^12.1.0
     "@reduxjs/toolkit": ^1.7.2
-    "@tanem/react-nprogress": ^4.0.7
+    "@tanem/react-nprogress": ^4.0.8
     "@types/eslint": ^8.4.1
     "@types/events": ^3.0.0
     "@types/jest": ^27.4.0
@@ -4302,7 +4311,7 @@ __metadata:
     next: ^12.1.0
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.4
-    next-sitemap: ^2.4.2
+    next-sitemap: ^2.4.3
     notistack: ^2.0.3
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -8707,9 +8716,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^2.4.2":
-  version: 2.4.2
-  resolution: "next-sitemap@npm:2.4.2"
+"next-sitemap@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "next-sitemap@npm:2.4.3"
   dependencies:
     "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.5
@@ -8717,7 +8726,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 06589454f7d4a8700bb2c906a028a1b68d8e165ee42466e4948e591d975903b9b9cd547eb98dc246862912f5d85ae672179080f65b7d46bbcc0666c639324de2
+  checksum: 039733e7756492f6251fdcb103d03a636061ba5486dee07f4dc092e055f3b138d1f6e1fc5c5f3578ff7b7f3de2ff3bce8448e4e2125eb96873e9a874e280bbba
   languageName: node
   linkType: hard
 
