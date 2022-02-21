@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { app } from '../../firebase/client';
 import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
+import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useAuth } from '../auth';
 import { useIndicator } from '../indicator';
 import { useSplashText } from '../splash';
@@ -32,6 +33,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 	const { main, ...state } = useSelector( ( state ) => state );
 	const indicator = useIndicator();
 	const user = useAuth();
+	const networkStatus = useNetworkStatus();
 	
 	const [ saving, setSaving ] = useState( false );
 	const [ loaded, setLoaded ] = useState( 0 );
@@ -52,21 +54,21 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 		
 		// save
 		useEffect( () => {
-			if ( loaded < keys.length ) return;
+			if ( !networkStatus || loaded < keys.length ) return;
 			if ( main.autoBackup ) {
 				setSaving( true );
 				delayedSetData( key );
 			}
-		}, [ stringify( omit( state[ key ], 'timestamp' ) ) ] );
+		}, [ stringify( omit( state[ key ], 'timestamp' ) ), networkStatus ] );
 		
 		// load
 		useEffect( () => {
-			if ( !value ) return;
+			if ( !networkStatus || !value ) return;
 			( async () => {
 				if ( main.autoBackup && value > state[ key ].timestamp ) await getData( key );
 				setLoaded( ( loaded ) => loaded + 1 );
 			} )();
-		}, [ value ] );
+		}, [ networkStatus, value ] );
 	}
 	
 	useEffect( () => {
