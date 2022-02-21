@@ -18,5 +18,6 @@ jobs:
             with:
                commit-message: Update all dependencies
                branch: automatic_dependency_updates
-               title: Update all dependencies
+               title: Update all Dependencies
                body: An automatic update of all dependencies.
+               delete-branch: true

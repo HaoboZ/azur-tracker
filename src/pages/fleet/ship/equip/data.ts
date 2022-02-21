@@ -137,7 +137,6 @@ const equipData: Equip[] = [
 		type  : type.T,
 		rarity: rarity.UR
 	},
-	
 	{
 		id    : 45040,
 		name  : '533mm Triple Magnetic Torpedo Mount',
@@ -952,8 +951,9 @@ const equipData: Equip[] = [
 	{ id: 37420, name: 'Type 2 Seaplane Fighter', image: 'Nakajima_A6M2-N', type: type.SP, rarity: rarity.E },
 	{ id: 37440, name: 'N1K1 Kyoufuu', image: 'Kawanishi_N1K1_Kyoufuu', type: type.SP, rarity: rarity.E },
 	{ id: 39240, name: 'Aichi E16A Zuiun', image: 'Aichi_E16A_Zuiun', type: type.SSP, rarity: rarity.E },
+	{ id: 39320, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SP, rarity: rarity.E },
 	{ id: 39320, name: 'Suisei Model 21', image: 'Yokosuka_Suisei_Model_21', type: type.SP, rarity: rarity.SR },
-	{ id: 39300, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SSP, rarity: rarity.E },
+	{ id: 91200, name: 'FBA 19', image: 'FBA_19', type: type.SP, rarity: rarity.E },
 	//endregion
 	//region Submarine Torpedo
 	{
@@ -1252,6 +1252,7 @@ const map = equipData.reduce( ( obj, item ) => {
 	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
 	return obj;
 }, {} as Record<string, number | string> );
+export const equipMap = map;
 
 let a;
 // tiers of equipment by slot
@@ -1624,11 +1625,17 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.F;
 	},
 	
-	'SP': {
+	'SP'    : {
+		[ map[ 'Seiran/E' ] ]                 : [ 0, a = 0 ],
+		[ map[ 'N1K1 Kyoufuu/E' ] ]           : [ 1, ++a ],
+		[ map[ 'Aichi E16A Zuiun/E' ] ]       : [ 2, ++a ],
+		[ map[ 'Type 2 Seaplane Fighter/E' ] ]: [ 3, ++a ]
+	},
+	'SP/BBV': {
 		[ map[ 'Suisei Model 21/SR' ] ]       : [ 0, a = 0 ],
 		[ map[ 'Seiran/E' ] ]                 : [ 1, ++a ],
+		[ map[ 'N1K1 Kyoufuu/E' ] ]           : [ 1, ++a ],
 		[ map[ 'Aichi E16A Zuiun/E' ] ]       : [ 2, ++a ],
-		[ map[ 'N1K1 Kyoufuu/E' ] ]           : [ 3, ++a ],
 		[ map[ 'Type 2 Seaplane Fighter/E' ] ]: [ 3, ++a ]
 	},
 	get 'SP/DD'() {
@@ -1895,11 +1902,12 @@ export const equippable = {
 	'DB/TB': [ type.DB, type.TB ],
 	'P'    : [ type.F, type.DB, type.TB ],
 	
-	'SP'   : [ type.SP, type.SSP ],
-	'SP/DD': [ type.SP, type.SSP, type.DD ],
-	'SSP'  : [ type.SSP ],
-	'ST'   : [ type.ST ],
-	'SS'   : [ type.SS ],
+	'SP'    : [ type.SP, type.SSP ],
+	'SP/BBV': [ type.SP, type.SSP ],
+	'SP/DD' : [ type.SP, type.SSP, type.DD ],
+	'SSP'   : [ type.SSP ],
+	'ST'    : [ type.ST ],
+	'SS'    : [ type.SS ],
 	
 	'A/DD1'  : [ type.A ],
 	'A/DD2'  : [ type.A ],
