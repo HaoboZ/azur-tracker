@@ -24,7 +24,7 @@ export type ModalVariant = 'adaptive' | 'modal' | 'drawer';
 
 export type ResponsiveModalProps = {
 	open: boolean,
-	onClose: () => void,
+	onClose: ( event: {}, reason?: 'backdropClick' | 'escapeKeyDown' ) => void,
 	// type of modal to be displayed
 	variant?: ModalVariant,
 	// only affects drawer variant

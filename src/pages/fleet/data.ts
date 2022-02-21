@@ -539,17 +539,7 @@ const ships = {
 	'Junyou_META'                   : [ 'Junyou META', 'Elite', 'META', 'Light Aircraft Carrier', 5, [ 1, 1, 1 ], 'F', 'DB', 'TB', 'A/CV1', 'A/CV2' ]
 };
 
-const fleetData = mapValues( ships, ( val, key ) => ( {
-	id       : key,
-	name     : val[ 0 ],
-	href     : `https://azurlane.koumakan.jp/wiki/${key}`,
-	rarity   : val[ 1 ],
-	faction  : val[ 2 ],
-	type     : val[ 3 ],
-	tier     : val[ 4 ],
-	special  : val[ 5 ],
-	equipType: [ val[ 6 ], val[ 7 ], val[ 8 ], val[ 9 ], val[ 10 ] ]
-} ) ) as Record<string, {
+export type Ship = {
 	id: string,
 	name: string,
 	href: string,
@@ -563,5 +553,17 @@ const fleetData = mapValues( ships, ( val, key ) => ( {
 	love?: number,
 	lvl?: number,
 	equip?: [ number, 0 | 1, number ][]
-}>;
+};
+
+const fleetData = mapValues( ships, ( val, key ) => ( {
+	id       : key,
+	name     : val[ 0 ],
+	href     : `https://azurlane.koumakan.jp/wiki/${key}`,
+	rarity   : val[ 1 ],
+	faction  : val[ 2 ],
+	type     : val[ 3 ],
+	tier     : val[ 4 ],
+	special  : val[ 5 ],
+	equipType: [ val[ 6 ], val[ 7 ], val[ 8 ], val[ 9 ], val[ 10 ] ]
+} ) ) as Record<string, Ship>;
 export default fleetData;

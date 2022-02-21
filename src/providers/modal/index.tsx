@@ -112,8 +112,11 @@ export default function ModalProvider( { children } ) {
 					<ModalControlsContext.Provider key={modal.id} value={{ ...modal.props.controls, modalInfo: modal }}>
 						<ResponsiveModal
 							open={modal.open}
-							onClose={() => modal.props.controls.closeModal()}
-							{...modal.modalProps}>
+							{...modal.modalProps}
+							onClose={async ( event, reason ) => {
+								await modal.modalProps?.onClose?.( event, reason );
+								modal.props.controls.closeModal();
+							}}>
 							<modal.Component {...modal.props}/>
 						</ResponsiveModal>
 					</ModalControlsContext.Provider>

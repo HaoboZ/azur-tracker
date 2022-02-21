@@ -48,7 +48,7 @@ enum rarity {
 	N = 'N'
 }
 
-interface Equip {
+export interface Equip {
 	id: number,
 	name: string,
 	image: string,
@@ -951,7 +951,7 @@ const equipData: Equip[] = [
 	{ id: 37420, name: 'Type 2 Seaplane Fighter', image: 'Nakajima_A6M2-N', type: type.SP, rarity: rarity.E },
 	{ id: 37440, name: 'N1K1 Kyoufuu', image: 'Kawanishi_N1K1_Kyoufuu', type: type.SP, rarity: rarity.E },
 	{ id: 39240, name: 'Aichi E16A Zuiun', image: 'Aichi_E16A_Zuiun', type: type.SSP, rarity: rarity.E },
-	{ id: 39320, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SP, rarity: rarity.E },
+	{ id: 39300, name: 'Seiran', image: 'Aichi_M6A_Seiran', type: type.SP, rarity: rarity.E },
 	{ id: 39320, name: 'Suisei Model 21', image: 'Yokosuka_Suisei_Model_21', type: type.SP, rarity: rarity.SR },
 	{ id: 91200, name: 'FBA 19', image: 'FBA_19', type: type.SP, rarity: rarity.E },
 	//endregion

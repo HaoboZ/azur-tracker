@@ -3,7 +3,7 @@ import determinationImage from '../../../public/images/other/determination.png';
 import equilibriumImage from '../../../public/images/other/equilibrium.png';
 import explorationImage from '../../../public/images/other/exploration.png';
 import harmonyImage from '../../../public/images/other/harmony.png';
-import { equipMap as map } from '../fleet/ship/equip/data';
+import { equipMap } from '../fleet/ship/equip/data';
 
 export const opSiWeakness: [ StaticImageData, string, string ][] = [
 	[ determinationImage, 'Determination', 'Airstrikes' ],
@@ -15,879 +15,280 @@ export const opSiWeakness: [ StaticImageData, string, string ][] = [
 
 export const stageDrops = {
 	'Chapter': {
-		1 : {
+		'1-' : {
 			4: [
-				map[ 'Single 120mm QF Mark IX Naval Gun/R' ]
+				equipMap[ 'Single 120mm QF Mark IX Naval Gun/R' ]
 			]
 		},
-		2 : {
+		'2-' : {
 			1: [
-				map[ 'Hydraulic Steering Gear/R' ]
+				equipMap[ 'Hydraulic Steering Gear/R' ]
 			],
 			2: [
-				map[ 'Naval Camouflage/R' ]
+				equipMap[ 'Naval Camouflage/R' ]
 			],
 			3: [
-				map[ 'Air Radar/E' ],
-				map[ 'Fire Suppressor/R' ]
-			],
-			4: [
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
-				map[ 'Air Radar/E' ]
-			]
-		},
-		3 : {
-			1: [
-				map[ 'Fuel Filter/E' ]
-			],
-			2: [
-				map[ 'Steam Catapult/E' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'SB2C Helldiver/E' ]
-			],
-			3: [
-				map[ '76mm AA Gun/R' ]
+				equipMap[ 'Air Radar/E' ],
+				equipMap[ 'Fire Suppressor/R' ]
 			],
 			4: [
-				map[ 'Repair Toolkit/E' ],
-				map[ 'F4U Corsair/E' ]
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ 'Air Radar/E' ]
 			]
 		},
-		4 : {
+		'3-' : {
 			1: [
-				map[ 'Anti-Torpedo Bulge/E' ]
+				equipMap[ 'Fuel Filter/E' ]
 			],
 			2: [
-				map[ 'Triple 152mm Main Gun/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'SB2C Helldiver/E' ]
 			],
 			3: [
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 203mm (SK C/34)/E' ]
+				equipMap[ '76mm AA Gun/R' ]
 			],
 			4: [
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ 'Twin 203mm (SK C/34)/E' ]
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'F4U Corsair/E' ]
 			]
 		},
-		5 : {
+		'4-' : {
 			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
+				equipMap[ 'Anti-Torpedo Bulge/E' ]
 			],
 			2: [
-				map[ 'F6F Hellcat/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'F6F Hellcat/E' ]
+				equipMap[ 'Triple 152mm Main Gun/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
 			],
 			3: [
-				map[ 'BTD-1 Destroyer/SR' ],
-				map[ 'Aviation Oil Tank/E' ]
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 203mm (SK C/34)/E' ]
 			],
 			4: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Twin 203mm (SK C/34)/E' ]
 			]
 		},
-		6 : {
+		'5-' : {
 			1: [
-				map[ 'SG Radar/SR' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ]
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
 			],
 			2: [
-				map[ 'Triple 155mm Main Gun Mount/SR' ],
-				map[ 'Gyroscope/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
+				equipMap[ 'F6F Hellcat/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'F6F Hellcat/E' ]
 			],
 			3: [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
+				equipMap[ 'BTD-1 Destroyer/SR' ],
+				equipMap[ 'Aviation Oil Tank/E' ]
 			],
 			4: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ '533mm Quintuple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
 			]
 		},
-		7 : {
+		'6-' : {
 			1: [
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ]
+				equipMap[ 'SG Radar/SR' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ]
 			],
 			2: [
-				map[ 'Twin 113mm AA Gun Mount/SR' ],
-				map[ 'Steam Catapult/E' ],
-				map[ 'Twin 113mm AA Gun Mount/E' ],
-				map[ 'Barracuda/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ],
+				equipMap[ 'Gyroscope/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
 			],
 			3: [
-				map[ 'Twin 203mm (SK C/34)/SR' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
 			],
 			4: [
-				map[ '533mm Quintuple Torpedo Mount/SR' ],
-				map[ 'Anti-Torpedo Bulge/E' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Seafang/E' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ '533mm Quintuple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
 			]
 		},
-		8 : {
+		'7-' : {
 			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ]
 			],
 			2: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ]
+				equipMap[ 'Twin 113mm AA Gun Mount/SR' ],
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Barracuda/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
 			],
 			3: [
-				map[ 'Triple 155mm Main Gun Mount/SR' ]
+				equipMap[ 'Twin 203mm (SK C/34)/SR' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
 			],
 			4: [
-				map[ 'Twin 203mm (SK C/34)/SR' ],
-				map[ 'Twin 203mm (SK C/34)/E' ]
+				equipMap[ '533mm Quintuple Torpedo Mount/SR' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Seafang/E' ]
 			]
 		},
-		9 : {
+		'8-' : {
 			1: [
-				map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
 			],
 			2: [
-				map[ 'Ship Maintenance Facility/SR' ],
-				map[ 'Fuel Filter/E' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ]
 			],
 			3: [
-				map[ 'Type 0 Fighter Model 52/SR' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ]
 			],
 			4: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
-				map[ 'Triple 152mm Main Gun/E' ]
+				equipMap[ 'Twin 203mm (SK C/34)/SR' ],
+				equipMap[ 'Twin 203mm (SK C/34)/E' ]
 			]
 		},
-		10: {
+		'9-' : {
 			1: [
-				map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'Twin 152mm Main Gun/E' ]
+				equipMap[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
 			],
 			2: [
-				map[ 'SG Radar/SR' ],
-				map[ 'Anti-Torpedo Bulge/E' ],
-				map[ 'Gyroscope/E' ],
-				map[ 'Triple 152mm Main Gun/E' ]
+				equipMap[ 'Ship Maintenance Facility/SR' ],
+				equipMap[ 'Fuel Filter/E' ]
 			],
 			3: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Repair Toolkit/E' ],
-				map[ 'Triple 152mm Main Gun/E' ]
+				equipMap[ 'Type 0 Fighter Model 52/SR' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
 			],
 			4: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Fuel Filter/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
 			]
 		},
-		11: {
+		'10-': {
 			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
-				map[ 'Steam Catapult/E' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
+				equipMap[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ]
 			],
 			2: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'SG Radar/E' ],
-				map[ 'F4U Corsair/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
+				equipMap[ 'SG Radar/SR' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ],
+				equipMap[ 'Gyroscope/E' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
 			],
 			3: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Autoloader/E' ],
-				map[ 'F6F Hellcat/E' ]
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
 			],
 			4: [
-				map[ 'Twin 113mm AA Gun Mount/SR' ],
-				map[ 'Triple 152mm Main Gun/E' ],
-				map[ 'SB2C Helldiver/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
 			]
 		},
-		12: {
+		'11-': {
 			1: [
-				map[ 'Type 0 Fighter Model 52/SR' ]
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
 			],
 			2: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'F4U Corsair/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
 			],
 			3: [
-				map[ 'Suisei/SR' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'F6F Hellcat/E' ]
 			],
 			4: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
+				equipMap[ 'Twin 113mm AA Gun Mount/SR' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ],
+				equipMap[ 'SB2C Helldiver/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
 			]
 		},
-		13: {
+		'12-': {
 			1: [
-				map[ 'Triple 155mm Main Gun Mount/SR' ],
-				map[ 'Triple 152mm Main Gun/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
+				equipMap[ 'Type 0 Fighter Model 52/SR' ]
 			],
 			2: [
-				map[ 'Type 0 Fighter Model 52/SR' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
 			],
 			3: [
-				map[ 'F6F Hellcat/SR' ],
-				map[ 'F4U Corsair/E' ],
-				map[ 'F6F Hellcat/E' ]
+				equipMap[ 'Suisei/SR' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
 			],
 			4: [
-				map[ 'Mark 16 Submarine Torpedo/SR' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ 'Mark 16 Submarine Torpedo/E' ]
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
 			]
 		},
-		14: {
+		'13-': {
 			1: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Repair Toolkit/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
 			],
 			2: [
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Anti-Torpedo Bulge/E' ]
+				equipMap[ 'Type 0 Fighter Model 52/SR' ]
 			],
 			3: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Advanced Boiler/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
+				equipMap[ 'F6F Hellcat/SR' ],
+				equipMap[ 'F4U Corsair/E' ],
+				equipMap[ 'F6F Hellcat/E' ]
 			],
 			4: [
-				map[ 'SG Radar/SR' ],
-				map[ 'Gyroscope/E' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
-			]
-		}
-	},
-	
-	'Visitors Dyed In Red'          : {
-		A: {
-			1: [
-				map[ '533mm Quintuple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Advanced Boiler/E' ]
-			],
-			3: [
-				map[ 'Triple 155mm Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
+				equipMap[ 'Mark 16 Submarine Torpedo/SR' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ 'Mark 16 Submarine Torpedo/E' ]
 			]
 		},
-		B: {
+		'14-': {
 			1: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
 			],
 			2: [
-				map[ 'Triple 155mm Main Gun Mount/SR' ]
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ]
 			],
 			3: [
-				map[ 'Suisei/SR' ]
-			]
-		},
-		C: {
-			1: [
-				map[ '533mm Quintuple Torpedo Mount/SR' ],
-				map[ '533mm Quintuple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Ship Maintenance Facility/SR' ],
-				map[ 'Advanced Boiler/E' ]
-			],
-			3: [
-				map[ 'Type 0 Fighter Model 52/SR' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ],
-				map[ 'Aichi E16A Zuiun/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'A7M Reppuu/SR' ],
-				map[ 'Triple 155mm Main Gun Mount/SR' ],
-				map[ 'Tenzan/E' ],
-				map[ 'A7M Reppuu/E' ]
-			],
-			3: [
-				map[ 'Aichi B7A Ryusei/SR' ],
-				map[ 'Suisei/SR' ],
-				map[ 'Aichi B7A Ryusei/E' ]
-			]
-		}
-	},
-	'Frigid Winter\'s Crown'        : {
-		A: {
-			1: [
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Fuel Filter/E' ],
-				map[ 'Gyroscope/E' ],
-				map[ 'Twin 203mm (SK C/34)/E' ]
-			],
-			3: [
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'Autoloader/E' ]
-			],
-			2: [
-				map[ 'Aviation Oil Tank/E' ],
-				map[ 'Barracuda/E' ]
-			],
-			3: [
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Triple 152mm Main Gun/E' ],
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 203mm (SK C/34)/SR' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Gyroscope/E' ],
-				map[ 'Twin 203mm (SK C/34)/E' ]
-			],
-			3: [
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Autoloader/E' ]
-			],
-			2: [
-				map[ 'Seafang/SR' ],
-				map[ 'Barracuda/E' ]
-			],
-			3: [
-				map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
-				map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ]
-			]
-		}
-	},
-	'Fallen Wings'                  : {
-		A: {
-			1: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Air Radar/E' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Triple 152mm Main Gun/E' ]
-			],
-			3: [
-				map[ 'Fuel Filter/E' ],
-				map[ 'Gyroscope/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Repair Toolkit/E' ],
-				map[ 'F4U Corsair/E' ]
-			],
-			3: [
-				map[ 'Steam Catapult/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'F6F Hellcat/E' ],
-				map[ 'SB2C Helldiver/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
-				map[ 'Advanced Boiler/E' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
-			],
-			2: [
-				map[ 'SG Radar/SR' ],
-				map[ 'Air Radar/E' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Triple 152mm Main Gun/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Gyroscope/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
-			],
-			2: [
-				map[ 'BTD-1 Destroyer/SR' ],
-				map[ 'F4U Corsair/E' ]
-			],
-			3: [
-				map[ 'Steam Catapult/SR' ],
-				map[ 'F6F Hellcat/SR' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'F6F Hellcat/E' ]
-			]
-		}
-	},
-	'Operation Divergent Chessboard': {
-		A: {
-			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
 			],
 			4: [
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
-				map[ 'Ju-87C Dive Bomber/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Air Radar/E' ],
-				map[ 'Aviation Oil Tank/E' ],
-				map[ 'Ju-87C Dive Bomber/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
-				map[ '533mm Quintuple Magnetic Torpedo Mount/E' ]
-			],
-			4: [
-				map[ 'Steam Catapult/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			4: [
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
-				map[ 'Ju-87C Dive Bomber/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Messerschmitt Me-155A/SR' ],
-				map[ 'Air Radar/E' ],
-				map[ 'Aviation Oil Tank/E' ],
-				map[ 'Ju-87C Dive Bomber/E' ]
-			],
-			3: [
-				map[ '533mm Quintuple Magnetic Torpedo Mount/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
-				map[ '533mm Quintuple Magnetic Torpedo Mount/E' ]
-			],
-			4: [
-				map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
-				map[ 'Steam Catapult/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
-			]
-		}
-	},
-	'Iris of Light and Dark'        : {
-		A: {
-			1: [
-				map[ '533mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
-			],
-			3: [
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Fire Suppressor/R' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'SG Radar/E' ],
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ 'Twin 113mm AA Gun Mount/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Twin 113mm AA Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Quadruple 356mm Main Gun Mount/SR' ],
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
-			],
-			3: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'SG Radar/SR' ],
-				map[ 'SG Radar/E' ],
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ]
-			],
-			3: [
-				map[ 'Quadruple 380mm Mle 1935 Main Gun Mount/SR' ]
-			]
-		}
-	},
-	'Ink-Stained Steel Sakura'      : {
-		A: {
-			1: [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ],
-				map[ '76mm AA Gun/R' ]
-			],
-			4: [
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Fire Control Radar/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ '533mm Quintuple Torpedo Mount/SR' ],
-				map[ 'Fuel Filter/E' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
-				map[ 'Autoloader/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			3: [
-				map[ 'Ship Maintenance Facility/SR' ],
-				map[ 'Anti-Torpedo Bulge/E' ]
-			],
-			4: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Steam Catapult/SR' ],
-				map[ 'Fire Control Radar/E' ]
-			]
-		}
-	},
-	'Crimson Echoes'                : {
-		A: {
-			3: [
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'Repair Toolkit/E' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Advanced Boiler/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ]
-			],
-			3: [
-				map[ 'Autoloader/E' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ]
-			],
-			2: [
-				map[ 'Triple 155mm Main Gun Mount/SR' ],
-				map[ 'Triple 152mm Main Gun/E' ]
-			],
-			3: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Fire Control Radar/E' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ 'Repair Toolkit/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 203mm (SK C/34)/SR' ],
-				map[ 'Advanced Boiler/E' ]
-			],
-			3: [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
-				map[ 'Triple 155mm Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			]
-		}
-	},
-	'Scherzo of Iron and Blood'     : {
-		A: {
-			1: [
-				map[ 'Single 120mm QF Mark IX Naval Gun/R' ]
-			],
-			2: [
-				map[ 'Aviation Oil Tank/E' ],
-				map[ 'Steam Catapult/E' ],
-				map[ 'Hydraulic Steering Gear/R' ]
-			],
-			3: [
-				map[ 'Barracuda/E' ],
-				map[ 'Seafang/E' ]
-			]
-		},
-		B: {
-			1: [
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ]
-			],
-			3: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'Repair Toolkit/E' ],
-				map[ 'Anti-Torpedo Bulge/E' ],
-				map[ 'Fire Control Radar/E' ]
-			]
-		},
-		C: {
-			1: [
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ]
-			],
-			2: [
-				map[ 'F6F Hellcat/SR' ],
-				map[ 'Aviation Oil Tank/E' ],
-				map[ 'Steam Catapult/E' ]
-			],
-			3: [
-				map[ 'Barracuda/SR' ],
-				map[ 'Barracuda/E' ],
-				map[ 'Seafang/E' ]
-			]
-		},
-		D: {
-			1: [
-				map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			2: [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Twin 152mm Main Gun/E' ]
-			],
-			3: [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'Repair Toolkit/E' ],
-				map[ 'Anti-Torpedo Bulge/E' ]
-			]
-		}
-	},
-	
-	'Strive, Wish, and Strategize': {
-		SP: {
-			1: [
-				map[ 'Tenzan/E' ]
-			],
-			2: [
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Twin 410mm Naval Gun Mount/E' ]
-			],
-			3: [
-				map[ 'Quadruple 356mm Main Gun Mount/SR' ],
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ '610mm Quadruple Torpedo Mount/E' ]
-			]
-		}
-	},
-	'The Pursuit of Graf Spee'    : {
-		SP: {
-			1: [
-				map[ 'Advanced Boiler/E' ]
-			],
-			2: [
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
-				map[ 'Fuel Filter/E' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
-				map[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
-			]
-		}
-	},
-	'Glorious Battle'             : {
-		SP: {
-			1: [
-				map[ 'Twin 203mm (SK C/34)/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Single 120mm QF Mark IX Naval Gun/R' ]
-			],
-			2: [
-				map[ 'Barracuda/SR' ]
-			
-			],
-			3: [
-				map[ '533mm Quintuple Torpedo Mount/SR' ],
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ]
-			]
-		}
-	},
-	'Passionate Polaris'          : {
-		SP: {
-			1: [
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Single 127mm Main Gun/E' ]
-			],
-			2: [
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
-			],
-			3: [
-				map[ '533mm Quadruple Magnetic Torpedo Mount/E' ],
-				map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ]
-			],
-			4: [
-				map[ 'Improved Depth Charge Projector/E' ],
-				map[ 'Advanced Sonar/E' ]
-			],
-			5: [
-				map[ 'Quadruple 380mm Mle 1935 Main Gun Mount/SR' ],
-				map[ 'Single 138.6mm Mle 1929 Naval Gun/E' ],
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
+				equipMap[ 'SG Radar/SR' ],
+				equipMap[ 'Gyroscope/E' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
 			]
 		}
 	},
@@ -895,183 +296,780 @@ export const stageDrops = {
 	'Craft': {
 		'Eagle Union '  : {
 			'DD Main Guns'     : [
-				map[ 'Single 127mm Main Gun/E' ],
-				map[ 'Twin 127mm Secondary Gun Mount/E' ],
-				map[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ]
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'Twin 127mm Secondary Gun Mount/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ]
 			],
 			'CL Main Guns'     : [
-				map[ 'Triple 152mm Main Gun/E' ],
-				map[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ]
+				equipMap[ 'Triple 152mm Main Gun/E' ],
+				equipMap[ 'Triple 152mm Mk 16 Main Gun Mount/SR' ]
 			],
 			'CA Main Guns'     : [
-				map[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ]
+				equipMap[ 'Triple 203mm Mk 15 Main Gun Mount/SR' ]
 			],
 			'BB Main Guns'     : [
-				map[ 'Triple 406mm Mk 2 Main Gun Mount/E' ],
-				map[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
-				map[ 'Twin 406mm Mk 8 Main Gun Mount/E' ],
-				map[ 'Prototype 406mm Mk D Main Gun Mount/SR' ],
-				map[ 'Prototype Twin 406mm Mk4 Main Gun Mount/SR' ]
+				equipMap[ 'Triple 406mm Mk 2 Main Gun Mount/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'Twin 406mm Mk 8 Main Gun Mount/E' ],
+				equipMap[ 'Prototype 406mm Mk D Main Gun Mount/SR' ],
+				equipMap[ 'Prototype Twin 406mm Mk4 Main Gun Mount/SR' ]
 			],
 			'Surface Torps'    : [
-				map[ '533mm Quintuple Torpedo Mount Mk 17/E' ],
-				map[ '533mm Quintuple Torpedo Mount Mk 17/SR' ]
+				equipMap[ '533mm Quadruple Torpedo Mount Mk 17/E' ],
+				equipMap[ '533mm Quintuple Torpedo Mount Mk 17/SR' ]
 			],
 			'Anti-Air Guns'    : [
-				map[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
-				map[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ]
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Twin 76mm Mk 27 RF AA Gun Mount/SR' ]
 			],
 			'Fighters'         : [
-				map[ 'F4U Corsair/E' ],
-				map[ 'F6F Hellcat/SR' ],
-				map[ 'F8F Bearcat/SR' ],
-				map[ 'F7F Tigercat/SR' ]
+				equipMap[ 'F4U Corsair/E' ],
+				equipMap[ 'F6F Hellcat/SR' ],
+				equipMap[ 'F8F Bearcat/SR' ],
+				equipMap[ 'F7F Tigercat/SR' ]
 			],
 			'Torp/Dive Bombers': [
-				map[ 'TBM-3 Avenger (ASW)/E' ],
-				map[ 'SB2C Helldiver/E' ],
-				map[ 'BTD-1 Destroyer/SR' ],
-				map[ 'Experimental XSB3C-1/SR' ],
-				map[ 'XTB2D-1 Skypirate/SR' ]
+				equipMap[ 'TBM-3 Avenger (ASW)/E' ],
+				equipMap[ 'SB2C Helldiver/E' ],
+				equipMap[ 'BTD-1 Destroyer/SR' ],
+				equipMap[ 'Experimental XSB3C-1/SR' ],
+				equipMap[ 'XTB2D-1 Skypirate/SR' ]
 			],
 			'Sub Torps'        : [
-				map[ 'Mark 16 Submarine Torpedo/SR' ],
-				map[ 'Mark 28 Submarine Torpedo/SR' ]
+				equipMap[ 'Mark 16 Submarine Torpedo/SR' ],
+				equipMap[ 'Mark 28 Submarine Torpedo/SR' ]
 			]
 		},
 		'Royal Navy '   : {
 			'DD Main Guns'     : [
-				map[ 'Single 120mm QF Mark IX Naval Gun/R' ],
-				map[ 'Twin 120mm Main Gun Mount/E' ],
-				map[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ]
+				equipMap[ 'Single 120mm QF Mark IX Naval Gun/R' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 120mm Mk XI Dual-Purpose Gun Mount/SR' ]
 			],
 			'CL Main Guns'     : [
-				map[ 'Twin 152mm Main Gun/E' ],
-				map[ 'Triple 152mm Main Gun2/E' ],
-				map[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ]
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Triple 152mm Main Gun2/E' ],
+				equipMap[ 'Prototype Triple 152mm Mk XXV Main Gun Mount/SR' ]
 			],
 			'CA Main Guns'     : [
-				map[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ]
+				equipMap[ 'Prototype Triple 203mm Mk IX Main Gun Mount/SR' ]
 			],
 			'BB Main Guns'     : [
-				map[ 'Triple 406mm Main Gun/SR' ],
-				map[ 'Twin 381mm Advanced Main Gun Mount/SR' ],
-				map[ 'Quadruple 356mm Main Gun Mount/SR' ],
-				map[ 'Prototype Triple 381mm AA Gun/SR' ]
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Twin 381mm Advanced Main Gun Mount/SR' ],
+				equipMap[ 'Quadruple 356mm Main Gun Mount/SR' ],
+				equipMap[ 'Prototype Triple 381mm AA Gun/SR' ]
 			],
 			'Surface Torps'    : [
-				map[ '533mm Quadruple Torpedo Mount Mk IX/E' ],
-				map[ '533mm Quadruple Torpedo Mount Mk IX/SR' ]
+				equipMap[ '533mm Quadruple Torpedo Mount Mk IX/E' ],
+				equipMap[ '533mm Quintuple Torpedo Mount Mk IX/SR' ]
 			],
 			'Anti-Air Guns'    : [
-				map[ 'Twin 40mm Bofors "Hazemeyer" AA Gun Mount/SR' ],
-				map[ 'Twin 113mm AA Gun Mount/SR' ],
-				map[ 'Twin 134mm AA Gun Mount/SR' ],
-				map[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
-				map[ 'Twin 40mm Bofors STAAG/SR' ]
+				equipMap[ 'Twin 40mm Bofors "Hazemeyer" AA Gun Mount/SR' ],
+				equipMap[ 'Twin 113mm AA Gun Mount/SR' ],
+				equipMap[ 'Twin 134mm AA Gun Mount/SR' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
+				equipMap[ 'Twin 40mm Bofors STAAG/SR' ]
 			],
 			'Fighters'         : [
-				map[ 'Sea Fury/SR' ],
-				map[ 'Seafang/SR' ],
-				map[ 'Seafire FR.47/SR' ],
-				map[ 'Sea Hornet/SR' ]
+				equipMap[ 'Sea Fury/SR' ],
+				equipMap[ 'Seafang/SR' ],
+				equipMap[ 'Seafire FR.47/SR' ],
+				equipMap[ 'Sea Hornet/SR' ]
 			],
 			'Torp/Dive Bombers': [
-				map[ 'Albacore/E' ],
-				map[ 'Blackburn Firebrand/SR' ],
-				map[ 'Firefly/SR' ],
-				map[ 'Barracuda/SR' ],
-				map[ 'Firecrest/SR' ],
-				map[ 'Wyvern/UR' ]
+				equipMap[ 'Albacore/E' ],
+				equipMap[ 'Blackburn Firebrand/SR' ],
+				equipMap[ 'Firefly/SR' ],
+				equipMap[ 'Barracuda/SR' ],
+				equipMap[ 'Firecrest/SR' ],
+				equipMap[ 'Wyvern/UR' ]
 			],
 			'Sub Torps'        : [
-				map[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ],
-				map[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ]
+				equipMap[ 'Mark 12 "Ferry" Submarine Torpedo/SR' ],
+				equipMap[ 'Mark 20 "Bidder" Submarine Torpedo/SR' ]
 			]
 		},
 		'Sakura Empire ': {
 			'DD Main Guns'     : [
-				map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ]
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ]
 			],
 			'CL Main Guns'     : [
-				map[ 'Triple 155mm Main Gun Mount/SR' ],
-				map[ 'Prototype Triple 155mm Kai Naval Gun Mount/SR' ]
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ],
+				equipMap[ 'Prototype Triple 155mm Kai Naval Gun Mount/SR' ]
 			],
 			'CA Main Guns'     : [
-				map[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ]
+				equipMap[ 'Prototype 203mm No. 3 Naval Gun Mount/SR' ]
 			],
 			'BB Main Guns'     : [
-				map[ 'Twin 410mm Naval Gun Mount/E' ],
-				map[ 'Twin 410mm Kai Naval Gun Mount/E' ],
-				map[ 'Prototype Triple 410mm Main Gun Mount/SR' ],
-				map[ 'Twin 410mm (Type 3 Shell) Naval Gun Mount/SR' ]
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Kai Naval Gun Mount/E' ],
+				equipMap[ 'Prototype Triple 410mm Main Gun Mount/SR' ],
+				equipMap[ 'Twin 410mm (Type 3 Shell) Naval Gun Mount/SR' ]
 			],
 			'Surface Torps'    : [
-				map[ '610mm Quadruple Torpedo Mount/SR' ],
-				map[ '610mm Quadruple Torpedo Mount Kai/SR' ]
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ '610mm Quadruple Torpedo Mount Kai/SR' ]
 			],
 			'Anti-Air Guns'    : [
-				map[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ],
-				map[ 'Twin 127mm Type 89 AA Gun Mount/SR' ]
+				equipMap[ 'Triple 25mm Type 96 AT/AA Gun Mount/SR' ],
+				equipMap[ 'Twin 127mm Type 89 AA Gun Mount/SR' ]
 			],
 			'Fighters'         : [
-				map[ 'Type 2 Seaplane Fighter/E' ],
-				map[ 'N1K1 Kyoufuu/E' ],
-				map[ 'Kawanishi N1K3-A Shiden Kai 2/SR' ],
-				map[ 'Type 0 Fighter Model 52/SR' ],
-				map[ 'A7M Reppuu/SR' ]
+				equipMap[ 'Type 2 Seaplane Fighter/E' ],
+				equipMap[ 'N1K1 Kyoufuu/E' ],
+				equipMap[ 'Kawanishi N1K3-A Shiden Kai 2/SR' ],
+				equipMap[ 'Type 0 Fighter Model 52/SR' ],
+				equipMap[ 'A7M Reppuu/SR' ]
 			],
 			'Torp/Dive Bombers': [
-				map[ 'Aichi E16A Zuiun/E' ],
-				map[ 'Tenzan/E' ],
-				map[ 'Seiran/E' ],
-				map[ 'Tenzan Kai/E' ],
-				map[ 'Suisei/SR' ],
-				map[ 'Suisei Model 21/SR' ],
-				map[ 'Aichi B7A Ryusei/SR' ],
-				map[ 'Suisei Model 12A/SR' ]
+				equipMap[ 'Aichi E16A Zuiun/E' ],
+				equipMap[ 'Tenzan/E' ],
+				equipMap[ 'Seiran/E' ],
+				equipMap[ 'Tenzan Kai/E' ],
+				equipMap[ 'Suisei/SR' ],
+				equipMap[ 'Suisei Model 21/SR' ],
+				equipMap[ 'Aichi B7A Ryusei/SR' ],
+				equipMap[ 'Suisei Model 12A/SR' ]
 			],
 			'Sub Torps'        : [
-				map[ 'Type 95 Submarine Torpedo/SR' ],
-				map[ 'Type 96 Submarine Torpedo/SR' ],
-				map[ 'Type 95 Kai Pure Oxygen Submarine Torpedo/UR' ]
+				equipMap[ 'Type 95 Submarine Torpedo/SR' ],
+				equipMap[ 'Type 96 Submarine Torpedo/SR' ],
+				equipMap[ 'Type 95 Kai Pure Oxygen Submarine Torpedo/UR' ]
 			]
 		},
 		'Ironblood '    : {
 			'DD Main Guns'     : [
-				map[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ],
-				map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ]
+				equipMap[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ]
 			],
 			'CL Main Guns'     : [
-				map[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
-				map[ 'Twin 150mm SK C/28 Secondary Gun Mount/E' ],
-				map[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ],
-				map[ 'Prototype Twin 150mm SK C/28 Main Gun Mount/SR' ]
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ 'Twin 150mm SK C/28 Secondary Gun Mount/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ],
+				equipMap[ 'Prototype Twin 150mm SK C/28 Main Gun Mount/SR' ]
 			],
 			'CA Main Guns'     : [
-				map[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ]
+				equipMap[ 'Prototype Triple 203mm SK C/34 Main Gun Mount/SR' ]
 			],
 			'BB Main Guns'     : [
-				map[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ]
+				equipMap[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ]
 			],
 			'Surface Torps'    : [
-				map[ '533mm Quadruple Torpedo Mount/E' ],
-				map[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
-				map[ '533mm Quintuple Magnetic Torpedo Mount/UR' ]
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
+				equipMap[ '533mm Quintuple Magnetic Torpedo Mount/UR' ]
 			],
 			'Anti-Air Guns'    : [
-				map[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
-				map[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ]
+				equipMap[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
+				equipMap[ 'Twin 105mm SK C/33 na AA Gun Mount/SR' ]
 			],
 			'Fighters'         : [
-				map[ 'Messerschmitt Me-155A/SR' ]
+				equipMap[ 'Messerschmitt Me-155A/SR' ]
 			],
 			'Torp/Dive Bombers': [
-				map[ 'Ju-87C Dive Bomber/E' ],
-				map[ 'Ju-87 D-4/SR' ]
+				equipMap[ 'Ju-87C Dive Bomber/E' ],
+				equipMap[ 'Ju-87 D-4/SR' ]
 			],
 			'Sub Torps'        : [
-				map[ 'G7e Acoustic Homing Submarine Torpedo/SR' ]
+				equipMap[ 'G7e Acoustic Homing Submarine Torpedo/SR' ]
+			]
+		}
+	},
+	
+	'Visitors Dyed In Red'          : {
+		A: {
+			1: [
+				equipMap[ '533mm Quintuple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Advanced Boiler/E' ]
+			],
+			3: [
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ]
+			],
+			3: [
+				equipMap[ 'Suisei/SR' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ '533mm Quintuple Torpedo Mount/SR' ],
+				equipMap[ '533mm Quintuple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Ship Maintenance Facility/SR' ],
+				equipMap[ 'Advanced Boiler/E' ]
+			],
+			3: [
+				equipMap[ 'Type 0 Fighter Model 52/SR' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ],
+				equipMap[ 'Aichi E16A Zuiun/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'A7M Reppuu/SR' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ],
+				equipMap[ 'Tenzan/E' ],
+				equipMap[ 'A7M Reppuu/E' ]
+			],
+			3: [
+				equipMap[ 'Aichi B7A Ryusei/SR' ],
+				equipMap[ 'Suisei/SR' ],
+				equipMap[ 'Aichi B7A Ryusei/E' ]
+			]
+		}
+	},
+	'Frigid Winter\'s Crown'        : {
+		A: {
+			1: [
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Gyroscope/E' ],
+				equipMap[ 'Twin 203mm (SK C/34)/E' ]
+			],
+			3: [
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'Autoloader/E' ]
+			],
+			2: [
+				equipMap[ 'Aviation Oil Tank/E' ],
+				equipMap[ 'Barracuda/E' ]
+			],
+			3: [
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 203mm (SK C/34)/SR' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Gyroscope/E' ],
+				equipMap[ 'Twin 203mm (SK C/34)/E' ]
+			],
+			3: [
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Autoloader/E' ]
+			],
+			2: [
+				equipMap[ 'Seafang/SR' ],
+				equipMap[ 'Barracuda/E' ]
+			],
+			3: [
+				equipMap[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
+				equipMap[ 'Twin 105mm SK C/33 AA Gun Mount/SR' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ]
+			]
+		}
+	},
+	'Fallen Wings'                  : {
+		A: {
+			1: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Air Radar/E' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
+			],
+			3: [
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Gyroscope/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'F4U Corsair/E' ]
+			],
+			3: [
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'F6F Hellcat/E' ],
+				equipMap[ 'SB2C Helldiver/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/SR' ],
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'SG Radar/SR' ],
+				equipMap[ 'Air Radar/E' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quintuple Torpedo Mount/SR' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Gyroscope/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'BTD-1 Destroyer/SR' ],
+				equipMap[ 'F4U Corsair/E' ]
+			],
+			3: [
+				equipMap[ 'Steam Catapult/SR' ],
+				equipMap[ 'F6F Hellcat/SR' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'F6F Hellcat/E' ]
+			]
+		}
+	},
+	'Operation Divergent Chessboard': {
+		A: {
+			1: [
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			4: [
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ 'Ju-87C Dive Bomber/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Air Radar/E' ],
+				equipMap[ 'Aviation Oil Tank/E' ],
+				equipMap[ 'Ju-87C Dive Bomber/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ '533mm Quintuple Magnetic Torpedo Mount/E' ]
+			],
+			4: [
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			4: [
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ 'Ju-87C Dive Bomber/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Messerschmitt Me-155A/SR' ],
+				equipMap[ 'Air Radar/E' ],
+				equipMap[ 'Aviation Oil Tank/E' ],
+				equipMap[ 'Ju-87C Dive Bomber/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quintuple Magnetic Torpedo Mount/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ '533mm Quintuple Magnetic Torpedo Mount/E' ]
+			],
+			4: [
+				equipMap[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 128mm SK C/41 Dual-Purpose Gun Mount/E' ]
+			]
+		}
+	},
+	'Iris of Light and Dark'        : {
+		A: {
+			1: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Fire Suppressor/R' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Single 138.6mm Mle 1929 Naval Gun/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ 'Twin 113mm AA Gun Mount/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Quadruple 356mm Main Gun Mount/SR' ],
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'SG Radar/SR' ],
+				equipMap[ 'SG Radar/E' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Single 138.6mm Mle 1929 Naval Gun/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 380mm Mle 1935 Main Gun Mount/SR' ]
+			]
+		}
+	},
+	'Ink-Stained Steel Sakura'      : {
+		A: {
+			1: [
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '76mm AA Gun/R' ]
+			],
+			4: [
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Fire Control Radar/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ '533mm Quintuple Torpedo Mount/SR' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ],
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Twin 127mm Mk 12 Dual-Purpose Gun Mount/E' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Ship Maintenance Facility/SR' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ]
+			],
+			4: [
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'Single 127mm Main Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Steam Catapult/SR' ],
+				equipMap[ 'Fire Control Radar/E' ]
+			]
+		}
+	},
+	'Crimson Echoes'                : {
+		A: {
+			3: [
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Advanced Boiler/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Autoloader/E' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/SR' ]
+			],
+			2: [
+				equipMap[ 'Triple 155mm Main Gun Mount/SR' ],
+				equipMap[ 'Triple 152mm Main Gun/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Fire Control Radar/E' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ '610mm Quadruple Torpedo Mount/SR' ],
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 203mm (SK C/34)/SR' ],
+				equipMap[ 'Advanced Boiler/E' ]
+			],
+			3: [
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Twin 100mm Type 98 High-Angle Gun/E' ],
+				equipMap[ 'Triple 155mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			]
+		}
+	},
+	'Scherzo of Iron and Blood'     : {
+		A: {
+			1: [
+				equipMap[ 'Single 120mm QF Mark IX Naval Gun/R' ]
+			],
+			2: [
+				equipMap[ 'Aviation Oil Tank/E' ],
+				equipMap[ 'Steam Catapult/E' ],
+				equipMap[ 'Hydraulic Steering Gear/R' ]
+			],
+			3: [
+				equipMap[ 'Barracuda/E' ],
+				equipMap[ 'Seafang/E' ]
+			]
+		},
+		B: {
+			1: [
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ],
+				equipMap[ 'Fire Control Radar/E' ]
+			]
+		},
+		C: {
+			1: [
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ]
+			],
+			2: [
+				equipMap[ 'F6F Hellcat/SR' ],
+				equipMap[ 'Aviation Oil Tank/E' ],
+				equipMap[ 'Steam Catapult/E' ]
+			],
+			3: [
+				equipMap[ 'Barracuda/SR' ],
+				equipMap[ 'Barracuda/E' ],
+				equipMap[ 'Seafang/E' ]
+			]
+		},
+		D: {
+			1: [
+				equipMap[ 'Twin 380mm SK C/34 Main Gun Mount/SR' ],
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			2: [
+				equipMap[ 'Triple 406mm Main Gun/SR' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/SR' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ],
+				equipMap[ 'Triple 406mm Mk 6 Main Gun Mount/E' ],
+				equipMap[ 'Repair Toolkit/E' ],
+				equipMap[ 'Anti-Torpedo Bulge/E' ]
+			]
+		}
+	},
+	
+	'Strive, Wish, and Strategize': {
+		SP: {
+			1: [
+				equipMap[ 'Tenzan/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Twin 410mm Naval Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ 'Quadruple 356mm Main Gun Mount/SR' ],
+				equipMap[ 'Twin 152mm Main Gun/E' ],
+				equipMap[ '610mm Quadruple Torpedo Mount/E' ]
+			]
+		}
+	},
+	'The Pursuit of Graf Spee'    : {
+		SP: {
+			1: [
+				equipMap[ 'Advanced Boiler/E' ]
+			],
+			2: [
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/SR' ],
+				equipMap[ 'Fuel Filter/E' ],
+				equipMap[ 'Octuple 40mm Pom-Pom Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/SR' ],
+				equipMap[ 'Single 150mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ],
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/E' ]
+			]
+		}
+	},
+	'Glorious Battle'             : {
+		SP: {
+			1: [
+				equipMap[ 'Twin 203mm (SK C/34)/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Single 120mm QF Mark IX Naval Gun/R' ]
+			],
+			2: [
+				equipMap[ 'Barracuda/SR' ]
+			
+			],
+			3: [
+				equipMap[ '533mm Quintuple Torpedo Mount/SR' ],
+				equipMap[ '533mm Quadruple Torpedo Mount/E' ],
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ]
+			]
+		}
+	},
+	'Passionate Polaris'          : {
+		SP: {
+			1: [
+				equipMap[ 'Twin 120mm Main Gun Mount/E' ],
+				equipMap[ 'Single 127mm Main Gun/E' ]
+			],
+			2: [
+				equipMap[ 'Twin 150mm TbtsK C/36 Main Gun Mount/E' ]
+			],
+			3: [
+				equipMap[ '533mm Quadruple Magnetic Torpedo Mount/E' ],
+				equipMap[ 'Triple 283mm SK C/28 Main Gun Mount/E' ]
+			],
+			4: [
+				equipMap[ 'Improved Depth Charge Projector/E' ],
+				equipMap[ 'Advanced Sonar/E' ]
+			],
+			5: [
+				equipMap[ 'Quadruple 380mm Mle 1935 Main Gun Mount/SR' ],
+				equipMap[ 'Single 138.6mm Mle 1929 Naval Gun/E' ],
+				equipMap[ 'Quadruple 40mm Bofors AA Gun Mount/E' ]
 			]
 		}
 	}

@@ -1,12 +1,12 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import { rarityColors } from '../../../colors';
-import equipData from './data';
+import { Equip } from './data';
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement,
 	closeAnchor: () => void,
-	equipList: ( typeof equipData[number] & { tier?: number } )[],
+	equipList: ( Equip & { tier?: number } )[],
 	setEquip: ( id: number ) => void
 } ) {
 	return (

@@ -19,16 +19,16 @@ import useEventListener from '../../../../hooks/useEventListener';
 import { useModalControls } from '../../../../providers/modal';
 import { fleet_setShip } from '../../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
-import fleetData from '../../data';
+import fleetData, { Ship } from '../../data';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
-import equipData, { equippable, equipsIndex, equipTier } from './data';
+import equipData, { Equip, equippable, equipsIndex, equipTier } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
 
 export default function EquipModal( { info, selectedEquip }: {
-	info: { ship: typeof fleetData[string], index: number },
-	selectedEquip?: typeof equipData[number]
+	info: { ship: Ship, index: number },
+	selectedEquip?: Equip
 } ) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
@@ -37,7 +37,6 @@ export default function EquipModal( { info, selectedEquip }: {
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
 		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
 		const equipList = equipType ? equipData.filter( ( { type } ) => equipType.includes( type ) ) : [];
-		equipList.unshift( equipData[ 0 ] );
 		const tierList = equipType ? equipTier[ info?.ship.equipType[ info.index ] ] : [];
 		
 		return [
@@ -52,21 +51,22 @@ export default function EquipModal( { info, selectedEquip }: {
 					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
-			}, [] as ( typeof equipData[number] & { tier?: number } )[] )
+			}, [] as ( Equip & { tier?: number } )[] )
 		];
 	}, [] );
 	
 	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equipData[ 0 ];
 	// equipment that will go in slot
-	const [ equip, setEquip ] = useState<typeof equipData[number]>( () => {
+	const [ equip, setEquip ] = useState<Equip>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			return selectedEquip;
 		else if ( currentEquip.id )
 			return currentEquip;
 		else
-			return equipData[ 0 ];
+			return null;
 	} );
+	const newEquip = equip || equipData[ 0 ];
 	const [ override, setOverride ] = useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	
@@ -74,16 +74,14 @@ export default function EquipModal( { info, selectedEquip }: {
 	useEventListener( events, 'close', ( cancel ) => {
 		setAnchorEl( null );
 		if ( cancel ) return;
-		if ( info?.ship.equip[ info.index ][ 0 ] === equip.id && info?.ship.equip[ info.index ][ 1 ] === override )
+		if ( info?.ship.equip[ info.index ][ 0 ] === newEquip.id && info?.ship.equip[ info.index ][ 1 ] === override )
 			return;
 		
-		const newEquip = cloneDeep( info.ship.equip );
-		newEquip[ info.index ] = [ equip.id, override, 6 ];
-		getTier( fleetData[ info.ship.id ], newEquip );
-		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: newEquip } } ) );
-	}, {
-		dependencies: [ equip, override ]
-	} );
+		const shipEquip = cloneDeep( info.ship.equip );
+		shipEquip[ info.index ] = [ newEquip.id, override, 6 ];
+		getTier( fleetData[ info.ship.id ], shipEquip );
+		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
+	}, { dependencies: [ newEquip, override ] } );
 	
 	return (
 		<Fragment>
@@ -112,13 +110,13 @@ export default function EquipModal( { info, selectedEquip }: {
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
 						<Image
-							src={`/images/equips/${equip.image}.png`}
-							alt={equip.name}
+							src={`/images/equips/${newEquip.image}.png`}
+							alt={newEquip.name}
 							height={128}
 							width={128}
 							layout='intrinsic'
-							className={`color-${rarityColors[ equip.rarity ]}`}
-							onClick={() => setEquip( equipData[ 0 ] )}
+							className={`color-${rarityColors[ newEquip.rarity ]}`}
+							onClick={() => setEquip( null )}
 						/>
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
@@ -134,10 +132,10 @@ export default function EquipModal( { info, selectedEquip }: {
 					<Grid item container xs={5} justifyContent='center'>
 						<Link
 							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( equip.image.replaceAll( '$', '%' ) )}`}
+							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( newEquip.image.replaceAll( '$', '%' ) )}`}
 							align='center'
 							color='textPrimary'>
-							{equip.name}
+							{newEquip.name}
 						</Link>
 					</Grid>
 					<Grid item container xs={12} md={6} justifyContent='center'>

@@ -127,7 +127,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 						More
 					</Button>
 					<IconButton
-						sx={{ display: { xs: 'block', sm: 'none' } }}
+						sx={{ display: { xs: 'block', sm: 'none' }, width: 40, height: 40 }}
 						onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
 						<MoreVertIcon/>
 					</IconButton>

@@ -18,15 +18,15 @@ import { useModal } from '../../../providers/modal';
 import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
 import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
-import fleetData from '../data';
+import { Ship } from '../data';
 import { AffinityIcons, TierIcon } from '../tierIcon';
-import equipData, { equipsIndex } from './equip/data';
+import equipData, { Equip, equipsIndex } from './equip/data';
 import EquipModal from './equip/modal';
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
-	ship?: typeof fleetData[string],
+	ship?: Ship,
 	equipBetter?: [ number, number ][],
-	selectedEquip?: typeof equipData[number]
+	selectedEquip?: Equip
 } ) {
 	const ships = useSelector( ( { fleet } ) => fleet.ships );
 	const dispatch = useDispatch();
