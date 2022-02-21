@@ -4328,7 +4328,7 @@ __metadata:
     next: ^12.1.0
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.4.4
-    next-sitemap: ^2.4.3
+    next-sitemap: ^2.4.4
     notistack: ^2.0.3
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -8733,9 +8733,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^2.4.3":
-  version: 2.4.3
-  resolution: "next-sitemap@npm:2.4.3"
+"next-sitemap@npm:^2.4.4":
+  version: 2.4.4
+  resolution: "next-sitemap@npm:2.4.4"
   dependencies:
     "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.5
@@ -8743,7 +8743,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: 039733e7756492f6251fdcb103d03a636061ba5486dee07f4dc092e055f3b138d1f6e1fc5c5f3578ff7b7f3de2ff3bce8448e4e2125eb96873e9a874e280bbba
+  checksum: c74273161c61e60c169cc751233bfbbb5606cd995cb92e2b7d292cc5366ed3f9d187f5dc9f91563c0f75aed62bc9ec3101791afb56d918392ae06e8af008cb48
   languageName: node
   linkType: hard
 
