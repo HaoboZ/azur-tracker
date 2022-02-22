@@ -13,7 +13,7 @@ export const opSiWeakness: [ StaticImageData, string, string ][] = [
 	[ harmonyImage, 'Harmony', 'Torpedoes' ]
 ];
 
-export const stageDrops = {
+export const stageDrops: Record<string, Record<string, Record<string, number[]>>> = {
 	'Chapter': {
 		'1-' : {
 			4: [
