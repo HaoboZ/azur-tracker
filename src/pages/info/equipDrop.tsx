@@ -55,9 +55,8 @@ export default function EquipDrop() {
 				expanded={expanded}
 				selected={selected}
 				sx={{
-					[ `.${treeItemClasses.content}` ]: {
-						py: 1
-					}
+					[ `.${treeItemClasses.content}` ]: { py: 1 },
+					img                              : { ':hover': { cursor: 'pointer' } }
 				}}
 				onNodeToggle={( e, nodeIds ) => setExpanded( nodeIds )}
 				onNodeSelect={( e, nodeId ) => setSelected( nodeId )}>
