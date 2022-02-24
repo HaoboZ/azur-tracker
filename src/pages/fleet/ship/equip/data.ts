@@ -625,6 +625,13 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
+		id    : 85520,
+		name  : 'B-50 Triple 305mm Mk-15 Main Gun Mount',
+		image : 'Triple_305mm_(B-50)',
+		type  : type.CB,
+		rarity: rarity.SR
+	},
+	{
 		id    : 90220,
 		name  : 'Twin 203mm Model 1927 Main Gun Mount',
 		image : 'Twin_203mm_(Model_1927)',
