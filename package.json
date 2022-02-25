@@ -64,7 +64,7 @@
 		"react-window-scroller"           : "^1.0.10",
 		"redux-persist"                   : "^6.0.0",
 		"redux-persist-transform-compress": "^4.2.0",
-		"sass"                            : "^1.49.8",
+		"sass"                            : "^1.49.9",
 		"sortablejs"                      : "^1.14.0"
 	},
 	"devDependencies": {
