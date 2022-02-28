@@ -38,7 +38,7 @@
 		"@mui/icons-material"             : "^5.4.2",
 		"@mui/lab"                        : "^5.0.0-alpha.70",
 		"@mui/material"                   : "^5.4.3",
-		"@reduxjs/toolkit"                : "^1.7.2",
+		"@reduxjs/toolkit"                : "^1.8.0",
 		"@tanem/react-nprogress"          : "^4.0.8",
 		"date-fns"                        : "^2.28.0",
 		"events"                          : "^3.3.0",
