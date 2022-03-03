@@ -15,7 +15,7 @@ type State = {
 	version: string
 };
 
-export const version = '2022-02-20';
+export const version = '2022-03-02';
 
 const initialState: State = {
 	timestamp: new Date( 0 ).toISOString(),

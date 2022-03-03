@@ -1532,13 +1532,14 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 		return this.CA;
 	},
 	'CB/CA'   : {
+		[ map[ 'B-50 Triple 305mm Mk-15 Main Gun Mount/SR' ] ]            : [ 0, a = 0 ],
+		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (CB)/SR' ] ]: [ 1, ++a ],
+		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]      : [ 2, ++a ],
+		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]                : [ 3, ++a ]
+	},
+	'CB/CA/HE': {
 		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]: [ 0, a = 0 ],
 		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]          : [ 1, ++a ]
-	},
-	'CB/CA/AP': {
-		[ map[ 'Prototype Triple 305mm SK C/39 Main Gun Mount (CB)/SR' ] ]: [ 0, a = 0 ],
-		[ map[ 'Prototype Triple 310mm Type 0 Main Gun Mount/SR' ] ]      : [ 1, ++a ],
-		[ map[ 'Triple 283mm SK C/28 Main Gun Mount/E' ] ]                : [ 2, ++a ]
 	},
 	
 	'BB/Damage'  : {
@@ -1895,7 +1896,7 @@ export const equippable = {
 	'CA/CB'      : [ type.CA, type.CB ],
 	'CA/CL'      : [ type.CA, type.CL ],
 	'CB/CA'      : [ type.CA, type.CB ],
-	'CB/CA/AP'   : [ type.CA, type.CB ],
+	'CB/CA/HE'   : [ type.CA, type.CB ],
 	
 	'BB/Damage'  : [ type.BB ],
 	'BB/Speed'   : [ type.BB ],
