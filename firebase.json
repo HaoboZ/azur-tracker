@@ -3,12 +3,9 @@
 		"rules": "database.rules.json"
 	},
 	"hosting" : {
-		"target": "app",
-		"public": "out",
-		"ignore": [
-			"firebase.json",
-			"**/.*",
-			"**/node_modules/**"
-		]
+		"target"       : "app",
+		"public"       : "out",
+		"cleanUrls"    : true,
+		"trailingSlash": false
 	}
 }
