@@ -80,7 +80,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( setData ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => setData( key, true ) ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -95,7 +95,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( getData ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => getData( key, true ) ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );

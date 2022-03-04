@@ -11,7 +11,7 @@ import { setNewData } from '../../store/reducers/mainReducer';
 const auth = getAuth( app );
 const db = getDatabase( app );
 
-export default async function setData( key: string ) {
+export default async function setData( key: string, always?: boolean ) {
 	// check
 	if ( !auth.currentUser?.uid ) return;
 	const readRef = ref( db, `${auth.currentUser.uid}/${key}/timestamp` );
@@ -20,8 +20,8 @@ export default async function setData( key: string ) {
 	
 	// conditions
 	const state = store.getState();
-	if ( timestamp === state[ key ].timestamp ) return;
-	if ( timestamp > state[ key ].timestamp ) {
+	if ( !always && timestamp === state[ key ].timestamp ) return;
+	if ( !always && timestamp > state[ key ].timestamp ) {
 		const { value } = await Dialog.confirm( {
 			title  : 'Conflicts Found',
 			message: `Data conflicts with cloud data for ${key}.\nOverride cloud data?`

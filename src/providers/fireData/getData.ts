@@ -8,7 +8,7 @@ import { importBackup, setNewData } from '../../store/reducers/mainReducer';
 const auth = getAuth( app );
 const db = getDatabase( app );
 
-export default async function getData( key: string ) {
+export default async function getData( key: string, always?: boolean ) {
 	// check
 	if ( !auth.currentUser?.uid ) return;
 	const readRef = ref( db, `${auth.currentUser.uid}/${key}` );
@@ -18,7 +18,7 @@ export default async function getData( key: string ) {
 	
 	// conditions
 	const state = store.getState();
-	if ( timestamp <= state[ key ].timestamp ) return;
+	if ( !always && timestamp <= state[ key ].timestamp ) return;
 	
 	// read
 	const newData = JSON.parse( decompressFromUTF16( data ) );
