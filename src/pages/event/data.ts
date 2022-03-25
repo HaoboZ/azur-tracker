@@ -1,13 +1,13 @@
 // noinspection SpellCheckingInspection
 
 const eventData = {
-	name   : 'Abyssal Refrain',
-	href   : 'https://azurlane.koumakan.jp/wiki/Abyssal_Refrain',
-	endDate: new Date( '2022-03-09T23:59-07:00' ),
+	name   : 'Virtual Tower',
+	href   : 'https://azurlane.koumakan.jp/wiki/Virtual_Tower',
+	endDate: new Date( '2022-04-06T23:59-07:00' ),
 	shop   : [
-		{ name: 'Kiev', cost: 8000, amount: 5 },
+		{ name: 'Pompeo Magno', cost: 8000, amount: 5 },
 		// { name: 'Minsk', cost: 4000, amount: 5 },
-		{ name: 'B-50 Triple 305mm Mk-15 Main Gun Mount', cost: 2000, amount: 1 },
+		{ name: '135mm Twin Main Gun Mount Model 1938', cost: 2000, amount: 1 },
 		// { name: ' Design', cost: 135, amount: 15 },
 		// { name: 'Intel Report - Arctic Stronghold', cost: 1000, amount: 1 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
