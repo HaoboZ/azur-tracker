@@ -380,6 +380,13 @@ const equipData: Equip[] = [
 		rarity: rarity.SR
 	},
 	{
+		id    : 31280,
+		name  : 'Twin 127mm Type 3 Kai Naval Gun Mount',
+		image : 'Twin_127mm_(Type_3_Mod_B)',
+		type  : type.DD,
+		rarity: rarity.E
+	},
+	{
 		id    : 41140,
 		name  : 'Twin 128mm SK C/41 Dual-Purpose Gun Mount',
 		image : 'Twin_128mm_(SK_C$2F41)',
@@ -427,6 +434,13 @@ const equipData: Equip[] = [
 		image : 'Twin_120mm_(Model_1936)',
 		type  : type.DD,
 		rarity: rarity.E
+	},
+	{
+		id    : 95960,
+		name  : '135mm Twin Main Gun Mount Model 1938',
+		image : 'Twin_135mm_(Model_1938)',
+		type  : type.DD,
+		rarity: rarity.SR
 	},
 	//endregion
 	//region Light Cruiser
@@ -1344,7 +1358,8 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	
 	'DD'         : {
-		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, a = 0 ],
+		[ map[ '135mm Twin Main Gun Mount Model 1938/SR' ] ]        : [ 0, a = 0 ],
+		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 0, ++a ],
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, ++a ],
 		[ map[ 'Single 138.6mm Mle 1929 Naval Gun/SR' ] ]           : [ 1, ++a ],
@@ -1360,6 +1375,7 @@ export const equipTier: Record<string, Record<number, number[]>> = {
 	},
 	'DD/Speed'   : {
 		[ map[ 'Twin 114mm Mk IV Dual-Purpose Gun Mount/SR' ] ]     : [ 0, a = 0 ],
+		[ map[ '135mm Twin Main Gun Mount Model 1938/SR' ] ]        : [ 0, ++a ],
 		[ map[ 'Twin 130mm B-2LM Main Gun Mount/SR' ] ]             : [ 0, ++a ],
 		[ map[ 'Twin 128mm/45 SK C/41 Dual-Purpose Gun Mount/SR' ] ]: [ 1, ++a ],
 		[ map[ 'Twin 100mm Type 98 High-Angle Gun/SR' ] ]           : [ 1, ++a ],

@@ -8,7 +8,6 @@ const eventData = {
 		{ name: 'Pompeo Magno', cost: 8000, amount: 5 },
 		// { name: 'Minsk', cost: 4000, amount: 5 },
 		{ name: '135mm Twin Main Gun Mount Model 1938', cost: 2000, amount: 1 },
-		// { name: ' Design', cost: 135, amount: 15 },
 		// { name: 'Intel Report - Arctic Stronghold', cost: 1000, amount: 1 },
 		{ name: 'T4 Eagle Tech Box', cost: 300, amount: 4 },
 		{ name: 'T4 Royal Tech Box', cost: 300, amount: 4 },
@@ -31,18 +30,22 @@ const eventData = {
 		{ name: 'Oxy-cola', cost: 15, amount: 100 }
 	],
 	stages : {
-		30 : 'A1',
-		40 : 'A2',
-		50 : 'A3',
-		60 : 'B1',
-		70 : 'B2',
-		80 : 'B3',
-		90 : 'C1',
-		100: 'C2',
-		110: 'C3',
-		120: 'D1',
-		150: 'D2',
-		180: 'D3'
+		// 30 : 'A1',
+		// 40 : 'A2',
+		// 50 : 'A3',
+		// 60 : 'B1',
+		// 70 : 'B2',
+		// 80 : 'B3',
+		// 90 : 'C1',
+		// 100: 'C2',
+		// 110: 'C3',
+		// 120: 'D1',
+		// 150: 'D2',
+		// 180: 'D3'
+		30 : 'SP1',
+		80 : 'SP2',
+		120: 'SP3',
+		180: 'SP4'
 	}
 };
 export default eventData;
