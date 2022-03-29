@@ -411,7 +411,7 @@ const ships = {
 	'Yat_Sen'           : [ 'Yat Sen', 'Elite', 'Dragon Empery', 'Light Cruiser', 3, [], 'CL', 'CL', 'AA/Speed', 'A/CL1', 'A/CL2' ],
 	'Ning_Hai'          : [ 'Ning Hai', 'Super Rare', 'Dragon Empery', 'Light Cruiser', 3, [], 'CL', 'T', 'AA/Damage', 'A/CL1/T', 'A/CL2/T' ],
 	'Ping_Hai'          : [ 'Ping Hai', 'Super Rare', 'Dragon Empery', 'Light Cruiser', 3, [], 'CL', 'T', 'AA/Damage', 'A/CL1/T', 'A/CL2/T' ],
-	'Hai_Tien'          : [ 'Hai Tien', 'Elite', 'Dragon Empery', 'Light Cruiser', 6, [], 'CA', 'T', 'T', 'A/CL1/T', 'A/CL2/T' ],
+	'Hai_Tien'          : [ 'Hai Tien', 'Elite', 'Dragon Empery', 'Light Cruiser', 6, [], 'CA', 'DD', 'T', 'A/CL1/T', 'A/CL2/T' ],
 	'Hai_Chi'           : [ 'Hai Chi', 'Elite', 'Dragon Empery', 'Light Cruiser', 6, [], 'CA', 'DD', 'T', 'A/CL1/T', 'A/CL2/T' ],
 	'Chen_Hai'          : [ 'Chen Hai', 'Elite', 'Dragon Empery', 'Light Aircraft Carrier', 6, [], 'SP', 'SP/DD', 'AA/Speed', 'A/CV1', 'A/CV2' ],
 	'Carabiniere'       : [ 'Carabiniere', 'Elite', 'Sardegna Empire', 'Destroyer', 5, [], 'DD', 'T', 'AA/Speed', 'A/DD1', 'A/DD2' ],
