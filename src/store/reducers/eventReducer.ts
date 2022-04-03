@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import eventData from '../../pages/event/data';
 
 type State = {
 	timestamp: string,
@@ -51,26 +50,15 @@ const initialState: State = {
 	]
 };
 
-function newEvent( state ) {
-	return {
-		...state,
-		timestamp       : new Date().toISOString(),
-		name            : eventData.name,
-		shopExpectedCost: eventData.shop.reduce( ( total, item ) =>
-			total + item.cost * Math.min( item.amount, state.shop[ item.name ] || 0 ), 0 ),
-		points          : 0
-	};
-}
-
 const eventSlice = createSlice( {
 	name         : 'event',
 	initialState,
 	reducers     : {
-		event_reset() {
-			return newEvent( initialState );
+		event_reset( state ) {
+			state.name = '';
 		},
-		event_newEvent( state ) {
-			return newEvent( state );
+		event_newEvent( state, { payload }: PayloadAction<State> ) {
+			return payload;
 		},
 		event_setShop( state, { payload }: PayloadAction<{
 			shop: Record<string, number>,

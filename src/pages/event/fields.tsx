@@ -3,9 +3,10 @@ import { format, formatDistanceToNow, isBefore } from 'date-fns';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
+import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { event_setPoints } from '../../store/reducers/eventReducer';
-import eventData from './data';
+import { EventType } from './type';
 
 const ShopModal = dynamic( () => import( './shopModal' ) );
 const DailyModal = dynamic( () => import( './dailyModal' ) );
@@ -17,6 +18,9 @@ export default function EventFields( { time, neededPoints }: {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
+	const { eventData } = useData<EventType>();
+	
+	const endDate = new Date( eventData.endDate );
 	
 	return (
 		<Grid container spacing={2} px={2} sx={{ '.rightInput': { textAlign: 'right' } }}>
@@ -31,12 +35,12 @@ export default function EventFields( { time, neededPoints }: {
 			</Grid>
 			<Grid item sm={4} xs={6}>
 				<InputLabel shrink>End Date</InputLabel>
-				<Typography>{format( eventData.endDate, 'PPp' )}</Typography>
+				<Typography>{format( endDate, 'PPp' )}</Typography>
 			</Grid>
 			<Grid item container sm={4} xs={12} justifyContent='center' alignItems='center'>
 				<Typography>
-					End{isBefore( time, eventData.endDate ) ? 's' : 'ed'}{' '}
-					{formatDistanceToNow( eventData.endDate, { addSuffix: true } )}
+					End{isBefore( time, endDate ) ? 's' : 'ed'}{' '}
+					{formatDistanceToNow( endDate, { addSuffix: true } )}
 				</Typography>
 			</Grid>
 			<Grid item sm={3} xs={6}>

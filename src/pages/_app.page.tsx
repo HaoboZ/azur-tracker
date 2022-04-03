@@ -2,6 +2,7 @@ import { EmotionCache } from '@emotion/cache';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import DataProvider from '../providers/data';
 import SplashProvider, { CompleteSplash } from '../providers/splash';
 import Baseline from './baseline';
 import './baseline/style.scss';
@@ -16,19 +17,21 @@ export default function _App( { Component, pageProps, emotionCache }: {
 } & AppProps ) {
 	return (
 		<SplashProvider>
-			<Head>
-				<title>Azur Lane Tracker</title>
-				<meta
-					name='viewport'
-					content='width=device-width,
-						minimum-scale=1, maximum-scale=1, initial-scale=1,
-						user-scalable=no, viewport-fit=cover'
-				/>
-			</Head>
-			<Baseline emotionCache={emotionCache}>
-				<CompleteSplash/>
-				<Component {...pageProps}/>
-			</Baseline>
+			<DataProvider data={pageProps}>
+				<Head>
+					<title>Azur Lane Tracker</title>
+					<meta
+						name='viewport'
+						content='width=device-width,
+							minimum-scale=1, maximum-scale=1, initial-scale=1,
+							user-scalable=no, viewport-fit=cover'
+					/>
+				</Head>
+				<Baseline emotionCache={emotionCache}>
+					<CompleteSplash/>
+					<Component {...pageProps}/>
+				</Baseline>
+			</DataProvider>
 		</SplashProvider>
 	);
 }

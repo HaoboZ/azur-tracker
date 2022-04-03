@@ -18,8 +18,8 @@ import { useModal } from '../../../providers/modal';
 import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
 import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
-import { Ship } from '../data';
 import { AffinityIcons, TierIcon } from '../tierIcon';
+import { Ship } from '../type';
 import equipData, { Equip, equipsIndex } from './equip/data';
 import EquipModal from './equip/modal';
 

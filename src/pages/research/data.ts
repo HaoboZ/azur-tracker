@@ -1,5 +1,6 @@
 // noinspection SpellCheckingInspection
 
+import { StaticImageData } from 'next/image';
 import Anchorage from '../../../public/images/ships/Anchorage.png';
 import August_von_Parseval from '../../../public/images/ships/August_von_Parseval.png';
 import Azuma from '../../../public/images/ships/Azuma.png';

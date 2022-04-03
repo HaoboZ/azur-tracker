@@ -1,29 +1,36 @@
 import { Box, Link, Typography } from '@mui/material';
 import { differenceInDays } from 'date-fns';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import eventImage from '../../../public/images/event.jpg';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import useInterval from '../../hooks/useInterval';
+import { useData } from '../../providers/data';
 import { event_newEvent } from '../../store/reducers/eventReducer';
-import eventData from './data';
 import EventFarming from './farming';
 import EventFields from './fields';
+import { EventType } from './type';
 
 export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
+	const { eventData, eventShop } = useData<EventType>();
 	
 	const [ time, setTime ] = useState( () => new Date() );
 	
 	// resets event
 	useEffect( () => {
 		if ( event.name !== eventData.name )
-			dispatch( event_newEvent() );
+			dispatch( event_newEvent( {
+				...event,
+				timestamp       : new Date().toISOString(),
+				name            : eventData.name,
+				shopExpectedCost: eventShop.reduce( ( total, item ) =>
+					total + item.cost * Math.min( item.amount, event.shop[ item.name ] || 0 ), 0 ),
+				points          : 0
+			} ) );
 	}, [] );
 	
 	useInterval( () => setTime( new Date() ), { ms: 15 * 1000 }, [] );
@@ -32,7 +39,7 @@ export default function Event() {
 		return null;
 	
 	// number of days until end of event
-	const remainingDays = Math.max( differenceInDays( eventData.endDate, time ), 0 );
+	const remainingDays = Math.max( differenceInDays( new Date( eventData.endDate ), time ), 0 );
 	
 	// number of points needed until only dailies are enough
 	const neededPoints    = event.shopExpectedCost - remainingDays * event.dailyExpected,
@@ -134,13 +141,11 @@ export default function Event() {
 					}
 				}}>
 				<Link href={eventData.href} target='_blank'>
-					<Image src={eventImage} alt='event banner'/>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img src={eventData.image} alt='event banner'/>
 				</Link>
 			</Box>
-			<EventFields
-				time={time}
-				neededPoints={neededPoints}
-			/>
+			<EventFields time={time} neededPoints={neededPoints}/>
 			<EventFarming remainingPoints={remainingPoints}/>
 		</PageContainer>
 	);

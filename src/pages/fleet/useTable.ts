@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import {
 	TableOptions,
 	useFilters,
@@ -11,27 +10,12 @@ import {
 } from 'react-table';
 import useColumnProps from '../../helpers/useColumnProps';
 import fleetColumns from './columns';
-import fleetData from './data';
 
-export default function useFleetTable( equipBetter, setEquipBetter ) {
-	const fleet = useSelector( ( { fleet } ) => fleet );
-	
+export default function useFleetTable( data, equipBetter, setEquipBetter ) {
 	const tableOptions = useMemo( () => ( {
 		columns: fleetColumns( equipBetter, setEquipBetter ),
 		// list of ships with the local data loaded
-		data                  : Object.values( fleetData )
-			.map( ( shipData ) => {
-				const _ship = fleet.ships[ shipData.id ];
-				shipData.love = _ship?.love || 0;
-				shipData.lvl = _ship?.lvl || 0;
-				shipData.equip = _ship?.equip || new Array( 5 ).fill( [] );
-				return shipData;
-			} )
-			.filter( ( shipData ) => {
-				if ( !fleet.filter.levelMax && shipData.lvl === 126 ) return false;
-				if ( !fleet.filter.level0 && !shipData.lvl ) return false;
-				return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
-			} ),
+		data,
 		getRowId              : ( { id } ) => id,
 		defaultColumn         : { width: 10 },
 		initialState          : {
@@ -66,7 +50,7 @@ export default function useFleetTable( equipBetter, setEquipBetter ) {
 		autoResetSortBy       : false,
 		autoResetGlobalFilter : false,
 		autoResetFilters      : false
-	} as TableOptions<any> ), [ fleet, equipBetter ] );
+	} as TableOptions<any> ), [ data, equipBetter ] );
 	
 	return useTable(
 		tableOptions,

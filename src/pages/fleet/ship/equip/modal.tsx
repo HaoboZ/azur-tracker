@@ -16,12 +16,13 @@ import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useEventListener from '../../../../hooks/useEventListener';
+import { useData } from '../../../../providers/data';
 import { useModalControls } from '../../../../providers/modal';
 import { fleet_setShip } from '../../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
-import fleetData, { Ship } from '../../data';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
+import { FleetType, Ship } from '../../type';
 import equipData, { Equip, equippable, equipsIndex, equipTier } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
@@ -32,6 +33,7 @@ export default function EquipModal( { info, selectedEquip }: {
 } ) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
+	const { fleetData } = useData<FleetType>();
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
@@ -81,6 +83,7 @@ export default function EquipModal( { info, selectedEquip }: {
 		shipEquip[ info.index ] = [ newEquip.id, override, 6 ];
 		getTier( fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
+		info.ship.equip = shipEquip;
 	}, { dependencies: [ newEquip, override ] } );
 	
 	return (

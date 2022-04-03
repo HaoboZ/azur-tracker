@@ -4,19 +4,21 @@ import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
+import { useData } from '../../providers/data';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
 import { event_setShop } from '../../store/reducers/eventReducer';
-import eventData from './data';
+import { EventType } from './type';
 
 export default function ShopModal() {
 	const _shop = useSelector( ( { event } ) => event.shop );
 	const dispatch = useDispatch();
+	const { eventShop } = useData<EventType>();
 	
 	const [ shop, setShop ] = useState( () => cloneDeep( _shop ) );
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = useMemo(
-		() => eventData.shop.reduce( ( total, item ) => [
+		() => eventShop.reduce( ( total, item ) => [
 			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
 			total[ 1 ] + item.cost * item.amount
 		], [ 0, 0 ] ),
@@ -38,7 +40,7 @@ export default function ShopModal() {
 				</Grid>
 			</Box>
 			<EnhancedDisplay
-				items={eventData.shop}
+				items={eventShop}
 				extraData={shop}
 				tableProps={{
 					headers: [

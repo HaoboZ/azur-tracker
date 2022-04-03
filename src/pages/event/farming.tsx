@@ -3,12 +3,14 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
+import { useData } from '../../providers/data';
 import { event_modifyFarming, event_setFarming } from '../../store/reducers/eventReducer';
-import eventData from './data';
+import { EventType } from './type';
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useSelector( ( { event } ) => event.farming );
 	const dispatch = useDispatch();
+	const { eventStages } = useData<EventType>();
 	
 	return (
 		<EnhancedDisplay
@@ -37,9 +39,9 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 							autoSelect
 							id={!index ? 'farmPoints' : undefined}
 							value={item.points.toString()}
-							options={Object.keys( eventData.stages ).reverse()}
+							options={Object.keys( eventStages ).reverse()}
 							renderOption={( props, option ) =>
-								<MenuItem {...props}>{eventData.stages[ option ]}</MenuItem>}
+								<MenuItem {...props}>{eventStages[ option ]}</MenuItem>}
 							renderInput={( params ) => (
 								<TextField
 									{...params}
@@ -85,9 +87,9 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 									autoSelect
 									id={!index ? 'farmPoints' : undefined}
 									value={item.points.toString()}
-									options={Object.keys( eventData.stages )}
+									options={Object.keys( eventStages )}
 									renderOption={( props, option ) =>
-										<MenuItem {...props}>{eventData.stages[ option ]}</MenuItem>}
+										<MenuItem {...props}>{eventStages[ option ]}</MenuItem>}
 									renderInput={( params ) => (
 										<TextField
 											{...params}
