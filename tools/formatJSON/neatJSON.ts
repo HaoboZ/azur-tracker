@@ -78,7 +78,7 @@ export default function neatJSON( value, opts: Options = {} ) {
 	      colon1 = `${' '.repeat( opts.beforeColon1 )}:${' '.repeat( opts.afterColon1 )}`,
 	      colonN = `${' '.repeat( opts.beforeColonN )}:${' '.repeat( opts.afterColonN )}`;
 	
-	const memo = new Map;
+	const memo = new Map();
 	
 	function build( o, indent ) {
 		let byIndent = memo.get( o );
