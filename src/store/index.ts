@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues, omit } from 'lodash-es';
+import { omit } from 'lodash-es';
 import {
 	createMigrate,
 	FLUSH,
@@ -21,16 +21,6 @@ type RootState = ReturnType<typeof rootReducer>;
 type State = RootState & PersistedState;
 
 const migrations: Record<string, ( state: State ) => State> = {
-	9 : ( state ) => ( {
-		...state,
-		fleet: {
-			...state.fleet,
-			ships: mapValues( state.fleet.ships, ( ship ) => {
-				if ( ship.lvl === 121 ) ship.lvl = 120;
-				return ship;
-			} )
-		}
-	} ),
 	10: ( state ) => ( {
 		...state,
 		main    : omit( state.main, 'lastSaved' ),

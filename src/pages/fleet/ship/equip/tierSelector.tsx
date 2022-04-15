@@ -1,12 +1,13 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
+import { ReactElement } from 'react';
 import { rarityColors } from '../../../colors';
-import { Equip } from './data';
+import { EquipType } from './data';
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement,
 	closeAnchor: () => void,
-	equipList: ( Equip & { tier?: number } )[],
+	equipList: ( EquipType & { tier?: ReactElement } )[],
 	setEquip: ( id: number ) => void
 } ) {
 	return (

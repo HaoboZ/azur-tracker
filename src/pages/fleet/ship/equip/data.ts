@@ -1,5 +1,7 @@
 // noinspection SpellCheckingInspection
 
+import { keyBy } from 'lodash-es';
+
 enum type {
 	T,
 	AA,
@@ -48,16 +50,16 @@ enum rarity {
 	N = 'N'
 }
 
-export interface Equip {
+export type EquipType = {
 	id: number,
 	name: string,
 	image: string,
 	type: type,
 	rarity: rarity
-}
+};
 
 // list of equips sorted by type
-const equipData: Equip[] = [
+const equipData: EquipType[] = [
 	{ id: 0, name: '', image: 'Azur_Lane_Wiki', type: undefined as type, rarity: undefined as rarity },
 	//region Torpedo
 	{
@@ -1264,10 +1266,7 @@ const equipData: Equip[] = [
 ];
 export default equipData;
 // dictionary of equips to reference by id
-export const equipsIndex: Record<number, Equip> = equipData.reduce( ( obj, item ) => {
-	obj[ item.id ] = item;
-	return obj;
-}, {} );
+export const equipsIndex = keyBy( equipData, 'id' );
 
 const map = equipData.reduce( ( obj, item ) => {
 	obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;

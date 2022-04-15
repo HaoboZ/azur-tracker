@@ -2,12 +2,12 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
 import { rarityColors } from '../../../colors';
-import { Equip, typeNames } from './data';
+import { EquipType, typeNames } from './data';
 
 export default function EquipFilter( { equipList, value, setValue }: {
-	equipList: Equip[],
-	value?: Equip,
-	setValue: ( value: Equip ) => void
+	equipList: EquipType[],
+	value?: EquipType,
+	setValue: ( value: EquipType ) => void
 } ) {
 	return (
 		<Autocomplete
@@ -42,7 +42,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					}}
 				/>
 			)}
-			onChange={( e, newValue: Equip ) => setValue( newValue || null )}
+			onChange={( e, newValue: EquipType ) => setValue( newValue || null )}
 		/>
 	);
 }

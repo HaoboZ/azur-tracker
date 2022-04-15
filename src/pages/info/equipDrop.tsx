@@ -1,20 +1,18 @@
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
-import { forEach, map, mapValues, pickBy, uniq } from 'lodash-es';
+import { forEach, map, mapValues, pickBy, sortBy, uniq } from 'lodash-es';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import PageSection from '../../components/page/section';
 import deepFlatMap from '../../helpers/deepFlatMap';
 import { rarityColors } from '../colors';
-import { Equip, equipsIndex } from '../fleet/ship/equip/data';
+import { equipsIndex, EquipType } from '../fleet/ship/equip/data';
 import EquipFilter from '../fleet/ship/equip/filter';
 import { stageDrops } from './data';
 
-const equipList = uniq( deepFlatMap<number>( stageDrops ) )
-	.map( ( val ) => equipsIndex[ val ] )
-	.sort( ( a, b ) => a.id - b.id )
-	.sort( ( a, b ) => a.type - b.type );
+const equipList = sortBy( uniq( deepFlatMap<number>( stageDrops ) )
+	.map( ( val ) => equipsIndex[ val ] ), [ 'type', 'id' ] );
 
 const treeKeys = map( stageDrops, ( _, level ) => level );
 
@@ -22,7 +20,7 @@ export default function EquipDrop() {
 	const [ expanded, setExpanded ] = useState<string[]>( [] );
 	const [ selected, setSelected ] = useState<string>( null );
 	
-	const [ equip, setEquip ] = useState<Equip>( null );
+	const [ equip, setEquip ] = useState<EquipType>( null );
 	
 	useEffect( () => {
 		setExpanded( equip ? treeKeys : [] );

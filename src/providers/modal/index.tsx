@@ -1,6 +1,7 @@
+import { CircularProgress } from '@mui/material';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
-import { ComponentType, createContext, useContext, useState } from 'react';
+import { ComponentType, createContext, Suspense, useContext, useState } from 'react';
 import ResponsiveModal, { ResponsiveModalProps } from './responsiveModal';
 
 type ModalInfo<T> = {
@@ -117,7 +118,9 @@ export default function ModalProvider( { children } ) {
 								await modal.modalProps?.onClose?.( event, reason );
 								modal.props.controls.closeModal();
 							}}>
-							<modal.Component {...modal.props}/>
+							<Suspense fallback={<CircularProgress/>}>
+								<modal.Component {...modal.props}/>
+							</Suspense>
 						</ResponsiveModal>
 					</ModalControlsContext.Provider>
 				);

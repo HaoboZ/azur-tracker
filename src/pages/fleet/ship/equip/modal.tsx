@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { cloneDeep, reduce } from 'lodash-es';
 import Image from 'next/image';
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, ReactElement, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useEventListener from '../../../../hooks/useEventListener';
 import { useData } from '../../../../providers/data';
@@ -23,13 +23,13 @@ import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
 import { FleetType, Ship } from '../../type';
-import equipData, { Equip, equippable, equipsIndex, equipTier } from './data';
+import equipData, { equippable, equipsIndex, equipTier, EquipType } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
 
 export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: Ship, index: number },
-	selectedEquip?: Equip
+	selectedEquip?: EquipType
 } ) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
@@ -53,14 +53,14 @@ export default function EquipModal( { info, selectedEquip }: {
 					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
-			}, [] as ( Equip & { tier?: number } )[] )
+			}, [] as ( EquipType & { tier?: ReactElement } )[] )
 		];
 	}, [] );
 	
 	// equipment currently in that slot
 	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equipData[ 0 ];
 	// equipment that will go in slot
-	const [ equip, setEquip ] = useState<Equip>( () => {
+	const [ equip, setEquip ] = useState<EquipType>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			return selectedEquip;
 		else if ( currentEquip.id )

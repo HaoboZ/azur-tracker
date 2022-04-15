@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import concealmentImage from '../../../public/images/other/concealment.png';
 import determinationImage from '../../../public/images/other/determination.png';
 import equilibriumImage from '../../../public/images/other/equilibrium.png';

@@ -1,13 +1,55 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { research_modifyShip } from '../../store/reducers/researchReducer';
-import researchData, { devLevels, fateLevels } from './data';
+import { ResearchShipsType } from './data';
 
-export default function ResearchSeries( { researchShips }: { researchShips: typeof researchData[number]['ships'] } ) {
+const devLevels = [
+	[ 2, 0, 3, 0 ],
+	[ 2, 2, 3, 3 ],
+	[ 2, 4, 3, 6 ],
+	[ 2, 6, 3, 9 ],
+	[ 5, 8, 8, 12 ],
+	[ 4, 13, 6, 20 ],
+	[ 4, 17, 6, 26 ],
+	[ 4, 21, 6, 32 ],
+	[ 4, 25, 6, 38 ],
+	[ 8, 29, 12, 44 ],
+	[ 6, 37, 9, 56 ],
+	[ 6, 43, 9, 65 ],
+	[ 6, 49, 9, 74 ],
+	[ 6, 55, 9, 83 ],
+	[ 12, 61, 18, 92 ],
+	[ 10, 73, 15, 110 ],
+	[ 10, 83, 15, 125 ],
+	[ 10, 93, 15, 140 ],
+	[ 10, 103, 15, 155 ],
+	[ 20, 113, 30, 170 ],
+	[ 15, 133, 22, 200 ],
+	[ 15, 148, 22, 222 ],
+	[ 15, 163, 22, 244 ],
+	[ 15, 178, 22, 266 ],
+	[ 30, 193, 45, 288 ],
+	[ 20, 223, 30, 333 ],
+	[ 20, 243, 30, 363 ],
+	[ 20, 263, 30, 393 ],
+	[ 20, 283, 30, 423 ],
+	[ 40, 303, 60, 453 ],
+	[ 0, 343, 0, 513 ]
+];
+
+const fateLevels = [
+	[ 10, 0, 20, 0 ],
+	[ 20, 10, 30, 20 ],
+	[ 30, 30, 40, 50 ],
+	[ 40, 60, 50, 90 ],
+	[ 65, 100, 75, 140 ],
+	[ 0, 165, 0, 215 ]
+];
+
+export default function ResearchSeries( { researchShips }: { researchShips: ResearchShipsType } ) {
 	const ships = useSelector( ( { research } ) => research.ships );
 	const dispatch = useDispatch();
 	
@@ -56,9 +98,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						const { devLevel, devPrints, fatePrints } = shipData[ index ];
 						return [
 							<Fragment key='ship'>
-								<Avatar variant='rounded' sx={{ width: 60, height: 60 }}>
-									<Image src={item.image} alt={item.name}/>
-								</Avatar>
+								<Avatar variant='rounded' src={item.image} sx={{ width: 60, height: 60 }}/>
 								<Typography>{item.name}</Typography>
 							</Fragment>,
 							<FormattedTextField
@@ -127,9 +167,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: type
 						return (
 							<Fragment>
 								<ListItemAvatar>
-									<Avatar variant='rounded'>
-										<Image src={item.image} alt={item.name}/>
-									</Avatar>
+									<Avatar variant='rounded' src={item.image} sx={{ width: 60, height: 60, mr: 1 }}/>
 								</ListItemAvatar>
 								<ListItemText
 									primary={item.name}

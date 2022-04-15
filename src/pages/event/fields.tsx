@@ -8,8 +8,8 @@ import { useModal } from '../../providers/modal';
 import { event_setPoints } from '../../store/reducers/eventReducer';
 import { EventType } from './type';
 
-const ShopModal = dynamic( () => import( './shopModal' ) );
-const DailyModal = dynamic( () => import( './dailyModal' ) );
+const ShopModal = dynamic( () => import( './shopModal' ), { suspense: true } );
+const DailyModal = dynamic( () => import( './dailyModal' ), { suspense: true } );
 
 export default function EventFields( { time, neededPoints }: {
 	time: Date,

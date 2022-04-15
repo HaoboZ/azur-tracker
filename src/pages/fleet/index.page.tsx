@@ -19,7 +19,7 @@ import getTier from './getTier';
 import { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
-const ShipModal = dynamic( () => import( './ship/modal' ) );
+const ShipModal = dynamic( () => import( './ship/modal' ), { suspense: true } );
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
@@ -144,13 +144,12 @@ export default function Fleet() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
-	const { data } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Fleet&tqx=out:csv` );
-	const json = await csvtojson().fromString( data );
+	const { data: fleetData } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Fleet&tqx=out:csv` );
 	
 	return {
 		revalidate: 6 * 60 * 60,
 		props     : {
-			fleetData: keyBy( json.map( ( val ) => ( {
+			fleetData: keyBy( ( await csvtojson().fromString( fleetData ) ).map( ( val ) => ( {
 				...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
 				tier     : +val.tier,
 				special  : JSON.parse( val.special ),

@@ -20,13 +20,13 @@ import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
 import { Ship } from '../type';
-import equipData, { Equip, equipsIndex } from './equip/data';
+import equipData, { equipsIndex, EquipType } from './equip/data';
 import EquipModal from './equip/modal';
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	ship?: Ship,
 	equipBetter?: [ number, number ][],
-	selectedEquip?: Equip
+	selectedEquip?: EquipType
 } ) {
 	const ships = useSelector( ( { fleet } ) => fleet.ships );
 	const dispatch = useDispatch();
@@ -123,6 +123,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 				<Grid item container xs={12} alignItems='center' justifyContent='center'>
 					{ship.equip.map( ( val, index ) => {
 						const equip = equipsIndex[ val[ 0 ] ] || equipData[ 0 ];
+						
 						return (
 							<Grid
 								key={index}
