@@ -9,8 +9,8 @@ import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
 import { useData } from '../../providers/data';
 import { research_setLastTab } from '../../store/reducers/researchReducer';
-import { ResearchType } from './data';
 import ResearchSeries from './series';
+import { ResearchType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {
@@ -35,17 +35,17 @@ export default function Research() {
 
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
-	const { data } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Research&tqx=out:csv` );
-	const json = await csvtojson().fromString( data );
+	const { data: researchCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Research&tqx=out:csv` );
 	
 	return {
 		revalidate: 6 * 60 * 60,
 		props     : {
-			researchData: groupBy( json.map( ( val ) => ( {
-				...pick( val, [ 'series', 'name', 'image' ] ),
-				type: +val.type,
-				fate: +val.fate
-			} ) ), 'series' )
+			researchData: groupBy( ( await csvtojson().fromString( researchCSV ) )
+				.map( ( val ) => ( {
+					...pick( val, [ 'series', 'name', 'image' ] ),
+					type: +val.type,
+					fate: +val.fate
+				} ) ), 'series' )
 		}
 	};
 };

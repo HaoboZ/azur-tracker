@@ -1,10 +1,12 @@
 import { getAuth, signOut } from 'firebase/auth';
+import dynamic from 'next/dynamic';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { app } from '../../firebase/client';
 import { useEvents } from '../events';
 import { useModal } from '../modal';
 import { useAuth } from './index';
-import LoginModal from './loginModal';
+
+const LoginModal = dynamic( () => import( './loginModal' ), { suspense: true } );
 
 const auth = getAuth( app );
 

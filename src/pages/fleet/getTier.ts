@@ -1,6 +1,4 @@
-import { equipTier } from './ship/equip/data';
-
-export default function getTier( ship: { equipType: string[] }, equip: [ number, 0 | 1, number ][] ) {
+export default function getTier( equipTier, ship: { equipType: string[] }, equip: number[][] ) {
 	equip?.forEach( ( eq, i ) => {
 		if ( !eq ) return;
 		if ( !eq[ 0 ] ) {

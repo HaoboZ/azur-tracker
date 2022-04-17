@@ -9,16 +9,16 @@ export default Event;
 
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
-	const { data: eventData } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event&tqx=out:csv` );
-	const { data: eventShop } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event%20Shop&tqx=out:csv` );
-	const { data: eventStages } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event%20Stages&tqx=out:csv` );
+	const { data: eventCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event&tqx=out:csv` );
+	const { data: eventShopCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event%20Shop&tqx=out:csv` );
+	const { data: eventStagesCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event%20Stages&tqx=out:csv` );
 	
 	return {
 		revalidate: 6 * 60 * 60,
 		props     : {
-			eventData  : ( await csvtojson().fromString( eventData ) )[ 0 ],
-			eventShop  : await csvtojson().fromString( eventShop ),
-			eventStages: pickBy( ( await csvtojson().fromString( eventStages ) )[ 0 ], Boolean )
+			eventData      : ( await csvtojson().fromString( eventCSV ) )[ 0 ],
+			eventShopData  : await csvtojson().fromString( eventShopCSV ),
+			eventStagesData: pickBy( ( await csvtojson().fromString( eventStagesCSV ) )[ 0 ], Boolean )
 		}
 	};
 };

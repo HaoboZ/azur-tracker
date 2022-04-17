@@ -1,32 +1,27 @@
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
-import { forEach, map, mapValues, pickBy, sortBy, uniq } from 'lodash-es';
-import Image from 'next/image';
+import { forEach, keyBy, map, mapValues, pickBy } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
 import PageSection from '../../components/page/section';
-import deepFlatMap from '../../helpers/deepFlatMap';
+import { useData } from '../../providers/data';
 import { rarityColors } from '../colors';
-import { equipsIndex, EquipType } from '../fleet/ship/equip/data';
+import { EquipType } from '../fleet/ship/equip/data';
 import EquipFilter from '../fleet/ship/equip/filter';
-import { stageDrops } from './data';
-
-const equipList = sortBy( uniq( deepFlatMap<number>( stageDrops ) )
-	.map( ( val ) => equipsIndex[ val ] ), [ 'type', 'id' ] );
-
-const treeKeys = map( stageDrops, ( _, level ) => level );
+import { FarmType } from './type';
 
 export default function EquipDrop() {
+	const { farmData, equipList } = useData<FarmType>();
+	
 	const [ expanded, setExpanded ] = useState<string[]>( [] );
 	const [ selected, setSelected ] = useState<string>( null );
 	
 	const [ equip, setEquip ] = useState<EquipType>( null );
 	
-	useEffect( () => {
-		setExpanded( equip ? treeKeys : [] );
-	}, [ equip ] );
+	const equipIndex = useMemo( () => keyBy( equipList, 'id' ), [] );
+	const treeKeys = useMemo( () => map( farmData, ( _, level ) => level ), [] );
 	
-	const stages = useMemo( () => pickBy( mapValues( stageDrops, ( value ) => {
+	const stages = useMemo( () => pickBy( mapValues( farmData, ( value ) => {
 		const stages: Record<string, number[]> = {};
 		forEach( value, ( value, stageMajor ) => forEach( value, ( value, stageMinor ) => {
 			if ( equip ? value.includes( equip.id ) : true )
@@ -34,6 +29,10 @@ export default function EquipDrop() {
 		} ) );
 		return Object.keys( stages ).length ? stages : null;
 	} ) ), [ equip ] );
+	
+	useEffect( () => {
+		setExpanded( equip ? treeKeys : [] );
+	}, [ equip ] );
 	
 	return (
 		<PageSection primary='Notable Equipment Drops'>
@@ -71,15 +70,15 @@ export default function EquipDrop() {
 								</Box>
 								<Stack direction='row' spacing={1}>
 									{value.map( ( id ) => {
-										const equip = equipsIndex[ id ];
+										const equip = equipIndex[ id ];
 										return (
 											<Box key={id} width={40} height={40} onClick={() => setEquip( equip )}>
-												<Image
-													src={`/images/equips/${equip.image}.png`}
+												{/* eslint-disable-next-line @next/next/no-img-element */}
+												<img
+													src={`https://azurlane.netojuu.com/w/images/${equip.image}`}
 													alt={equip.name}
-													height={128}
-													width={128}
-													layout='intrinsic'
+													height={40}
+													width={40}
 													className={`color-${rarityColors[ equip.rarity ]}`}
 												/>
 											</Box>

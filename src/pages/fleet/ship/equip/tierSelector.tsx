@@ -1,5 +1,4 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
-import Image from 'next/image';
 import { ReactElement } from 'react';
 import { rarityColors } from '../../../colors';
 import { EquipType } from './data';
@@ -27,10 +26,10 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 					}}>
 					{equip.tier && <Typography>{equip.tier}</Typography>}
 					<Box px={1}>
-						<Image
-							src={`/images/equips/${equip.image}.png`}
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							src={`https://azurlane.netojuu.com/w/images/${equip.image}`}
 							alt={equip.name}
-							layout='fixed'
 							height={50}
 							width={50}
 							className={`color-${rarityColors[ equip.rarity ]}`}

@@ -1,17 +1,17 @@
 import { Box, Tab, Tabs, TabsProps, useTheme } from '@mui/material';
 import { ComponentType, CSSProperties, Fragment, ReactNode, useEffect, useState } from 'react';
-import SwipeableViews from 'react-swipeable-views';
-import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
+import SwipeableViews, { SwipeableViewsProps } from 'react-swipeable-views';
+import { bindKeyboard, virtualize, WithBindKeyboardProps, WithVirtualizeProps } from 'react-swipeable-views-utils';
 import useControlled from '../hooks/useControlled';
 
-type SwipeableViewsProps = {
+type SwipeableTabViewsProps = {
 	tab?: number,
 	setTab?: ( index: number ) => void,
 	renderTabs: ReactNode[],
 	renderContent: ( index: number ) => ReactNode
 } & TabsProps;
 
-const EnhancedSwipeableViews = bindKeyboard( virtualize( SwipeableViews ) ) as ComponentType<SwipeableViewsProps>;
+const EnhancedSwipeableViews = bindKeyboard( virtualize( SwipeableViews ) ) as ComponentType<SwipeableViewsProps & WithVirtualizeProps & WithBindKeyboardProps>;
 
 export default function SwipeableTabViews( {
 	tab = 0,
@@ -19,7 +19,7 @@ export default function SwipeableTabViews( {
 	renderTabs,
 	renderContent,
 	...props
-}: SwipeableViewsProps ) {
+}: SwipeableTabViewsProps ) {
 	const theme = useTheme();
 	
 	const [ tabValue, setTabValue ] = useControlled( tab, setTab );

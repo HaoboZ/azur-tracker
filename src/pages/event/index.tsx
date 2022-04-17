@@ -16,7 +16,7 @@ import { EventType } from './type';
 export default function Event() {
 	const event = useSelector( ( { event } ) => event );
 	const dispatch = useDispatch();
-	const { eventData, eventShop } = useData<EventType>();
+	const { eventData, eventShopData } = useData<EventType>();
 	
 	const [ time, setTime ] = useState( () => new Date() );
 	
@@ -27,7 +27,7 @@ export default function Event() {
 				...event,
 				timestamp       : new Date().toISOString(),
 				name            : eventData.name,
-				shopExpectedCost: eventShop.reduce( ( total, item ) =>
+				shopExpectedCost: eventShopData.reduce( ( total, item ) =>
 					total + item.cost * Math.min( item.amount, event.shop[ item.name ] || 0 ), 0 ),
 				points          : 0
 			} ) );

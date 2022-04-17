@@ -11,26 +11,32 @@ import {
 	Typography,
 	Zoom
 } from '@mui/material';
-import Image from 'next/image';
+import { keyBy } from 'lodash-es';
+import dynamic from 'next/dynamic';
 import { Fragment, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useData } from '../../../providers/data';
 import { useModal } from '../../../providers/modal';
 import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
 import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
-import { Ship } from '../type';
-import equipData, { equipsIndex, EquipType } from './equip/data';
-import EquipModal from './equip/modal';
+import { FleetType, Ship } from '../type';
+import { EquipType } from './equip/data';
+
+const EquipModal = dynamic( () => import( './equip/modal' ), { suspense: true } );
 
 export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	ship?: Ship,
 	equipBetter?: [ number, number ][],
 	selectedEquip?: EquipType
 } ) {
+	const { equipData } = useData<FleetType>();
 	const ships = useSelector( ( { fleet } ) => fleet.ships );
 	const dispatch = useDispatch();
 	const { showModal } = useModal();
+	
+	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
 	
 	// calculates tier
 	const tier = useMemo( () => {
@@ -122,7 +128,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 				</Grid>
 				<Grid item container xs={12} alignItems='center' justifyContent='center'>
 					{ship.equip.map( ( val, index ) => {
-						const equip = equipsIndex[ val[ 0 ] ] || equipData[ 0 ];
+						const equip = equipIndex[ val[ 0 ] ];
 						
 						return (
 							<Grid
@@ -140,13 +146,15 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 									TransitionComponent: Zoom,
 									props              : { info: { ship, index }, selectedEquip }
 								} )}>
-								<Image
-									src={`/images/equips/${equip.image}.png`}
-									alt={equip.name}
+								{/* eslint-disable-next-line @next/next/no-img-element */}
+								<img
+									src={equip?.image
+										? `https://azurlane.netojuu.com/w/images/${equip.image}`
+										: '/images/emptyEquip.png'}
+									alt={equip?.name}
 									height={128}
 									width={128}
-									layout='intrinsic'
-									className={`color-${rarityColors[ equip.rarity ]}`}
+									className={`color-${rarityColors[ equip?.rarity ]}`}
 								/>
 								<Box display='flex' alignItems='center'>
 									<TierIcon tier={val[ 2 ]}/>

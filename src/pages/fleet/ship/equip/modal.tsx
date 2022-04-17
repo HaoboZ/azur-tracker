@@ -11,8 +11,7 @@ import {
 	Switch,
 	Typography
 } from '@mui/material';
-import { cloneDeep, reduce } from 'lodash-es';
-import Image from 'next/image';
+import { cloneDeep, keyBy, reduce } from 'lodash-es';
 import { Fragment, ReactElement, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useEventListener from '../../../../hooks/useEventListener';
@@ -23,9 +22,11 @@ import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
 import { FleetType, Ship } from '../../type';
-import equipData, { equippable, equipsIndex, equipTier, EquipType } from './data';
+import { equippable, EquipType } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
+
+// { id: 0, name: '', image: 'Azur_Lane_Wiki', type: undefined as type, rarity: undefined as rarity }
 
 export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: Ship, index: number },
@@ -33,7 +34,9 @@ export default function EquipModal( { info, selectedEquip }: {
 } ) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useDispatch();
-	const { fleetData } = useData<FleetType>();
+	const { fleetData, equipTier, equipData } = useData<FleetType>();
+	
+	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
@@ -46,10 +49,10 @@ export default function EquipModal( { info, selectedEquip }: {
 			equipList.reduce( ( res, item ) => {
 				res[ item.id ] = item;
 				return res;
-			}, {} as typeof equipsIndex ),
+			}, {} as typeof equipIndex ),
 			reduce( tierList, ( arr, val, key ) => {
 				arr[ val[ 1 ] ] = {
-					...equipsIndex[ key ],
+					...equipIndex[ key ],
 					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
@@ -58,33 +61,32 @@ export default function EquipModal( { info, selectedEquip }: {
 	}, [] );
 	
 	// equipment currently in that slot
-	const currentEquip = equipsIndex[ info?.ship.equip[ info.index ][ 0 ] ] || equipData[ 0 ];
+	const currentEquip = equipIndex[ info?.ship.equip[ info.index ][ 0 ] ];
 	// equipment that will go in slot
 	const [ equip, setEquip ] = useState<EquipType>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
 			return selectedEquip;
-		else if ( currentEquip.id )
+		else if ( currentEquip )
 			return currentEquip;
 		else
 			return null;
 	} );
-	const newEquip = equip || equipData[ 0 ];
-	const [ override, setOverride ] = useState<0 | 1>( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
+	const [ override, setOverride ] = useState( () => info?.ship.equip[ info.index ]?.[ 1 ] || 0 );
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	
 	// saves info on close
 	useEventListener( events, 'close', ( cancel ) => {
 		setAnchorEl( null );
 		if ( cancel ) return;
-		if ( info?.ship.equip[ info.index ][ 0 ] === newEquip.id && info?.ship.equip[ info.index ][ 1 ] === override )
+		if ( info?.ship.equip[ info.index ][ 0 ] === equip?.id && info?.ship.equip[ info.index ][ 1 ] === override )
 			return;
 		
 		const shipEquip = cloneDeep( info.ship.equip );
-		shipEquip[ info.index ] = [ newEquip.id, override, 6 ];
-		getTier( fleetData[ info.ship.id ], shipEquip );
+		shipEquip[ info.index ] = equip ? [ equip?.id, override, 6 ] : [];
+		getTier( equipTier, fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
 		info.ship.equip = shipEquip;
-	}, { dependencies: [ newEquip, override ] } );
+	}, { dependencies: [ equip, override ] } );
 	
 	return (
 		<Fragment>
@@ -99,47 +101,55 @@ export default function EquipModal( { info, selectedEquip }: {
 						</Grid>
 					) : undefined}
 					<Grid item container xs={5} justifyContent='center'>
-						<Image
-							src={`/images/equips/${currentEquip.image}.png`}
-							alt={currentEquip.name}
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							src={currentEquip?.image
+								? `https://azurlane.netojuu.com/w/images/${currentEquip.image}`
+								: '/images/emptyEquip.png'}
+							alt={currentEquip?.name}
 							height={128}
 							width={128}
-							layout='intrinsic'
-							className={`color-${rarityColors[ currentEquip.rarity ]}`}
+							className={`color-${rarityColors[ currentEquip?.rarity ]}`}
 						/>
 					</Grid>
 					<Grid item xs={2}>
 						<Typography variant='h4' align='center'>⇒</Typography>
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
-						<Image
-							src={`/images/equips/${newEquip.image}.png`}
-							alt={newEquip.name}
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							src={equip?.image
+								? `https://azurlane.netojuu.com/w/images/${equip.image}`
+								: '/images/emptyEquip.png'}
+							alt={equip?.name}
 							height={128}
 							width={128}
-							layout='intrinsic'
-							className={`color-${rarityColors[ newEquip.rarity ]}`}
+							className={`color-${rarityColors[ equip?.rarity ]}`}
 							onClick={() => setEquip( null )}
 						/>
 					</Grid>
 					<Grid item container xs={5} justifyContent='center'>
-						<Link
-							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( currentEquip.image.replaceAll( '$', '%' ) )}`}
-							align='center'
-							color='textPrimary'>
-							{currentEquip.name}
-						</Link>
+						{currentEquip && (
+							<Link
+								target='_blank'
+								href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
+								align='center'
+								color='textPrimary'>
+								{currentEquip.name}
+							</Link>
+						)}
 					</Grid>
 					<Grid item xs={2}/>
 					<Grid item container xs={5} justifyContent='center'>
-						<Link
-							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${decodeURIComponent( newEquip.image.replaceAll( '$', '%' ) )}`}
-							align='center'
-							color='textPrimary'>
-							{newEquip.name}
-						</Link>
+						{equip && (
+							<Link
+								target='_blank'
+								href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
+								align='center'
+								color='textPrimary'>
+								{equip.name}
+							</Link>
+						)}
 					</Grid>
 					<Grid item container xs={12} md={6} justifyContent='center'>
 						<Button
@@ -168,7 +178,7 @@ export default function EquipModal( { info, selectedEquip }: {
 					control={(
 						<Switch
 							checked={Boolean( override )}
-							onChange={( { target } ) => setOverride( +target.checked as 0 | 1 )}
+							onChange={( { target } ) => setOverride( +target.checked )}
 						/>
 					)}
 					label='Force BiS'

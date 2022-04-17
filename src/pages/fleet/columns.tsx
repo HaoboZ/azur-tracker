@@ -2,7 +2,7 @@ import { Star as StarIcon } from '@mui/icons-material';
 import { Column } from 'react-table';
 import OverflowTypography from '../../components/overflowTypography';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
-import { equippable, equipTier } from './ship/equip/data';
+import { equippable } from './ship/equip/data';
 import { AffinityIcons, TierIcon } from './tierIcon';
 
 const Rarity = {
@@ -15,7 +15,7 @@ const Rarity = {
 	'Common'    : 4
 };
 
-export default function fleetColumns( equipBetter, setEquipBetter ): Column<any>[] {
+export default function fleetColumns( equipBetter, setEquipBetter, equipTier ): Column<any>[] {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',

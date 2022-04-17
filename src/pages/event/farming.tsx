@@ -10,7 +10,7 @@ import { EventType } from './type';
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useSelector( ( { event } ) => event.farming );
 	const dispatch = useDispatch();
-	const { eventStages } = useData<EventType>();
+	const { eventStagesData } = useData<EventType>();
 	
 	return (
 		<EnhancedDisplay
@@ -39,9 +39,9 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 							autoSelect
 							id={!index ? 'farmPoints' : undefined}
 							value={item.points.toString()}
-							options={Object.keys( eventStages ).reverse()}
+							options={Object.keys( eventStagesData ).reverse()}
 							renderOption={( props, option ) =>
-								<MenuItem {...props}>{eventStages[ option ]}</MenuItem>}
+								<MenuItem {...props}>{eventStagesData[ option ]}</MenuItem>}
 							renderInput={( params ) => (
 								<TextField
 									{...params}
@@ -87,9 +87,9 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 									autoSelect
 									id={!index ? 'farmPoints' : undefined}
 									value={item.points.toString()}
-									options={Object.keys( eventStages )}
+									options={Object.keys( eventStagesData )}
 									renderOption={( props, option ) =>
-										<MenuItem {...props}>{eventStages[ option ]}</MenuItem>}
+										<MenuItem {...props}>{eventStagesData[ option ]}</MenuItem>}
 									renderInput={( params ) => (
 										<TextField
 											{...params}

@@ -5,7 +5,7 @@ type State = {
 	ships: Record<string, {
 		lvl: number,
 		love: number,
-		equip: [ number, 0 | 1, number ][] // id, override, tier
+		equip: number[][] // id, override, tier
 	}>,
 	filter: {
 		levelMax: boolean,
@@ -42,7 +42,7 @@ const fleetSlice = createSlice( {
 		fleet_setShips( state, { payload }: PayloadAction<Record<string, {
 			lvl: number,
 			love: number,
-			equip: [ number, 0 | 1, number ][] // id, override, tier
+			equip: number[][] // id, override, tier
 		}>> ) {
 			state.timestamp = new Date().toISOString();
 			state.ships = payload;
@@ -52,7 +52,7 @@ const fleetSlice = createSlice( {
 			ship: {
 				lvl?: number,
 				love?: number,
-				equip?: [ number, 0 | 1, number ][]
+				equip?: number[][]
 			}
 		}> ) {
 			state.timestamp = new Date().toISOString();

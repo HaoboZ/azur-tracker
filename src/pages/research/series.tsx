@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { research_modifyShip } from '../../store/reducers/researchReducer';
-import { ResearchShipsType } from './data';
+import { ResearchShipsType } from './type';
 
 const devLevels = [
 	[ 2, 0, 3, 0 ],

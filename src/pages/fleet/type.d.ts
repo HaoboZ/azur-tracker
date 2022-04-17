@@ -1,3 +1,5 @@
+import { EquipType } from './ship/equip/data';
+
 export type Ship = {
 	id: string,
 	name: string,
@@ -11,7 +13,11 @@ export type Ship = {
 } & {
 	love?: number,
 	lvl?: number,
-	equip?: [ number, 0 | 1, number ][]
+	equip?: number[][]
 };
 
-export type FleetType = { fleetData: Record<string, Ship> };
+export type FleetType = {
+	fleetData: Record<string, Ship>,
+	equipData: EquipType[],
+	equipTier: Record<string, Record<number, number[]>>
+};

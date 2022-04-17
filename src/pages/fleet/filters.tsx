@@ -16,9 +16,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance } from 'react-table';
 import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
+import { useData } from '../../providers/data';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
-import equipData from './ship/equip/data';
 import EquipFilter from './ship/equip/filter';
+import { FleetType } from './type';
 
 const searchOptions = [
 	// rarity
@@ -64,6 +65,7 @@ const searchOptions = [
 ].map( ( label, id ) => ( { id, label } ) );
 
 export default function FleetFilters( { table }: { table: TableInstance } ) {
+	const { equipData } = useData<FleetType>();
 	const { filter, ships } = useSelector( ( { fleet } ) => fleet );
 	const dispatch = useDispatch();
 	

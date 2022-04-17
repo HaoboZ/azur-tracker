@@ -1,10 +1,8 @@
-import { StaticImageData } from 'next/image';
-
 export type ResearchShipsType = {
 	name: string,
 	type: number,
 	fate: boolean,
-	image: StaticImageData,
+	image: string,
 	url: string
 }[];
 

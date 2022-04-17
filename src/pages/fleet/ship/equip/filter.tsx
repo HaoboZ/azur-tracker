@@ -1,6 +1,5 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
-import Image from 'next/image';
 import { rarityColors } from '../../../colors';
 import { EquipType, typeNames } from './data';
 
@@ -19,10 +18,10 @@ export default function EquipFilter( { equipList, value, setValue }: {
 			renderOption={( props, option ) => (
 				<li {...props} key={option.id}>
 					<Box pr={1}>
-						<Image
-							src={`/images/equips/${option.image}.png`}
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							src={`https://azurlane.netojuu.com/w/images/${option.image}`}
 							alt={option.name}
-							layout='fixed'
 							height={50}
 							width={50}
 							className={`color-${rarityColors[ option.rarity ]}`}
@@ -31,7 +30,10 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					<Typography>{option.name}</Typography>
 				</li>
 			)}
-			groupBy={( { type } ) => typeNames[ type ]}
+			groupBy={( { type } ) => {
+				console.log( typeNames[ type ] );
+				return typeNames[ type ];
+			}}
 			renderInput={( params ) => (
 				<TextField
 					{...params}
