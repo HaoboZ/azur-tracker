@@ -26,8 +26,6 @@ import { equippable, EquipType } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
 
-// { id: 0, name: '', image: 'Azur_Lane_Wiki', type: undefined as type, rarity: undefined as rarity }
-
 export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: Ship, index: number },
 	selectedEquip?: EquipType
@@ -46,17 +44,17 @@ export default function EquipModal( { info, selectedEquip }: {
 		
 		return [
 			equipList,
-			equipList.reduce( ( res, item ) => {
+			equipList.reduce<typeof equipIndex>( ( res, item ) => {
 				res[ item.id ] = item;
 				return res;
-			}, {} as typeof equipIndex ),
-			reduce( tierList, ( arr, val, key ) => {
+			}, {} ),
+			reduce<Record<number, number[]>, ( EquipType & { tier?: ReactElement } )[]>( tierList, ( arr, val, key ) => {
 				arr[ val[ 1 ] ] = {
 					...equipIndex[ key ],
 					tier: <TierIcon tier={val[ 0 ] + 1}/>
 				};
 				return arr;
-			}, [] as ( EquipType & { tier?: ReactElement } )[] )
+			}, [] )
 		];
 	}, [] );
 	

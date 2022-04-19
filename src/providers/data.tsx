@@ -12,7 +12,7 @@ export default function DataProvider( { children, data } ) {
 }
 
 export function useData<T>() {
-	return useContext( DataContext ) as T;
+	return useContext<T>( DataContext );
 }
 
 export function withData( Component ) {

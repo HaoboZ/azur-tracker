@@ -20,13 +20,13 @@ export default function PageBack( { confirm, onClick, back }: {
 		const names = router.pathname.split( '/' );
 		const paths = router.route.split( '/' );
 		
-		return paths.reduce( ( arr, path, index ) => {
+		return paths.reduce<{ name: string, href: string }[]>( ( arr, path, index ) => {
 			if ( !path || index === paths.length - 1 ) return arr;
 			href += `/${names[ index ]}`;
 			path = path.replace( /[\[\]]+/g, '' );
 			arr.push( { name: startCase( path ), href } );
 			return arr;
-		}, [] as { name: string, href: string }[] );
+		}, [] );
 	}, [ router.asPath ] );
 	
 	const clickListener = async ( e ) => {

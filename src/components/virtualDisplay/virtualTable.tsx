@@ -11,7 +11,7 @@ import {
 	TableSortLabel
 } from '@mui/material';
 import { isEqual } from 'lodash-es';
-import { memo, useMemo, useRef } from 'react';
+import { memo, ReactNode, useMemo, useRef } from 'react';
 import { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
@@ -56,7 +56,7 @@ function VirtualTable<Item extends object>( {
 										active={column.isSorted}
 										hideSortIcon={!column.canSort}
 										direction={column.isSortedDesc ? 'desc' : 'asc'}>
-										{column.render( 'Header' )}
+										{column.render( 'Header' ) as ReactNode}
 									</TableSortLabel>
 								</TableCell>
 							) )}
@@ -89,7 +89,7 @@ function VirtualTable<Item extends object>( {
 													key={i}
 													component='div'
 													{...cell.getCellProps()}>
-													{cell.render( 'Cell' )}
+													{cell.render( 'Cell' ) as ReactNode}
 												</TableCell>
 											) )}
 										</TableRow>
