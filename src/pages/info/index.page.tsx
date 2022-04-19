@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: farmCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Farm&tqx=out:csv` );
 	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equip&tqx=out:csv` );
 	
-	const farmData = ( await csvtojson().fromString( farmCSV ) )
+	const farmData = sortBy( await csvtojson().fromString( farmCSV ), 'order' )
 		.map( ( { id0, id1, id2, id3, id4, id5, id6, id7, ...props } ) =>
 			( { ...props, ids: [ id0, id1, id2, id3, id4, id5, id6, id7 ].filter( Boolean ) } ) );
 	const equipsIndex = keyBy( await csvtojson().fromString( equipCSV ), 'id' );

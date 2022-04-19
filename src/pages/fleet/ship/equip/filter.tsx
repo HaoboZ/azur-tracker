@@ -30,10 +30,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					<Typography>{option.name}</Typography>
 				</li>
 			)}
-			groupBy={( { type } ) => {
-				console.log( typeNames[ type ] );
-				return typeNames[ type ];
-			}}
+			groupBy={( { type } ) => typeNames[ type ]}
 			renderInput={( params ) => (
 				<TextField
 					{...params}

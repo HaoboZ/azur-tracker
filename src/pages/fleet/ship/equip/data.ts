@@ -40,25 +40,17 @@ export const typeNames = {
 	[ EquipGroup.C ]  : 'Cargo'
 };
 
-export enum rarity {
-	UR = 'UR',
-	SR = 'SR',
-	E = 'E',
-	R = 'R',
-	N = 'N'
-}
-
 export type EquipType = {
 	id: number,
 	name: string,
 	href: string,
 	image: string,
 	type: EquipGroup,
-	rarity: rarity
+	rarity: 'UR' | 'SR' | 'E' | 'R' | 'N'
 };
 
 // type of weapon that can be equipped at each slot
-export const equippable = {
+export const equippable: Record<string, EquipGroup[]> = {
 	'T'  : [ EquipGroup.T ],
 	'T/A': [ EquipGroup.T, EquipGroup.A ],
 	

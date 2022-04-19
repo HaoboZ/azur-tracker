@@ -52,8 +52,8 @@ export default function Event() {
 			<PageTitle actions={(
 				<HelpTourButton
 					steps={[ {
-						target   : '#help',
-						content  : (
+						element: '#help',
+						intro  : (
 							<Fragment>
 								<Typography>This page will help you</Typography>
 								<ul style={{ textAlign: 'start' }}>
@@ -63,11 +63,10 @@ export default function Event() {
 								</ul>
 								<Typography>WITHOUT creating spreadsheets</Typography>
 							</Fragment>
-						),
-						placement: 'center'
+						)
 					}, {
-						target : '#shop',
-						content: (
+						element: '#shop',
+						intro  : (
 							<Fragment>
 								<Typography>Open to change what you are aiming to buy from the shop.</Typography>
 								<br/>
@@ -75,8 +74,8 @@ export default function Event() {
 							</Fragment>
 						)
 					}, {
-						target : '#daily',
-						content: (
+						element: '#daily',
+						intro  : (
 							<Fragment>
 								<Typography>Open to change how many points you get daily. (missions, 3x, ...)</Typography>
 								<br/>
@@ -84,44 +83,44 @@ export default function Event() {
 							</Fragment>
 						)
 					}, {
-						target : '#required',
-						content: (
+						element: '#required',
+						intro  : (
 							<Typography>
 								This is the calculated value of how many points you need by the end of today to get all items
 								from shop when event ends.
 							</Typography>
 						)
 					}, {
-						target : '#current',
-						content: (
+						element: '#current',
+						intro  : (
 							<Typography>
 								Enter the number of points you currently have.
 							</Typography>
 						)
 					}, {
-						target : '#farmPoints',
-						content: (
+						element: '#farmPoints',
+						intro  : (
 							<Typography>
 								Select the stage or enter the number points you get for farming a stage.
 							</Typography>
 						)
 					}, {
-						target : '#farmCost',
-						content: (
+						element: '#farmCost',
+						intro  : (
 							<Typography>
 								Enter the amount of oil it costs to clear.
 							</Typography>
 						)
 					}, {
-						target : '#farmPlays',
-						content: (
+						element: '#farmPlays',
+						intro  : (
 							<Typography>
 								Calculates amount of plays needed to buy all wanted items.
 							</Typography>
 						)
 					}, {
-						target : '#farmOil',
-						content: (
+						element: '#farmOil',
+						intro  : (
 							<Typography>
 								Calculates amount of oil needed.
 							</Typography>

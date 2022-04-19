@@ -16,7 +16,7 @@ import { useModal } from '../../providers/modal';
 import { fleet_setShips, fleet_setVersion, version } from '../../store/reducers/fleetReducer';
 import FleetFilters from './filters';
 import getTier from './getTier';
-import { EquipGroup, rarity } from './ship/equip/data';
+import { EquipGroup } from './ship/equip/data';
 import { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
@@ -81,8 +81,8 @@ export default function Fleet() {
 			<PageTitle actions={(
 				<HelpTourButton
 					steps={[ {
-						target   : '#help',
-						content  : (
+						element: '#help',
+						intro  : (
 							<Fragment>
 								<Typography>This page will help you</Typography>
 								<ul style={{ textAlign: 'start' }}>
@@ -94,11 +94,10 @@ export default function Fleet() {
 									For people who want every ship to equip good stuff and level up everyone
 								</Typography>
 							</Fragment>
-						),
-						placement: 'center'
+						)
 					}, {
-						target : '#farmOil',
-						content: (
+						element: '#farmOil',
+						intro  : (
 							<Typography>
 								Calculates amount of oil needed.
 							</Typography>
@@ -153,7 +152,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		type: EquipGroup[ type ]
 	} ) ), [ 'type', 'id' ] );
 	const map = equipData.reduce( ( obj, item ) => {
-		obj[ `${item.name}/${rarity[ item.rarity ]}` ] = item.id;
+		obj[ `${item.name}/${item.rarity}` ] = item.id;
 		return obj;
 	}, {} as Record<string, number> );
 	
@@ -589,6 +588,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		},
 		'A/DD2/T': {
 			[ map[ 'Type 93 Pure Oxygen Torpedo/UR' ] ]: [ 0, a = 0 ],
+			[ map[ '533mm Magnetic Torpedo/SR' ] ]     : [ 0, ++a ],
 			[ map[ 'Repair Toolkit/E' ] ]              : [ 1, ++a ],
 			[ map[ 'Autoloader/E' ] ]                  : [ 2, ++a ],
 			[ map[ 'Fire Suppressor/R' ] ]             : [ 3, ++a ]

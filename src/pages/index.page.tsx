@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		props     : {
 			eventData      : ( await csvtojson().fromString( eventCSV ) )[ 0 ],
 			eventShopData  : await csvtojson().fromString( eventShopCSV ),
-			eventStagesData: pickBy( ( await csvtojson().fromString( eventStagesCSV ) )[ 0 ], Boolean )
+			eventStagesData: pickBy( ( await csvtojson().fromString( eventStagesCSV ) )[ 0 ], ( val ) => val !== '_' )
 		}
 	};
 };
