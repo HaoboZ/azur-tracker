@@ -1,4 +1,5 @@
-import { styled, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { cloneDeep, isEqual, map, omit } from 'lodash-es';
 import { ComponentType, Fragment, HTMLAttributes, ReactHTML, ReactNode, useEffect, useState } from 'react';
 import { ReactSortable, ReactSortableProps } from 'react-sortablejs';

@@ -3453,15 +3453,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/csvtojson@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@types/csvtojson@npm:2.0.0"
-  dependencies:
-    csvtojson: "*"
-  checksum: 0bde08db93716babf688085b57def1ce0ebc5d9ceddf20281efb6e7fc4cf9b53c1697fc0c506be7214887e4d1bb306d59029ecdff3ce935070e76860b9e3d66f
-  languageName: node
-  linkType: hard
-
 "@types/eslint@npm:^8.4.1":
   version: 8.4.1
   resolution: "@types/eslint@npm:8.4.1"
@@ -4479,7 +4470,6 @@ __metadata:
     "@next/bundle-analyzer": ^12.1.5
     "@reduxjs/toolkit": ^1.8.1
     "@tanem/react-nprogress": ^5.0.0
-    "@types/csvtojson": ^2.0.0
     "@types/eslint": ^8.4.1
     "@types/events": ^3.0.0
     "@types/jest": ^27.4.1
@@ -5350,7 +5340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csvtojson@npm:*, csvtojson@npm:^2.0.10":
+"csvtojson@npm:^2.0.10":
   version: 2.0.10
   resolution: "csvtojson@npm:2.0.10"
   dependencies:
