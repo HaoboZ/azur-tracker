@@ -24,31 +24,30 @@ export default function Providers( { emotionCache, children }: {
 	const snackbarRef = useRef<SnackbarProvider>();
 	
 	return (
-		<ComponentComposer
-			components={[
-				// data
-				component( StoreProvider, { store } ),
-				component( PersistGate, { loading: null, persistor } ),
-				// styling
-				component( CacheProvider, { value: emotionCache || clientCache } ),
-				component( ThemeProvider ),
-				// static
-				component( EventsProvider ),
-				component( SnackbarProvider, {
-					ref             : snackbarRef,
-					preventDuplicate: true,
-					action          : ( key ) => (
-						<IconButton onClick={() => snackbarRef.current.closeSnackbar( key )}>
-							<CloseIcon/>
-						</IconButton>
-					)
-				} ),
-				component( IndicatorProvider ),
-				component( AuthProvider ),
-				component( FireDataProvider, { keys: [ 'event', 'research', 'fleet' ] } ),
-				// dynamic
-				component( ModalProvider )
-			]}>
+		<ComponentComposer components={[
+			// data
+			component( StoreProvider, { store } ),
+			component( PersistGate, { loading: null, persistor } ),
+			// styling
+			component( CacheProvider, { value: emotionCache || clientCache } ),
+			component( ThemeProvider ),
+			// static
+			component( EventsProvider ),
+			component( SnackbarProvider, {
+				ref             : snackbarRef,
+				preventDuplicate: true,
+				action          : ( key ) => (
+					<IconButton onClick={() => snackbarRef.current.closeSnackbar( key )}>
+						<CloseIcon/>
+					</IconButton>
+				)
+			} ),
+			component( IndicatorProvider ),
+			component( AuthProvider ),
+			component( FireDataProvider, { keys: [ 'event', 'research', 'fleet' ] } ),
+			// dynamic
+			component( ModalProvider )
+		]}>
 			{children}
 		</ComponentComposer>
 	);

@@ -77,9 +77,7 @@ function EnhancedTable<Item>( {
 						</TableCell>
 					)}
 					{columns( item, index ).filter( Boolean ).map( ( cell, index ) => (
-						<TableCell
-							key={index}
-							{...cellProps?.[ index ]}>
+						<TableCell key={index} {...cellProps?.[ index ]}>
 							{cell}
 						</TableCell>
 					) )}
@@ -125,7 +123,9 @@ function EnhancedTable<Item>( {
 				<Table
 					size='small'
 					sx={{
-						[ `.${tableRowClasses.hover}:hover` ]                              : selectable ? { cursor: 'pointer' } : undefined,
+						[ `.${tableRowClasses.hover}:hover` ]                              : selectable
+							? { cursor: 'pointer' }
+							: undefined,
 						[ `.${tableRowClasses.root}:last-child .${tableCellClasses.root}` ]: { borderBottom: 0 },
 						overflow                                                           : 'hidden'
 					}}>
@@ -133,9 +133,7 @@ function EnhancedTable<Item>( {
 						<TableRow>
 							{sortable && <TableCell/>}
 							{headers.filter( Boolean ).map( ( cell, index ) => (
-								<TableCell
-									key={index}
-									{...cellProps?.[ index ]}>
+								<TableCell key={index} {...cellProps?.[ index ]}>
 									{cell}
 								</TableCell>
 							) )}

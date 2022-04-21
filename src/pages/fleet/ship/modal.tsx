@@ -53,15 +53,14 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	}, [ ship.tier ] );
 	
 	return (
-		<ResponsiveModalContainer
-			title={(
-				<Link
-					href={ship.href}
-					target='_blank'
-					color='textPrimary'>
-					<DialogTitle>{ship.name}</DialogTitle>
-				</Link>
-			)}>
+		<ResponsiveModalContainer title={(
+			<Link
+				href={ship.href}
+				target='_blank'
+				color='textPrimary'>
+				<DialogTitle>{ship.name}</DialogTitle>
+			</Link>
+		)}>
 			<Grid container spacing={2} alignItems='center'>
 				<Grid item xs={4}>
 					<InputLabel shrink>Rarity</InputLabel>

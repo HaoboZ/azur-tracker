@@ -68,12 +68,6 @@ export const PageLinkComponent = forwardRef<HTMLAnchorElement, PageLinkComponent
 export type PageLinkProps = PageLinkComponentProps & Omit<MuiLinkProps, 'href'>;
 
 const PageLink = forwardRef<HTMLAnchorElement, PageLinkProps>( function ( props, ref ) {
-	return (
-		<MuiLink
-			ref={ref}
-			component={PageLinkComponent}
-			{...props}
-		/>
-	);
+	return <MuiLink ref={ref} component={PageLinkComponent} {...props}/>;
 } );
 export default PageLink;

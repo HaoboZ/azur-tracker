@@ -12,7 +12,6 @@ import {
 	accordionSummaryClasses,
 	IconButton,
 	List,
-	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	Paper,
@@ -57,17 +56,19 @@ function EnhancedList<Item>( {
 					? () => _deleteRow( items, setItems, editable, selectable,
 						item, index, selected, totalSelected )
 					: undefined )}
-				{!removeEditing && editing && Boolean( editable ) && ( editable?.min ? items.length > editable.min : true ) && (
-					<ListItemIcon sx={{ minWidth: 'unset' }}>
-						<IconButton onClick={( e ) => {
-							e.stopPropagation();
-							_deleteRow( items, setItems, editable, selectable,
-								item, index, selected, totalSelected );
-						}}>
-							<CloseIcon/>
-						</IconButton>
-					</ListItemIcon>
-				)}
+				{!removeEditing && editing && Boolean( editable )
+					&& ( editable?.min ? items.length > editable.min : true )
+					&& (
+						<ListItemIcon sx={{ minWidth: 'unset' }}>
+							<IconButton onClick={( e ) => {
+								e.stopPropagation();
+								_deleteRow( items, setItems, editable, selectable,
+									item, index, selected, totalSelected );
+							}}>
+								<CloseIcon/>
+							</IconButton>
+						</ListItemIcon>
+					)}
 			</Fragment>
 		);
 		
@@ -93,22 +94,18 @@ function EnhancedList<Item>( {
 					{row( item, index, handle, selected )}
 				</ListItemButton>
 			) : (
-				<ListItem
+				<ListItemButton
 					divider
 					component={Paper}
 					className='listItem'
 					selected={selected}>
 					{row( item, index, handle, selected )}
-				</ListItem>
+				</ListItemButton>
 			);
 		};
 		
 		return sortable ? (
-			<Sortable
-				items={items}
-				setItems={setItems}
-				renderItem={panel}
-			/>
+			<Sortable items={items} setItems={setItems} renderItem={panel}/>
 		) : items.map( ( item, index ) => (
 			<Fragment key={index}>
 				{panel( { item, index } )}

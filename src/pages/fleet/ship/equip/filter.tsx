@@ -12,7 +12,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 		<Autocomplete
 			fullWidth
 			options={equipList}
-			getOptionLabel={( { name } ) => name}
+			getOptionLabel={( { name }: EquipType ) => name}
 			isOptionEqualToValue={( option, value ) => option.id === value?.id}
 			value={value}
 			renderOption={( props, option ) => (

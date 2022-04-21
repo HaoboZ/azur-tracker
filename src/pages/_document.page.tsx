@@ -13,10 +13,7 @@ export default class _Document extends Document {
 		const originalRenderPage = ctx.renderPage;
 		ctx.renderPage = () => originalRenderPage( {
 			enhanceApp: ( App ) => ( props ) => (
-				<App
-					{...props}
-					emotionCache={emotionCache}
-				/>
+				<App {...props} emotionCache={emotionCache}/>
 			)
 		} );
 		

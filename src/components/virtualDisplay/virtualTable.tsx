@@ -85,10 +85,7 @@ function VirtualTable<Item extends object>( {
 											onClick={() => onClick?.( row )}
 											{...row.getRowProps( { style } )}>
 											{row.cells.map( ( cell, i ) => (
-												<TableCell
-													key={i}
-													component='div'
-													{...cell.getCellProps()}>
+												<TableCell key={i} component='div' {...cell.getCellProps()}>
 													{cell.render( 'Cell' ) as ReactNode}
 												</TableCell>
 											) )}
