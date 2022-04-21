@@ -25,7 +25,6 @@ const nextConfig = {
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
-	swcMinify   : true,
 	experimental: {
 		modularizeImports: {
 			'@mui/icons-material': {
