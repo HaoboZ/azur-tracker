@@ -3,19 +3,19 @@ import csvtojson from 'csvtojson';
 import { groupBy, pick } from 'lodash-es';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useDispatch, useSelector } from 'react-redux';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
 import { useData } from '../../providers/data';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { research_setLastTab } from '../../store/reducers/researchReducer';
 import ResearchSeries from './series';
 import { ResearchType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {
-	const lastTab = useSelector( ( { research } ) => research.lastTab );
-	const dispatch = useDispatch();
+	const lastTab = useAppSelector( ( { research } ) => research.lastTab );
+	const dispatch = useAppDispatch();
 	const { researchData } = useData<ResearchType>();
 	
 	return (

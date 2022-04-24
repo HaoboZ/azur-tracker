@@ -14,15 +14,15 @@ import {
 import { keyBy } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import { Fragment, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useData } from '../../../providers/data';
 import { useModal } from '../../../providers/modal';
 import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
 import { FleetType, Ship } from '../type';
-import { EquipType } from './equip/data';
+import { EquipType } from './equip/type';
 
 const EquipModal = dynamic( () => import( './equip/modal' ), { suspense: true } );
 
@@ -32,8 +32,8 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	selectedEquip?: EquipType
 } ) {
 	const { equipData } = useData<FleetType>();
-	const ships = useSelector( ( { fleet } ) => fleet.ships );
-	const dispatch = useDispatch();
+	const ships = useAppSelector( ( { fleet } ) => fleet.ships );
+	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	
 	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );

@@ -12,7 +12,7 @@ import {
 import { merge } from 'lodash-es';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../store/hooks';
 
 const commonTheme: ThemeOptions = {
 	palette   : {
@@ -66,7 +66,7 @@ const darkTheme = responsiveFontSizes( createTheme(
 
 export default function ThemeProvider( { children } ) {
 	const dark = useMediaQuery( '(prefers-color-scheme: dark)' );
-	const themeMode = useSelector( ( { main } ) => main.theme );
+	const themeMode = useAppSelector( ( { main } ) => main.theme );
 	
 	const mode: PaletteMode = useMemo( () => {
 		switch ( themeMode ) {

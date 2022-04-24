@@ -11,36 +11,36 @@ import {
 	Switch,
 	Typography
 } from '@mui/material';
-import { cloneDeep, keyBy, reduce } from 'lodash-es';
-import { Fragment, ReactElement, useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
+import { Fragment, useMemo, useState } from 'react';
 import useEventListener from '../../../../hooks/useEventListener';
 import { useData } from '../../../../providers/data';
 import { useModalControls } from '../../../../providers/modal';
+import { useAppDispatch } from '../../../../store/hooks';
 import { fleet_setShip } from '../../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
 import { FleetType, Ship } from '../../type';
-import { equippable, EquipType } from './data';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
+import { EquipType } from './type';
 
 export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: Ship, index: number },
 	selectedEquip?: EquipType
 } ) {
 	const { closeModal, events } = useModalControls();
-	const dispatch = useDispatch();
-	const { fleetData, equipTier, equipData } = useData<FleetType>();
+	const dispatch = useAppDispatch();
+	const { fleetData, equipData, equippableData, equipTierData } = useData<FleetType>();
 	
 	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
-		const equipType = equippable[ info?.ship.equipType[ info.index ] ];
+		const equipType = equippableData[ info?.ship.equipType[ info.index ] ]?.equip;
 		const equipList = equipType ? equipData.filter( ( { type } ) => equipType.includes( type ) ) : [];
-		const tierList = equipType ? equipTier[ info?.ship.equipType[ info.index ] ] : [];
+		const tierList = equipType ? equipTierData[ equippableData[ info?.ship.equipType[ info.index ] ]?.tier ] : [];
 		
 		return [
 			equipList,
@@ -48,13 +48,10 @@ export default function EquipModal( { info, selectedEquip }: {
 				res[ item.id ] = item;
 				return res;
 			}, {} ),
-			reduce<Record<number, number[]>, ( EquipType & { tier?: ReactElement } )[]>( tierList, ( arr, val, key ) => {
-				arr[ val[ 1 ] ] = {
-					...equipIndex[ key ],
-					tier: <TierIcon tier={val[ 0 ] + 1}/>
-				};
-				return arr;
-			}, [] )
+			map( sortBy( Object.entries( tierList ), [ '1.0', '1.1' ] ), ( val ) => ( {
+				...equipIndex[ val[ 0 ] ],
+				tier: <TierIcon tier={val[ 1 ][ 0 ] + 1}/>
+			} ) )
 		];
 	}, [] );
 	
@@ -81,7 +78,7 @@ export default function EquipModal( { info, selectedEquip }: {
 		
 		const shipEquip = cloneDeep( info.ship.equip );
 		shipEquip[ info.index ] = equip ? [ equip?.id, override, 6 ] : [];
-		getTier( equipTier, fleetData[ info.ship.id ], shipEquip );
+		getTier( equippableData, equipTierData, fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
 		info.ship.equip = shipEquip;
 	}, { dependencies: [ equip, override ] } );

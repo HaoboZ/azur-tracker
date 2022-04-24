@@ -9,7 +9,7 @@
 		"ships"
 	],
 	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"        : "5.0.5",
+	"version"        : "5.1.0",
 	"private"        : true,
 	"scripts"        : {
 		"format"   : "ts-node -P tools/tsconfig.json tools/formatJSON/index.ts package.json",
@@ -47,6 +47,7 @@
 		"fast-json-stable-stringify"      : "^2.1.0",
 		"firebase"                        : "^9.6.11",
 		"firebase-admin"                  : "^10.0.2",
+		"hash-wasm"                       : "^4.9.0",
 		"intro.js"                        : "^5.1.0",
 		"intro.js-react"                  : "^0.6.0",
 		"lodash-es"                       : "^4.17.21",

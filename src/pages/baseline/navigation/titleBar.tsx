@@ -1,14 +1,14 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { ReactNode } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { PageLinkComponent } from '../../../components/page/link';
 import usePageHeight from '../../../hooks/usePageHeight';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setNewData } from '../../../store/reducers/mainReducer';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
-	const newData = useSelector( ( { main } ) => main.newData );
-	const dispatch = useDispatch();
+	const newData = useAppSelector( ( { main } ) => main.newData );
+	const dispatch = useAppDispatch();
 	
 	return (
 		<Badge

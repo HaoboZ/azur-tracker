@@ -1,8 +1,8 @@
 import { Star as StarIcon } from '@mui/icons-material';
+import { isNumber, map } from 'lodash-es';
 import { Column } from 'react-table';
 import OverflowTypography from '../../components/overflowTypography';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
-import { equippable } from './ship/equip/data';
 import { AffinityIcons, TierIcon } from './tierIcon';
 
 const Rarity = {
@@ -15,7 +15,7 @@ const Rarity = {
 	'Common'    : 4
 };
 
-export default function fleetColumns( equipBetter, setEquipBetter, equipTier ): Column<any>[] {
+export default function fleetColumns( equipBetter, setEquipBetter, { equippableData, equipTierData } ): Column<any>[] {
 	return [ {
 		Header  : 'Name',
 		accessor: 'name',
@@ -104,15 +104,17 @@ export default function fleetColumns( equipBetter, setEquipBetter, equipTier ): 
 		accessor: 'equip',
 		width   : 25,
 		Cell( { value, row } ) {
-			return equipBetter.value[ row.id ]
-				? `+${Math.max( ...equipBetter.value[ row.id ].filter( Boolean ).map( ( equip ) => equip[ 1 ] ) )}`
-				: value?.some( ( equip ) => equip[ 2 ] )
-				&& value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
+			if ( equipBetter.value[ row.id ] ) {
+				const count = Math.max( ...map( equipBetter.value[ row.id ], '1' ).filter( isNumber ) );
+				if ( !isFinite( count ) ) return 'EQUIPPED';
+				return count >= 100 ? `↑${count / 100}` : `+${count % 100}`;
+			}
+			if ( !value?.some( ( equip ) => equip[ 2 ] ) ) return null;
+			return value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
 		},
 		props              : ( cell ) => ( {
-			className: cell && equipBetter.value[ cell.row.id ]
-				? `color-${tierColors[ Math.min( ...equipBetter.value[ cell.row.id ]
-					.filter( Boolean ).map( ( equip ) => equip[ 0 ] ) ) ]}`
+			className: equipBetter.value[ cell?.row.id ]
+				? `color-${tierColors[ Math.min( ...map( equipBetter.value[ cell.row.id ], '0' ).filter( isNumber ) ) ]}`
 				: undefined,
 			style    : { minWidth: '116px' }
 		} ),
@@ -127,23 +129,25 @@ export default function fleetColumns( equipBetter, setEquipBetter, equipTier ): 
 				const newEquipBetter = rows.reduce( ( acc, row ) => {
 					acc[ row.id ] = row.values.equip.map( ( value, index ) => {
 						// ships that can equip the equipment
-						if ( !equippable[ row.values.equipType[ index ] ]?.includes( filterValue.type ) ) return false;
-						const tierList = equipTier[ row.values.equipType[ index ] ];
+						if ( !equippableData[ row.values.equipType[ index ] ]?.equip.includes( filterValue.type ) ) return false;
+						const tierList = equipTierData[ equippableData[ row.values.equipType[ index ] ]?.tier ];
 						const newTier = tierList[ filterValue.id ],
 						      oldTier = tierList[ value[ 0 ] ];
 						// equip not in tier list
 						if ( !newTier ) return false;
 						// none equipped
-						if ( !value?.[ 0 ] ) return [ newTier[ 0 ], 99 ];
+						if ( !value?.[ 0 ] ) return [ newTier[ 0 ], 9900 ];
 						// is equipped already
-						if ( value[ 0 ] === filterValue.id ) return [ 5, 0 ];
+						if ( value[ 0 ] === +filterValue.id ) return [ undefined, undefined ];
 						// forced BiS
 						if ( value[ 1 ] ) return false;
 						// current equip not in tier list
-						if ( !oldTier ) return [ newTier[ 0 ], 99 ];
-						// remove those that have higher tier
-						if ( oldTier[ 1 ] <= newTier[ 1 ] ) return false;
-						return [ newTier[ 0 ], oldTier[ 1 ] - newTier[ 1 ] ];
+						if ( !oldTier ) return [ newTier[ 0 ], 9900 ];
+						// if higher tier
+						if ( oldTier[ 0 ] > newTier[ 0 ] ) return [ newTier[ 0 ], ( oldTier[ 0 ] - newTier[ 0 ] ) * 100 ];
+						// if same tier but better
+						if ( oldTier[ 1 ] > newTier[ 1 ] ) return [ undefined, oldTier[ 1 ] - newTier[ 1 ] ];
+						return false;
 					} );
 					return acc;
 				}, {} );

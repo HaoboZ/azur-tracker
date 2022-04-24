@@ -2,20 +2,20 @@ import { Box, Link, Typography } from '@mui/material';
 import { differenceInDays } from 'date-fns';
 import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import useInterval from '../../hooks/useInterval';
 import { useData } from '../../providers/data';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_newEvent } from '../../store/reducers/eventReducer';
 import EventFarming from './farming';
 import EventFields from './fields';
 import { EventType } from './type';
 
 export default function Event() {
-	const event = useSelector( ( { event } ) => event );
-	const dispatch = useDispatch();
+	const event = useAppSelector( ( { event } ) => event );
+	const dispatch = useAppDispatch();
 	const { eventData, eventShopData } = useData<EventType>();
 	
 	const [ time, setTime ] = useState( () => new Date() );

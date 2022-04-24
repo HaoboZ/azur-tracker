@@ -1,8 +1,8 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { Fragment, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { research_modifyShip } from '../../store/reducers/researchReducer';
 import { ResearchShipsType } from './type';
 
@@ -50,8 +50,8 @@ const fateLevels = [
 ];
 
 export default function ResearchSeries( { researchShips }: { researchShips: ResearchShipsType } ) {
-	const ships = useSelector( ( { research } ) => research.ships );
-	const dispatch = useDispatch();
+	const ships = useAppSelector( ( { research } ) => research.ships );
+	const dispatch = useAppDispatch();
 	
 	const { shipData, totalPR, totalDR } = useMemo( () => {
 		let totalPR = 0, totalDR = 0;

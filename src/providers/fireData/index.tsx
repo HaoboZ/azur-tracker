@@ -3,11 +3,11 @@ import { getDatabase, ref } from 'firebase/database';
 import { omit } from 'lodash-es';
 import { Fragment, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useSelector } from 'react-redux';
 import { app } from '../../firebase/client';
 import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
 import useNetworkStatus from '../../hooks/useNetworkStatus';
+import { useAppSelector } from '../../store/hooks';
 import { useAuth } from '../auth';
 import { useIndicator } from '../indicator';
 import { useSplashText } from '../splash';
@@ -30,7 +30,7 @@ export default function FireDataProvider( { children, keys }: { children: ReactN
 
 function Internal( { children, keys }: { children: ReactNode, keys: string[] } ) {
 	const setText = useSplashText();
-	const { main, ...state } = useSelector( ( state ) => state );
+	const { main, ...state } = useAppSelector( ( state ) => state );
 	const indicator = useIndicator();
 	const user = useAuth();
 	const networkStatus = useNetworkStatus();

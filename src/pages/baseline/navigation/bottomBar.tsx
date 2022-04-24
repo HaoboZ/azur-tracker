@@ -8,8 +8,8 @@ import {
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import usePageHeight from '../../../hooks/usePageHeight';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setNewData } from '../../../store/reducers/mainReducer';
 
 const items = [
@@ -21,8 +21,8 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
-	const main = useSelector( ( { main } ) => main );
-	const dispatch = useDispatch();
+	const main = useAppSelector( ( { main } ) => main );
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const height = usePageHeight();
 	

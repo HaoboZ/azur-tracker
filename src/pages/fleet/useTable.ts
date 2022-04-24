@@ -14,10 +14,10 @@ import fleetColumns from './columns';
 import { FleetType } from './type';
 
 export default function useFleetTable( data, equipBetter, setEquipBetter ) {
-	const { equipTier } = useData<FleetType>();
+	const fleetData = useData<FleetType>();
 	
 	const tableOptions = useMemo( () => ( {
-		columns: fleetColumns( equipBetter, setEquipBetter, equipTier ),
+		columns: fleetColumns( equipBetter, setEquipBetter, fleetData ),
 		// list of ships with the local data loaded
 		data,
 		getRowId              : ( { id } ) => id,

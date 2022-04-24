@@ -1,17 +1,17 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import { cloneDeep } from 'lodash-es';
 import { useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { useData } from '../../providers/data';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setShop } from '../../store/reducers/eventReducer';
 import { EventType } from './type';
 
 export default function ShopModal() {
-	const _shop = useSelector( ( { event } ) => event.shop );
-	const dispatch = useDispatch();
+	const _shop = useAppSelector( ( { event } ) => event.shop );
+	const dispatch = useAppDispatch();
 	const { eventShopData } = useData<EventType>();
 	
 	const [ shop, setShop ] = useState( () => cloneDeep( _shop ) );

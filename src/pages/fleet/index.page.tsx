@@ -1,22 +1,24 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { cloneDeep, keyBy, pick, sortBy } from 'lodash-es';
+import stringify from 'fast-json-stable-stringify';
+import { crc32 } from 'hash-wasm';
+import { cloneDeep, groupBy, keyBy, mapValues, pick, reduce, sortBy } from 'lodash-es';
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { Fragment, ReactNode, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
+import useAsyncEffect from '../../hooks/useAsyncEffect';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
-import { fleet_setShips, fleet_setVersion, version } from '../../store/reducers/fleetReducer';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fleet_setShips, fleet_setVersion } from '../../store/reducers/fleetReducer';
 import FleetFilters from './filters';
 import getTier from './getTier';
-import { EquipGroup, getEquipTier } from './ship/equip/data';
 import { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
@@ -24,11 +26,11 @@ const ShipModal = dynamic( () => import( './ship/modal' ), { suspense: true } );
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
-	const fleet = useSelector( ( { fleet } ) => fleet );
-	const dispatch = useDispatch();
+	const fleet = useAppSelector( ( { fleet } ) => fleet );
+	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
-	const { fleetData, equipTier } = useData<FleetType>();
-	
+	const { fleetData, equippableData, equipTierData } = useData<FleetType>();
+	console.log( fleet.version );
 	const [ data, setData ] = useState<Ship[]>( [] );
 	
 	const [ equipBetter, setEquipBetter ] = useState<{
@@ -39,40 +41,37 @@ export default function Fleet() {
 	const table = useFleetTable( data, equipBetter, setEquipBetter );
 	
 	// resets fleet equip tiers if version changes
-	useEffect( () => {
-		if ( fleet.version !== version ) {
-			// recalculate equipment tiers
-			const ships = cloneDeep( fleet.ships );
-			for ( const name in ships ) {
-				const { equip } = ships[ name ];
-				if ( name in fleetData )
-					getTier( equipTier, fleetData[ name ], equip );
-				else
-					delete ships[ name ];
-			}
-			dispatch( fleet_setShips( ships ) );
-			dispatch( fleet_setVersion() );
+	useAsyncEffect( async () => {
+		const checksum = await crc32( stringify( equipTierData ) );
+		if ( fleet.version === checksum ) return;
+		const ships = cloneDeep( fleet.ships );
+		for ( const name in ships ) {
+			const { equip } = ships[ name ];
+			if ( name in fleetData )
+				getTier( equippableData, equipTierData, fleetData[ name ], equip );
+			else
+				delete ships[ name ];
 		}
+		dispatch( fleet_setShips( ships ) );
+		dispatch( fleet_setVersion( checksum ) );
 	}, [] );
 	
 	// set ship data
 	useEffect( () => {
-		setData( Object.values( fleetData )
-			.map( ( shipData ) => {
-				const _ship = fleet.ships[ shipData.id ];
-				
-				return {
-					...shipData,
-					love : _ship?.love || 0,
-					lvl  : _ship?.lvl || 0,
-					equip: _ship?.equip || new Array( 5 ).fill( [] )
-				};
-			} )
-			.filter( ( shipData ) => {
-				if ( !fleet.filter.levelMax && shipData.lvl === 126 ) return false;
-				if ( !fleet.filter.level0 && !shipData.lvl ) return false;
-				return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
-			} ) );
+		setData( Object.values( fleetData ).map( ( shipData ) => {
+			const _ship = fleet.ships[ shipData.id ];
+			
+			return {
+				...shipData,
+				love : _ship?.love || 0,
+				lvl  : _ship?.lvl || 0,
+				equip: _ship?.equip || new Array( 5 ).fill( [] )
+			};
+		} ).filter( ( shipData ) => {
+			if ( !fleet.filter.levelMax && shipData.lvl === 126 ) return false;
+			if ( !fleet.filter.level0 && !shipData.lvl ) return false;
+			return fleet.filter.equipMax || !shipData.equip?.every( ( equip ) => equip[ 2 ] === 1 );
+		} ) );
 	}, [ fleet ] );
 	
 	return (
@@ -146,25 +145,32 @@ export default function Fleet() {
 export const getStaticProps: GetStaticProps = async () => {
 	const { data: fleetCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Fleet&tqx=out:csv` );
 	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equip&tqx=out:csv` );
-	
-	const equipData = sortBy( ( await csvtojson().fromString( equipCSV ) ).map( ( { type, ...props } ) => ( {
-		...props,
-		type: EquipGroup[ type ]
-	} ) ), [ 'type', 'id' ] );
-	
-	const equipTier = getEquipTier( equipData );
+	const { data: equipabbleCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equippable&tqx=out:csv` );
+	const { data: equipTierCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Tier&tqx=out:csv` );
 	
 	return {
 		revalidate: 6 * 60 * 60,
 		props     : {
-			fleetData: keyBy( ( await csvtojson().fromString( fleetCSV ) ).map( ( val ) => ( {
+			fleetData     : keyBy( ( await csvtojson().fromString( fleetCSV ) ).map( ( val ) => ( {
 				...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
 				tier     : +val.tier,
 				special  : JSON.parse( val.special ),
 				equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
 			} ) ), 'id' ),
-			equipData,
-			equipTier
+			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', 'id' ] ),
+			equippableData: keyBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
+				...pick( value, [ 'type', 'tier' ] ),
+				equip: [ value.equip1, value.equip2, value.equip3 ].filter( Boolean )
+			} ) ), 'type' ),
+			equipTierData : mapValues( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
+				( value ) => reduce( value, ( obj, value ) => {
+					let i = 0;
+					const ids = [ value.id0, value.id1, value.id2, value.id3, value.id4 ].filter( Boolean );
+					for ( const id of ids ) {
+						obj[ id ] = [ +value.tier, i++ ];
+					}
+					return obj;
+				}, {} ) )
 		}
 	};
 };

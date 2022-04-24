@@ -1,10 +1,10 @@
 import { Box, Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
 import { format, formatDistanceToNow, isBefore } from 'date-fns';
 import dynamic from 'next/dynamic';
-import { useDispatch, useSelector } from 'react-redux';
 import FormattedTextField from '../../components/formattedTextField';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setPoints } from '../../store/reducers/eventReducer';
 import { EventType } from './type';
 
@@ -15,8 +15,8 @@ export default function EventFields( { time, neededPoints }: {
 	time: Date,
 	neededPoints: number
 } ) {
-	const event = useSelector( ( { event } ) => event );
-	const dispatch = useDispatch();
+	const event = useAppSelector( ( { event } ) => event );
+	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { eventData } = useData<EventType>();
 	

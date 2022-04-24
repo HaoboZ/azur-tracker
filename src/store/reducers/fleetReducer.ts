@@ -15,8 +15,6 @@ type State = {
 	version: string
 };
 
-export const version = '2022-03-02';
-
 const initialState: State = {
 	timestamp: new Date( 0 ).toISOString(),
 	ships    : {},
@@ -25,7 +23,7 @@ const initialState: State = {
 		equipMax: true,
 		level0  : true
 	},
-	version
+	version  : undefined
 };
 
 const fleetSlice = createSlice( {
@@ -35,9 +33,9 @@ const fleetSlice = createSlice( {
 		fleet_reset() {
 			return { ...initialState, timestamp: new Date().toISOString() };
 		},
-		fleet_setVersion( state ) {
+		fleet_setVersion( state, { payload }: PayloadAction<string> ) {
 			state.timestamp = new Date().toISOString();
-			state.version = initialState.version;
+			state.version = payload;
 		},
 		fleet_setShips( state, { payload }: PayloadAction<Record<string, {
 			lvl: number,

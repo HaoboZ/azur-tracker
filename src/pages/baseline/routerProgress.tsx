@@ -1,6 +1,6 @@
 import { LinearProgress, linearProgressClasses } from '@mui/material';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Progress from '../../components/loaders/progress';
 import useEventListener from '../../hooks/useEventListener';
 

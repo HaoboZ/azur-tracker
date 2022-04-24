@@ -12,11 +12,11 @@ import {
 	TextField
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { TableInstance } from 'react-table';
 import useDebounce from '../../hooks/useDebounce';
 import useEventListener from '../../hooks/useEventListener';
 import { useData } from '../../providers/data';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import EquipFilter from './ship/equip/filter';
 import { FleetType } from './type';
@@ -66,8 +66,8 @@ const searchOptions = [
 
 export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const { equipData } = useData<FleetType>();
-	const { filter, ships } = useSelector( ( { fleet } ) => fleet );
-	const dispatch = useDispatch();
+	const { filter, ships } = useAppSelector( ( { fleet } ) => fleet );
+	const dispatch = useAppDispatch();
 	
 	const globalFilter = useDebounce( table.setGlobalFilter );
 	

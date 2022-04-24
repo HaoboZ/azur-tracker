@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import { useDispatch, useSelector } from 'react-redux';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
@@ -27,6 +26,7 @@ import { useAuth } from '../providers/auth';
 import useAuthButton from '../providers/auth/useAuthButton';
 import getData from '../providers/fireData/getData';
 import setData from '../providers/fireData/setData';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
 import { setAutoBackup, setTheme } from '../store/reducers/mainReducer';
@@ -34,8 +34,8 @@ import { research_reset } from '../store/reducers/researchReducer';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Settings() {
-	const main = useSelector( ( { main } ) => main );
-	const dispatch = useDispatch();
+	const main = useAppSelector( ( { main } ) => main );
+	const dispatch = useAppDispatch();
 	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
 	const online = useNetworkStatus();

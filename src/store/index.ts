@@ -17,10 +17,10 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './reducers';
 
-type RootState = ReturnType<typeof rootReducer>;
-type State = RootState & PersistedState;
+type State = ReturnType<typeof rootReducer>;
+export type RootState = State & PersistedState;
 
-const migrations: Record<string, ( state: State ) => State> = {
+const migrations: Record<string, ( state: RootState ) => RootState> = {
 	10: ( state ) => ( {
 		...state,
 		main    : omit( state.main, 'lastSaved' ),
@@ -38,7 +38,7 @@ const migrations: Record<string, ( state: State ) => State> = {
 	} )
 };
 
-const persistedReducer = persistReducer<RootState>( {
+const persistedReducer = persistReducer<State>( {
 	key            : 'root',
 	version        : 11,
 	storage,
@@ -59,8 +59,4 @@ export const store = configureStore( {
 
 export const persistor = persistStore( store );
 
-declare module 'react-redux' {
-	// noinspection JSUnusedGlobalSymbols
-	interface DefaultRootState extends State {
-	}
-}
+export type AppDispatch = typeof store.dispatch;

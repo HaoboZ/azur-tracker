@@ -1,15 +1,15 @@
 import { Autocomplete, Grid, MenuItem, TextField, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
-import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { useData } from '../../providers/data';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_modifyFarming, event_setFarming } from '../../store/reducers/eventReducer';
 import { EventType } from './type';
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
-	const farming = useSelector( ( { event } ) => event.farming );
-	const dispatch = useDispatch();
+	const farming = useAppSelector( ( { event } ) => event.farming );
+	const dispatch = useAppDispatch();
 	const { eventStagesData } = useData<EventType>();
 	
 	return (

@@ -2,15 +2,15 @@ import { Grid, Typography } from '@mui/material';
 import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setDaily } from '../../store/reducers/eventReducer';
 
 export default function DailyModal() {
-	const _daily = useSelector( ( { event } ) => event.daily );
-	const dispatch = useDispatch();
+	const _daily = useAppSelector( ( { event } ) => event.daily );
+	const dispatch = useAppDispatch();
 	
 	const [ daily, setDaily ] = useState( () => cloneDeep( _daily ) );
 	

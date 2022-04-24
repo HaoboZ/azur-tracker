@@ -1,7 +1,27 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import { rarityColors } from '../../../colors';
-import { EquipType, typeNames } from './data';
+import { EquipType } from './type';
+
+const typeNames = {
+	T  : 'Torpedo',
+	AA : 'Anti-Air Gun',
+	DD : 'Destroyer Gun',
+	M  : 'Missile',
+	CL : 'Light Cruiser Gun',
+	CA : 'Heavy Cruiser Gun',
+	CB : 'Large Cruiser Gun',
+	SS : 'Submarine Gun',
+	BB : 'Battleship Gun',
+	F  : 'Fighter',
+	DB : 'Dive Bomber',
+	TB : 'Torpedo Bomber',
+	ST : 'Submarine Torpedo',
+	SP : 'Sea Plane',
+	SPS: 'Sea Plane',
+	A  : 'Auxiliary',
+	C  : 'Cargo'
+};
 
 export default function EquipFilter( { equipList, value, setValue }: {
 	equipList: EquipType[],

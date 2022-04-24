@@ -6,8 +6,8 @@ import { useEffect, useMemo, useState } from 'react';
 import PageSection from '../../components/page/section';
 import { useData } from '../../providers/data';
 import { rarityColors } from '../colors';
-import { EquipType } from '../fleet/ship/equip/data';
 import EquipFilter from '../fleet/ship/equip/filter';
+import { EquipType } from '../fleet/ship/equip/type';
 import { FarmType } from './type';
 
 export default function EquipDrop() {

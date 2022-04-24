@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 import { useNProgress } from '@tanem/react-nprogress';
-import React from 'react';
+import { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
 export default function Progress( { isLoading, delay, children }: {
 	isLoading: boolean,
 	delay?: number,
-	children: ( progress ) => React.ReactNode
+	children: ( progress ) => ReactNode
 } ) {
 	const isAnimating = useLoading( isLoading, delay );
 	const { isFinished, progress } = useNProgress( { isAnimating } );
