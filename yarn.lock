@@ -1332,12 +1332,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:^3.4.3":
-  version: 3.4.3
-  resolution: "@capacitor/android@npm:3.4.3"
+"@capacitor/android@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@capacitor/android@npm:3.5.0"
   peerDependencies:
-    "@capacitor/core": ^3.4.0
-  checksum: 00ddd23fd9d0c50ad8ff980a3f23bb9b28cf3e4ee87d6f4367748005fe16384a9b82e73f7e3e9333e5d858146a6af22c4d74149ea2bd0d8e5ea71eb209dcd42c
+    "@capacitor/core": ^3.5.0
+  checksum: 0783cec47ac69917c532a88755cc0b2aefc9c611d386c4de546b1717b451e9b3c32e401cd6ae059ae6869b200ddd8355f89369c4d8362bfb0750da294aaf9165
   languageName: node
   linkType: hard
 
@@ -1350,9 +1350,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:^3.4.3":
-  version: 3.4.3
-  resolution: "@capacitor/cli@npm:3.4.3"
+"@capacitor/cli@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@capacitor/cli@npm:3.5.0"
   dependencies:
     "@ionic/cli-framework-output": ^2.2.1
     "@ionic/utils-fs": ^3.1.5
@@ -1373,16 +1373,16 @@ __metadata:
   bin:
     cap: bin/capacitor
     capacitor: bin/capacitor
-  checksum: 98f5fd945f1976e1f9055ccd1d12daed9d78599e67a6f3193d52b57ba4c65da2e734050bc2af43623f0d16b0b3ba37c8f1ea8b776595d1fa6738d01302b8bdc3
+  checksum: f8729680c6c68da23875a0e5d77887199d39c52a2df9b5b99c8ed313f1c973b306e29b49dd0688ef31463521a1e354deb53f825e243f26502472e5a0fbc174d0
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:^3.4.3":
-  version: 3.4.3
-  resolution: "@capacitor/core@npm:3.4.3"
+"@capacitor/core@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@capacitor/core@npm:3.5.0"
   dependencies:
     tslib: ^2.1.0
-  checksum: ad3551d07c8b1ab17f80718e71a79b3cd5529ab3c97c9a7e03d306c81ff8a14ce6001f6e302f1b80b11da47430e2a7fee5bb8336783b3d96c5253c8fa9dc0484
+  checksum: 333a4fd773635486bd4e02a679977ad74887a9d08531e8f28f640e4d64f41cd7cb745f4d92eac6b603616e4c89be815c3c8f9f269e1744cdd5cdc53740f17f1d
   languageName: node
   linkType: hard
 
@@ -1680,9 +1680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@eslint/eslintrc@npm:1.2.1"
+"@eslint/eslintrc@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@eslint/eslintrc@npm:1.2.2"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
@@ -1693,7 +1693,7 @@ __metadata:
     js-yaml: ^4.1.0
     minimatch: ^3.0.4
     strip-json-comments: ^3.1.1
-  checksum: 1f797b9f94d71b965992cf6c44e3bcb574643014fd1e3d4862d25056bd5568f59c488461a7e9a1c1758ca7f0def5d3cb69c3d8b38581bcf4a53af74371243797
+  checksum: d891036bbffb0efec1462aa4a603ed6e349d546b1632dde7d474ddd15c2a8b6895671b25293f1d3ba10ff629c24a3649ad049373fe695a0e44b612537088563c
   languageName: node
   linkType: hard
 
@@ -2261,24 +2261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/common@npm:^3.8.1":
-  version: 3.8.1
-  resolution: "@google-cloud/common@npm:3.8.1"
-  dependencies:
-    "@google-cloud/projectify": ^2.0.0
-    "@google-cloud/promisify": ^2.0.0
-    arrify: ^2.0.1
-    duplexify: ^4.1.1
-    ent: ^2.2.0
-    extend: ^3.0.2
-    google-auth-library: ^7.9.2
-    retry-request: ^4.2.2
-    teeny-request: ^7.0.0
-  checksum: b1b384fe066572c3b221013837e9423f62c501e04dc820012642449b6faf0f95b3b5aea9521a9fc8ff1ab4a4ee28cf170924d981205077fdc076c4be86312d86
-  languageName: node
-  linkType: hard
-
-"@google-cloud/firestore@npm:^4.5.0":
+"@google-cloud/firestore@npm:^4.15.1":
   version: 4.15.1
   resolution: "@google-cloud/firestore@npm:4.15.1"
   dependencies:
@@ -2290,13 +2273,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/paginator@npm:^3.0.0":
-  version: 3.0.6
-  resolution: "@google-cloud/paginator@npm:3.0.6"
+"@google-cloud/paginator@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "@google-cloud/paginator@npm:3.0.7"
   dependencies:
     arrify: ^2.0.0
     extend: ^3.0.2
-  checksum: f3ebd1fa707eca6e06ed61d52f2aeca1dcc0c30dacba3c0121cb601a2b247b8744e73de3bc583ab4834f65847362ea395296b095d1f07500f9eea4cde516ace9
+  checksum: bdecce8a894a0c7f47f13d0e42b2fa142098e1dd34ce571b7216ad624057214baf9066ecf091501b3770da9d7be20b983eda30185c8c6596192cb748f8a0090c
   languageName: node
   linkType: hard
 
@@ -2314,12 +2297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/storage@npm:^5.3.0":
-  version: 5.17.0
-  resolution: "@google-cloud/storage@npm:5.17.0"
+"@google-cloud/storage@npm:^5.18.3":
+  version: 5.19.3
+  resolution: "@google-cloud/storage@npm:5.19.3"
   dependencies:
-    "@google-cloud/common": ^3.8.1
-    "@google-cloud/paginator": ^3.0.0
+    "@google-cloud/paginator": ^3.0.7
+    "@google-cloud/projectify": ^2.0.0
     "@google-cloud/promisify": ^2.0.0
     abort-controller: ^3.0.0
     arrify: ^2.0.0
@@ -2328,19 +2311,22 @@ __metadata:
     configstore: ^5.0.0
     date-and-time: ^2.0.0
     duplexify: ^4.0.0
+    ent: ^2.2.0
     extend: ^3.0.2
     gaxios: ^4.0.0
     get-stream: ^6.0.0
-    google-auth-library: ^7.0.0
+    google-auth-library: ^7.14.1
     hash-stream-validation: ^0.2.2
     mime: ^3.0.0
     mime-types: ^2.0.8
     p-limit: ^3.0.1
     pumpify: ^2.0.0
+    retry-request: ^4.2.2
     snakeize: ^0.1.0
     stream-events: ^1.0.4
+    teeny-request: ^7.1.3
     xdg-basedir: ^4.0.0
-  checksum: c5b2a9ddd5da8b897f0af8961bbfc7bf67838fc4f8b948999152df6f98b46f5063efd918ebcee7fdd04f13fc820d8523f0f52f7af362062f06ce06f362c62421
+  checksum: 7eae1b7cafbc2736005546b436067eaef1806ac0550e8277f7a542c098cf66b630ec42072f40a4033161de91730bb16fbe7d6fb8d4e1f9c21aab45d19c6f9e4e
   languageName: node
   linkType: hard
 
@@ -3655,10 +3641,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.25":
-  version: 17.0.25
-  resolution: "@types/node@npm:17.0.25"
-  checksum: 6a820bd624e69ea772f52a6cdb326484eff5829443dc981939373929ade109f58c21698b9f0a831bd6ceea799e722a75dc49c5fa7a6bc32a81e1cbdfc6507b64
+"@types/node@npm:^17.0.26":
+  version: 17.0.26
+  resolution: "@types/node@npm:17.0.26"
+  checksum: 59f92f46cc76703921ddf50d34b920afe3bbf916360e46321d54507b28c0ead4c3aed57cfdc64eee7c089ed12321dc4a728aa63a1205f7c1115105467f7a2b31
   languageName: node
   linkType: hard
 
@@ -3697,12 +3683,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.1":
-  version: 18.0.1
-  resolution: "@types/react-dom@npm:18.0.1"
+"@types/react-dom@npm:^18.0.2":
+  version: 18.0.2
+  resolution: "@types/react-dom@npm:18.0.2"
   dependencies:
     "@types/react": "*"
-  checksum: 6c183e2e50240b77ed767cd968fe061ef4f2b47f84da5ec9e412a767d68c9a004d1f6ccca4295a5aa2c3ee723377e59006a2031f3767c00d8ac9e240a51bb142
+  checksum: 2b0b138d8634ccfd8a86b17cb5414b122ee0cb6f650377d772f6008761a27e4c2531c08e3cab71aaa19b6893af6a508c664aa314db3ebcff5b8179173c9c9307
   languageName: node
   linkType: hard
 
@@ -3747,12 +3733,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-table@npm:^7.7.10":
-  version: 7.7.10
-  resolution: "@types/react-table@npm:7.7.10"
+"@types/react-table@npm:^7.7.11":
+  version: 7.7.11
+  resolution: "@types/react-table@npm:7.7.11"
   dependencies:
     "@types/react": "*"
-  checksum: 840f845c226c37c3f13f023974c37b4e941b7588c42dc5fcd5165463fd25005a9504a2c0d48df3325c0a63c2dc99c60fe1dfee4654b501b781ec2df3a4abfa64
+  checksum: d0f1399480e9779d011b9b7d3608c267640a42453d29116a7c0200fca91a5e1d4940e2dec4337a35007ba5d35d4580dd4d875fdbfabf2597886aefaf723fccc0
   languageName: node
   linkType: hard
 
@@ -3785,14 +3771,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.5":
-  version: 18.0.5
-  resolution: "@types/react@npm:18.0.5"
+"@types/react@npm:^18.0.6":
+  version: 18.0.6
+  resolution: "@types/react@npm:18.0.6"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 70d3336d43ef25509fa89ef3278f57fdf1945fc921e69b7890a78ab9a52a55ee38e2f13aa71eb4f6032b7311e7557860ce8836c1acf3028304989571c9736a96
+  checksum: 368b40176f0dab30a611c3263bf1d9878cebede9ce8015bc5661a396787dbe41f0b667b8d6d448dea7bc8c0557bf3cb329ab2b16ad2dacb18eaa764358bd16d4
   languageName: node
   linkType: hard
 
@@ -4374,7 +4360,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arrify@npm:^2.0.0, arrify@npm:^2.0.1":
+"arrify@npm:^2.0.0":
   version: 2.0.1
   resolution: "arrify@npm:2.0.1"
   checksum: 067c4c1afd182806a82e4c1cb8acee16ab8b5284fbca1ce29408e6e91281c36bb5b612f6ddfbd40a0f7a7e0c75bf2696eb94c027f6e328d6e9c52465c98e4209
@@ -4452,10 +4438,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "azur-tracker@workspace:."
   dependencies:
-    "@capacitor/android": ^3.4.3
+    "@capacitor/android": ^3.5.0
     "@capacitor/app": ^1.1.1
-    "@capacitor/cli": ^3.4.3
-    "@capacitor/core": ^3.4.3
+    "@capacitor/cli": ^3.5.0
+    "@capacitor/core": ^3.5.0
     "@capacitor/dialog": ^1.0.7
     "@capacitor/status-bar": ^1.0.8
     "@capacitor/storage": ^1.2.5
@@ -4475,13 +4461,13 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/lodash-es": ^4.17.6
     "@types/lz-string": ^1.3.34
-    "@types/node": ^17.0.25
-    "@types/react": ^18.0.5
-    "@types/react-dom": ^18.0.1
+    "@types/node": ^17.0.26
+    "@types/react": ^18.0.6
+    "@types/react-dom": ^18.0.2
     "@types/react-redux": ^7.1.24
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
-    "@types/react-table": ^7.7.10
+    "@types/react-table": ^7.7.11
     "@types/react-window": ^1.8.5
     "@types/sass": ^1.43.1
     "@types/sortablejs": ^1.10.7
@@ -4493,12 +4479,12 @@ __metadata:
     cross-env: ^7.0.3
     csvtojson: ^2.0.10
     date-fns: ^2.28.0
-    eslint: ^8.13.0
+    eslint: ^8.14.0
     eslint-config-next: ^12.1.5
     events: ^3.3.0
     fast-json-stable-stringify: ^2.1.0
     firebase: ^9.6.11
-    firebase-admin: ^10.0.2
+    firebase-admin: ^10.1.0
     hash-wasm: ^4.9.0
     intro.js: ^5.1.0
     intro.js-react: ^0.6.0
@@ -4515,12 +4501,12 @@ __metadata:
     react-dom: ^18.0.0
     react-firebase-hooks: ^5.0.3
     react-firebaseui: ^6.0.0
-    react-redux: ^8.0.0
+    react-redux: ^8.0.1
     react-sortablejs: ^6.1.1
     react-swipeable-views: ^0.14.0
     react-swipeable-views-utils: ^0.14.0
     react-table: ^7.7.0
-    react-window: ^1.8.6
+    react-window: ^1.8.7
     react-window-scroller: ^1.0.10
     redux: ^4.2.0
     redux-persist: ^6.0.0
@@ -6032,11 +6018,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.13.0":
-  version: 8.13.0
-  resolution: "eslint@npm:8.13.0"
+"eslint@npm:^8.14.0":
+  version: 8.14.0
+  resolution: "eslint@npm:8.14.0"
   dependencies:
-    "@eslint/eslintrc": ^1.2.1
+    "@eslint/eslintrc": ^1.2.2
     "@humanwhocodes/config-array": ^0.9.2
     ajv: ^6.10.0
     chalk: ^4.0.0
@@ -6073,7 +6059,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: bc7d2fc9a046d42cb2c8987573ecaf534c1fae14747c4695e32388e179c5f21b83eefdb3e4f35924bf76152e226d7cc9dfb21f12348baf12c803109005b17439
+  checksum: 87d2e3e5eb93216d4ab36006e7b8c0bfad02f40b0a0f193f1d42754512cd3a9d8244152f1c69df5db2e135b3c4f1c10d0ed2f0881fe8a8c01af55465968174c1
   languageName: node
   linkType: hard
 
@@ -6349,25 +6335,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-admin@npm:^10.0.2":
-  version: 10.0.2
-  resolution: "firebase-admin@npm:10.0.2"
+"firebase-admin@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "firebase-admin@npm:10.1.0"
   dependencies:
     "@firebase/database-compat": ^0.1.1
     "@firebase/database-types": ^0.9.3
-    "@google-cloud/firestore": ^4.5.0
-    "@google-cloud/storage": ^5.3.0
+    "@google-cloud/firestore": ^4.15.1
+    "@google-cloud/storage": ^5.18.3
     "@types/node": ">=12.12.47"
     dicer: ^0.3.0
     jsonwebtoken: ^8.5.1
     jwks-rsa: ^2.0.2
-    node-forge: ^1.0.0
+    node-forge: ^1.3.1
   dependenciesMeta:
     "@google-cloud/firestore":
       optional: true
     "@google-cloud/storage":
       optional: true
-  checksum: c08fe506a50e3fbf889a0be42233842c2c0c4184fc3ca9eab4c05131735f82d4433447bc100dc5f52dd2f36efde70d4085d922dc30240e260711c65ca4287d2b
+  checksum: 173a9852be7c00df5ec73aa6a373a337bb450ea2715f5b9fc430bdb5039bcb8a84bd877c66d9a2151b336d96c2ba5ef29d633f9e4c220118aedfae6e21ee39c3
   languageName: node
   linkType: hard
 
@@ -6731,7 +6717,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-auth-library@npm:^7.0.0, google-auth-library@npm:^7.6.1, google-auth-library@npm:^7.9.2":
+"google-auth-library@npm:^7.14.1":
+  version: 7.14.1
+  resolution: "google-auth-library@npm:7.14.1"
+  dependencies:
+    arrify: ^2.0.0
+    base64-js: ^1.3.0
+    ecdsa-sig-formatter: ^1.0.11
+    fast-text-encoding: ^1.0.0
+    gaxios: ^4.0.0
+    gcp-metadata: ^4.2.0
+    gtoken: ^5.0.4
+    jws: ^4.0.0
+    lru-cache: ^6.0.0
+  checksum: 78376eb2d424151dea7e3e162e20e06c11f0133451dd5ee3ea759dcb514d946acf2e0238ff08f002bdb3bf9d43c619793939feff9bc1d92025206ee836a641cf
+  languageName: node
+  linkType: hard
+
+"google-auth-library@npm:^7.6.1":
   version: 7.11.0
   resolution: "google-auth-library@npm:7.11.0"
   dependencies:
@@ -9079,6 +9082,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-forge@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "node-forge@npm:1.3.1"
+  checksum: 08fb072d3d670599c89a1704b3e9c649ff1b998256737f0e06fbd1a5bf41cae4457ccaee32d95052d80bbafd9ffe01284e078c8071f0267dc9744e51c5ed42a9
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 8.4.1
   resolution: "node-gyp@npm:8.4.1"
@@ -9892,9 +9902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "react-redux@npm:8.0.0"
+"react-redux@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "react-redux@npm:8.0.1"
   dependencies:
     "@babel/runtime": ^7.12.1
     "@types/hoist-non-react-statics": ^3.3.1
@@ -9904,6 +9914,7 @@ __metadata:
     use-sync-external-store: ^1.0.0
   peerDependencies:
     "@types/react": ^16.8 || ^17.0 || ^18.0
+    "@types/react-dom": ^16.8 || ^17.0 || ^18.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
     react-native: ">=0.59"
@@ -9911,13 +9922,15 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
+    "@types/react-dom":
+      optional: true
     react-dom:
       optional: true
     react-native:
       optional: true
     redux:
       optional: true
-  checksum: 466c36e49062fb71b7ea747d6a9d7e0f30ce3d2b657e04958fc35c3d66e5f7f277e3588b095cbb663b807f1ff6d826c3dc771586460610c8f916112d56b46281
+  checksum: d7c004b4bfb4e4cd9a5fc21fa30734cf2fc1c04b1483f0c0ea1446e00b7792e9d7ef16cf62d38254f68f6058bac34f759da6a204772a0982e029d2e83cc80512
   languageName: node
   linkType: hard
 
@@ -10010,16 +10023,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:^1.8.6":
-  version: 1.8.6
-  resolution: "react-window@npm:1.8.6"
+"react-window@npm:^1.8.7":
+  version: 1.8.7
+  resolution: "react-window@npm:1.8.7"
   dependencies:
     "@babel/runtime": ^7.0.0
     memoize-one: ">=3.1.1 <6"
   peerDependencies:
-    react: ^15.0.0 || ^16.0.0 || ^17.0.0
-    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 54ccf2b16c921a1acfadbe6de5dc19fe0981d84c5a913e4607afbf24448b96e938020704bf5125ec528e43a710643fc05e86fc117219fc4936e231ecd19be0b2
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 1e122c29224781e70359978287a2e850ccdf509cd71ba16b16ea258725687a62f5c16ab69f52f732b4ed20df583196dbe2a04804f3e4a176bb3e62f3fc910452
   languageName: node
   linkType: hard
 
@@ -11197,16 +11210,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"teeny-request@npm:^7.0.0":
-  version: 7.1.3
-  resolution: "teeny-request@npm:7.1.3"
+"teeny-request@npm:^7.1.3":
+  version: 7.2.0
+  resolution: "teeny-request@npm:7.2.0"
   dependencies:
     http-proxy-agent: ^5.0.0
     https-proxy-agent: ^5.0.0
     node-fetch: ^2.6.1
     stream-events: ^1.0.5
     uuid: ^8.0.0
-  checksum: 81f27b1ebe4672e355871b5b1012dacdf06bd441523fe91eb8f8492f1ef3aa367ec9e9df079218504e0648b059357cd8fd0f1b432e12a12e95a474f7d1df3a89
+  checksum: 26d096799eac7ef98b2777db277f5d5b2e9739eaaed8f4cd333d3ce7281f1396e172c1fd17404af702d2c372fe104e5f4cc430618c80eae8ac8b4b036e527d88
   languageName: node
   linkType: hard
 
