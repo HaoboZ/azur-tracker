@@ -20,17 +20,13 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 		Header  : 'Name',
 		accessor: 'name',
 		width   : 40,
-		Cell( { value } ) {
-			return <OverflowTypography>{value}</OverflowTypography>;
-		},
-		props: { style: { minWidth: '80px' } }
+		Cell    : ( { value } ) => <OverflowTypography>{value}</OverflowTypography>,
+		props   : { style: { minWidth: '80px' } }
 	}, {
 		Header  : 'Rarity',
 		accessor: 'rarity',
 		width   : 20,
-		Cell( { value } ) {
-			return <OverflowTypography>{value}</OverflowTypography>;
-		},
+		Cell    : ( { value } ) => <OverflowTypography>{value}</OverflowTypography>,
 		props   : ( cell ) => ( {
 			className: cell && `color-${rarityColors[ cell.value ]}`,
 			style    : { minWidth: '80px' }
@@ -40,10 +36,8 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 		Header  : 'Faction',
 		accessor: 'faction',
 		width   : 20,
-		Cell( { value } ) {
-			return <OverflowTypography>{value}</OverflowTypography>;
-		},
-		props: ( cell ) => ( {
+		Cell    : ( { value } ) => <OverflowTypography>{value}</OverflowTypography>,
+		props   : ( cell ) => ( {
 			className: cell && `color-${factionColors[ cell.value ]}`,
 			style    : { minWidth: '90px' }
 		} )
@@ -51,18 +45,16 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 		Header  : 'Type',
 		accessor: 'type',
 		width   : 20,
-		Cell( { value } ) {
-			return <OverflowTypography>{value}</OverflowTypography>;
-		},
-		props: ( cell ) => ( {
+		Cell    : ( { value } ) => <OverflowTypography>{value}</OverflowTypography>,
+		props   : ( cell ) => ( {
 			className: cell && `color-${typeColors[ cell.value ]}`,
 			style    : { minWidth: '73px' }
 		} )
 	}, {
-		Header  : 'Tier',
-		accessor: 'tier',
-		width   : 10,
-		Cell( { value } ) {
+		Header             : 'Tier',
+		accessor           : 'tier',
+		width              : 10,
+		Cell               : ( { value } ) => {
 			switch ( value ) {
 			case 7:
 				return '?';
@@ -78,32 +70,28 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 		disableGlobalFilter: true,
 		sortType           : 'basic'
 	}, {
-		Header  : 'Love',
-		accessor: 'love',
-		width   : 10,
-		Cell( { value } ) {
-			return AffinityIcons[ value ];
-		},
+		Header             : 'Love',
+		accessor           : 'love',
+		width              : 10,
+		Cell               : ( { value } ) => AffinityIcons[ value ],
 		props              : { style: { minWidth: '73px' } },
 		disableGlobalFilter: true,
 		sortType           : 'number',
 		sortDescFirst      : true
 	}, {
-		Header  : 'Level',
-		accessor: 'lvl',
-		width   : 10,
-		Cell( { value } ) {
-			return value === 126 ? <StarIcon fontSize='small'/> : value;
-		},
+		Header             : 'Level',
+		accessor           : 'lvl',
+		width              : 10,
+		Cell               : ( { value } ) => value === 126 ? <StarIcon fontSize='small'/> : value,
 		props              : { style: { minWidth: '76px' } },
 		disableGlobalFilter: true,
 		sortType           : 'number',
 		sortDescFirst      : true
 	}, {
-		Header  : 'Equips',
-		accessor: 'equip',
-		width   : 25,
-		Cell( { value, row } ) {
+		Header             : 'Equips',
+		accessor           : 'equip',
+		width              : 25,
+		Cell               : ( { value, row } ) => {
 			if ( equipBetter.value[ row.id ] ) {
 				const count = Math.max( ...map( equipBetter.value[ row.id ], '1' ).filter( isNumber ) );
 				if ( !isFinite( count ) ) return 'EQUIPPED';

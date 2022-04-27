@@ -69,8 +69,7 @@ function EnhancedTable<Item>( {
 					hover
 					selected={selected}
 					renderPanel={renderPanel?.( item, index )}
-					onClick={selectable?.setSelected && ( () => _selectRow( selectable,
-						item, index, selected, totalSelected ) )}>
+					onClick={selectable?.setSelected && ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}>
 					{sortable && (
 						<TableCell>
 							<MenuIcon {...handle}/>
@@ -86,8 +85,7 @@ function EnhancedTable<Item>( {
 							{( editable?.min ? items.length > editable.min : true ) && (
 								<IconButton onClick={( e ) => {
 									e.stopPropagation();
-									_deleteRow( items, setItems, editable, selectable,
-										item, index, selected, totalSelected );
+									_deleteRow( items, setItems, editable, selectable, item, index, selected, totalSelected );
 								}}>
 									<CloseIcon/>
 								</IconButton>

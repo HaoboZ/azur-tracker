@@ -30,7 +30,7 @@ export default function Fleet() {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { fleetData, equippableData, equipTierData } = useData<FleetType>();
-	console.log( fleet.version );
+	
 	const [ data, setData ] = useState<Ship[]>( [] );
 	
 	const [ equipBetter, setEquipBetter ] = useState<{
@@ -151,13 +151,14 @@ export const getStaticProps: GetStaticProps = async () => {
 	return {
 		revalidate: 6 * 60 * 60,
 		props     : {
-			fleetData     : keyBy( ( await csvtojson().fromString( fleetCSV ) ).map( ( val ) => ( {
-				...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
-				tier     : +val.tier,
-				special  : JSON.parse( val.special ),
-				equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
-			} ) ), 'id' ),
-			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', 'id' ] ),
+			fleetData     : keyBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
+				.map( ( val ) => ( {
+					...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
+					tier     : +val.tier,
+					special  : JSON.parse( val.special ),
+					equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
+				} ) ), 'id' ),
+			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', ( { id } ) => +id ] ),
 			equippableData: keyBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
 				...pick( value, [ 'type', 'tier' ] ),
 				equip: [ value.equip1, value.equip2, value.equip3 ].filter( Boolean )

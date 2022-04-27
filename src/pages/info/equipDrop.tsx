@@ -69,10 +69,10 @@ export default function EquipDrop() {
 									{stage}
 								</Box>
 								<Stack direction='row' spacing={1}>
-									{value.map( ( id ) => {
-										const equip = equipIndex[ id ];
+									{map( value, ( equipId ) => {
+										const equip = equipIndex[ equipId ];
 										return (
-											<Box key={id} width={40} height={40} onClick={() => setEquip( equip )}>
+											<Box key={equipId} width={40} height={40} onClick={() => setEquip( equip )}>
 												{/* eslint-disable-next-line @next/next/no-img-element */}
 												<img
 													src={`https://azurlane.netojuu.com/w/images/${equip.image}`}

@@ -13,10 +13,12 @@ import {
 	ListItemText,
 	Switch,
 	ToggleButton,
-	ToggleButtonGroup
+	ToggleButtonGroup,
+	Typography
 } from '@mui/material';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
+import { version } from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
@@ -204,6 +206,7 @@ export default function Settings() {
 					</ListItemSecondaryAction>
 				</ListItem>
 			</List>
+			<Typography variant='subtitle2' textAlign='right'>v{version}</Typography>
 		</PageContainer>
 	);
 }

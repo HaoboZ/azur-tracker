@@ -45,8 +45,7 @@ export type EnhancedTableProps<Item> = {
 	renderPanel?: ( item: Item, index: number ) => ReactNode
 } & Omit<TableContainerProps, 'title'>;
 
-export function _deleteRow( data, setData, editable, selectable,
-	item, index, selected, totalSelected ) {
+export function _deleteRow( data, setData, editable, selectable, item, index, selected, totalSelected ) {
 	const _data = [ ...data ];
 	const deleted = _data.splice( index, 1 );
 	editable.onDelete?.( deleted[ 0 ], index );
@@ -62,8 +61,7 @@ export function _deleteRow( data, setData, editable, selectable,
 	}
 }
 
-export function _selectRow( selectable,
-	item, index, selected, totalSelected ) {
+export function _selectRow( selectable, item, index, selected, totalSelected ) {
 	let newSelected = [ ...selectable.selected ];
 	if ( selected ) {
 		if ( totalSelected <= selectable?.min ) return;

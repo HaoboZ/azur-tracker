@@ -53,8 +53,7 @@ function EnhancedList<Item>( {
 					</ListItemIcon>
 				)}
 				{renderRow( item, index, removeEditing
-					? () => _deleteRow( items, setItems, editable, selectable,
-						item, index, selected, totalSelected )
+					? () => _deleteRow( items, setItems, editable, selectable, item, index, selected, totalSelected )
 					: undefined )}
 				{!removeEditing && editing && Boolean( editable )
 					&& ( editable?.min ? items.length > editable.min : true )
@@ -62,8 +61,7 @@ function EnhancedList<Item>( {
 						<ListItemIcon sx={{ minWidth: 'unset' }}>
 							<IconButton onClick={( e ) => {
 								e.stopPropagation();
-								_deleteRow( items, setItems, editable, selectable,
-									item, index, selected, totalSelected );
+								_deleteRow( items, setItems, editable, selectable, item, index, selected, totalSelected );
 							}}>
 								<CloseIcon/>
 							</IconButton>
@@ -89,8 +87,7 @@ function EnhancedList<Item>( {
 					component={Paper}
 					className='listItem'
 					selected={selected}
-					onClick={() => _selectRow( selectable,
-						item, index, selected, totalSelected )}>
+					onClick={() => _selectRow( selectable, item, index, selected, totalSelected )}>
 					{row( item, index, handle, selected )}
 				</ListItemButton>
 			) : (
