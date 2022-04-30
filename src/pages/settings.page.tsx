@@ -206,7 +206,7 @@ export default function Settings() {
 					</ListItemSecondaryAction>
 				</ListItem>
 			</List>
-			<Typography variant='subtitle2' textAlign='right'>v{version}</Typography>
+			<Typography variant='subtitle2' textAlign='right' px={1}>v{version}</Typography>
 		</PageContainer>
 	);
 }

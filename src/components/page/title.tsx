@@ -1,12 +1,11 @@
 import { ListItem, ListItemProps, ListItemText, ListItemTextProps } from '@mui/material';
-import { ReactChild, ReactNode } from 'react';
+import { ReactChild } from 'react';
 import Actions, { ActionProps } from '../actions';
 
 export default function PageTitle( { actions, listItemProps, children, max, ...props }: {
 	actions?: ActionProps[] | ReactChild,
 	max?: number,
-	listItemProps?: ListItemProps<'div'>,
-	children?: ReactNode
+	listItemProps?: ListItemProps<'div'>
 } & ListItemTextProps ) {
 	return (
 		<ListItem component='div' {...listItemProps}>

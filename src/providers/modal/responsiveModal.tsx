@@ -28,9 +28,8 @@ export type ResponsiveModalProps = {
 	// type of modal to be displayed
 	variant?: ModalVariant,
 	// only affects drawer variant
-	bottom?: boolean,
-	children?: ReactNode
-} & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant' | 'children'>>;
+	bottom?: boolean
+} & Partial<Omit<SwipeableDrawerProps & DialogProps, 'open' | 'onClose' | 'variant'>>;
 
 export type ResponsiveModalContainerProps = {
 	onClose?: () => void,
@@ -41,8 +40,7 @@ export type ResponsiveModalContainerProps = {
 	title?: ReactNode,
 	// renders and called by save button if set
 	onSave?: () => void,
-	keepOpenOnSave?: boolean,
-	children?: ReactNode
+	keepOpenOnSave?: boolean
 } & Omit<DialogContentProps, 'title'>;
 
 export default function ResponsiveModal( { variant = 'adaptive', bottom, ...props }: ResponsiveModalProps ) {
