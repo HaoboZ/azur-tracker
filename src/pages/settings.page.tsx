@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import { version } from '../../package.json';
+import packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
@@ -206,7 +206,7 @@ export default function Settings() {
 					</ListItemSecondaryAction>
 				</ListItem>
 			</List>
-			<Typography variant='subtitle2' textAlign='right' px={1}>v{version}</Typography>
+			<Typography variant='subtitle2' textAlign='right' px={2}>v{packageJson.version}</Typography>
 		</PageContainer>
 	);
 }

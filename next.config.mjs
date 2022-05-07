@@ -7,25 +7,18 @@ import withPWA from 'next-pwa';
  */
 const nextConfig = {
 	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
-	webpack( config, { webpack } ) {
-		// noinspection JSUnresolvedFunction
-		config.plugins.push( new webpack.IgnorePlugin( {
-			resourceRegExp: /\.(test|spec)\.[jt]sx?$/
-		} ) );
-		return config;
-	},
-	images      : process.env.NEXT_PUBLIC_SERVER_URL ? {
+	images        : process.env.NEXT_PUBLIC_SERVER_URL ? {
 		loader : 'imgix',
 		domains: [ process.env.NEXT_PUBLIC_SERVER_URL ],
 		path   : process.env.NEXT_PUBLIC_SERVER_URL
 	} : undefined,
-	typescript  : { ignoreBuildErrors: true },
-	headers     : async () => [ {
+	typescript    : { ignoreBuildErrors: true },
+	headers       : async () => [ {
 		// matching all API routes
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
-	experimental: {
+	experimental  : {
 		modularizeImports: {
 			'@mui/icons-material': {
 				transform: '@mui/icons-material/{{member}}'
