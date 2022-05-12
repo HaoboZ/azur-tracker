@@ -3959,12 +3959,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-table@npm:^7.7.11":
-  version: 7.7.11
-  resolution: "@types/react-table@npm:7.7.11"
+"@types/react-table@npm:^7.7.12":
+  version: 7.7.12
+  resolution: "@types/react-table@npm:7.7.12"
   dependencies:
     "@types/react": "*"
-  checksum: d0f1399480e9779d011b9b7d3608c267640a42453d29116a7c0200fca91a5e1d4940e2dec4337a35007ba5d35d4580dd4d875fdbfabf2597886aefaf723fccc0
+  checksum: 287ea68e75b56c2e70e6d6491cd172348c7302b032789047eb2dca1b25b240684e48a60f58140575828b790f95724b9f3ec4d3adce82fc1c05d994def1449009
   languageName: node
   linkType: hard
 
@@ -4670,7 +4670,7 @@ __metadata:
     "@types/react-redux": ^7.1.24
     "@types/react-swipeable-views": ^0.13.1
     "@types/react-swipeable-views-utils": ^0.13.3
-    "@types/react-table": ^7.7.11
+    "@types/react-table": ^7.7.12
     "@types/react-window": ^1.8.5
     "@types/sass": ^1.43.1
     "@types/sortablejs": ^1.13.0
@@ -4699,7 +4699,7 @@ __metadata:
     next-compose-plugins: ^2.2.1
     next-pwa: ^5.5.2
     next-sitemap: ^2.5.20
-    notistack: ^2.0.4
+    notistack: ^2.0.5
     react: ^18.1.0
     react-dom: ^18.1.0
     react-firebase-hooks: ^5.0.3
@@ -9213,9 +9213,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"notistack@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "notistack@npm:2.0.4"
+"notistack@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "notistack@npm:2.0.5"
   dependencies:
     clsx: ^1.1.0
     hoist-non-react-statics: ^3.3.0
@@ -9230,7 +9230,7 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 11e47b3f0359847362d9a78fe5866a55080d073a8e395bc7a24c95c7c8230893510334425f143607124833c9344de08049c04a90e59d33e9dbf5c00fe6fb997e
+  checksum: afbf8bf8878c610b3ca58b70164784d2f5683f345bc4b670b5c4114a9155104f087a501422d7883ec8fd90299d6c66029f8bd6b11396baba157fad70c27e167a
   languageName: node
   linkType: hard
 

@@ -62,7 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.24"],\
             ["@types/react-swipeable-views", "npm:0.13.1"],\
             ["@types/react-swipeable-views-utils", "npm:0.13.3"],\
-            ["@types/react-table", "npm:7.7.11"],\
+            ["@types/react-table", "npm:7.7.12"],\
             ["@types/react-window", "npm:1.8.5"],\
             ["@types/sass", "npm:1.43.1"],\
             ["@types/sortablejs", "npm:1.13.0"],\
@@ -91,7 +91,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-compose-plugins", "npm:2.2.1"],\
             ["next-pwa", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.5.2"],\
             ["next-sitemap", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.5.20"],\
-            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.4"],\
+            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5"],\
             ["react", "npm:18.1.0"],\
             ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.1.0"],\
             ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.3"],\
@@ -6466,10 +6466,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/react-table", [\
-        ["npm:7.7.11", {\
-          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.11-88343dcd77-d0f1399480.zip/node_modules/@types/react-table/",\
+        ["npm:7.7.12", {\
+          "packageLocation": "./.yarn/cache/@types-react-table-npm-7.7.12-3528071866-287ea68e75.zip/node_modules/@types/react-table/",\
           "packageDependencies": [\
-            ["@types/react-table", "npm:7.7.11"],\
+            ["@types/react-table", "npm:7.7.12"],\
             ["@types/react", "npm:17.0.38"]\
           ],\
           "linkType": "HARD"\
@@ -7347,7 +7347,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.24"],\
             ["@types/react-swipeable-views", "npm:0.13.1"],\
             ["@types/react-swipeable-views-utils", "npm:0.13.3"],\
-            ["@types/react-table", "npm:7.7.11"],\
+            ["@types/react-table", "npm:7.7.12"],\
             ["@types/react-window", "npm:1.8.5"],\
             ["@types/sass", "npm:1.43.1"],\
             ["@types/sortablejs", "npm:1.13.0"],\
@@ -7376,7 +7376,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-compose-plugins", "npm:2.2.1"],\
             ["next-pwa", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.5.2"],\
             ["next-sitemap", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.5.20"],\
-            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.4"],\
+            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5"],\
             ["react", "npm:18.1.0"],\
             ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.1.0"],\
             ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.3"],\
@@ -12750,17 +12750,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["notistack", [\
-        ["npm:2.0.4", {\
-          "packageLocation": "./.yarn/cache/notistack-npm-2.0.4-ff0d37b0a1-11e47b3f03.zip/node_modules/notistack/",\
+        ["npm:2.0.5", {\
+          "packageLocation": "./.yarn/cache/notistack-npm-2.0.5-a4b1a808c2-afbf8bf887.zip/node_modules/notistack/",\
           "packageDependencies": [\
-            ["notistack", "npm:2.0.4"]\
+            ["notistack", "npm:2.0.5"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.4", {\
-          "packageLocation": "./.yarn/__virtual__/notistack-virtual-78f50de007/0/cache/notistack-npm-2.0.4-ff0d37b0a1-11e47b3f03.zip/node_modules/notistack/",\
+        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5", {\
+          "packageLocation": "./.yarn/__virtual__/notistack-virtual-05b0140362/0/cache/notistack-npm-2.0.5-a4b1a808c2-afbf8bf887.zip/node_modules/notistack/",\
           "packageDependencies": [\
-            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.4"],\
+            ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5"],\
             ["@emotion/react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:11.9.0"],\
             ["@emotion/styled", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:11.8.1"],\
             ["@mui/material", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.7.0"],\
