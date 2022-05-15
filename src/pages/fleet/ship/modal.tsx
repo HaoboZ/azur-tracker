@@ -160,7 +160,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 									{equipBetter[ index ]?.[ 1 ] ? (
 										<Fragment>
 											<ArrowForwardIcon fontSize='inherit'/>
-											<TierIcon tier={equipBetter[ index ][ 0 ] + 1}/>
+											<TierIcon tier={equipBetter[ index ][ 0 ] + 1 || val[ 2 ]}/>
 										</Fragment>
 									) : undefined}
 								</Box>

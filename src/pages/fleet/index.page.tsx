@@ -158,7 +158,8 @@ export const getStaticProps: GetStaticProps = async () => {
 					special  : JSON.parse( val.special ),
 					equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
 				} ) ), 'id' ),
-			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', ( { id } ) => +id ] ),
+			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', ( { id } ) => +id ] )
+				.map( ( { id, ...val } ) => ( { id: +id, ...val } ) ),
 			equippableData: keyBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
 				...pick( value, [ 'type', 'tier' ] ),
 				equip: [ value.equip1, value.equip2, value.equip3 ].filter( Boolean )

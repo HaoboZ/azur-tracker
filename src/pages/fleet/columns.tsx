@@ -126,7 +126,7 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 						// none equipped
 						if ( !value?.[ 0 ] ) return [ newTier[ 0 ], 9900 ];
 						// is equipped already
-						if ( value[ 0 ] === +filterValue.id ) return [ undefined, undefined ];
+						if ( +value[ 0 ] === +filterValue.id ) return [ undefined, undefined ];
 						// forced BiS
 						if ( value[ 1 ] ) return false;
 						// current equip not in tier list
