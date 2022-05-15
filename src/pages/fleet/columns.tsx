@@ -131,7 +131,7 @@ export default function fleetColumns( equipBetter, setEquipBetter, { equippableD
 						if ( value[ 1 ] ) return false;
 						// current equip not in tier list
 						if ( !oldTier ) return [ newTier[ 0 ], 9900 ];
-						if ( oldTier[ 0 ] === newTier[ 0 ] ) return false;
+						if ( oldTier[ 0 ] < newTier[ 0 ] ) return false;
 						// if higher tier
 						if ( oldTier[ 0 ] > newTier[ 0 ] ) return [ newTier[ 0 ], ( oldTier[ 0 ] - newTier[ 0 ] ) * 100 ];
 						// if same tier but better
