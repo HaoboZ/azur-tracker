@@ -167,9 +167,10 @@ export const getStaticProps: GetStaticProps = async () => {
 			equipTierData : mapValues( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
 				( value ) => reduce( value, ( obj, value ) => {
 					let i = 0;
-					const ids = [ value.id0, value.id1, value.id2, value.id3, value.id4 ].filter( Boolean );
-					for ( const id of ids ) {
-						obj[ id ] = [ +value.tier, i++ ];
+					for ( const id of [ value.id0, value.id1, value.id2, value.id3, value.id4 ] ) {
+						if ( id ) {
+							obj[ id ] = [ +value.tier, i++ ];
+						}
 					}
 					return obj;
 				}, {} ) )
