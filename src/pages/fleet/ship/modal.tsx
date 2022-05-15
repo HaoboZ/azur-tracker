@@ -55,7 +55,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	return (
 		<ResponsiveModalContainer title={(
 			<Link
-				href={ship.href}
+				href={`https://azurlane.koumakan.jp/wiki/${ship.id}`}
 				target='_blank'
 				color='textPrimary'>
 				<DialogTitle>{ship.name}</DialogTitle>
