@@ -4702,9 +4702,6 @@ __metadata:
     sortablejs: ^1.15.0
     ts-node: ^10.8.0
     typescript: ^4.6.4
-  dependenciesMeta:
-    eslint@8.15.0:
-      unplugged: true
   languageName: unknown
   linkType: soft
 
