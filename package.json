@@ -1,17 +1,17 @@
 {
-	"name"          : "azur-tracker",
-	"description"   : "A tracker of events, research, and ships for Azur Lane",
-	"keywords"      : [
+	"name"           : "azur-tracker",
+	"description"    : "A tracker of events, research, and ships for Azur Lane",
+	"keywords"       : [
 		"azur lane",
 		"tracker",
 		"events",
 		"research",
 		"ships"
 	],
-	"author"        : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"       : "6.1.1",
-	"private"       : true,
-	"scripts"       : {
+	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
+	"version"        : "6.1.1",
+	"private"        : true,
+	"scripts"        : {
 		"format"   : "ts-node -P tools/tsconfig.json tools/formatJSON/index.ts package.json",
 		"dev"      : "next dev",
 		"build"    : "next build && next-sitemap --config next-sitemap.config.js",
@@ -23,8 +23,8 @@
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android"  : "cap open android"
 	},
-	"packageManager": "yarn@3.2.1",
-	"dependencies"  : {
+	"packageManager" : "yarn@3.2.1",
+	"dependencies"   : {
 		"@capacitor/app"                  : "^1.1.1",
 		"@capacitor/core"                 : "^3.5.1",
 		"@capacitor/dialog"               : "^1.0.7",
@@ -45,7 +45,7 @@
 		"date-fns"                        : "^2.28.0",
 		"events"                          : "^3.3.0",
 		"fast-json-stable-stringify"      : "^2.1.0",
-		"firebase"                        : "^9.8.2",
+		"firebase"                        : "9.8.1",
 		"firebase-admin"                  : "^10.2.0",
 		"hash-wasm"                       : "^4.9.0",
 		"intro.js"                        : "^5.1.0",
