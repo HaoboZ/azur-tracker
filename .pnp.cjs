@@ -69,7 +69,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.26.0"],\
             ["@typescript-eslint/parser", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.26.0"],\
             ["axios", "npm:0.27.2"],\
-            ["babel-plugin-import", "npm:1.13.5"],\
             ["cordova-res", "npm:0.15.4"],\
             ["cross-env", "npm:7.0.3"],\
             ["csvtojson", "npm:2.0.10"],\
@@ -109,7 +108,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.52.1"],\
             ["sortablejs", "npm:1.15.0"],\
             ["ts-node", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:10.8.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -6529,7 +6528,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["regexpp", "npm:3.2.0"],\
             ["semver", "npm:7.3.7"],\
             ["tsutils", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -6568,7 +6567,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/typescript-estree", "virtual:fc5d7e3b5e66ccd9fbd481cb22d736956b64de04ad2d573b564d1569025524a5f18682446c68201e86b775b044bb671b0e10777d0be3112decb292cccf20da77#npm:5.26.0"],\
             ["debug", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:4.3.4"],\
             ["eslint", "npm:8.16.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -6589,7 +6588,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/typescript-estree", "virtual:ee5291bfa31e503224b3d3d5fdfaaf4f36a8a13527f60607fb5094403a4db077532e3a69f357d267ec674edcf01db6fd2631c5a2a5a43ae39d6870efe460fd4f#npm:5.21.0"],\
             ["debug", "virtual:e14baa6fd8da00adbf23c5cde955f480064f6416b52b5aee6898f28cb6a9c29dfac5222be6c6d91ae10fe7fdcd7e94e5561f330f356f2117883e7a30bad9928f#npm:4.3.3"],\
             ["eslint", "npm:8.16.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -6638,7 +6637,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["debug", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:4.3.4"],\
             ["eslint", "npm:8.16.0"],\
             ["tsutils", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -6712,7 +6711,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-glob", "npm:4.0.3"],\
             ["semver", "npm:7.3.5"],\
             ["tsutils", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -6732,7 +6731,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-glob", "npm:4.0.3"],\
             ["semver", "npm:7.3.7"],\
             ["tsutils", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:3.21.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -7267,7 +7266,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.26.0"],\
             ["@typescript-eslint/parser", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.26.0"],\
             ["axios", "npm:0.27.2"],\
-            ["babel-plugin-import", "npm:1.13.5"],\
             ["cordova-res", "npm:0.15.4"],\
             ["cross-env", "npm:7.0.3"],\
             ["csvtojson", "npm:2.0.10"],\
@@ -7307,7 +7305,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.52.1"],\
             ["sortablejs", "npm:1.15.0"],\
             ["ts-node", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:10.8.0"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -7375,16 +7373,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],\
             ["object.assign", "npm:4.1.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["babel-plugin-import", [\
-        ["npm:1.13.5", {\
-          "packageLocation": "./.yarn/cache/babel-plugin-import-npm-1.13.5-248523e80d-54d6a7e29c.zip/node_modules/babel-plugin-import/",\
-          "packageDependencies": [\
-            ["babel-plugin-import", "npm:1.13.5"],\
-            ["@babel/helper-module-imports", "npm:7.16.7"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8873,7 +8861,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],\
       ["eslint", [\
         ["npm:8.16.0", {\
-          "packageLocation": "./.yarn/unplugged/eslint-npm-8.16.0-4dc6ea62e6/node_modules/eslint/",\
+          "packageLocation": "./.yarn/cache/eslint-npm-8.16.0-4dc6ea62e6-654a0200b4.zip/node_modules/eslint/",\
           "packageDependencies": [\
             ["eslint", "npm:8.16.0"],\
             ["@eslint/eslintrc", "npm:1.3.0"],\
@@ -8941,7 +8929,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:8d453733ee0bdedaf9d78b81cebd8040b609069a51e2ee11250abf92899b8e16def1ce233f836544c752b8783078deb37d5b6833253a688e125fd0550a63991f#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:8d453733ee0bdedaf9d78b81cebd8040b609069a51e2ee11250abf92899b8e16def1ce233f836544c752b8783078deb37d5b6833253a688e125fd0550a63991f#npm:4.5.0"],\
             ["next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:12.1.6"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/eslint",\
@@ -15364,7 +15352,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["create-require", "npm:1.1.1"],\
             ["diff", "npm:4.0.2"],\
             ["make-error", "npm:1.3.6"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
             ["v8-compile-cache-lib", "npm:3.0.1"],\
             ["yn", "npm:3.1.1"]\
           ],\
@@ -15423,7 +15411,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tsutils", "virtual:2bd1ba0e835f068f7fe945631b9d6d1d13e7dbb8aaddde69d5e83b17f05b0d3048d72cf286eab4bc6b6c1c06d16ab531000ca25eb59abbf8d6571c3c30cb095f#npm:3.21.0"],\
             ["@types/typescript", null],\
             ["tslib", "npm:1.14.1"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "packagePeers": [\
             "@types/typescript",\
@@ -15509,10 +15497,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["typescript", [\
-        ["patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367", {\
-          "packageLocation": "./.yarn/cache/typescript-patch-044c37f428-1cb434fbc6.zip/node_modules/typescript/",\
+        ["patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353", {\
+          "packageLocation": "./.yarn/cache/typescript-patch-e50fdcf519-1cb434fbc6.zip/node_modules/typescript/",\
           "packageDependencies": [\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -20276,9 +20264,13 @@ function patchFs(patchedFs, fakeFs) {
     }
   }
   {
-    patchedFs.read[nodeUtils.promisify.custom] = async (p, buffer, ...args) => {
-      const res = fakeFs.readPromise(p, buffer, ...args);
+    patchedFs.read[nodeUtils.promisify.custom] = async (fd, buffer, ...args) => {
+      const res = fakeFs.readPromise(fd, buffer, ...args);
       return {bytesRead: await res, buffer};
+    };
+    patchedFs.write[nodeUtils.promisify.custom] = async (fd, buffer, ...args) => {
+      const res = fakeFs.writePromise(fd, buffer, ...args);
+      return {bytesWritten: await res, buffer};
     };
   }
 }
@@ -24735,11 +24727,11 @@ Require stack:
     }
     originalExtensionJSFunction.call(this, module, filename);
   };
-  const originalEmitWarning = process.emitWarning;
-  process.emitWarning = function(warning, name, ctor) {
-    if (name === `ExperimentalWarning` && typeof warning === `string` && warning.includes(`--experimental-loader`))
-      return;
-    originalEmitWarning.apply(process, arguments);
+  const originalEmit = process.emit;
+  process.emit = function(name, data, ...args) {
+    if (name === `warning` && typeof data === `object` && data.name === `ExperimentalWarning` && (data.message.includes(`--experimental-loader`) || data.message.includes(`Custom ESM Loaders is an experimental feature`)))
+      return false;
+    return originalEmit.apply(process, arguments);
   };
   patchFs(fs__default.default, new PosixFS(opts.fakeFs));
 }
