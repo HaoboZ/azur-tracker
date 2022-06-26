@@ -1,7 +1,7 @@
 import { Dialog } from '@capacitor/dialog';
 import stringify from 'fast-json-stable-stringify';
 import { getAuth } from 'firebase/auth';
-import { get, getDatabase, ref, set } from 'firebase/database';
+import { Database, get, ref, set } from 'firebase/database';
 import { omit } from 'lodash-es';
 import { compressToUTF16 } from 'lz-string';
 import { app } from '../../firebase/client';
@@ -9,9 +9,8 @@ import { store } from '../../store';
 import { setNewData } from '../../store/reducers/mainReducer';
 
 const auth = getAuth( app );
-const db = getDatabase( app );
 
-export default async function setData( key: string, always?: boolean ) {
+export default async function setData( db: Database, key: string, always?: boolean ) {
 	// check
 	if ( !auth.currentUser?.uid ) return;
 	const readRef = ref( db, `${auth.currentUser.uid}/${key}/timestamp` );

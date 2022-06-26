@@ -1,8 +1,11 @@
 import { CircularProgress } from '@mui/material';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
+import dynamic from 'next/dynamic';
 import { ComponentType, createContext, Suspense, useContext, useState } from 'react';
-import ResponsiveModal, { ResponsiveModalProps } from './responsiveModal';
+import type { ResponsiveModalProps } from './responsiveModal';
+
+const ResponsiveModal = dynamic( () => import( './responsiveModal' ), { suspense: true } );
 
 type ModalInfo<T> = {
 	id: string,
@@ -111,17 +114,17 @@ export default function ModalProvider( { children } ) {
 				if ( !modal?.id ) return null;
 				return (
 					<ModalControlsContext.Provider key={modal.id} value={{ ...modal.props.controls, modalInfo: modal }}>
-						<ResponsiveModal
-							open={modal.open}
-							{...modal.modalProps}
-							onClose={async ( event, reason ) => {
-								await modal.modalProps?.onClose?.( event, reason );
-								modal.props.controls.closeModal();
-							}}>
-							<Suspense fallback={<CircularProgress/>}>
+						<Suspense fallback={<CircularProgress/>}>
+							<ResponsiveModal
+								open={modal.open}
+								{...modal.modalProps}
+								onClose={async ( event, reason ) => {
+									await modal.modalProps?.onClose?.( event, reason );
+									modal.props.controls.closeModal();
+								}}>
 								<modal.Component {...modal.props}/>
-							</Suspense>
-						</ResponsiveModal>
+							</ResponsiveModal>
+						</Suspense>
 					</ModalControlsContext.Provider>
 				);
 			} )}

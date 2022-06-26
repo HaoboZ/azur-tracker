@@ -16,13 +16,16 @@ import {
 	ToggleButtonGroup,
 	Typography
 } from '@mui/material';
+import { getDatabase } from 'firebase/database';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
+import { useMemo } from 'react';
 import packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
+import { app } from '../firebase/client';
 import useNetworkStatus from '../hooks/useNetworkStatus';
 import { useAuth } from '../providers/auth';
 import useAuthButton from '../providers/auth/useAuthButton';
@@ -42,6 +45,8 @@ export default function Settings() {
 	const { enqueueSnackbar } = useSnackbar();
 	const online = useNetworkStatus();
 	const authButton = useAuthButton();
+	
+	const db = useMemo( () => getDatabase( app ), [] );
 	
 	return (
 		<PageContainer>
@@ -82,7 +87,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => setData( key, true ) ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => setData( db, key, true ) ) );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -97,7 +102,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => getData( key, true ) ) );
+										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => getData( db, key, true ) ) );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );

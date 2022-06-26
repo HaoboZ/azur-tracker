@@ -1,14 +1,13 @@
 import { getAuth } from 'firebase/auth';
-import { get, getDatabase, ref } from 'firebase/database';
+import { Database, get, ref } from 'firebase/database';
 import { decompressFromUTF16 } from 'lz-string';
 import { app } from '../../firebase/client';
 import { store } from '../../store';
 import { importBackup, setNewData } from '../../store/reducers/mainReducer';
 
 const auth = getAuth( app );
-const db = getDatabase( app );
 
-export default async function getData( key: string, always?: boolean ) {
+export default async function getData( db: Database, key: string, always?: boolean ) {
 	// check
 	if ( !auth.currentUser?.uid ) return;
 	const readRef = ref( db, `${auth.currentUser.uid}/${key}` );

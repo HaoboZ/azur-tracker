@@ -1,7 +1,0 @@
-{
-	"appId": "app.vercel.azurlanetracker",
-	"appName": "Azur Lane Tracker",
-	"webDir": "out",
-	"bundledWebRuntime": false,
-	"server": {}
-}

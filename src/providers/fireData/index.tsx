@@ -44,7 +44,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 	}, { dependencies: [ saving ] } );
 	
 	const delayedSetData = useDebounce( async ( key ) => {
-		await indicator( setData( key ) );
+		await indicator( setData( db, key ) );
 		setSaving( false );
 	}, 500 );
 	
@@ -65,7 +65,7 @@ function Internal( { children, keys }: { children: ReactNode, keys: string[] } )
 		useEffect( () => {
 			if ( !networkStatus || !value ) return;
 			( async () => {
-				if ( main.autoBackup && value > state[ key ].timestamp ) await getData( key );
+				if ( main.autoBackup && value > state[ key ].timestamp ) await getData( db, key );
 				setLoaded( ( loaded ) => loaded + 1 );
 			} )();
 		}, [ networkStatus, value ] );
