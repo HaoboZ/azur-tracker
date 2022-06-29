@@ -9,7 +9,7 @@
 		"ships"
 	],
 	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"        : "6.2.0",
+	"version"        : "6.2.1",
 	"private"        : true,
 	"scripts"        : {
 		"dev"      : "next dev",
