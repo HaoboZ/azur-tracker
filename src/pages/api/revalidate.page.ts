@@ -2,7 +2,7 @@ import { NextApiHandler } from 'next';
 
 const revalidate: NextApiHandler = async ( req, res ) => {
 	if ( req.query.secret !== process.env.SECRET ) {
-		return res.status( 401 ).json( { message: 'Invalid token' } );
+		return res.status( 401 ).send( 'Invalid token' );
 	}
 	
 	try {
@@ -10,7 +10,7 @@ const revalidate: NextApiHandler = async ( req, res ) => {
 		await res.revalidate( '/research' );
 		await res.revalidate( '/fleet' );
 		await res.revalidate( '/info' );
-		return res.end();
+		return res.send( 'Success' );
 	} catch ( err ) {
 		return res.status( 500 ).send( 'Error revalidating' );
 	}

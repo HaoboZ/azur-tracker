@@ -16,6 +16,7 @@ import {
 	ToggleButtonGroup,
 	Typography
 } from '@mui/material';
+import axios from 'axios';
 import { getDatabase } from 'firebase/database';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
@@ -51,7 +52,19 @@ export default function Settings() {
 	return (
 		<PageContainer>
 			<Head><title>Settings | Azur Lane Tracker</title></Head>
-			<PageTitle>Settings</PageTitle>
+			<PageTitle actions={user?.email === 'haobozhang9081@gmail.com' ? [ {
+				name   : 'Revalidate',
+				onClick: async () => {
+					const { value } = await Dialog.prompt( {
+						title  : 'Secret',
+						message: 'Enter API secret key'
+					} );
+					if ( !value ) return;
+					await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate?secret=${value}` );
+				}
+			} ] : undefined}>
+				Settings
+			</PageTitle>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				{online ? (
 					<ListItem>
@@ -65,6 +78,25 @@ export default function Settings() {
 				) : (
 					<ListItem>
 						<ListItemText>Offline</ListItemText>
+					</ListItem>
+				)}
+				{user?.email === 'haobozhang9081@gmail.com' && (
+					<ListItem>
+						<ListItemText>Revalidate All Pages</ListItemText>
+						<ListItemSecondaryAction>
+							<AsyncLoadingButton
+								variant='outlined'
+								color='inherit'
+								onClick={async () => {
+									const { value } = await Dialog.prompt( {
+										title  : 'Secret',
+										message: 'Enter API secret key'
+									} );
+									await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate?secret=${value}` );
+								}}>
+								Revalidate
+							</AsyncLoadingButton>
+						</ListItemSecondaryAction>
 					</ListItem>
 				)}
 				<ListItem>

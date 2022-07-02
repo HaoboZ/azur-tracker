@@ -1,6 +1,7 @@
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-import { Button, ButtonGroup, ButtonProps, MenuItem, MenuItemProps, MenuList } from '@mui/material';
+import { ButtonGroup, ButtonProps, MenuItem, MenuItemProps, MenuList } from '@mui/material';
 import { MouseEventHandler, ReactNode, useMemo } from 'react';
+import AsyncLoadingButton from './asyncLoadingButton';
 import ButtonMenu from './buttonMenu';
 
 export type ActionProps = {
@@ -27,13 +28,13 @@ export default function Actions( { items, max }: {
 	return (
 		<ButtonGroup>
 			{buttons.map( ( { name, onClick, buttonProps }, index ) => (
-				<Button
+				<AsyncLoadingButton
 					key={index}
 					variant='outlined'
 					onClick={onClick}
 					{...buttonProps}>
 					{name}
-				</Button>
+				</AsyncLoadingButton>
 			) )}
 			{Boolean( menu.length ) && (
 				<ButtonMenu
@@ -43,8 +44,8 @@ export default function Actions( { items, max }: {
 							{menu.map( ( { name, onClick, menuItemProps }, index ) => (
 								<MenuItem
 									key={index}
-									onClick={( e ) => {
-										onClick( e );
+									onClick={async ( e ) => {
+										await onClick( e );
 										closeMenu();
 									}}
 									{...menuItemProps}>
