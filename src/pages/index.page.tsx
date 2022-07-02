@@ -14,7 +14,6 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: eventStagesCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Event%20Stages&tqx=out:csv` );
 	
 	return {
-		revalidate: 6 * 60 * 60,
 		props     : {
 			eventData      : ( await csvtojson().fromString( eventCSV ) )[ 0 ],
 			eventShopData  : await csvtojson().fromString( eventShopCSV ),

@@ -31,7 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
 	const equipsIndex = keyBy( await csvtojson().fromString( equipCSV ), 'id' );
 	
 	return {
-		revalidate: 6 * 60 * 60,
 		props     : {
 			farmData : mapValues( groupBy( farmData, 'origin' ),
 				( value ) => mapValues( groupBy( value, 'level' ),

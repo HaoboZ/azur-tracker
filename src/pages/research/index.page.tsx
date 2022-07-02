@@ -38,8 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: researchCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Research&tqx=out:csv` );
 	
 	return {
-		revalidate: 6 * 60 * 60,
-		props     : {
+		props: {
 			researchData: groupBy( ( await csvtojson().fromString( researchCSV ) )
 				.map( ( val ) => ( {
 					...pick( val, [ 'series', 'name', 'image' ] ),
