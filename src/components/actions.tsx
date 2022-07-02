@@ -31,6 +31,7 @@ export default function Actions( { items, max }: {
 				<AsyncLoadingButton
 					key={index}
 					variant='outlined'
+					color='inherit'
 					onClick={onClick}
 					{...buttonProps}>
 					{name}
