@@ -20,7 +20,6 @@ import axios from 'axios';
 import { getDatabase } from 'firebase/database';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import { useMemo } from 'react';
 import packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
@@ -38,6 +37,8 @@ import { fleet_reset } from '../store/reducers/fleetReducer';
 import { setAutoBackup, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
 
+const db = getDatabase( app );
+
 // noinspection JSUnusedGlobalSymbols
 export default function Settings() {
 	const main = useAppSelector( ( { main } ) => main );
@@ -46,8 +47,6 @@ export default function Settings() {
 	const { enqueueSnackbar } = useSnackbar();
 	const online = useNetworkStatus();
 	const authButton = useAuthButton();
-	
-	const db = useMemo( () => getDatabase( app ), [] );
 	
 	return (
 		<PageContainer>
