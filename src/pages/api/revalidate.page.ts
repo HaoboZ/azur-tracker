@@ -1,10 +1,6 @@
 import { NextApiHandler } from 'next';
 
 const revalidate: NextApiHandler = async ( req, res ) => {
-	if ( req.query.secret !== process.env.SECRET ) {
-		return res.status( 401 ).send( 'Invalid token' );
-	}
-	
 	try {
 		await res.revalidate( '/' );
 		await res.revalidate( '/research' );

@@ -54,14 +54,7 @@ export default function Settings() {
 			<Head><title>Settings | Azur Lane Tracker</title></Head>
 			<PageTitle actions={user?.email === 'haobozhang9081@gmail.com' ? [ {
 				name   : 'Revalidate',
-				onClick: async () => {
-					const { value } = await Dialog.prompt( {
-						title  : 'Secret',
-						message: 'Enter API secret key'
-					} );
-					if ( !value ) return;
-					await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate?secret=${value}` );
-				}
+				onClick: () => axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate` )
 			} ] : undefined}>
 				Settings
 			</PageTitle>
@@ -78,25 +71,6 @@ export default function Settings() {
 				) : (
 					<ListItem>
 						<ListItemText>Offline</ListItemText>
-					</ListItem>
-				)}
-				{user?.email === 'haobozhang9081@gmail.com' && (
-					<ListItem>
-						<ListItemText>Revalidate All Pages</ListItemText>
-						<ListItemSecondaryAction>
-							<AsyncLoadingButton
-								variant='outlined'
-								color='inherit'
-								onClick={async () => {
-									const { value } = await Dialog.prompt( {
-										title  : 'Secret',
-										message: 'Enter API secret key'
-									} );
-									await axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate?secret=${value}` );
-								}}>
-								Revalidate
-							</AsyncLoadingButton>
-						</ListItemSecondaryAction>
 					</ListItem>
 				)}
 				<ListItem>
