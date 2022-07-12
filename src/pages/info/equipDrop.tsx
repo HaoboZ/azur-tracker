@@ -75,7 +75,7 @@ export default function EquipDrop() {
 											<Box key={equipId} width={40} height={40} onClick={() => setEquip( equip )}>
 												{/* eslint-disable-next-line @next/next/no-img-element */}
 												<img
-													src={`https://azurlane.netojuu.com/w/images/${equip.image}`}
+													src={`https://azurlane.netojuu.com/images/${equip.image}`}
 													alt={equip.name}
 													height={40}
 													width={40}

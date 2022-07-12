@@ -99,7 +99,7 @@ export default function EquipModal( { info, selectedEquip }: {
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src={currentEquip?.image
-								? `https://azurlane.netojuu.com/w/images/${currentEquip.image}`
+								? `https://azurlane.netojuu.com/images/${currentEquip.image}`
 								: '/images/emptyEquip.png'}
 							alt={currentEquip?.name}
 							height={128}
@@ -114,7 +114,7 @@ export default function EquipModal( { info, selectedEquip }: {
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src={equip?.image
-								? `https://azurlane.netojuu.com/w/images/${equip.image}`
+								? `https://azurlane.netojuu.com/images/${equip.image}`
 								: '/images/emptyEquip.png'}
 							alt={equip?.name}
 							height={128}

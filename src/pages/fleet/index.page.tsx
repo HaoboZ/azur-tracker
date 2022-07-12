@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: equipTierCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Tier&tqx=out:csv` );
 	
 	return {
-		props     : {
+		props: {
 			fleetData     : keyBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
 				.map( ( val ) => ( {
 					...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),

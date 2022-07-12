@@ -28,7 +28,7 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 					<Box px={1}>
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
-							src={`https://azurlane.netojuu.com/w/images/${equip.image}`}
+							src={`https://azurlane.netojuu.com/images/${equip.image}`}
 							alt={equip.name}
 							height={50}
 							width={50}

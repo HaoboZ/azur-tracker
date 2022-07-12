@@ -40,7 +40,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					<Box pr={1}>
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
-							src={`https://azurlane.netojuu.com/w/images/${option.image}`}
+							src={`https://azurlane.netojuu.com/images/${option.image}`}
 							alt={option.name}
 							height={50}
 							width={50}

@@ -28,7 +28,7 @@ export default function OpSiWeakness() {
 									<Box sx={{ position: 'relative', width: 64, height: 64 }}>
 										{/* eslint-disable-next-line @next/next/no-img-element */}
 										<img
-											src={`https://azurlane.netojuu.com/w/images/${image}`}
+											src={`https://azurlane.netojuu.com/images/${image}`}
 											alt={ship}
 											height='100%'
 										/>
