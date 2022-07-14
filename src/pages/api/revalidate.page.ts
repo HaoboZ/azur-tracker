@@ -2,7 +2,7 @@ import { NextApiHandler } from 'next';
 
 const revalidate: NextApiHandler = async ( req, res ) => {
 	try {
-		await res.revalidate( '/' );
+		await res.revalidate( '' );
 		await res.revalidate( '/research' );
 		await res.revalidate( '/fleet' );
 		await res.revalidate( '/info' );
