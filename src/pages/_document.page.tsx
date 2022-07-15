@@ -42,9 +42,12 @@ export default class _Document extends Document {
 					<meta charSet='utf-8'/>
 					<link rel='manifest' href='/app.webmanifest'/>
 					{/*seo*/}
-					{info.description && <meta name='description' content={info.description}/>}
-					{info.keywords && <meta name='keywords' content={info.keywords.join( ', ' )}/>}
-					{info.author && <meta name='author' content={info.author}/>}
+					{/*@ts-ignore*/}
+					{'description' in info && <meta name='description' content={info.description}/>}
+					{/*@ts-ignore*/}
+					{'keywords' in info && <meta name='keywords' content={info.keywords.join( ', ' )}/>}
+					{/*@ts-ignore*/}
+					{'author' in info && <meta name='author' content={info.author}/>}
 					
 					{/*pwa*/}
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>
