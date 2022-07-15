@@ -1,13 +1,6 @@
 {
 	"name"           : "azur-tracker",
 	"description"    : "A tracker of events, research, and ships for Azur Lane",
-	"keywords"       : [
-		"azur lane",
-		"tracker",
-		"events",
-		"research",
-		"ships"
-	],
 	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
 	"version"        : "6.2.5",
 	"private"        : true,
