@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { Fragment, ReactNode } from 'react';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
-import { useWideMedia } from '../../hooks/useWideMedia';
+import useWideMedia from '../../hooks/useWideMedia';
 import { useModalControls } from './index';
 
 export type ModalVariant = 'adaptive' | 'modal' | 'drawer';

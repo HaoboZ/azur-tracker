@@ -4,7 +4,7 @@ import { Breadcrumbs, Button } from '@mui/material';
 import { startCase } from 'lodash-es';
 import { useRouter } from 'next/router';
 import { MouseEventHandler, useMemo } from 'react';
-import { useWideMedia } from '../../hooks/useWideMedia';
+import useWideMedia from '../../hooks/useWideMedia';
 import PageLink, { PageLinkComponent } from './link';
 
 export default function PageBack( { confirm, onClick, back }: {

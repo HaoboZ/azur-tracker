@@ -1,11 +1,14 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
-import { debounce, DebouncedFunc, DebounceSettings } from 'lodash-es';
+import { debounce, DebounceSettings } from 'lodash-es';
 import { useCallback, useEffect, useState } from 'react';
 
-export default function useDebounce<T>( value: T, delay = 250, options?: DebounceSettings ): T extends ( ...args: any ) => any ? DebouncedFunc<any> : T {
-	if ( typeof value === 'function' ) return useCallback( debounce( value as any, delay, options ), [ delay ] ) as any;
-	
+export default function useDebounce<T extends ( ...args: any ) => any>(
+	value: T,
+	delay = 250,
+	options?: DebounceSettings ) {
+	return useCallback( debounce( value, delay, options ), [ delay ] );
+}
+
+export function useDebouncedValue<T>( value: T, delay = 250, options?: DebounceSettings ) {
 	const [ debouncedValue, setDebouncedValue ] = useState( value );
 	
 	const setValueDebounced = useCallback( debounce( setDebouncedValue, delay, options ), [ delay ] );
@@ -14,5 +17,5 @@ export default function useDebounce<T>( value: T, delay = 250, options?: Debounc
 		setValueDebounced( value );
 	}, [ value ] );
 	
-	return debouncedValue as any;
+	return debouncedValue;
 }

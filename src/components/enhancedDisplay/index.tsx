@@ -1,4 +1,4 @@
-import { useWideMedia } from '../../hooks/useWideMedia';
+import useWideMedia from '../../hooks/useWideMedia';
 import EnhancedList from './enhancedList';
 import EnhancedTable from './enhancedTable';
 import { EnhancedDisplayProps, EnhancedListProps, EnhancedTableProps } from './helpers';

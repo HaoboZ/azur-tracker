@@ -1,4 +1,4 @@
-import { useWideMedia } from '../../../hooks/useWideMedia';
+import useWideMedia from '../../../hooks/useWideMedia';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
