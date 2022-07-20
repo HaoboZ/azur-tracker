@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
 import { ReactNode, useRef } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
+import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import ComponentComposer, { component } from '../../helpers/componentComposer';
 import AuthProvider from '../../providers/auth';
@@ -14,6 +15,8 @@ import IndicatorProvider from '../../providers/indicator';
 import ModalProvider from '../../providers/modal';
 import ThemeProvider from '../../providers/theme';
 import { persistor, store } from '../../store';
+
+persistStore();
 
 const clientCache = createCache( { key: 'css', prepend: true } );
 

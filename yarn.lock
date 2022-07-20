@@ -4355,6 +4355,7 @@ __metadata:
     redux-persist-transform-compress: ^4.2.0
     sass: ^1.53.0
     sortablejs: ^1.15.0
+    type-fest: ^2.16.0
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
@@ -10532,6 +10533,13 @@ __metadata:
   version: 0.21.3
   resolution: "type-fest@npm:0.21.3"
   checksum: e6b32a3b3877f04339bae01c193b273c62ba7bfc9e325b8703c4ee1b32dc8fe4ef5dfa54bf78265e069f7667d058e360ae0f37be5af9f153b22382cd55a9afe0
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^2.16.0":
+  version: 2.16.0
+  resolution: "type-fest@npm:2.16.0"
+  checksum: 897fc5f6833de5ade5c4841d034bdfb6aaa168f24f725354ad13320b2a463b9df03a7a664b836b4c3bc7d9f92b22a25c26fe24668a35caf3b7a9ea5fcb847b8d
   languageName: node
   linkType: hard
 

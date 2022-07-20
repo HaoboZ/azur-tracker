@@ -2,7 +2,10 @@ import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
-import info from '../../package.json';
+import { PackageJson } from 'type-fest';
+import _packageJson from '../../package.json';
+
+const packageJson = _packageJson as PackageJson;
 
 // noinspection JSUnusedGlobalSymbols
 export default class _Document extends Document {
@@ -42,12 +45,9 @@ export default class _Document extends Document {
 					<meta charSet='utf-8'/>
 					<link rel='manifest' href='/app.webmanifest'/>
 					{/*seo*/}
-					{/*@ts-ignore*/}
-					{'description' in info && <meta name='description' content={info.description}/>}
-					{/*@ts-ignore*/}
-					{'keywords' in info && <meta name='keywords' content={info.keywords.join( ', ' )}/>}
-					{/*@ts-ignore*/}
-					{'author' in info && <meta name='author' content={info.author}/>}
+					{'description' in packageJson && <meta name='description' content={packageJson.description}/>}
+					{'keywords' in packageJson && <meta name='keywords' content={packageJson.keywords.join( ', ' )}/>}
+					{'author' in packageJson && <meta name='author' content={packageJson.author as string}/>}
 					
 					{/*pwa*/}
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>

@@ -20,7 +20,8 @@ import axios from 'axios';
 import { getDatabase } from 'firebase/database';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import packageJson from '../../package.json';
+import { PackageJson } from 'type-fest';
+import _packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
@@ -36,6 +37,8 @@ import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
 import { setAutoBackup, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
+
+const packageJson = _packageJson as PackageJson;
 
 const db = getDatabase( app );
 

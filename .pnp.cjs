@@ -106,6 +106,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redux-persist-transform-compress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.2.0"],\
             ["sass", "npm:1.53.0"],\
             ["sortablejs", "npm:1.15.0"],\
+            ["type-fest", "npm:2.16.0"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
@@ -6852,6 +6853,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redux-persist-transform-compress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.2.0"],\
             ["sass", "npm:1.53.0"],\
             ["sortablejs", "npm:1.15.0"],\
+            ["type-fest", "npm:2.16.0"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
@@ -14269,6 +14271,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/type-fest-npm-0.21.3-5ff2a9c6fd-e6b32a3b38.zip/node_modules/type-fest/",\
           "packageDependencies": [\
             ["type-fest", "npm:0.21.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.16.0", {\
+          "packageLocation": "./.yarn/cache/type-fest-npm-2.16.0-8d42df3332-897fc5f683.zip/node_modules/type-fest/",\
+          "packageDependencies": [\
+            ["type-fest", "npm:2.16.0"]\
           ],\
           "linkType": "HARD"\
         }]\
