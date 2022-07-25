@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
 type State = {
-	timestamp: string,
 	name: string,
 	shop: Record<string, number>,
 	shopExpectedCost: number,
@@ -13,7 +12,6 @@ type State = {
 };
 
 const initialState: State = {
-	timestamp       : new Date( 0 ).toISOString(),
 	name            : '',
 	shop            : {
 		'Gear Skin Box'                       : 0,
@@ -54,8 +52,8 @@ const eventSlice = createSlice( {
 	name         : 'event',
 	initialState,
 	reducers     : {
-		event_reset( state ) {
-			state.name = '';
+		event_reset() {
+			return initialState;
 		},
 		event_newEvent( state, { payload }: PayloadAction<State> ) {
 			return payload;
@@ -64,7 +62,6 @@ const eventSlice = createSlice( {
 			shop: Record<string, number>,
 			total: number
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			state.shop = payload.shop;
 			state.shopExpectedCost = payload.total;
 		},
@@ -76,12 +73,10 @@ const eventSlice = createSlice( {
 			}[],
 			total: number
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			state.daily = payload.daily;
 			state.dailyExpected = payload.total;
 		},
 		event_setPoints( state, { payload }: PayloadAction<number> ) {
-			state.timestamp = new Date().toISOString();
 			state.points = Math.max( payload || 0, 0 );
 		},
 		event_setFarming( state, { payload }: PayloadAction<{
@@ -89,7 +84,6 @@ const eventSlice = createSlice( {
 			points: number,
 			oil: number
 		}[]> ) {
-			state.timestamp = new Date().toISOString();
 			state.farming = payload;
 		},
 		event_modifyFarming( state, { payload }: PayloadAction<{
@@ -97,7 +91,6 @@ const eventSlice = createSlice( {
 			points?: number,
 			oil?: number
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			if ( 'points' in payload ) payload.points = Math.max( payload.points || 0, 0 );
 			if ( 'oil' in payload ) payload.oil = Math.max( payload.oil || 0, 0 );
 			

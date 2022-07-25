@@ -4,10 +4,10 @@ import { ReactNode } from 'react';
 import { PageLinkComponent } from '../../../components/page/link';
 import usePageHeight from '../../../hooks/usePageHeight';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setNewData } from '../../../store/reducers/mainReducer';
+import { setViewed } from '../../../store/reducers/mainReducer';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
-	const newData = useAppSelector( ( { main } ) => main.newData );
+	const viewed = useAppSelector( ( { main } ) => main.viewed );
 	const dispatch = useAppDispatch();
 	
 	return (
@@ -15,13 +15,13 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 			color='secondary'
 			variant='dot'
 			sx={{ mr: 3 }}
-			invisible={!newData[ store ]}>
+			invisible={!viewed[ store ]}>
 			<Button
 				component={PageLinkComponent}
 				href={href}
 				color='inherit'
 				onClick={() => {
-					if ( store ) dispatch( setNewData( { [ store ]: false } ) );
+					if ( store ) dispatch( setViewed( store ) );
 				}}>
 				{children}
 			</Button>

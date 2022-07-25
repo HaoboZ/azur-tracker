@@ -35,12 +35,27 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 			// @ts-ignore
 			autoBackup: state.main.autoSave
 		}
+	} ),
+	12: ( state ) => ( {
+		...state,
+		main    : {
+			...omit( state.main, 'autoBackup' ),
+			// @ts-ignore
+			unViewed: state.main.newData,
+			// @ts-ignore
+			autoSync     : state.main.autoBackup,
+			timestamp    : new Date( 0 ).toISOString(),
+			lastTimestamp: null
+		},
+		event   : omit( state.event, 'timestamp' ),
+		research: omit( state.research, 'timestamp' ),
+		fleet   : omit( state.fleet, 'timestamp' )
 	} )
 };
 
 const persistedReducer = persistReducer<State>( {
 	key            : 'root',
-	version        : 11,
+	version        : 12,
 	storage,
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations, { debug: false } ),

@@ -9,7 +9,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import ComponentComposer, { component } from '../../helpers/componentComposer';
 import AuthProvider from '../../providers/auth';
 import EventsProvider from '../../providers/events';
-import FireDataProvider from '../../providers/fireData';
 import IndicatorProvider from '../../providers/indicator';
 import ModalProvider from '../../providers/modal';
 import ThemeProvider from '../../providers/theme';
@@ -44,7 +43,6 @@ export default function Providers( { emotionCache, children }: {
 			} ),
 			component( IndicatorProvider ),
 			component( AuthProvider ),
-			component( FireDataProvider, { keys: [ 'event', 'research', 'fleet' ] } ),
 			// dynamic
 			component( ModalProvider )
 		]}>

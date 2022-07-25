@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import usePageHeight from '../../../hooks/usePageHeight';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setNewData } from '../../../store/reducers/mainReducer';
+import { setViewed } from '../../../store/reducers/mainReducer';
 
 const items = [
 	{ label: 'Event', icon: <EventIcon/>, href: '/', store: 'event' },
@@ -66,7 +66,7 @@ export default function BottomBar( { children } ) {
 						const item = items[ value ];
 						router.push( item.href ).then();
 						if ( 'store' in item )
-							dispatch( setNewData( { [ item.store ]: false } ) );
+							dispatch( setViewed( item.store ) );
 					}}>
 					{items.map( ( item, index ) => (
 						<BottomNavigationAction
@@ -77,7 +77,7 @@ export default function BottomBar( { children } ) {
 								<Badge
 									color='secondary'
 									variant='dot'
-									invisible={!main.newData[ item.store ]}>
+									invisible={!main.viewed[ item.store ]}>
 									{item.icon}
 								</Badge>
 							)}

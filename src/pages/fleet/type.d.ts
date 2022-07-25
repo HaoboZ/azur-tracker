@@ -13,7 +13,7 @@ export type Ship = {
 } & {
 	love?: number,
 	lvl?: number,
-	equip?: number[][]
+	equip?: [ number, number, number ][]
 };
 
 export type FleetType = {

@@ -2,6 +2,7 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 import {
 	colors,
 	createTheme,
+	CssBaseline,
 	darkScrollbar,
 	PaletteMode,
 	responsiveFontSizes,
@@ -86,6 +87,7 @@ export default function ThemeProvider( { children } ) {
 	
 	return (
 		<MuiThemeProvider theme={theme}>
+			<CssBaseline/>
 			<Head>
 				<meta key='theme' name='theme-color' content={theme.palette.primary.main}/>
 			</Head>

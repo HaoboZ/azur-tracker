@@ -1,9 +1,9 @@
 import { EmotionCache } from '@emotion/cache';
-import { CssBaseline } from '@mui/material';
 import { ReactNode } from 'react';
+import StoreSync from '../../firebase/storeSync';
+import Navigation from './navigation';
 import Providers from './providers';
 import RouterProgress from './routerProgress';
-import Wrapper from './wrapper';
 
 export default function Baseline( { emotionCache, children }: {
 	emotionCache: EmotionCache,
@@ -11,9 +11,9 @@ export default function Baseline( { emotionCache, children }: {
 } ) {
 	return (
 		<Providers emotionCache={emotionCache}>
-			<CssBaseline/>
 			<RouterProgress/>
-			<Wrapper>{children}</Wrapper>
+			<StoreSync keys={[ 'event', 'research', 'fleet' ]}/>
+			<Navigation>{children}</Navigation>
 		</Providers>
 	);
 }

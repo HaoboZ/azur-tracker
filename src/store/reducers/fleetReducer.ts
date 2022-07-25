@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
-	timestamp: string,
 	ships: Record<string, {
 		lvl: number,
 		love: number,
-		equip: number[][] // id, override, tier
+		equip: [ number, number, number ][] // id, override, tier
 	}>,
 	filter: {
 		levelMax: boolean,
@@ -16,14 +15,13 @@ type State = {
 };
 
 const initialState: State = {
-	timestamp: new Date( 0 ).toISOString(),
-	ships    : {},
-	filter   : {
+	ships  : {},
+	filter : {
 		levelMax: true,
 		equipMax: true,
 		level0  : true
 	},
-	version  : undefined
+	version: undefined
 };
 
 const fleetSlice = createSlice( {
@@ -31,18 +29,16 @@ const fleetSlice = createSlice( {
 	initialState,
 	reducers     : {
 		fleet_reset() {
-			return { ...initialState, timestamp: new Date().toISOString() };
+			return initialState;
 		},
 		fleet_setVersion( state, { payload }: PayloadAction<string> ) {
-			state.timestamp = new Date().toISOString();
 			state.version = payload;
 		},
 		fleet_setShips( state, { payload }: PayloadAction<Record<string, {
 			lvl: number,
 			love: number,
-			equip: number[][] // id, override, tier
+			equip: [ number, number, number ][] // id, override, tier
 		}>> ) {
-			state.timestamp = new Date().toISOString();
 			state.ships = payload;
 		},
 		fleet_setShip( state, { payload }: PayloadAction<{
@@ -50,10 +46,9 @@ const fleetSlice = createSlice( {
 			ship: {
 				lvl?: number,
 				love?: number,
-				equip?: number[][]
+				equip?: [ number, number, number ][]
 			}
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			state.ships = {
 				...state.ships,
 				[ payload.name ]: { ...state.ships[ payload.name ], ...payload.ship }
@@ -64,7 +59,6 @@ const fleetSlice = createSlice( {
 			equipMax?: boolean,
 			level0?: boolean
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			state.filter = { ...state.filter, ...payload };
 		}
 	},

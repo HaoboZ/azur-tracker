@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type State = {
-	timestamp: string,
 	ships: Record<string, {
 		devLevel?: number,
 		devStage?: number,
@@ -12,9 +11,8 @@ type State = {
 };
 
 const initialState: State = {
-	timestamp: new Date( 0 ).toISOString(),
-	ships    : {},
-	lastTab  : 0
+	ships  : {},
+	lastTab: 0
 };
 
 const researchSlice = createSlice( {
@@ -22,7 +20,7 @@ const researchSlice = createSlice( {
 	initialState,
 	reducers     : {
 		research_reset() {
-			return { ...initialState, timestamp: new Date().toISOString() };
+			return initialState;
 		},
 		research_modifyShip( state, { payload }: PayloadAction<{
 			ship: string,
@@ -34,7 +32,6 @@ const researchSlice = createSlice( {
 			},
 			maxDev?: number
 		}> ) {
-			state.timestamp = new Date().toISOString();
 			const { item, maxDev } = payload;
 			if ( 'devStage' in item ) {
 				item.devStage = Math.min( Math.max( item.devStage, 0 ), maxDev );
@@ -54,7 +51,6 @@ const researchSlice = createSlice( {
 			};
 		},
 		research_setLastTab( state, { payload }: PayloadAction<number> ) {
-			state.timestamp = new Date().toISOString();
 			state.lastTab = payload;
 		}
 	},

@@ -27,15 +27,15 @@ import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
 import { app } from '../firebase/client';
+import getData from '../firebase/storeSync/getData';
+import setData from '../firebase/storeSync/setData';
 import useNetworkStatus from '../hooks/useNetworkStatus';
 import { useAuth } from '../providers/auth';
 import useAuthButton from '../providers/auth/useAuthButton';
-import getData from '../providers/fireData/getData';
-import setData from '../providers/fireData/setData';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
-import { setAutoBackup, setTheme } from '../store/reducers/mainReducer';
+import { setAutoSync, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
 
 const packageJson = _packageJson as PackageJson;
@@ -76,16 +76,16 @@ export default function Settings() {
 					</ListItem>
 				)}
 				<ListItem>
-					<ListItemText>Auto Backup</ListItemText>
+					<ListItemText>Automatic Cloud Sync</ListItemText>
 					<ListItemSecondaryAction>
 						<Switch
-							checked={main.autoBackup}
-							onChange={( event ) => dispatch( setAutoBackup( event.target.checked ) )}
+							checked={main.autoSync}
+							onChange={( event ) => dispatch( setAutoSync( event.target.checked ) )}
 						/>
 					</ListItemSecondaryAction>
 				</ListItem>
 				<ListItem>
-					<ListItemText>Manual Backup</ListItemText>
+					<ListItemText>Manual Cloud Sync</ListItemText>
 					<ListItemSecondaryAction>
 						<ButtonGroup>
 							<AsyncLoadingButton
@@ -95,7 +95,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => setData( db, key, true ) ) );
+										await setData( db, [ 'event', 'research', 'fleet' ] );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -110,7 +110,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await Promise.all( [ 'event', 'research', 'fleet' ].map( ( key ) => getData( db, key, true ) ) );
+										await getData( db, [ 'event', 'research', 'fleet' ] );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );
