@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
-	const viewed = useAppSelector( ( { main } ) => main.viewed );
+	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
 	const dispatch = useAppDispatch();
 	
 	return (
@@ -15,7 +15,7 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 			color='secondary'
 			variant='dot'
 			sx={{ mr: 3 }}
-			invisible={!viewed[ store ]}>
+			invisible={!unViewed[ store ]}>
 			<Button
 				component={PageLinkComponent}
 				href={href}

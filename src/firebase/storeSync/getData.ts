@@ -14,13 +14,12 @@ export default async function getData( db: Database, keys: string[] ) {
 	const dataRef = ref( db, auth.currentUser.uid );
 	const snapshot = await get( dataRef );
 	if ( !snapshot.exists() ) return;
-	console.log( 'get' );
+	
 	const data = snapshot.val();
 	const state = store.getState();
 	keys.forEach( ( key ) => {
 		const newData = JSON.parse( decompressFromUTF16( data[ key ] ) );
 		if ( !isEqual( state[ key ], newData ) ) {
-			console.log( 'changed', key );
 			store.dispatch( importBackup( key, newData ) );
 		}
 	} );

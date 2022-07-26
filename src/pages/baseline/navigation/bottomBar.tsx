@@ -21,7 +21,7 @@ const items = [
 ];
 
 export default function BottomBar( { children } ) {
-	const main = useAppSelector( ( { main } ) => main );
+	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const height = usePageHeight();
@@ -77,7 +77,7 @@ export default function BottomBar( { children } ) {
 								<Badge
 									color='secondary'
 									variant='dot'
-									invisible={!main.viewed[ item.store ]}>
+									invisible={!unViewed[ item.store ]}>
 									{item.icon}
 								</Badge>
 							)}

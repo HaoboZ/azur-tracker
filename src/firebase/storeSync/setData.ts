@@ -19,6 +19,6 @@ export default async function setData( db: Database, keys: string[] ) {
 	data.timestamp = state.main.timestamp;
 	const dataRef = ref( db, auth.currentUser.uid );
 	await set( dataRef, data );
-	console.log( 'set' );
+	
 	store.dispatch( setLastTimestamp( data.timestamp ) );
 }
