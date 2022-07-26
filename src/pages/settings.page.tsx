@@ -17,7 +17,6 @@ import {
 	Typography
 } from '@mui/material';
 import axios from 'axios';
-import { getDatabase } from 'firebase/database';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { PackageJson } from 'type-fest';
@@ -26,7 +25,6 @@ import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';
 import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
-import { app } from '../firebase/client';
 import getData from '../firebase/storeSync/getData';
 import setData from '../firebase/storeSync/setData';
 import useNetworkStatus from '../hooks/useNetworkStatus';
@@ -39,8 +37,6 @@ import { setAutoSync, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
 
 const packageJson = _packageJson as PackageJson;
-
-const db = getDatabase( app );
 
 // noinspection JSUnusedGlobalSymbols
 export default function Settings() {
@@ -95,7 +91,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await setData( db, [ 'event', 'research', 'fleet' ] );
+										await setData( [ 'event', 'research', 'fleet' ] );
 										enqueueSnackbar( 'Data Successfully Saved', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Save', { variant: 'info' } );
@@ -110,7 +106,7 @@ export default function Settings() {
 									if ( !online ) {
 										enqueueSnackbar( 'Offline' );
 									} else if ( user?.emailVerified ) {
-										await getData( db, [ 'event', 'research', 'fleet' ] );
+										await getData( [ 'event', 'research', 'fleet' ] );
 										enqueueSnackbar( 'Data Successfully Loaded', { variant: 'success' } );
 									} else {
 										enqueueSnackbar( 'Sign In to Load', { variant: 'info' } );

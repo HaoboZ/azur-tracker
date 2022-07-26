@@ -55,7 +55,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	
 	// save
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || loading || main.timestamp === main.lastTimestamp ) return;
+		if ( !networkStatus || !main.autoSync || loading || main.timestamp >= main.lastTimestamp ) return;
 		if ( serverTimestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
 				title  : 'Conflicts Found',
@@ -63,13 +63,13 @@ function Internal( { keys }: { keys: string[] } ) {
 			} );
 			if ( !value ) return;
 		}
-		await indicator( setData( db, keys ) );
+		await indicator( setData( keys ) );
 		setSaving( false );
 	}, [ networkStatus, main.timestamp ] );
 	
 	// load
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || saving || !serverTimestamp || serverTimestamp === main.lastTimestamp ) return;
+		if ( !networkStatus || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
 		setLoading( true );
 		if ( main.timestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
@@ -78,7 +78,7 @@ function Internal( { keys }: { keys: string[] } ) {
 			} );
 			if ( !value ) return setLoading( false );
 		}
-		await getData( db, keys );
+		await getData( keys );
 		setLoading( false );
 	}, [ networkStatus, serverTimestamp ] );
 	

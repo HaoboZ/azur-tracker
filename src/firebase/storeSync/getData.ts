@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase/auth';
-import { Database, get, ref } from 'firebase/database';
+import { get, getDatabase, ref } from 'firebase/database';
 import { isEqual } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
 import { store } from '../../store';
@@ -7,8 +7,9 @@ import { importBackup, setLastTimestamp, setTimestamp } from '../../store/reduce
 import { app } from '../client';
 
 const auth = getAuth( app );
+const db = getDatabase( app );
 
-export default async function getData( db: Database, keys: string[] ) {
+export default async function getData( keys: string[] ) {
 	if ( !auth.currentUser?.uid ) return;
 	
 	const dataRef = ref( db, auth.currentUser.uid );

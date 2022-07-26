@@ -12,4 +12,5 @@ const revalidate: NextApiHandler = async ( req, res ) => {
 		return res.status( 500 ).send( 'Error revalidating' );
 	}
 };
+// noinspection JSUnusedGlobalSymbols
 export default revalidate;
