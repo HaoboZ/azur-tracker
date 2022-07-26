@@ -38,7 +38,6 @@
 		"events"                          : "^3.3.0",
 		"firebase"                        : "^9.9.1",
 		"hash-sum"                        : "^2.0.0",
-		"hash-wasm"                       : "^4.9.0",
 		"intro.js"                        : "^6.0.0",
 		"intro.js-react"                  : "^0.6.0",
 		"lodash-es"                       : "^4.17.21",
