@@ -1,6 +1,6 @@
 import { Dialog } from '@capacitor/dialog';
-import stringify from 'fast-json-stable-stringify';
 import { getDatabase, ref } from 'firebase/database';
+import hashSum from 'hash-sum';
 import { pick } from 'lodash-es';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
@@ -43,19 +43,20 @@ function Internal( { keys }: { keys: string[] } ) {
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
 	}, { dependencies: [ saving ] } );
 	
-	const debouncedSetTimestamp = useDebounce( async () => {
-		dispatch( setTimestamp() );
-		setSaving( true );
-	}, 500 );
+	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	
 	useAfterEffect( () => {
 		if ( loading ) return;
+		setSaving( true );
 		debouncedSetTimestamp();
-	}, [ stringify( data ) ] );
+	}, [ hashSum( data ) ] );
 	
 	// save
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || loading || main.timestamp >= main.lastTimestamp ) return;
+		if ( !networkStatus || !main.autoSync || loading || main.timestamp >= main.lastTimestamp ) {
+			setSaving( false );
+			return;
+		}
 		if ( serverTimestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
 				title  : 'Conflicts Found',

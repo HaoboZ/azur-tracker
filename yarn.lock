@@ -3447,6 +3447,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/hash-sum@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@types/hash-sum@npm:1.0.0"
+  checksum: 8eb446a86ed7a80c6a04f3083396bbbb7b34430ed553be161ff4e8e51d06d6f2755e6d2ffd059ad5ee8e059fbdadc6f838367781a893cc966811fde8f2c5aa47
+  languageName: node
+  linkType: hard
+
 "@types/hoist-non-react-statics@npm:^3.3.0, @types/hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.1
   resolution: "@types/hoist-non-react-statics@npm:3.3.1"
@@ -4302,6 +4309,7 @@ __metadata:
     "@tanem/react-nprogress": ^5.0.8
     "@types/eslint": ^8.4.5
     "@types/events": ^3.0.0
+    "@types/hash-sum": ^1.0.0
     "@types/jest": ^28.1.6
     "@types/lodash-es": ^4.17.6
     "@types/lz-string": ^1.3.34
@@ -4325,8 +4333,8 @@ __metadata:
     eslint: ^8.20.0
     eslint-config-next: ^12.2.3
     events: ^3.3.0
-    fast-json-stable-stringify: ^2.1.0
     firebase: ^9.9.1
+    hash-sum: ^2.0.0
     hash-wasm: ^4.9.0
     intro.js: ^6.0.0
     intro.js-react: ^0.6.0
@@ -4335,7 +4343,6 @@ __metadata:
     lz-string: ^1.4.4
     nanoid: ^4.0.0
     next: ^12.2.3
-    next-compose-plugins: ^2.2.1
     next-pwa: ^5.5.4
     next-sitemap: ^3.1.13
     notistack: ^2.0.5
@@ -4353,6 +4360,7 @@ __metadata:
     redux: ^4.2.0
     redux-persist: ^6.0.0
     redux-persist-transform-compress: ^4.2.0
+    safe-stable-stringify: ^2.3.1
     sass: ^1.54.0
     sortablejs: ^1.15.0
     type-fest: ^2.17.0
@@ -6382,6 +6390,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hash-sum@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hash-sum@npm:2.0.0"
+  checksum: efeeacf09ecbd467202865403c3a1991fa15d4f4903c1148ecbe13223fdbf9ec6d7dc661e17e5ce6e776cd70d67b6ee4c82e0171318962435be45c1155175f3f
+  languageName: node
+  linkType: hard
+
 "hash-wasm@npm:^4.9.0":
   version: 4.9.0
   resolution: "hash-wasm@npm:4.9.0"
@@ -8147,13 +8162,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-compose-plugins@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "next-compose-plugins@npm:2.2.1"
-  checksum: 771762fda2b12b81daf10431cbb494816cff96be02b44009692c6c0eefbacd62cbf51ddb93af8d3380ec00254c6a95d64d10f744d4b9ddadefc21efee7dc69fc
-  languageName: node
-  linkType: hard
-
 "next-pwa@npm:^5.5.4":
   version: 5.5.4
   resolution: "next-pwa@npm:5.5.4"
@@ -9559,6 +9567,13 @@ __metadata:
   version: 5.1.2
   resolution: "safe-buffer@npm:5.1.2"
   checksum: f2f1f7943ca44a594893a852894055cf619c1fbcb611237fc39e461ae751187e7baf4dc391a72125e0ac4fb2d8c5c0b3c71529622e6a58f46b960211e704903c
+  languageName: node
+  linkType: hard
+
+"safe-stable-stringify@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "safe-stable-stringify@npm:2.3.1"
+  checksum: a0a0bad0294c3e2a9d1bf3cf2b1096dfb83c162d09a5e4891e488cce082120bd69161d2a92aae7fc48255290f17700decae9c89a07fe139794e61b5c8b411377
   languageName: node
   linkType: hard
 

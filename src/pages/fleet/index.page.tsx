@@ -1,8 +1,7 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import stringify from 'fast-json-stable-stringify';
-import { crc32 } from 'hash-wasm';
+import hashSum from 'hash-sum';
 import { cloneDeep, groupBy, keyBy, mapValues, pick, reduce, sortBy } from 'lodash-es';
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
@@ -12,7 +11,6 @@ import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
-import useAsyncEffect from '../../hooks/useAsyncEffect';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -41,9 +39,9 @@ export default function Fleet() {
 	const table = useFleetTable( data, equipBetter, setEquipBetter );
 	
 	// resets fleet equip tiers if version changes
-	useAsyncEffect( async () => {
-		const checksum = await crc32( stringify( equipTierData ) );
-		if ( fleet.version === checksum ) return;
+	useEffect( () => {
+		const hash = hashSum( equipTierData );
+		if ( fleet.version === hash ) return;
 		const ships = cloneDeep( fleet.ships );
 		for ( const name in ships ) {
 			const { equip } = ships[ name ];
@@ -53,7 +51,7 @@ export default function Fleet() {
 				delete ships[ name ];
 		}
 		dispatch( fleet_setShips( ships ) );
-		dispatch( fleet_setVersion( checksum ) );
+		dispatch( fleet_setVersion( hash ) );
 	}, [] );
 	
 	// set ship data

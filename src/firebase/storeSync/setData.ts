@@ -1,7 +1,7 @@
-import stringify from 'fast-json-stable-stringify';
 import { getAuth } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { compressToUTF16 } from 'lz-string';
+import stringify from 'safe-stable-stringify';
 import { store } from '../../store';
 import { setLastTimestamp } from '../../store/reducers/mainReducer';
 import { app } from '../client';
