@@ -2,7 +2,7 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 import withPWA from 'next-pwa';
 
 /**
- * @type {import('next/dist/server/config-shared').NextConfig}
+ * @type {import('next').NextConfig}
  */
 const nextConfig = {
 	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
