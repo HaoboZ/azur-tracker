@@ -16,6 +16,7 @@ export default function LoginModal() {
 		if ( user ) closeModal();
 	}, [ user ] );
 	
+	// noinspection JSUnusedGlobalSymbols
 	return (
 		<ResponsiveModalContainer>
 			<StyledFirebaseAuth

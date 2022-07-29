@@ -38,7 +38,6 @@ export default class _Document extends Document {
 	}
 	
 	render() {
-		// noinspection HtmlRequiredTitleElement
 		return (
 			<Html lang='en'>
 				<Head>

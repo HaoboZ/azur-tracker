@@ -1,10 +1,13 @@
+import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
-import { omit } from 'lodash-es';
+import { mapValues, omit } from 'lodash-es';
+import { decompressFromUTF16 } from 'lz-string';
 import {
 	createMigrate,
 	FLUSH,
 	PAUSE,
 	PERSIST,
+	PersistedState,
 	persistReducer,
 	persistStore,
 	PURGE,
@@ -12,9 +15,7 @@ import {
 	REHYDRATE
 } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
-import { PersistedState } from 'redux-persist/es/types';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './reducers';
 
 type State = ReturnType<typeof rootReducer>;
@@ -50,18 +51,40 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 		event   : omit( state.event, 'timestamp' ),
 		research: omit( state.research, 'timestamp' ),
 		fleet   : omit( state.fleet, 'timestamp' )
-	} )
+	} ),
+	13: () => {
+		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
+			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
+		localStorage.removeItem( 'persist:root' );
+		return data;
+	}
 };
 
+// noinspection JSUnusedGlobalSymbols
 const persistedReducer = persistReducer<State>( {
 	key            : 'root',
-	version        : 12,
-	storage,
+	version        : 13,
+	storage        : {
+		getItem   : async ( key ) => {
+			if ( typeof window === 'undefined' ) return;
+			const { value } = await Preferences.get( { key } );
+			return value;
+		},
+		setItem   : async ( key, value ) => {
+			if ( typeof window === 'undefined' ) return;
+			await Preferences.set( { key, value } );
+		},
+		removeItem: async ( key: string ): Promise<void> => {
+			if ( typeof window === 'undefined' ) return;
+			await Preferences.remove( { key } );
+		}
+	},
 	stateReconciler: autoMergeLevel2,
 	migrate        : createMigrate( migrations, { debug: false } ),
 	transforms     : [ createCompressor() ]
 }, rootReducer );
 
+// noinspection JSUnusedGlobalSymbols
 export const store = configureStore( {
 	reducer   : persistedReducer,
 	devTools  : process.env.NODE_ENV === 'development',

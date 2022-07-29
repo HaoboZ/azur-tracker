@@ -1,14 +1,15 @@
 {
-	"name"       : "Azur Lane Tracker",
-	"short_name" : "Azur Tracker",
-	"description": "Tracks Azur Lane Events, Research, and Ship Collection",
-	"categories" : [ "games", "utilities" ],
-	"scope"      : "/",
-	"start_url"  : "/",
-	"display"    : "standalone",
-	"orientation": "portrait",
-	"theme_color": "#039be5",
-	"icons"      : [
+	"name"            : "Azur Lane Tracker",
+	"short_name"      : "Azur Tracker",
+	"description"     : "Tracks Azur Lane Events, Research, and Ship Collection",
+	"categories"      : [ "games", "utilities" ],
+	"scope"           : "/",
+	"start_url"       : "/",
+	"display"         : "standalone",
+	"orientation"     : "portrait",
+	"theme_color"     : "#039be5",
+	"background_color": "#ffffff",
+	"icons"           : [
 		{
 			"src"  : "/icons/icon-192x192.png",
 			"sizes": "192x192",

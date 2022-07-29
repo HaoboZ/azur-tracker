@@ -18,7 +18,7 @@ export default function useAuthButton() {
 	useEvents( 'showAuth', () => showModal( LoginModal, {
 		id      : 'login',
 		maxWidth: 'xs'
-	} ), {} );
+	} ) );
 	
 	return user ? (
 		<AsyncLoadingButton

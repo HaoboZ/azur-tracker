@@ -1,5 +1,4 @@
-import { Storage } from '@capacitor/storage';
-import { getAuth, onIdTokenChanged, sendEmailVerification, User } from 'firebase/auth';
+import { getAuth, sendEmailVerification, User } from 'firebase/auth';
 import { pick } from 'lodash-es';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
@@ -20,15 +19,9 @@ export default function AuthProvider( { children } ) {
 	const savedUser = useAppSelector( ( { main } ) => main.user );
 	const [ user, loading, error ] = useAuthState( auth );
 	
-	useEffect( () => onIdTokenChanged( auth, async ( user ) => {
-		const token = await user?.getIdToken();
-		if ( token ) await Storage.set( { key: 'id_token', value: token } );
-		else await Storage.remove( { key: 'id_token' } );
-	} ), [] );
-	
 	useEffect( () => {
 		if ( loading || error ) return;
-		dispatch( setUser( pick( user, [
+		dispatch( setUser( user ? pick( user, [
 			'apiKey',
 			'displayName',
 			'email',
@@ -39,7 +32,7 @@ export default function AuthProvider( { children } ) {
 			'providerId',
 			'uid',
 			'refreshToken'
-		] ) ) );
+		] ) : null ) );
 		if ( !user || user.emailVerified ) return;
 		const key = enqueueSnackbar( 'Email Not Verified', {
 			variant: 'warning',
