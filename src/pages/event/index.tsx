@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_newEvent } from '../../store/reducers/eventReducer';
 import EventFarming from './farming';
 import EventFields from './fields';
-import { EventType } from './type';
+import type { EventType } from './type';
 
 export default function Event() {
 	const event = useAppSelector( ( { event } ) => event );

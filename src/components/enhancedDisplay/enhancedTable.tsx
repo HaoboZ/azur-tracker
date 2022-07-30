@@ -1,4 +1,5 @@
 import { Add as AddIcon, Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material';
+import type { TableRowProps } from '@mui/material';
 import {
 	Box,
 	Collapse,
@@ -12,14 +13,14 @@ import {
 	TableHead,
 	TableRow,
 	tableRowClasses,
-	TableRowProps,
 	Typography
 } from '@mui/material';
 import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
-import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedTableProps } from './helpers';
+import type { EnhancedDisplayProps, EnhancedTableProps } from './helpers';
+import { _deleteRow, _selectRow } from './helpers';
 
 function ExpandRow( { renderPanel, ...props }: { renderPanel } & TableRowProps ) {
 	const [ open, setOpen ] = useState( false );

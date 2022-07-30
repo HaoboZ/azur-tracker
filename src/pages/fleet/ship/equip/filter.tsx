@@ -1,7 +1,7 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
 import { rarityColors } from '../../../colors';
-import { EquipType } from './type';
+import type { EquipType } from './type';
 
 const typeNames = {
 	T  : 'Torpedo',

@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Row, TableInstance } from 'react-table';
+import type { ReactNode } from 'react';
+import type { Row, TableInstance } from 'react-table';
 import useWideMedia from '../../hooks/useWideMedia';
 import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';

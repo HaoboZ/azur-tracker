@@ -1,7 +1,8 @@
 import { List, ListItem, ListItemButton, Paper } from '@mui/material';
 import { isEqual } from 'lodash-es';
-import { memo, ReactNode } from 'react';
-import { Row, TableInstance } from 'react-table';
+import type { ReactNode } from 'react';
+import { memo } from 'react';
+import type { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 

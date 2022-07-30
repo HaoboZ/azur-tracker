@@ -5,7 +5,7 @@ import FormattedTextField from '../../components/formattedTextField';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_modifyFarming, event_setFarming } from '../../store/reducers/eventReducer';
-import { EventType } from './type';
+import type { EventType } from './type';
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useAppSelector( ( { event } ) => event.farming );

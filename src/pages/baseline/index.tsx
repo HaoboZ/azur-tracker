@@ -1,5 +1,5 @@
-import { EmotionCache } from '@emotion/cache';
-import { ReactNode } from 'react';
+import type { EmotionCache } from '@emotion/cache';
+import type { ReactNode } from 'react';
 import StoreSync from '../../firebase/storeSync';
 import Navigation from './navigation';
 import Providers from './providers';

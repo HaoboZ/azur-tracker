@@ -1,17 +1,10 @@
 import { useMemo } from 'react';
-import {
-	TableOptions,
-	useFilters,
-	useFlexLayout,
-	useGlobalFilter,
-	useRowState,
-	useSortBy,
-	useTable
-} from 'react-table';
+import type { TableOptions } from 'react-table';
+import { useFilters, useFlexLayout, useGlobalFilter, useRowState, useSortBy, useTable } from 'react-table';
 import useColumnProps from '../../helpers/useColumnProps';
 import { useData } from '../../providers/data';
 import fleetColumns from './columns';
-import { FleetType } from './type';
+import type { FleetType } from './type';
 
 export default function useFleetTable( data, equipBetter, setEquipBetter ) {
 	const fleetData = useData<FleetType>();

@@ -1,7 +1,11 @@
-import { Box, Tab, Tabs, TabsProps, useTheme } from '@mui/material';
-import { ComponentType, CSSProperties, Fragment, ReactNode, useEffect, useState } from 'react';
-import SwipeableViews, { SwipeableViewsProps } from 'react-swipeable-views';
-import { bindKeyboard, virtualize, WithBindKeyboardProps, WithVirtualizeProps } from 'react-swipeable-views-utils';
+import type { TabsProps } from '@mui/material';
+import { Box, Tab, Tabs, useTheme } from '@mui/material';
+import type { ComponentType, CSSProperties, ReactNode } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import type { SwipeableViewsProps } from 'react-swipeable-views';
+import SwipeableViews from 'react-swipeable-views';
+import type { WithBindKeyboardProps, WithVirtualizeProps } from 'react-swipeable-views-utils';
+import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import useControlled from '../hooks/useControlled';
 
 type SwipeableTabViewsProps = {

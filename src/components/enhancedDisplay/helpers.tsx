@@ -1,6 +1,6 @@
-import { ButtonProps, ListProps, TableCellProps, TableContainerProps } from '@mui/material';
-import { ReactNode } from 'react';
-import { ActionTitleProps } from './actionTitle';
+import type { ButtonProps, ListProps, TableCellProps, TableContainerProps } from '@mui/material';
+import type { ReactNode } from 'react';
+import type { ActionTitleProps } from './actionTitle';
 
 export type EnhancedDisplayProps<Item> = {
 	title?: ReactNode,

@@ -7,7 +7,7 @@ import { useData } from '../../providers/data';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setShop } from '../../store/reducers/eventReducer';
-import { EventType } from './type';
+import type { EventType } from './type';
 
 export default function ShopModal() {
 	const _shop = useAppSelector( ( { event } ) => event.shop );

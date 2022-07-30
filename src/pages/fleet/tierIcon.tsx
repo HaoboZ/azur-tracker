@@ -4,7 +4,8 @@ import {
 	FavoriteBorder as FavoriteBorderIcon,
 	Star as StarIcon
 } from '@mui/icons-material';
-import { SvgIcon, SvgIconProps } from '@mui/material';
+import type { SvgIconProps } from '@mui/material';
+import { SvgIcon } from '@mui/material';
 import { Fragment } from 'react';
 
 function RingIcon( props: SvgIconProps ) {

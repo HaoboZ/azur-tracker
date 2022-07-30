@@ -1,7 +1,7 @@
 import { Box, Menu, MenuItem, Typography } from '@mui/material';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { rarityColors } from '../../../colors';
-import { EquipType } from './type';
+import type { EquipType } from './type';
 
 export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
 	anchorEl: HTMLElement,

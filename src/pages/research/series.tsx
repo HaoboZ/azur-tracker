@@ -4,7 +4,7 @@ import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { research_modifyShip } from '../../store/reducers/researchReducer';
-import { ResearchShipsType } from './type';
+import type { ResearchShipsType } from './type';
 
 const devLevels = [
 	[ 2, 0, 3, 0 ],

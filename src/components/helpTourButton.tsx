@@ -1,6 +1,8 @@
 import { Help as HelpIcon } from '@mui/icons-material';
-import { IconButton, IconButtonProps } from '@mui/material';
-import { Steps, StepsProps } from 'intro.js-react';
+import type { IconButtonProps } from '@mui/material';
+import { IconButton } from '@mui/material';
+import type { StepsProps } from 'intro.js-react';
+import { Steps } from 'intro.js-react';
 import 'intro.js/introjs.css';
 import 'intro.js/themes/introjs-modern.css';
 import { Fragment, useState } from 'react';

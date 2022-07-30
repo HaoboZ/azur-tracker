@@ -1,6 +1,8 @@
-import { Box, BoxProps, Typography, TypographyProps } from '@mui/material';
-import { ReactNode } from 'react';
-import Actions, { ActionProps } from '../actions';
+import type { BoxProps, TypographyProps } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import type { ReactNode } from 'react';
+import type { ActionProps } from '../actions';
+import Actions from '../actions';
 
 export type ActionTitleProps = {
 	containerProps?: BoxProps,

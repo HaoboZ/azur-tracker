@@ -7,8 +7,8 @@ import PageSection from '../../components/page/section';
 import { useData } from '../../providers/data';
 import { rarityColors } from '../colors';
 import EquipFilter from '../fleet/ship/equip/filter';
-import { EquipType } from '../fleet/ship/equip/type';
-import { FarmType } from './type';
+import type { EquipType } from '../fleet/ship/equip/type';
+import type { FarmType } from './type';
 
 export default function EquipDrop() {
 	const { farmData, equipList } = useData<FarmType>();

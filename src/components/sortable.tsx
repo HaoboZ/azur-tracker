@@ -1,7 +1,9 @@
 import { styled, useTheme } from '@mui/material';
 import { cloneDeep, isEqual, map, omit } from 'lodash-es';
-import { ComponentType, Fragment, HTMLAttributes, ReactHTML, ReactNode, useEffect, useState } from 'react';
-import { ReactSortable, ReactSortableProps } from 'react-sortablejs';
+import type { ComponentType, HTMLAttributes, ReactHTML, ReactNode } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import type { ReactSortableProps } from 'react-sortablejs';
+import { ReactSortable } from 'react-sortablejs';
 
 const StyledReactSortable = styled( ReactSortable )( {} );
 

@@ -21,7 +21,8 @@ import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
-import { _deleteRow, _selectRow, EnhancedDisplayProps, EnhancedListProps } from './helpers';
+import type { EnhancedDisplayProps, EnhancedListProps } from './helpers';
+import { _deleteRow, _selectRow } from './helpers';
 
 function EnhancedList<Item>( {
 	title,

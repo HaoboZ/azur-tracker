@@ -1,6 +1,6 @@
-import { EmotionCache } from '@emotion/cache';
+import type { EmotionCache } from '@emotion/cache';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import DataProvider from '../providers/data';
 import Baseline from './baseline';

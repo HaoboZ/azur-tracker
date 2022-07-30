@@ -2,12 +2,12 @@ import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
 import { mapValues, omit } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
+import type { PersistedState } from 'redux-persist';
 import {
 	createMigrate,
 	FLUSH,
 	PAUSE,
 	PERSIST,
-	PersistedState,
 	persistReducer,
 	persistStore,
 	PURGE,

@@ -19,7 +19,7 @@ import {
 import axios from 'axios';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
-import { PackageJson } from 'type-fest';
+import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
 import PageContainer from '../components/page/container';

@@ -21,10 +21,10 @@ import { fleet_setShip } from '../../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
-import { FleetType, Ship } from '../../type';
+import type { FleetType, Ship } from '../../type';
 import EquipFilter from './filter';
 import EquipTierSelector from './tierSelector';
-import { EquipType } from './type';
+import type { EquipType } from './type';
 
 export default function EquipModal( { info, selectedEquip }: {
 	info: { ship: Ship, index: number },

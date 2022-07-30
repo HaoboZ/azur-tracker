@@ -1,6 +1,6 @@
 import { Star as StarIcon } from '@mui/icons-material';
 import { isNumber, map } from 'lodash-es';
-import { Column } from 'react-table';
+import type { Column } from 'react-table';
 import OverflowTypography from '../../components/overflowTypography';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import { AffinityIcons, TierIcon } from './tierIcon';

@@ -11,8 +11,9 @@ import {
 	TableSortLabel
 } from '@mui/material';
 import { isEqual } from 'lodash-es';
-import { memo, ReactNode, useMemo, useRef } from 'react';
-import { Row, TableInstance } from 'react-table';
+import type { ReactNode } from 'react';
+import { memo, useMemo, useRef } from 'react';
+import type { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
 

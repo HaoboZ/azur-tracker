@@ -1,4 +1,5 @@
-import { getAuth, sendEmailVerification, User } from 'firebase/auth';
+import type { User } from 'firebase/auth';
+import { getAuth, sendEmailVerification } from 'firebase/auth';
 import { pick } from 'lodash-es';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';

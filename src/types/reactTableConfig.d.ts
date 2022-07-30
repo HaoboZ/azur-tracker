@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 
-import {
+import type {
 	UseColumnOrderInstanceProps,
 	UseColumnOrderState,
 	UseExpandedHooks,
@@ -49,7 +49,7 @@ import {
 	UseSortByOptions,
 	UseSortByState
 } from 'react-table';
-import { UseColumnPropsColumnOptions } from '../helpers/useColumnProps';
+import type { UseColumnPropsColumnOptions } from '../helpers/useColumnProps';
 
 declare module 'react-table' {
 	export interface TableOptions<D extends Record<string, unknown>>

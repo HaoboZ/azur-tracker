@@ -1,7 +1,7 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { flatMap, groupBy, keyBy, map, mapValues, sortBy, uniq } from 'lodash-es';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';

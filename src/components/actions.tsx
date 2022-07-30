@@ -1,6 +1,8 @@
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-import { ButtonGroup, ButtonProps, MenuItem, MenuItemProps, MenuList } from '@mui/material';
-import { MouseEventHandler, ReactNode, useMemo } from 'react';
+import type { ButtonProps, MenuItemProps } from '@mui/material';
+import { ButtonGroup, MenuItem, MenuList } from '@mui/material';
+import type { MouseEventHandler, ReactNode } from 'react';
+import { useMemo } from 'react';
 import AsyncLoadingButton from './asyncLoadingButton';
 import ButtonMenu from './buttonMenu';
 

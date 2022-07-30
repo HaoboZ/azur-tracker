@@ -50,7 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/material", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.9.2"],\
             ["@next/bundle-analyzer", "npm:12.2.3"],\
             ["@reduxjs/toolkit", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.8.3"],\
-            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.8"],\
+            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.9"],\
             ["@types/eslint", "npm:8.4.5"],\
             ["@types/events", "npm:3.0.0"],\
             ["@types/hash-sum", "npm:1.0.0"],\
@@ -2730,10 +2730,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:7.18.6", {\
-          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.18.6-6a59ef0d54-8b707b64ae.zip/node_modules/@babel/runtime/",\
+        ["npm:7.18.9", {\
+          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.18.9-28ca6b5f61-36dd736bab.zip/node_modules/@babel/runtime/",\
           "packageDependencies": [\
-            ["@babel/runtime", "npm:7.18.6"],\
+            ["@babel/runtime", "npm:7.18.9"],\
             ["regenerator-runtime", "npm:0.13.9"]\
           ],\
           "linkType": "HARD"\
@@ -5617,18 +5617,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@tanem/react-nprogress", [\
-        ["npm:5.0.8", {\
-          "packageLocation": "./.yarn/cache/@tanem-react-nprogress-npm-5.0.8-3a2764c8eb-e09740ac1f.zip/node_modules/@tanem/react-nprogress/",\
+        ["npm:5.0.9", {\
+          "packageLocation": "./.yarn/cache/@tanem-react-nprogress-npm-5.0.9-9cc473179b-328c5aeaa7.zip/node_modules/@tanem/react-nprogress/",\
           "packageDependencies": [\
-            ["@tanem/react-nprogress", "npm:5.0.8"]\
+            ["@tanem/react-nprogress", "npm:5.0.9"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.8", {\
-          "packageLocation": "./.yarn/__virtual__/@tanem-react-nprogress-virtual-b084537553/0/cache/@tanem-react-nprogress-npm-5.0.8-3a2764c8eb-e09740ac1f.zip/node_modules/@tanem/react-nprogress/",\
+        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.9", {\
+          "packageLocation": "./.yarn/__virtual__/@tanem-react-nprogress-virtual-791bb86912/0/cache/@tanem-react-nprogress-npm-5.0.9-9cc473179b-328c5aeaa7.zip/node_modules/@tanem/react-nprogress/",\
           "packageDependencies": [\
-            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.8"],\
-            ["@babel/runtime", "npm:7.18.6"],\
+            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.9"],\
+            ["@babel/runtime", "npm:7.18.9"],\
             ["@types/react", "npm:18.0.15"],\
             ["@types/react-dom", "npm:18.0.6"],\
             ["hoist-non-react-statics", "npm:3.3.2"],\
@@ -6853,7 +6853,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/material", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.9.2"],\
             ["@next/bundle-analyzer", "npm:12.2.3"],\
             ["@reduxjs/toolkit", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.8.3"],\
-            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.8"],\
+            ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.9"],\
             ["@types/eslint", "npm:8.4.5"],\
             ["@types/events", "npm:3.0.0"],\
             ["@types/hash-sum", "npm:1.0.0"],\

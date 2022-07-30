@@ -1,6 +1,6 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { PageLinkComponent } from '../../../components/page/link';
 import usePageHeight from '../../../hooks/usePageHeight';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';

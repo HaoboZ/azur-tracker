@@ -1,4 +1,4 @@
-import { EquipType } from './ship/equip/type';
+import type { EquipType } from './ship/equip/type';
 
 export type Ship = {
 	id: string,

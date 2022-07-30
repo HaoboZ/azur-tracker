@@ -1,7 +1,7 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { pickBy } from 'lodash-es';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Event from './event';
 
 // noinspection JSUnusedGlobalSymbols

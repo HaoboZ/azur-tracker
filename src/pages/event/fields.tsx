@@ -6,7 +6,7 @@ import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setPoints } from '../../store/reducers/eventReducer';
-import { EventType } from './type';
+import type { EventType } from './type';
 
 const ShopModal = dynamic( () => import( './shopModal' ), { suspense: true } );
 const DailyModal = dynamic( () => import( './dailyModal' ), { suspense: true } );

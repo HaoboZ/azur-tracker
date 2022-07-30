@@ -1,7 +1,7 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { groupBy, pick } from 'lodash-es';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
@@ -10,7 +10,7 @@ import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { research_setLastTab } from '../../store/reducers/researchReducer';
 import ResearchSeries from './series';
-import { ResearchType } from './type';
+import type { ResearchType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {

@@ -12,14 +12,14 @@ import {
 	TextField
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { TableInstance } from 'react-table';
+import type { TableInstance } from 'react-table';
 import useEventListener from '../../hooks/useEventListener';
 import useThrottle from '../../hooks/useThrottle';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import EquipFilter from './ship/equip/filter';
-import { FleetType } from './type';
+import type { FleetType } from './type';
 
 const searchOptions = [
 	// rarity

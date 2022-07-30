@@ -21,8 +21,8 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { fleet_setShip } from '../../../store/reducers/fleetReducer';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
-import { FleetType, Ship } from '../type';
-import { EquipType } from './equip/type';
+import type { FleetType, Ship } from '../type';
+import type { EquipType } from './equip/type';
 
 const EquipModal = dynamic( () => import( './equip/modal' ), { suspense: true } );
 

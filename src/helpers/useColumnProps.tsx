@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react';
-import { Cell, CellPropGetter, FooterPropGetter, HeaderPropGetter, PluginHook } from 'react-table';
+import type { HTMLAttributes } from 'react';
+import type { Cell, CellPropGetter, FooterPropGetter, HeaderPropGetter, PluginHook } from 'react-table';
 
 const useColumnProps: PluginHook<any> = ( hooks ) => {
 	hooks.getHeaderProps.push( getHeaderProps );
