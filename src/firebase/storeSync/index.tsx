@@ -42,7 +42,7 @@ function Internal( { keys }: { keys: string[] } ) {
 		if ( !saving ) return;
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
 	}, { dependencies: [ saving ] } );
-	
+
 	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	
 	useAfterEffect( () => {
@@ -53,7 +53,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	
 	// save
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || loading || main.timestamp >= main.lastTimestamp ) {
+		if ( !networkStatus || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
 			setSaving( false );
 			return;
 		}
