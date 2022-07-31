@@ -42,7 +42,7 @@ function Internal( { keys }: { keys: string[] } ) {
 		if ( !saving ) return;
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
 	}, { dependencies: [ saving ] } );
-
+	
 	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	
 	useAfterEffect( () => {
@@ -54,15 +54,14 @@ function Internal( { keys }: { keys: string[] } ) {
 	// save
 	useAsyncEffect( async () => {
 		if ( !networkStatus || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
-			setSaving( false );
-			return;
+			return setSaving( false );
 		}
 		if ( serverTimestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
 				title  : 'Conflicts Found',
 				message: 'Override cloud data?'
 			} );
-			if ( !value ) return;
+			if ( !value ) return setSaving( false );
 		}
 		await indicator( setData( keys ) );
 		setSaving( false );
@@ -79,7 +78,7 @@ function Internal( { keys }: { keys: string[] } ) {
 			} );
 			if ( !value ) return setLoading( false );
 		}
-		await getData( keys );
+		await indicator( getData( keys ) );
 		setLoading( false );
 	}, [ networkStatus, serverTimestamp ] );
 	
