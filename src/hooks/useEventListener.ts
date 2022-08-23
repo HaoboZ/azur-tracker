@@ -7,10 +7,8 @@ export default function useEventListener(
 	| { addEventListener: Function, removeEventListener: Function },
 	name: string | symbol | keyof WindowEventMap,
 	listener: ( ...args: any[] ) => void,
-	options?: {
-		callOnce?: boolean,
-		dependencies?: DependencyList
-	}
+	dependencies?: DependencyList,
+	callOnce?: boolean
 ) {
 	useEffect( () => {
 		// @ts-ignore
@@ -18,10 +16,10 @@ export default function useEventListener(
 		// @ts-ignore
 		const remove = event.off || event.removeListener || event.removeEventListener;
 		
-		if ( options?.callOnce ) listener();
+		if ( callOnce ) listener();
 		add.bind( event )( name, listener );
 		return () => {
 			remove.bind( event )( name, listener );
 		};
-	}, options?.dependencies || [] );
+	}, dependencies || [] );
 }

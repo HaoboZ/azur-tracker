@@ -40,7 +40,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	useEventListener( window, 'beforeunload', ( e: BeforeUnloadEvent ) => {
 		if ( !saving ) return;
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
-	}, { dependencies: [ saving ] } );
+	}, [ saving ] );
 	
 	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	

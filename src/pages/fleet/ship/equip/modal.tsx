@@ -81,7 +81,7 @@ export default function EquipModal( { info, selectedEquip }: {
 		getTier( equippableData, equipTierData, fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
 		info.ship.equip = shipEquip;
-	}, { dependencies: [ equip, override ] } );
+	}, [ equip, override ] );
 	
 	return (
 		<Fragment>
