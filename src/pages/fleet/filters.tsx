@@ -13,8 +13,7 @@ import {
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import type { TableInstance } from 'react-table';
-import { useThrottle } from 'rooks';
-import useEventListener from '../../hooks/useEventListener';
+import { useThrottle, useWindowEventListener } from 'rooks';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
@@ -75,7 +74,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const searchRef = useRef<HTMLInputElement>();
 	
 	// keydown listener for search
-	useEventListener( window, 'keydown', ( e: KeyboardEvent ) => {
+	useWindowEventListener( 'keydown', ( e: KeyboardEvent ) => {
 		if ( !searchRef.current ) return;
 		if ( e.ctrlKey && e.key === 'f' ) {
 			if ( document.activeElement === searchRef.current ) {

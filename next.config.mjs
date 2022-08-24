@@ -1,5 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
-import withPWA from 'next-pwa';
+import nextPWA from 'next-pwa';
 
 /**
  * @type {import('next').NextConfig}
@@ -23,17 +23,12 @@ const nextConfig = {
 };
 
 const plugins = [
-	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } )
+	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
+	nextPWA( {
+		disable: Boolean( process.env.NEXT_PUBLIC_SERVER_URL ) || process.env.NODE_ENV === 'development',
+		dest   : 'public'
+	} )
 ];
-
-if ( process.env.NODE_ENV !== 'development' ) {
-	plugins.push( withPWA, {
-		pwa: {
-			disable: Boolean( process.env.NEXT_PUBLIC_SERVER_URL ) || process.env.NODE_ENV === 'development',
-			dest   : 'public'
-		}
-	} );
-}
 
 // noinspection JSUnusedGlobalSymbols
 export default plugins.filter( Boolean ).reduceRight( ( acc, plugin ) =>

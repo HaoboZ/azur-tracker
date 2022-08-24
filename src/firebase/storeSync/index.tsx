@@ -4,8 +4,7 @@ import hashSum from 'hash-sum';
 import { pick } from 'lodash-es';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useAsyncEffect, useDebounce, useDidUpdate, useOnline } from 'rooks';
-import useEventListener from '../../hooks/useEventListener';
+import { useAsyncEffect, useDebounce, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
 import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -35,10 +34,10 @@ function Internal( { keys }: { keys: string[] } ) {
 	const [ saving, setSaving ] = useState( false );
 	const [ loading, setLoading ] = useState( false );
 	
-	useEventListener( window, 'beforeunload', ( e: BeforeUnloadEvent ) => {
+	useWindowEventListener( 'beforeunload', ( e: BeforeUnloadEvent ) => {
 		if ( !saving ) return;
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
-	}, [ saving ] );
+	} );
 	
 	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
 	
