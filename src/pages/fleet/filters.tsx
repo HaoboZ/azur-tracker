@@ -69,7 +69,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const { filter, ships } = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
 	
-	const globalFilter = useThrottle( table.setGlobalFilter );
+	const [ globalFilter ] = useThrottle( table.setGlobalFilter );
 	
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	const searchRef = useRef<HTMLInputElement>();
