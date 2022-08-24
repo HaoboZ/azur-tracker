@@ -16,7 +16,7 @@ export default function ScrollTop() {
 					right   : 'calc(env(safe-area-inset-right) + 24px)',
 					mb      : { xs: 8, sm: 0 }
 				}}
-				onClick={() => window.scrollTo( { top: 0, behavior: 'smooth' } )}>
+				onClick={() => window.scroll( { top: 0, behavior: 'smooth' } )}>
 				<KeyboardArrowUpIcon/>
 			</Fab>
 		</Zoom>

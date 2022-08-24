@@ -27,7 +27,6 @@ export default function Research() {
 				setTab={( index ) => dispatch( research_setLastTab( index ) )}
 				renderTabs={Object.keys( researchData )}
 				renderContent={( index ) => <ResearchSeries researchShips={Object.values( researchData )[ index ]}/>}
-				variant='fullWidth'
 			/>
 		</PageContainer>
 	);

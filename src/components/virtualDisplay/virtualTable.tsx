@@ -67,6 +67,7 @@ function VirtualTable<Item extends object>( {
 				<TableBody ref={bodyRef} component='div' {...getTableBodyProps()}>
 					<ReactWindowScroller>
 						{( { ref, outerRef, style, onScroll } ) => (
+							// @ts-ignore
 							<FixedSizeList
 								ref={ref}
 								outerRef={outerRef}

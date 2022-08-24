@@ -39,6 +39,7 @@ export default function SwipeableTabViews( {
 		<Box>
 			<Tabs
 				selectionFollowsFocus
+				variant='scrollable'
 				value={tabValue}
 				onChange={( e, index ) => setTabValue( +index )}
 				{...props}>

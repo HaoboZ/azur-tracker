@@ -19,6 +19,7 @@ function VirtualList<Item extends object>( {
 		<Paper square>
 			<ReactWindowScroller>
 				{( { ref, outerRef, style, onScroll } ) => (
+					// @ts-ignore
 					<FixedSizeList
 						ref={ref}
 						outerRef={outerRef}

@@ -16,7 +16,13 @@ export default function AsyncLoadingButton( { onClick, ...props }: LoadingButton
 					setLoading( true );
 					await onClick?.( arg );
 				} catch ( e ) {
-					enqueueSnackbar( e?.response?.data || e?.message || e, { variant: 'error' } );
+					const error = e?.response?.data || e?.message || e;
+					if ( typeof error === 'string' ) {
+						enqueueSnackbar( error, { variant: 'error' } );
+					} else {
+						console.error( error );
+						enqueueSnackbar( 'An unknown error has occurred', { variant: 'error' } );
+					}
 				} finally {
 					setLoading( false );
 				}

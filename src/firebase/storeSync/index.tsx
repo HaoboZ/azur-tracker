@@ -4,10 +4,8 @@ import hashSum from 'hash-sum';
 import { pick } from 'lodash-es';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useDebounce, useDidUpdate } from 'rooks';
-import useAsyncEffect from '../../hooks/useAsyncEffect';
+import { useAsyncEffect, useDebounce, useDidUpdate, useOnline } from 'rooks';
 import useEventListener from '../../hooks/useEventListener';
-import useNetworkStatus from '../../hooks/useNetworkStatus';
 import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -31,7 +29,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	const { main, data } = useAppSelector( ( { main, ...state } ) => ( { main, data: pick( state, keys ) } ) );
 	const indicator = useIndicator();
 	const user = useAuth();
-	const networkStatus = useNetworkStatus();
+	const online = useOnline();
 	const [ serverTimestamp ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
 	
 	const [ saving, setSaving ] = useState( false );
@@ -52,7 +50,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	
 	// save
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
+		if ( !online || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
 			return setSaving( false );
 		}
 		if ( serverTimestamp !== main.lastTimestamp ) {
@@ -64,11 +62,11 @@ function Internal( { keys }: { keys: string[] } ) {
 		}
 		await indicator( setData( keys ) );
 		setSaving( false );
-	}, [ networkStatus, main.timestamp ] );
+	}, [ online, main.timestamp ] );
 	
 	// load
 	useAsyncEffect( async () => {
-		if ( !networkStatus || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
+		if ( !online || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
 		setLoading( true );
 		if ( main.timestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
@@ -79,7 +77,7 @@ function Internal( { keys }: { keys: string[] } ) {
 		}
 		await indicator( getData( keys ) );
 		setLoading( false );
-	}, [ networkStatus, serverTimestamp ] );
+	}, [ online, serverTimestamp ] );
 	
 	return null;
 }

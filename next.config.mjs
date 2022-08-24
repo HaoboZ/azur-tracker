@@ -23,15 +23,18 @@ const nextConfig = {
 };
 
 const plugins = [
-	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
-	withPWA, {
+	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } )
+];
+
+if ( process.env.NODE_ENV !== 'development' ) {
+	plugins.push( withPWA, {
 		pwa: {
 			disable: Boolean( process.env.NEXT_PUBLIC_SERVER_URL ) || process.env.NODE_ENV === 'development',
 			dest   : 'public'
 		}
-	}
-];
+	} );
+}
 
 // noinspection JSUnusedGlobalSymbols
-export default plugins.reduceRight( ( acc, plugin ) =>
+export default plugins.filter( Boolean ).reduceRight( ( acc, plugin ) =>
 	typeof plugin === 'function' ? plugin( acc ) : ( { ...nextConfig, ...plugin } ), nextConfig );

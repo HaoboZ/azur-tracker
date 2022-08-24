@@ -19,6 +19,7 @@ import {
 import axios from 'axios';
 import Head from 'next/head';
 import { useSnackbar } from 'notistack';
+import { useOnline } from 'rooks';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
@@ -27,7 +28,6 @@ import PageLink from '../components/page/link';
 import PageTitle from '../components/page/title';
 import getData from '../firebase/storeSync/getData';
 import setData from '../firebase/storeSync/setData';
-import useNetworkStatus from '../hooks/useNetworkStatus';
 import { useAuth } from '../providers/auth';
 import useAuthButton from '../providers/auth/useAuthButton';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -44,7 +44,7 @@ export default function Settings() {
 	const dispatch = useAppDispatch();
 	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
-	const online = useNetworkStatus();
+	const online = useOnline();
 	const authButton = useAuthButton();
 	
 	return (

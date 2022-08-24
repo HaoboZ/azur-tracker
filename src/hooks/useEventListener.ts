@@ -7,7 +7,7 @@ export default function useEventListener(
 	| { addEventListener: Function, removeEventListener: Function },
 	name: string | symbol | keyof WindowEventMap,
 	listener: ( ...args: any[] ) => void,
-	dependencies?: DependencyList,
+	deps?: DependencyList,
 	callOnce?: boolean
 ) {
 	useEffect( () => {
@@ -21,5 +21,5 @@ export default function useEventListener(
 		return () => {
 			remove.bind( event )( name, listener );
 		};
-	}, dependencies || [] );
+	}, deps || [] );
 }
