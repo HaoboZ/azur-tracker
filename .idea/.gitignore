@@ -7,7 +7,4 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-# AWS User-specific
-/aws.xml
-
 /git_toolbox_prj.xml
