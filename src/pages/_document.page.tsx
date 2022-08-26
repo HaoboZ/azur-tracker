@@ -47,14 +47,14 @@ export default class _Document extends Document {
 					{'keywords' in packageJson && <meta name='keywords' content={packageJson.keywords.join( ', ' )}/>}
 					{'author' in packageJson && <meta name='author' content={packageJson.author as string}/>}
 					{/*pwa*/}
+					<meta name='mobile-web-app-capable' content='yes'/>
+					<link rel='manifest' href='/app.webmanifest'/>
 					<link rel='shortcut icon' href='/favicon.ico'/>
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>
 					<link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png'/>
-					<meta name='mobile-web-app-capable' content='yes'/>
-					<link rel='manifest' href='/app.webmanifest'/>
 					{/*ios*/}
-					<link rel='apple-touch-icon' href='/icons/apple-touch-icon.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
+					<link rel='apple-touch-icon' href='/icons/apple-touch-icon.png'/>
 					<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
 					{/*safari*/}
 					<link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#039be5'/>
