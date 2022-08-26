@@ -1,7 +1,7 @@
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
-import { forEach, keyBy, map, mapValues, pickBy } from 'lodash-es';
+import { each, keyBy, map, mapValues, pickBy } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
 import PageSection from '../../components/page/section';
 import { useData } from '../../providers/data';
@@ -23,10 +23,12 @@ export default function EquipDrop() {
 	
 	const stages = useMemo( () => pickBy( mapValues( farmData, ( value ) => {
 		const stages: Record<string, number[]> = {};
-		forEach( value, ( value, stageMajor ) => forEach( value, ( value, stageMinor ) => {
-			if ( equip ? value.includes( equip.id ) : true )
-				stages[ `${stageMajor}${stageMinor}` ] = value;
-		} ) );
+		each( value, ( value, stageMajor ) =>
+			each( value, ( value, stageMinor ) => {
+				if ( equip ? value.includes( equip.id ) : true )
+					stages[ `${stageMajor}${stageMinor}` ] = value;
+			} )
+		);
 		return Object.keys( stages ).length ? stages : null;
 	} ) ), [ equip ] );
 	

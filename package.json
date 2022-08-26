@@ -62,7 +62,8 @@
 		"rooks"                           : "^6.4.3",
 		"safe-stable-stringify"           : "^2.3.1",
 		"sass"                            : "^1.54.5",
-		"sortablejs"                      : "^1.15.0"
+		"sortablejs"                      : "^1.15.0",
+		"underscore"                      : "^1.13.4"
 	},
 	"devDependencies": {
 		"@capacitor/android"                : "^4.1.0",
@@ -84,6 +85,7 @@
 		"@types/react-window"               : "^1.8.5",
 		"@types/sass"                       : "^1.43.1",
 		"@types/sortablejs"                 : "^1.13.0",
+		"@types/underscore"                 : "^1.11.4",
 		"@typescript-eslint/eslint-plugin"  : "^5.35.1",
 		"@typescript-eslint/parser"         : "^5.35.1",
 		"cordova-res"                       : "^0.15.4",

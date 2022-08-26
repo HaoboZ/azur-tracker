@@ -1264,6 +1264,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.2"\
       ],\
       [\
+        "@types/underscore",\
+        "npm:1.11.4"\
+      ],\
+      [\
         "@types/use-sync-external-store",\
         "npm:0.0.3"\
       ],\
@@ -3568,6 +3572,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.0.2"\
       ],\
       [\
+        "underscore",\
+        "npm:1.13.4"\
+      ],\
+      [\
         "unicode-canonical-property-names-ecmascript",\
         "npm:2.0.0"\
       ],\
@@ -3843,6 +3851,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-window", "npm:1.8.5"],\
             ["@types/sass", "npm:1.43.1"],\
             ["@types/sortablejs", "npm:1.13.0"],\
+            ["@types/underscore", "npm:1.11.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.35.1"],\
             ["@typescript-eslint/parser", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.35.1"],\
             ["axios", "npm:0.27.2"],\
@@ -3884,7 +3893,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.54.5"],\
             ["sortablejs", "npm:1.15.0"],\
             ["type-fest", "npm:2.19.0"],\
-            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"]\
+            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"],\
+            ["underscore", "npm:1.13.4"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -9652,6 +9662,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/underscore", [\
+        ["npm:1.11.4", {\
+          "packageLocation": "./.yarn/cache/@types-underscore-npm-1.11.4-20333ba8c0-db9f8486bc.zip/node_modules/@types/underscore/",\
+          "packageDependencies": [\
+            ["@types/underscore", "npm:1.11.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/use-sync-external-store", [\
         ["npm:0.0.3", {\
           "packageLocation": "./.yarn/cache/@types-use-sync-external-store-npm-0.0.3-875a91a914-161ddb8eec.zip/node_modules/@types/use-sync-external-store/",\
@@ -10296,6 +10315,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-window", "npm:1.8.5"],\
             ["@types/sass", "npm:1.43.1"],\
             ["@types/sortablejs", "npm:1.13.0"],\
+            ["@types/underscore", "npm:1.11.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.35.1"],\
             ["@typescript-eslint/parser", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.35.1"],\
             ["axios", "npm:0.27.2"],\
@@ -10337,7 +10357,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.54.5"],\
             ["sortablejs", "npm:1.15.0"],\
             ["type-fest", "npm:2.19.0"],\
-            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"]\
+            ["typescript", "patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"],\
+            ["underscore", "npm:1.13.4"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -17781,6 +17802,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["has-bigints", "npm:1.0.2"],\
             ["has-symbols", "npm:1.0.3"],\
             ["which-boxed-primitive", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["underscore", [\
+        ["npm:1.13.4", {\
+          "packageLocation": "./.yarn/cache/underscore-npm-1.13.4-9195880774-6b04f66cd4.zip/node_modules/underscore/",\
+          "packageDependencies": [\
+            ["underscore", "npm:1.13.4"]\
           ],\
           "linkType": "HARD"\
         }]\
