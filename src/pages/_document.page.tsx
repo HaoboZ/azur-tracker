@@ -42,17 +42,18 @@ export default class _Document extends Document {
 			<Html lang='en'>
 				<Head>
 					<meta charSet='utf-8'/>
-					<link rel='manifest' href='/app.webmanifest'/>
 					{/*seo*/}
 					{'description' in packageJson && <meta name='description' content={packageJson.description}/>}
 					{'keywords' in packageJson && <meta name='keywords' content={packageJson.keywords.join( ', ' )}/>}
 					{'author' in packageJson && <meta name='author' content={packageJson.author as string}/>}
-					
 					{/*pwa*/}
+					<link rel='shortcut icon' href='/favicon.ico'/>
 					<link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png'/>
 					<link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png'/>
+					<meta name='mobile-web-app-capable' content='yes'/>
+					<link rel='manifest' href='/app.webmanifest'/>
 					{/*ios*/}
-					<link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png'/>
+					<link rel='apple-touch-icon' href='/icons/apple-touch-icon.png'/>
 					<meta name='apple-mobile-web-app-capable' content='yes'/>
 					<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
 					{/*safari*/}
@@ -60,7 +61,7 @@ export default class _Document extends Document {
 					{/*microsoft*/}
 					<meta name='msapplication-config' content='/browserconfig.xml'/>
 					<meta name='msapplication-TileColor' content='#2d89ef'/>
-					
+					{/*font*/}
 					<link
 						rel='stylesheet'
 						href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
