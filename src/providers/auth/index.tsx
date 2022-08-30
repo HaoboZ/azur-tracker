@@ -1,9 +1,9 @@
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
-import { pick } from 'lodash-es';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { pick } from 'underscore';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
 import { app } from '../../firebase/client';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';

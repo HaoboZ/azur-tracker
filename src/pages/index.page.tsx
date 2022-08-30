@@ -1,7 +1,7 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { pickBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
+import { pick } from 'underscore';
 import Event from './event';
 
 // noinspection JSUnusedGlobalSymbols
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: {
 			eventData      : ( await csvtojson().fromString( eventCSV ) )[ 0 ],
 			eventShopData  : await csvtojson().fromString( eventShopCSV ),
-			eventStagesData: pickBy( ( await csvtojson().fromString( eventStagesCSV ) )[ 0 ], ( val ) => val !== '_' )
+			eventStagesData: pick( ( await csvtojson().fromString( eventStagesCSV ) )[ 0 ], ( val ) => val !== '_' )
 		}
 	};
 };

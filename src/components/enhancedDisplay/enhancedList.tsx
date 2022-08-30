@@ -17,8 +17,8 @@ import {
 	Paper,
 	Typography
 } from '@mui/material';
-import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
+import { isEqual, pick } from 'underscore';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import type { EnhancedDisplayProps, EnhancedListProps } from './helpers';

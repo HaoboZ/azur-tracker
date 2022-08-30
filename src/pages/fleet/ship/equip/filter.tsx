@@ -29,7 +29,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 	setValue: ( value: EquipType ) => void
 } ) {
 	return (
-		<Autocomplete
+		<Autocomplete<EquipType>
 			fullWidth
 			options={equipList}
 			getOptionLabel={( { name }: EquipType ) => name}

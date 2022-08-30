@@ -2,16 +2,17 @@ import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import hashSum from 'hash-sum';
-import { cloneDeep, groupBy, keyBy, mapValues, pick, reduce, sortBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import type { ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
+import { groupBy, indexBy, mapObject, pick, reduce, sortBy } from 'underscore';
 import HelpTourButton from '../../components/helpTourButton';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import VirtualDisplay from '../../components/virtualDisplay';
+import cloneDeep from '../../helpers/cloneDeep';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -149,20 +150,20 @@ export const getStaticProps: GetStaticProps = async () => {
 	
 	return {
 		props: {
-			fleetData     : keyBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
+			fleetData     : indexBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
 				.map( ( val ) => ( {
 					...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
 					tier     : +val.tier,
 					special  : JSON.parse( val.special ),
 					equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
 				} ) ), 'id' ),
-			equipData     : sortBy( await csvtojson().fromString( equipCSV ), [ 'type', ( { id } ) => +id ] )
+			equipData     : sortBy( sortBy( await csvtojson().fromString( equipCSV ), ( { id } ) => +id ), 'type' )
 				.map( ( { id, ...val } ) => ( { id: +id, ...val } ) ),
-			equippableData: keyBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
+			equippableData: indexBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
 				...pick( value, [ 'type', 'tier' ] ),
 				equip: [ value.equip1, value.equip2, value.equip3 ].filter( Boolean )
 			} ) ), 'type' ),
-			equipTierData : mapValues( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
+			equipTierData : mapObject( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
 				( value ) => reduce( value, ( obj, value ) => {
 					let i = 0;
 					for ( const id of [ value.id0, value.id1, value.id2, value.id3, value.id4 ] ) {

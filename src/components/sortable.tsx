@@ -1,9 +1,10 @@
 import { styled, useTheme } from '@mui/material';
-import { cloneDeep, isEqual, map, omit } from 'lodash-es';
 import type { ComponentType, HTMLAttributes, ReactHTML, ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
 import type { ReactSortableProps } from 'react-sortablejs';
 import { ReactSortable } from 'react-sortablejs';
+import { isEqual, map, omit } from 'underscore';
+import cloneDeep from '../helpers/cloneDeep';
 
 const StyledReactSortable = styled( ReactSortable )( {} );
 
@@ -32,7 +33,7 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 			setList={( items: Item[] ) => {
 				if ( isEqual( map( list, 'id' ), map( items, 'id' ) ) ) return;
 				setList( items );
-				setItems( items.map( ( item ) => omit( item, [ 'selected', 'chosen', 'filtered' ] ) as Item ) );
+				setItems( items.map( ( item ) => omit( item, [ 'selected', 'chosen', 'filtered' ] ) as unknown as Item ) );
 				setSkip( true );
 			}}
 			handle='.sortable-handle'

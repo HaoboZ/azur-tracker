@@ -1,10 +1,10 @@
 import { Dialog } from '@capacitor/dialog';
 import { getDatabase, ref } from 'firebase/database';
 import hashSum from 'hash-sum';
-import { pick } from 'lodash-es';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { useAsyncEffect, useDebounce, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
+import { pick } from 'underscore';
 import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';

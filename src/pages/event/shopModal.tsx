@@ -1,8 +1,8 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
-import { cloneDeep } from 'lodash-es';
 import { useMemo, useState } from 'react';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
+import cloneDeep from '../../helpers/cloneDeep';
 import { useData } from '../../providers/data';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';

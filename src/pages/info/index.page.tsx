@@ -1,8 +1,8 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { flatMap, groupBy, keyBy, map, mapValues, sortBy, uniq } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { flatten, groupBy, indexBy, map, mapObject, sortBy, uniq } from 'underscore';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import EquipDrop from './equipDrop';
@@ -28,16 +28,16 @@ export const getStaticProps: GetStaticProps = async () => {
 	const farmData = sortBy( await csvtojson().fromString( farmCSV ), ( { order } ) => +order )
 		.map( ( { id0, id1, id2, id3, id4, id5, id6, id7, ...props } ) =>
 			( { ...props, ids: [ id0, id1, id2, id3, id4, id5, id6, id7 ].filter( Boolean ) } ) );
-	const equipsIndex = keyBy( await csvtojson().fromString( equipCSV ), 'id' );
+	const equipsIndex = indexBy( await csvtojson().fromString( equipCSV ), 'id' );
 	
 	return {
 		props: {
-			farmData : mapValues( groupBy( farmData, 'origin' ),
-				( value ) => mapValues( groupBy( value, 'level' ),
-					( value ) => mapValues( groupBy( value, 'stage' ),
+			farmData : mapObject( groupBy( farmData, 'origin' ),
+				( value ) => mapObject( groupBy( value, 'level' ),
+					( value ) => mapObject( groupBy( value, 'stage' ),
 						( value ) => value[ 0 ].ids ) ) ),
-			equipList: sortBy( uniq( flatMap( map( farmData, 'ids' ) ) )
-				.map( ( val ) => equipsIndex[ val ] ), [ 'type', 'id' ] )
+			equipList: sortBy( sortBy( uniq( flatten( map( farmData, 'ids' ) ) )
+				.map( ( val ) => equipsIndex[ val ] ), 'id' ), 'type' )
 		}
 	};
 };

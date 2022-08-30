@@ -1,6 +1,5 @@
 import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues, omit } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
 import type { PersistedState } from 'redux-persist';
 import {
@@ -16,6 +15,7 @@ import {
 } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { mapObject, omit } from 'underscore';
 import { rootReducer } from './reducers';
 
 type State = ReturnType<typeof rootReducer>;
@@ -24,6 +24,7 @@ export type RootState = State & PersistedState;
 const migrations: Record<string, ( state: RootState ) => RootState> = {
 	10: ( state ) => ( {
 		...state,
+		// @ts-ignore
 		main    : omit( state.main, 'lastSaved' ),
 		event   : { ...state.event, timestamp: new Date( 0 ).toISOString() },
 		research: { ...state.research, timestamp: new Date( 0 ).toISOString() },
@@ -39,7 +40,8 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 	} ),
 	12: ( state ) => ( {
 		...state,
-		main    : {
+		// @ts-ignore
+		main: {
 			...omit( state.main, 'autoBackup' ),
 			// @ts-ignore
 			unViewed: state.main.newData,
@@ -48,12 +50,16 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 			timestamp    : new Date( 0 ).toISOString(),
 			lastTimestamp: null
 		},
-		event   : omit( state.event, 'timestamp' ),
+		// @ts-ignore
+		event: omit( state.event, 'timestamp' ),
+		// @ts-ignore
 		research: omit( state.research, 'timestamp' ),
-		fleet   : omit( state.fleet, 'timestamp' )
+		// @ts-ignore
+		fleet: omit( state.fleet, 'timestamp' )
 	} ),
+	// @ts-ignore
 	13: () => {
-		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
+		const data = mapObject( JSON.parse( localStorage.getItem( 'persist:root' ) ),
 			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
 		localStorage.removeItem( 'persist:root' );
 		return data;

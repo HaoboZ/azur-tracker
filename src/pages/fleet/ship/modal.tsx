@@ -11,9 +11,9 @@ import {
 	Typography,
 	Zoom
 } from '@mui/material';
-import { keyBy } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import { Fragment, useMemo } from 'react';
+import { indexBy } from 'underscore';
 import { useData } from '../../../providers/data';
 import { useModal } from '../../../providers/modal';
 import { ResponsiveModalContainer } from '../../../providers/modal/responsiveModal';
@@ -36,7 +36,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	
-	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
+	const equipIndex = useMemo( () => indexBy( equipData, 'id' ), [] );
 	
 	// calculates tier
 	const tier = useMemo( () => {

@@ -1164,14 +1164,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.0.29"\
       ],\
       [\
-        "@types/lodash",\
-        "npm:4.14.184"\
-      ],\
-      [\
-        "@types/lodash-es",\
-        "npm:4.17.6"\
-      ],\
-      [\
         "@types/long",\
         "npm:4.0.2"\
       ],\
@@ -2628,10 +2620,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.17.21"\
       ],\
       [\
-        "lodash-es",\
-        "npm:4.17.21"\
-      ],\
-      [\
         "lodash.camelcase",\
         "npm:4.3.0"\
       ],\
@@ -3839,7 +3827,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/events", "npm:3.0.0"],\
             ["@types/hash-sum", "npm:1.0.0"],\
             ["@types/jest", "npm:28.1.8"],\
-            ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/lz-string", "npm:1.3.34"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/react", "npm:18.0.17"],\
@@ -3867,7 +3854,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["intro.js", "npm:6.0.0"],\
             ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#patch:intro.js-react@npm%3A0.6.0#.yarn/patches/intro.js-react-npm-0.6.0-22bcd590bb.patch::version=0.6.0&hash=6a2abf&locator=azur-tracker%40workspace%3A."],\
             ["jest", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:29.0.1"],\
-            ["lodash-es", "npm:4.17.21"],\
             ["lz-string", "npm:1.4.4"],\
             ["nanoid", "npm:4.0.0"],\
             ["next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:12.2.5"],\
@@ -9418,25 +9404,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@types/lodash", [\
-        ["npm:4.14.184", {\
-          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.184-aec91d64ae-6d9a4d67f7.zip/node_modules/@types/lodash/",\
-          "packageDependencies": [\
-            ["@types/lodash", "npm:4.14.184"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/lodash-es", [\
-        ["npm:4.17.6", {\
-          "packageLocation": "./.yarn/cache/@types-lodash-es-npm-4.17.6-fd5abbdc74-9bd239dd52.zip/node_modules/@types/lodash-es/",\
-          "packageDependencies": [\
-            ["@types/lodash-es", "npm:4.17.6"],\
-            ["@types/lodash", "npm:4.14.184"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@types/long", [\
         ["npm:4.0.2", {\
           "packageLocation": "./.yarn/cache/@types-long-npm-4.0.2-e7bdc00dd4-d16cde7240.zip/node_modules/@types/long/",\
@@ -10303,7 +10270,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/events", "npm:3.0.0"],\
             ["@types/hash-sum", "npm:1.0.0"],\
             ["@types/jest", "npm:28.1.8"],\
-            ["@types/lodash-es", "npm:4.17.6"],\
             ["@types/lz-string", "npm:1.3.34"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/react", "npm:18.0.17"],\
@@ -10331,7 +10297,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["intro.js", "npm:6.0.0"],\
             ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#patch:intro.js-react@npm%3A0.6.0#.yarn/patches/intro.js-react-npm-0.6.0-22bcd590bb.patch::version=0.6.0&hash=6a2abf&locator=azur-tracker%40workspace%3A."],\
             ["jest", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:29.0.1"],\
-            ["lodash-es", "npm:4.17.21"],\
             ["lz-string", "npm:1.4.4"],\
             ["nanoid", "npm:4.0.0"],\
             ["next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:12.2.5"],\
@@ -14529,15 +14494,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash-npm-4.17.21-6382451519-eb835a2e51.zip/node_modules/lodash/",\
           "packageDependencies": [\
             ["lodash", "npm:4.17.21"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["lodash-es", [\
-        ["npm:4.17.21", {\
-          "packageLocation": "./.yarn/cache/lodash-es-npm-4.17.21-b45832dfce-05cbffad6e.zip/node_modules/lodash-es/",\
-          "packageDependencies": [\
-            ["lodash-es", "npm:4.17.21"]\
           ],\
           "linkType": "HARD"\
         }]\

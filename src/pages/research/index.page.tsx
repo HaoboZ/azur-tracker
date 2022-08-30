@@ -1,8 +1,8 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { groupBy, pick } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { groupBy, pick } from 'underscore';
 import PageContainer from '../../components/page/container';
 import PageTitle from '../../components/page/title';
 import SwipeableTabViews from '../../components/swipeableTabViews';
