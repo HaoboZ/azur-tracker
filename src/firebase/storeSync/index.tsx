@@ -31,8 +31,8 @@ function Internal( { keys }: { keys: string[] } ) {
 	const online = useOnline();
 	const [ serverTimestamp ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
 	
-	const [ saving, setSaving ] = useState( false );
-	const [ loading, setLoading ] = useState( false );
+	const [ saving, setSaving ] = useState( 0 );
+	const [ loading, setLoading ] = useState( 0 );
 	
 	useWindowEventListener( 'beforeunload', ( e: BeforeUnloadEvent ) => {
 		if ( !saving ) return;
@@ -43,39 +43,39 @@ function Internal( { keys }: { keys: string[] } ) {
 	
 	useDidUpdate( () => {
 		if ( loading ) return;
-		setSaving( true );
+		setSaving( ( save ) => save + 1 );
 		debouncedSetTimestamp();
 	}, [ hashSum( data ) ] );
 	
 	// save
 	useAsyncEffect( async () => {
 		if ( !online || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
-			return setSaving( false );
+			return setSaving( ( save ) => Math.max( save - 1, 0 ) );
 		}
 		if ( serverTimestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
 				title  : 'Conflicts Found',
 				message: 'Override cloud data?'
 			} );
-			if ( !value ) return setSaving( false );
+			if ( !value ) return setSaving( ( save ) => Math.max( save - 1, 0 ) );
 		}
 		await indicator( setData( keys ) );
-		setSaving( false );
+		setSaving( ( save ) => Math.max( save - 1, 0 ) );
 	}, [ online, main.timestamp ] );
 	
 	// load
 	useAsyncEffect( async () => {
 		if ( !online || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
-		setLoading( true );
+		setLoading( ( load ) => load + 1 );
 		if ( main.timestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
 				title  : 'Conflicts Found',
 				message: 'Override local data?'
 			} );
-			if ( !value ) return setLoading( false );
+			if ( !value ) return setLoading( ( load ) => Math.max( load - 1, 0 ) );
 		}
 		await indicator( getData( keys ) );
-		setLoading( false );
+		setLoading( ( load ) => Math.max( load - 1, 0 ) );
 	}, [ online, serverTimestamp ] );
 	
 	return null;
