@@ -3,7 +3,7 @@ import { getDatabase, ref } from 'firebase/database';
 import hashSum from 'hash-sum';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useAsyncEffect, useDebounce, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
+import { useAsyncEffect, useDebouncedValue, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
 import { pick } from 'underscore';
 import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
@@ -29,7 +29,8 @@ function Internal( { keys }: { keys: string[] } ) {
 	const indicator = useIndicator();
 	const user = useAuth();
 	const online = useOnline();
-	const [ serverTimestamp ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
+	const [ serverTimestamp, serverLoading ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
+	const [ hash ] = useDebouncedValue( hashSum( data ), 500 );
 	
 	const [ saving, setSaving ] = useState( 0 );
 	const [ loading, setLoading ] = useState( 0 );
@@ -39,17 +40,15 @@ function Internal( { keys }: { keys: string[] } ) {
 		e.returnValue = 'Currently saving, are you sure you want to leave?';
 	} );
 	
-	const debouncedSetTimestamp = useDebounce( () => dispatch( setTimestamp() ), 500 );
-	
 	useDidUpdate( () => {
 		if ( loading ) return;
 		setSaving( ( save ) => save + 1 );
-		debouncedSetTimestamp();
-	}, [ hashSum( data ) ] );
+		dispatch( setTimestamp() );
+	}, [ hash ] );
 	
 	// save
 	useAsyncEffect( async () => {
-		if ( !online || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
+		if ( !online || serverLoading || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
 			return setSaving( ( save ) => Math.max( save - 1, 0 ) );
 		}
 		if ( serverTimestamp !== main.lastTimestamp ) {
@@ -61,11 +60,11 @@ function Internal( { keys }: { keys: string[] } ) {
 		}
 		await indicator( setData( keys ) );
 		setSaving( ( save ) => Math.max( save - 1, 0 ) );
-	}, [ online, main.timestamp ] );
+	}, [ online, serverLoading, main.timestamp ] );
 	
 	// load
 	useAsyncEffect( async () => {
-		if ( !online || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
+		if ( !online || serverLoading || !main.autoSync || saving || !serverTimestamp || serverTimestamp <= main.lastTimestamp ) return;
 		setLoading( ( load ) => load + 1 );
 		if ( main.timestamp !== main.lastTimestamp ) {
 			const { value } = await Dialog.confirm( {
@@ -76,7 +75,7 @@ function Internal( { keys }: { keys: string[] } ) {
 		}
 		await indicator( getData( keys ) );
 		setLoading( ( load ) => Math.max( load - 1, 0 ) );
-	}, [ online, serverTimestamp ] );
+	}, [ online, serverLoading, serverTimestamp ] );
 	
 	return null;
 }
