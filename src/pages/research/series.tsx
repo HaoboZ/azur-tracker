@@ -217,7 +217,7 @@ export default function ResearchSeries( { researchShips }: { researchShips: Rese
 										onFocus={( { target } ) => target.select()}
 									/>
 								</Grid>
-								{item.fate && (
+								{Boolean( item.fate ) && (
 									<Grid item xs={6}>
 										<FormattedTextField
 											type='number'
