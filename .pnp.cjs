@@ -1140,10 +1140,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.1.5"\
       ],\
       [\
-        "@types/hash-sum",\
-        "npm:1.0.0"\
-      ],\
-      [\
         "@types/hoist-non-react-statics",\
         "npm:3.3.1"\
       ],\
@@ -1186,6 +1182,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "@types/node",\
         "npm:18.7.18"\
+      ],\
+      [\
+        "@types/object-hash",\
+        "npm:2.2.1"\
       ],\
       [\
         "@types/parse-json",\
@@ -2144,10 +2144,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.1"\
       ],\
       [\
-        "hash-sum",\
-        "npm:2.0.0"\
-      ],\
-      [\
         "hoist-non-react-statics",\
         "npm:3.3.2"\
       ],\
@@ -2836,6 +2832,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.1.1"\
       ],\
       [\
+        "object-hash",\
+        "npm:3.0.0"\
+      ],\
+      [\
         "object-inspect",\
         "npm:1.12.2"\
       ],\
@@ -3213,7 +3213,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "rooks",\
-        "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.1"\
+        "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.2"\
       ],\
       [\
         "run-parallel",\
@@ -3817,10 +3817,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.13"],\
             ["@types/eslint", "npm:8.4.6"],\
             ["@types/events", "npm:3.0.0"],\
-            ["@types/hash-sum", "npm:1.0.0"],\
             ["@types/jest", "npm:29.0.2"],\
             ["@types/lz-string", "npm:1.3.34"],\
             ["@types/node", "npm:18.7.18"],\
+            ["@types/object-hash", "npm:2.2.1"],\
             ["@types/react", "npm:18.0.20"],\
             ["@types/react-redux", "npm:7.1.24"],\
             ["@types/react-swipeable-views", "npm:0.13.1"],\
@@ -3841,7 +3841,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:12.3.0"],\
             ["events", "npm:3.3.0"],\
             ["firebase", "npm:9.9.4"],\
-            ["hash-sum", "npm:2.0.0"],\
             ["intro.js", "npm:6.0.0"],\
             ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#patch:intro.js-react@npm%3A0.6.0#.yarn/patches/intro.js-react-npm-0.6.0-22bcd590bb.patch::version=0.6.0&hash=6a2abf&locator=azur-tracker%40workspace%3A."],\
             ["jest", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:29.0.3"],\
@@ -3851,6 +3850,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-pwa", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.6.0"],\
             ["next-sitemap", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.1.22"],\
             ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5"],\
+            ["object-hash", "npm:3.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
             ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.3"],\
@@ -3865,7 +3865,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redux", "npm:4.2.0"],\
             ["redux-persist", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:6.0.0"],\
             ["redux-persist-transform-compress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.2.0"],\
-            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.1"],\
+            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.2"],\
             ["safe-stable-stringify", "npm:2.3.1"],\
             ["sass", "npm:1.54.9"],\
             ["sortablejs", "npm:1.15.0"],\
@@ -9350,15 +9350,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@types/hash-sum", [\
-        ["npm:1.0.0", {\
-          "packageLocation": "./.yarn/cache/@types-hash-sum-npm-1.0.0-2fd99d9800-8eb446a86e.zip/node_modules/@types/hash-sum/",\
-          "packageDependencies": [\
-            ["@types/hash-sum", "npm:1.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@types/hoist-non-react-statics", [\
         ["npm:3.3.1", {\
           "packageLocation": "./.yarn/cache/@types-hoist-non-react-statics-npm-3.3.1-c0081332b2-2c0778570d.zip/node_modules/@types/hoist-non-react-statics/",\
@@ -9467,6 +9458,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-18.7.18-5bcc3f839f-8aec61f0f9.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:18.7.18"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/object-hash", [\
+        ["npm:2.2.1", {\
+          "packageLocation": "./.yarn/cache/@types-object-hash-npm-2.2.1-1e19446be3-bbcbf07690.zip/node_modules/@types/object-hash/",\
+          "packageDependencies": [\
+            ["@types/object-hash", "npm:2.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10380,10 +10380,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanem/react-nprogress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.13"],\
             ["@types/eslint", "npm:8.4.6"],\
             ["@types/events", "npm:3.0.0"],\
-            ["@types/hash-sum", "npm:1.0.0"],\
             ["@types/jest", "npm:29.0.2"],\
             ["@types/lz-string", "npm:1.3.34"],\
             ["@types/node", "npm:18.7.18"],\
+            ["@types/object-hash", "npm:2.2.1"],\
             ["@types/react", "npm:18.0.20"],\
             ["@types/react-redux", "npm:7.1.24"],\
             ["@types/react-swipeable-views", "npm:0.13.1"],\
@@ -10404,7 +10404,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:12.3.0"],\
             ["events", "npm:3.3.0"],\
             ["firebase", "npm:9.9.4"],\
-            ["hash-sum", "npm:2.0.0"],\
             ["intro.js", "npm:6.0.0"],\
             ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#patch:intro.js-react@npm%3A0.6.0#.yarn/patches/intro.js-react-npm-0.6.0-22bcd590bb.patch::version=0.6.0&hash=6a2abf&locator=azur-tracker%40workspace%3A."],\
             ["jest", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:29.0.3"],\
@@ -10414,6 +10413,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-pwa", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.6.0"],\
             ["next-sitemap", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.1.22"],\
             ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.0.5"],\
+            ["object-hash", "npm:3.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
             ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.3"],\
@@ -10428,7 +10428,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redux", "npm:4.2.0"],\
             ["redux-persist", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:6.0.0"],\
             ["redux-persist-transform-compress", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.2.0"],\
-            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.1"],\
+            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.2"],\
             ["safe-stable-stringify", "npm:2.3.1"],\
             ["sass", "npm:1.54.9"],\
             ["sortablejs", "npm:1.15.0"],\
@@ -13018,15 +13018,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["hash-sum", [\
-        ["npm:2.0.0", {\
-          "packageLocation": "./.yarn/cache/hash-sum-npm-2.0.0-2216318cf2-efeeacf09e.zip/node_modules/hash-sum/",\
-          "packageDependencies": [\
-            ["hash-sum", "npm:2.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["hoist-non-react-statics", [\
         ["npm:3.3.2", {\
           "packageLocation": "./.yarn/cache/hoist-non-react-statics-npm-3.3.2-e7b709e6c1-b153827042.zip/node_modules/hoist-non-react-statics/",\
@@ -15347,6 +15338,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["object-hash", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/object-hash-npm-3.0.0-d941e0cabe-80b4904bb3.zip/node_modules/object-hash/",\
+          "packageDependencies": [\
+            ["object-hash", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["object-inspect", [\
         ["npm:1.12.2", {\
           "packageLocation": "./.yarn/cache/object-inspect-npm-1.12.2-f125a822c0-a534fc1b85.zip/node_modules/object-inspect/",\
@@ -16720,17 +16720,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["rooks", [\
-        ["npm:7.1.1", {\
-          "packageLocation": "./.yarn/cache/rooks-npm-7.1.1-37ca73166e-bf9d362f0e.zip/node_modules/rooks/",\
+        ["npm:7.1.2", {\
+          "packageLocation": "./.yarn/cache/rooks-npm-7.1.2-5e6b5d93a8-b4abe6af90.zip/node_modules/rooks/",\
           "packageDependencies": [\
-            ["rooks", "npm:7.1.1"]\
+            ["rooks", "npm:7.1.2"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.1", {\
-          "packageLocation": "./.yarn/__virtual__/rooks-virtual-25108f19c6/0/cache/rooks-npm-7.1.1-37ca73166e-bf9d362f0e.zip/node_modules/rooks/",\
+        ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.2", {\
+          "packageLocation": "./.yarn/__virtual__/rooks-virtual-43ed2e2036/0/cache/rooks-npm-7.1.2-5e6b5d93a8-b4abe6af90.zip/node_modules/rooks/",\
           "packageDependencies": [\
-            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.1"],\
+            ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.1.2"],\
             ["@types/react", "npm:18.0.20"],\
             ["@types/react-dom", null],\
             ["lodash.debounce", "npm:4.0.8"],\

@@ -1,6 +1,6 @@
 import { Dialog } from '@capacitor/dialog';
 import { getDatabase, ref } from 'firebase/database';
-import hashSum from 'hash-sum';
+import objectHash from 'object-hash';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { useAsyncEffect, useDebouncedValue, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
@@ -30,7 +30,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	const user = useAuth();
 	const online = useOnline();
 	const [ serverTimestamp, serverLoading ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
-	const [ hash ] = useDebouncedValue( hashSum( data ), 500 );
+	const [ hash ] = useDebouncedValue( objectHash( data ), 500 );
 	
 	const [ saving, setSaving ] = useState( 0 );
 	const [ loading, setLoading ] = useState( 0 );
@@ -45,6 +45,8 @@ function Internal( { keys }: { keys: string[] } ) {
 		setSaving( ( save ) => save + 1 );
 		dispatch( setTimestamp() );
 	}, [ hash ] );
+	
+	console.log( objectHash( data ), hash );
 	
 	// save
 	useAsyncEffect( async () => {

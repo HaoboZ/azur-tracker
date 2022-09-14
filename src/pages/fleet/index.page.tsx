@@ -1,10 +1,10 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import hashSum from 'hash-sum';
 import type { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import objectHash from 'object-hash';
 import type { ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
 import { groupBy, indexBy, mapObject, pick, reduce, sortBy } from 'underscore';
@@ -42,7 +42,7 @@ export default function Fleet() {
 	
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
-		const hash = hashSum( equipTierData );
+		const hash = objectHash( equipTierData );
 		if ( fleet.version === hash ) return;
 		const ships = cloneDeep( fleet.ships );
 		for ( const name in ships ) {
