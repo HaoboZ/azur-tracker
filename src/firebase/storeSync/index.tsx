@@ -46,8 +46,6 @@ function Internal( { keys }: { keys: string[] } ) {
 		dispatch( setTimestamp() );
 	}, [ hash ] );
 	
-	console.log( objectHash( data ), hash );
-	
 	// save
 	useAsyncEffect( async () => {
 		if ( !online || serverLoading || !main.autoSync || loading || main.timestamp <= main.lastTimestamp ) {
