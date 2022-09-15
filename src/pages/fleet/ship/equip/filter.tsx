@@ -20,6 +20,7 @@ const typeNames = {
 	SP : 'Sea Plane',
 	SPS: 'Sea Plane',
 	A  : 'Auxiliary',
+	ASW: 'Anti-Submarine',
 	C  : 'Cargo'
 };
 
