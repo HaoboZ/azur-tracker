@@ -1,15 +1,16 @@
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
+import cookies from 'js-cookie';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { pick } from 'underscore';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
-import { app } from '../../firebase/client';
+import firebaseClientApp from '../../firebase/client';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setUser } from '../../store/reducers/mainReducer';
 
-const auth = getAuth( app );
+const auth = getAuth( firebaseClientApp );
 
 const AuthContext = createContext<Partial<User>>( undefined );
 AuthContext.displayName = 'Auth';
@@ -19,6 +20,8 @@ export default function AuthProvider( { children } ) {
 	const dispatch = useAppDispatch();
 	const savedUser = useAppSelector( ( { main } ) => main.user );
 	const [ user, loading, error ] = useAuthState( auth );
+	
+	useEffect( () => auth.onIdTokenChanged( ( user ) => cookies.set( 'idToken', user?.getIdToken() ) ), [] );
 	
 	useEffect( () => {
 		if ( loading || error ) return;

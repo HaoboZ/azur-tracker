@@ -4,10 +4,10 @@ import { decompressFromUTF16 } from 'lz-string';
 import { isEqual } from 'underscore';
 import { store } from '../../store';
 import { importBackup, setLastTimestamp, setTimestamp } from '../../store/reducers/mainReducer';
-import { app } from '../client';
+import firebaseClientApp from '../client';
 
-const auth = getAuth( app );
-const db = getDatabase( app );
+const auth = getAuth( firebaseClientApp );
+const db = getDatabase( firebaseClientApp );
 
 export default async function getData( keys: string[] ) {
 	if ( !auth.currentUser?.uid ) return;

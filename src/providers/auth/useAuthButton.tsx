@@ -1,7 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth';
 import dynamic from 'next/dynamic';
 import AsyncLoadingButton from '../../components/asyncLoadingButton';
-import { app } from '../../firebase/client';
+import firebaseClientApp from '../../firebase/client';
 import useEventListener from '../../hooks/useEventListener';
 import { useEvents } from '../events';
 import { useModal } from '../modal';
@@ -9,7 +9,7 @@ import { useAuth } from './index';
 
 const LoginModal = dynamic( () => import( './loginModal' ), { suspense: true } );
 
-const auth = getAuth( app );
+const auth = getAuth( firebaseClientApp );
 
 export default function useAuthButton() {
 	const events = useEvents();

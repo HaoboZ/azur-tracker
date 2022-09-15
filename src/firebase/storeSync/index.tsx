@@ -9,11 +9,11 @@ import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setTimestamp } from '../../store/reducers/mainReducer';
-import { app } from '../client';
+import firebaseClientApp from '../client';
 import getData from './getData';
 import setData from './setData';
 
-const db = getDatabase( app );
+const db = getDatabase( firebaseClientApp );
 
 export default function StoreSync( { keys }: { keys: string[] } ) {
 	const user = useAuth();

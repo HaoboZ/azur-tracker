@@ -3,6 +3,7 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mu
 import type { ReactNode } from 'react';
 import { useWindowSize } from 'rooks';
 import { PageLinkComponent } from '../../../components/page/link';
+import { useAuth } from '../../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
@@ -31,6 +32,7 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 
 export default function TitleBar( { children } ) {
 	const { innerHeight } = useWindowSize();
+	const user = useAuth();
 	
 	return (
 		<Box>
@@ -50,6 +52,7 @@ export default function TitleBar( { children } ) {
 					<LinkItem href='/research' store='research'>Research</LinkItem>
 					<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
 					<LinkItem href='/info'>Info</LinkItem>
+					{user?.email === 'haobozhang9081@gmail.com' && <LinkItem href='/tier'>Tier</LinkItem>}
 					<Box flexGrow={1}/>
 					<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
 						<SettingsIcon/>

@@ -30,7 +30,7 @@ export default function Fleet() {
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { fleetData, equippableData, equipTierData } = useData<FleetType>();
-	console.log( equippableData, equipTierData );
+	
 	const [ data, setData ] = useState<Ship[]>( [] );
 	
 	const [ equipBetter, setEquipBetter ] = useState<{

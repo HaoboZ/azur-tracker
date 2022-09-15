@@ -1,12 +1,12 @@
 import { EmailAuthProvider, getAuth, GoogleAuthProvider, sendEmailVerification } from 'firebase/auth';
 import { useEffect } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { app } from '../../firebase/client';
+import firebaseClientApp from '../../firebase/client';
 import { useModalControls } from '../modal';
 import { ResponsiveModalContainer } from '../modal/responsiveModal';
 import { useAuth } from './index';
 
-const auth = getAuth( app );
+const auth = getAuth( firebaseClientApp );
 
 export default function LoginModal() {
 	const user = useAuth();

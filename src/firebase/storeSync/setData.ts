@@ -5,10 +5,10 @@ import stringify from 'safe-stable-stringify';
 import { mapObject, pick } from 'underscore';
 import { store } from '../../store';
 import { setLastTimestamp } from '../../store/reducers/mainReducer';
-import { app } from '../client';
+import firebaseClientApp from '../client';
 
-const auth = getAuth( app );
-const db = getDatabase( app );
+const auth = getAuth( firebaseClientApp );
+const db = getDatabase( firebaseClientApp );
 
 export default async function setData( keys: string[] ) {
 	if ( !auth.currentUser?.uid ) return;
