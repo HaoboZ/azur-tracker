@@ -12,7 +12,7 @@ const db = getDatabase( app );
 export default async function getData( keys: string[] ) {
 	if ( !auth.currentUser?.uid ) return;
 	
-	const dataRef = ref( db, auth.currentUser.uid );
+	const dataRef = ref( db, `users/${auth.currentUser.uid}` );
 	const snapshot = await get( dataRef );
 	if ( !snapshot.exists() ) return;
 	

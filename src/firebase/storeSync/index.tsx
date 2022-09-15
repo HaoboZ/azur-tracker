@@ -29,7 +29,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	const indicator = useIndicator();
 	const user = useAuth();
 	const online = useOnline();
-	const [ serverTimestamp, serverLoading ] = useObjectVal<string>( ref( db, `${user.uid}/timestamp` ) );
+	const [ serverTimestamp, serverLoading ] = useObjectVal<string>( ref( db, `users/${user.uid}/timestamp` ) );
 	const [ hash ] = useDebouncedValue( objectHash( data ), 500 );
 	
 	const [ saving, setSaving ] = useState( 0 );
