@@ -8,11 +8,11 @@ import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useAsyncEffect, useDebouncedValue } from 'rooks';
 import Loading from '../../components/loaders/loading';
 import Page from '../../components/page';
 import Sortable from '../../components/sortable';
 import firebaseClientApp from '../../firebase/client';
+import useEventListener from '../../hooks/useEventListener';
 import { useData } from '../../providers/data';
 import Error from '../_error.page';
 import { rarityColors } from '../colors';
@@ -52,8 +52,6 @@ export default function TierType() {
 	const tier4 = useState<EquipType[]>( [] );
 	const tierN = useState<EquipType[]>( [] );
 	
-	const [ save ] = useDebouncedValue( changed, 1000 );
-	
 	useEffect( () => {
 		if ( loading || error ) return;
 		let equipIds = map( equipData, 'id' );
@@ -72,8 +70,8 @@ export default function TierType() {
 		setUnTiered( equipIds.map( ( id ) => equipIndex[ id ] ) );
 	}, [ loading, error ] );
 	
-	useAsyncEffect( async () => {
-		if ( !save ) return;
+	useEventListener( router.events, 'routeChangeStart', async () => {
+		if ( !changed ) return;
 		await set( tierRef, {
 			0: map( tier0[ 0 ], 'id' ),
 			1: map( tier1[ 0 ], 'id' ),
@@ -82,8 +80,7 @@ export default function TierType() {
 			4: map( tier4[ 0 ], 'id' ),
 			N: map( tierN[ 0 ], 'id' )
 		} );
-		setChanged( false );
-	}, [ save ] );
+	} );
 	
 	if ( loading ) return <Loading/>;
 	if ( error ) return <Error statusCode={error.name} statusText={error.message}/>;
