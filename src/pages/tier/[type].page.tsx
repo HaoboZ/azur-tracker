@@ -86,7 +86,25 @@ export default function TierType() {
 	if ( error ) return <Error statusCode={error.name} statusText={error.message}/>;
 	
 	return (
-		<Page title={router.query.type as string}>
+		<Page
+			title={router.query.type as string}
+			titleProps={{
+				actions: [ {
+					name       : 'Save',
+					onClick    : async () => {
+						await set( tierRef, {
+							0: map( tier0[ 0 ], 'id' ),
+							1: map( tier1[ 0 ], 'id' ),
+							2: map( tier2[ 0 ], 'id' ),
+							3: map( tier3[ 0 ], 'id' ),
+							4: map( tier4[ 0 ], 'id' ),
+							N: map( tierN[ 0 ], 'id' )
+						} );
+						setChanged( false );
+					},
+					buttonProps: { disabled: !changed }
+				} ]
+			}}>
 			<Grid container spacing={2}>
 				<Grid item xs={6}>
 					<Sortable<EquipType>
