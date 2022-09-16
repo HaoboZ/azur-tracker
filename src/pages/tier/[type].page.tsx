@@ -179,9 +179,9 @@ export const getStaticProps: GetStaticProps = async ( { params } ) => {
 		}
 	} );
 	const tierTypes = JSON.parse( `[${tierTypesCSV}]` );
-	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equip&tqx=out:csv&tq=SELECT%20*%20WHERE%20G=%27${tierTypes[ 0 ]}%27`, {
+	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: {
-			sheet: 'Tiers',
+			sheet: 'Equip',
 			tqx  : 'out:csv',
 			key  : 0,
 			tq   : `SELECT * WHERE G='${tierTypes[ 0 ]}'${tierTypes[ 1 ] ? ` OR G='${tierTypes[ 1 ]}'` : ''}`

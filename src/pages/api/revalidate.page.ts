@@ -6,6 +6,7 @@ const revalidate: NextApiHandler = async ( req, res ) => {
 		await res.revalidate( '/research' );
 		await res.revalidate( '/fleet' );
 		await res.revalidate( '/info' );
+		await res.revalidate( '/tier' );
 		return res.send( 'Success' );
 	} catch ( err ) {
 		console.error( err );
