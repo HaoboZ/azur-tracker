@@ -11,8 +11,8 @@ import {
 	Switch,
 	Typography
 } from '@mui/material';
-import { Fragment, useMemo, useState } from 'react';
 import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
+import { Fragment, useMemo, useState } from 'react';
 import useEventListener from '../../../../hooks/useEventListener';
 import { useData } from '../../../../providers/data';
 import { useModalControls } from '../../../../providers/modal';
@@ -81,7 +81,7 @@ export default function EquipModal( { info, selectedEquip }: {
 		getTier( equippableData, equipTierData, fleetData[ info.ship.id ], shipEquip );
 		dispatch( fleet_setShip( { name: info.ship.id, ship: { equip: shipEquip } } ) );
 		info.ship.equip = shipEquip;
-	}, [ equip, override ] );
+	} );
 	
 	return (
 		<Fragment>
