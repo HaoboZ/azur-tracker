@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
+import { useAsyncEffect, useDebouncedValue } from 'rooks';
 import Loading from '../../components/loaders/loading';
 import Page from '../../components/page';
 import Sortable from '../../components/sortable';
@@ -42,7 +43,7 @@ export default function TierType() {
 	const tierRef = ref( db, `tiers/${router.query.type}` );
 	const [ data, loading, error ] = useObjectVal<Record<string, string[]>>( tierRef );
 	
-	const [ disableSave, setDisableSave ] = useState( true );
+	const [ changed, setChanged ] = useState( false );
 	const [ unTiered, setUnTiered ] = useState( [] );
 	const tier0 = useState<EquipType[]>( [] );
 	const tier1 = useState<EquipType[]>( [] );
@@ -50,6 +51,8 @@ export default function TierType() {
 	const tier3 = useState<EquipType[]>( [] );
 	const tier4 = useState<EquipType[]>( [] );
 	const tierN = useState<EquipType[]>( [] );
+	
+	const [ save ] = useDebouncedValue( changed, 1000 );
 	
 	useEffect( () => {
 		if ( loading || error ) return;
@@ -69,29 +72,24 @@ export default function TierType() {
 		setUnTiered( equipIds.map( ( id ) => equipIndex[ id ] ) );
 	}, [ loading, error ] );
 	
+	useAsyncEffect( async () => {
+		if ( !save ) return;
+		await set( tierRef, {
+			0: map( tier0[ 0 ], 'id' ),
+			1: map( tier1[ 0 ], 'id' ),
+			2: map( tier2[ 0 ], 'id' ),
+			3: map( tier3[ 0 ], 'id' ),
+			4: map( tier4[ 0 ], 'id' ),
+			N: map( tierN[ 0 ], 'id' )
+		} );
+		setChanged( false );
+	}, [ save ] );
+	
 	if ( loading ) return <Loading/>;
 	if ( error ) return <Error statusCode={error.name} statusText={error.message}/>;
 	
 	return (
-		<Page
-			title={router.query.type as string}
-			titleProps={{
-				actions: [ {
-					name       : 'Save',
-					onClick    : async () => {
-						await set( tierRef, {
-							0: map( tier0[ 0 ], 'id' ),
-							1: map( tier1[ 0 ], 'id' ),
-							2: map( tier2[ 0 ], 'id' ),
-							3: map( tier3[ 0 ], 'id' ),
-							4: map( tier4[ 0 ], 'id' ),
-							N: map( tierN[ 0 ], 'id' )
-						} );
-						setDisableSave( true );
-					},
-					buttonProps: { disabled: disableSave }
-				} ]
-			}}>
+		<Page title={router.query.type as string}>
 			<Grid container spacing={2}>
 				<Grid item xs={6}>
 					<Sortable<EquipType>
@@ -121,7 +119,7 @@ export default function TierType() {
 								items={tier}
 								setItems={( items ) => {
 									setTier( items );
-									setDisableSave( false );
+									setChanged( true );
 								}}
 								tag={SortGrid}
 								renderItem={( { item, handleClass } ) => (
