@@ -9,9 +9,9 @@ import {
 	ThemeProvider as MuiThemeProvider,
 	useMediaQuery
 } from '@mui/material';
+import { merge } from 'lodash-es';
 import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
-import cloneDeep from '../helpers/cloneDeep';
 import { useAppSelector } from '../store/hooks';
 
 const commonTheme: ThemeOptions = {
@@ -34,14 +34,14 @@ const commonTheme: ThemeOptions = {
 	}
 };
 
-const lightTheme = responsiveFontSizes( createTheme( cloneDeep( commonTheme, {
+const lightTheme = responsiveFontSizes( createTheme( merge( commonTheme, {
 	palette: {
 		mode      : 'light',
 		background: { paper: colors.grey[ '100' ] }
 	}
 } ) ) );
 
-const darkTheme = responsiveFontSizes( createTheme( cloneDeep( commonTheme, {
+const darkTheme = responsiveFontSizes( createTheme( merge( commonTheme, {
 	palette   : {
 		mode      : 'dark',
 		background: { paper: colors.grey[ '900' ] }

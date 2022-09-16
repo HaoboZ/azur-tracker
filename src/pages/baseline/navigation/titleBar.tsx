@@ -52,7 +52,7 @@ export default function TitleBar( { children } ) {
 					<LinkItem href='/research' store='research'>Research</LinkItem>
 					<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
 					<LinkItem href='/info'>Info</LinkItem>
-					{user?.email === 'haobozhang9081@gmail.com' && <LinkItem href='/tier'>Tier</LinkItem>}
+					{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && <LinkItem href='/tier'>Tier</LinkItem>}
 					<Box flexGrow={1}/>
 					<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
 						<SettingsIcon/>

@@ -17,8 +17,8 @@ import {
 	Paper,
 	Typography
 } from '@mui/material';
+import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
-import { isEqual, pick } from 'underscore';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import type { EnhancedDisplayProps, EnhancedListProps } from './helpers';
@@ -46,11 +46,11 @@ function EnhancedList<Item>( {
 	const dataItems = useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( item, index, handle, selected ) => (
+		const row = ( item, index, handleClass, selected ) => (
 			<Fragment>
 				{!removeEditing && editing && sortable && (
 					<ListItemIcon sx={{ pl: 1 }}>
-						<MenuIcon {...handle}/>
+						<MenuIcon className={handleClass}/>
 					</ListItemIcon>
 				)}
 				{renderRow( item, index, removeEditing
@@ -71,12 +71,12 @@ function EnhancedList<Item>( {
 			</Fragment>
 		);
 		
-		const panel = ( { item, index, handle }: { item, index, handle? } ) => {
+		const panel = ( { item, index, handleClass }: { item, index, handleClass? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			return renderPanel ? (
 				<Accordion>
 					<AccordionSummary className='listItem' expandIcon={<ExpandMoreIcon/>}>
-						{row( item, index, handle, selected )}
+						{row( item, index, handleClass, selected )}
 					</AccordionSummary>
 					<AccordionDetails>
 						{renderPanel( item, index )}
@@ -89,7 +89,7 @@ function EnhancedList<Item>( {
 					className='listItem'
 					selected={selected}
 					onClick={() => _selectRow( selectable, item, index, selected, totalSelected )}>
-					{row( item, index, handle, selected )}
+					{row( item, index, handleClass, selected )}
 				</ListItemButton>
 			) : (
 				<ListItemButton
@@ -97,7 +97,7 @@ function EnhancedList<Item>( {
 					component={Paper}
 					className='listItem'
 					selected={selected}>
-					{row( item, index, handle, selected )}
+					{row( item, index, handleClass, selected )}
 				</ListItemButton>
 			);
 		};

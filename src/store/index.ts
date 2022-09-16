@@ -1,5 +1,6 @@
 import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
+import { mapValues, omit } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
 import type { PersistedState } from 'redux-persist';
 import {
@@ -15,7 +16,6 @@ import {
 } from 'redux-persist';
 import createCompressor from 'redux-persist-transform-compress';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import { mapObject, omit } from 'underscore';
 import { rootReducer } from './reducers';
 
 type State = ReturnType<typeof rootReducer>;
@@ -59,7 +59,7 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 	} ),
 	// @ts-ignore
 	13: () => {
-		const data = mapObject( JSON.parse( localStorage.getItem( 'persist:root' ) ),
+		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
 			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
 		localStorage.removeItem( 'persist:root' );
 		return data;

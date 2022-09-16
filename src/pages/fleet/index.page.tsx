@@ -1,18 +1,15 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
+import { cloneDeep, groupBy, keyBy, mapValues, pick, reduce, sortBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import objectHash from 'object-hash';
 import type { ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
-import { groupBy, indexBy, mapObject, pick, reduce, sortBy } from 'underscore';
 import HelpTourButton from '../../components/helpTourButton';
-import PageContainer from '../../components/page/container';
-import PageTitle from '../../components/page/title';
+import Page from '../../components/page';
 import VirtualDisplay from '../../components/virtualDisplay';
-import cloneDeep from '../../helpers/cloneDeep';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -29,7 +26,7 @@ export default function Fleet() {
 	const fleet = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
-	const { fleetData, equippableData, equipTierData } = useData<FleetType>();
+	const { fleetData, equippableData, equipTierData, equipTierHash } = useData<FleetType>();
 	
 	const [ data, setData ] = useState<Ship[]>( [] );
 	
@@ -42,8 +39,7 @@ export default function Fleet() {
 	
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
-		const hash = objectHash( equipTierData );
-		if ( fleet.version === hash ) return;
+		if ( fleet.version === equipTierHash ) return;
 		const ships = cloneDeep( fleet.ships );
 		for ( const name in ships ) {
 			const { equip } = ships[ name ];
@@ -53,7 +49,7 @@ export default function Fleet() {
 				delete ships[ name ];
 		}
 		dispatch( fleet_setShips( ships ) );
-		dispatch( fleet_setVersion( hash ) );
+		dispatch( fleet_setVersion( equipTierHash ) );
 	}, [] );
 	
 	// set ship data
@@ -75,37 +71,38 @@ export default function Fleet() {
 	}, [ fleet ] );
 	
 	return (
-		<PageContainer>
-			<Head><title>Fleet | Azur Lane Tracker</title></Head>
-			<PageTitle actions={(
-				<HelpTourButton
-					steps={[ {
-						element: '#help',
-						intro  : (
-							<Fragment>
-								<Typography>This page will help you</Typography>
-								<ul style={{ textAlign: 'start' }}>
-									<li>track ship information (levels, affection)</li>
-									<li>sort your fleet easily</li>
-									<li>and have decent equips by tier</li>
-								</ul>
+		<Page
+			title='Fleet Tracker'
+			titleBar='Fleet'
+			titleProps={{
+				actions: (
+					<HelpTourButton
+						steps={[ {
+							element: '#help',
+							intro  : (
+								<Fragment>
+									<Typography>This page will help you</Typography>
+									<ul style={{ textAlign: 'start' }}>
+										<li>track ship information (levels, affection)</li>
+										<li>sort your fleet easily</li>
+										<li>and have decent equips by tier</li>
+									</ul>
+									<Typography>
+										For people who want every ship to equip good stuff and level up everyone
+									</Typography>
+								</Fragment>
+							)
+						}, {
+							element: '#farmOil',
+							intro  : (
 								<Typography>
-									For people who want every ship to equip good stuff and level up everyone
+									Calculates amount of oil needed.
 								</Typography>
-							</Fragment>
-						)
-					}, {
-						element: '#farmOil',
-						intro  : (
-							<Typography>
-								Calculates amount of oil needed.
-							</Typography>
-						)
-					} ]}
-				/>
-			)}>
-				Fleet Tracker
-			</PageTitle>
+							)
+						} ]}
+					/>
+				)
+			}}>
 			<FleetFilters table={table}/>
 			<VirtualDisplay
 				{...table}
@@ -137,42 +134,53 @@ export default function Fleet() {
 					}
 				} )}
 			/>
-		</PageContainer>
+		</Page>
 	);
 }
 
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
-	const { data: fleetCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Fleet&tqx=out:csv` );
-	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equip&tqx=out:csv` );
-	const { data: equipabbleCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Equippable&tqx=out:csv` );
-	const { data: equipTierCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Tier&tqx=out:csv` );
+	const { data: fleetCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
+		params: { sheet: 'Fleet', tqx: 'out:csv' }
+	} );
+	const { data: equipCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
+		params: { sheet: 'Equip', tqx: 'out:csv' }
+	} );
+	const { data: equipabbleCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
+		params: { sheet: 'Equippable', tqx: 'out:csv' }
+	} );
+	const { data: equipTierCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
+		params: { sheet: 'Tier', tqx: 'out:csv' }
+	} );
+	
+	const equipTierData = mapValues( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
+		( value ) => reduce( value, ( obj, value ) => {
+			let i = 0;
+			for ( const id of [ value.id0, value.id1, value.id2, value.id3, value.id4 ] ) {
+				if ( id ) {
+					obj[ id ] = [ +value.tier, i++ ];
+				}
+			}
+			return obj;
+		}, {} ) );
 	
 	return {
 		props: {
-			fleetData     : indexBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
+			fleetData     : keyBy( sortBy( await csvtojson().fromString( fleetCSV ), ( { num } ) => +num )
 				.map( ( val ) => ( {
 					...pick( val, [ 'id', 'name', 'rarity', 'faction', 'type' ] ),
 					tier     : +val.tier,
 					special  : JSON.parse( val.special ),
 					equipType: [ val.equip1, val.equip2, val.equip3, val.equip4, val.equip5 ]
 				} ) ), 'id' ),
-			equipData     : sortBy( sortBy( await csvtojson().fromString( equipCSV ), ( { id } ) => +id ), 'type' )
-				.map( ( { id, ...val } ) => ( { id: +id, ...val } ) ),
-			equippableData: indexBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
+			equipData     : sortBy( ( await csvtojson().fromString( equipCSV ) )
+				.map( ( { id, ...val } ) => ( { id: +id, ...val } ) ), 'type', 'id' ),
+			equippableData: keyBy( ( await csvtojson().fromString( equipabbleCSV ) ).map( ( value ) => ( {
 				...pick( value, [ 'type', 'tier' ] ),
 				equip: [ value.equip1, value.equip2, value.equip3 ].filter( Boolean )
 			} ) ), 'type' ),
-			equipTierData : mapObject( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
-				( value ) => reduce( value, ( obj, value ) => {
-					let i = 0;
-					for ( const id of [ value.id0, value.id1, value.id2, value.id3, value.id4 ] ) {
-						if ( id ) {
-							obj[ id ] = [ +value.tier, i++ ];
-						}
-					}
-					return obj;
-				}, {} ) )
+			equipTierData,
+			equipTierHash : objectHash( equipTierData )
 		}
 	};
 };

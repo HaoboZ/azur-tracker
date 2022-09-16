@@ -12,8 +12,7 @@ import {
 	Typography
 } from '@mui/material';
 import { Fragment, useMemo, useState } from 'react';
-import { indexBy, map, sortBy } from 'underscore';
-import cloneDeep from '../../../../helpers/cloneDeep';
+import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
 import useEventListener from '../../../../hooks/useEventListener';
 import { useData } from '../../../../providers/data';
 import { useModalControls } from '../../../../providers/modal';
@@ -35,7 +34,7 @@ export default function EquipModal( { info, selectedEquip }: {
 	const dispatch = useAppDispatch();
 	const { fleetData, equipData, equippableData, equipTierData } = useData<FleetType>();
 	
-	const equipIndex = useMemo( () => indexBy( equipData, 'id' ), [] );
+	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
 	
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
@@ -49,7 +48,7 @@ export default function EquipModal( { info, selectedEquip }: {
 				res[ item.id ] = item;
 				return res;
 			}, {} ),
-			map( sortBy( sortBy( Object.entries( tierList ), ( val ) => val[ 1 ][ 1 ] ), ( val ) => val[ 1 ][ 0 ] ), ( val ) => ( {
+			map( sortBy( Object.entries( tierList ), ( val ) => val[ 1 ][ 0 ], ( val ) => val[ 1 ][ 1 ] ), ( val ) => ( {
 				...equipIndex[ val[ 0 ] ],
 				tier: <TierIcon tier={val[ 1 ][ 0 ] + 1}/>
 			} ) )

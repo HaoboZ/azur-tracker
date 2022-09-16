@@ -1,10 +1,8 @@
 import axios from 'axios';
 import csvtojson from 'csvtojson';
+import { groupBy, pick } from 'lodash-es';
 import type { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { groupBy, pick } from 'underscore';
-import PageContainer from '../../components/page/container';
-import PageTitle from '../../components/page/title';
+import Page from '../../components/page';
 import SwipeableTabViews from '../../components/swipeableTabViews';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -19,22 +17,22 @@ export default function Research() {
 	const { researchData } = useData<ResearchType>();
 	
 	return (
-		<PageContainer>
-			<Head><title>Research | Azur Lane Tracker</title></Head>
-			<PageTitle>Research Tracker</PageTitle>
+		<Page title='Research Tracker' titleBar='Research'>
 			<SwipeableTabViews
 				tab={lastTab}
 				setTab={( index ) => dispatch( research_setLastTab( index ) )}
 				renderTabs={Object.keys( researchData )}
 				renderContent={( index ) => <ResearchSeries researchShips={Object.values( researchData )[ index ]}/>}
 			/>
-		</PageContainer>
+		</Page>
 	);
 }
 
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
-	const { data: researchCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq?sheet=Research&tqx=out:csv` );
+	const { data: researchCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
+		params: { sheet: 'Research', tqx: 'out:csv' }
+	} );
 	
 	return {
 		props: {

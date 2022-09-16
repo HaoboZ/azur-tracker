@@ -15,8 +15,8 @@ import {
 	tableRowClasses,
 	Typography
 } from '@mui/material';
+import { isEqual, pick } from 'lodash-es';
 import { Fragment, memo, useMemo, useState } from 'react';
-import { isEqual, pick } from 'underscore';
 import Sortable from '../sortable';
 import ActionTitle from './actionTitle';
 import type { EnhancedDisplayProps, EnhancedTableProps } from './helpers';
@@ -62,7 +62,7 @@ function EnhancedTable<Item>( {
 	const dataItems = useMemo( () => {
 		const totalSelected = selectable?.selected.length;
 		
-		const row = ( { item, index, handle }: { item, index, handle? } ) => {
+		const row = ( { item, index, handleClass }: { item, index, handleClass? } ) => {
 			const selected = selectable?.selected.includes( item?.id ?? index );
 			
 			return (
@@ -73,7 +73,7 @@ function EnhancedTable<Item>( {
 					onClick={selectable?.setSelected && ( () => _selectRow( selectable, item, index, selected, totalSelected ) )}>
 					{sortable && (
 						<TableCell>
-							<MenuIcon {...handle}/>
+							<MenuIcon className={handleClass}/>
 						</TableCell>
 					)}
 					{columns( item, index ).filter( Boolean ).map( ( cell, index ) => (

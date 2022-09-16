@@ -1,10 +1,10 @@
 import { List, ListItem, ListItemButton, Paper } from '@mui/material';
+import { isEqual } from 'lodash-es';
 import type { ReactNode } from 'react';
 import { memo } from 'react';
 import type { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
-import { isEqual } from 'underscore';
 
 function VirtualList<Item extends object>( {
 	rows,

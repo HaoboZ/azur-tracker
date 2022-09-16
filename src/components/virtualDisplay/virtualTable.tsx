@@ -10,12 +10,12 @@ import {
 	tableRowClasses,
 	TableSortLabel
 } from '@mui/material';
+import { isEqual } from 'lodash-es';
 import type { ReactNode } from 'react';
 import { memo, useMemo, useRef } from 'react';
 import type { Row, TableInstance } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import { ReactWindowScroller } from 'react-window-scroller';
-import { isEqual } from 'underscore';
 
 function VirtualTable<Item extends object>( {
 	getTableProps,

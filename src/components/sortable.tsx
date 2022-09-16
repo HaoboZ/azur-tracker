@@ -1,18 +1,19 @@
+import type { SxProps } from '@mui/material';
 import { styled, useTheme } from '@mui/material';
-import type { ComponentType, HTMLAttributes, ReactHTML, ReactNode } from 'react';
+import { cloneDeep, isEqual, map, omit } from 'lodash-es';
+import type { ComponentType, ReactHTML, ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
 import type { ReactSortableProps } from 'react-sortablejs';
 import { ReactSortable } from 'react-sortablejs';
-import { isEqual, map, omit } from 'underscore';
-import cloneDeep from '../helpers/cloneDeep';
 
 const StyledReactSortable = styled( ReactSortable )( {} );
 
-export default function Sortable<Item extends { id: string | number }>( { items, setItems, renderItem, ...props }: {
+export default function Sortable<Item extends { id: string | number }>( { items, setItems, renderItem, sx, ...props }: {
 	items: Item[],
 	setItems: ( items: Item[] ) => void,
-	renderItem: ( props: { item: Item, index: number, handle: HTMLAttributes<any> } ) => ReactNode,
-	tag?: ComponentType | keyof ReactHTML
+	renderItem: ( props: { item: Item, index: number, handleClass: string } ) => ReactNode,
+	tag?: ComponentType | keyof ReactHTML,
+	sx?: SxProps
 } & Omit<ReactSortableProps<Item>, 'tag' | 'list' | 'setList'> ) {
 	const theme = useTheme();
 	
@@ -37,12 +38,12 @@ export default function Sortable<Item extends { id: string | number }>( { items,
 				setSkip( true );
 			}}
 			handle='.sortable-handle'
-			sx={{ '.sortable-ghost': { bgcolor: ( { palette } ) => `${palette.primary.main} !important` } }}
+			sx={{ '.sortable-ghost': { bgcolor: ( { palette } ) => `${palette.primary.main} !important` }, ...sx }}
 			animation={theme.transitions.duration.shorter}
 			{...props as any}>
 			{list.map( ( item, index ) => (
 				<Fragment key={item.id}>
-					{renderItem( { item, index, handle: { className: 'sortable-handle' } } )}
+					{renderItem( { item, index, handleClass: 'sortable-handle' } )}
 				</Fragment>
 			) )}
 		</StyledReactSortable>

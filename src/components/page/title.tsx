@@ -4,11 +4,13 @@ import type { ReactNode } from 'react';
 import type { ActionProps } from '../actions';
 import Actions from '../actions';
 
-export default function PageTitle( { actions, listItemProps, children, max, ...props }: {
+export type PageTitleProps = {
 	actions?: ActionProps[] | ReactNode,
 	max?: number,
 	listItemProps?: ListItemProps<'div'>
-} & ListItemTextProps ) {
+} & ListItemTextProps;
+
+export default function PageTitle( { actions, listItemProps, children, max, ...props }: PageTitleProps ) {
 	return (
 		<ListItem component='div' {...listItemProps}>
 			<ListItemText

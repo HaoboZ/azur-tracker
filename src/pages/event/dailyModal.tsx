@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@mui/material';
+import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { useMemo, useState } from 'react';
 import EnhancedDisplay from '../../components/enhancedDisplay';
 import FormattedTextField from '../../components/formattedTextField';
-import cloneDeep from '../../helpers/cloneDeep';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setDaily } from '../../store/reducers/eventReducer';

@@ -45,7 +45,8 @@ export default function PageBack( { confirm, onClick, back }: {
 	
 	if ( !back && wide ) {
 		return (
-			<Breadcrumbs>
+			<Breadcrumbs sx={{ pt: 1 }}>
+				<div/>
 				{routes.map( ( { href, name }, index ) => (
 					<PageLink
 						key={index}

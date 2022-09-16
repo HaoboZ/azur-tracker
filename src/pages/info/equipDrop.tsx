@@ -1,8 +1,8 @@
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
+import { each, keyBy, map, mapValues } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
-import { each, indexBy, map, mapObject } from 'underscore';
 import PageSection from '../../components/page/section';
 import { useData } from '../../providers/data';
 import { rarityColors } from '../colors';
@@ -18,10 +18,10 @@ export default function EquipDrop() {
 	
 	const [ equip, setEquip ] = useState<EquipType>( null );
 	
-	const equipIndex = useMemo( () => indexBy( equipList, 'id' ), [] );
+	const equipIndex = useMemo( () => keyBy( equipList, 'id' ), [] );
 	const treeKeys = useMemo( () => map( farmData, ( _, level ) => level ), [] );
 	
-	const stages = useMemo( () => mapObject( farmData, ( value ) => {
+	const stages = useMemo( () => mapValues( farmData, ( value ) => {
 		const stages: Record<string, number[]> = {};
 		each( value, ( value, stageMajor ) =>
 			each( value, ( value, stageMinor ) => {

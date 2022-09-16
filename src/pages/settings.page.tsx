@@ -17,15 +17,13 @@ import {
 	Typography
 } from '@mui/material';
 import axios from 'axios';
-import Head from 'next/head';
 import { useSnackbar } from 'notistack';
 import { useOnline } from 'rooks';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
 import AsyncLoadingButton from '../components/asyncLoadingButton';
-import PageContainer from '../components/page/container';
+import Page from '../components/page';
 import PageLink from '../components/page/link';
-import PageTitle from '../components/page/title';
 import getData from '../firebase/storeSync/getData';
 import setData from '../firebase/storeSync/setData';
 import { useAuth } from '../providers/auth';
@@ -48,14 +46,14 @@ export default function Settings() {
 	const authButton = useAuthButton();
 	
 	return (
-		<PageContainer>
-			<Head><title>Settings | Azur Lane Tracker</title></Head>
-			<PageTitle actions={user?.email === 'haobozhang9081@gmail.com' ? [ {
-				name   : 'Revalidate',
-				onClick: () => axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate` )
-			} ] : undefined}>
-				Settings
-			</PageTitle>
+		<Page
+			title='Settings'
+			titleProps={{
+				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
+					name   : 'Revalidate',
+					onClick: () => axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate` )
+				} ] : undefined
+			}}>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				{online ? (
 					<ListItem>
@@ -216,6 +214,6 @@ export default function Settings() {
 				</ListItem>
 			</List>
 			<Typography variant='subtitle2' textAlign='right' px={2}>v{packageJson.version}</Typography>
-		</PageContainer>
+		</Page>
 	);
 }
