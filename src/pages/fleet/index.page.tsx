@@ -1,7 +1,8 @@
 import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { cloneDeep, groupBy, keyBy, mapValues, pick, reduce, sortBy } from 'lodash-es';
+import { getDatabase } from 'firebase-admin/database';
+import { cloneDeep, keyBy, mapValues, pick, sortBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import objectHash from 'object-hash';
@@ -10,6 +11,7 @@ import { Fragment, useEffect, useState } from 'react';
 import HelpTourButton from '../../components/helpTourButton';
 import Page from '../../components/page';
 import VirtualDisplay from '../../components/virtualDisplay';
+import firebaseServerApp from '../../firebase/server';
 import { useData } from '../../providers/data';
 import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -153,16 +155,15 @@ export const getStaticProps: GetStaticProps = async () => {
 		params: { sheet: 'Tier', tqx: 'out:csv' }
 	} );
 	
-	const equipTierData = mapValues( groupBy( await csvtojson().fromString( equipTierCSV ), 'type' ),
-		( value ) => reduce( value, ( obj, value ) => {
-			let i = 0;
-			for ( const id of [ value.id0, value.id1, value.id2, value.id3, value.id4 ] ) {
-				if ( id ) {
-					obj[ id ] = [ +value.tier, i++ ];
-				}
-			}
-			return obj;
-		}, {} ) );
+	const db = getDatabase( firebaseServerApp );
+	const snapshot = await db.ref( 'tiers' ).get();
+	
+	const equipTierData = mapValues( snapshot.val(), ( tiers ) => tiers.reduce( ( acc, equips, tier ) => {
+		equips.forEach( ( equip, index ) => {
+			acc[ equip ] = [ tier, index ];
+		} );
+		return acc;
+	}, {} ) );
 	
 	return {
 		props: {
