@@ -2,7 +2,7 @@ import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
-import { cloneDeep, keyBy, mapValues, pick, sortBy } from 'lodash-es';
+import { cloneDeep, keyBy, mapValues, omit, pick, sortBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import objectHash from 'object-hash';
@@ -153,12 +153,13 @@ export const getStaticProps: GetStaticProps = async () => {
 	} );
 	
 	const db = getDatabase( firebaseServerApp );
-	const snapshot = await db.ref( 'tiers' ).get();
+	const equipTier = ( await db.ref( 'tiers' ).get() ).val();
 	
-	const equipTierData = mapValues( snapshot.val(), ( tiers ) => tiers.reduce( ( acc, equips, tier ) => {
-		equips.forEach( ( equip, index ) => acc[ equip ] = [ tier, index ] );
-		return acc;
-	}, {} ) );
+	const equipTierData = mapValues( equipTier, ( tiers ) => Object.values( omit( tiers, 'N' ) )
+		.reduce( ( acc, equips, tier ) => {
+			equips.forEach( ( equip, index ) => acc[ equip ] = [ tier, index ] );
+			return acc;
+		}, {} ) );
 	
 	return {
 		props: {
