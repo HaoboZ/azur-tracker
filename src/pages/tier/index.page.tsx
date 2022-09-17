@@ -41,7 +41,7 @@ export default function Tier() {
 // noinspection JSUnusedGlobalSymbols
 export const getStaticProps: GetStaticProps = async () => {
 	const { data } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
-		params: { sheet: 'Tiers', tqx: 'out:csv' }
+		params: { sheet: 'Tier', tqx: 'out:csv' }
 	} );
 	
 	return { props: { tierTypesData: map( await csvtojson().fromString( data ), 'type' ) } };

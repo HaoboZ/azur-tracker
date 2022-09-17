@@ -160,7 +160,7 @@ export default function TierType() {
 // noinspection JSUnusedGlobalSymbols
 export const getStaticPaths: GetStaticPaths = async () => {
 	const { data } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
-		params: { sheet: 'Tiers', tqx: 'out:csv' }
+		params: { sheet: 'Tier', tqx: 'out:csv' }
 	} );
 	
 	return {
@@ -173,7 +173,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ( { params } ) => {
 	const { data: tierTypesCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: {
-			sheet: 'Tiers',
+			sheet: 'Tier',
 			tqx  : 'out:csv',
 			tq   : `SELECT B,C WHERE A='${params.type as string}'`
 		}

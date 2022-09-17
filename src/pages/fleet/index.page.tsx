@@ -151,17 +151,12 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: equipabbleCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Equippable', tqx: 'out:csv' }
 	} );
-	const { data: equipTierCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
-		params: { sheet: 'Tier', tqx: 'out:csv' }
-	} );
 	
 	const db = getDatabase( firebaseServerApp );
 	const snapshot = await db.ref( 'tiers' ).get();
 	
 	const equipTierData = mapValues( snapshot.val(), ( tiers ) => tiers.reduce( ( acc, equips, tier ) => {
-		equips.forEach( ( equip, index ) => {
-			acc[ equip ] = [ tier, index ];
-		} );
+		equips.forEach( ( equip, index ) => acc[ equip ] = [ tier, index ] );
 		return acc;
 	}, {} ) );
 	
