@@ -14,8 +14,6 @@ import { isEqual } from 'lodash-es';
 import type { ReactNode } from 'react';
 import { memo, useMemo, useRef } from 'react';
 import type { Row, TableInstance } from 'react-table';
-import { FixedSizeList } from 'react-window';
-import { ReactWindowScroller } from 'react-window-scroller';
 
 function VirtualTable<Item extends object>( {
 	getTableProps,
@@ -25,7 +23,7 @@ function VirtualTable<Item extends object>( {
 	prepareRow,
 	onClick
 }: { onClick?: ( row: Row<Item> ) => void } & TableInstance<Item> ) {
-	const bodyRef = useRef<HTMLDivElement>();
+	const bodyRef = useRef<HTMLTableSectionElement>();
 	
 	const headerStyle = useMemo( () => {
 		const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
@@ -35,23 +33,20 @@ function VirtualTable<Item extends object>( {
 	return (
 		<TableContainer component={Paper}>
 			<Table
-				component='div'
 				size='small'
 				sx={{
 					[ `.${tableRowClasses.hover}:hover` ]: onClick ? { cursor: 'pointer' } : undefined,
 					[ `.${tableCellClasses.root}` ]      : { display: 'flex', alignItems: 'center', px: 1 }
 				}}
 				{...getTableProps()}>
-				<TableHead component='div'>
+				<TableHead>
 					{headerGroups.map( ( headerGroup ) => (
 						<TableRow
 							key={headerGroup.id}
-							component='div'
-							{...headerGroup.getHeaderGroupProps( { style: headerStyle } )}>
+							{...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map( ( column ) => (
 								<TableCell
 									key={column.id}
-									component='div'
 									{...column.getHeaderProps( column.getSortByToggleProps() )}>
 									<TableSortLabel
 										active={column.isSorted}
@@ -64,39 +59,23 @@ function VirtualTable<Item extends object>( {
 						</TableRow>
 					) )}
 				</TableHead>
-				<TableBody ref={bodyRef} component='div' {...getTableBodyProps()}>
-					<ReactWindowScroller>
-						{( { ref, outerRef, style, onScroll } ) => (
-							// @ts-ignore
-							<FixedSizeList
-								ref={ref}
-								outerRef={outerRef}
-								style={style}
-								height={window.innerHeight}
-								width='100%'
-								itemCount={rows.length}
-								itemSize={35}
-								onScroll={onScroll}>
-								{( { index, style } ) => {
-									const row = rows[ index ];
-									prepareRow( row );
-									return (
-										<TableRow
-											hover
-											component='div'
-											onClick={() => onClick?.( row )}
-											{...row.getRowProps( { style } )}>
-											{row.cells.map( ( cell, i ) => (
-												<TableCell key={i} component='div' {...cell.getCellProps()}>
-													{cell.render( 'Cell' ) as ReactNode}
-												</TableCell>
-											) )}
-										</TableRow>
-									);
-								}}
-							</FixedSizeList>
-						)}
-					</ReactWindowScroller>
+				<TableBody ref={bodyRef} {...getTableBodyProps()}>
+					{rows.map( ( row, index ) => {
+						prepareRow( row );
+						return (
+							<TableRow
+								key={index}
+								hover
+								onClick={() => onClick?.( row )}
+								{...row.getRowProps()}>
+								{row.cells.map( ( cell, i ) => (
+									<TableCell key={i} {...cell.getCellProps()}>
+										{cell.render( 'Cell' ) as ReactNode}
+									</TableCell>
+								) )}
+							</TableRow>
+						);
+					} )}
 				</TableBody>
 			</Table>
 		</TableContainer>

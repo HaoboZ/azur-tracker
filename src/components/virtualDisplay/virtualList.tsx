@@ -1,10 +1,8 @@
-import { List, ListItem, ListItemButton, Paper } from '@mui/material';
+import { ListItem, ListItemButton, Paper } from '@mui/material';
 import { isEqual } from 'lodash-es';
 import type { ReactNode } from 'react';
 import { memo } from 'react';
 import type { Row, TableInstance } from 'react-table';
-import { FixedSizeList } from 'react-window';
-import { ReactWindowScroller } from 'react-window-scroller';
 
 function VirtualList<Item extends object>( {
 	rows,
@@ -17,35 +15,18 @@ function VirtualList<Item extends object>( {
 } & TableInstance<Item> ) {
 	return (
 		<Paper square>
-			<ReactWindowScroller>
-				{( { ref, outerRef, style, onScroll } ) => (
-					// @ts-ignore
-					<FixedSizeList
-						ref={ref}
-						outerRef={outerRef}
-						style={style}
-						innerElementType={List}
-						height={window.innerHeight}
-						width='100%'
-						itemCount={rows.length}
-						itemSize={50}
-						onScroll={onScroll}>
-						{( { index, style } ) => {
-							const row = rows[ index ];
-							prepareRow( row );
-							return onClick ? (
-								<ListItemButton divider style={style} onClick={() => onClick( row )}>
-									{renderRow( row )}
-								</ListItemButton>
-							) : (
-								<ListItem divider style={style}>
-									{renderRow( row )}
-								</ListItem>
-							);
-						}}
-					</FixedSizeList>
-				)}
-			</ReactWindowScroller>
+			{rows.map( ( row, index ) => {
+				prepareRow( row );
+				return onClick ? (
+					<ListItemButton key={index} divider onClick={() => onClick( row )}>
+						{renderRow( row )}
+					</ListItemButton>
+				) : (
+					<ListItem key={index} divider>
+						{renderRow( row )}
+					</ListItem>
+				);
+			} )}
 		</Paper>
 	);
 }
