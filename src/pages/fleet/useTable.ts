@@ -22,7 +22,7 @@ export default function useFleetTable( data, equipBetter, setEquipBetter ) {
 		filterTypes           : {
 			// case-insensitive ignores accents in strings
 			normal: ( rows, ids, filterValue ) => {
-				if ( !filterValue || filterValue.length < 3 ) return rows;
+				if ( !filterValue ) return rows;
 				try {
 					const regex = new RegExp( filterValue, 'i' );
 					return rows.filter( ( { values } ) => {

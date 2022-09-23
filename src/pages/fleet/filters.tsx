@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import type { TableInstance } from 'react-table';
-import { useThrottle, useWindowEventListener } from 'rooks';
+import { useDebounce, useWindowEventListener } from 'rooks';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
@@ -68,7 +68,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	const { filter, ships } = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
 	
-	const [ globalFilter ] = useThrottle( table.setGlobalFilter );
+	const globalFilter = useDebounce( ( value ) => table.setGlobalFilter( value ), 500 );
 	
 	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
 	const searchRef = useRef<HTMLInputElement>();

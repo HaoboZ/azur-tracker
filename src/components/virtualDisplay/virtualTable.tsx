@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { isEqual } from 'lodash-es';
 import type { ReactNode } from 'react';
-import { memo, useMemo, useRef } from 'react';
+import { memo, useMemo, useState } from 'react';
 import type { Row, TableInstance } from 'react-table';
 
 function VirtualTable<Item extends object>( {
@@ -21,14 +21,15 @@ function VirtualTable<Item extends object>( {
 	headerGroups,
 	rows,
 	prepareRow,
-	onClick
-}: { onClick?: ( row: Row<Item> ) => void } & TableInstance<Item> ) {
-	const bodyRef = useRef<HTMLTableSectionElement>();
+	onClick,
+	rowsCount = 20
+}: { rowsCount, onClick?: ( row: Row<Item> ) => void } & TableInstance<Item> ) {
+	const [ showMore, setShowMore ] = useState( false );
 	
-	const headerStyle = useMemo( () => {
-		const firstRow = bodyRef.current?.firstChild?.firstChild as HTMLDivElement;
-		return { marginRight: firstRow?.offsetWidth - firstRow?.clientWidth || 0 };
-	}, [ rows ] );
+	const visibleRows = useMemo( () => {
+		if ( showMore ) return rows;
+		return rows.slice( 0, rowsCount );
+	}, [ rows, showMore ] );
 	
 	return (
 		<TableContainer component={Paper}>
@@ -59,8 +60,8 @@ function VirtualTable<Item extends object>( {
 						</TableRow>
 					) )}
 				</TableHead>
-				<TableBody ref={bodyRef} {...getTableBodyProps()}>
-					{rows.map( ( row, index ) => {
+				<TableBody {...getTableBodyProps()}>
+					{visibleRows.map( ( row, index ) => {
 						prepareRow( row );
 						return (
 							<TableRow
@@ -76,6 +77,15 @@ function VirtualTable<Item extends object>( {
 							</TableRow>
 						);
 					} )}
+					{!showMore && rows.length > rowsCount && (
+						<TableRow hover onClick={() => setShowMore( true )}>
+							<TableCell
+								colSpan={100}
+								sx={{ display: 'flex', justifyContent: 'center' }}>
+								Load More...
+							</TableCell>
+						</TableRow>
+					)}
 				</TableBody>
 			</Table>
 		</TableContainer>
