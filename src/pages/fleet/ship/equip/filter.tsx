@@ -62,7 +62,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 					}}
 				/>
 			)}
-			onChange={( e, newValue: EquipType ) => setValue( newValue || null )}
+			onChange={( e, newValue: EquipType ) => setValue( newValue || undefined )}
 		/>
 	);
 }

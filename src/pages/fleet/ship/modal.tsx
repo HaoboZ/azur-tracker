@@ -26,9 +26,9 @@ import type { EquipType } from './equip/type';
 
 const EquipModal = dynamic( () => import( './equip/modal' ), { suspense: true } );
 
-export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
+export default function ShipModal( { ship, filterMeta, selectedEquip }: {
 	ship?: Ship,
-	equipBetter?: [ number, number ][],
+	filterMeta?: ( false | { tier?, major?, minor? } )[],
 	selectedEquip?: EquipType
 } ) {
 	const { equipData } = useData<FleetType>();
@@ -128,7 +128,7 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 				<Grid item container xs={12} alignItems='center' justifyContent='center'>
 					{ship.equip.map( ( val, index ) => {
 						const equip = equipIndex[ val[ 0 ] ];
-						
+						const meta = filterMeta?.[ index ];
 						return (
 							<Grid
 								key={index}
@@ -157,10 +157,10 @@ export default function ShipModal( { ship, equipBetter = [], selectedEquip }: {
 								/>
 								<Box display='flex' alignItems='center'>
 									<TierIcon tier={val[ 2 ]}/>
-									{equipBetter[ index ]?.[ 1 ] ? (
+									{meta ? (
 										<Fragment>
 											<ArrowForwardIcon fontSize='inherit'/>
-											<TierIcon tier={equipBetter[ index ][ 0 ] + 1 || val[ 2 ]}/>
+											<TierIcon tier={meta.tier + 1 || val[ 2 ]}/>
 										</Fragment>
 									) : undefined}
 								</Box>

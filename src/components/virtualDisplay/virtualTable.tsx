@@ -1,97 +1,111 @@
 import {
-	Paper,
-	Table,
+	Table as MuiTable,
 	TableBody,
 	TableCell,
-	tableCellClasses,
-	TableContainer,
+	TableFooter,
 	TableHead,
 	TableRow,
 	tableRowClasses,
 	TableSortLabel
 } from '@mui/material';
-import { isEqual } from 'lodash-es';
-import type { ReactNode } from 'react';
-import { memo, useMemo, useState } from 'react';
-import type { Row, TableInstance } from 'react-table';
+import type { RowData, Table } from '@tanstack/react-table';
+import { flexRender } from '@tanstack/react-table';
+import { Fragment, useState } from 'react';
+import Virtualizer from '../virtualizer';
 
-function VirtualTable<Item extends object>( {
-	getTableProps,
-	getTableBodyProps,
-	headerGroups,
-	rows,
-	prepareRow,
-	onClick,
-	rowsCount = 20
-}: { rowsCount, onClick?: ( row: Row<Item> ) => void } & TableInstance<Item> ) {
-	const [ showMore, setShowMore ] = useState( false );
+export default function VirtualTable<VData extends RowData>( { table }: { table: Table<VData> } ) {
+	const [ rowRef, setRowRef ] = useState<HTMLTableRowElement>();
 	
-	const visibleRows = useMemo( () => {
-		if ( showMore ) return rows;
-		return rows.slice( 0, rowsCount );
-	}, [ rows, showMore ] );
+	const paddingStart = rowRef?.getBoundingClientRect().top + window.scrollY || 0;
+	
+	const { rows: [ firstRow, ...restRows ] } = table.getRowModel();
+	
+	const { onRowClick } = table.options.meta;
+	
+	const renderBodyRow = ( row, ref ) => (
+		<TableRow
+			key={row.id}
+			ref={ref}
+			hover={Boolean( onRowClick )}
+			onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
+			{row.getVisibleCells().map( ( cell ) => (
+				<TableCell key={cell.id} className={cell.column.columnDef.meta?.className?.( cell )}>
+					{flexRender( cell.column.columnDef.cell, cell.getContext() )}
+				</TableCell>
+			) )}
+		</TableRow>
+	);
 	
 	return (
-		<TableContainer component={Paper}>
-			<Table
-				size='small'
-				sx={{
-					[ `.${tableRowClasses.hover}:hover` ]: onClick ? { cursor: 'pointer' } : undefined,
-					[ `.${tableCellClasses.root}` ]      : { display: 'flex', alignItems: 'center', px: 1 }
-				}}
-				{...getTableProps()}>
-				<TableHead>
-					{headerGroups.map( ( headerGroup ) => (
-						<TableRow
-							key={headerGroup.id}
-							{...headerGroup.getHeaderGroupProps()}>
-							{headerGroup.headers.map( ( column ) => (
-								<TableCell
-									key={column.id}
-									{...column.getHeaderProps( column.getSortByToggleProps() )}>
-									<TableSortLabel
-										active={column.isSorted}
-										hideSortIcon={!column.canSort}
-										direction={column.isSortedDesc ? 'desc' : 'asc'}>
-										{column.render( 'Header' ) as ReactNode}
-									</TableSortLabel>
-								</TableCell>
-							) )}
-						</TableRow>
-					) )}
-				</TableHead>
-				<TableBody {...getTableBodyProps()}>
-					{visibleRows.map( ( row, index ) => {
-						prepareRow( row );
-						return (
-							<TableRow
-								key={index}
-								hover
-								onClick={() => onClick?.( row )}
-								{...row.getRowProps()}>
-								{row.cells.map( ( cell, i ) => (
-									<TableCell key={i} {...cell.getCellProps()}>
-										{cell.render( 'Cell' ) as ReactNode}
-									</TableCell>
-								) )}
-							</TableRow>
-						);
-					} )}
-					{!showMore && rows.length > rowsCount && (
-						<TableRow hover onClick={() => setShowMore( true )}>
+		<MuiTable
+			size='small'
+			sx={{
+				tableLayout                          : 'fixed',
+				[ `.${tableRowClasses.hover}:hover` ]: onRowClick ? { cursor: 'pointer' } : undefined
+			}}>
+			<TableHead>
+				{table.getHeaderGroups().map( ( headerGroup ) => (
+					<TableRow key={headerGroup.id}>
+						{headerGroup.headers.map( ( header ) => (
 							<TableCell
-								colSpan={100}
-								sx={{ display: 'flex', justifyContent: 'center' }}>
-								Load More...
+								key={header.id}
+								colSpan={header.colSpan}
+								sx={{
+									width          : `${header.column.columnDef.size}%`,
+									position       : 'sticky',
+									top            : 0,
+									backgroundColor: ( { palette } ) => palette.background.paper
+								}}>
+								<TableSortLabel
+									active={Boolean( header.column.getIsSorted() )}
+									hideSortIcon={!header.column.getCanSort()}
+									direction={header.column.getIsSorted() || undefined}
+									onClick={header.column.getToggleSortingHandler()}>
+									{flexRender( header.column.columnDef.header, header.getContext() )}
+								</TableSortLabel>
 							</TableCell>
-						</TableRow>
-					)}
-				</TableBody>
-			</Table>
-		</TableContainer>
+						) )}
+					</TableRow>
+				) )}
+			</TableHead>
+			<TableBody>
+				{firstRow && renderBodyRow( firstRow, setRowRef )}
+				{rowRef && (
+					<Virtualizer rows={restRows} estimateSize={rowRef.clientHeight} paddingStart={paddingStart}>
+						{( virtualItems, paddingTop, paddingBottom ) => (
+							<Fragment>
+								{paddingTop > 0 && (
+									<TableRow>
+										<TableCell sx={{ height: paddingTop, columnSpan: 'all' }}/>
+									</TableRow>
+								)}
+								{virtualItems.map( ( { index, measureElement } ) => {
+									const row = restRows[ index ];
+									return <Fragment key={row.id}>{renderBodyRow( row, measureElement )}</Fragment>;
+								} )}
+								{paddingBottom > 0 && (
+									<TableRow>
+										<TableCell sx={{ height: paddingBottom, columnSpan: 'all' }}/>
+									</TableRow>
+								)}
+							</Fragment>
+						)}
+					</Virtualizer>
+				)}
+			</TableBody>
+			<TableFooter>
+				{table.getFooterGroups().map( ( footerGroup ) => (
+					<TableRow key={footerGroup.id}>
+						{footerGroup.headers.map( ( header ) => (
+							<TableCell key={header.id}>
+								{header.isPlaceholder
+									? null
+									: flexRender( header.column.columnDef.footer, header.getContext() )}
+							</TableCell>
+						) )}
+					</TableRow>
+				) )}
+			</TableFooter>
+		</MuiTable>
 	);
 }
-
-export default memo( VirtualTable, ( prevProps, nextProps ) =>
-	isEqual( prevProps.state, nextProps.state )
-	&& Object.is( prevProps.rows, nextProps.rows ) ) as typeof VirtualTable;

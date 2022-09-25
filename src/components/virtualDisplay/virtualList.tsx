@@ -1,36 +1,45 @@
-import { ListItem, ListItemButton, Paper } from '@mui/material';
-import { isEqual } from 'lodash-es';
-import type { ReactNode } from 'react';
-import { memo } from 'react';
-import type { Row, TableInstance } from 'react-table';
+import { Box, ListItem, ListItemButton, Paper } from '@mui/material';
+import type { RowData, Table } from '@tanstack/react-table';
+import { useWindowVirtualizer } from '@tanstack/react-virtual';
+import { useRef } from 'react';
 
-function VirtualList<Item extends object>( {
-	rows,
-	prepareRow,
-	onClick,
-	renderRow
-}: {
-	onClick?: ( row: Row<Item> ) => void,
-	renderRow: ( row: Row<Item> ) => ReactNode
-} & TableInstance<Item> ) {
+export default function VirtualList<VData extends RowData>( { table }: { table: Table<VData> } ) {
+	const paperRef = useRef<HTMLDivElement>();
+	
+	const paddingStart = paperRef.current?.getBoundingClientRect().top + window.scrollY || 0;
+	
+	const { rows } = table.getRowModel();
+	const virtualizer = useWindowVirtualizer( {
+		count       : rows.length,
+		estimateSize: () => 41,
+		overscan    : 5,
+		paddingStart
+	} );
+	
+	const virtualItems = virtualizer.getVirtualItems();
+	
+	const { renderRow, onRowClick } = table.options.meta;
+	
+	const paddingTop = virtualItems.length > 0 ? Math.max( 0, virtualItems[ 0 ].start - paddingStart ) || 0 : 0;
+	
 	return (
-		<Paper square>
-			{rows.map( ( row, index ) => {
-				prepareRow( row );
-				return onClick ? (
-					<ListItemButton key={index} divider onClick={() => onClick( row )}>
-						{renderRow( row )}
+		<Paper
+			ref={paperRef}
+			square
+			sx={{ height: virtualizer.getTotalSize() }}>
+			<Box height={paddingTop}/>
+			{virtualItems.map( ( { index } ) => {
+				const row = rows[ index ];
+				return onRowClick ? (
+					<ListItemButton key={index} divider onClick={() => onRowClick( row, table )}>
+						{renderRow( row, table )}
 					</ListItemButton>
 				) : (
 					<ListItem key={index} divider>
-						{renderRow( row )}
+						{renderRow( row, table )}
 					</ListItem>
 				);
 			} )}
 		</Paper>
 	);
 }
-
-export default memo( VirtualList, ( prevProps, nextProps ) =>
-	isEqual( prevProps.state, nextProps.state )
-	&& Object.is( prevProps.rows, nextProps.rows ) ) as typeof VirtualList;

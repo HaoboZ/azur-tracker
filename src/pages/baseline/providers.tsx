@@ -29,11 +29,11 @@ export default function Providers( { emotionCache, children }: {
 			// data
 			component( StoreProvider, { store } ),
 			component( PersistGate, { loading: null, persistor } ),
+			component( EventsProvider ),
 			// styling
 			component( CacheProvider, { value: emotionCache || clientCache } ),
 			component( ThemeProvider ),
-			// static
-			component( EventsProvider ),
+			// visual
 			component( SnackbarProvider, {
 				ref             : snackbarRef,
 				preventDuplicate: true,
@@ -45,7 +45,6 @@ export default function Providers( { emotionCache, children }: {
 			} ),
 			component( IndicatorProvider ),
 			component( AuthProvider ),
-			// dynamic
 			component( ModalProvider )
 		]}>
 			{children}

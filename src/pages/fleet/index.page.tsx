@@ -1,19 +1,16 @@
-import { ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
 import { cloneDeep, keyBy, mapValues, omit, pick, sortBy } from 'lodash-es';
 import type { GetStaticProps } from 'next';
-import dynamic from 'next/dynamic';
 import objectHash from 'object-hash';
-import type { ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';
 import HelpTourButton from '../../components/helpTourButton';
 import Page from '../../components/page';
 import VirtualDisplay from '../../components/virtualDisplay';
 import firebaseServerApp from '../../firebase/server';
 import { useData } from '../../providers/data';
-import { useModal } from '../../providers/modal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setShips, fleet_setVersion } from '../../store/reducers/fleetReducer';
 import FleetFilters from './filters';
@@ -21,23 +18,15 @@ import getTier from './getTier';
 import type { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
-const ShipModal = dynamic( () => import( './ship/modal' ), { suspense: true } );
-
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
 	const fleet = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
-	const { showModal } = useModal();
 	const { fleetData, equippableData, equipTierData, equipTierHash } = useData<FleetType>();
 	
 	const [ data, setData ] = useState<Ship[]>( [] );
 	
-	const [ equipBetter, setEquipBetter ] = useState<{
-		filter,
-		value: Record<string, [ number, number ][]>
-	}>( { filter: undefined, value: {} } );
-	
-	const table = useFleetTable( data, equipBetter, setEquipBetter );
+	const table = useFleetTable( data );
 	
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
@@ -106,36 +95,7 @@ export default function Fleet() {
 				)
 			}}>
 			<FleetFilters table={table}/>
-			<VirtualDisplay
-				{...table}
-				renderRow={( row ) => (
-					<Fragment>
-						<ListItemText
-							primary={(
-								<Fragment>
-									{row.values.name}
-									{' - Tier: '}{row.cells[ 4 ].render( 'Cell' )}
-									{' - '}{row.cells[ 6 ].render( 'Cell' )}
-									{' / '}{row.cells[ 5 ].render( 'Cell' )}
-								</Fragment>
-							)}
-							secondary={`${row.values.rarity} - ${row.values.faction} - ${row.values.type}`}
-						/>
-						<ListItemSecondaryAction className={( row.cells[ 7 ].column as any ).className?.( row.cells[ 7 ] )}>
-							{row.cells[ 7 ].render( 'Cell' ) as ReactNode}
-						</ListItemSecondaryAction>
-					</Fragment>
-				)}
-				onClick={( row ) => showModal( ShipModal, {
-					variant: 'drawer',
-					bottom : true,
-					props  : {
-						ship         : row.original,
-						equipBetter  : equipBetter.value[ row.id ],
-						selectedEquip: table.state.filters.find( ( { id } ) => id === 'equip' )?.value
-					}
-				} )}
-			/>
+			<VirtualDisplay table={table}/>
 		</Page>
 	);
 }

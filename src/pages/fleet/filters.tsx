@@ -11,14 +11,14 @@ import {
 	MenuItem,
 	TextField
 } from '@mui/material';
+import type { Table } from '@tanstack/react-table';
 import { useEffect, useRef, useState } from 'react';
-import type { TableInstance } from 'react-table';
 import { useDebounce, useWindowEventListener } from 'rooks';
 import { useData } from '../../providers/data';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fleet_setFilter } from '../../store/reducers/fleetReducer';
 import EquipFilter from './ship/equip/filter';
-import type { FleetType } from './type';
+import type { FleetType, Ship } from './type';
 
 const searchOptions = [
 	// rarity
@@ -63,7 +63,7 @@ const searchOptions = [
 	'META'
 ].map( ( label, id ) => ( { id, label } ) );
 
-export default function FleetFilters( { table }: { table: TableInstance } ) {
+export default function FleetFilters( { table }: { table: Table<Ship> } ) {
 	const { equipData } = useData<FleetType>();
 	const { filter, ships } = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
@@ -88,7 +88,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 	
 	// resets filter when ships change
 	useEffect( () => {
-		table.setFilter( 'equip', ( filter ) => filter && { ...filter } );
+		table.getColumn( 'equip' ).setFilterValue( ( filter ) => filter && { ...filter } );
 	}, [ ships ] );
 	
 	return (
@@ -97,7 +97,7 @@ export default function FleetFilters( { table }: { table: TableInstance } ) {
 				<Grid item md xs={12}>
 					<EquipFilter
 						equipList={equipData}
-						setValue={( equip ) => table.setFilter( 'equip', equip )}
+						setValue={( equip ) => table.getColumn( 'equip' ).setFilterValue( equip )}
 					/>
 				</Grid>
 				<Grid item md xs={10}>
