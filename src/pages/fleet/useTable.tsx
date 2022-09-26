@@ -135,12 +135,13 @@ export default function useFleetTable( data ) {
 				const tierList = equipTierData[ equippableData[ row.original.equipType[ index ] ]?.tier ];
 				const newTier = tierList[ filterValue.id ],
 				      oldTier = tierList[ value[ 0 ] ];
+				
+				// is equipped already
+				if ( +value?.[ 0 ] === +filterValue.id ) return {};
 				// equip not in tier list
 				if ( !newTier ) return false;
 				// none equipped
 				if ( !value?.[ 0 ] ) return { tier: newTier[ 0 ], major: Infinity };
-				// is equipped already
-				if ( +value[ 0 ] === +filterValue.id ) return {};
 				// forced BiS
 				if ( value[ 1 ] ) return false;
 				// current equip not in tier list
@@ -164,6 +165,7 @@ export default function useFleetTable( data ) {
 		initialState: {
 			sorting: [ { id: 'tier', desc: false }, { id: 'lvl', desc: true } ]
 		},
+		getRowId    : ( { id } ) => id,
 		onRowClick  : ( row, table ) => showModal( ShipModal, {
 			variant: 'drawer',
 			bottom : true,

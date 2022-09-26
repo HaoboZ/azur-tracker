@@ -1,33 +1,41 @@
 import type { Cell, FilterFn, Row, RowData, Table, TableOptions } from '@tanstack/react-table';
-import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
+import {
+	getCoreRowModel,
+	getExpandedRowModel,
+	getFilteredRowModel,
+	getSortedRowModel,
+	useReactTable
+} from '@tanstack/react-table';
 import fuzzysort from 'fuzzysort';
 import type { ReactNode } from 'react';
 import useWideMedia from '../../hooks/useWideMedia';
 import OverflowTypography from '../overflowTypography';
-import VirtualList from './virtualList';
-import VirtualTable from './virtualTable';
+import DataList from './dataList';
+import DataTable from './dataTable';
 
 declare module '@tanstack/table-core' {
 	// noinspection JSUnusedGlobalSymbols
 	interface FilterFns {
-		fuzzy: FilterFn<unknown>
+		fuzzy: FilterFn<unknown>;
 	}
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
 		renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
-		onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void
+		onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void,
+		renderSubComponent?: ( row: Row<TData>, table: Table<TData> ) => ReactNode
 	}
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface ColumnMeta<TData extends RowData, TValue> {
-		className?: ( cell: Cell<TData, TValue> ) => string
+		className?: ( cell: Cell<TData, TValue> ) => string;
 	}
 }
 
-export type VirtualDisplayOptions<TData extends RowData> = {
+export type DataDisplayOptions<TData extends RowData> = {
 	renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
-	onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void
+	onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void,
+	renderSubComponent?: ( row: Row<TData>, table: Table<TData> ) => ReactNode
 } & Partial<TableOptions<TData>>;
 
 // noinspection JSUnusedGlobalSymbols
@@ -36,14 +44,15 @@ const defaultColumn = {
 	size: 10
 };
 
-export function useVirtualDisplay<TData extends RowData>( {
+export function useDataDisplay<TData extends RowData>( {
 	data,
 	columns,
 	renderRow,
 	onRowClick,
+	renderSubComponent,
 	meta,
 	...options
-}: VirtualDisplayOptions<TData> ) {
+}: DataDisplayOptions<TData> ) {
 	return useReactTable( {
 		data,
 		columns,
@@ -56,15 +65,16 @@ export function useVirtualDisplay<TData extends RowData>( {
 		getCoreRowModel    : getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel  : getSortedRowModel(),
-		meta               : { renderRow, onRowClick, ...meta },
+		getExpandedRowModel: renderSubComponent ? getExpandedRowModel() : undefined,
+		meta               : { renderRow, onRowClick, renderSubComponent, ...meta },
 		...options
 	} );
 }
 
-export default function VirtualDisplay<TData extends RowData>( { table }: { table: Table<TData> } ) {
+export default function DataDisplay<TData extends RowData>( { table }: { table: Table<TData> } ) {
 	if ( useWideMedia() || !table.options.meta.renderRow ) {
-		return <VirtualTable table={table}/>;
+		return <DataTable table={table}/>;
 	} else {
-		return <VirtualList table={table}/>;
+		return <DataList table={table}/>;
 	}
 }

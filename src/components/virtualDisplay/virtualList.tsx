@@ -1,48 +1,47 @@
-import { Box, ListItem, ListItemButton, listItemButtonClasses, listItemClasses, Paper } from '@mui/material';
+import { Box, List, ListItem, ListItemButton, listItemButtonClasses, listItemClasses } from '@mui/material';
 import type { RowData, Table } from '@tanstack/react-table';
-import { useWindowVirtualizer } from '@tanstack/react-virtual';
-import { useRef } from 'react';
+import { Fragment, useState } from 'react';
+import Virtualizer from '../virtualizer';
 
-export default function VirtualList<VData extends RowData>( { table }: { table: Table<VData> } ) {
-	const paperRef = useRef<HTMLDivElement>();
+export default function VirtualList<TData extends RowData>( { table }: { table: Table<TData> } ) {
+	const [ rowRef, setRowRef ] = useState<HTMLTableRowElement>();
 	
-	const paddingStart = paperRef.current?.getBoundingClientRect().top + window.scrollY || 0;
+	const paddingStart = rowRef?.getBoundingClientRect().top + window.scrollY || 0;
 	
-	const { rows } = table.getRowModel();
-	const virtualizer = useWindowVirtualizer( {
-		count       : rows.length,
-		estimateSize: () => 41,
-		overscan    : 5,
-		paddingStart
-	} );
-	
-	const virtualItems = virtualizer.getVirtualItems();
+	const { rows: [ firstRow, ...restRows ] } = table.getRowModel();
 	
 	const { renderRow, onRowClick } = table.options.meta;
 	
-	const paddingTop = virtualItems.length > 0 ? Math.max( 0, virtualItems[ 0 ].start - paddingStart ) || 0 : 0;
+	const renderBodyRow = ( row, ref ) => (
+		<ListItem ref={ref} divider disablePadding={Boolean( onRowClick )}>
+			{onRowClick ? (
+				<ListItemButton onClick={() => onRowClick( row, table )}>
+					{renderRow( row, table )}
+				</ListItemButton>
+			) : renderRow( row, table )}
+		</ListItem>
+	);
 	
 	return (
-		<Paper
-			ref={paperRef}
-			square
-			sx={{
-				height                                                       : virtualizer.getTotalSize(),
-				[ `.${listItemClasses.root},.${listItemButtonClasses.root}` ]: { whiteSpace: 'nowrap' }
-			}}>
-			<Box height={paddingTop}/>
-			{virtualItems.map( ( { index } ) => {
-				const row = rows[ index ];
-				return onRowClick ? (
-					<ListItemButton key={index} divider onClick={() => onRowClick( row, table )}>
-						{renderRow( row, table )}
-					</ListItemButton>
-				) : (
-					<ListItem key={index} divider>
-						{renderRow( row, table )}
-					</ListItem>
-				);
-			} )}
-		</Paper>
+		<List
+			dense
+			disablePadding
+			sx={{ [ `.${listItemClasses.root},.${listItemButtonClasses.root}` ]: { whiteSpace: 'nowrap' } }}>
+			{firstRow && renderBodyRow( firstRow, setRowRef )}
+			{rowRef && (
+				<Virtualizer rows={restRows} estimateSize={rowRef.clientHeight} paddingStart={paddingStart}>
+					{( virtualItems, paddingTop, paddingBottom ) => (
+						<Fragment>
+							<Box height={paddingTop}/>
+							{virtualItems.map( ( { index, measureElement } ) => {
+								const row = restRows[ index ];
+								return <Fragment key={row.id}>{renderBodyRow( row, measureElement )}</Fragment>;
+							} )}
+							<Box height={paddingBottom}/>
+						</Fragment>
+					)}
+				</Virtualizer>
+			)}
+		</List>
 	);
 }

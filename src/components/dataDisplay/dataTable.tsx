@@ -11,40 +11,19 @@ import {
 } from '@mui/material';
 import type { RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { Fragment, useState } from 'react';
-import Virtualizer from '../virtualizer';
+import { Fragment } from 'react';
 
-export default function VirtualTable<TData extends RowData>( { table }: { table: Table<TData> } ) {
-	const [ rowRef, setRowRef ] = useState<HTMLTableRowElement>();
+export default function DataTable<TData extends RowData>( { table }: { table: Table<TData> } ) {
+	const { rows } = table.getRowModel();
 	
-	const paddingStart = rowRef?.getBoundingClientRect().top + window.scrollY || 0;
-	
-	const { rows: [ firstRow, ...restRows ] } = table.getRowModel();
-	
-	const { onRowClick } = table.options.meta;
+	const { onRowClick, renderSubComponent } = table.options.meta;
 	
 	const colSpan = table.getAllFlatColumns().length;
-	
-	const renderBodyRow = ( row, ref ) => (
-		<TableRow
-			ref={ref}
-			hover={Boolean( onRowClick )}
-			onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
-			{row.getVisibleCells().map( ( cell ) => (
-				<TableCell
-					key={cell.id}
-					className={cell.column.columnDef.meta?.className?.( cell )}>
-					{flexRender( cell.column.columnDef.cell, cell.getContext() )}
-				</TableCell>
-			) )}
-		</TableRow>
-	);
 	
 	return (
 		<MuiTable
 			size='small'
 			sx={{
-				tableLayout                          : 'fixed',
 				[ `.${tableCellClasses.root}` ]      : { whiteSpace: 'nowrap' },
 				[ `.${tableRowClasses.hover}:hover` ]: onRowClick ? { cursor: 'pointer' } : undefined
 			}}>
@@ -74,29 +53,28 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 				) )}
 			</TableHead>
 			<TableBody>
-				{firstRow && renderBodyRow( firstRow, setRowRef )}
-				{rowRef && (
-					<Virtualizer rows={restRows} estimateSize={rowRef.clientHeight} paddingStart={paddingStart}>
-						{( virtualItems, paddingTop, paddingBottom ) => (
-							<Fragment>
-								{paddingTop > 0 && (
-									<TableRow>
-										<TableCell sx={{ height: paddingTop }} colSpan={colSpan}/>
-									</TableRow>
-								)}
-								{virtualItems.map( ( { index, measureElement } ) => {
-									const row = restRows[ index ];
-									return <Fragment key={row.id}>{renderBodyRow( row, measureElement )}</Fragment>;
-								} )}
-								{paddingBottom > 0 && (
-									<TableRow>
-										<TableCell sx={{ height: paddingBottom }} colSpan={colSpan}/>
-									</TableRow>
-								)}
-							</Fragment>
+				{rows.map( ( row ) => (
+					<Fragment key={row.id}>
+						<TableRow
+							hover={Boolean( onRowClick )}
+							onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
+							{row.getVisibleCells().map( ( cell ) => (
+								<TableCell
+									key={cell.id}
+									className={cell.column.columnDef.meta?.className?.( cell )}>
+									{flexRender( cell.column.columnDef.cell, cell.getContext() )}
+								</TableCell>
+							) )}
+						</TableRow>
+						{row.getIsExpanded() && (
+							<TableRow sx={{ backgroundColor: ( { palette } ) => palette.background.paper }}>
+								<TableCell colSpan={colSpan}>
+									{renderSubComponent( row, table )}
+								</TableCell>
+							</TableRow>
 						)}
-					</Virtualizer>
-				)}
+					</Fragment>
+				) )}
 			</TableBody>
 			<TableFooter>
 				{table.getFooterGroups().map( ( footerGroup ) => (
