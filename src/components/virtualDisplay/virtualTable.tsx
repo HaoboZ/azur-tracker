@@ -2,6 +2,7 @@ import {
 	Table as MuiTable,
 	TableBody,
 	TableCell,
+	tableCellClasses,
 	TableFooter,
 	TableHead,
 	TableRow,
@@ -29,7 +30,9 @@ export default function VirtualTable<VData extends RowData>( { table }: { table:
 			hover={Boolean( onRowClick )}
 			onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
 			{row.getVisibleCells().map( ( cell ) => (
-				<TableCell key={cell.id} className={cell.column.columnDef.meta?.className?.( cell )}>
+				<TableCell
+					key={cell.id}
+					className={cell.column.columnDef.meta?.className?.( cell )}>
 					{flexRender( cell.column.columnDef.cell, cell.getContext() )}
 				</TableCell>
 			) )}
@@ -41,6 +44,7 @@ export default function VirtualTable<VData extends RowData>( { table }: { table:
 			size='small'
 			sx={{
 				tableLayout                          : 'fixed',
+				[ `.${tableCellClasses.root}` ]      : { whiteSpace: 'nowrap' },
 				[ `.${tableRowClasses.hover}:hover` ]: onRowClick ? { cursor: 'pointer' } : undefined
 			}}>
 			<TableHead>

@@ -1,4 +1,4 @@
-import { Box, ListItem, ListItemButton, Paper } from '@mui/material';
+import { Box, ListItem, ListItemButton, listItemButtonClasses, listItemClasses, Paper } from '@mui/material';
 import type { RowData, Table } from '@tanstack/react-table';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import { useRef } from 'react';
@@ -26,7 +26,10 @@ export default function VirtualList<VData extends RowData>( { table }: { table: 
 		<Paper
 			ref={paperRef}
 			square
-			sx={{ height: virtualizer.getTotalSize() }}>
+			sx={{
+				height                                                       : virtualizer.getTotalSize(),
+				[ `.${listItemClasses.root},.${listItemButtonClasses.root}` ]: { whiteSpace: 'nowrap' }
+			}}>
 			<Box height={paddingTop}/>
 			{virtualItems.map( ( { index } ) => {
 				const row = rows[ index ];

@@ -32,7 +32,7 @@ export type VirtualDisplayOptions<VData extends RowData> = {
 
 // noinspection JSUnusedGlobalSymbols
 const defaultColumn = {
-	cell: ( { getValue } ) => <OverflowTypography>{getValue() as any}</OverflowTypography>
+	cell: ( { getValue } ) => <OverflowTypography>{getValue()}</OverflowTypography>
 };
 
 export function useVirtualDisplay<VData extends RowData>( {

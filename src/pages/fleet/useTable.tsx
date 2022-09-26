@@ -111,7 +111,7 @@ export default function useFleetTable( data ) {
 		accessorKey       : 'equip',
 		size              : 25,
 		cell              : ( { getValue, row, column } ) => {
-			const value = getValue() as any;
+			const value = getValue<[ number, number, number ][]>();
 			if ( row.columnFiltersMeta[ column.id ] ) {
 				const majorCount = max( map( row.columnFiltersMeta[ column.id ]?.equip, 'major' ) );
 				if ( isNumber( majorCount ) ) return `↑${majorCount}`;
