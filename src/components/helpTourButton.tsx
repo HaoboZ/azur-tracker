@@ -26,6 +26,7 @@ export default function HelpTourButton( { buttonProps, ...props }: {
 			/>
 			<IconButton
 				id='help'
+				aria-label='help'
 				{...buttonProps}
 				onClick={( e ) => {
 					buttonProps?.onClick?.( e );
