@@ -33,7 +33,7 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 			{row.getVisibleCells().map( ( cell ) => (
 				<TableCell
 					key={cell.id}
-					className={cell.column.columnDef.meta?.className?.( cell )}>
+					{...cell.column.columnDef.meta?.props?.( cell )}>
 					{flexRender( cell.column.columnDef.cell, cell.getContext() )}
 				</TableCell>
 			) )}
@@ -102,7 +102,9 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 				{table.getFooterGroups().map( ( footerGroup ) => (
 					<TableRow key={footerGroup.id}>
 						{footerGroup.headers.map( ( header ) => (
-							<TableCell key={header.id}>
+							<TableCell
+								key={header.id}
+								sx={{ borderBottom: header.column.columnDef.footer ? undefined : 'unset' }}>
 								{header.isPlaceholder
 									? null
 									: flexRender( header.column.columnDef.footer, header.getContext() )}

@@ -44,9 +44,9 @@ export default function useFleetTable( data ) {
 		accessorKey: 'rarity',
 		size       : 20,
 		meta       : {
-			className: ( { getValue }: Cell<any, any> ) => {
+			props: ( { getValue }: Cell<any, any> ) => {
 				const value = getValue();
-				return value && `color-${rarityColors[ value ]}`;
+				return { className: value && `color-${rarityColors[ value ]}` };
 			}
 		},
 		sortingFn  : ( rowA, rowB, columnId ) =>
@@ -56,9 +56,9 @@ export default function useFleetTable( data ) {
 		accessorKey: 'faction',
 		size       : 20,
 		meta       : {
-			className: ( { getValue }: Cell<any, any> ) => {
+			props: ( { getValue }: Cell<any, any> ) => {
 				const value = getValue();
-				return value && `color-${factionColors[ value ]}`;
+				return { className: value && `color-${factionColors[ value ]}` };
 			}
 		}
 	}, {
@@ -66,9 +66,9 @@ export default function useFleetTable( data ) {
 		accessorKey: 'type',
 		size       : 20,
 		meta       : {
-			className: ( { getValue }: Cell<any, any> ) => {
+			props: ( { getValue }: Cell<any, any> ) => {
 				const value = getValue();
-				return value && `color-${typeColors[ value ]}`;
+				return { className: value && `color-${typeColors[ value ]}` };
 			}
 		}
 	}, {
@@ -123,9 +123,10 @@ export default function useFleetTable( data ) {
 			return value.map( ( equip, i ) => <TierIcon key={i} tier={equip[ 2 ]}/> );
 		},
 		meta              : {
-			className: ( cell ) => cell.row.columnFiltersMeta[ cell.column.id ]?.equip
-				? `color-${tierColors[ min( map( cell.row.columnFiltersMeta[ cell.column.id ]?.equip, 'tier' ) ) ]}`
-				: undefined
+			props: ( cell ) => {
+				const equip = cell.row.columnFiltersMeta[ cell.column.id ]?.equip;
+				return { className: equip ? `color-${tierColors[ min( map( equip, 'tier' ) ) ]}` : undefined };
+			}
 		},
 		enableGlobalFilter: false,
 		filterFn          : ( row, columnId, filterValue, addMeta ) => {

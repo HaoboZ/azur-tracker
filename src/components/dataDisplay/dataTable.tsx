@@ -9,16 +9,42 @@ import {
 	tableRowClasses,
 	TableSortLabel
 } from '@mui/material';
-import type { RowData, Table } from '@tanstack/react-table';
+import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
+import { keyBy, map } from 'lodash-es';
 import { Fragment } from 'react';
+import Sortable from '../sortable';
 
 export default function DataTable<TData extends RowData>( { table }: { table: Table<TData> } ) {
 	const { rows } = table.getRowModel();
 	
-	const { onRowClick, renderSubComponent } = table.options.meta;
+	const { onRowClick, renderSubComponent, setData } = table.options.meta;
 	
+	const columns = keyBy( table.getAllColumns(), 'id' );
 	const colSpan = table.getAllFlatColumns().length;
+	
+	const renderRowItem = ( row: Row<TData> ) => (
+		<Fragment key={row.id}>
+			<TableRow
+				hover={Boolean( onRowClick )}
+				onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
+				{row.getVisibleCells().map( ( cell ) => (
+					<TableCell
+						key={cell.id}
+						{...cell.column.columnDef.meta?.props?.( cell )}>
+						{flexRender( cell.column.columnDef.cell, cell.getContext() )}
+					</TableCell>
+				) )}
+			</TableRow>
+			{row.getIsExpanded() && (
+				<TableRow sx={{ backgroundColor: ( { palette } ) => palette.background.paper }}>
+					<TableCell colSpan={colSpan}>
+						{renderSubComponent( row, table )}
+					</TableCell>
+				</TableRow>
+			)}
+		</Fragment>
+	);
 	
 	return (
 		<MuiTable
@@ -52,35 +78,25 @@ export default function DataTable<TData extends RowData>( { table }: { table: Ta
 					</TableRow>
 				) )}
 			</TableHead>
-			<TableBody>
-				{rows.map( ( row ) => (
-					<Fragment key={row.id}>
-						<TableRow
-							hover={Boolean( onRowClick )}
-							onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
-							{row.getVisibleCells().map( ( cell ) => (
-								<TableCell
-									key={cell.id}
-									className={cell.column.columnDef.meta?.className?.( cell )}>
-									{flexRender( cell.column.columnDef.cell, cell.getContext() )}
-								</TableCell>
-							) )}
-						</TableRow>
-						{row.getIsExpanded() && (
-							<TableRow sx={{ backgroundColor: ( { palette } ) => palette.background.paper }}>
-								<TableCell colSpan={colSpan}>
-									{renderSubComponent( row, table )}
-								</TableCell>
-							</TableRow>
-						)}
-					</Fragment>
-				) )}
-			</TableBody>
+			{columns._sort ? (
+				<Sortable
+					items={rows}
+					setItems={( rows ) => setData( map( rows, 'original' ) )}
+					renderItem={( { item } ) => renderRowItem( item )}
+					tag={TableBody}
+				/>
+			) : (
+				<TableBody>
+					{rows.map( renderRowItem )}
+				</TableBody>
+			)}
 			<TableFooter>
 				{table.getFooterGroups().map( ( footerGroup ) => (
 					<TableRow key={footerGroup.id}>
 						{footerGroup.headers.map( ( header ) => (
-							<TableCell key={header.id}>
+							<TableCell
+								key={header.id}
+								sx={{ borderBottom: header.column.columnDef.footer ? undefined : 'unset' }}>
 								{header.isPlaceholder
 									? null
 									: flexRender( header.column.columnDef.footer, header.getContext() )}

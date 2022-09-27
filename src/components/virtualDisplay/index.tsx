@@ -1,3 +1,4 @@
+import type { TableCellProps } from '@mui/material';
 import type { Cell, FilterFn, Row, RowData, Table, TableOptions } from '@tanstack/react-table';
 import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import fuzzysort from 'fuzzysort';
@@ -15,17 +16,19 @@ declare module '@tanstack/table-core' {
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
+		setData?: ( data: TData[] ) => void,
 		renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
 		onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void
 	}
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface ColumnMeta<TData extends RowData, TValue> {
-		className?: ( cell: Cell<TData, TValue> ) => string
+		props?: ( cell: Cell<TData, TValue> ) => TableCellProps;
 	}
 }
 
 export type VirtualDisplayOptions<TData extends RowData> = {
+	setData?: ( data: TData[] ) => void,
 	renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
 	onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void
 } & Partial<TableOptions<TData>>;
@@ -38,6 +41,7 @@ const defaultColumn = {
 
 export function useVirtualDisplay<TData extends RowData>( {
 	data,
+	setData,
 	columns,
 	renderRow,
 	onRowClick,
@@ -50,13 +54,15 @@ export function useVirtualDisplay<TData extends RowData>( {
 		defaultColumn,
 		filterFns          : {
 			fuzzy: ( row, columnId, value ) =>
-				Boolean( fuzzysort.single( value, String( row.getValue( columnId ) ) ) )
+				Boolean( fuzzysort.single( value, String( row.getValue( columnId ) )
+					.normalize( 'NFD' )
+					.replace( /[\u0300-\u036f]/g, '' ) ) )
 		},
 		globalFilterFn     : 'fuzzy',
 		getCoreRowModel    : getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel  : getSortedRowModel(),
-		meta               : { renderRow, onRowClick, ...meta },
+		meta               : { setData, renderRow, onRowClick, ...meta },
 		...options
 	} );
 }

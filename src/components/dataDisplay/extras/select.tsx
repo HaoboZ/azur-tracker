@@ -1,8 +1,9 @@
 import { Checkbox, ListItemIcon } from '@mui/material';
-import type { ColumnDef } from '@tanstack/react-table';
+import type { ColumnDef, Row } from '@tanstack/react-table';
+import type { ReactNode } from 'react';
 
-export const checkboxColumn: <TData>() => ColumnDef<TData> = () => ( {
-	id    : 'select',
+export const selectColumn: <TData>() => ColumnDef<TData> = () => ( {
+	id    : '_select',
 	size  : 0,
 	header: ( { table } ) => (
 		<Checkbox
@@ -12,18 +13,16 @@ export const checkboxColumn: <TData>() => ColumnDef<TData> = () => ( {
 		/>
 	),
 	cell  : ( { row } ) => (
-		<div className='px-1'>
-			<Checkbox
-				checked={row.getIsSelected()}
-				indeterminate={row.getIsSomeSelected()}
-				onClick={( e ) => e.stopPropagation()}
-				onChange={row.getToggleSelectedHandler()}
-			/>
-		</div>
+		<Checkbox
+			checked={row.getIsSelected()}
+			indeterminate={row.getIsSomeSelected()}
+			onClick={( e ) => e.stopPropagation()}
+			onChange={row.getToggleSelectedHandler()}
+		/>
 	)
 } );
 
-export const checkboxIcon = ( row ) => (
+export const selectIcon: <TData>( row: Row<TData> ) => ReactNode = ( row ) => (
 	<ListItemIcon>
 		<Checkbox
 			checked={row.getIsSelected()}

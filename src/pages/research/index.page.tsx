@@ -19,6 +19,7 @@ export default function Research() {
 	return (
 		<Page title='Research Tracker' titleBar='Research'>
 			<SwipeableTabViews
+				sx={{ backgroundColor: ( { palette } ) => palette.divider }}
 				tab={lastTab}
 				setTab={( index ) => dispatch( research_setLastTab( index ) )}
 				renderTabs={Object.keys( researchData )}
