@@ -1,7 +1,8 @@
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
-import { cloneDeep } from 'lodash-es';
+import { createColumnHelper } from '@tanstack/react-table';
+import { keyBy, mapValues } from 'lodash-es';
 import { useMemo, useState } from 'react';
-import EnhancedDisplay from '../../components/enhancedDisplay';
+import DataDisplay, { useDataDisplay } from '../../components/dataDisplay';
 import FormattedTextField from '../../components/formattedTextField';
 import { useData } from '../../providers/data';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
@@ -9,26 +10,75 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setShop } from '../../store/reducers/eventReducer';
 import type { EventType } from './type';
 
+const columnHelper = createColumnHelper<{ name: string, amount: number, cost: number, wanted: number }>();
+
 export default function ShopModal() {
 	const _shop = useAppSelector( ( { event } ) => event.shop );
 	const dispatch = useAppDispatch();
 	const { eventShopData } = useData<EventType>();
 	
-	const [ shop, setShop ] = useState( () => cloneDeep( _shop ) );
+	const [ shop, setShop ] = useState( () => eventShopData.map( ( data ) => ( {
+		...data,
+		wanted: _shop[ data.name ]
+	} ) ) );
 	
 	// expected cost to buy wanted items and total cost to buy everything
 	const [ expectedCost, buyoutCost ] = useMemo(
-		() => eventShopData.reduce( ( total, item ) => [
-			total[ 0 ] + item.cost * Math.min( item.amount, shop[ item.name ] || 0 ),
+		() => shop.reduce( ( total, item ) => [
+			total[ 0 ] + item.cost * Math.min( item.amount, item.wanted || 0 ),
 			total[ 1 ] + item.cost * item.amount
 		], [ 0, 0 ] ),
 		[ shop ] );
+	
+	const columns = useMemo( () => [
+		columnHelper.accessor( 'name', { header: 'Name' } ),
+		columnHelper.accessor( 'cost', { header: 'Cost' } ),
+		columnHelper.accessor( 'amount', { header: 'Amount' } ),
+		columnHelper.accessor( 'wanted', {
+			header: 'Wanted',
+			cell  : ( { getValue, row } ) => (
+				<FormattedTextField
+					key='name'
+					type='number'
+					placeholder='0'
+					value={getValue() || 0}
+					onChange={( { target } ) => {
+						shop[ row.index ].wanted = Math.min( Math.max( parseInt( target.value ) || 0, 0 ), row.original.amount );
+						setShop( [ ...shop ] );
+					}}
+				/>
+			)
+		} )
+	], [] );
+	
+	const table = useDataDisplay( {
+		data         : shop,
+		columns,
+		enableSorting: false,
+		renderRow    : ( { cells, render } ) => (
+			<Grid container spacing={2}>
+				<Grid item xs={8} display='flex' alignItems='center'>
+					<ListItemText
+						primary={cells.name.getValue<string>()}
+						secondary={`cost: ${cells.cost.getValue()} amount: ${cells.amount.getValue()}`}
+					/>
+				</Grid>
+				<Grid item xs={4}>
+					Wanted
+					{render( cells.wanted )}
+				</Grid>
+			</Grid>
+		)
+	} );
 	
 	return (
 		<ResponsiveModalContainer
 			title='Shop Items'
 			sx={{ p: 0 }}
-			onSave={() => dispatch( event_setShop( { shop, total: expectedCost } ) )}>
+			onSave={() => dispatch( event_setShop( {
+				shop : mapValues( keyBy( shop, 'name' ), 'wanted' ),
+				total: expectedCost
+			} ) )}>
 			<Box mx={2} mt={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>
@@ -39,57 +89,7 @@ export default function ShopModal() {
 					</Grid>
 				</Grid>
 			</Box>
-			<EnhancedDisplay
-				items={eventShopData}
-				extraData={shop}
-				tableProps={{
-					headers: [
-						'Name',
-						'Cost',
-						'Amount',
-						'Wanted'
-					],
-					columns: ( item ) => [
-						item.name,
-						item.cost,
-						item.amount,
-						<FormattedTextField
-							key='name'
-							type='number'
-							placeholder='0'
-							value={shop[ item.name ] || 0}
-							onChange={( { target } ) => setShop( {
-								...shop,
-								[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
-							} )}
-						/>
-					]
-				}}
-				listProps={{
-					renderRow: ( item ) => (
-						<Grid container spacing={2}>
-							<Grid item xs={9}>
-								<ListItemText
-									primary={item.name}
-									secondary={`cost: ${item.cost} amount: ${item.amount}`}
-								/>
-							</Grid>
-							<Grid item xs={3}>
-								<FormattedTextField
-									type='number'
-									label='Wanted'
-									placeholder='0'
-									value={shop[ item.name ]}
-									onChange={( { target } ) => setShop( {
-										...shop,
-										[ item.name ]: Math.min( Math.max( parseInt( target.value ) || 0, 0 ), item.amount )
-									} )}
-								/>
-							</Grid>
-						</Grid>
-					)
-				}}
-			/>
+			<DataDisplay table={table}/>
 		</ResponsiveModalContainer>
 	);
 }

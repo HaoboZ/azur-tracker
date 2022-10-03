@@ -1,5 +1,5 @@
 export type EventType = {
 	eventData: { name: string, href: string, image: string, endDate: string },
-	eventShopData: { amount: number, cost: number, name: string }[],
+	eventShopData: { name: string, amount: number, cost: number }[],
 	eventStagesData: { [ cost: number ]: string }
 };

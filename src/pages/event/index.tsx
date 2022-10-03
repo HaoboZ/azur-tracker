@@ -89,41 +89,6 @@ export default function Event() {
 									from shop when event ends.
 								</Typography>
 							)
-						}, {
-							element: '#current',
-							intro  : (
-								<Typography>
-									Enter the number of points you currently have.
-								</Typography>
-							)
-						}, {
-							element: '#farmPoints',
-							intro  : (
-								<Typography>
-									Select the stage or enter the number points you get for farming a stage.
-								</Typography>
-							)
-						}, {
-							element: '#farmCost',
-							intro  : (
-								<Typography>
-									Enter the amount of oil it costs to clear.
-								</Typography>
-							)
-						}, {
-							element: '#farmPlays',
-							intro  : (
-								<Typography>
-									Calculates amount of plays needed to buy all wanted items.
-								</Typography>
-							)
-						}, {
-							element: '#farmOil',
-							intro  : (
-								<Typography>
-									Calculates amount of oil needed.
-								</Typography>
-							)
 						} ]}
 					/>
 				)

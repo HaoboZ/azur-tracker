@@ -1,10 +1,11 @@
-import { Delete as DeleteIcon } from '@mui/icons-material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import type { ColumnDef, Row, Table } from '@tanstack/react-table';
+import type { Row, Table } from '@tanstack/react-table';
+import type { DisplayColumnDef } from '@tanstack/table-core';
 import { map } from 'lodash-es';
 import type { ReactNode } from 'react';
 
-export const deleteColumn: <TData>() => ColumnDef<TData> = () => ( {
+export const deleteColumn: () => DisplayColumnDef<any> = () => ( {
 	id  : '_delete',
 	size: 0,
 	cell: ( { row, table } ) => (
@@ -14,7 +15,7 @@ export const deleteColumn: <TData>() => ColumnDef<TData> = () => ( {
 				map( table.getRowModel().rows.filter( ( { id } ) => id !== row.id ), 'original' )
 			);
 		}}>
-			<DeleteIcon/>
+			<CloseIcon/>
 		</IconButton>
 	)
 } );
@@ -26,6 +27,6 @@ export const deleteIcon: <TData>( row: Row<TData>, table: Table<TData> ) => Reac
 			map( table.getRowModel().rows.filter( ( { id } ) => id !== row.id ), 'original' )
 		);
 	}}>
-		<DeleteIcon/>
+		<CloseIcon/>
 	</IconButton>
 );

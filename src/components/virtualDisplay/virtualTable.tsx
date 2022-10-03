@@ -56,10 +56,10 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 								key={header.id}
 								colSpan={header.colSpan}
 								sx={{
-									width          : `${header.column.columnDef.size}%`,
-									position       : 'sticky',
-									top            : 0,
-									backgroundColor: ( { palette } ) => palette.background.paper
+									width   : `${header.column.columnDef.size}%`,
+									position: 'sticky',
+									top     : 0,
+									bgcolor : ( { palette } ) => palette.background.paper
 								}}>
 								<TableSortLabel
 									active={Boolean( header.column.getIsSorted() )}

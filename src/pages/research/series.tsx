@@ -1,5 +1,5 @@
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import { flexRender } from '@tanstack/react-table';
+import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import { keyBy } from 'lodash-es';
 import { Fragment, useMemo } from 'react';
 import DataDisplay, { useDataDisplay } from '../../components/dataDisplay';
@@ -51,6 +51,16 @@ const fateLevelsIndex = [
 	[ 0, 165, 0, 215 ]
 ];
 
+const columnHelper = createColumnHelper<ResearchShipType & {
+	devLevel?: number,
+	devStage?: number,
+	fateLevel?: number,
+	fateStage?: number,
+	devLevels: number[],
+	devPrints: number,
+	fatePrints: number
+}>();
+
 export default function ResearchSeries( { researchShips }: { researchShips: ResearchShipType[] } ) {
 	const ships = useAppSelector( ( { research } ) => research.ships );
 	const dispatch = useAppDispatch();
@@ -80,113 +90,118 @@ export default function ResearchSeries( { researchShips }: { researchShips: Rese
 		return { shipData, totalPR, totalDR };
 	}, [ ships ] );
 	
-	const columns = useMemo( () => [ {
-		accessorKey: 'name',
-		header     : 'Name',
-		cell       : ( { getValue, row } ) => (
-			<Fragment>
-				<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}/>
-				<Typography>{getValue()}</Typography>
-			</Fragment>
-		)
-	}, {
-		id    : 'devLevel',
-		header: 'Dev Level',
-		cell  : ( { row } ) => (
-			<FormattedTextField
-				type='number'
-				size='small'
-				inputMode='numeric'
-				value={row.original.devLevel || 0}
-				onChange={( { target } ) => dispatch( research_modifyShip( {
-					ship: row.original.name,
-					item: { devLevel: parseInt( target.value ) }
-				} ) )}
-			/>
-		)
-	}, {
-		id    : 'devStage',
-		header: 'Dev Stage',
-		cell  : ( { row } ) => (
-			<FormattedTextField
-				type='number'
-				size='small'
-				inputMode='numeric'
-				className='numberInput'
-				InputProps={{
-					endAdornment: (
-						<InputAdornment position='end'>
-							/{row.original.devLevels[ row.original.type * 2 ] * 10}
-						</InputAdornment>
-					)
-				}}
-				value={row.original.devStage || 0}
-				onChange={( { target } ) => dispatch( research_modifyShip( {
-					ship  : row.original.name,
-					item  : { devStage: parseInt( target.value ) },
-					maxDev: row.original.devLevels[ row.original.type * 2 ] * 10
-				} ) )}
-			/>
-		)
-	}, {
-		accessorKey: 'devPrints',
-		header     : 'Required Prints',
-		size       : 1
-	}, {
-		id    : 'fateLevel',
-		header: 'Fate Level',
-		cell  : ( { row } ) => {
-			if ( !row.original.fate ) return;
-			return (
+	const columns = useMemo( () => [
+		columnHelper.accessor( 'name', {
+			header: 'Name',
+			cell  : ( { getValue, row } ) => (
+				<Fragment>
+					<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}/>
+					<Typography>{getValue()}</Typography>
+				</Fragment>
+			)
+		} ),
+		columnHelper.display( {
+			id    : 'devLevel',
+			header: 'Dev Level',
+			cell  : ( { row } ) => (
 				<FormattedTextField
 					type='number'
 					size='small'
 					inputMode='numeric'
-					value={row.original.fateLevel || 0}
+					value={row.original.devLevel || 0}
 					onChange={( { target } ) => dispatch( research_modifyShip( {
 						ship: row.original.name,
-						item: { fateLevel: parseInt( target.value ) }
+						item: { devLevel: parseInt( target.value ) }
 					} ) )}
 				/>
-			);
-		}
-	}, {
-		id    : 'fateStage',
-		header: 'Fate Stage',
-		cell  : ( { row } ) => {
-			if ( !row.original.fate ) return;
-			return (
+			)
+		} ),
+		columnHelper.display( {
+			id    : 'devStage',
+			header: 'Dev Stage',
+			cell  : ( { row } ) => (
 				<FormattedTextField
 					type='number'
 					size='small'
 					inputMode='numeric'
 					className='numberInput'
 					InputProps={{
-						endAdornment: <InputAdornment position='end'>%</InputAdornment>
+						endAdornment: (
+							<InputAdornment position='end'>
+								/{row.original.devLevels[ row.original.type * 2 ] * 10}
+							</InputAdornment>
+						)
 					}}
-					value={row.original.fateStage || 0}
+					value={row.original.devStage || 0}
 					onChange={( { target } ) => dispatch( research_modifyShip( {
-						ship: row.original.name,
-						item: { fateStage: parseInt( target.value ) }
+						ship  : row.original.name,
+						item  : { devStage: parseInt( target.value ) },
+						maxDev: row.original.devLevels[ row.original.type * 2 ] * 10
 					} ) )}
 				/>
-			);
-		}
-	}, {
-		accessorKey: 'fatePrints',
-		header     : 'Required Prints',
-		size       : 1,
-		cell       : ( { row, getValue } ) => {
-			if ( !row.original.fate ) return;
-			return getValue();
-		}
-	} ], [] );
+			)
+		} ),
+		columnHelper.accessor( 'devPrints', {
+			header: 'Required Prints',
+			size  : 1
+		} ),
+		columnHelper.display( {
+			id    : 'fateLevel',
+			header: 'Fate Level',
+			cell  : ( { row } ) => {
+				if ( !row.original.fate ) return;
+				return (
+					<FormattedTextField
+						type='number'
+						size='small'
+						inputMode='numeric'
+						value={row.original.fateLevel || 0}
+						onChange={( { target } ) => dispatch( research_modifyShip( {
+							ship: row.original.name,
+							item: { fateLevel: parseInt( target.value ) }
+						} ) )}
+					/>
+				);
+			}
+		} ),
+		columnHelper.display( {
+			id    : 'fateStage',
+			header: 'Fate Stage',
+			cell  : ( { row } ) => {
+				if ( !row.original.fate ) return;
+				return (
+					<FormattedTextField
+						type='number'
+						size='small'
+						inputMode='numeric'
+						className='numberInput'
+						InputProps={{
+							endAdornment: <InputAdornment position='end'>%</InputAdornment>
+						}}
+						value={row.original.fateStage || 0}
+						onChange={( { target } ) => dispatch( research_modifyShip( {
+							ship: row.original.name,
+							item: { fateStage: parseInt( target.value ) }
+						} ) )}
+					/>
+				);
+			}
+		} ),
+		columnHelper.accessor( 'fatePrints', {
+			header: 'Required Prints',
+			size  : 1,
+			cell  : ( { row, getValue } ) => {
+				if ( !row.original.fate ) return;
+				return getValue();
+			}
+		} )
+	], [] );
 	
 	const table = useDataDisplay( {
 		data              : shipData,
 		columns,
 		enableSorting     : false,
-		renderRow         : ( { original } ) => (
+		renderRow         : ( { row: { original } } ) => (
 			<Fragment>
 				<ListItemAvatar>
 					<Avatar variant='rounded' src={original.image} sx={{ width: 60, height: 60, mr: 1 }}/>

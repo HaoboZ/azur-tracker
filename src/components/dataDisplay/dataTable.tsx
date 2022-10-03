@@ -37,7 +37,7 @@ export default function DataTable<TData extends RowData>( { table }: { table: Ta
 				) )}
 			</TableRow>
 			{row.getIsExpanded() && (
-				<TableRow sx={{ backgroundColor: ( { palette } ) => palette.background.paper }}>
+				<TableRow sx={{ bgcolor: ( { palette } ) => palette.background.paper }}>
 					<TableCell colSpan={colSpan}>
 						{renderSubComponent( row, table )}
 					</TableCell>
@@ -61,10 +61,10 @@ export default function DataTable<TData extends RowData>( { table }: { table: Ta
 								key={header.id}
 								colSpan={header.colSpan}
 								sx={{
-									width          : `${header.column.columnDef.size}%`,
-									position       : 'sticky',
-									top            : 0,
-									backgroundColor: ( { palette } ) => palette.background.paper
+									width   : `${header.column.columnDef.size}%`,
+									position: 'sticky',
+									top     : 0,
+									bgcolor : ( { palette } ) => palette.background.paper
 								}}>
 								<TableSortLabel
 									active={Boolean( header.column.getIsSorted() )}

@@ -1,5 +1,7 @@
 import { Box, List, ListItem, ListItemButton, listItemButtonClasses, listItemClasses } from '@mui/material';
-import type { RowData, Table } from '@tanstack/react-table';
+import type { Cell, RowData, Table } from '@tanstack/react-table';
+import { flexRender } from '@tanstack/react-table';
+import { keyBy } from 'lodash-es';
 import { Fragment, useState } from 'react';
 import Virtualizer from '../virtualizer';
 
@@ -12,15 +14,20 @@ export default function VirtualList<TData extends RowData>( { table }: { table: 
 	
 	const { renderRow, onRowClick } = table.options.meta;
 	
-	const renderBodyRow = ( row, ref ) => (
-		<ListItem ref={ref} divider disablePadding={Boolean( onRowClick )}>
-			{onRowClick ? (
-				<ListItemButton onClick={() => onRowClick( row, table )}>
-					{renderRow( row, table )}
-				</ListItemButton>
-			) : renderRow( row, table )}
-		</ListItem>
-	);
+	const renderBodyRow = ( row, ref ) => {
+		const cells = keyBy( row.getVisibleCells(), 'column.id' );
+		const render = ( cell: Cell<TData, unknown> ) => flexRender( cell.column.columnDef.cell, cell.getContext() ) as any;
+		
+		return (
+			<ListItem ref={ref} divider disablePadding={Boolean( onRowClick )}>
+				{onRowClick ? (
+					<ListItemButton onClick={() => onRowClick( row, table )}>
+						{renderRow( { cells, render, row, table } )}
+					</ListItemButton>
+				) : renderRow( { cells, render, row, table } )}
+			</ListItem>
+		);
+	};
 	
 	return (
 		<List

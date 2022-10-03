@@ -17,26 +17,26 @@ import DataTable from './dataTable';
 declare module '@tanstack/table-core' {
 	// noinspection JSUnusedGlobalSymbols
 	interface FilterFns {
-		fuzzy: FilterFn<unknown>;
+		fuzzy: FilterFn<unknown>
 	}
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
 		setData?: ( data: TData[] ) => void,
-		renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
+		renderRow?: ( row: { cells: Record<string, Cell<TData, unknown>>, render: ( cell: Cell<TData, unknown> ) => any, row: Row<TData>, table: Table<TData> } ) => ReactNode,
 		onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void,
 		renderSubComponent?: ( row: Row<TData>, table: Table<TData> ) => ReactNode
 	}
 	
 	// noinspection JSUnusedGlobalSymbols
 	interface ColumnMeta<TData extends RowData, TValue> {
-		props?: ( cell: Cell<TData, TValue> ) => TableCellProps;
+		props?: ( cell: Cell<TData, TValue> ) => TableCellProps
 	}
 }
 
 export type DataDisplayOptions<TData extends RowData> = {
 	setData?: ( data: TData[] ) => void,
-	renderRow?: ( row: Row<TData>, table: Table<TData> ) => ReactNode,
+	renderRow?: ( row: { cells: Record<string, Cell<TData, unknown>>, render: ( cell: Cell<TData, unknown> ) => any, row: Row<TData>, table: Table<TData> } ) => ReactNode,
 	onRowClick?: ( row: Row<TData>, table: Table<TData> ) => void,
 	renderSubComponent?: ( row: Row<TData>, table: Table<TData> ) => ReactNode
 } & Partial<TableOptions<TData>>;

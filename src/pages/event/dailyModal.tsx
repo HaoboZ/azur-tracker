@@ -1,12 +1,18 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, ListItemSecondaryAction } from '@mui/material';
+import { createColumnHelper } from '@tanstack/react-table';
 import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
-import { useMemo, useState } from 'react';
-import EnhancedDisplay from '../../components/enhancedDisplay';
+import { Fragment, useMemo, useState } from 'react';
+import ActionTitle from '../../components/actionTitle';
+import DataDisplay, { useDataDisplay } from '../../components/dataDisplay';
+import { deleteColumn, deleteIcon } from '../../components/dataDisplay/extras/delete';
+import { sortColumn, sortIcon } from '../../components/dataDisplay/extras/sort';
 import FormattedTextField from '../../components/formattedTextField';
 import { ResponsiveModalContainer } from '../../providers/modal/responsiveModal';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_setDaily } from '../../store/reducers/eventReducer';
+
+const columnHelper = createColumnHelper<{ id: string, name: string, amount: number }>();
 
 export default function DailyModal() {
 	const _daily = useAppSelector( ( { event } ) => event.daily );
@@ -27,66 +33,74 @@ export default function DailyModal() {
 		setDaily( [ ...daily ] );
 	}
 	
+	const columns = useMemo( () => [
+		columnHelper.display( sortColumn() ),
+		columnHelper.accessor( 'name', {
+			header: 'Name',
+			cell  : ( { getValue, row } ) => (
+				<FormattedTextField
+					key='name'
+					fullWidth
+					type='text'
+					value={getValue()}
+					onChange={( { target } ) => modifyItem( row.index, { name: target.value } )}
+				/>
+			)
+		} ),
+		columnHelper.accessor( 'amount', {
+			header: 'Amount',
+			cell  : ( { getValue, row } ) => (
+				<FormattedTextField
+					key='amount'
+					type='number'
+					placeholder='0'
+					value={getValue()}
+					onChange={( { target } ) => modifyItem( row.index, { amount: parseInt( target.value ) } )}
+				/>
+			)
+		} ),
+		columnHelper.display( deleteColumn() )
+	], [] );
+	
+	const table = useDataDisplay( {
+		data         : daily,
+		setData      : setDaily,
+		columns,
+		getRowId     : ( { id } ) => id,
+		enableSorting: false,
+		renderRow    : ( { cells, render, row, table } ) => (
+			<Fragment>
+				{sortIcon()}
+				<Grid container spacing={2}>
+					<Grid item xs={6}>
+						{render( cells.name )}
+					</Grid>
+					<Grid item xs={4}>
+						{render( cells.amount )}
+					</Grid>
+				</Grid>
+				<ListItemSecondaryAction>
+					{deleteIcon( row, table )}
+				</ListItemSecondaryAction>
+			</Fragment>
+		)
+	} );
+	
 	return (
 		<ResponsiveModalContainer
 			title='Daily Points'
 			sx={{ p: 0 }}
 			onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
-			<EnhancedDisplay
-				sortable
-				title={<Typography>Total Daily: {dailyTotal}</Typography>}
-				items={daily}
-				setItems={setDaily}
-				editable={{
-					newData: () => ( { id: nanoid(), name: '', amount: 0 } )
-				}}
-				tableProps={{
-					headers: [
-						'Name',
-						'Amount'
-					],
-					columns: ( item, index ) => [
-						<FormattedTextField
-							key='name'
-							fullWidth
-							type='text'
-							value={item.name}
-							onChange={( { target } ) => modifyItem( index, { name: target.value } )}
-						/>,
-						<FormattedTextField
-							key='amount'
-							type='number'
-							placeholder='0'
-							value={item.amount}
-							onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
-						/>
-					]
-				}}
-				listProps={{
-					renderRow: ( item, index ) => (
-						<Grid container spacing={2}>
-							<Grid item xs={9}>
-								<FormattedTextField
-									fullWidth
-									type='text'
-									label='Name'
-									value={item.name}
-									onChange={( { target } ) => modifyItem( index, { name: target.value } )}
-								/>
-							</Grid>
-							<Grid item xs={3}>
-								<FormattedTextField
-									type='number'
-									label='Amount'
-									placeholder='0'
-									value={item.amount}
-									onChange={( { target } ) => modifyItem( index, { amount: parseInt( target.value ) } )}
-								/>
-							</Grid>
-						</Grid>
-					)
-				}}
-			/>
+			<ActionTitle
+				variant='h6'
+				actions={[ {
+					name       : 'Add',
+					onClick    : () => setDaily( [ ...daily, { id: nanoid(), name: '', amount: 0 } ] ),
+					buttonProps: { color: 'primary' }
+				} ]}>
+				Total Daily: {dailyTotal}
+			</ActionTitle>
+			<DataDisplay table={table}/>
 		</ResponsiveModalContainer>
 	);
 }
