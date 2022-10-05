@@ -8,7 +8,6 @@ import {
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { useWindowSize } from 'rooks';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
@@ -24,7 +23,6 @@ export default function BottomBar( { children } ) {
 	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
 	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const { innerHeight } = useWindowSize();
 	
 	const index = useMemo( () => {
 		for ( let i = 0; i < items.length; ++i )
@@ -41,14 +39,14 @@ export default function BottomBar( { children } ) {
 				height='env(safe-area-inset-top)'
 				bgcolor='primary.main'
 			/>
-			<Box width='100%' height='env(safe-area-inset-top)'/>
 			<Box
+				pt='env(safe-area-inset-top)'
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${innerHeight}px)`}>
+				pb='calc(env(safe-area-inset-bottom) + 56px)'
+				minHeight='100vh'>
 				{children}
 			</Box>
-			<Box height='calc(env(safe-area-inset-bottom) + 56px)'/>
 			<AppBar
 				position='fixed'
 				color='inherit'

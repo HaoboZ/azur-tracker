@@ -15,7 +15,7 @@
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android"  : "cap open android"
 	},
-	"packageManager" : "yarn@3.2.3",
+	"packageManager" : "yarn@3.2.4",
 	"dependencies"   : {
 		"@capacitor/app"                  : "^4.0.1",
 		"@capacitor/core"                 : "^4.3.0",

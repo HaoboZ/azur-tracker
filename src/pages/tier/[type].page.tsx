@@ -128,7 +128,7 @@ export default function TierType() {
 				<Grid item xs={6}>
 					{[ tier0, tier1, tier2, tier3, tier4, tierN ].map( ( [ tier, setTier ], index ) => (
 						<Box key={index}>
-							<Typography sx={{ mb: 2 }}>Tier {index === 5 ? 'N' : index}</Typography>
+							<Typography mb={2}>Tier {index === 5 ? 'N' : index}</Typography>
 							<Sortable<EquipType>
 								group='tier'
 								items={tier}

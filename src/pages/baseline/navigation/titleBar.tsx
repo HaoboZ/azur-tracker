@@ -1,7 +1,6 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
-import { useWindowSize } from 'rooks';
 import { PageLinkComponent } from '../../../components/page/link';
 import { useAuth } from '../../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -31,7 +30,6 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 }
 
 export default function TitleBar( { children } ) {
-	const { innerHeight } = useWindowSize();
 	const user = useAuth();
 	
 	return (
@@ -45,7 +43,7 @@ export default function TitleBar( { children } ) {
 					pr: 'env(safe-area-inset-right)'
 				}}>
 				<Toolbar>
-					<Typography variant='h3' sx={{ mr: 3 }}>
+					<Typography variant='h3' mr={3}>
 						Azur Lane Tracker
 					</Typography>
 					<LinkItem href='/' store='event'>Event</LinkItem>
@@ -60,9 +58,11 @@ export default function TitleBar( { children } ) {
 				</Toolbar>
 			</AppBar>
 			<Box
+				pt='env(safe-area-inset-top)'
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				minHeight={`min(calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), ${innerHeight}px)`}>
+				pb='env(safe-area-inset-bottom)'
+				minHeight='calc(100vh - 64px)'>
 				{children}
 			</Box>
 		</Box>

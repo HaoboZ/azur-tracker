@@ -7,11 +7,7 @@ export default function Progress( {
 	isLoading,
 	delay,
 	children = ( progress ) => (
-		<Box sx={{
-			display       : 'flex',
-			justifyContent: 'center',
-			pt            : 5
-		}}>
+		<Box display='flex' justifyContent='center' pt={5}>
 			<CircularProgress value={progress}/>
 		</Box>
 	)
@@ -22,7 +18,7 @@ export default function Progress( {
 } ) {
 	const isAnimating = useLoading( isLoading, delay );
 	const { isFinished, progress } = useNProgress( { isAnimating } );
-	
+	console.log( isFinished );
 	return (
 		<Box sx={{
 			opacity   : isFinished ? 0 : 1,
