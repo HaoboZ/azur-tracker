@@ -18,7 +18,7 @@ export default function Progress( {
 } ) {
 	const isAnimating = useLoading( isLoading, delay );
 	const { isFinished, progress } = useNProgress( { isAnimating } );
-	console.log( isFinished );
+	
 	return (
 		<Box sx={{
 			opacity   : isFinished ? 0 : 1,

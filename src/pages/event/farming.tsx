@@ -12,12 +12,18 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { event_modifyFarming, event_setFarming } from '../../store/reducers/eventReducer';
 import type { EventType } from './type';
 
-const columnHelper = createColumnHelper<{ id: string, points: number, oil: number }>();
+const columnHelper = createColumnHelper<{ id: string, points: number, oil: number, plays: number, cost: number }>();
 
 export default function EventFarming( { remainingPoints }: { remainingPoints: number } ) {
 	const farming = useAppSelector( ( { event } ) => event.farming );
 	const dispatch = useAppDispatch();
 	const { eventStagesData } = useData<EventType>();
+	
+	const farmingData = useMemo( () => farming.map( ( row ) => {
+		const plays = Math.ceil( remainingPoints ? remainingPoints / row.points : 0 ),
+		      cost  = plays * row.oil;
+		return { ...row, plays, cost: isFinite( cost ) ? cost : Infinity };
+	} ), [ farming, remainingPoints ] );
 	
 	const columns = useMemo( () => [
 		columnHelper.display( sortColumn() ),
@@ -59,23 +65,17 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 				/>
 			)
 		} ),
-		columnHelper.accessor( ( row ) => Math.ceil( remainingPoints ? remainingPoints / row.points : 0 ), {
-			id    : 'plays',
+		columnHelper.accessor( 'plays', {
 			header: 'Required Plays'
 		} ),
-		columnHelper.accessor( ( row ) => {
-			const plays = Math.ceil( remainingPoints ? remainingPoints / row.points : 0 ),
-			      oil   = plays * row.oil;
-			return isFinite( oil ) ? oil : Infinity;
-		}, {
-			id    : 'cost',
+		columnHelper.accessor( 'cost', {
 			header: 'Total Oil Cost'
 		} ),
 		columnHelper.display( deleteColumn() )
 	], [] );
 	
 	const table = useDataDisplay( {
-		data         : farming,
+		data         : farmingData,
 		setData      : ( data ) => dispatch( event_setFarming( data ) ),
 		columns,
 		getRowId     : ( { id } ) => id,
