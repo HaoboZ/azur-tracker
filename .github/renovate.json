@@ -11,8 +11,7 @@
 			"matchUpdateTypes"    : [ "minor", "patch", "lockFileMaintenance" ],
 			"groupName"           : "all non-major dependencies",
 			"groupSlug"           : "all-minor-patch",
-			"automerge"           : true,
-			"automergeType"       : "branch"
+			"automerge"           : true
 		}
 	]
 }
