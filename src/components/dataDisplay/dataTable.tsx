@@ -7,7 +7,7 @@ import {
 	TableHead,
 	TableRow,
 	tableRowClasses,
-	TableSortLabel
+	TableSortLabel, Typography
 } from '@mui/material';
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
@@ -17,6 +17,8 @@ import Sortable from '../sortable';
 
 export default function DataTable<TData extends RowData>( { table }: { table: Table<TData> } ) {
 	const { rows } = table.getRowModel();
+	
+	if ( !rows.length ) return <Typography textAlign='center'>No Items</Typography>;
 	
 	const { onRowClick, renderSubComponent, setData } = table.options.meta;
 	

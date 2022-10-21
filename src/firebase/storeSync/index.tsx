@@ -1,10 +1,18 @@
 import { Dialog } from '@capacitor/dialog';
+import { Fade, Paper, Typography } from '@mui/material';
 import { getDatabase, ref } from 'firebase/database';
 import { pick } from 'lodash-es';
 import objectHash from 'object-hash';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
-import { useAsyncEffect, useDebouncedValue, useDidUpdate, useOnline, useWindowEventListener } from 'rooks';
+import {
+	useAsyncEffect,
+	useDebouncedValue,
+	useDidUpdate,
+	useOnline,
+	useTimeoutWhen,
+	useWindowEventListener
+} from 'rooks';
 import { useAuth } from '../../providers/auth';
 import { useIndicator } from '../../providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -33,6 +41,7 @@ function Internal( { keys }: { keys: string[] } ) {
 	const [ hash ] = useDebouncedValue( objectHash( data ), 500 );
 	
 	const [ saving, setSaving ] = useState( 0 );
+	const [ saved, setSaved ] = useState( false );
 	const [ loading, setLoading ] = useState( 0 );
 	
 	useWindowEventListener( 'beforeunload', ( e: BeforeUnloadEvent ) => {
@@ -60,6 +69,7 @@ function Internal( { keys }: { keys: string[] } ) {
 		}
 		await indicator( setData( keys ) );
 		setSaving( ( save ) => Math.max( save - 1, 0 ) );
+		setSaved( true );
 	}, [ online, serverLoading, main.timestamp ] );
 	
 	// load
@@ -77,5 +87,22 @@ function Internal( { keys }: { keys: string[] } ) {
 		setLoading( ( load ) => Math.max( load - 1, 0 ) );
 	}, [ online, serverLoading, serverTimestamp ] );
 	
-	return null;
+	useTimeoutWhen( () => setSaved( false ), 2000, saved );
+	
+	if ( !saved ) return null;
+	
+	return (
+		<Fade mountOnEnter unmountOnExit in>
+			<Paper sx={{
+				px      : 1,
+				opacity : 0.5,
+				position: 'fixed',
+				zIndex  : 'tooltip',
+				bottom  : 'calc(env(safe-area-inset-bottom) + 10px)',
+				right   : 'calc(env(safe-area-inset-right) + 10px)'
+			}}>
+				<Typography>Saved</Typography>
+			</Paper>
+		</Fade>
+	);
 }

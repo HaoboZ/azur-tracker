@@ -171,6 +171,7 @@ export default function useFleetTable( data ) {
 		},
 		getRowId    : ( { id } ) => id,
 		onRowClick  : ( row, table ) => showModal( ShipModal, {
+			id     : 'ship',
 			variant: 'drawer',
 			bottom : true,
 			props  : {

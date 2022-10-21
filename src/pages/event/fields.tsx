@@ -54,7 +54,7 @@ export default function EventFields( { time, neededPoints }: {
 						endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 					}}
 					value={event.shopExpectedCost}
-					onClick={() => showModal( ShopModal )}
+					onClick={() => showModal( ShopModal, { id: 'shop' } )}
 				/>
 			</Grid>
 			<Grid item sm={3} xs={6}>
@@ -68,7 +68,7 @@ export default function EventFields( { time, neededPoints }: {
 						endAdornment: <InputAdornment position='end'>Points</InputAdornment>
 					}}
 					value={event.dailyExpected}
-					onClick={() => showModal( DailyModal )}
+					onClick={() => showModal( DailyModal, { id: 'daily' } )}
 				/>
 			</Grid>
 			<Grid item sm={3} xs={6}>

@@ -7,7 +7,7 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
-	listItemSecondaryActionClasses
+	listItemSecondaryActionClasses, Typography
 } from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
@@ -34,6 +34,8 @@ const SortList = forwardRef<HTMLUListElement, { children: ReactNode }>( ( { chil
 
 export default function DataList<TData extends RowData>( { table }: { table: Table<TData> } ) {
 	const { rows } = table.getRowModel();
+	
+	if ( !rows.length ) return <Typography textAlign='center'>No Items</Typography>;
 	
 	const { renderRow, onRowClick, renderSubComponent, setData } = table.options.meta;
 	

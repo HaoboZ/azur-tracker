@@ -47,6 +47,7 @@ export default function Settings() {
 	
 	return (
 		<Page
+			hideBack
 			title='Settings'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {

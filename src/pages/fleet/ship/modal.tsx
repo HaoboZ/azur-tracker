@@ -140,6 +140,7 @@ export default function ShipModal( { ship, filterMeta, selectedEquip }: {
 								flexDirection='column'
 								alignItems='center'
 								onClick={() => showModal( EquipModal, {
+									id                 : 'equip',
 									variant            : 'modal',
 									maxWidth           : 'xs',
 									TransitionComponent: Zoom,

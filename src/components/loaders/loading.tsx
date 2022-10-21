@@ -18,10 +18,11 @@ export default function Loading( {
 	const loading = useLoading( isLoading, delay );
 	
 	return (
-		<Box sx={{
-			opacity   : loading ? 0 : 1,
-			transition: ( { transitions } ) => transitions.create( 'opacity' )
-		}}>
+		<Box
+			sx={{
+				opacity   : loading ? 0 : 1,
+				transition: ( { transitions } ) => transitions.create( 'opacity' )
+			}}>
 			{children}
 		</Box>
 	);

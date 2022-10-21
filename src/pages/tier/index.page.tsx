@@ -13,7 +13,7 @@ export default function Tier() {
 	const { tierTypesData } = useData<TierType>();
 	
 	return (
-		<Page title='Tier'>
+		<Page hideBack title='Tier'>
 			<Grid container spacing={2} pt={2}>
 				{tierTypesData.map( ( type ) => (
 					<Grid key={type} item xs={6} sm={4} md={3} lg={2}>

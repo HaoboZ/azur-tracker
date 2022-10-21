@@ -1,18 +1,20 @@
-import { Dialog } from '@capacitor/dialog';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Breadcrumbs, Button } from '@mui/material';
+import { startCase } from 'lodash-es';
 import { useRouter } from 'next/router';
 import type { MouseEventHandler } from 'react';
 import { useMemo } from 'react';
-import startCase from '../../helpers/startCase';
 import useWideMedia from '../../hooks/useWideMedia';
 import PageLink, { PageLinkComponent } from './link';
 
-export default function PageBack( { confirm, onClick, back }: {
+export type PageBackProps = {
 	confirm?: boolean,
 	onClick?: MouseEventHandler<HTMLButtonElement>,
-	back?: boolean
-} ) {
+	pathMap?: Record<string, boolean | string>,
+	backButton?: boolean
+};
+
+export default function PageBack( { confirm: confirmBack, onClick, pathMap, backButton }: PageBackProps ) {
 	const router = useRouter();
 	const wide = useWideMedia();
 	
@@ -22,28 +24,25 @@ export default function PageBack( { confirm, onClick, back }: {
 		const paths = router.route.split( '/' );
 		
 		return paths.reduce<{ name: string, href: string }[]>( ( arr, path, index ) => {
-			if ( !path || index === paths.length - 1 ) return arr;
-			href += `/${names[ index ]}`;
-			path = path.replace( /[\[\]]+/g, '' );
-			arr.push( { name: startCase( path ), href } );
+			if ( index === paths.length - 1 ) return arr;
+			if ( names[ index ] ) href += `/${names[ index ]}`;
+			path = path.replace( /[\[\]]+/g, '' ) || 'home';
+			if ( pathMap?.[ path ] !== undefined ) path = pathMap[ path ] as string;
+			if ( path ) arr.push( { name: startCase( path ), href: href || '/' } );
 			return arr;
 		}, [] );
 	}, [ router.asPath ] );
+	console.log( routes );
 	
 	const clickListener = async ( e ) => {
-		if ( confirm ) {
-			const { value } = await Dialog.confirm( {
-				title  : 'Confirm',
-				message: 'Are you sure you want to leave?'
-			} );
-			if ( !value ) throw 'cancel';
-		}
+		if ( confirmBack && !confirm( 'Are you sure you want to leave?' ) )
+			throw 'cancel';
 		
 		await onClick?.( e );
-		if ( back ) router.back();
+		if ( backButton ) router.back();
 	};
 	
-	if ( !back && wide ) {
+	if ( !backButton && wide ) {
 		return (
 			<Breadcrumbs sx={{ pt: 1 }}>
 				<div/>
@@ -65,11 +64,11 @@ export default function PageBack( { confirm, onClick, back }: {
 		
 		return (
 			<Button
-				component={back ? undefined : PageLinkComponent}
-				href={back ? undefined : path.href}
+				component={backButton ? undefined : PageLinkComponent}
+				href={backButton ? undefined : path.href}
 				startIcon={<ArrowBackIcon/>}
 				onClick={clickListener}>
-				{back ? 'Back' : path.name}
+				{backButton ? 'Back' : path.name}
 			</Button>
 		);
 	}

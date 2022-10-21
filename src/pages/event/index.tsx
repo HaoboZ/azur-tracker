@@ -45,6 +45,7 @@ export default function Event() {
 	
 	return (
 		<Page
+			hideBack
 			title='Event Tracker'
 			titleBar='Event'
 			titleProps={{
