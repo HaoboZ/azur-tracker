@@ -63,6 +63,7 @@ export default function Fleet() {
 	
 	return (
 		<Page
+			hideBack
 			title='Fleet Tracker'
 			titleBar='Fleet'
 			titleProps={{

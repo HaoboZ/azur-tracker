@@ -9,7 +9,7 @@ import OpSiWeakness from './opSiWeakness';
 // noinspection JSUnusedGlobalSymbols
 export default function Info() {
 	return (
-		<Page title='Info'>
+		<Page hideBack title='Info'>
 			<OpSiWeakness/>
 			<EquipDrop/>
 		</Page>
