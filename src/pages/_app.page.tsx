@@ -3,8 +3,8 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import DataProvider from '../providers/data';
-import Baseline from './baseline';
-import './baseline/style.scss';
+import Baseline from './layout';
+import './layout/style.scss';
 
 if ( typeof window !== 'undefined' ) {
 	defineCustomElements( window ).then();

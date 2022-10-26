@@ -1,11 +1,8 @@
 import { cert, getApps, initializeApp } from 'firebase-admin/app';
+import serviceAccount from './serviceAccountKey.json';
 
 const firebaseServerApp = getApps()[ 0 ] || initializeApp( {
-	credential : cert( {
-		projectId  : process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-		clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-		privateKey : process.env.FIREBASE_PRIVATE_KEY
-	} ),
+	credential : cert( serviceAccount ),
 	projectId  : process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
 	databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL
 } );
