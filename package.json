@@ -2,7 +2,7 @@
 	"name"           : "azur-tracker",
 	"description"    : "A tracker of events, research, and ships for Azur Lane",
 	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"        : "7.2.2",
+	"version"        : "7.2.3",
 	"private"        : true,
 	"scripts"        : {
 		"dev"      : "next dev",
@@ -22,7 +22,6 @@
 		"@capacitor/dialog"               : "4.0.1",
 		"@capacitor/preferences"          : "4.0.1",
 		"@capacitor/status-bar"           : "4.0.1",
-		"@emotion/cache"                  : "11.10.3",
 		"@emotion/react"                  : "11.10.4",
 		"@emotion/server"                 : "11.10.0",
 		"@emotion/styled"                 : "11.10.4",

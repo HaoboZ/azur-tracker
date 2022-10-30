@@ -1457,7 +1457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/cache@npm:11.10.3, @emotion/cache@npm:^11.10.0, @emotion/cache@npm:^11.10.3":
+"@emotion/cache@npm:^11.10.0, @emotion/cache@npm:^11.10.3":
   version: 11.10.3
   resolution: "@emotion/cache@npm:11.10.3"
   dependencies:
@@ -4459,7 +4459,6 @@ __metadata:
     "@capacitor/dialog": 4.0.1
     "@capacitor/preferences": 4.0.1
     "@capacitor/status-bar": 4.0.1
-    "@emotion/cache": 11.10.3
     "@emotion/react": 11.10.4
     "@emotion/server": 11.10.0
     "@emotion/styled": 11.10.4

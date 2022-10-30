@@ -1,6 +1,3 @@
-import type { EmotionCache } from '@emotion/cache';
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
@@ -16,12 +13,7 @@ import ModalProvider from '../../providers/modal';
 import ThemeProvider from '../../providers/theme';
 import { persistor, store } from '../../store';
 
-const clientCache = createCache( { key: 'css', prepend: true } );
-
-export default function Providers( { emotionCache, children }: {
-	emotionCache: EmotionCache,
-	children: ReactNode
-} ) {
+export default function Providers( { children }: { children: ReactNode } ) {
 	const snackbarRef = useRef<SnackbarProvider>();
 	
 	return (
@@ -31,7 +23,6 @@ export default function Providers( { emotionCache, children }: {
 			component( PersistGate, { loading: null, persistor } ),
 			component( EventsProvider ),
 			// styling
-			component( CacheProvider, { value: emotionCache || clientCache } ),
 			component( ThemeProvider ),
 			// visual
 			component( SnackbarProvider, {

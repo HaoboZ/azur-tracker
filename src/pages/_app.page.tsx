@@ -1,9 +1,8 @@
-import type { EmotionCache } from '@emotion/cache';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import DataProvider from '../providers/data';
-import Baseline from './layout';
+import Layout from './layout';
 import './layout/style.scss';
 
 if ( typeof window !== 'undefined' ) {
@@ -11,18 +10,16 @@ if ( typeof window !== 'undefined' ) {
 }
 
 // noinspection JSUnusedGlobalSymbols
-export default function _App( { Component, pageProps, emotionCache }: {
-	emotionCache: EmotionCache
-} & AppProps ) {
+export default function _App( { Component, pageProps }: AppProps ) {
 	return (
 		<DataProvider data={pageProps}>
 			<Head>
 				<title>Azur Lane Tracker</title>
 				<meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'/>
 			</Head>
-			<Baseline emotionCache={emotionCache}>
+			<Layout>
 				<Component {...pageProps}/>
-			</Baseline>
+			</Layout>
 		</DataProvider>
 	);
 }
