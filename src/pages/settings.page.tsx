@@ -52,7 +52,7 @@ export default function Settings() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
 					name   : 'Revalidate',
-					onClick: () => axios.post( `${process.env.NEXT_PUBLIC_SERVER_URL}/api/revalidate` )
+					onClick: () => axios.post( `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/revalidate` )
 				} ] : undefined
 			}}>
 			<List sx={{ '.longText': { width: '80%' } }}>

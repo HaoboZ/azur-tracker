@@ -13,10 +13,9 @@ const nextConfig = {
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
 	images        : {
-		unoptimized: Boolean( process.env.NEXT_PUBLIC_SERVER_URL )
+		unoptimized: Boolean( process.env.NEXT_PUBLIC_VERCEL_ENV === 'development' )
 	},
 	experimental  : {
-		// appDir           : true,
 		modularizeImports: {
 			'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
 		}
@@ -26,7 +25,7 @@ const nextConfig = {
 const plugins = [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	nextPWA( {
-		disable: Boolean( process.env.NEXT_PUBLIC_SERVER_URL ) || process.env.NODE_ENV === 'development',
+		disable: process.env.NEXT_PUBLIC_VERCEL_ENV === 'development',
 		dest   : 'public'
 	} )
 ];
