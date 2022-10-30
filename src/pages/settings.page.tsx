@@ -33,6 +33,7 @@ import { event_reset } from '../store/reducers/eventReducer';
 import { fleet_reset } from '../store/reducers/fleetReducer';
 import { setAutoSync, setTheme } from '../store/reducers/mainReducer';
 import { research_reset } from '../store/reducers/researchReducer';
+import { getServerURL } from './api/getServerURL';
 
 const packageJson = _packageJson as PackageJson;
 
@@ -52,7 +53,7 @@ export default function Settings() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
 					name   : 'Revalidate',
-					onClick: () => axios.post( `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/revalidate` )
+					onClick: () => axios.post( `${getServerURL()}/api/revalidate` )
 				} ] : undefined
 			}}>
 			<List sx={{ '.longText': { width: '80%' } }}>
