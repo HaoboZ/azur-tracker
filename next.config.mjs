@@ -14,7 +14,7 @@ const nextConfig = {
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
 	async redirects() {
-		return [ { source: '/', destination: '/event', permanent: true } ];
+		return [ { source: '/', destination: '/event' } ];
 	},
 	experimental: {
 		modularizeImports: {
