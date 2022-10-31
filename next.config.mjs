@@ -1,6 +1,7 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import nextPWA from 'next-pwa';
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * @type {import('next').NextConfig}
  */
@@ -12,10 +13,10 @@ const nextConfig = {
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
-	images        : {
-		unoptimized: Boolean( process.env.NEXT_PUBLIC_VERCEL_ENV === 'development' )
+	async rewrites() {
+		return [ { source: '/', destination: '/event' } ];
 	},
-	experimental  : {
+	experimental: {
 		modularizeImports: {
 			'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
 		}
@@ -25,7 +26,7 @@ const nextConfig = {
 const plugins = [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	nextPWA( {
-		disable: process.env.NEXT_PUBLIC_VERCEL_ENV === 'development',
+		disable: !process.env.NEXT_PUBLIC_VERCEL_ENV,
 		dest   : 'public'
 	} )
 ];
