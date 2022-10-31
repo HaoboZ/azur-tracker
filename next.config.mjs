@@ -13,8 +13,8 @@ const nextConfig = {
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
-	async rewrites() {
-		return [ { source: '/', destination: '/event' } ];
+	async redirects() {
+		return [ { source: '/', destination: '/event', permanent: true } ];
 	},
 	experimental: {
 		modularizeImports: {

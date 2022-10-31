@@ -142,7 +142,7 @@ export default function Settings() {
 				<ListItem>
 					<ListItemText
 						primary={(
-							<PageLink href='/' underline='always'>
+							<PageLink href='/event' underline='always'>
 								Event Tracker
 							</PageLink>
 						)}

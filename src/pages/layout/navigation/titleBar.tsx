@@ -46,7 +46,7 @@ export default function TitleBar( { children } ) {
 					<Typography variant='h3' mr={3}>
 						Azur Lane Tracker
 					</Typography>
-					<LinkItem href='/' store='event'>Event</LinkItem>
+					<LinkItem href='/event' store='event'>Event</LinkItem>
 					<LinkItem href='/research' store='research'>Research</LinkItem>
 					<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
 					<LinkItem href='/info'>Info</LinkItem>

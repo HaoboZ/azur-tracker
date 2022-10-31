@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setViewed } from '../../../store/reducers/mainReducer';
 
 const items = [
-	{ label: 'Event', icon: <EventIcon/>, href: '/', store: 'event' },
+	{ label: 'Event', icon: <EventIcon/>, href: '/event', store: 'event' },
 	{ label: 'Research', icon: <CameraIcon/>, href: '/research', store: 'research' },
 	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, href: '/fleet', store: 'fleet' },
 	{ label: 'Info', icon: <InfoIcon/>, href: '/info' },
