@@ -1,14 +1,12 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import nextPWA from 'next-pwa';
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-	pageExtensions: [ 'page.js', 'page.jsx', 'page.ts', 'page.tsx' ],
-	typescript    : { ignoreBuildErrors: true },
-	headers       : async () => [ {
+	typescript: { ignoreBuildErrors: true },
+	headers   : async () => [ {
 		// matching all API routes
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
@@ -17,6 +15,10 @@ const nextConfig = {
 		return [ { source: '/', destination: '/event', permanent: false } ];
 	},
 	experimental: {
+		appDir           : true,
+		fontLoaders      : [
+			{ loader: '@next/font/google', options: { subsets: [ 'latin' ] } }
+		],
 		modularizeImports: {
 			'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
 		}

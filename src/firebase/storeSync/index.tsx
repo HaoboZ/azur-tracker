@@ -1,3 +1,4 @@
+'use client';
 import { Dialog } from '@capacitor/dialog';
 import { Fade, Paper, Typography } from '@mui/material';
 import { getDatabase, ref } from 'firebase/database';
@@ -13,8 +14,8 @@ import {
 	useTimeoutWhen,
 	useWindowEventListener
 } from 'rooks';
-import { useAuth } from '../../providers/auth';
-import { useIndicator } from '../../providers/indicator';
+import { useAuth } from '../../layout/providers/auth';
+import { useIndicator } from '../../layout/providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setTimestamp } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';
