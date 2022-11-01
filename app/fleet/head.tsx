@@ -1,7 +1,3 @@
 export default function Head() {
-	return (
-		<head>
-			<title>Fleet | Azur Lane Tracker</title>
-		</head>
-	);
+	return <title>Fleet | Azur Lane Tracker</title>;
 }
