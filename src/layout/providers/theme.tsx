@@ -10,7 +10,6 @@ import {
 	useMediaQuery
 } from '@mui/material';
 import { merge } from 'lodash-es';
-import Head from 'next/head';
 import { useEffect, useMemo } from 'react';
 import { useAppSelector } from '../../store/hooks';
 
@@ -83,9 +82,6 @@ export default function ThemeProvider( { children } ) {
 	return (
 		<MuiThemeProvider theme={theme}>
 			<CssBaseline/>
-			<Head>
-				<meta key='theme' name='theme-color' content={theme.palette.primary.main}/>
-			</Head>
 			{children}
 		</MuiThemeProvider>
 	);
