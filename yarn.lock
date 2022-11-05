@@ -4560,6 +4560,7 @@ __metadata:
     events: 3.3.0
     firebase: 9.13.0
     firebase-admin: 11.2.0
+    firebaseui: 6.0.1
     fuzzysort: 2.0.3
     intro.js: 6.0.0
     intro.js-react: 0.7.0
@@ -4575,7 +4576,6 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-firebase-hooks: 5.0.3
-    react-firebaseui: 6.0.0
     react-redux: 8.0.5
     react-sortablejs: 6.1.4
     react-swipeable-views: 0.14.0
@@ -6405,7 +6405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebaseui@npm:^6.0.0":
+"firebaseui@npm:6.0.1":
   version: 6.0.1
   resolution: "firebaseui@npm:6.0.1"
   dependencies:
@@ -9895,18 +9895,6 @@ __metadata:
     firebase: ">= 9.0.0"
     react: ">= 16.8.0"
   checksum: 80e704f1839d44894017d7227dcea8ec02cf5f1b64045de3214a87cfda9b38906765c35ec19657486ca301b251801588cd556c7a8ebbf41eee4d0b0dbadb2eea
-  languageName: node
-  linkType: hard
-
-"react-firebaseui@npm:6.0.0":
-  version: 6.0.0
-  resolution: "react-firebaseui@npm:6.0.0"
-  dependencies:
-    firebaseui: ^6.0.0
-  peerDependencies:
-    firebase: ^9.1.3
-    react: ">=15 <=17"
-  checksum: 05c58ddbe7b8054158366d58a024af3512be3606e982e635eb34b1de5e1c398cf3cb9f2985e75c654c5e1d31ac0ba1bed8c37913d34e25954abc0b1516dc78d9
   languageName: node
   linkType: hard
 

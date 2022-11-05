@@ -1,10 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import type { User } from 'firebase/auth';
 
-export function importBackup( key, data ) {
-	return { type: 'import', payload: { key, data } };
-}
+export const importBackup = createAction( 'import', ( key: string, data: any ) =>
+	( { payload: { key, data } } ) );
 
 type State = {
 	theme: string,
@@ -47,18 +46,19 @@ const mainSlice = createSlice( {
 			state.lastTimestamp = payload;
 		}
 	},
-	extraReducers: {
-		import( state, { payload }: PayloadAction<{ key, data }> ) {
-			return { ...state, unViewed: { ...state.unViewed, [ payload.key ]: true } };
-		}
+	extraReducers: ( builder ) => {
+		builder.addCase( importBackup, ( state, { payload } ) =>
+			( { ...state, unViewed: { ...state.unViewed, [ payload.key ]: true } } ) );
 	}
 } );
 
 export default mainSlice.reducer;
 export const
-	setTheme         = mainSlice.actions.setTheme,
-	setUser          = mainSlice.actions.setUser,
-	setViewed        = mainSlice.actions.setViewed,
-	setAutoSync      = mainSlice.actions.setAutoSync,
-	setTimestamp     = mainSlice.actions.setTimestamp,
-	setLastTimestamp = mainSlice.actions.setLastTimestamp;
+	{
+		setTheme,
+		setUser,
+		setViewed,
+		setAutoSync,
+		setTimestamp,
+		setLastTimestamp
+	} = mainSlice.actions;

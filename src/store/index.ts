@@ -2,7 +2,6 @@ import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
 import { mapValues, omit } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
-import type { PersistedState } from 'redux-persist';
 import {
 	createMigrate,
 	FLUSH,
@@ -19,12 +18,10 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import { rootReducer } from './reducers';
 
 type State = ReturnType<typeof rootReducer>;
-export type RootState = State & PersistedState;
 
-const migrations: Record<string, ( state: RootState ) => RootState> = {
+const migrations: Record<string, ( state ) => any> = {
 	10: ( state ) => ( {
 		...state,
-		// @ts-ignore
 		main    : omit( state.main, 'lastSaved' ),
 		event   : { ...state.event, timestamp: new Date( 0 ).toISOString() },
 		research: { ...state.research, timestamp: new Date( 0 ).toISOString() },
@@ -34,18 +31,14 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 		...state,
 		main: {
 			...omit( state.main, [ 'autoSave', 'autoLoad' ] ) as any,
-			// @ts-ignore
 			autoBackup: state.main.autoSave
 		}
 	} ),
 	12: ( state ) => ( {
 		...state,
-		// @ts-ignore
 		main: {
 			...omit( state.main, 'autoBackup' ),
-			// @ts-ignore
-			unViewed: state.main.newData,
-			// @ts-ignore
+			unViewed     : state.main.newData,
 			autoSync     : state.main.autoBackup,
 			timestamp    : new Date( 0 ).toISOString(),
 			lastTimestamp: null
@@ -57,7 +50,6 @@ const migrations: Record<string, ( state: RootState ) => RootState> = {
 		// @ts-ignore
 		fleet: omit( state.fleet, 'timestamp' )
 	} ),
-	// @ts-ignore
 	13: () => {
 		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
 			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
@@ -103,4 +95,5 @@ export const store = configureStore( {
 
 export const persistor = persistStore( store );
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

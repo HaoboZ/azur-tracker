@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
+import { importBackup } from './mainReducer';
 
 type State = {
 	name: string,
@@ -100,19 +101,21 @@ const eventSlice = createSlice( {
 			state.farming[ index ] = { ...state.farming[ index ], ...payload };
 		}
 	},
-	extraReducers: {
-		import( state, { payload }: PayloadAction<{ key, data }> ) {
+	extraReducers: ( builder ) => {
+		builder.addCase( importBackup, ( state, { payload } ) => {
 			if ( payload.key === 'event' ) return { ...state, ...payload.data };
-		}
+		} );
 	}
 } );
 
 export default eventSlice.reducer;
 export const
-	event_reset         = eventSlice.actions.event_reset,
-	event_newEvent      = eventSlice.actions.event_newEvent,
-	event_setShop       = eventSlice.actions.event_setShop,
-	event_setDaily      = eventSlice.actions.event_setDaily,
-	event_setPoints     = eventSlice.actions.event_setPoints,
-	event_setFarming    = eventSlice.actions.event_setFarming,
-	event_modifyFarming = eventSlice.actions.event_modifyFarming;
+	{
+		event_reset,
+		event_newEvent,
+		event_setShop,
+		event_setDaily,
+		event_setPoints,
+		event_setFarming,
+		event_modifyFarming
+	} = eventSlice.actions;

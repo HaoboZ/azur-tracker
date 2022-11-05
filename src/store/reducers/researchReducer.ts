@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { importBackup } from './mainReducer';
 
 type State = {
 	ships: Record<string, {
@@ -55,15 +56,17 @@ const researchSlice = createSlice( {
 			state.lastTab = payload;
 		}
 	},
-	extraReducers: {
-		import( state, { payload }: PayloadAction<{ key, data }> ) {
+	extraReducers: ( builder ) => {
+		builder.addCase( importBackup, ( state, { payload } ) => {
 			if ( payload.key === 'research' ) return { ...state, ...payload.data };
-		}
+		} );
 	}
 } );
 
 export default researchSlice.reducer;
 export const
-	research_reset      = researchSlice.actions.research_reset,
-	research_modifyShip = researchSlice.actions.research_modifyShip,
-	research_setLastTab = researchSlice.actions.research_setLastTab;
+	{
+		research_reset,
+		research_modifyShip,
+		research_setLastTab
+	} = researchSlice.actions;

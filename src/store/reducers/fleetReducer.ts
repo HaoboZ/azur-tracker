@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { importBackup } from './mainReducer';
 
 type State = {
 	ships: Record<string, {
@@ -63,17 +64,19 @@ const fleetSlice = createSlice( {
 			state.filter = { ...state.filter, ...payload };
 		}
 	},
-	extraReducers: {
-		import( state, { payload }: PayloadAction<{ key, data }> ) {
+	extraReducers: ( builder ) => {
+		builder.addCase( importBackup, ( state, { payload } ) => {
 			if ( payload.key === 'fleet' ) return { ...state, ...payload.data };
-		}
+		} );
 	}
 } );
 
 export default fleetSlice.reducer;
 export const
-	fleet_reset      = fleetSlice.actions.fleet_reset,
-	fleet_setVersion = fleetSlice.actions.fleet_setVersion,
-	fleet_setShips   = fleetSlice.actions.fleet_setShips,
-	fleet_setShip    = fleetSlice.actions.fleet_setShip,
-	fleet_setFilter  = fleetSlice.actions.fleet_setFilter;
+	{
+		fleet_reset,
+		fleet_setVersion,
+		fleet_setShips,
+		fleet_setShip,
+		fleet_setFilter
+	} = fleetSlice.actions;
