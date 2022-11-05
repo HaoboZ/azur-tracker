@@ -5,6 +5,7 @@ import _packageJson from '../package.json';
 import StoreSync from '../src/firebase/storeSync';
 import Navigation from '../src/layout/navigation';
 import Providers from '../src/layout/providers';
+import '../src/layout/style.scss';
 
 const packageJson = _packageJson as PackageJson;
 
