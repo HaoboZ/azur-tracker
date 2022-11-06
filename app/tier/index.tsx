@@ -1,16 +1,28 @@
 'use client';
 import { Button, Grid } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import Page from '../../src/components/page';
 import { PageLinkComponent } from '../../src/components/page/link';
+import { useAuth } from '../../src/layout/providers/auth';
 import { useData } from '../../src/layout/providers/data';
 import type { TierType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Tier() {
+	const router = useRouter();
+	const user = useAuth();
 	const { tierTypesData } = useData<TierType>();
 	
 	return (
-		<Page hideBack title='Tier'>
+		<Page
+			hideBack
+			title='Tier'
+			titleProps={{
+				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
+					name   : 'Revalidate',
+					onClick: () => router.refresh()
+				} ]
+			}}>
 			<Grid container spacing={2} pt={2}>
 				{tierTypesData.map( ( type ) => (
 					<Grid key={type} item xs={6} sm={4} md={3} lg={2}>
