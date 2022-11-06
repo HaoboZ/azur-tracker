@@ -38,9 +38,7 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 	const [ equipList, equipListIndex, tierList ] = useMemo( () => {
 		const equipType = data.equippableData[ info?.ship.equipType[ info.index ] ]?.equip;
 		const equipList = equipType ? data.equipData.filter( ( { type } ) => equipType.includes( type ) ) : [];
-		const tierList = equipType
-			? data.equipTierData[ data.equippableData[ info?.ship.equipType[ info.index ] ]?.tier ]
-			: [];
+		const tierList = ( equipType && data.equipTierData[ data.equippableData[ info?.ship.equipType[ info.index ] ]?.tier ] ) ?? {};
 		
 		return [
 			equipList,
