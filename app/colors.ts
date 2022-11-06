@@ -29,7 +29,8 @@ export const typeColors = {
 	'Submarine'               : 'green',
 	'Submarine Carrier'       : 'green',
 	'Repair Ship'             : 'aqua',
-	'Munition Ship'           : 'aqua'
+	'Munition Ship'           : 'aqua',
+	'Sailing Frigate'         : 'brown'
 };
 export const factionColors = {
 	'Universal'          : 'rainbow',
@@ -48,7 +49,8 @@ export const factionColors = {
 	'Venus Vacation'     : 'venus',
 	'The Idolmaster'     : 'idolmaster',
 	'SSSS'               : 'ssss',
-	'META'               : 'meta'
+	'META'               : 'meta',
+	'Tempesta'           : 'tempesta'
 };
 export const tierColors = [
 	'rainbow',

@@ -30,6 +30,7 @@ $colors : (
 	'red' : #ff8d8d,
 	'green' : #98fb98,
 	'aqua' : #76ffdd,
+	'brown': #965a3e,
 	// faction
 	'eagle' : #9fe8ff,
 	'royal' : #000080,
@@ -47,6 +48,7 @@ $colors : (
 	'idolmaster' : #f8bde9,
 	'ssss' : #6b6c65,
 	'meta' : #808080,
+	'tempesta': #000000,
 );
 
 @each $color, $value in $colors {
