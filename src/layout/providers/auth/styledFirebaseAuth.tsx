@@ -1,22 +1,27 @@
 import type { Auth } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from 'firebaseui';
+import type { auth } from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import { useEffect, useRef, useState } from 'react';
+import { useAsyncEffect } from 'rooks';
 
 type Props = {
 	uiConfig: auth.Config,
 	firebaseAuth: Auth,
-	className?: string,
 	uiCallback?: ( ui: auth.AuthUI ) => void
 };
 
-export default function StyledFirebaseAuth( { uiConfig, firebaseAuth, className, uiCallback }: Props ) {
+export default function StyledFirebaseAuth( { uiConfig, firebaseAuth, uiCallback }: Props ) {
 	const [ userSignedIn, setUserSignedIn ] = useState( false );
 	const elementRef = useRef( null );
+	const [ authUI, setAuthUI ] = useState<auth.AuthUI>( null );
+	
+	useAsyncEffect( async () => {
+		const { auth } = await import( 'firebaseui' );
+		setAuthUI( auth.AuthUI.getInstance() || new auth.AuthUI( firebaseAuth ) );
+	}, [] );
 	
 	useEffect( () => {
-		const authUI = auth.AuthUI.getInstance() || new auth.AuthUI( firebaseAuth );
 		if ( uiConfig.signInFlow === 'popup' ) authUI.reset();
 		
 		const unregisterAuthObserver = onAuthStateChanged( firebaseAuth, ( user ) => {
@@ -34,5 +39,5 @@ export default function StyledFirebaseAuth( { uiConfig, firebaseAuth, className,
 		};
 	}, [ uiConfig ] );
 	
-	return <div ref={elementRef} className={className}/>;
+	return <div ref={elementRef}/>;
 }
