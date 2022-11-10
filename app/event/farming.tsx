@@ -1,15 +1,15 @@
+import ActionTitle from '@/components/actionTitle';
+import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
+import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
+import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
+import FormattedTextField from '@/components/formattedTextField';
+import { useData } from '@/src/layout/providers/data';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { event_modifyFarming, event_setFarming } from '@/src/store/reducers/eventReducer';
 import { Autocomplete, Grid, ListItemSecondaryAction, MenuItem, TextField, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo } from 'react';
-import ActionTitle from '../../src/components/actionTitle';
-import DataDisplay, { useDataDisplay } from '../../src/components/dataDisplay';
-import { deleteColumn, deleteIcon } from '../../src/components/dataDisplay/extras/delete';
-import { sortColumn, sortIcon } from '../../src/components/dataDisplay/extras/sort';
-import FormattedTextField from '../../src/components/formattedTextField';
-import { useData } from '../../src/layout/providers/data';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { event_modifyFarming, event_setFarming } from '../../src/store/reducers/eventReducer';
 import type { EventType } from './type';
 
 const columnHelper = createColumnHelper<{ id: string, points: number, oil: number, plays: number, cost: number }>();

@@ -1,3 +1,8 @@
+import { rarityColors } from '@/app/colors';
+import useEventListener from '@/src/hooks/useEventListener';
+import { useModalControls } from '@/src/layout/providers/modal';
+import { useAppDispatch } from '@/src/store/hooks';
+import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import {
 	Alert,
 	Box,
@@ -13,11 +18,6 @@ import {
 } from '@mui/material';
 import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
 import { Fragment, useMemo, useState } from 'react';
-import useEventListener from '../../../../src/hooks/useEventListener';
-import { useModalControls } from '../../../../src/layout/providers/modal';
-import { useAppDispatch } from '../../../../src/store/hooks';
-import { fleet_setShip } from '../../../../src/store/reducers/fleetReducer';
-import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
 import type { FleetType, Ship } from '../../type';

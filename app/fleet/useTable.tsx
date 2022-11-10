@@ -1,12 +1,12 @@
+import { useVirtualDisplay } from '@/components/virtualDisplay';
+import { useData } from '@/src/layout/providers/data';
+import { useModal } from '@/src/layout/providers/modal';
 import { Star as StarIcon } from '@mui/icons-material';
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { isNumber, map, max, min } from 'lodash-es';
 import { Fragment, useMemo } from 'react';
-import { useVirtualDisplay } from '../../src/components/virtualDisplay';
-import { useData } from '../../src/layout/providers/data';
-import { useModal } from '../../src/layout/providers/modal';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';
 import { AffinityIcons, TierIcon } from './tierIcon';

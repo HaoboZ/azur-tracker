@@ -1,10 +1,10 @@
+import firebaseServerApp from '@/src/firebase/server';
+import DataProvider from '@/src/layout/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
 import { keyBy, mapValues, omit, pick, sortBy } from 'lodash-es';
 import objectHash from 'object-hash';
-import firebaseServerApp from '../../src/firebase/server';
-import DataProvider from '../../src/layout/providers/data';
 import Fleet from './index';
 
 export default async function Page() {

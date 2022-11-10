@@ -1,16 +1,16 @@
+import ActionTitle from '@/components/actionTitle';
+import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
+import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
+import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
+import FormattedTextField from '@/components/formattedTextField';
+import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { event_setDaily } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
 import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo, useState } from 'react';
-import ActionTitle from '../../src/components/actionTitle';
-import DataDisplay, { useDataDisplay } from '../../src/components/dataDisplay';
-import { deleteColumn, deleteIcon } from '../../src/components/dataDisplay/extras/delete';
-import { sortColumn, sortIcon } from '../../src/components/dataDisplay/extras/sort';
-import FormattedTextField from '../../src/components/formattedTextField';
-import { ResponsiveModalContainer } from '../../src/layout/providers/modal/responsiveModal';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { event_setDaily } from '../../src/store/reducers/eventReducer';
 
 const columnHelper = createColumnHelper<{ id: string, name: string, amount: number }>();
 

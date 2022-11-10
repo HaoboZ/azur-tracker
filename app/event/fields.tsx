@@ -1,10 +1,10 @@
+import FormattedTextField from '@/components/formattedTextField';
+import { useData } from '@/src/layout/providers/data';
+import { useModal } from '@/src/layout/providers/modal';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { event_setPoints } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
 import { format, formatDistanceToNow, isBefore } from 'date-fns';
-import FormattedTextField from '../../src/components/formattedTextField';
-import { useData } from '../../src/layout/providers/data';
-import { useModal } from '../../src/layout/providers/modal';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { event_setPoints } from '../../src/store/reducers/eventReducer';
 import DailyModal from './dailyModal';
 import ShopModal from './shopModal';
 import type { EventType } from './type';

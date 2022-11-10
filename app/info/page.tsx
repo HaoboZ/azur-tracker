@@ -1,7 +1,7 @@
+import DataProvider from '@/src/layout/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { flatten, groupBy, keyBy, map, mapValues, sortBy, uniq } from 'lodash-es';
-import DataProvider from '../../src/layout/providers/data';
 import Info from './index';
 
 export default async function Page() {

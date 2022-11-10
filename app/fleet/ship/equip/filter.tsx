@@ -1,6 +1,6 @@
+import { rarityColors } from '@/app/colors';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Box, TextField, Typography } from '@mui/material';
-import { rarityColors } from '../../../colors';
 import type { EquipType } from './type';
 
 const typeNames = {

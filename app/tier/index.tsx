@@ -1,10 +1,10 @@
 'use client';
+import Page from '@/components/page';
+import { PageLinkComponent } from '@/components/page/link';
+import { useAuth } from '@/src/layout/providers/auth';
+import { useData } from '@/src/layout/providers/data';
 import { Button, Grid } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import Page from '../../src/components/page';
-import { PageLinkComponent } from '../../src/components/page/link';
-import { useAuth } from '../../src/layout/providers/auth';
-import { useData } from '../../src/layout/providers/data';
 import type { TierType } from './type';
 
 // noinspection JSUnusedGlobalSymbols

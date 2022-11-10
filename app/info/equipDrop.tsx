@@ -1,10 +1,10 @@
+import PageSection from '@/components/page/section';
+import { useData } from '@/src/layout/providers/data';
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
 import { each, keyBy, map, mapValues } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
-import PageSection from '../../src/components/page/section';
-import { useData } from '../../src/layout/providers/data';
 import { rarityColors } from '../colors';
 import EquipFilter from '../fleet/ship/equip/filter';
 import type { EquipType } from '../fleet/ship/equip/type';

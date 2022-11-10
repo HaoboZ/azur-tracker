@@ -1,5 +1,5 @@
+import PageSection from '@/components/page/section';
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import PageSection from '../../src/components/page/section';
 
 const opSiWeakness: [ string, string, string ][] = [
 	[ 'f/f1/Enforcer_VIII_Determination.png', 'Determination', 'Airstrikes' ],

@@ -1,7 +1,7 @@
+import { PageLinkComponent } from '@/components/page/link';
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
-import { PageLinkComponent } from '../../components/page/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setViewed } from '../../store/reducers/mainReducer';
 import { useAuth } from '../providers/auth';

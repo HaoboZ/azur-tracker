@@ -1,4 +1,16 @@
 'use client';
+import AsyncLoadingButton from '@/components/asyncLoadingButton';
+import Page from '@/components/page';
+import PageLink from '@/components/page/link';
+import getData from '@/src/firebase/storeSync/getData';
+import setData from '@/src/firebase/storeSync/setData';
+import { useAuth } from '@/src/layout/providers/auth';
+import useAuthButton from '@/src/layout/providers/auth/useAuthButton';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { event_reset } from '@/src/store/reducers/eventReducer';
+import { fleet_reset } from '@/src/store/reducers/fleetReducer';
+import { setAutoSync, setTheme } from '@/src/store/reducers/mainReducer';
+import { research_reset } from '@/src/store/reducers/researchReducer';
 import { Dialog } from '@capacitor/dialog';
 import {
 	Brightness3 as Brightness3Icon,
@@ -21,18 +33,6 @@ import { useSnackbar } from 'notistack';
 import { useOnline } from 'rooks';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
-import AsyncLoadingButton from '../../src/components/asyncLoadingButton';
-import Page from '../../src/components/page';
-import PageLink from '../../src/components/page/link';
-import getData from '../../src/firebase/storeSync/getData';
-import setData from '../../src/firebase/storeSync/setData';
-import { useAuth } from '../../src/layout/providers/auth';
-import useAuthButton from '../../src/layout/providers/auth/useAuthButton';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { event_reset } from '../../src/store/reducers/eventReducer';
-import { fleet_reset } from '../../src/store/reducers/fleetReducer';
-import { setAutoSync, setTheme } from '../../src/store/reducers/mainReducer';
-import { research_reset } from '../../src/store/reducers/researchReducer';
 
 const packageJson = _packageJson as PackageJson;
 

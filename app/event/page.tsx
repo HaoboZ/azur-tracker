@@ -1,7 +1,7 @@
+import DataProvider from '@/src/layout/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { pickBy } from 'lodash-es';
-import DataProvider from '../../src/layout/providers/data';
 import Event from './index';
 
 export default async function EventData() {

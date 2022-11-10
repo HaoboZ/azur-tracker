@@ -1,7 +1,7 @@
 'use client';
+import Page from '@/components/page';
+import { useAuth } from '@/src/layout/providers/auth';
 import { useRouter } from 'next/navigation';
-import Page from '../../src/components/page';
-import { useAuth } from '../../src/layout/providers/auth';
 import EquipDrop from './equipDrop';
 import OpSiWeakness from './opSiWeakness';
 

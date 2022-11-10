@@ -1,7 +1,7 @@
+import DataProvider from '@/src/layout/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { map, sortBy } from 'lodash-es';
-import DataProvider from '../../../src/layout/providers/data';
 import TierType from './index';
 
 export default async function Page( { params }: { params: Record<string, string> } ) {

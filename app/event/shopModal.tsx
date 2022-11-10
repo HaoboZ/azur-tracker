@@ -1,12 +1,12 @@
+import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
+import FormattedTextField from '@/components/formattedTextField';
+import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { event_setShop } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
 import { keyBy, mapValues } from 'lodash-es';
 import { useMemo, useState } from 'react';
-import DataDisplay, { useDataDisplay } from '../../src/components/dataDisplay';
-import FormattedTextField from '../../src/components/formattedTextField';
-import { ResponsiveModalContainer } from '../../src/layout/providers/modal/responsiveModal';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { event_setShop } from '../../src/store/reducers/eventReducer';
 import type { EventType } from './type';
 
 const columnHelper = createColumnHelper<{ name: string, amount: number, cost: number, wanted: number }>();

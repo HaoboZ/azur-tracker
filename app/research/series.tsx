@@ -1,11 +1,11 @@
+import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
+import FormattedTextField from '@/components/formattedTextField';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { research_modifyShip } from '@/src/store/reducers/researchReducer';
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import { keyBy } from 'lodash-es';
 import { Fragment, useMemo } from 'react';
-import DataDisplay, { useDataDisplay } from '../../src/components/dataDisplay';
-import FormattedTextField from '../../src/components/formattedTextField';
-import { useAppDispatch, useAppSelector } from '../../src/store/hooks';
-import { research_modifyShip } from '../../src/store/reducers/researchReducer';
 import type { ResearchShipType } from './type';
 
 const devLevelsIndex = [

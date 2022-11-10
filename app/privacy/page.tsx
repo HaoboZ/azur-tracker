@@ -1,5 +1,5 @@
 'use client';
-import PageContainer from '../../src/components/page/container';
+import PageContainer from '@/components/page/container';
 
 export default function Privacy() {
 	return (
