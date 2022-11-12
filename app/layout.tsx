@@ -3,6 +3,8 @@ import Navigation from '@/src/layout/navigation';
 import Providers from '@/src/layout/providers';
 import '@/src/layout/style.scss';
 import { Roboto } from '@next/font/google';
+import 'intro.js/introjs.css';
+import 'intro.js/themes/introjs-modern.css';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../package.json';

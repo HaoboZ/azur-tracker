@@ -7,7 +7,8 @@ import {
 	TableHead,
 	TableRow,
 	tableRowClasses,
-	TableSortLabel, Typography
+	TableSortLabel,
+	Typography
 } from '@mui/material';
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';

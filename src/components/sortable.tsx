@@ -9,7 +9,7 @@ import { ReactSortable } from 'react-sortablejs';
 
 const StyledReactSortable = styled( ReactSortable )( {} );
 
-export default function Sortable<Item>( { items, setItems, renderItem, sx, ...props }: {
+export default function Sortable<Item extends { id? }>( { items, setItems, renderItem, sx, ...props }: {
 	items: Item[],
 	setItems: ( items: Item[] ) => void,
 	renderItem: ( props: { item: Item, index: number, handleClass: string } ) => ReactNode,
@@ -20,14 +20,14 @@ export default function Sortable<Item>( { items, setItems, renderItem, sx, ...pr
 	
 	const [ skip, setSkip ] = useState( false );
 	const [ list, setList ] = useState<{ id: string, item: Item }[]>( () =>
-		items.map( ( item ) => ( { id: nanoid(), item } ) ) );
+		items.map( ( item ) => ( { id: item.id ?? nanoid(), item } ) ) );
 	
 	useEffect( () => {
 		if ( skip ) {
 			setSkip( false );
 			return;
 		}
-		setList( items.map( ( item ) => ( { id: nanoid(), item } ) ) );
+		setList( items.map( ( item ) => ( { id: item.id ?? nanoid(), item } ) ) );
 	}, [ items ] );
 	
 	return (

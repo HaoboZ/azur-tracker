@@ -40,10 +40,12 @@ export default function ShopModal( { eventShopData }: Pick<EventType, 'eventShop
 					type='number'
 					placeholder='0'
 					value={getValue() || 0}
-					onChange={( { target } ) => {
-						shop[ row.index ].wanted = Math.min( Math.max( parseInt( target.value ) || 0, 0 ), row.original.amount );
-						setShop( [ ...shop ] );
-					}}
+					onChange={( { target } ) => setShop( ( shop ) => {
+						const index = shop.findIndex( ( { name } ) => name === row.id );
+						if ( index !== -1 ) shop[ index ].wanted
+							= Math.min( Math.max( parseInt( target.value ) || 0, 0 ), row.original.amount );
+						return [ ...shop ];
+					} )}
 				/>
 			)
 		} )
@@ -52,6 +54,7 @@ export default function ShopModal( { eventShopData }: Pick<EventType, 'eventShop
 	const table = useDataDisplay( {
 		data         : shop,
 		columns,
+		getRowId     : ( { name } ) => name,
 		enableSorting: false,
 		renderRow    : ( { cells, render } ) => (
 			<Grid container spacing={2}>

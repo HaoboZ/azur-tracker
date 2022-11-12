@@ -1,18 +1,20 @@
 import ActionTitle from '@/components/actionTitle';
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
-import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
+import { sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
 import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setDaily } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';
+import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo, useState } from 'react';
 
-const columnHelper = createColumnHelper<{ id: string, name: string, amount: number }>();
+type Daily = { id: string, name: string, amount: number };
+const columnHelper = createColumnHelper<Daily>();
 
 export default function DailyModal() {
 	const _daily = useAppSelector( ( { event } ) => event.daily );
@@ -25,16 +27,19 @@ export default function DailyModal() {
 		() => daily.reduce( ( total, item ) => total + +item.amount, 0 ),
 		[ daily ] );
 	
-	function modifyItem( index: number, item: { id?: string, name?: string, amount?: number } ) {
+	function modifyItem( row: Row<Daily>, item: Partial<Daily> ) {
 		if ( 'amount' in item ) {
 			item.amount = Math.max( item.amount || 0, 0 );
 		}
-		daily[ index ] = { ...daily[ index ], ...item };
-		setDaily( [ ...daily ] );
+		setDaily( ( daily ) => {
+			const index = daily.findIndex( ( { id } ) => id === id );
+			if ( index !== -1 ) daily[ index ] = { ...daily[ index ], ...item };
+			return [ ...daily ];
+		} );
 	}
 	
 	const columns = useMemo( () => [
-		columnHelper.display( sortColumn() ),
+		// columnHelper.display( sortColumn() ),
 		columnHelper.accessor( 'name', {
 			header: 'Name',
 			cell  : ( { getValue, row } ) => (
@@ -43,7 +48,7 @@ export default function DailyModal() {
 					fullWidth
 					type='text'
 					value={getValue()}
-					onChange={( { target } ) => modifyItem( row.index, { name: target.value } )}
+					onChange={( { target } ) => modifyItem( row, { name: target.value } )}
 				/>
 			)
 		} ),
@@ -55,7 +60,7 @@ export default function DailyModal() {
 					type='number'
 					placeholder='0'
 					value={getValue()}
-					onChange={( { target } ) => modifyItem( row.index, { amount: parseInt( target.value ) } )}
+					onChange={( { target } ) => modifyItem( row, { amount: parseInt( target.value ) } )}
 				/>
 			)
 		} ),
