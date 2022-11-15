@@ -1,20 +1,9 @@
 import { useModal } from '@/src/layout/providers/modal';
-import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
+import ModalDrawer from '@/src/layout/providers/modal/drawer';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
-import {
-	Box,
-	DialogTitle,
-	FormControl,
-	Grid,
-	InputLabel,
-	Link,
-	MenuItem,
-	Select,
-	Typography,
-	Zoom
-} from '@mui/material';
+import { Box, DialogTitle, FormControl, Grid, InputLabel, Link, MenuItem, Select, Typography } from '@mui/material';
 import { keyBy } from 'lodash-es';
 import { Fragment, useMemo } from 'react';
 import { rarityColors } from '../../colors';
@@ -49,14 +38,16 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 	}, [ ship.tier ] );
 	
 	return (
-		<ResponsiveModalContainer title={(
-			<Link
-				href={`https://azurlane.koumakan.jp/wiki/${ship.id}`}
-				target='_blank'
-				color='textPrimary'>
-				<DialogTitle>{ship.name}</DialogTitle>
-			</Link>
-		)}>
+		<ModalDrawer
+			autoSize
+			title={(
+				<Link
+					href={`https://azurlane.koumakan.jp/wiki/${ship.id}`}
+					target='_blank'
+					color='textPrimary'>
+					<DialogTitle>{ship.name}</DialogTitle>
+				</Link>
+			)}>
 			<Grid container spacing={2} alignItems='center'>
 				<Grid item xs={4}>
 					<InputLabel shrink>Rarity</InputLabel>
@@ -136,11 +127,8 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 								flexDirection='column'
 								alignItems='center'
 								onClick={() => showModal( EquipModal, {
-									id                 : 'equip',
-									variant            : 'modal',
-									maxWidth           : 'xs',
-									TransitionComponent: Zoom,
-									props              : { info: { ship, index }, selectedEquip, ...data }
+									id   : 'equip',
+									props: { info: { ship, index }, selectedEquip, ...data }
 								} )}>
 								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img
@@ -166,6 +154,6 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 					} )}
 				</Grid>
 			</Grid>
-		</ResponsiveModalContainer>
+		</ModalDrawer>
 	);
 }

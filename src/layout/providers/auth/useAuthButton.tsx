@@ -14,10 +14,7 @@ export default function useAuthButton() {
 	const user = useAuth();
 	const { showModal } = useModal();
 	
-	useEventListener( events, 'showAuth', () => showModal( LoginModal, {
-		id      : 'login',
-		maxWidth: 'xs'
-	} ) );
+	useEventListener( events, 'showAuth', () => showModal( LoginModal, { id: 'login' } ) );
 	
 	return user ? (
 		<AsyncLoadingButton

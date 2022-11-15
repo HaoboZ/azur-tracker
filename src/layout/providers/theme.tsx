@@ -77,10 +77,8 @@ export default function ThemeProvider( { children } ) {
 		StatusBar.setStyle( { style: mode === 'dark' ? Style.Dark : Style.Light } ).catch( () => null );
 	}, [ mode ] );
 	
-	const theme = mode === 'dark' ? darkTheme : lightTheme;
-	
 	return (
-		<MuiThemeProvider theme={theme}>
+		<MuiThemeProvider theme={mode === 'dark' ? darkTheme : lightTheme}>
 			<CssBaseline/>
 			{children}
 		</MuiThemeProvider>

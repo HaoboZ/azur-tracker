@@ -15,7 +15,6 @@ import {
 	useWindowEventListener
 } from 'rooks';
 import { useAuth } from '../../layout/providers/auth';
-import { useIndicator } from '../../layout/providers/indicator';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setTimestamp } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';
@@ -35,7 +34,6 @@ export default function StoreSync( { keys }: { keys: string[] } ) {
 function Internal( { keys }: { keys: string[] } ) {
 	const dispatch = useAppDispatch();
 	const { main, data } = useAppSelector( ( { main, ...state } ) => ( { main, data: pick( state, keys ) } ) );
-	const indicator = useIndicator();
 	const user = useAuth();
 	const online = useOnline();
 	const [ serverTimestamp, serverLoading ] = useObjectVal<string>( ref( db, `users/${user.uid}/timestamp` ) );
@@ -68,7 +66,7 @@ function Internal( { keys }: { keys: string[] } ) {
 			} );
 			if ( !value ) return setSaving( ( save ) => Math.max( save - 1, 0 ) );
 		}
-		await indicator( setData( keys ) );
+		await setData( keys );
 		setSaving( ( save ) => Math.max( save - 1, 0 ) );
 		setSaved( true );
 	}, [ online, serverLoading, main.timestamp ] );
@@ -84,7 +82,7 @@ function Internal( { keys }: { keys: string[] } ) {
 			} );
 			if ( !value ) return setLoading( ( load ) => Math.max( load - 1, 0 ) );
 		}
-		await indicator( getData( keys ) );
+		await getData( keys );
 		setLoading( ( load ) => Math.max( load - 1, 0 ) );
 	}, [ online, serverLoading, serverTimestamp ] );
 	

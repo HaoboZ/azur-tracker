@@ -1,21 +1,10 @@
 import { rarityColors } from '@/app/colors';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModalControls } from '@/src/layout/providers/modal';
+import ModalDialog from '@/src/layout/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
-import {
-	Alert,
-	Box,
-	Button,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	FormControlLabel,
-	Grid,
-	Link,
-	Switch,
-	Typography
-} from '@mui/material';
+import { Alert, Box, Button, FormControlLabel, Grid, Link, Switch, Typography } from '@mui/material';
 import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
 import { Fragment, useMemo, useState } from 'react';
 import getTier from '../../getTier';
@@ -82,112 +71,113 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 	} );
 	
 	return (
-		<Fragment>
-			<DialogTitle>Switch Equipment</DialogTitle>
-			<DialogContent>
-				<Grid container alignItems='center' justifyContent='center'>
-					{info?.ship.special[ info.index ] ? (
-						<Grid item xs={12} component={Box} pb={2}>
-							<Alert severity='warning' variant='filled'>
-								Special Equip Slot (Check Skills & Equipment)
-							</Alert>
-						</Grid>
-					) : undefined}
-					<Grid item container xs={5} justifyContent='center'>
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src={currentEquip?.image
-								? `https://azurlane.netojuu.com/images/${currentEquip.image}`
-								: '/images/emptyEquip.png'}
-							alt={currentEquip?.name}
-							height={128}
-							width={128}
-							className={`color-${rarityColors[ currentEquip?.rarity ]}`}
-						/>
-					</Grid>
-					<Grid item xs={2}>
-						<Typography variant='h4' align='center'>⇒</Typography>
-					</Grid>
-					<Grid item container xs={5} justifyContent='center'>
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src={equip?.image
-								? `https://azurlane.netojuu.com/images/${equip.image}`
-								: '/images/emptyEquip.png'}
-							alt={equip?.name}
-							height={128}
-							width={128}
-							className={`color-${rarityColors[ equip?.rarity ]}`}
-							onClick={() => setEquip( null )}
-						/>
-					</Grid>
-					<Grid item container xs={5} justifyContent='center'>
-						{currentEquip && (
-							<Link
-								target='_blank'
-								href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
-								align='center'
-								color='textPrimary'>
-								{currentEquip.name}
-							</Link>
+		<ModalDialog
+			title='Switch Equipment'
+			maxWidth='xs'
+			actions={(
+				<Fragment>
+					<FormControlLabel
+						control={(
+							<Switch
+								checked={Boolean( override )}
+								onChange={( { target } ) => setOverride( +target.checked )}
+							/>
 						)}
+						label='Force BiS'
+						labelPlacement='start'
+						sx={{ mr: 2 }}
+					/>
+					<Button variant='contained' onClick={() => closeModal()}>
+						Close
+					</Button>
+					<Button
+						variant='contained'
+						color='error'
+						onClick={() => closeModal( true )}>
+						Cancel
+					</Button>
+				</Fragment>
+			)}>
+			<Grid container alignItems='center' justifyContent='center'>
+				{info?.ship.special[ info.index ] ? (
+					<Grid item xs={12} component={Box} pb={2}>
+						<Alert severity='warning' variant='filled'>
+							Special Equip Slot (Check Skills & Equipment)
+						</Alert>
 					</Grid>
-					<Grid item xs={2}/>
-					<Grid item container xs={5} justifyContent='center'>
-						{equip && (
-							<Link
-								target='_blank'
-								href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
-								align='center'
-								color='textPrimary'>
-								{equip.name}
-							</Link>
-						)}
-					</Grid>
-					<Grid item container xs={12} md={6} justifyContent='center'>
-						<Button
-							variant='outlined'
-							onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
-							Equipment Tier
-						</Button>
-						<EquipTierSelector
-							anchorEl={anchorEl}
-							closeAnchor={() => setAnchorEl( null )}
-							equipList={tierList}
-							setEquip={( id ) => setEquip( equipListIndex[ id ] )}
-						/>
-					</Grid>
-					<Grid item xs={12} md={6}>
-						<EquipFilter
-							equipList={equipList}
-							value={equip}
-							setValue={setEquip}
-						/>
-					</Grid>
+				) : undefined}
+				<Grid item container xs={5} justifyContent='center'>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src={currentEquip?.image
+							? `https://azurlane.netojuu.com/images/${currentEquip.image}`
+							: '/images/emptyEquip.png'}
+						alt={currentEquip?.name}
+						height={128}
+						width={128}
+						className={`color-${rarityColors[ currentEquip?.rarity ]}`}
+					/>
 				</Grid>
-			</DialogContent>
-			<DialogActions>
-				<FormControlLabel
-					control={(
-						<Switch
-							checked={Boolean( override )}
-							onChange={( { target } ) => setOverride( +target.checked )}
-						/>
+				<Grid item xs={2}>
+					<Typography variant='h4' align='center'>⇒</Typography>
+				</Grid>
+				<Grid item container xs={5} justifyContent='center'>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src={equip?.image
+							? `https://azurlane.netojuu.com/images/${equip.image}`
+							: '/images/emptyEquip.png'}
+						alt={equip?.name}
+						height={128}
+						width={128}
+						className={`color-${rarityColors[ equip?.rarity ]}`}
+						onClick={() => setEquip( null )}
+					/>
+				</Grid>
+				<Grid item container xs={5} justifyContent='center'>
+					{currentEquip && (
+						<Link
+							target='_blank'
+							href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
+							align='center'
+							color='textPrimary'>
+							{currentEquip.name}
+						</Link>
 					)}
-					label='Force BiS'
-					labelPlacement='start'
-					sx={{ mr: 2 }}
-				/>
-				<Button variant='contained' onClick={() => closeModal()}>
-					Close
-				</Button>
-				<Button
-					variant='contained'
-					color='error'
-					onClick={() => closeModal( true )}>
-					Cancel
-				</Button>
-			</DialogActions>
-		</Fragment>
+				</Grid>
+				<Grid item xs={2}/>
+				<Grid item container xs={5} justifyContent='center'>
+					{equip && (
+						<Link
+							target='_blank'
+							href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
+							align='center'
+							color='textPrimary'>
+							{equip.name}
+						</Link>
+					)}
+				</Grid>
+				<Grid item container xs={12} md={6} justifyContent='center'>
+					<Button
+						variant='outlined'
+						onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
+						Equipment Tier
+					</Button>
+					<EquipTierSelector
+						anchorEl={anchorEl}
+						closeAnchor={() => setAnchorEl( null )}
+						equipList={tierList}
+						setEquip={( id ) => setEquip( equipListIndex[ id ] )}
+					/>
+				</Grid>
+				<Grid item xs={12} md={6}>
+					<EquipFilter
+						equipList={equipList}
+						value={equip}
+						setValue={setEquip}
+					/>
+				</Grid>
+			</Grid>
+		</ModalDialog>
 	);
 }

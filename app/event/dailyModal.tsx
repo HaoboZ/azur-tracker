@@ -3,7 +3,7 @@ import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
-import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
+import ModalDialog from '@/src/layout/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setDaily } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';
@@ -92,9 +92,8 @@ export default function DailyModal() {
 	} );
 	
 	return (
-		<ResponsiveModalContainer
+		<ModalDialog
 			title='Daily Points'
-			sx={{ p: 0 }}
 			onSave={() => dispatch( event_setDaily( { daily, total: dailyTotal } ) )}>
 			<ActionTitle
 				variant='h6'
@@ -106,6 +105,6 @@ export default function DailyModal() {
 				Total Daily: {dailyTotal}
 			</ActionTitle>
 			<DataDisplay table={table}/>
-		</ResponsiveModalContainer>
+		</ModalDialog>
 	);
 }

@@ -2,7 +2,7 @@ import { EmailAuthProvider, getAuth, GoogleAuthProvider, sendEmailVerification }
 import { useEffect } from 'react';
 import firebaseClientApp from '../../../firebase/client';
 import { useModalControls } from '../modal';
-import { ResponsiveModalContainer } from '../modal/responsiveModal';
+import ModalDialog from '../modal/dialog';
 import { useAuth } from './index';
 import StyledFirebaseAuth from './styledFirebaseAuth';
 
@@ -18,7 +18,7 @@ export default function LoginModal() {
 	
 	// noinspection JSUnusedGlobalSymbols
 	return (
-		<ResponsiveModalContainer>
+		<ModalDialog maxWidth='xs'>
 			<StyledFirebaseAuth
 				firebaseAuth={auth}
 				uiConfig={{
@@ -40,6 +40,6 @@ export default function LoginModal() {
 					}
 				}}
 			/>
-		</ResponsiveModalContainer>
+		</ModalDialog>
 	);
 }

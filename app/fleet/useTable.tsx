@@ -169,10 +169,8 @@ export default function useFleetTable( data ) {
 		},
 		getRowId    : ( { id } ) => id,
 		onRowClick  : ( row, table ) => showModal( ShipModal, {
-			id     : 'ship',
-			variant: 'drawer',
-			bottom : true,
-			props  : {
+			id   : 'ship',
+			props: {
 				ship         : row.original,
 				filterMeta   : row.columnFiltersMeta.equip?.equip,
 				selectedEquip: table.getColumn( 'equip' ).getFilterValue() as any,

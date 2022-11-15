@@ -1,6 +1,6 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import FormattedTextField from '@/components/formattedTextField';
-import { ResponsiveModalContainer } from '@/src/layout/providers/modal/responsiveModal';
+import ModalDialog from '@/src/layout/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setShop } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
@@ -73,9 +73,8 @@ export default function ShopModal( { eventShopData }: Pick<EventType, 'eventShop
 	} );
 	
 	return (
-		<ResponsiveModalContainer
+		<ModalDialog
 			title='Shop Items'
-			sx={{ p: 0 }}
 			onSave={() => dispatch( event_setShop( {
 				shop : mapValues( keyBy( shop, 'name' ), 'wanted' ),
 				total: expectedCost
@@ -91,6 +90,6 @@ export default function ShopModal( { eventShopData }: Pick<EventType, 'eventShop
 				</Grid>
 			</Box>
 			<DataDisplay table={table}/>
-		</ResponsiveModalContainer>
+		</ModalDialog>
 	);
 }

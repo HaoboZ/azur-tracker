@@ -22,6 +22,7 @@ export default function StyledFirebaseAuth( { uiConfig, firebaseAuth, uiCallback
 	}, [] );
 	
 	useEffect( () => {
+		if ( !authUI ) return;
 		if ( uiConfig.signInFlow === 'popup' ) authUI.reset();
 		
 		const unregisterAuthObserver = onAuthStateChanged( firebaseAuth, ( user ) => {
@@ -37,7 +38,7 @@ export default function StyledFirebaseAuth( { uiConfig, firebaseAuth, uiCallback
 			unregisterAuthObserver();
 			authUI.reset();
 		};
-	}, [ uiConfig ] );
+	}, [ authUI, uiConfig ] );
 	
 	return <div ref={elementRef}/>;
 }

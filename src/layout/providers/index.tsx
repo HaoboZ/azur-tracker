@@ -11,7 +11,6 @@ import ComponentComposer, { component } from '../../helpers/componentComposer';
 import { persistor, store } from '../../store';
 import AuthProvider from './auth';
 import EventsProvider from './events';
-import IndicatorProvider from './indicator';
 import ModalProvider from './modal';
 import ThemeProvider from './theme';
 
@@ -40,7 +39,6 @@ export default function Providers( { children }: { children: ReactNode } ) {
 					</IconButton>
 				)
 			} ),
-			component( IndicatorProvider ),
 			component( AuthProvider ),
 			component( ModalProvider )
 		]}>
