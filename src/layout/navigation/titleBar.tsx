@@ -2,9 +2,9 @@ import { PageLinkComponent } from '@/components/page/link';
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
+import { useAuth } from '../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setViewed } from '../../store/reducers/mainReducer';
-import { useAuth } from '../providers/auth';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
 	const unViewed = useAppSelector( ( { main } ) => main.unViewed );

@@ -1,6 +1,6 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import FormattedTextField from '@/components/formattedTextField';
-import ModalDialog from '@/src/layout/providers/modal/dialog';
+import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setShop } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';

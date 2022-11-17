@@ -1,13 +1,13 @@
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { setUser } from '@/src/store/reducers/mainReducer';
+import AsyncLoadingButton from '@/components/asyncLoadingButton';
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
 import { pick } from 'lodash-es';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import AsyncLoadingButton from '../../../components/asyncLoadingButton';
-import firebaseClientApp from '../../../firebase/client';
+import firebaseClientApp from '../../firebase/client';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setUser } from '../../store/reducers/mainReducer';
 
 const auth = getAuth( firebaseClientApp );
 

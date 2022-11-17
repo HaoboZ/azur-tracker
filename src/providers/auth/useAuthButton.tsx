@@ -1,7 +1,7 @@
+import AsyncLoadingButton from '@/components/asyncLoadingButton';
 import { getAuth, signOut } from 'firebase/auth';
-import AsyncLoadingButton from '../../../components/asyncLoadingButton';
-import firebaseClientApp from '../../../firebase/client';
-import useEventListener from '../../../hooks/useEventListener';
+import firebaseClientApp from '../../firebase/client';
+import useEventListener from '../../hooks/useEventListener';
 import { useEvents } from '../events';
 import { useModal } from '../modal';
 import { useAuth } from './index';

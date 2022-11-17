@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { merge } from 'lodash-es';
 import { useEffect, useMemo } from 'react';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../store/hooks';
 
 const commonTheme: ThemeOptions = {
 	palette   : {

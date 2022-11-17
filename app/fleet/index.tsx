@@ -2,8 +2,8 @@
 import HelpTourButton from '@/components/helpTourButton';
 import Page from '@/components/page';
 import VirtualDisplay from '@/components/virtualDisplay';
-import { useAuth } from '@/src/layout/providers/auth';
-import { useData } from '@/src/layout/providers/data';
+import { useAuth } from '@/src/providers/auth';
+import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShips, fleet_setVersion } from '@/src/store/reducers/fleetReducer';
 import { Typography } from '@mui/material';

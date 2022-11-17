@@ -14,7 +14,7 @@ import {
 	useTimeoutWhen,
 	useWindowEventListener
 } from 'rooks';
-import { useAuth } from '../../layout/providers/auth';
+import { useAuth } from '../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setTimestamp } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';

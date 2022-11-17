@@ -1,6 +1,6 @@
 import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues, omit } from 'lodash-es';
+import { mapValues } from 'lodash-es';
 import { decompressFromUTF16 } from 'lz-string';
 import {
 	createMigrate,
@@ -20,48 +20,34 @@ import { rootReducer } from './reducers';
 type State = ReturnType<typeof rootReducer>;
 
 const migrations: Record<string, ( state ) => any> = {
-	10: ( state ) => ( {
-		...state,
-		main    : omit( state.main, 'lastSaved' ),
-		event   : { ...state.event, timestamp: new Date( 0 ).toISOString() },
-		research: { ...state.research, timestamp: new Date( 0 ).toISOString() },
-		fleet   : { ...state.fleet, timestamp: new Date( 0 ).toISOString() }
-	} ),
-	11: ( state ) => ( {
-		...state,
-		main: {
-			...omit( state.main, [ 'autoSave', 'autoLoad' ] ) as any,
-			autoBackup: state.main.autoSave
-		}
-	} ),
-	12: ( state ) => ( {
-		...state,
-		main: {
-			...omit( state.main, 'autoBackup' ),
-			unViewed     : state.main.newData,
-			autoSync     : state.main.autoBackup,
-			timestamp    : new Date( 0 ).toISOString(),
-			lastTimestamp: null
-		},
-		// @ts-ignore
-		event: omit( state.event, 'timestamp' ),
-		// @ts-ignore
-		research: omit( state.research, 'timestamp' ),
-		// @ts-ignore
-		fleet: omit( state.fleet, 'timestamp' )
-	} ),
 	13: () => {
 		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
 			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
 		localStorage.removeItem( 'persist:root' );
 		return data;
+	},
+	14: ( state ) => {
+		state.fleet.ships[ 'Neptune_(Neptunia)' ] = state.fleet.ships.HDN_Neptune;
+		delete state.fleet.ships.HDN_Neptune;
+		state.fleet.ships.Neptune = state.fleet.ships.HMS_Neptune;
+		delete state.fleet.ships.HMS_Neptune;
+		state.fleet.ships[ 'Kasumi_(Venus_Vacation)' ] = state.fleet.ships[ 'Kasumi_(DOA)' ];
+		delete state.fleet.ships[ 'Kasumi_(DOA)' ];
+		
+		return {
+			...state,
+			fleet: {
+				...state.fleet,
+				ships: { ...state.fleet.ships }
+			}
+		};
 	}
 };
 
 // noinspection JSUnusedGlobalSymbols
 const persistedReducer = persistReducer<State>( {
 	key            : 'root',
-	version        : 13,
+	version        : 14,
 	storage        : {
 		getItem   : async ( key ) => {
 			if ( typeof window === 'undefined' ) return;

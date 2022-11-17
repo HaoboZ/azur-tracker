@@ -3,7 +3,7 @@ import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
-import ModalDialog from '@/src/layout/providers/modal/dialog';
+import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setDaily } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';

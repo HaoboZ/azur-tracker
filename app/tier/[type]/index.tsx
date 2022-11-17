@@ -3,7 +3,7 @@ import Loading from '@/components/loaders/loading';
 import Page from '@/components/page';
 import Sortable from '@/components/sortable';
 import firebaseClientApp from '@/src/firebase/client';
-import { useData } from '@/src/layout/providers/data';
+import { useData } from '@/src/providers/data';
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
 import { difference, keyBy, map } from 'lodash-es';

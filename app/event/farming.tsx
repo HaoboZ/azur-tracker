@@ -3,7 +3,7 @@ import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
-import { useData } from '@/src/layout/providers/data';
+import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_modifyFarming, event_setFarming } from '@/src/store/reducers/eventReducer';
 import { Autocomplete, Grid, ListItemSecondaryAction, MenuItem, TextField, Typography } from '@mui/material';

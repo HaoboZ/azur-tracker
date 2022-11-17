@@ -1,7 +1,7 @@
 import { rarityColors } from '@/app/colors';
 import useEventListener from '@/src/hooks/useEventListener';
-import { useModalControls } from '@/src/layout/providers/modal';
-import ModalDialog from '@/src/layout/providers/modal/dialog';
+import { useModalControls } from '@/src/providers/modal';
+import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { Alert, Box, Button, FormControlLabel, Grid, Link, Switch, Typography } from '@mui/material';

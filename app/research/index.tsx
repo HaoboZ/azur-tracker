@@ -1,8 +1,8 @@
 'use client';
 import Page from '@/components/page';
 import SwipeableTabViews from '@/components/swipeableTabViews';
-import { useAuth } from '@/src/layout/providers/auth';
-import { useData } from '@/src/layout/providers/data';
+import { useAuth } from '@/src/providers/auth';
+import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { research_setLastTab } from '@/src/store/reducers/researchReducer';
 import { useRouter } from 'next/navigation';

@@ -1,6 +1,6 @@
 import { useVirtualDisplay } from '@/components/virtualDisplay';
-import { useData } from '@/src/layout/providers/data';
-import { useModal } from '@/src/layout/providers/modal';
+import { useData } from '@/src/providers/data';
+import { useModal } from '@/src/providers/modal';
 import { Star as StarIcon } from '@mui/icons-material';
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';

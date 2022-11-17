@@ -1,5 +1,5 @@
-import { useModal } from '@/src/layout/providers/modal';
-import ModalDrawer from '@/src/layout/providers/modal/drawer';
+import { useModal } from '@/src/providers/modal';
+import ModalDrawer from '@/src/providers/modal/drawer';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';

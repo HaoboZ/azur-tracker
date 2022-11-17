@@ -1,4 +1,4 @@
-import DataProvider from '@/src/layout/providers/data';
+import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { map } from 'lodash-es';

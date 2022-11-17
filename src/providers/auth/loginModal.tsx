@@ -1,6 +1,6 @@
 import { EmailAuthProvider, getAuth, GoogleAuthProvider, sendEmailVerification } from 'firebase/auth';
 import { useEffect } from 'react';
-import firebaseClientApp from '../../../firebase/client';
+import firebaseClientApp from '../../firebase/client';
 import { useModalControls } from '../modal';
 import ModalDialog from '../modal/dialog';
 import { useAuth } from './index';
@@ -18,7 +18,7 @@ export default function LoginModal() {
 	
 	// noinspection JSUnusedGlobalSymbols
 	return (
-		<ModalDialog maxWidth='xs'>
+		<ModalDialog title='Login' maxWidth='xs'>
 			<StyledFirebaseAuth
 				firebaseAuth={auth}
 				uiConfig={{

@@ -1,8 +1,8 @@
 'use client';
 import HelpTourButton from '@/components/helpTourButton';
 import Page from '@/components/page';
-import { useAuth } from '@/src/layout/providers/auth';
-import { useData } from '@/src/layout/providers/data';
+import { useAuth } from '@/src/providers/auth';
+import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_newEvent } from '@/src/store/reducers/eventReducer';
 import { Box, Link, Typography } from '@mui/material';

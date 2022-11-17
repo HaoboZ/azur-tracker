@@ -1,5 +1,5 @@
 import PageSection from '@/components/page/section';
-import { useData } from '@/src/layout/providers/data';
+import { useData } from '@/src/providers/data';
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';

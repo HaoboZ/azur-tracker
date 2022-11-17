@@ -1,5 +1,5 @@
 import firebaseServerApp from '@/src/firebase/server';
-import DataProvider from '@/src/layout/providers/data';
+import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
