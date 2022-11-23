@@ -4,12 +4,11 @@ import { PageLinkComponent } from '@/components/page/link';
 import { useAuth } from '@/src/providers/auth';
 import { useData } from '@/src/providers/data';
 import { Button, Grid } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import type { TierType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Tier() {
-	const router = useRouter();
 	const user = useAuth();
 	const { tierTypesData } = useData<TierType>();
 	
@@ -20,7 +19,7 @@ export default function Tier() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => router.refresh()
+					onClick: () => axios.get( 'api/revalidate/tier' )
 				} ]
 			}}>
 			<Grid container spacing={2} pt={2}>

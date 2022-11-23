@@ -5,13 +5,12 @@ import { useAuth } from '@/src/providers/auth';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { research_setLastTab } from '@/src/store/reducers/researchReducer';
-import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import ResearchSeries from './series';
 import type { ResearchType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Research() {
-	const router = useRouter();
 	const user = useAuth();
 	const lastTab = useAppSelector( ( { research } ) => research.lastTab );
 	const dispatch = useAppDispatch();
@@ -24,7 +23,7 @@ export default function Research() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => router.refresh()
+					onClick: () => axios.get( 'api/revalidate/research' )
 				} ]
 			}}>
 			<SwipeableTabViews

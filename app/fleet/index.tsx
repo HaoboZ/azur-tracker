@@ -7,8 +7,8 @@ import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShips, fleet_setVersion } from '@/src/store/reducers/fleetReducer';
 import { Typography } from '@mui/material';
+import axios from 'axios';
 import { cloneDeep } from 'lodash-es';
-import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
 import FleetFilters from './filters';
 import getTier from './getTier';
@@ -17,7 +17,6 @@ import useFleetTable from './useTable';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
-	const router = useRouter();
 	const user = useAuth();
 	const fleet = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
@@ -30,7 +29,7 @@ export default function Fleet() {
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
 		if ( fleet.version === equipTierHash ) return;
-		if ( !confirm( 'Load new tiering information?' ) ) return;
+		if ( fleet.version && !confirm( 'Load new tiering information?' ) ) return;
 		const ships = cloneDeep( fleet.ships );
 		for ( const name in ships ) {
 			const { equip } = ships[ name ];
@@ -68,7 +67,7 @@ export default function Fleet() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
 					name   : 'Revalidate',
-					onClick: () => router.refresh()
+					onClick: () => axios.get( 'api/revalidate/fleet' )
 				} ] : (
 					<HelpTourButton
 						steps={[ {
