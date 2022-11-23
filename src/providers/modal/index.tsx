@@ -50,7 +50,7 @@ export default function ModalProvider( { children } ) {
 				const newModals = [ ...modals ];
 				newModals[ index ] = { ...newModals[ index ], open: false };
 				newModals[ index ].controls.events.emit( 'close', ...args );
-				setTimeout( () => setModals( ( modals ) => modals.filter( ( modal ) => modal.id !== id ) ), 500 );
+				setTimeout( () => setModals( ( modals ) => modals.filter( ( modal ) => modal.id !== id ) ), 250 );
 				return newModals;
 			} ),
 			events     : new EventEmitter()
