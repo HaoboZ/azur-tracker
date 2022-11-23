@@ -1,7 +1,5 @@
 import { Preferences } from '@capacitor/preferences';
 import { configureStore } from '@reduxjs/toolkit';
-import { mapValues } from 'lodash-es';
-import { decompressFromUTF16 } from 'lz-string';
 import {
 	createMigrate,
 	FLUSH,
@@ -19,35 +17,12 @@ import { rootReducer } from './reducers';
 
 type State = ReturnType<typeof rootReducer>;
 
-const migrations: Record<string, ( state ) => any> = {
-	13: () => {
-		const data = mapValues( JSON.parse( localStorage.getItem( 'persist:root' ) ),
-			( val ) => JSON.parse( decompressFromUTF16( JSON.parse( val ) ) ) );
-		localStorage.removeItem( 'persist:root' );
-		return data;
-	},
-	14: ( state ) => {
-		state.fleet.ships[ 'Neptune_(Neptunia)' ] = state.fleet.ships.HDN_Neptune;
-		delete state.fleet.ships.HDN_Neptune;
-		state.fleet.ships.Neptune = state.fleet.ships.HMS_Neptune;
-		delete state.fleet.ships.HMS_Neptune;
-		state.fleet.ships[ 'Kasumi_(Venus_Vacation)' ] = state.fleet.ships[ 'Kasumi_(DOA)' ];
-		delete state.fleet.ships[ 'Kasumi_(DOA)' ];
-		
-		return {
-			...state,
-			fleet: {
-				...state.fleet,
-				ships: { ...state.fleet.ships }
-			}
-		};
-	}
-};
+const migrations: Record<string, ( state ) => any> = {};
 
 // noinspection JSUnusedGlobalSymbols
 const persistedReducer = persistReducer<State>( {
 	key            : 'root',
-	version        : 14,
+	version        : 0,
 	storage        : {
 		getItem   : async ( key ) => {
 			if ( typeof window === 'undefined' ) return;

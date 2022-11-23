@@ -30,6 +30,7 @@ export default function Fleet() {
 	// resets fleet equip tiers if version changes
 	useEffect( () => {
 		if ( fleet.version === equipTierHash ) return;
+		if ( !confirm( 'Load new tiering information?' ) ) return;
 		const ships = cloneDeep( fleet.ships );
 		for ( const name in ships ) {
 			const { equip } = ships[ name ];

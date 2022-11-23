@@ -43,7 +43,7 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 	}, [] );
 	
 	// equipment currently in that slot
-	const currentEquip = equipIndex[ info?.ship.equip[ info.index ][ 0 ] ];
+	const currentEquip = equipIndex[ info?.ship.equip[ info.index ]?.[ 0 ] ];
 	// equipment that will go in slot
 	const [ equip, setEquip ] = useState<EquipType>( () => {
 		if ( selectedEquip?.id && equipListIndex[ selectedEquip.id ] )
@@ -60,7 +60,7 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 	useEventListener( events, 'close', ( cancel ) => {
 		setAnchorEl( null );
 		if ( cancel ) return;
-		if ( info?.ship.equip[ info.index ][ 0 ] === equip?.id && info?.ship.equip[ info.index ][ 1 ] === override )
+		if ( info?.ship.equip[ info.index ]?.[ 0 ] === equip?.id && info?.ship.equip[ info.index ]?.[ 1 ] === override )
 			return;
 		
 		const shipEquip = cloneDeep( info.ship.equip );

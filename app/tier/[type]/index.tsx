@@ -35,7 +35,7 @@ export default function TierType() {
 	const { params, equipData } = useData<TierType>();
 	const equipIndex = useMemo( () => keyBy( equipData, 'id' ), [] );
 	
-	const tierRef = ref( db, `tiers/${params.type}` );
+	const tierRef = ref( db, `tiers/${decodeURIComponent( params.type )}` );
 	const [ data, loading, error ] = useObjectVal<Record<string, string[]>>( tierRef );
 	
 	const [ changed, setChanged ] = useState( false );
@@ -82,7 +82,7 @@ export default function TierType() {
 	
 	return (
 		<Page
-			title={params.type}
+			title={decodeURIComponent( params.type )}
 			titleProps={{
 				actions: [ {
 					name       : 'Save',

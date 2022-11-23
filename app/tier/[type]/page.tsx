@@ -9,7 +9,7 @@ export default async function Page( { params }: { params: Record<string, string>
 		params: {
 			sheet: 'Tier',
 			tqx  : 'out:csv',
-			tq   : `SELECT B,C WHERE A='${params.type}'`
+			tq   : `SELECT B,C WHERE A='${decodeURIComponent( params.type )}'`
 		}
 	} );
 	const tierTypes = JSON.parse( `[${tierTypesCSV}]` );

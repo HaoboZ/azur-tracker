@@ -113,8 +113,9 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 					</FormControl>
 				</Grid>
 				<Grid item container xs={12} alignItems='center' justifyContent='center'>
-					{ship.equip.map( ( val, index ) => {
-						const equip = equipIndex[ val[ 0 ] ];
+					{[ ...Array( 5 ) ].map( ( _, index ) => {
+						const val = ship.equip[ index ];
+						const equip = equipIndex[ val?.[ 0 ] ];
 						const meta = filterMeta?.[ index ];
 						return (
 							<Grid
@@ -141,11 +142,11 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 									className={`color-${rarityColors[ equip?.rarity ]}`}
 								/>
 								<Box display='flex' alignItems='center'>
-									<TierIcon tier={val[ 2 ]}/>
+									<TierIcon tier={val?.[ 2 ]}/>
 									{meta ? (
 										<Fragment>
 											<ArrowForwardIcon fontSize='inherit'/>
-											<TierIcon tier={meta.tier + 1 || val[ 2 ]}/>
+											<TierIcon tier={meta.tier + 1 || val?.[ 2 ]}/>
 										</Fragment>
 									) : undefined}
 								</Box>

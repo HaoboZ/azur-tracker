@@ -1,7 +1,9 @@
-export default function getTier( equippableData,
+export default function getTier(
+	equippableData,
 	equipTierData,
 	ship: { equipType: string[] },
-	equip: [ number, number, number ][] ) {
+	equip: [ number, number, number ][]
+) {
 	equip?.forEach( ( eq, i ) => {
 		if ( !eq ) return;
 		if ( !eq[ 0 ] ) {
