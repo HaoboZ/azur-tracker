@@ -6,6 +6,7 @@
 	"packageRules": [
 		{
 			"matchPackagePatterns": [ "*" ],
+			"ignoreDeps"          : [ "axios" ],
 			"matchUpdateTypes"    : [ "minor", "patch", "lockFileMaintenance" ],
 			"groupName"           : "all non-major dependencies",
 			"groupSlug"           : "all-minor-patch",
