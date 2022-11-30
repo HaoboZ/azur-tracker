@@ -32,7 +32,7 @@ export default function DailyModal() {
 			item.amount = Math.max( item.amount || 0, 0 );
 		}
 		setDaily( ( daily ) => {
-			const index = daily.findIndex( ( { id } ) => id === item.id );
+			const index = daily.findIndex( ( { id } ) => id === row.id );
 			if ( index !== -1 ) daily[ index ] = { ...daily[ index ], ...item };
 			return [ ...daily ];
 		} );
