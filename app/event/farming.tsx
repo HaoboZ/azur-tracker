@@ -30,7 +30,7 @@ export default function EventFarming( { remainingPoints }: { remainingPoints: nu
 		columnHelper.accessor( 'points', {
 			header: 'Points/Run',
 			cell  : ( { getValue, row } ) => (
-				<Autocomplete
+				<Autocomplete<string, false, false, true>
 					freeSolo
 					autoSelect
 					value={getValue().toString()}
