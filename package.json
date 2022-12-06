@@ -1,10 +1,10 @@
 {
-	"name"           : "azur-tracker",
-	"description"    : "A tracker of events, research, and ships for Azur Lane",
-	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"        : "8.0.1",
-	"private"        : true,
-	"scripts"        : {
+	"name"            : "azur-tracker",
+	"description"     : "A tracker of events, research, and ships for Azur Lane",
+	"author"          : "Haobo Zhang <haobozhang9081@gmail.com>",
+	"version"         : "8.0.1",
+	"private"         : true,
+	"scripts"         : {
 		"dev"      : "next dev",
 		"build"    : "next build && next-sitemap --config next-sitemap.config.js",
 		"analyze"  : "cross-env ANALYZE=true next build",
@@ -15,10 +15,10 @@
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android"  : "cap open android"
 	},
-	"packageManager" : "yarn@3.3.0",
-	"dependencies"   : {
+	"packageManager"  : "yarn@3.3.0",
+	"dependencies"    : {
 		"@capacitor/app"                  : "4.1.1",
-		"@capacitor/core"                 : "4.6.0",
+		"@capacitor/core"                 : "4.6.1",
 		"@capacitor/dialog"               : "4.1.0",
 		"@capacitor/preferences"          : "4.0.2",
 		"@capacitor/status-bar"           : "4.1.1",
@@ -27,14 +27,14 @@
 		"@emotion/styled"                 : "11.10.5",
 		"@ionic/pwa-elements"             : "3.1.1",
 		"@mui/icons-material"             : "5.10.16",
-		"@mui/lab"                        : "5.0.0-alpha.110",
-		"@mui/material"                   : "5.10.16",
+		"@mui/lab"                        : "5.0.0-alpha.111",
+		"@mui/material"                   : "5.10.17",
 		"@next/font"                      : "13.0.6",
 		"@reduxjs/toolkit"                : "1.9.1",
 		"@tanem/react-nprogress"          : "5.0.19",
 		"@tanstack/react-table"           : "8.7.0",
-		"@tanstack/react-virtual"         : "3.0.0-beta.26",
-		"axios"                           : "1.1.3",
+		"@tanstack/react-virtual"         : "3.0.0-beta.29",
+		"axios"                           : "1.2.1",
 		"csvtojson"                       : "2.0.10",
 		"date-fns"                        : "2.29.3",
 		"events"                          : "3.3.0",
@@ -65,25 +65,25 @@
 		"sass"                            : "1.56.1",
 		"sortablejs"                      : "1.15.0"
 	},
-	"devDependencies": {
-		"@capacitor/android"                : "4.6.0",
-		"@capacitor/cli"                    : "4.6.0",
+	"devDependencies" : {
+		"@capacitor/android"                : "4.6.1",
+		"@capacitor/cli"                    : "4.6.1",
 		"@next/bundle-analyzer"             : "13.0.6",
 		"@types/eslint"                     : "8.4.10",
 		"@types/events"                     : "3.0.0",
-		"@types/jest"                       : "29.2.3",
+		"@types/jest"                       : "29.2.4",
 		"@types/lodash-es"                  : "4.17.6",
 		"@types/lz-string"                  : "1.3.34",
-		"@types/node"                       : "18.11.10",
-		"@types/object-hash"                : "3.0.0",
+		"@types/node"                       : "18.11.11",
+		"@types/object-hash"                : "3.0.1",
 		"@types/react"                      : "18.0.26",
 		"@types/react-redux"                : "7.1.24",
 		"@types/react-swipeable-views"      : "0.13.1",
 		"@types/react-swipeable-views-utils": "0.13.4",
 		"@types/sass"                       : "1.43.1",
 		"@types/sortablejs"                 : "1.15.0",
-		"@typescript-eslint/eslint-plugin"  : "5.45.0",
-		"@typescript-eslint/parser"         : "5.45.0",
+		"@typescript-eslint/eslint-plugin"  : "5.45.1",
+		"@typescript-eslint/parser"         : "5.45.1",
 		"cordova-res"                       : "0.15.4",
 		"cross-env"                         : "7.0.3",
 		"eslint"                            : "8.29.0",
@@ -93,5 +93,10 @@
 		"next-sitemap"                      : "3.1.32",
 		"type-fest"                         : "3.3.0",
 		"typescript"                        : "4.9.3"
+	},
+	"dependenciesMeta": {
+		"next@13.0.6": {
+			"unplugged": true
+		}
 	}
 }
