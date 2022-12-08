@@ -7,7 +7,7 @@ export default function Virtualizer<Data>( { rows, estimateSize, paddingStart, c
 	rows: Data[],
 	estimateSize?: number,
 	paddingStart?: number,
-	children: ( virtualItems: VirtualItem<unknown>[], paddingTop: number, paddingBottom: number ) => ReactNode
+	children: ( virtualItems: VirtualItem[], paddingTop: number, paddingBottom: number ) => ReactNode
 } ) {
 	const virtualizer = useWindowVirtualizer( {
 		count       : rows.length,

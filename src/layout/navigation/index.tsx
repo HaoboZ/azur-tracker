@@ -1,28 +1,33 @@
 'use client';
+import { Box } from '@mui/material';
 import useWideMedia from '../../hooks/useWideMedia';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
 export default function Navigation( { children } ) {
-	// useEffect( () => {
-	// 	let listener: PluginListenerHandle;
-	// 	( async () => {
-	// 		listener = App.addListener( 'appUrlOpen', ( event ) => {
-	// 			console.log( event );
-	// 			// const slug = event.url.split( '.app' ).pop();
-	// 			// if ( slug ) {
-	// 			// 	history.push( slug );
-	// 			// }
-	// 		} );
-	// 	} )();
-	// 	return () => {
-	// 		listener.remove().then();
-	// 	};
-	// }, [] );
+	const wide = useWideMedia();
 	
-	if ( useWideMedia() ) {
-		return <TitleBar>{children}</TitleBar>;
-	} else {
-		return <BottomBar>{children}</BottomBar>;
-	}
+	return (
+		<Box>
+			{wide ? <TitleBar/> : (
+				<Box
+					position='fixed'
+					top={0}
+					zIndex='appBar'
+					width='100%'
+					height='env(safe-area-inset-top)'
+					bgcolor='primary.main'
+				/>
+			)}
+			<Box
+				// minHeight='100vh'
+				pt='env(safe-area-inset-top)'
+				pl='env(safe-area-inset-left)'
+				pr='env(safe-area-inset-right)'
+				pb={wide ? 'env(safe-area-inset-bottom)' : 'calc(env(safe-area-inset-bottom) + 56px)'}>
+				{children}
+			</Box>
+			{!wide && <BottomBar/>}
+		</Box>
+	);
 }

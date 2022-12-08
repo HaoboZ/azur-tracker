@@ -1,20 +1,14 @@
 import AsyncLoadingButton from '@/components/asyncLoadingButton';
 import { getAuth, signOut } from 'firebase/auth';
 import firebaseClientApp from '../../firebase/client';
-import useEventListener from '../../hooks/useEventListener';
 import { useEvents } from '../events';
-import { useModal } from '../modal';
 import { useAuth } from './index';
-import LoginModal from './loginModal';
 
 const auth = getAuth( firebaseClientApp );
 
 export default function useAuthButton() {
 	const events = useEvents();
 	const user = useAuth();
-	const { showModal } = useModal();
-	
-	useEventListener( events, 'showAuth', () => showModal( LoginModal, { id: 'login' } ) );
 	
 	return user ? (
 		<AsyncLoadingButton

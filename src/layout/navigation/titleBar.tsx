@@ -29,41 +29,30 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 	);
 }
 
-export default function TitleBar( { children } ) {
+export default function TitleBar() {
 	const user = useAuth();
 	
 	return (
-		<Box>
-			<AppBar
-				enableColorOnDark
-				position='static'
-				sx={{
-					pt: 'env(safe-area-inset-top)',
-					pl: 'env(safe-area-inset-left)',
-					pr: 'env(safe-area-inset-right)'
-				}}>
-				<Toolbar>
-					<Typography variant='h3' mr={3}>
-						Azur Lane Tracker
-					</Typography>
-					<LinkItem href='/event' store='event'>Event</LinkItem>
-					<LinkItem href='/research' store='research'>Research</LinkItem>
-					<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
-					<LinkItem href='/info'>Info</LinkItem>
-					{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && <LinkItem href='/tier'>Tier</LinkItem>}
-					<Box flexGrow={1}/>
-					<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
-						<SettingsIcon/>
-					</IconButton>
-				</Toolbar>
-			</AppBar>
-			<Box
-				pt='env(safe-area-inset-top)'
-				pl='env(safe-area-inset-left)'
-				pr='env(safe-area-inset-right)'
-				pb='env(safe-area-inset-bottom)'>
-				{children}
-			</Box>
-		</Box>
+		<AppBar
+			enableColorOnDark
+			position='static'
+			sx={{
+				pt: 'env(safe-area-inset-top)',
+				pl: 'env(safe-area-inset-left)',
+				pr: 'env(safe-area-inset-right)'
+			}}>
+			<Toolbar>
+				<Typography variant='h3' mr={3}>Azur Lane Tracker</Typography>
+				<LinkItem href='/event' store='event'>Event</LinkItem>
+				<LinkItem href='/research' store='research'>Research</LinkItem>
+				<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
+				<LinkItem href='/info'>Info</LinkItem>
+				{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && <LinkItem href='/tier'>Tier</LinkItem>}
+				<Box flexGrow={1}/>
+				<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
+					<SettingsIcon/>
+				</IconButton>
+			</Toolbar>
+		</AppBar>
 	);
 }

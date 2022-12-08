@@ -2,6 +2,7 @@ import StoreSync from '@/src/firebase/storeSync';
 import Navigation from '@/src/layout/navigation';
 import '@/src/layout/style.scss';
 import Providers from '@/src/providers';
+import LoginEvent from '@/src/providers/auth/loginEvent';
 import { Roboto } from '@next/font/google';
 import 'intro.js/introjs.css';
 import 'intro.js/themes/introjs-modern.css';
@@ -47,6 +48,7 @@ export default function RootLayout( { children }: { children: ReactNode } ) {
 			<body>
 				<Providers>
 					<StoreSync keys={[ 'event', 'research', 'fleet' ]}/>
+					<LoginEvent/>
 					<Navigation>{children}</Navigation>
 				</Providers>
 			</body>
