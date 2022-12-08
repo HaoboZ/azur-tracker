@@ -1,3 +1,4 @@
+'use client';
 import useEventListener from '../../hooks/useEventListener';
 import { useEvents } from '../events';
 import { useModal } from '../modal';
