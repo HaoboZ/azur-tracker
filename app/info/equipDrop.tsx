@@ -4,6 +4,7 @@ import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
 import { each, keyBy, map, mapValues } from 'lodash-es';
+import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { rarityColors } from '../colors';
 import EquipFilter from '../fleet/ship/equip/filter';
@@ -74,16 +75,15 @@ export default function EquipDrop() {
 									{map( value, ( equipId ) => {
 										const equip = equipIndex[ equipId ];
 										return (
-											<Box key={equipId} width={40} height={40} onClick={() => setEquip( equip )}>
-												{/* eslint-disable-next-line @next/next/no-img-element */}
-												<img
-													src={`https://azurlane.netojuu.com/images/${equip.image}`}
-													alt={equip.name}
-													height={40}
-													width={40}
-													className={`color-${rarityColors[ equip.rarity ]}`}
-												/>
-											</Box>
+											<Image
+												key={equipId}
+												src={`https://azurlane.netojuu.com/images/${equip.image}`}
+												alt={equip.name}
+												height={40}
+												width={40}
+												className={`color-${rarityColors[ equip.rarity ]}`}
+												onClick={() => setEquip( equip )}
+											/>
 										);
 									} )}
 								</Stack>

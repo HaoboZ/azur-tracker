@@ -7,6 +7,7 @@ import { useData } from '@/src/providers/data';
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
 import { difference, keyBy, map } from 'lodash-es';
+import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
@@ -108,12 +109,12 @@ export default function TierType() {
 						setItems={setUnTiered}
 						tag={SortGrid}
 						renderItem={( { item, handleClass } ) => (
-							<Grid item sx={{ width: 100, height: 100 }}>
-								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img
+							<Grid item>
+								<Image
 									src={`https://azurlane.netojuu.com/images/${item.image}`}
 									alt={item.name}
-									height='100%'
+									width={100}
+									height={100}
 									className={`color-${rarityColors[ item.rarity ]} ${handleClass}`}
 								/>
 							</Grid>
@@ -133,12 +134,12 @@ export default function TierType() {
 								}}
 								tag={SortGrid}
 								renderItem={( { item, handleClass } ) => (
-									<Grid item sx={{ width: 100, height: 100 }}>
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img
+									<Grid item>
+										<Image
 											src={`https://azurlane.netojuu.com/images/${item.image}`}
 											alt={item.name}
-											height='100%'
+											width={100}
+											height={100}
 											className={`color-${rarityColors[ item.rarity ]} ${handleClass}`}
 										/>
 									</Grid>

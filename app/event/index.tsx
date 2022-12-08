@@ -8,6 +8,7 @@ import { event_newEvent } from '@/src/store/reducers/eventReducer';
 import { Box, Link, Typography } from '@mui/material';
 import axios from 'axios';
 import { differenceInDays } from 'date-fns';
+import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
 import { useIntervalWhen } from 'rooks';
 import EventFarming from './farming';
@@ -99,19 +100,15 @@ export default function Event() {
 					/>
 				)
 			}}>
-			<Box
-				display='flex'
-				justifyContent='center'
-				sx={{
-					img: {
-						width   : '100%',
-						maxWidth: 700,
-						m       : 'auto'
-					}
-				}}>
+			<Box display='flex' justifyContent='center'>
 				<Link href={eventData.href} target='_blank'>
-					{/* eslint-disable-next-line @next/next/no-img-element */}
-					<img src={eventData.image} alt='event banner'/>
+					<Image
+						src={eventData.image}
+						alt='event banner'
+						width={513}
+						height={185}
+						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+					/>
 				</Link>
 			</Box>
 			<EventFields time={time} neededPoints={neededPoints}/>

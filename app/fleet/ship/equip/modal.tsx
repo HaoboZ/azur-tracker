@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { Alert, Box, Button, FormControlLabel, Grid, Link, Switch, Typography } from '@mui/material';
 import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
+import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
@@ -107,8 +108,7 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 					</Grid>
 				) : undefined}
 				<Grid item container xs={5} justifyContent='center'>
-					{/* eslint-disable-next-line @next/next/no-img-element */}
-					<img
+					<Image
 						src={currentEquip?.image
 							? `https://azurlane.netojuu.com/images/${currentEquip.image}`
 							: '/images/emptyEquip.png'}
@@ -122,8 +122,7 @@ export default function EquipModal( { info, selectedEquip, ...data }: {
 					<Typography variant='h4' align='center'>⇒</Typography>
 				</Grid>
 				<Grid item container xs={5} justifyContent='center'>
-					{/* eslint-disable-next-line @next/next/no-img-element */}
-					<img
+					<Image
 						src={equip?.image
 							? `https://azurlane.netojuu.com/images/${equip.image}`
 							: '/images/emptyEquip.png'}

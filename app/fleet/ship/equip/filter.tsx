@@ -1,6 +1,7 @@
 import { rarityColors } from '@/app/colors';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { Autocomplete, Box, TextField, Typography } from '@mui/material';
+import { Autocomplete, TextField, Typography } from '@mui/material';
+import Image from 'next/image';
 import type { EquipType } from './type';
 
 const typeNames = {
@@ -30,7 +31,7 @@ export default function EquipFilter( { equipList, value, setValue }: {
 	setValue: ( value: EquipType ) => void
 } ) {
 	return (
-		<Autocomplete<EquipType>
+		<Autocomplete<EquipType, false, false, false>
 			fullWidth
 			options={equipList}
 			getOptionLabel={( { name }: EquipType ) => name}
@@ -38,17 +39,14 @@ export default function EquipFilter( { equipList, value, setValue }: {
 			value={value}
 			renderOption={( props, option ) => (
 				<li {...props} key={option.id}>
-					<Box pr={1}>
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src={`https://azurlane.netojuu.com/images/${option.image}`}
-							alt={option.name}
-							height={50}
-							width={50}
-							className={`color-${rarityColors[ option.rarity ]}`}
-						/>
-					</Box>
-					<Typography>{option.name}</Typography>
+					<Image
+						src={`https://azurlane.netojuu.com/images/${option.image}`}
+						alt={option.name}
+						height={50}
+						width={50}
+						className={`color-${rarityColors[ option.rarity ]}`}
+					/>
+					<Typography sx={{ pl: 1 }}>{option.name}</Typography>
 				</li>
 			)}
 			groupBy={( { type } ) => typeNames[ type ]}

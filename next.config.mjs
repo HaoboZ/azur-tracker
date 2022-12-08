@@ -14,6 +14,14 @@ const nextConfig = {
 	async redirects() {
 		return [ { source: '/', destination: '/event', permanent: false } ];
 	},
+	images      : {
+		remotePatterns: [ {
+			protocol: 'https',
+			hostname: 'azurlane.netojuu.com',
+			port    : '',
+			pathname: '/images/**'
+		} ]
+	},
 	experimental: {
 		appDir           : true,
 		fontLoaders      : [

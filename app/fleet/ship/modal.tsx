@@ -5,6 +5,7 @@ import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { Box, DialogTitle, FormControl, Grid, InputLabel, Link, MenuItem, Select, Typography } from '@mui/material';
 import { keyBy } from 'lodash-es';
+import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
@@ -131,8 +132,7 @@ export default function ShipModal( { ship, filterMeta, selectedEquip, ...data }:
 									id   : 'equip',
 									props: { info: { ship, index }, selectedEquip, ...data }
 								} )}>
-								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img
+								<Image
 									src={equip?.image
 										? `https://azurlane.netojuu.com/images/${equip.image}`
 										: '/images/emptyEquip.png'}

@@ -5,6 +5,7 @@ import { research_modifyShip } from '@/src/store/reducers/researchReducer';
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import { keyBy } from 'lodash-es';
+import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import type { ResearchShipType } from './type';
 
@@ -95,7 +96,14 @@ export default function ResearchSeries( { researchShips }: { researchShips: Rese
 			header: 'Name',
 			cell  : ( { getValue, row } ) => (
 				<Fragment>
-					<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}/>
+					<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}>
+						<Image
+							src={row.original.image}
+							alt={row.original.name}
+							width={60}
+							height={60}
+						/>
+					</Avatar>
 					<Typography>{getValue()}</Typography>
 				</Fragment>
 			)
@@ -201,14 +209,21 @@ export default function ResearchSeries( { researchShips }: { researchShips: Rese
 		data              : shipData,
 		columns,
 		enableSorting     : false,
-		renderRow         : ( { row: { original } } ) => (
+		renderRow         : ( { row } ) => (
 			<Fragment>
-				<ListItemAvatar>
-					<Avatar variant='rounded' src={original.image} sx={{ width: 60, height: 60, mr: 1 }}/>
+				<ListItemAvatar sx={{ display: 'flex', alignItems: 'center' }}>
+					<Avatar variant='rounded' src={row.original.image}>
+						<Image
+							src={row.original.image}
+							alt={row.original.name}
+							width={60}
+							height={60}
+						/>
+					</Avatar>
 				</ListItemAvatar>
 				<ListItemText
-					primary={original.name}
-					secondary={`Needs: ${original.devPrints + original.fatePrints} Prints`}
+					primary={row.original.name}
+					secondary={`Needs: ${row.original.devPrints + row.original.fatePrints} Prints`}
 				/>
 			</Fragment>
 		),

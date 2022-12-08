@@ -1,5 +1,6 @@
 import PageSection from '@/components/page/section';
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import Image from 'next/image';
 
 const opSiWeakness: [ string, string, string ][] = [
 	[ 'f/f1/Enforcer_VIII_Determination.png', 'Determination', 'Airstrikes' ],
@@ -25,14 +26,13 @@ export default function OpSiWeakness() {
 						{opSiWeakness.map( ( [ image, ship, weakness ], index ) => (
 							<TableRow key={index}>
 								<TableCell>
-									<Box position='relative' width={64} height={64}>
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img
-											src={`https://azurlane.netojuu.com/images/${image}`}
-											alt={ship}
-											height='100%'
-										/>
-									</Box>
+									<Image
+										src={`https://azurlane.netojuu.com/images/${image}`}
+										alt={ship}
+										width={64}
+										height={64}
+										style={{ objectFit: 'contain' }}
+									/>
 								</TableCell>
 								<TableCell>{ship}</TableCell>
 								<TableCell>{weakness}</TableCell>
