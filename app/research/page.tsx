@@ -4,7 +4,7 @@ import csvtojson from 'csvtojson';
 import { groupBy, pick } from 'lodash-es';
 import Research from './index';
 
-export default async function Page() {
+export default async function ResearchPage() {
 	const { data: researchCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Research', tqx: 'out:csv' }
 	} );

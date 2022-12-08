@@ -1,16 +1,16 @@
-import type { LoadingButtonProps } from '@mui/lab';
-import { LoadingButton } from '@mui/lab';
+import type { MenuItemProps } from '@mui/material';
+import { MenuItem } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 
-export default function AsyncLoadingButton( { onClick, ...props }: LoadingButtonProps ) {
+export default function AsyncMenuItem( { onClick, ...props }: MenuItemProps ) {
 	const { enqueueSnackbar } = useSnackbar();
 	
 	const [ loading, setLoading ] = useState( false );
 	
 	return (
-		<LoadingButton
-			loading={loading}
+		<MenuItem
+			disabled={loading}
 			onClick={async ( arg ) => {
 				try {
 					setLoading( true );

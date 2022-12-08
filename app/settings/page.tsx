@@ -1,5 +1,5 @@
 'use client';
-import AsyncLoadingButton from '@/components/asyncLoadingButton';
+import AsyncButton from '@/components/loaders/asyncButton';
 import Page from '@/components/page';
 import PageLink from '@/components/page/link';
 import getData from '@/src/firebase/storeSync/getData';
@@ -75,7 +75,7 @@ export default function Settings() {
 					<ListItemText>Manual Cloud Sync</ListItemText>
 					<ListItemSecondaryAction>
 						<ButtonGroup>
-							<AsyncLoadingButton
+							<AsyncButton
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
@@ -89,8 +89,8 @@ export default function Settings() {
 									}
 								}}>
 								Save
-							</AsyncLoadingButton>
-							<AsyncLoadingButton
+							</AsyncButton>
+							<AsyncButton
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
@@ -104,7 +104,7 @@ export default function Settings() {
 									}
 								}}>
 								Load
-							</AsyncLoadingButton>
+							</AsyncButton>
 						</ButtonGroup>
 					</ListItemSecondaryAction>
 				</ListItem>

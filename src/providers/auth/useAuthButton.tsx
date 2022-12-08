@@ -1,4 +1,4 @@
-import AsyncLoadingButton from '@/components/asyncLoadingButton';
+import AsyncButton from '@/components/loaders/asyncButton';
 import { getAuth, signOut } from 'firebase/auth';
 import firebaseClientApp from '../../firebase/client';
 import { useEvents } from '../events';
@@ -11,18 +11,18 @@ export default function useAuthButton() {
 	const user = useAuth();
 	
 	return user ? (
-		<AsyncLoadingButton
+		<AsyncButton
 			variant='outlined'
 			color='inherit'
 			onClick={() => signOut( auth )}>
 			Sign Out
-		</AsyncLoadingButton>
+		</AsyncButton>
 	) : (
-		<AsyncLoadingButton
+		<AsyncButton
 			variant='outlined'
 			color='inherit'
 			onClick={() => events.emit( 'showAuth' )}>
 			Sign In
-		</AsyncLoadingButton>
+		</AsyncButton>
 	);
 }

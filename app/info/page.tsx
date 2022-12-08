@@ -4,7 +4,7 @@ import csvtojson from 'csvtojson';
 import { flatten, groupBy, keyBy, map, mapValues, sortBy, uniq } from 'lodash-es';
 import Info from './index';
 
-export default async function Page() {
+export default async function InfoPage() {
 	const { data: farmCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Farm', tqx: 'out:csv' }
 	} );
@@ -13,8 +13,8 @@ export default async function Page() {
 	} );
 	
 	const farmData = sortBy( await csvtojson().fromString( farmCSV ), ( { order } ) => +order )
-		.map( ( { id0, id1, id2, id3, id4, id5, id6, id7, ...props } ) =>
-			( { ...props, ids: [ id0, id1, id2, id3, id4, id5, id6, id7 ].filter( Boolean ) } ) );
+		.map( ( { id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, ...props } ) =>
+			( { ...props, ids: [ id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10 ].filter( Boolean ) } ) );
 	const equipsIndex = keyBy( await csvtojson().fromString( equipCSV ), 'id' );
 	
 	return (

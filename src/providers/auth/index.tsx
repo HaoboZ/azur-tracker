@@ -1,4 +1,4 @@
-import AsyncLoadingButton from '@/components/asyncLoadingButton';
+import AsyncButton from '@/components/loaders/asyncButton';
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
 import { pick } from 'lodash-es';
@@ -43,9 +43,9 @@ export default function AuthProvider( { children } ) {
 			variant: 'warning',
 			persist: true,
 			action : (
-				<AsyncLoadingButton onClick={() => sendEmailVerification( user )}>
+				<AsyncButton onClick={() => sendEmailVerification( user )}>
 					Resend Email
-				</AsyncLoadingButton>
+				</AsyncButton>
 			)
 		} );
 		return () => closeSnackbar( key );

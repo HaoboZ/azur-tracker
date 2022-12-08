@@ -7,7 +7,7 @@ import { keyBy, mapValues, omit, pick, sortBy } from 'lodash-es';
 import objectHash from 'object-hash';
 import Fleet from './index';
 
-export default async function Page() {
+export default async function FleetPage() {
 	const { data: fleetCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Fleet', tqx: 'out:csv' }
 	} );

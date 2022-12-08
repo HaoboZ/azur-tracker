@@ -4,7 +4,7 @@ import csvtojson from 'csvtojson';
 import { pickBy } from 'lodash-es';
 import Event from './index';
 
-export default async function EventData() {
+export default async function EventPage() {
 	const { data: eventCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Event', tqx: 'out:csv' }
 	} );
