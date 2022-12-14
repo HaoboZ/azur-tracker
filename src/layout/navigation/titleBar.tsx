@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { useAuth } from '../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setViewed } from '../../store/reducers/mainReducer';
+import { items } from './items';
 
 function LinkItem( { href, store, children }: { href: string, store?: string, children: ReactNode } ) {
 	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
@@ -43,10 +44,11 @@ export default function TitleBar() {
 			}}>
 			<Toolbar>
 				<Typography variant='h3' mr={3}>Azur Lane Tracker</Typography>
-				<LinkItem href='/event' store='event'>Event</LinkItem>
-				<LinkItem href='/research' store='research'>Research</LinkItem>
-				<LinkItem href='/fleet' store='fleet'>Fleet</LinkItem>
-				<LinkItem href='/info'>Info</LinkItem>
+				{items.filter( Boolean ).filter( ( { hide } ) => !hide ).map( ( item ) => (
+					<LinkItem key={item.label} href={item.href} store={item.store}>
+						{item.label}
+					</LinkItem>
+				) )}
 				{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && <LinkItem href='/tier'>Tier</LinkItem>}
 				<Box flexGrow={1}/>
 				<IconButton component={PageLinkComponent} href='/settings' color='inherit'>

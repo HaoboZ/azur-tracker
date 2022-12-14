@@ -50,7 +50,8 @@ export const factionColors = {
 	'The Idolmaster'     : 'idolmaster',
 	'SSSS'               : 'ssss',
 	'META'               : 'meta',
-	'Tempesta'           : 'tempesta'
+	'Tempesta'           : 'tempesta',
+	'Atelier Ryza'       : 'atelier'
 };
 export const tierColors = [
 	'rainbow',

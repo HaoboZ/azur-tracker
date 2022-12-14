@@ -1,23 +1,9 @@
-import {
-	Camera as CameraIcon,
-	DirectionsBoat as DirectionsBoatIcon,
-	Event as EventIcon,
-	Info as InfoIcon,
-	Settings as SettingsIcon
-} from '@mui/icons-material';
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setViewed } from '../../store/reducers/mainReducer';
-
-const items = [
-	{ label: 'Event', icon: <EventIcon/>, href: '/event', store: 'event' },
-	{ label: 'Research', icon: <CameraIcon/>, href: '/research', store: 'research' },
-	{ label: 'Fleet', icon: <DirectionsBoatIcon/>, href: '/fleet', store: 'fleet' },
-	{ label: 'Info', icon: <InfoIcon/>, href: '/info' },
-	{ label: 'Settings', icon: <SettingsIcon/>, href: '/settings' }
-];
+import { items } from './items';
 
 export default function BottomBar() {
 	const unViewed = useAppSelector( ( { main } ) => main.unViewed );
@@ -47,10 +33,9 @@ export default function BottomBar() {
 				onChange={( e, value ) => {
 					const item = items[ value ];
 					router.push( item.href );
-					if ( 'store' in item )
-						dispatch( setViewed( item.store ) );
+					if ( 'store' in item ) dispatch( setViewed( item.store ) );
 				}}>
-				{items.map( ( item, index ) => (
+				{items.filter( Boolean ).map( ( item, index ) => (
 					<BottomNavigationAction
 						key={index}
 						sx={{ minWidth: 0 }}
