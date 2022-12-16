@@ -1,10 +1,11 @@
 {
+	"id"              : "/",
 	"name"            : "Azur Lane Tracker",
 	"short_name"      : "Azur Tracker",
 	"description"     : "Tracks Azur Lane Events, Research, and Ship Collection",
 	"categories"      : [ "games", "utilities" ],
 	"scope"           : "/",
-	"start_url"       : "/",
+	"start_url"       : "https://azurlanetracker.vercel.app",
 	"display"         : "standalone",
 	"orientation"     : "portrait",
 	"theme_color"     : "#039be5",
