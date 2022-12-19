@@ -4581,9 +4581,6 @@ __metadata:
     sortablejs: 1.15.0
     type-fest: 3.4.0
     typescript: 4.9.4
-  dependenciesMeta:
-    next@13.0.7:
-      unplugged: true
   languageName: unknown
   linkType: soft
 

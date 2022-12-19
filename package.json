@@ -1,10 +1,10 @@
 {
-	"name"            : "azur-tracker",
-	"description"     : "A tracker of events, research, and ships for Azur Lane",
-	"author"          : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"         : "8.0.1",
-	"private"         : true,
-	"scripts"         : {
+	"name"           : "azur-tracker",
+	"description"    : "A tracker of events, research, and ships for Azur Lane",
+	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
+	"version"        : "8.0.1",
+	"private"        : true,
+	"scripts"        : {
 		"dev"      : "next dev",
 		"build"    : "next build && next-sitemap --config next-sitemap.config.js",
 		"analyze"  : "cross-env ANALYZE=true next build",
@@ -15,8 +15,8 @@
 		"icons"    : "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android"  : "cap open android"
 	},
-	"packageManager"  : "yarn@3.3.0",
-	"dependencies"    : {
+	"packageManager" : "yarn@3.3.0",
+	"dependencies"   : {
 		"@capacitor/app"                  : "4.1.1",
 		"@capacitor/core"                 : "4.6.1",
 		"@capacitor/dialog"               : "4.1.0",
@@ -65,7 +65,7 @@
 		"sass"                            : "1.57.0",
 		"sortablejs"                      : "1.15.0"
 	},
-	"devDependencies" : {
+	"devDependencies": {
 		"@capacitor/android"                : "4.6.1",
 		"@capacitor/cli"                    : "4.6.1",
 		"@next/bundle-analyzer"             : "13.0.7",
@@ -93,10 +93,5 @@
 		"next-sitemap"                      : "3.1.42",
 		"type-fest"                         : "3.4.0",
 		"typescript"                        : "4.9.4"
-	},
-	"dependenciesMeta": {
-		"next@13.0.7": {
-			"unplugged": true
-		}
 	}
 }
