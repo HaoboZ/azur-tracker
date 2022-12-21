@@ -25,9 +25,10 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 	
 	const colSpan = table.getAllFlatColumns().length;
 	
-	const renderBodyRow = ( row, ref ) => (
+	const renderBodyRow = ( row, index, ref ) => (
 		<TableRow
 			ref={ref}
+			data-index={index}
 			hover={Boolean( onRowClick )}
 			onClick={onRowClick ? () => onRowClick( row, table ) : undefined}>
 			{row.getVisibleCells().map( ( cell ) => (
@@ -74,19 +75,23 @@ export default function VirtualTable<TData extends RowData>( { table }: { table:
 				) )}
 			</TableHead>
 			<TableBody>
-				{firstRow && renderBodyRow( firstRow, setRowRef )}
+				{firstRow && renderBodyRow( firstRow, undefined, setRowRef )}
 				{rowRef && (
 					<Virtualizer rows={restRows} estimateSize={rowRef.clientHeight} paddingStart={paddingStart}>
-						{( virtualItems, paddingTop, paddingBottom ) => (
+						{( virtualizer, virtualItems, paddingTop, paddingBottom ) => (
 							<Fragment>
 								{paddingTop > 0 && (
 									<TableRow>
 										<TableCell sx={{ height: paddingTop }} colSpan={colSpan}/>
 									</TableRow>
 								)}
-								{virtualItems.map( ( { index, measureElement } ) => {
+								{virtualItems.map( ( { index } ) => {
 									const row = restRows[ index ];
-									return <Fragment key={row.id}>{renderBodyRow( row, measureElement )}</Fragment>;
+									return (
+										<Fragment key={row.id}>
+											{renderBodyRow( row, index, virtualizer.measureElement )}
+										</Fragment>
+									);
 								} )}
 								{paddingBottom > 0 && (
 									<TableRow>

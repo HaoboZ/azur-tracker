@@ -1,7 +1,6 @@
 import type { TableCellProps } from '@mui/material';
-import type { Cell, FilterFn, Row, RowData, Table, TableOptions } from '@tanstack/react-table';
+import type { Cell, Row, RowData, Table, TableOptions } from '@tanstack/react-table';
 import { getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import fuzzysort from 'fuzzysort';
 import type { ReactNode } from 'react';
 import useWideMedia from '../../hooks/useWideMedia';
 import OverflowTypography from '../overflowTypography';
@@ -9,11 +8,6 @@ import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 
 declare module '@tanstack/table-core' {
-	// noinspection JSUnusedGlobalSymbols
-	interface FilterFns {
-		fuzzy: FilterFn<unknown>
-	}
-	
 	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
 		setData?: ( data: TData[] ) => void,
@@ -52,13 +46,6 @@ export function useVirtualDisplay<TData extends RowData>( {
 		data,
 		columns,
 		defaultColumn,
-		filterFns          : {
-			fuzzy: ( row, columnId, value ) =>
-				Boolean( fuzzysort.single( value, String( row.getValue( columnId ) )
-					.normalize( 'NFD' )
-					.replace( /[\u0300-\u036f]/g, '' ) ) )
-		},
-		globalFilterFn     : 'fuzzy',
 		getCoreRowModel    : getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel  : getSortedRowModel(),

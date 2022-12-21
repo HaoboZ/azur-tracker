@@ -14,12 +14,12 @@ export default function VirtualList<TData extends RowData>( { table }: { table: 
 	
 	const { renderRow, onRowClick } = table.options.meta;
 	
-	const renderBodyRow = ( row, ref ) => {
+	const renderBodyRow = ( row, index, ref ) => {
 		const cells = keyBy( row.getVisibleCells(), 'column.id' );
 		const render = ( cell: Cell<TData, unknown> ) => flexRender( cell.column.columnDef.cell, cell.getContext() ) as any;
 		
 		return (
-			<ListItem ref={ref} divider disablePadding={Boolean( onRowClick )}>
+			<ListItem ref={ref} divider data-index={index} disablePadding={Boolean( onRowClick )}>
 				{onRowClick ? (
 					<ListItemButton onClick={() => onRowClick( row, table )}>
 						{renderRow( { cells, render, row, table } )}
@@ -34,15 +34,19 @@ export default function VirtualList<TData extends RowData>( { table }: { table: 
 			dense
 			disablePadding
 			sx={{ [ `.${listItemClasses.root},.${listItemButtonClasses.root}` ]: { whiteSpace: 'nowrap' } }}>
-			{firstRow && renderBodyRow( firstRow, setRowRef )}
+			{firstRow && renderBodyRow( firstRow, undefined, setRowRef )}
 			{rowRef && (
 				<Virtualizer rows={restRows} estimateSize={rowRef.clientHeight} paddingStart={paddingStart}>
-					{( virtualItems, paddingTop, paddingBottom ) => (
+					{( virtualizer, virtualItems, paddingTop, paddingBottom ) => (
 						<Fragment>
 							<Box height={paddingTop}/>
-							{virtualItems.map( ( { index, measureElement } ) => {
+							{virtualItems.map( ( { index } ) => {
 								const row = restRows[ index ];
-								return <Fragment key={row.id}>{renderBodyRow( row, measureElement )}</Fragment>;
+								return (
+									<Fragment key={row.id}>
+										{renderBodyRow( row, index, virtualizer.measureElement )}
+									</Fragment>
+								);
 							} )}
 							<Box height={paddingBottom}/>
 						</Fragment>

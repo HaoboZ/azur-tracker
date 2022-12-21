@@ -1,4 +1,4 @@
-import type { VirtualItem } from '@tanstack/react-virtual';
+import type { Virtualizer as _Virtualizer, VirtualItem } from '@tanstack/react-virtual';
 import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import type { ReactNode } from 'react';
 import { Fragment } from 'react';
@@ -7,7 +7,12 @@ export default function Virtualizer<Data>( { rows, estimateSize, paddingStart, c
 	rows: Data[],
 	estimateSize?: number,
 	paddingStart?: number,
-	children: ( virtualItems: VirtualItem[], paddingTop: number, paddingBottom: number ) => ReactNode
+	children: (
+		virtualizer: _Virtualizer<Window, Element>,
+		virtualItems: VirtualItem[],
+		paddingTop: number,
+		paddingBottom: number
+	) => ReactNode
 } ) {
 	const virtualizer = useWindowVirtualizer( {
 		count       : rows.length,
@@ -23,5 +28,5 @@ export default function Virtualizer<Data>( { rows, estimateSize, paddingStart, c
 		? virtualizer.getTotalSize() - ( virtualItems[ virtualItems.length - 1 ].end || 0 )
 		: 0;
 	
-	return <Fragment>{children( virtualItems, paddingTop, paddingBottom )}</Fragment>;
+	return <Fragment>{children( virtualizer, virtualItems, paddingTop, paddingBottom )}</Fragment>;
 }
