@@ -7,7 +7,8 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
-	listItemSecondaryActionClasses, Typography
+	listItemSecondaryActionClasses,
+	Typography
 } from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';

@@ -38,13 +38,14 @@ export default function EquipDrop() {
 	}, [ equip ] );
 	
 	return (
-		<PageSection primary='Notable Equipment Drops'>
+		<PageSection title='Notable Equipment Drops'>
 			<EquipFilter
 				equipList={equipList}
 				value={equip}
 				setValue={setEquip}
 			/>
 			<Button
+				fullWidth
 				variant='outlined'
 				onClick={() => setExpanded( expanded.length ? [] : treeKeys )}>
 				{expanded.length ? 'Collapse' : 'Expand'} All

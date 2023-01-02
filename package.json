@@ -41,7 +41,6 @@
 		"firebase"                        : "9.15.0",
 		"firebase-admin"                  : "11.4.1",
 		"firebaseui"                      : "6.0.2",
-		"fuzzysort"                       : "2.0.4",
 		"intro.js"                        : "6.0.0",
 		"intro.js-react"                  : "0.7.1",
 		"lodash-es"                       : "4.17.21",

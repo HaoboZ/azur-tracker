@@ -14,7 +14,10 @@ const nextConfig = {
 	async redirects() {
 		return [ { source: '/', destination: '/event', permanent: false } ];
 	},
-	images      : {
+	modularizeImports: {
+		'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
+	},
+	images           : {
 		remotePatterns: [ {
 			protocol: 'https',
 			hostname: 'azurlane.netojuu.com',
@@ -22,14 +25,11 @@ const nextConfig = {
 			pathname: '/images/**'
 		} ]
 	},
-	experimental: {
-		appDir           : true,
-		fontLoaders      : [
+	experimental     : {
+		appDir     : true,
+		fontLoaders: [
 			{ loader: '@next/font/google', options: { subsets: [ 'latin' ] } }
-		],
-		modularizeImports: {
-			'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
-		}
+		]
 	}
 };
 

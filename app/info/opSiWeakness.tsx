@@ -12,7 +12,7 @@ const opSiWeakness: [ string, string, string ][] = [
 
 export default function OpSiWeakness() {
 	return (
-		<PageSection primary='Operation Siren Weakness'>
+		<PageSection title='Operation Siren Weakness'>
 			<TableContainer component={Paper}>
 				<Table size='small'>
 					<TableHead>
