@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { keyBy, map } from 'lodash-es';
+import { keyBy, map } from 'lodash';
 import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 import Sortable from '../sortable';

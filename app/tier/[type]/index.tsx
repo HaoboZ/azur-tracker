@@ -6,7 +6,7 @@ import firebaseClientApp from '@/src/firebase/client';
 import { useData } from '@/src/providers/data';
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
-import { difference, keyBy, map } from 'lodash-es';
+import { difference, keyBy, map } from 'lodash';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { forwardRef, useEffect, useMemo, useState } from 'react';

@@ -1,6 +1,6 @@
 import type { SxProps } from '@mui/material';
 import { styled, useTheme } from '@mui/material';
-import { isEqual, map } from 'lodash-es';
+import { isEqual, map } from 'lodash';
 import { nanoid } from 'nanoid';
 import type { ComponentType, ReactHTML, ReactNode } from 'react';
 import { Fragment, useEffect, useState } from 'react';

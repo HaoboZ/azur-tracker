@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth';
 import { get, getDatabase, ref } from 'firebase/database';
-import { isEqual } from 'lodash-es';
+import { isEqual } from 'lodash';
 import { decompressFromUTF16 } from 'lz-string';
 import { store } from '../../store';
 import { importBackup, setLastTimestamp, setTimestamp } from '../../store/reducers/mainReducer';

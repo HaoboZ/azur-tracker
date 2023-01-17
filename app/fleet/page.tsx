@@ -3,7 +3,7 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
-import { keyBy, mapValues, omit, pick, sortBy } from 'lodash-es';
+import { keyBy, mapValues, omit, pick, sortBy } from 'lodash';
 import objectHash from 'object-hash';
 import Fleet from './index';
 

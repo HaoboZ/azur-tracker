@@ -1,9 +1,8 @@
 import { Checkbox, ListItemIcon } from '@mui/material';
 import type { Row } from '@tanstack/react-table';
 import type { DisplayColumnDef } from '@tanstack/table-core';
-import type { ReactNode } from 'react';
 
-export const selectColumn: () => DisplayColumnDef<any> = () => ( {
+export const selectColumn = () => ( {
 	id    : '_select',
 	size  : 0,
 	header: ( { table } ) => (
@@ -21,15 +20,17 @@ export const selectColumn: () => DisplayColumnDef<any> = () => ( {
 			onChange={row.getToggleSelectedHandler()}
 		/>
 	)
-} );
+} ) as DisplayColumnDef<any>;
 
-export const selectIcon: <TData>( row: Row<TData> ) => ReactNode = ( row ) => (
-	<ListItemIcon>
-		<Checkbox
-			checked={row.getIsSelected()}
-			indeterminate={row.getIsSomeSelected()}
-			onClick={( e ) => e.stopPropagation()}
-			onChange={row.getToggleSelectedHandler()}
-		/>
-	</ListItemIcon>
-);
+export function selectIcon<TData>( row: Row<TData> ) {
+	return (
+		<ListItemIcon>
+			<Checkbox
+				checked={row.getIsSelected()}
+				indeterminate={row.getIsSomeSelected()}
+				onClick={( e ) => e.stopPropagation()}
+				onChange={row.getToggleSelectedHandler()}
+			/>
+		</ListItemIcon>
+	);
+}

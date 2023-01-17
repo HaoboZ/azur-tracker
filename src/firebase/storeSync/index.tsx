@@ -2,7 +2,7 @@
 import { Dialog } from '@capacitor/dialog';
 import { Fade, Paper, Typography } from '@mui/material';
 import { getDatabase, ref } from 'firebase/database';
-import { pick } from 'lodash-es';
+import { pick } from 'lodash';
 import objectHash from 'object-hash';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';

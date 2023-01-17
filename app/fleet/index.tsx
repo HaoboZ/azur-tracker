@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShips, fleet_setVersion } from '@/src/store/reducers/fleetReducer';
 import { Typography } from '@mui/material';
 import axios from 'axios';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import FleetFilters from './filters';
 import getTier from './getTier';

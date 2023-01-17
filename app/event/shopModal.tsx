@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_setShop } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
-import { keyBy, mapValues } from 'lodash-es';
+import { keyBy, mapValues } from 'lodash';
 import { useMemo, useState } from 'react';
 import type { EventType } from './type';
 

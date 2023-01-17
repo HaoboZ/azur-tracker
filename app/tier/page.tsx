@@ -1,7 +1,7 @@
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { map } from 'lodash-es';
+import { map } from 'lodash';
 import Tier from './index';
 
 export default async function TierPage() {

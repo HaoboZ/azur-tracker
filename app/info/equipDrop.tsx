@@ -3,7 +3,7 @@ import { useData } from '@/src/providers/data';
 import { ChevronRight as ChevronRightIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
-import { each, keyBy, map, mapValues } from 'lodash-es';
+import { each, keyBy, map, mapValues } from 'lodash';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { rarityColors } from '../colors';

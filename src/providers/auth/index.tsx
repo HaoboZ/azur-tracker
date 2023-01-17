@@ -1,7 +1,7 @@
 import AsyncButton from '@/components/loaders/asyncButton';
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
-import { pick } from 'lodash-es';
+import { pick } from 'lodash';
 import { useSnackbar } from 'notistack';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';

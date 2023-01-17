@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { research_modifyShip } from '@/src/store/reducers/researchReducer';
 import { Avatar, Grid, InputAdornment, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
-import { keyBy } from 'lodash-es';
+import { keyBy } from 'lodash';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import type { ResearchShipType } from './type';

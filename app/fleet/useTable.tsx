@@ -5,7 +5,7 @@ import { Star as StarIcon } from '@mui/icons-material';
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
-import { isNumber, map, max, min } from 'lodash-es';
+import { isNumber, map, max, min } from 'lodash';
 import { Fragment, useMemo } from 'react';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';

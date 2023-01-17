@@ -1,7 +1,7 @@
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { groupBy, pick } from 'lodash-es';
+import { groupBy, pick } from 'lodash';
 import Research from './index';
 
 export default async function ResearchPage() {

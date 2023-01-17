@@ -9,7 +9,7 @@ import { event_setDaily } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';
 import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from 'lodash';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo, useState } from 'react';
 

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { Box, DialogTitle, FormControl, Grid, InputLabel, Link, MenuItem, Select, Typography } from '@mui/material';
-import { keyBy } from 'lodash-es';
+import { keyBy } from 'lodash';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { rarityColors } from '../../colors';

@@ -5,7 +5,7 @@ import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { fleet_setShip } from '@/src/store/reducers/fleetReducer';
 import { Alert, Box, Button, FormControlLabel, Grid, Link, Switch, Typography } from '@mui/material';
-import { cloneDeep, keyBy, map, sortBy } from 'lodash-es';
+import { cloneDeep, keyBy, map, sortBy } from 'lodash';
 import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
 import getTier from '../../getTier';

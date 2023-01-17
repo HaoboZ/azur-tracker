@@ -1,6 +1,6 @@
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Breadcrumbs, Button, Typography } from '@mui/material';
-import { startCase } from 'lodash-es';
+import { startCase } from 'lodash';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEventHandler } from 'react';
 import { useMemo } from 'react';

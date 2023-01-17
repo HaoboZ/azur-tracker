@@ -1,7 +1,7 @@
 import { Box, List, ListItem, ListItemButton, listItemButtonClasses, listItemClasses } from '@mui/material';
 import type { Cell, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { keyBy } from 'lodash-es';
+import { keyBy } from 'lodash';
 import { Fragment, useState } from 'react';
 import Virtualizer from '../virtualizer';
 

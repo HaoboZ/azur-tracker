@@ -15,6 +15,7 @@ const nextConfig = {
 		return [ { source: '/', destination: '/event', permanent: false } ];
 	},
 	modularizeImports: {
+		'lodash'             : { transform: 'lodash/{{member}}' },
 		'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }
 	},
 	images           : {
@@ -27,9 +28,9 @@ const nextConfig = {
 	},
 	experimental     : {
 		appDir     : true,
-		fontLoaders: [
-			{ loader: '@next/font/google', options: { subsets: [ 'latin' ] } }
-		]
+		fontLoaders: [ {
+			loader: '@next/font/google', options: { subsets: [ 'latin' ] }
+		} ]
 	}
 };
 
