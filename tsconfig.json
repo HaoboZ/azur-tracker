@@ -25,7 +25,8 @@
 			"@/src/*"       : [ "./src/*" ],
 			"@/components/*": [ "./src/components/*" ],
 			"@/app/*"       : [ "./app/*" ],
-			"@/api/*"       : [ "./pages/api/*" ]
+			"@/api/*"       : [ "./pages/api/*" ],
+			"@/public/*": ["./public/*"]
 		}
 	},
 	"include"        : [

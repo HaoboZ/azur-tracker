@@ -11,9 +11,6 @@ const nextConfig = {
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
 	} ],
-	async redirects() {
-		return [ { source: '/', destination: '/event', permanent: false } ];
-	},
 	modularizeImports: {
 		'lodash'             : { transform: 'lodash/{{member}}' },
 		'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' }

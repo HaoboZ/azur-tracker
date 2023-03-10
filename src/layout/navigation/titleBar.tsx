@@ -43,7 +43,9 @@ export default function TitleBar() {
 				pr: 'env(safe-area-inset-right)'
 			}}>
 			<Toolbar>
-				<Typography variant='h3' mr={3}>Azur Lane Tracker</Typography>
+				<Typography component={PageLinkComponent} href='/' color='inherit' variant='h3' mr={3} sx={{ textDecoration:'none' }}>
+					Azur Lane Tracker
+				</Typography>
 				{items.filter( Boolean ).filter( ( { hide } ) => !hide ).map( ( item ) => (
 					<LinkItem key={item.label} href={item.href} store={item.store}>
 						{item.label}

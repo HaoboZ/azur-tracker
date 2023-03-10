@@ -3,6 +3,7 @@ import Page from '@/components/page';
 import { useAuth } from '@/src/providers/auth';
 import axios from 'axios';
 import EquipDrop from './equipDrop';
+import EquipmentTier from './equipmentTier';
 import OpSiWeakness from './opSiWeakness';
 
 // noinspection JSUnusedGlobalSymbols
@@ -20,6 +21,7 @@ export default function Info() {
 				} ]
 			}}>
 			<OpSiWeakness/>
+			<EquipmentTier/>
 			<EquipDrop/>
 		</Page>
 	);

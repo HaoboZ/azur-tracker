@@ -11,7 +11,7 @@ export default function PageSection( { title, actions, children, max, ...props }
 } & TypographyProps ) {
 	return (
 		<Box>
-			<Box display='flex' justifyContent='space-between' alignItems='center'>
+			<Box display='flex' justifyContent='space-between' alignItems='center' px={{ xs: 1, md: 0 }}>
 				<Typography variant='h4' py={1} {...props}>{title}</Typography>
 				{Array.isArray( actions ) ? <Actions items={actions} max={max}/> : actions}
 			</Box>
