@@ -16,7 +16,7 @@ export default function Main() {
 	const router = useRouter();
 	
 	return (
-		<Page title='Azur Lane Tracker'>
+		<Page hideBack title='Azur Lane Tracker'>
 			<Box width='100%' height={300} position='relative' mb={2}>
 				<Image
 					fill

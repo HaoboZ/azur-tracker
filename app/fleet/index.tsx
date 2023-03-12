@@ -62,7 +62,6 @@ export default function Fleet() {
 	
 	return (
 		<Page
-			hideBack
 			title='Fleet Tracker'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {

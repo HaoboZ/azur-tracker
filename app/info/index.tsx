@@ -12,7 +12,6 @@ export default function Info() {
 	
 	return (
 		<Page
-			hideBack
 			title='Info'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {

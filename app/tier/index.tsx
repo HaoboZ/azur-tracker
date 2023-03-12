@@ -14,7 +14,6 @@ export default function Tier() {
 	
 	return (
 		<Page
-			hideBack
 			title='Tier'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {

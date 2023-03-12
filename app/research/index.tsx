@@ -18,7 +18,6 @@ export default function Research() {
 	
 	return (
 		<Page
-			hideBack
 			title='Research Tracker'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {

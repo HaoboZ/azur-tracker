@@ -49,7 +49,6 @@ export default function Event() {
 	
 	return (
 		<Page
-			hideBack
 			title='Event Tracker'
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
