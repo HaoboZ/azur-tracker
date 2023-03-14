@@ -1,9 +1,9 @@
 'use client';
 import Page from '@/components/page';
+import { PageLinkComponent } from '@/components/page/link';
 import image from '@/public/images/startScreen.jpg';
-import { Box, Card, CardActionArea, CardContent, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const menuItems = [
 	{ name: 'Event', href: 'event' },
@@ -13,8 +13,6 @@ const menuItems = [
 ];
 
 export default function Main() {
-	const router = useRouter();
-	
 	return (
 		<Page hideBack title='Azur Lane Tracker'>
 			<Box width='100%' height={300} position='relative' mb={2}>
@@ -28,13 +26,9 @@ export default function Main() {
 			<Grid container spacing={1}>
 				{menuItems.map( ( item ) => (
 					<Grid key={item.href} item xs={12} sm={6}>
-						<Card>
-							<CardActionArea onClick={() => router.push( item.href )}>
-								<CardContent sx={{ textAlign: 'center' }}>
-									{item.name}
-								</CardContent>
-							</CardActionArea>
-						</Card>
+						<Button fullWidth variant='outlined' component={PageLinkComponent} href={item.href}>
+							{item.name}
+						</Button>
 					</Grid>
 				) )}
 			</Grid>
