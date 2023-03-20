@@ -18,6 +18,7 @@
 		"resolveJsonModule"               : true,
 		"isolatedModules"                 : true,
 		"jsx"                             : "preserve",
+		"strictNullChecks"                : true,
 		"plugins"                         : [
 			{ "name": "next" }
 		],
@@ -26,7 +27,7 @@
 			"@/components/*": [ "./src/components/*" ],
 			"@/app/*"       : [ "./app/*" ],
 			"@/api/*"       : [ "./pages/api/*" ],
-			"@/public/*": ["./public/*"]
+			"@/public/*"    : [ "./public/*" ]
 		}
 	},
 	"include"        : [

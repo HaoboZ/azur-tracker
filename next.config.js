@@ -1,5 +1,5 @@
-import nextPWA from '@ducanh2912/next-pwa';
-import bundleAnalyzer from '@next/bundle-analyzer';
+const nextPWA = require( '@ducanh2912/next-pwa' ).default;
+const bundleAnalyzer = require( '@next/bundle-analyzer' );
 
 /**
  * @type {import('next').NextConfig}
@@ -26,7 +26,7 @@ const nextConfig = {
 	experimental     : {
 		appDir     : true,
 		fontLoaders: [ {
-			loader: '@next/font/google', options: { subsets: [ 'latin' ] }
+			loader: 'next/font/google', options: { subsets: [ 'latin' ] }
 		} ]
 	}
 };
@@ -40,4 +40,4 @@ const plugins = [
 ];
 
 // noinspection JSUnusedGlobalSymbols
-export default plugins.reduceRight( ( acc, plugin ) => plugin( acc ), nextConfig );
+module.exports = plugins.reduceRight( ( acc, plugin ) => plugin( acc ), nextConfig );

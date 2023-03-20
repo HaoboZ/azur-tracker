@@ -29,7 +29,6 @@
 		"@mui/icons-material"             : "5.11.11",
 		"@mui/lab"                        : "5.0.0-alpha.123",
 		"@mui/material"                   : "5.11.13",
-		"@next/font"                      : "13.2.4",
 		"@reduxjs/toolkit"                : "1.9.3",
 		"@tanem/react-nprogress"          : "5.0.32",
 		"@tanstack/react-table"           : "8.7.9",
