@@ -5,8 +5,8 @@ import nextPWA from 'next-pwa';
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-	typescript: { ignoreBuildErrors: true },
-	headers   : async () => [ {
+	typescript       : { ignoreBuildErrors: true },
+	headers          : async () => [ {
 		// matching all API routes
 		source : '/api/:path*',
 		headers: [ { key: 'Access-Control-Allow-Origin', value: '*' } ]
@@ -34,7 +34,7 @@ const nextConfig = {
 const plugins = [
 	bundleAnalyzer( { enabled: process.env.ANALYZE === 'true' } ),
 	nextPWA( {
-		disable: !process.env.NEXT_PUBLIC_VERCEL_ENV,
+		disable: process.env.NODE_ENV === 'development',
 		dest   : 'public'
 	} )
 ];
