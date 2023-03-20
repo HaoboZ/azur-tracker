@@ -1,5 +1,5 @@
+import nextPWA from '@ducanh2912/next-pwa';
 import bundleAnalyzer from '@next/bundle-analyzer';
-import nextPWA from 'next-pwa';
 
 /**
  * @type {import('next').NextConfig}
