@@ -4673,7 +4673,7 @@ __metadata:
     firebase: 9.18.0
     firebase-admin: 11.5.0
     firebaseui: 6.0.2
-    intro.js: 6.0.0
+    intro.js: 7.0.1
     intro.js-react: 0.7.1
     jest: 29.5.0
     lodash: 4.17.21
@@ -7241,10 +7241,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intro.js@npm:6.0.0":
-  version: 6.0.0
-  resolution: "intro.js@npm:6.0.0"
-  checksum: e4fd8bd372792c59f4a1ad6d5b80c8d4d834af14d07bdeabf6f291208970ff518715e71e122f5925e6a307a51de85bf0fe9922b4c4741954db36a3f1f132cd48
+"intro.js@npm:7.0.1":
+  version: 7.0.1
+  resolution: "intro.js@npm:7.0.1"
+  checksum: e29fd0b64fd049bfe7ec59c1916ce20789313320829f09c7ad6fedd9344a7c3aa985c0c65086fa08feca792c6fdfe189dfdc8776af9437c6f5ced751268c453f
   languageName: node
   linkType: hard
 
