@@ -13,6 +13,7 @@ import _packageJson from '../package.json';
 const packageJson = _packageJson as PackageJson;
 
 const roboto = Roboto( {
+	subsets: [ 'latin' ],
 	weight: [ '300', '400', '500', '700' ]
 } );
 
