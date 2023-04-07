@@ -23,12 +23,7 @@ const nextConfig = {
 			pathname: '/images/**'
 		} ]
 	},
-	experimental     : {
-		appDir     : true,
-		fontLoaders: [ {
-			loader: 'next/font/google', options: { subsets: [ 'latin' ] }
-		} ]
-	}
+	experimental     : { appDir: true }
 };
 
 const plugins = [
