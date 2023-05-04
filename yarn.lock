@@ -1419,12 +1419,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/preferences@npm:4.0.2":
-  version: 4.0.2
-  resolution: "@capacitor/preferences@npm:4.0.2"
+"@capacitor/preferences@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@capacitor/preferences@npm:5.0.0"
   peerDependencies:
-    "@capacitor/core": ^4.0.0
-  checksum: 5edb2298bcde1031b13d50d2033c81508af9fc2b7b70595718d8b894e397a44ce7f1e3b08cacb88bc3d8a4ec82d0e89cc118e76fa3627908a959fcaeec13a2b3
+    "@capacitor/core": "*"
+  checksum: 7aad9079c36b3e273148137c9eba46f372ad1231dd885a7e44199ec9ece72a3fea82a0fdaf6cbff7eac7e168ae82f92524db76feea3f8f60d548c4b484afa43e
   languageName: node
   linkType: hard
 
@@ -4603,7 +4603,7 @@ __metadata:
     "@capacitor/cli": "npm:4.8.0"
     "@capacitor/core": "npm:4.8.0"
     "@capacitor/dialog": "npm:4.1.0"
-    "@capacitor/preferences": "npm:4.0.2"
+    "@capacitor/preferences": "npm:5.0.0"
     "@capacitor/status-bar": "npm:4.1.1"
     "@ducanh2912/next-pwa": "npm:8.3.0"
     "@emotion/react": "npm:11.10.8"
