@@ -1,4 +1,5 @@
-import { NextResponse, revalidatePath } from 'next/server';
+import { revalidatePath } from 'next/cache';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
 	revalidatePath( 'event' );
