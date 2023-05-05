@@ -1364,12 +1364,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/app@npm:4.1.1":
-  version: 4.1.1
-  resolution: "@capacitor/app@npm:4.1.1"
+"@capacitor/app@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@capacitor/app@npm:5.0.0"
   peerDependencies:
-    "@capacitor/core": ^4.0.0
-  checksum: d9e0357a8c43262f62fdd1cb7be2b78fd6567e328b582d41a2ad229660d4304833a9bd5f19c21fdfd6e18388a6873c731b2044e2f59d9006a5769a447345bd2e
+    "@capacitor/core": "*"
+  checksum: 4f32e56592737cf9d76f9e977eed62bd4b9dcd1e883961eec21d5acb92286b637e4e6569022be45a32ff96511b7f64e7c54d1ede415250b248ee882dd830d6da
   languageName: node
   linkType: hard
 
@@ -4638,7 +4638,7 @@ __metadata:
   resolution: "azur-tracker@workspace:."
   dependencies:
     "@capacitor/android": "npm:5.0.0"
-    "@capacitor/app": "npm:4.1.1"
+    "@capacitor/app": "npm:5.0.0"
     "@capacitor/cli": "npm:5.0.0"
     "@capacitor/core": "npm:5.0.0"
     "@capacitor/dialog": "npm:4.1.0"
