@@ -53,7 +53,7 @@ export default function Event() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
 					name   : 'Revalidate',
-					onClick: () => axios.get( 'api/revalidate/event' )
+					onClick: () => axios.get( 'event/revalidate' )
 				} ] : (
 					<HelpTourButton
 						steps={[ {

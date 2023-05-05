@@ -18,7 +18,7 @@ export default function Tier() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => axios.get( 'api/revalidate/tier' )
+					onClick: () => axios.get( 'tier/revalidate' )
 				} ]
 			}}>
 			<Grid container spacing={2} pt={2}>

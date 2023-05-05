@@ -22,8 +22,7 @@ const nextConfig = {
 			port    : '',
 			pathname: '/images/**'
 		} ]
-	},
-	experimental     : { appDir: true }
+	}
 };
 
 const plugins = [

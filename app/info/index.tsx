@@ -16,7 +16,7 @@ export default function Info() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => axios.get( 'api/revalidate/info' )
+					onClick: () => axios.get( 'info/revalidate' )
 				} ]
 			}}>
 			<OpSiWeakness/>

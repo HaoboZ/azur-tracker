@@ -22,7 +22,7 @@ export default function Research() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => axios.get( 'api/revalidate/research' )
+					onClick: () => axios.get( 'research/revalidate' )
 				} ]
 			}}>
 			<SwipeableTabViews
