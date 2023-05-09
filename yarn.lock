@@ -4730,7 +4730,7 @@ __metadata:
     firebase-admin: "npm:11.8.0"
     firebaseui: "npm:6.0.2"
     intro.js: "npm:7.0.1"
-    intro.js-react: "npm:0.7.1"
+    intro.js-react: "npm:1.0.0"
     jest: "npm:29.5.0"
     lodash: "npm:4.17.21"
     lz-string: "npm:1.5.0"
@@ -7332,13 +7332,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intro.js-react@npm:0.7.1":
-  version: 0.7.1
-  resolution: "intro.js-react@npm:0.7.1"
+"intro.js-react@npm:1.0.0":
+  version: 1.0.0
+  resolution: "intro.js-react@npm:1.0.0"
   peerDependencies:
     intro.js: ">=2.5.0"
     react: ">=0.14.0"
-  checksum: f7f1b6b421f7870b1308ac2f16136bf5c5c55318de7f936b8386f2566461f92b06459cf3b1eb83e99e1326b4c93309040a1a138c495f5d6de85cc37b167568a1
+  checksum: 737eb726636e6e841feadb21016f8369c18a35518f1e6881efaae270ce1b13c07d19857515f500da10260a55c98c834dc96c00358f1dc32709d81b411083dff3
   languageName: node
   linkType: hard
 
