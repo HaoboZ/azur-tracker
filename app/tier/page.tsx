@@ -4,6 +4,8 @@ import csvtojson from 'csvtojson';
 import { map } from 'lodash';
 import Tier from './index';
 
+export const revalidate = 3600;
+
 export default async function TierPage() {
 	const { data } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Tier', tqx: 'out:csv' }

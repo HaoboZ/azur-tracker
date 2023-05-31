@@ -6,6 +6,8 @@ import { getDatabase } from 'firebase-admin/database';
 import { difference, groupBy, keyBy, map, mapValues, sortBy, union } from 'lodash';
 import Info from './index';
 
+export const revalidate = 3600;
+
 export default async function InfoPage() {
 	const { data: farmCSV } = await axios.get( `https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`, {
 		params: { sheet: 'Farm', tqx: 'out:csv' }
