@@ -1,5 +1,5 @@
 'use client';
-import { defineCustomElements } from '@ionic/pwa-elements/loader';
+// import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { SnackbarProvider } from 'notistack';
 import type { ReactNode } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
@@ -12,9 +12,9 @@ import ModalProvider from './modal';
 import SnackbarAction from './snackbar/action';
 import ThemeProvider from './theme';
 
-if ( typeof window !== 'undefined' ) {
-	defineCustomElements( window ).then();
-}
+// if ( typeof window !== 'undefined' ) {
+// 	defineCustomElements( window ).then();
+// }
 
 export default function Providers( { children }: { children: ReactNode } ) {
 	return (
