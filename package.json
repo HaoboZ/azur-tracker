@@ -37,7 +37,7 @@
 		"csvtojson"                       : "2.0.10",
 		"date-fns"                        : "2.30.0",
 		"events"                          : "3.3.0",
-		"firebase"                        : "9.23.0",
+		"firebase"                        : "10.3.1",
 		"firebase-admin"                  : "11.10.1",
 		"firebaseui"                      : "6.1.0",
 		"intro.js"                        : "7.2.0",
