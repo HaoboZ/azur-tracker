@@ -25,7 +25,7 @@ export default async function FleetPage() {
 	
 	const equipTierData = mapValues( equipTier, ( tiers ) => Object.values( omit( tiers, 'N' ) )
 		.reduce( ( acc, equips, tier ) => {
-			equips.forEach( ( equip, index ) => acc[ equip ] = [ tier, index ] );
+			equips?.forEach( ( equip, index ) => acc[ equip ] = [ tier, index ] );
 			return acc;
 		}, {} ) );
 	
