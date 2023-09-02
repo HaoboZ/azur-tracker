@@ -24,7 +24,7 @@ export default function Main() {
 			titleProps={{
 				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
 					name   : 'Revalidate',
-					onClick: () => axios.post( `api/revalidate&secret=${process.env.NEXT_PUBLIC_ADMIN_ID}` )
+					onClick: () => axios.post( `api/revalidate?secret=${process.env.NEXT_PUBLIC_ADMIN_ID}` )
 				} ]
 			}}>
 			<Box width='100%' height={300} position='relative' mb={2}>
