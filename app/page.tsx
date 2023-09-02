@@ -43,6 +43,13 @@ export default function Main() {
 						</Button>
 					</Grid>
 				) )}
+				{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && (
+					<Grid key='tier' item xs={12}>
+						<Button fullWidth variant='outlined' component={PageLinkComponent} href='tier'>
+							Tier
+						</Button>
+					</Grid>
+				)}
 			</Grid>
 		</Page>
 	);
