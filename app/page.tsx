@@ -4,7 +4,7 @@ import { PageLinkComponent } from '@/components/page/link';
 import image from '@/public/images/startScreen.jpg';
 import { useAuth } from '@/src/providers/auth';
 import { Box, Button, Grid } from '@mui/material';
-import axios from 'axios/index';
+import axios from 'axios';
 import Image from 'next/image';
 
 const menuItems = [

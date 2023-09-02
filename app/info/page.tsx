@@ -31,16 +31,16 @@ export default async function InfoPage() {
 	let found = [];
 	return (
 		<DataProvider data={{
-			farmData   : mapValues( groupBy( farmData, 'origin' ),
+			farmData : mapValues( groupBy( farmData, 'origin' ),
 				( value ) => mapValues( groupBy( value, 'level' ),
 					( value ) => mapValues( groupBy( value, 'stage' ),
 						( value ) => value[ 0 ].ids ) ) ),
-			equipTier  : map( equipTier, ( value ) => {
+			equipTier: map( equipTier, ( value ) => {
 				const result = sortBy( difference( value, found ) );
 				found = union( found, value );
 				return result;
 			} ),
-			equipList  : sortBy( equipIndex, 'type', 'id' )
+			equipList: sortBy( equipIndex, 'type', 'id' )
 		}}>
 			<Info/>
 		</DataProvider>
