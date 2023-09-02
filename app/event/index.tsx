@@ -1,12 +1,10 @@
 'use client';
 import HelpTourButton from '@/components/helpTourButton';
 import Page from '@/components/page';
-import { useAuth } from '@/src/providers/auth';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { event_newEvent } from '@/src/store/reducers/eventReducer';
 import { Box, Link, Typography } from '@mui/material';
-import axios from 'axios';
 import { differenceInDays } from 'date-fns';
 import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
@@ -16,7 +14,6 @@ import EventFields from './fields';
 import type { EventType } from './type';
 
 export default function Event() {
-	const user = useAuth();
 	const event = useAppSelector( ( { event } ) => event );
 	const dispatch = useAppDispatch();
 	const { eventData, eventShopData } = useData<EventType>();
@@ -51,10 +48,7 @@ export default function Event() {
 		<Page
 			title='Event Tracker'
 			titleProps={{
-				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
-					name   : 'Revalidate',
-					onClick: () => axios.get( 'event/revalidate' )
-				} ] : (
+				actions: (
 					<HelpTourButton
 						steps={[ {
 							element: '#help',

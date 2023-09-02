@@ -2,7 +2,6 @@ import { PageLinkComponent } from '@/components/page/link';
 import { Settings as SettingsIcon } from '@mui/icons-material';
 import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import type { ReactNode } from 'react';
-import { useAuth } from '../../providers/auth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setViewed } from '../../store/reducers/mainReducer';
 import { items } from './items';
@@ -31,8 +30,6 @@ function LinkItem( { href, store, children }: { href: string, store?: string, ch
 }
 
 export default function TitleBar() {
-	const user = useAuth();
-	
 	return (
 		<AppBar
 			enableColorOnDark
@@ -43,15 +40,20 @@ export default function TitleBar() {
 				pr: 'env(safe-area-inset-right)'
 			}}>
 			<Toolbar>
-				<Typography component={PageLinkComponent} href='/' color='inherit' variant='h3' mr={3} sx={{ textDecoration:'none' }}>
+				<Typography
+					component={PageLinkComponent}
+					href='/'
+					color='inherit'
+					variant='h3'
+					mr={3}
+					sx={{ textDecoration: 'none' }}>
 					Azur Lane Tracker
 				</Typography>
-				{items.filter( Boolean ).filter( ( { hide } ) => !hide ).map( ( item ) => (
+				{items.filter( ( { hide } ) => !hide ).map( ( item ) => (
 					<LinkItem key={item.label} href={item.href} store={item.store}>
 						{item.label}
 					</LinkItem>
 				) )}
-				{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && <LinkItem href='/tier'>Tier</LinkItem>}
 				<Box flexGrow={1}/>
 				<IconButton component={PageLinkComponent} href='/settings' color='inherit'>
 					<SettingsIcon/>

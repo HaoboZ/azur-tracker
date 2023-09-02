@@ -2,7 +2,9 @@
 import Page from '@/components/page';
 import { PageLinkComponent } from '@/components/page/link';
 import image from '@/public/images/startScreen.jpg';
+import { useAuth } from '@/src/providers/auth';
 import { Box, Button, Grid } from '@mui/material';
+import axios from 'axios/index';
 import Image from 'next/image';
 
 const menuItems = [
@@ -13,8 +15,18 @@ const menuItems = [
 ];
 
 export default function Main() {
+	const user = useAuth();
+	
 	return (
-		<Page hideBack title='Azur Lane Tracker'>
+		<Page
+			hideBack
+			title='Azur Lane Tracker'
+			titleProps={{
+				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
+					name   : 'Revalidate',
+					onClick: () => axios.post( `api/revalidate&secret=${process.env.NEXT_PUBLIC_ADMIN_ID}` )
+				} ]
+			}}>
 			<Box width='100%' height={300} position='relative' mb={2}>
 				<Image
 					fill

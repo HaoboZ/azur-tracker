@@ -1,26 +1,16 @@
 'use client';
 import Page from '@/components/page';
 import { PageLinkComponent } from '@/components/page/link';
-import { useAuth } from '@/src/providers/auth';
 import { useData } from '@/src/providers/data';
 import { Button, Grid } from '@mui/material';
-import axios from 'axios';
 import type { TierType } from './type';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Tier() {
-	const user = useAuth();
 	const { tierTypesData } = useData<TierType>();
 	
 	return (
-		<Page
-			title='Tier'
-			titleProps={{
-				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [ {
-					name   : 'Revalidate',
-					onClick: () => axios.get( 'tier/revalidate' )
-				} ]
-			}}>
+		<Page title='Tier'>
 			<Grid container spacing={2} pt={2}>
 				{tierTypesData.map( ( type ) => (
 					<Grid key={type} item xs={6} sm={4} md={3} lg={2}>

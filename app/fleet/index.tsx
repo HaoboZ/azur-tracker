@@ -2,12 +2,10 @@
 import HelpTourButton from '@/components/helpTourButton';
 import Page from '@/components/page';
 import VirtualDisplay from '@/components/virtualDisplay';
-import { useAuth } from '@/src/providers/auth';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleet_setShips, fleet_setVersion } from '@/src/store/reducers/fleetReducer';
 import { Typography } from '@mui/material';
-import axios from 'axios';
 import { cloneDeep } from 'lodash';
 import { Fragment, useEffect, useState } from 'react';
 import FleetFilters from './filters';
@@ -17,7 +15,6 @@ import useFleetTable from './useTable';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
-	const user = useAuth();
 	const fleet = useAppSelector( ( { fleet } ) => fleet );
 	const dispatch = useAppDispatch();
 	const { fleetData, equippableData, equipTierData, equipTierHash } = useData<FleetType>();
@@ -64,10 +61,7 @@ export default function Fleet() {
 		<Page
 			title='Fleet Tracker'
 			titleProps={{
-				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID ? [ {
-					name   : 'Revalidate',
-					onClick: () => axios.get( 'fleet/revalidate' )
-				} ] : (
+				actions: (
 					<HelpTourButton
 						steps={[ {
 							element: '#help',

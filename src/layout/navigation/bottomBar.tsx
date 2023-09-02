@@ -35,7 +35,7 @@ export default function BottomBar() {
 					router.push( item.href );
 					if ( 'store' in item ) dispatch( setViewed( item.store ) );
 				}}>
-				{items.filter( Boolean ).map( ( item, index ) => (
+				{items.map( ( item, index ) => (
 					<BottomNavigationAction
 						key={index}
 						sx={{ minWidth: 0 }}

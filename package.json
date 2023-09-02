@@ -2,7 +2,7 @@
 	"name"           : "azur-tracker",
 	"description"    : "A tracker of events, research, and ships for Azur Lane",
 	"author"         : "Haobo Zhang <haobozhang9081@gmail.com>",
-	"version"        : "8.0.1",
+	"version"        : "8.1.0",
 	"private"        : true,
 	"scripts"        : {
 		"dev"      : "next dev",
