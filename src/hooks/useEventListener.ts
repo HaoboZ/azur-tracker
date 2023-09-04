@@ -13,6 +13,7 @@ export default function useEventListener(
 	const tick = useFreshTick(listener);
 
 	useEffect(() => {
+		if (!event) return;
 		// @ts-ignore
 		const add = event.on || event.addListener || event.addEventListener;
 		// @ts-ignore
@@ -20,8 +21,6 @@ export default function useEventListener(
 
 		if (callOnce) tick();
 		add.bind(event)(name, tick);
-		return () => {
-			remove.bind(event)(name, tick);
-		};
-	}, []);
+		return () => remove.bind(event)(name, tick);
+	}, [!event]);
 }

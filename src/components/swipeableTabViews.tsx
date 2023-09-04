@@ -1,12 +1,12 @@
 import type { TabsProps } from '@mui/material';
-import { Box, Tab, Tabs, useTheme } from '@mui/material';
-import type { ComponentType, CSSProperties, ReactNode } from 'react';
-import { Fragment, useEffect, useState } from 'react';
-import type { SwipeableViewsProps } from 'react-swipeable-views';
-import SwipeableViews from 'react-swipeable-views';
-import type { WithBindKeyboardProps, WithVirtualizeProps } from 'react-swipeable-views-utils';
-import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
+import { Box, Tab, Tabs } from '@mui/material';
+import type { EmblaCarouselType } from 'embla-carousel-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import type { ReactNode } from 'react';
+import { useMemo } from 'react';
+import { useDidUpdate } from 'rooks';
 import useControlled from '../hooks/useControlled';
+import useEventListener from '../hooks/useEventListener';
 
 type SwipeableTabViewsProps = {
 	tab?: number;
@@ -15,10 +15,6 @@ type SwipeableTabViewsProps = {
 	renderContent: (index: number) => ReactNode;
 } & TabsProps;
 
-const EnhancedSwipeableViews = bindKeyboard(virtualize(SwipeableViews)) as ComponentType<
-	SwipeableViewsProps & WithVirtualizeProps & WithBindKeyboardProps
->;
-
 export default function SwipeableTabViews({
 	tab = 0,
 	setTab,
@@ -26,39 +22,39 @@ export default function SwipeableTabViews({
 	renderContent,
 	...props
 }: SwipeableTabViewsProps) {
-	const theme = useTheme();
-
 	const [tabValue, setTabValue] = useControlled(tab, setTab);
-	const [swipeFix, setSwipeFix] = useState<CSSProperties>();
+	const startIndex = useMemo(() => tab, []);
 
-	useEffect(() => {
-		setTimeout(
-			() =>
-				setSwipeFix({
-					transition: theme.transitions.create('transform'),
-				}),
-			500,
-		);
-	}, []);
+	const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex });
+
+	useEventListener(emblaApi, 'select', (emblaApi: EmblaCarouselType) => {
+		setTabValue(emblaApi.selectedScrollSnap());
+	});
+
+	useDidUpdate(() => {
+		emblaApi.scrollTo(tabValue);
+	}, [tabValue]);
 
 	return (
 		<Box>
 			<Tabs
 				variant='scrollable'
 				value={tabValue}
-				onChange={(e, index) => setTabValue(+index)}
+				onChange={(e, index) => setTabValue(index)}
 				{...props}>
 				{renderTabs.map((label, index) => (
 					<Tab key={index} label={label} />
 				))}
 			</Tabs>
-			<EnhancedSwipeableViews
-				index={tabValue}
-				slideCount={renderTabs.length}
-				slideRenderer={({ index }) => <Fragment key={index}>{renderContent(index)}</Fragment>}
-				containerStyle={swipeFix}
-				onChangeIndex={(index) => setTabValue(index)}
-			/>
+			<Box ref={emblaRef} overflow='hidden'>
+				<Box display='flex'>
+					{[...Array(renderTabs.length)].map((_, index) => (
+						<Box key={index} flex='0 0 100%' minWidth={0}>
+							{renderContent(index)}
+						</Box>
+					))}
+				</Box>
+			</Box>
 		</Box>
 	);
 }
