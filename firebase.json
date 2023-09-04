@@ -3,9 +3,14 @@
 		"rules": "database.rules.json"
 	},
 	"hosting": {
-		"cleanUrls": true,
-		"public": "out",
-		"target": "app",
-		"trailingSlash": false
+		"source": ".",
+		"ignore": [
+			"firebase.json",
+			"**/.*",
+			"**/node_modules/**"
+		],
+		"frameworksBackend": {
+			"region": "us-west1"
+		}
 	}
 }

@@ -2,10 +2,12 @@
 	"projects": {
 		"default": "azur-lane-tracker"
 	},
-	"targets" : {
+	"targets": {
 		"azur-lane-tracker": {
 			"hosting": {
-				"app": [ "azurlanetracker" ]
+				"app": [
+					"azurlanetracker"
+				]
 			}
 		}
 	}
