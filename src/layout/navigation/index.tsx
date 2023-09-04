@@ -4,12 +4,14 @@ import useWideMedia from '../../hooks/useWideMedia';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
-export default function Navigation( { children } ) {
+export default function Navigation({ children }) {
 	const wide = useWideMedia();
-	
+
 	return (
 		<Box>
-			{wide ? <TitleBar/> : (
+			{wide ? (
+				<TitleBar />
+			) : (
 				<Box
 					position='fixed'
 					top={0}
@@ -27,7 +29,7 @@ export default function Navigation( { children } ) {
 				pb={wide ? 'env(safe-area-inset-bottom)' : 'calc(env(safe-area-inset-bottom) + 56px)'}>
 				{children}
 			</Box>
-			{!wide && <BottomBar/>}
+			{!wide && <BottomBar />}
 		</Box>
 	);
 }

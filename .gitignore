@@ -42,3 +42,5 @@ yarn-error.log*
 /public/sitemap*.xml
 
 .vscode
+.idea
+.fleet

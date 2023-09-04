@@ -9,51 +9,55 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import useControlled from '../hooks/useControlled';
 
 type SwipeableTabViewsProps = {
-	tab?: number,
-	setTab?: ( index: number ) => void,
-	renderTabs: ReactNode[],
-	renderContent: ( index: number ) => ReactNode
+	tab?: number;
+	setTab?: (index: number) => void;
+	renderTabs: ReactNode[];
+	renderContent: (index: number) => ReactNode;
 } & TabsProps;
 
-const EnhancedSwipeableViews = bindKeyboard( virtualize( SwipeableViews ) ) as ComponentType<SwipeableViewsProps & WithVirtualizeProps & WithBindKeyboardProps>;
+const EnhancedSwipeableViews = bindKeyboard(virtualize(SwipeableViews)) as ComponentType<
+	SwipeableViewsProps & WithVirtualizeProps & WithBindKeyboardProps
+>;
 
-export default function SwipeableTabViews( {
+export default function SwipeableTabViews({
 	tab = 0,
 	setTab,
 	renderTabs,
 	renderContent,
 	...props
-}: SwipeableTabViewsProps ) {
+}: SwipeableTabViewsProps) {
 	const theme = useTheme();
-	
-	const [ tabValue, setTabValue ] = useControlled( tab, setTab );
-	const [ swipeFix, setSwipeFix ] = useState<CSSProperties>();
-	
-	useEffect( () => {
-		setTimeout( () => setSwipeFix( {
-			transition: theme.transitions.create( 'transform' )
-		} ), 500 );
-	}, [] );
-	
+
+	const [tabValue, setTabValue] = useControlled(tab, setTab);
+	const [swipeFix, setSwipeFix] = useState<CSSProperties>();
+
+	useEffect(() => {
+		setTimeout(
+			() =>
+				setSwipeFix({
+					transition: theme.transitions.create('transform'),
+				}),
+			500,
+		);
+	}, []);
+
 	return (
 		<Box>
 			<Tabs
 				variant='scrollable'
 				value={tabValue}
-				onChange={( e, index ) => setTabValue( +index )}
+				onChange={(e, index) => setTabValue(+index)}
 				{...props}>
-				{renderTabs.map( ( label, index ) => <Tab key={index} label={label}/> )}
+				{renderTabs.map((label, index) => (
+					<Tab key={index} label={label} />
+				))}
 			</Tabs>
 			<EnhancedSwipeableViews
 				index={tabValue}
 				slideCount={renderTabs.length}
-				slideRenderer={( { index } ) => (
-					<Fragment key={index}>
-						{renderContent( index )}
-					</Fragment>
-				)}
+				slideRenderer={({ index }) => <Fragment key={index}>{renderContent(index)}</Fragment>}
 				containerStyle={swipeFix}
-				onChangeIndex={( index ) => setTabValue( index )}
+				onChangeIndex={(index) => setTabValue(index)}
 			/>
 		</Box>
 	);

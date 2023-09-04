@@ -4,25 +4,35 @@ import Image from 'next/image';
 import type { ReactElement } from 'react';
 import type { EquipType } from './type';
 
-export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, setEquip }: {
-	anchorEl: HTMLElement,
-	closeAnchor: () => void,
-	equipList: ( EquipType & { tier?: ReactElement } )[],
-	setEquip: ( id: number ) => void
-} ) {
+export default function EquipTierSelector({
+	anchorEl,
+	closeAnchor,
+	equipList,
+	setEquip,
+}: {
+	anchorEl: HTMLElement;
+	closeAnchor: () => void;
+	equipList: (EquipType & { tier?: ReactElement })[];
+	setEquip: (id: number) => void;
+}) {
 	return (
 		<Menu
 			keepMounted
 			anchorEl={anchorEl}
-			open={Boolean( anchorEl )}
-			PaperProps={{ sx: { maxHeight: 400, width: 300 } }}
+			open={Boolean(anchorEl)}
+			PaperProps={{
+				sx: {
+					maxHeight: 400,
+					width: 300,
+				},
+			}}
 			onClose={closeAnchor}>
-			{equipList.map( ( equip ) => (
+			{equipList.map((equip) => (
 				<MenuItem
 					key={equip.id}
 					sx={{ whiteSpace: 'normal' }}
 					onClick={() => {
-						setEquip( equip.id );
+						setEquip(equip.id);
 						closeAnchor();
 					}}>
 					{equip.tier && <Typography>{equip.tier}</Typography>}
@@ -32,12 +42,12 @@ export default function EquipTierSelector( { anchorEl, closeAnchor, equipList, s
 							alt={equip.name}
 							height={50}
 							width={50}
-							className={`color-${rarityColors[ equip.rarity ]}`}
+							className={`color-${rarityColors[equip.rarity]}`}
 						/>
 					</Box>
 					<Typography>{equip.name}</Typography>
 				</MenuItem>
-			) )}
+			))}
 		</Menu>
 	);
 }

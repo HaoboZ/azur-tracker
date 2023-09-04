@@ -10,25 +10,34 @@ import type { FarmType } from './type';
 
 export default function EquipmentTier() {
 	const { equipTier, equipList } = useData<FarmType>();
-	
-	const [ search, setSearch ] = useState( '' );
-	
-	const equipIndex = useMemo( () => keyBy( equipList, 'id' ), [] );
-	
+
+	const [search, setSearch] = useState('');
+
+	const equipIndex = useMemo(() => keyBy(equipList, 'id'), []);
+
 	const lowercaseSearch = search.toLowerCase();
-	
+
 	return (
 		<PageSection title='Equipment Tier'>
-			<TextField fullWidth label='search' value={search} onChange={( e ) => setSearch( e.target.value )}/>
+			<TextField
+				fullWidth
+				label='search'
+				value={search}
+				onChange={(e) => setSearch(e.target.value)}
+			/>
 			<Stack spacing={1}>
-				{equipTier.map( ( value, index ) => (
+				{equipTier.map((value, index) => (
 					<Box key={index}>
-						<TierIcon tier={index + 1}/>
+						<TierIcon tier={index + 1} />
 						<Grid container spacing={1}>
-							{map( value, ( equipId ) => {
-								const equip = equipIndex[ equipId ];
-								if ( lowercaseSearch && equip.name.toLowerCase().indexOf( lowercaseSearch ) === -1 ) return;
-								
+							{map(value, (equipId) => {
+								const equip = equipIndex[equipId];
+								if (
+									lowercaseSearch &&
+									equip.name.toLowerCase().indexOf(lowercaseSearch) === -1
+								)
+									return;
+
 								return (
 									<Grid item>
 										<Image
@@ -37,14 +46,14 @@ export default function EquipmentTier() {
 											alt={equip.name}
 											height={40}
 											width={40}
-											className={`color-${rarityColors[ equip.rarity ]}`}
+											className={`color-${rarityColors[equip.rarity]}`}
 										/>
 									</Grid>
 								);
-							} )}
+							})}
 						</Grid>
 					</Box>
-				) )}
+				))}
 			</Stack>
 		</PageSection>
 	);

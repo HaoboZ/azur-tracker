@@ -8,9 +8,9 @@ import OpSiWeakness from './opSiWeakness';
 export default function Info() {
 	return (
 		<Page title='Info'>
-			<OpSiWeakness/>
-			<EquipmentTier/>
-			<EquipDrop/>
+			<OpSiWeakness />
+			<EquipmentTier />
+			<EquipDrop />
 		</Page>
 	);
 }

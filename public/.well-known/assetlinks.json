@@ -1,9 +1,9 @@
 [
 	{
 		"relation": [ "delegate_permission/common.handle_all_urls" ],
-		"target"  : {
-			"namespace"               : "android_app",
-			"package_name"            : "app.vercel.azurlanetracker",
+		"target": {
+			"namespace": "android_app",
+			"package_name": "app.vercel.azurlanetracker",
 			"sha256_cert_fingerprints": [
 				"E0:A8:C0:27:3F:A1:E0:4C:CA:7A:9F:CF:BE:FA:44:C0:69:87:07:0A:17:0E:44:E5:77:85:47:EB:D7:4B:00:C8"
 			]

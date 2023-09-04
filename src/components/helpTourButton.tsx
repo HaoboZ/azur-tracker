@@ -5,32 +5,35 @@ import type { StepsProps } from 'intro.js-react';
 import { Steps } from 'intro.js-react';
 import { Fragment, useState } from 'react';
 
-export default function HelpTourButton( { buttonProps, ...props }: {
-	buttonProps?: IconButtonProps
-} & Omit<StepsProps, 'initialStep' | 'onExit'> ) {
-	const [ tourOpen, setTourOpen ] = useState( false );
-	
+export default function HelpTourButton({
+	buttonProps,
+	...props
+}: {
+	buttonProps?: IconButtonProps;
+} & Omit<StepsProps, 'initialStep' | 'onExit'>) {
+	const [tourOpen, setTourOpen] = useState(false);
+
 	return (
 		<Fragment>
 			<Steps
 				enabled={tourOpen}
 				initialStep={0}
-				onExit={() => setTourOpen( false )}
+				onExit={() => setTourOpen(false)}
 				{...props}
 				options={{
 					doneLabel: 'Finish',
-					...props.options
+					...props.options,
 				}}
 			/>
 			<IconButton
 				id='help'
 				aria-label='help'
 				{...buttonProps}
-				onClick={( e ) => {
-					buttonProps?.onClick?.( e );
-					setTourOpen( true );
+				onClick={(e) => {
+					buttonProps?.onClick?.(e);
+					setTourOpen(true);
 				}}>
-				<HelpIcon/>
+				<HelpIcon />
 			</IconButton>
 		</Fragment>
 	);

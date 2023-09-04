@@ -1,6 +1,6 @@
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { fleet_setFilter } from '@/src/store/reducers/fleetReducer';
+import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@mui/icons-material';
 import {
 	Autocomplete,
@@ -12,7 +12,7 @@ import {
 	IconButton,
 	Menu,
 	MenuItem,
-	TextField
+	TextField,
 } from '@mui/material';
 import type { Table } from '@tanstack/react-table';
 import { useEffect, useRef, useState } from 'react';
@@ -60,44 +60,47 @@ const searchOptions = [
 	'KizunaAI',
 	'Hololive',
 	'Venus Vacation',
-	'META'
-].map( ( label, id ) => ( { id, label } ) );
+	'META',
+].map((label, id) => ({
+	id,
+	label,
+}));
 
-export default function FleetFilters( { table }: { table: Table<Ship> } ) {
+export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const { equipData } = useData<FleetType>();
-	const { filter, ships } = useAppSelector( ( { fleet } ) => fleet );
+	const { filter, ships } = useAppSelector(({ fleet }) => fleet);
 	const dispatch = useAppDispatch();
-	
-	const globalFilter = useDebounce( ( value ) => table.setGlobalFilter( value ), 500 );
-	
-	const [ anchorEl, setAnchorEl ] = useState<HTMLElement>( null );
+
+	const globalFilter = useDebounce((value: string) => table.setGlobalFilter(value), 500);
+
+	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
 	const searchRef = useRef<HTMLInputElement>();
-	
+
 	// keydown listener for search
-	useWindowEventListener( 'keydown', ( e: KeyboardEvent ) => {
-		if ( !searchRef.current ) return;
-		if ( e.ctrlKey && e.key === 'f' ) {
-			if ( document.activeElement === searchRef.current ) {
+	useWindowEventListener('keydown', (e: KeyboardEvent) => {
+		if (!searchRef.current) return;
+		if (e.ctrlKey && e.key === 'f') {
+			if (document.activeElement === searchRef.current) {
 				searchRef.current.select();
 			} else {
 				searchRef.current.focus();
 			}
 			e.preventDefault();
 		}
-	} );
-	
+	});
+
 	// resets filter when ships change
-	useEffect( () => {
-		table.getColumn( 'equip' ).setFilterValue( ( filter ) => filter && { ...filter } );
-	}, [ ships ] );
-	
+	useEffect(() => {
+		table.getColumn('equip').setFilterValue((filter) => filter && { ...filter });
+	}, [ships]);
+
 	return (
 		<Box mx={2} mb={2}>
 			<Grid container spacing={2}>
 				<Grid item md xs={12}>
 					<EquipFilter
 						equipList={equipData}
-						setValue={( equip ) => table.getColumn( 'equip' ).setFilterValue( equip )}
+						setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
 					/>
 				</Grid>
 				<Grid item md xs={10}>
@@ -105,70 +108,88 @@ export default function FleetFilters( { table }: { table: Table<Ship> } ) {
 						fullWidth
 						freeSolo
 						options={searchOptions}
-						renderInput={( params ) => (
+						renderInput={(params) => (
 							<TextField
 								inputRef={searchRef}
 								{...params}
 								label='Search'
 								InputProps={{
 									...params.InputProps,
-									startAdornment: <SearchIcon/>
+									startAdornment: <SearchIcon />,
 								}}
 							/>
 						)}
-						onInputChange={( e, value ) => globalFilter( value )}
+						onInputChange={(e, value) => globalFilter(value)}
 					/>
 				</Grid>
 				<Grid item container xs={2} alignContent='center'>
 					<Button
 						fullWidth
 						variant='contained'
-						sx={{ display: { xs: 'none', sm: 'block' } }}
-						onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
+						sx={{
+							display: {
+								xs: 'none',
+								sm: 'block',
+							},
+						}}
+						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
 						More
 					</Button>
 					<IconButton
-						sx={{ display: { xs: 'block', sm: 'none' }, width: 40, height: 40 }}
-						onClick={( { currentTarget } ) => setAnchorEl( currentTarget )}>
-						<MoreVertIcon/>
+						sx={{
+							display: {
+								xs: 'block',
+								sm: 'none',
+							},
+							width: 40,
+							height: 40,
+						}}
+						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
+						<MoreVertIcon />
 					</IconButton>
 				</Grid>
 			</Grid>
 			<Menu
 				keepMounted
 				anchorEl={anchorEl}
-				open={Boolean( anchorEl )}
-				onClose={() => setAnchorEl( null )}>
+				open={Boolean(anchorEl)}
+				onClose={() => setAnchorEl(null)}>
 				<MenuItem>
 					<FormControlLabel
-						control={(
+						control={
 							<Checkbox
 								checked={filter.levelMax}
-								onChange={( { target } ) => dispatch( fleet_setFilter( { levelMax: target.checked } ) )}
+								onChange={({ target }) =>
+									dispatch(fleetActions.setFilter({ levelMax: target.checked }))
+								}
 							/>
-						)}
+						}
 						label='Maxed Level'
 					/>
 				</MenuItem>
 				<MenuItem>
 					<FormControlLabel
-						control={(
+						control={
 							<Checkbox
 								checked={filter.equipMax}
-								onChange={( { target } ) => dispatch( fleet_setFilter( { equipMax: target.checked } ) )}
+								onChange={({ target }) =>
+									dispatch(fleetActions.setFilter({ equipMax: target.checked }))
+								}
 							/>
-						)}
+						}
 						label='Maxed Equip'
 					/>
 				</MenuItem>
 				<MenuItem>
 					<FormControlLabel
-						control={(
+						control={
 							<Checkbox
 								checked={filter.level0}
-								onChange={( { target } ) => dispatch( fleet_setFilter( { level0: target.checked } ) )}
+								onChange={({ target }) =>
+									dispatch(fleetActions.setFilter({ level0: target.checked }))
+								}
 							/>
-						)}
+						}
 						label='0 Level'
 					/>
 				</MenuItem>

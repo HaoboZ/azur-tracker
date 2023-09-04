@@ -7,8 +7,8 @@ import LoginModal from './loginModal';
 export default function LoginEvent() {
 	const events = useEvents();
 	const { showModal } = useModal();
-	
-	useEventListener( events, 'showAuth', () => showModal( LoginModal, { id: 'login' } ) );
-	
+
+	useEventListener(events, 'showAuth', () => showModal(LoginModal, { id: 'login' }));
+
 	return null;
 }

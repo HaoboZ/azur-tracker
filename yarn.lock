@@ -3893,6 +3893,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prettier@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@types/prettier@npm:3.0.0"
+  dependencies:
+    prettier: "npm:*"
+  checksum: edab8c0c0e56936e89c919cac17e384a9f231ce12062fb3beeb45bc45e7dcc4035dd3d7df3333b0bdd39f3b4501f22267a9dba45e22b9728c139857142e90282
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*, @types/prop-types@npm:^15.7.5":
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
@@ -4657,6 +4666,7 @@ __metadata:
     "@types/lz-string": "npm:1.3.34"
     "@types/node": "npm:18.17.6"
     "@types/object-hash": "npm:3.0.3"
+    "@types/prettier": "npm:3.0.0"
     "@types/react": "npm:18.2.20"
     "@types/react-redux": "npm:7.1.25"
     "@types/react-swipeable-views": "npm:0.13.2"
@@ -4672,6 +4682,8 @@ __metadata:
     date-fns: "npm:2.30.0"
     eslint: "npm:8.47.0"
     eslint-config-next: "npm:13.4.19"
+    eslint-config-prettier: "npm:9.0.0"
+    eslint-plugin-prettier: "npm:5.0.0"
     events: "npm:3.3.0"
     firebase: "npm:10.3.1"
     firebase-admin: "npm:11.10.1"
@@ -4686,6 +4698,7 @@ __metadata:
     next-sitemap: "npm:4.2.2"
     notistack: "npm:3.0.1"
     object-hash: "npm:3.0.0"
+    prettier: "npm:3.0.3"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-firebase-hooks: "npm:5.1.1"
@@ -5062,9 +5075,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001406":
-  version: 1.0.30001416
-  resolution: "caniuse-lite@npm:1.0.30001416"
-  checksum: 7f0550fdd57f859b35bd999d0031fa4ed911b884bde0fe26b2305683a81d69c551f83055113d1e7f2d5acf9d6fa6aed79f71bf51067d4da39fc1a2718e231626
+  version: 1.0.30001512
+  resolution: "caniuse-lite@npm:1.0.30001512"
+  checksum: 19287a85976152477cca0829249c6e357b66bf57f0366ff047db370f235f9f3ce8eee47cc10a66a4b84cef32e93259e30cd8471d9451eced99630d95949f900f
   languageName: node
   linkType: hard
 
@@ -5974,6 +5987,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:9.0.0":
+  version: 9.0.0
+  resolution: "eslint-config-prettier@npm:9.0.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: bc1f661915845c631824178942e5d02f858fe6d0ea796f0050d63e0f681927b92696e81139dd04714c08c3e7de580fd079c66162e40070155ba79eaee78ab5d0
+  languageName: node
+  linkType: hard
+
 "eslint-import-resolver-node@npm:^0.3.6":
   version: 0.3.6
   resolution: "eslint-import-resolver-node@npm:0.3.6"
@@ -6057,6 +6081,25 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
   checksum: 7095a78f538e92d046ff67ba27a6b8ba75e7baba273cda348ed2893018b4cce0628fe85e5bf529251f394cd61b21d7a172c697b296e3917cc170f80f6419e9b3
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-prettier@npm:5.0.0":
+  version: 5.0.0
+  resolution: "eslint-plugin-prettier@npm:5.0.0"
+  dependencies:
+    prettier-linter-helpers: "npm:^1.0.0"
+    synckit: "npm:^0.8.5"
+  peerDependencies:
+    "@types/eslint": ">=8.0.0"
+    eslint: ">=8.0.0"
+    prettier: ">=3.0.0"
+  peerDependenciesMeta:
+    "@types/eslint":
+      optional: true
+    eslint-config-prettier:
+      optional: true
+  checksum: 7a3641196fc7305c11ed53faae4b69e82bd1d58ba3894d1ac77d68af7ea91c9e2b1fd50e2645f5dc2831bbcb866bb3897a0710c955c0a7fc9918ef4fb7687b97
   languageName: node
   linkType: hard
 
@@ -6343,6 +6386,13 @@ __metadata:
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
   checksum: 40dedc862eb8992c54579c66d914635afbec43350afbbe991235fdcb4e3a8d5af1b23ae7e79bef7d4882d0ecee06c3197488026998fb19f72dc95acff1d1b1d0
+  languageName: node
+  linkType: hard
+
+"fast-diff@npm:^1.1.2":
+  version: 1.3.0
+  resolution: "fast-diff@npm:1.3.0"
+  checksum: 5c19af237edb5d5effda008c891a18a585f74bf12953be57923f17a3a4d0979565fc64dbc73b9e20926b9d895f5b690c618cbb969af0cf022e3222471220ad29
   languageName: node
   linkType: hard
 
@@ -9757,6 +9807,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-linter-helpers@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "prettier-linter-helpers@npm:1.0.0"
+  dependencies:
+    fast-diff: "npm:^1.1.2"
+  checksum: 81e0027d731b7b3697ccd2129470ed9913ecb111e4ec175a12f0fcfab0096516373bf0af2fef132af50cafb0a905b74ff57996d615f59512bb9ac7378fcc64ab
+  languageName: node
+  linkType: hard
+
+"prettier@npm:*, prettier@npm:3.0.3":
+  version: 3.0.3
+  resolution: "prettier@npm:3.0.3"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: f950887bc03c5b970d8c6dd129364acfbbc61e7b46aec5d5ce17f4adf6404e2ef43072c98b51c4786e0eaca949b307d362a773fd47502862d754b5a328fa2b26
+  languageName: node
+  linkType: hard
+
 "pretty-bytes@npm:^5.3.0, pretty-bytes@npm:^5.4.1":
   version: 5.6.0
   resolution: "pretty-bytes@npm:5.6.0"
@@ -11231,6 +11299,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.8.5":
+  version: 0.8.5
+  resolution: "synckit@npm:0.8.5"
+  dependencies:
+    "@pkgr/utils": "npm:^2.3.1"
+    tslib: "npm:^2.5.0"
+  checksum: 9827f828cabc404b3a147c38f824c8d5b846eb6f65189d965aa0b71ea8ecda5048f8f50b4bdfd8813148844175233cff56c6bc8d87a7118cf10707df870519f4
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^2.2.0":
   version: 2.2.1
   resolution: "tapable@npm:2.2.1"
@@ -11516,6 +11594,13 @@ __metadata:
   version: 2.4.0
   resolution: "tslib@npm:2.4.0"
   checksum: eb19bda3ae545b03caea6a244b34593468e23d53b26bf8649fbc20fce43e9b21a71127fd6d2b9662c0fe48ee6ff668ead48fd00d3b88b2b716b1c12edae25b5d
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.5.0":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
   languageName: node
   linkType: hard
 

@@ -16,23 +16,27 @@ import ThemeProvider from './theme';
 // 	defineCustomElements( window ).then();
 // }
 
-export default function Providers( { children }: { children: ReactNode } ) {
+export default function Providers({ children }: { children: ReactNode }) {
 	return (
-		<ComponentComposer components={[
-			// data
-			component( StoreProvider, { store } ),
-			component( PersistGate, { loading: null, persistor } ),
-			component( EventsProvider ),
-			// styling
-			component( ThemeProvider ),
-			// visual
-			component( SnackbarProvider, {
-				preventDuplicate: true,
-				action          : SnackbarAction
-			} ),
-			component( AuthProvider ),
-			component( ModalProvider )
-		]}>
+		<ComponentComposer
+			components={[
+				// data
+				component(StoreProvider, { store }),
+				component(PersistGate, {
+					loading: null,
+					persistor,
+				}),
+				component(EventsProvider),
+				// styling
+				component(ThemeProvider),
+				// visual
+				component(SnackbarProvider, {
+					preventDuplicate: true,
+					action: SnackbarAction,
+				}),
+				component(AuthProvider),
+				component(ModalProvider),
+			]}>
 			{children}
 		</ComponentComposer>
 	);
