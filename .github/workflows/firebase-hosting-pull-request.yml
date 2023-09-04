@@ -8,7 +8,7 @@ jobs:
       if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
       runs-on: ubuntu-latest
       steps:
-         -  uses: actions/checkout@v3
+         -  uses: actions/checkout@v4
          -  env:
                env_file: ${{ secrets.ENV }}
             run: echo "$env_file" > .env && yarn && yarn build && yarn export
