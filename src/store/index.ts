@@ -17,7 +17,7 @@ import { rootReducer } from './reducers';
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-const migrations: Record<string, (state) => any> = {};
+const migrations: Record<string, (state: any) => any> = {};
 
 // noinspection JSUnusedGlobalSymbols
 const persistedReducer = persistReducer<RootState>(

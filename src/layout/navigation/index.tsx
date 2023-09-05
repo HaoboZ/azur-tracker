@@ -22,7 +22,7 @@ export default function Navigation({ children }) {
 				/>
 			)}
 			<Box
-				// minHeight='100vh'
+				minHeight='100vh'
 				pt='env(safe-area-inset-top)'
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'

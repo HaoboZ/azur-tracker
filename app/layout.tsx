@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<title>Azur Lane Tracker</title>
 				<meta
 					name='viewport'
-					content='width=device-width, initial-scale=1, viewport-fit=cover'
+					content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover'
 				/>
 				<meta charSet='utf-8' />
 				<meta key='theme' name='theme-color' content='#039be5' />

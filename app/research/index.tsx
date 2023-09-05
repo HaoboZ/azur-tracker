@@ -14,7 +14,7 @@ export default function Research() {
 	const { researchData } = useData<ResearchType>();
 
 	return (
-		<Page title='Research Tracker'>
+		<Page hideBack title='Research Tracker'>
 			<SwipeableTabViews
 				sx={{ bgcolor: ({ palette }) => palette.divider }}
 				tab={lastTab}
