@@ -27,7 +27,7 @@ export default function LoginModal() {
 			<StyledFirebaseAuth
 				firebaseAuth={auth}
 				uiConfig={{
-					signInFlow: 'popup',
+					signInFlow: 'redirect',
 					privacyPolicyUrl: '/privacy',
 					tosUrl: '/tos',
 					signInOptions: [EmailAuthProvider.PROVIDER_ID, GoogleAuthProvider.PROVIDER_ID],

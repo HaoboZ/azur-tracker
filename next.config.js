@@ -23,12 +23,6 @@ const nextConfig = {
 		'lodash': { transform: 'lodash/{{member}}' },
 		'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' },
 	},
-	rewrites: async () => [
-		{
-			source: '/__/auth/:path*',
-			destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}/__/auth/:path*`,
-		},
-	],
 	images: {
 		remotePatterns: [
 			{
