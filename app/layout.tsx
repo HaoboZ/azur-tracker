@@ -3,6 +3,7 @@ import Navigation from '@/src/layout/navigation';
 import '@/src/layout/style.scss';
 import Providers from '@/src/providers';
 import LoginEvent from '@/src/providers/auth/loginEvent';
+import { Analytics } from '@vercel/analytics/react';
 import { Roboto } from 'next/font/google';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<meta name='msapplication-TileColor' content='#2d89ef' />
 			</head>
 			<body>
+				<Analytics />
 				<Providers>
 					<StoreSync keys={['event', 'research', 'fleet']} />
 					<LoginEvent />

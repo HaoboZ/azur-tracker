@@ -33,6 +33,7 @@
 		"@tanem/react-nprogress": "5.0.48",
 		"@tanstack/react-table": "8.9.3",
 		"@tanstack/react-virtual": "3.0.0-beta.54",
+		"@vercel/analytics": "1.0.2",
 		"axios": "1.4.0",
 		"csvtojson": "2.0.10",
 		"date-fns": "2.30.0",
