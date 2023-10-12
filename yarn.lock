@@ -5809,30 +5809,30 @@ __metadata:
   linkType: hard
 
 "embla-carousel-react@npm:^8.0.0-rc12":
-  version: 8.0.0-rc13
-  resolution: "embla-carousel-react@npm:8.0.0-rc13"
+  version: 8.0.0-rc14
+  resolution: "embla-carousel-react@npm:8.0.0-rc14"
   dependencies:
-    embla-carousel: "npm:8.0.0-rc13"
-    embla-carousel-reactive-utils: "npm:8.0.0-rc13"
+    embla-carousel: "npm:8.0.0-rc14"
+    embla-carousel-reactive-utils: "npm:8.0.0-rc14"
   peerDependencies:
     react: ^16.8.0 || ^17.0.1 || ^18.0.0
-  checksum: 8d416ac7a03bb01abe26d2a9ed1a4111f1a3013a5aa08d1f46d7e4910563976062aa3f7c8e8fe5fddc10cf090e5a6048144278ab0c98fe194221c410f020677b
+  checksum: 949e58997fd99524b9c68398d858f8652abc577b1e129a26b31c7aff33d240c1d41b3b9f13e0fee9320598f88d881413787754b5a6647f1e2f7f78f99fdb96c6
   languageName: node
   linkType: hard
 
-"embla-carousel-reactive-utils@npm:8.0.0-rc13":
-  version: 8.0.0-rc13
-  resolution: "embla-carousel-reactive-utils@npm:8.0.0-rc13"
+"embla-carousel-reactive-utils@npm:8.0.0-rc14":
+  version: 8.0.0-rc14
+  resolution: "embla-carousel-reactive-utils@npm:8.0.0-rc14"
   peerDependencies:
-    embla-carousel: 8.0.0-rc13
-  checksum: 873844efe00aa9b1df725abe5cad43a0439f3399340ef4c2abe25117e71cc4adf6fd3331343e6fa15b51cc3b112c166da8d67217b2314f32e27b13b03f834b9f
+    embla-carousel: 8.0.0-rc14
+  checksum: 3d8a7be7daf7f2042bb14dfa63bd32e6c154ebecc94e8ed8b4856f9c3ad59a6aa77aab4d5ddda1e6becb8c8467339f5a6a62ebe5f6e495ab79f268edaad5b3b9
   languageName: node
   linkType: hard
 
-"embla-carousel@npm:8.0.0-rc13":
-  version: 8.0.0-rc13
-  resolution: "embla-carousel@npm:8.0.0-rc13"
-  checksum: 1d7ff1a8767f3b7573661915eb5d07e1fa6ece1f9aa8dedd171e9180694927b6a6e6458c119eeebbf14503a96478c2687dfa28154479298c74b65bd7cf3f0da9
+"embla-carousel@npm:8.0.0-rc14":
+  version: 8.0.0-rc14
+  resolution: "embla-carousel@npm:8.0.0-rc14"
+  checksum: f8dcb810e43d2f898b60188648b7f23e1dd904b70d4935d067dde4a245ffc0527b793ddb4c744342c0268ad43ca6ca627619ced506d5fe08f27cdc34963b0b03
   languageName: node
   linkType: hard
 
