@@ -19,10 +19,6 @@ const nextConfig = {
 			],
 		},
 	],
-	modularizeImports: {
-		'lodash': { transform: 'lodash/{{member}}' },
-		'@mui/icons-material': { transform: '@mui/icons-material/{{member}}' },
-	},
 	images: {
 		remotePatterns: [
 			{
