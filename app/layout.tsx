@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<meta name='msapplication-TileColor' content='#2d89ef' />
 			</head>
 			<body>
-				<Analytics />
+				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
 				<Providers>
 					<StoreSync keys={['event', 'research', 'fleet']} />
 					<LoginEvent />
