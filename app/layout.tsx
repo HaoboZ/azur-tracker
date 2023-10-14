@@ -15,6 +15,7 @@ const roboto = Roboto({
 	subsets: ['latin'],
 	weight: ['300', '400', '500', '700'],
 });
+
 const Providers = dynamic(() => import('@/src/providers'), { ssr: false });
 
 // noinspection JSUnusedGlobalSymbols
