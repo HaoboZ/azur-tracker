@@ -1791,16 +1791,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app-compat@npm:0.2.19":
-  version: 0.2.19
-  resolution: "@firebase/app-compat@npm:0.2.19"
+"@firebase/app-compat@npm:0.2.20":
+  version: 0.2.20
+  resolution: "@firebase/app-compat@npm:0.2.20"
   dependencies:
-    "@firebase/app": "npm:0.9.19"
+    "@firebase/app": "npm:0.9.20"
     "@firebase/component": "npm:0.6.4"
     "@firebase/logger": "npm:0.4.0"
     "@firebase/util": "npm:1.9.3"
     tslib: "npm:^2.1.0"
-  checksum: 6be45bfe3ae9ccaa41bbf0faac778171fe816412fd3939d879ff1cdafafa2107491e4979d3b5f338d1561e11bf145fc5bb4b1841a48480b3024ef988991f648e
+  checksum: 3940f654f0a47a9ed76c59b6dc282438bb8582db5b234e251caac4eeb58f54bd6bf105524c238cb2c17398a1eb911bfbd37f22aac7bc5da55c65fe3c20709f9d
   languageName: node
   linkType: hard
 
@@ -1811,16 +1811,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app@npm:0.9.19":
-  version: 0.9.19
-  resolution: "@firebase/app@npm:0.9.19"
+"@firebase/app@npm:0.9.20":
+  version: 0.9.20
+  resolution: "@firebase/app@npm:0.9.20"
   dependencies:
     "@firebase/component": "npm:0.6.4"
     "@firebase/logger": "npm:0.4.0"
     "@firebase/util": "npm:1.9.3"
     idb: "npm:7.1.1"
     tslib: "npm:^2.1.0"
-  checksum: 1d459261d11c6868d8a584bdfc763792f603cea8459790e1c17edcb88aa64cfe8db5a7743c934d70a05e9a9537214eeb36f8310ef091c47aacf7daf506f7e699
+  checksum: aeff8ef455bf56303f1073801ed34b7c6902bdc4c70f1e44b76dc564ba5fb3b818690dd4ad450a3b4ba94dd88583121ce234c036af437d268336e81c39b64afe
   languageName: node
   linkType: hard
 
@@ -1962,18 +1962,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/firestore-compat@npm:0.3.18":
-  version: 0.3.18
-  resolution: "@firebase/firestore-compat@npm:0.3.18"
+"@firebase/firestore-compat@npm:0.3.19":
+  version: 0.3.19
+  resolution: "@firebase/firestore-compat@npm:0.3.19"
   dependencies:
     "@firebase/component": "npm:0.6.4"
-    "@firebase/firestore": "npm:4.2.0"
+    "@firebase/firestore": "npm:4.3.0"
     "@firebase/firestore-types": "npm:3.0.0"
     "@firebase/util": "npm:1.9.3"
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@firebase/app-compat": 0.x
-  checksum: 433738e3e97ff0b8b394bb8e2c8d8f1a22332b3f78886e888331ed6b845080582ebb20b18b2817c4fc26009033a425efd0f9522743a7a503ddd231d4f9d74920
+  checksum: 9d392bdf8ca19ad245d3d2531fea357ddd626ca400a558a0934d5be91321b9b56a95a6d026149fc47a431dcd7c692bbdb0f11ffb145a7e07e951def93e8b5972
   languageName: node
   linkType: hard
 
@@ -1987,9 +1987,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/firestore@npm:4.2.0":
-  version: 4.2.0
-  resolution: "@firebase/firestore@npm:4.2.0"
+"@firebase/firestore@npm:4.3.0":
+  version: 4.3.0
+  resolution: "@firebase/firestore@npm:4.3.0"
   dependencies:
     "@firebase/component": "npm:0.6.4"
     "@firebase/logger": "npm:0.4.0"
@@ -2001,7 +2001,7 @@ __metadata:
     tslib: "npm:^2.1.0"
   peerDependencies:
     "@firebase/app": 0.x
-  checksum: 27a8a5f08930a961b6b9e0565fc83b0cc3e85a7f6c64e96740b84aff84f4b5607ab6b0c95f11a1e74ea558dc5ef0446c79653c855091bff938c95544c20e6dcd
+  checksum: e75b3e5d11852d76cbc52a3550f208872c6f3aee42d922b967522faaae0a39e37f30c665240f60f504002c9b18127a3721a7928149b35466069e10dcb7f3554c
   languageName: node
   linkType: hard
 
@@ -3596,15 +3596,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-table@npm:8.10.6":
-  version: 8.10.6
-  resolution: "@tanstack/react-table@npm:8.10.6"
+"@tanstack/react-table@npm:8.10.7":
+  version: 8.10.7
+  resolution: "@tanstack/react-table@npm:8.10.7"
   dependencies:
-    "@tanstack/table-core": "npm:8.10.6"
+    "@tanstack/table-core": "npm:8.10.7"
   peerDependencies:
     react: ">=16"
     react-dom: ">=16"
-  checksum: 862c50ac8d7ab664bb08af7833223f39be1797da5358142c697d1c389a6abe936ed3f3102b3b134c3f16610a9f41c450db7a98e46c8f295a88a45d5f7a9558fb
+  checksum: 2ddf6f90b06e7af069f16dbe5d0dc8c8afab3de88c25e33f6c297beaf2507c2e46fee1f746f7977d48bad2114909bba0016026fc2b6a85bcaee472cdafdc7ffd
   languageName: node
   linkType: hard
 
@@ -3619,10 +3619,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/table-core@npm:8.10.6":
-  version: 8.10.6
-  resolution: "@tanstack/table-core@npm:8.10.6"
-  checksum: 87c496e56ab73aca6c3631f302cafe7669054ce36e325fc6d4ee864a542dfdab6a1a9513a4165283d3516cd1000c71f153f8778efd123da69e450eb6ee02c221
+"@tanstack/table-core@npm:8.10.7":
+  version: 8.10.7
+  resolution: "@tanstack/table-core@npm:8.10.7"
+  checksum: 3f671484319094443bb2db86356f408d4246e22bebd7ad444edc919fef131899384c3a27261c5ee01fb18887bc9157c5a0d9db3e32aae940ce5416f6e58b038b
   languageName: node
   linkType: hard
 
@@ -3933,10 +3933,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.18.4":
-  version: 18.18.4
-  resolution: "@types/node@npm:18.18.4"
-  checksum: 17891f8b8fd107813eaea0dce58d2008173f3c90df4f5998da3d01d6b225e9908922156ac83240b0230d3813f1a29b5f7e065a2aa993285af062e3a3779f88dd
+"@types/node@npm:18.18.5":
+  version: 18.18.5
+  resolution: "@types/node@npm:18.18.5"
+  checksum: e5211581efdbfd7175aaf5a15e3befcf259ed44356f591f0c0c431bf652f77eeae0d6b48b5879d1a5be9be5d11972e9d3bf76232c833530cbe75e6ab63e48f8b
   languageName: node
   linkType: hard
 
@@ -4786,14 +4786,14 @@ __metadata:
     "@next/bundle-analyzer": "npm:13.5.4"
     "@reduxjs/toolkit": "npm:1.9.7"
     "@tanem/react-nprogress": "npm:5.0.51"
-    "@tanstack/react-table": "npm:8.10.6"
+    "@tanstack/react-table": "npm:8.10.7"
     "@tanstack/react-virtual": "npm:3.0.0-beta.65"
     "@types/eslint": "npm:8.44.4"
     "@types/events": "npm:3.0.1"
     "@types/jest": "npm:29.5.5"
     "@types/lodash": "npm:4.14.199"
     "@types/lz-string": "npm:1.3.34"
-    "@types/node": "npm:18.18.4"
+    "@types/node": "npm:18.18.5"
     "@types/object-hash": "npm:3.0.4"
     "@types/prettier": "npm:3.0.0"
     "@types/react": "npm:18.2.28"
@@ -4814,7 +4814,7 @@ __metadata:
     eslint-config-prettier: "npm:9.0.0"
     eslint-plugin-prettier: "npm:5.0.1"
     events: "npm:3.3.0"
-    firebase: "npm:10.4.0"
+    firebase: "npm:10.5.0"
     firebase-admin: "npm:11.11.0"
     firebaseui: "npm:6.1.0"
     intro.js: "npm:7.2.0"
@@ -4822,7 +4822,7 @@ __metadata:
     jest: "npm:29.7.0"
     lodash: "npm:4.17.21"
     lz-string: "npm:1.5.0"
-    nanoid: "npm:5.0.1"
+    nanoid: "npm:5.0.2"
     next: "npm:13.5.4"
     next-sitemap: "npm:4.2.3"
     notistack: "npm:3.0.1"
@@ -6837,23 +6837,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase@npm:10.4.0":
-  version: 10.4.0
-  resolution: "firebase@npm:10.4.0"
+"firebase@npm:10.5.0":
+  version: 10.5.0
+  resolution: "firebase@npm:10.5.0"
   dependencies:
     "@firebase/analytics": "npm:0.10.0"
     "@firebase/analytics-compat": "npm:0.2.6"
-    "@firebase/app": "npm:0.9.19"
+    "@firebase/app": "npm:0.9.20"
     "@firebase/app-check": "npm:0.8.0"
     "@firebase/app-check-compat": "npm:0.3.7"
-    "@firebase/app-compat": "npm:0.2.19"
+    "@firebase/app-compat": "npm:0.2.20"
     "@firebase/app-types": "npm:0.9.0"
     "@firebase/auth": "npm:1.3.0"
     "@firebase/auth-compat": "npm:0.4.6"
     "@firebase/database": "npm:1.0.1"
     "@firebase/database-compat": "npm:1.0.1"
-    "@firebase/firestore": "npm:4.2.0"
-    "@firebase/firestore-compat": "npm:0.3.18"
+    "@firebase/firestore": "npm:4.3.0"
+    "@firebase/firestore-compat": "npm:0.3.19"
     "@firebase/functions": "npm:0.10.0"
     "@firebase/functions-compat": "npm:0.3.5"
     "@firebase/installations": "npm:0.6.4"
@@ -6867,7 +6867,7 @@ __metadata:
     "@firebase/storage": "npm:0.11.2"
     "@firebase/storage-compat": "npm:0.3.2"
     "@firebase/util": "npm:1.9.3"
-  checksum: 208a009031343f116119c042a5f75508a40a973fac3aea7c8f29116be47149d0570a8a060c156c8faee80bf5c773cbd33f06ff4159194376d3c738391b72bc0b
+  checksum: 7ecd7fd6fb403098ff6936ace9ca6a5d457f9993e468e60192513cd84ee343cd238f22aa65d69b18b3d0b46a9b0ebda9729e5c356e24fb56ff29bef36ddbfa66
   languageName: node
   linkType: hard
 
@@ -9582,12 +9582,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:5.0.1":
-  version: 5.0.1
-  resolution: "nanoid@npm:5.0.1"
+"nanoid@npm:5.0.2":
+  version: 5.0.2
+  resolution: "nanoid@npm:5.0.2"
   bin:
     nanoid: bin/nanoid.js
-  checksum: 7d5d267d8b1b14fe51f4fea41a7fc3baefad881438f776d6693eeb73139ea1afa69a60a220c18cf3ec6f1b51bf44a6a4dfcca4778ae113d8b221da7de03a40fa
+  checksum: dbda0fdef76bef4fb4f754a6e61aa28933cfbdb83d3a6b6ed6acfe351315340b2e6fe2a1ea1db8bbbfff4586ad00bd73daf953cfd2074d6c6bc88933f0e85c2c
   languageName: node
   linkType: hard
 
