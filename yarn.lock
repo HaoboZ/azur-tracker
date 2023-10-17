@@ -4813,7 +4813,7 @@ __metadata:
     cross-env: "npm:7.0.3"
     csvtojson: "npm:2.0.10"
     date-fns: "npm:2.30.0"
-    embla-carousel-react: "npm:^8.0.0-rc14"
+    embla-carousel-react: "npm:8.0.0-rc14"
     eslint: "npm:8.51.0"
     eslint-config-next: "npm:13.5.5"
     eslint-config-prettier: "npm:9.0.0"
@@ -5938,7 +5938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"embla-carousel-react@npm:^8.0.0-rc14":
+"embla-carousel-react@npm:8.0.0-rc14":
   version: 8.0.0-rc14
   resolution: "embla-carousel-react@npm:8.0.0-rc14"
   dependencies:
