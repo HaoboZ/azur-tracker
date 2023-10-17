@@ -9,7 +9,7 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
 	return (
 		<NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
 			{getInitColorSchemeScript({ defaultMode: 'system' })}
-			<Experimental_CssVarsProvider theme={theme}>
+			<Experimental_CssVarsProvider theme={theme} defaultMode='system'>
 				<CssBaseline />
 				<StatusBarColor />
 				{children}
