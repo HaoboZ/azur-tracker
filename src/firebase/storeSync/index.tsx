@@ -10,7 +10,6 @@ import {
 	useAsyncEffect,
 	useDebouncedValue,
 	useDidUpdate,
-	useOnline,
 	useTimeoutWhen,
 	useWindowEventListener,
 } from 'rooks';
@@ -33,12 +32,9 @@ export default function StoreSync({ keys }: { keys: string[] }) {
 
 function Internal({ keys }: { keys: string[] }) {
 	const dispatch = useAppDispatch();
-	const { main, data } = useAppSelector(({ main, ...state }) => ({
-		main,
-		data: pick(state, keys),
-	}));
+	const { main, ...state } = useAppSelector((state) => state);
+	const data = pick(state, keys);
 	const user = useAuth();
-	const online = useOnline();
 	const [serverTimestamp, serverLoading] = useObjectVal<string>(
 		ref(db, `users/${user.uid}/timestamp`),
 	);
@@ -61,13 +57,7 @@ function Internal({ keys }: { keys: string[] }) {
 
 	// save
 	useAsyncEffect(async () => {
-		if (
-			!online ||
-			serverLoading ||
-			!main.autoSync ||
-			loading ||
-			main.timestamp <= main.lastTimestamp
-		) {
+		if (serverLoading || !main.autoSync || loading || main.timestamp <= main.lastTimestamp) {
 			return setSaving((save) => Math.max(save - 1, 0));
 		}
 		if (serverTimestamp !== main.lastTimestamp) {
@@ -80,12 +70,11 @@ function Internal({ keys }: { keys: string[] }) {
 		await setData(keys);
 		setSaving((save) => Math.max(save - 1, 0));
 		setSaved(true);
-	}, [online, serverLoading, main.timestamp]);
+	}, [serverLoading, main.timestamp]);
 
 	// load
 	useAsyncEffect(async () => {
 		if (
-			!online ||
 			serverLoading ||
 			!main.autoSync ||
 			saving ||
@@ -103,7 +92,7 @@ function Internal({ keys }: { keys: string[] }) {
 		}
 		await getData(keys);
 		setLoading((load) => Math.max(load - 1, 0));
-	}, [online, serverLoading, serverTimestamp]);
+	}, [serverLoading, serverTimestamp]);
 
 	useTimeoutWhen(() => setSaved(false), 2000, saved);
 

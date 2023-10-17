@@ -4,8 +4,8 @@ import {
 	ChevronRight as ChevronRightIcon,
 	ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
-import { TreeItem, treeItemClasses, TreeView } from '@mui/lab';
 import { Box, Button, Stack } from '@mui/material';
+import { TreeItem, treeItemClasses, TreeView } from '@mui/x-tree-view';
 import { each, keyBy, map, mapValues } from 'lodash';
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
@@ -18,7 +18,7 @@ export default function EquipDrop() {
 	const { farmData, equipList } = useData<FarmType>();
 
 	const [expanded, setExpanded] = useState<string[]>([]);
-	const [selected, setSelected] = useState<string>(null);
+	const [selected, setSelected] = useState<any>(null);
 
 	const [equip, setEquip] = useState<EquipType>(null);
 

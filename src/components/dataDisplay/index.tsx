@@ -8,7 +8,7 @@ import {
 	useReactTable,
 } from '@tanstack/react-table';
 import type { ReactNode } from 'react';
-import useWideMedia from '../../hooks/useWideMedia';
+import useIsMobile from '../../hooks/useIsMobile';
 import OverflowTypography from '../overflowTypography';
 import DataList from './dataList';
 import DataTable from './dataTable';
@@ -81,9 +81,9 @@ export function useDataDisplay<TData extends RowData>({
 }
 
 export default function DataDisplay<TData extends RowData>({ table }: { table: Table<TData> }) {
-	if (useWideMedia() || !table.options.meta.renderRow) {
-		return <DataTable table={table} />;
-	} else {
+	if (useIsMobile() && table.options.meta.renderRow) {
 		return <DataList table={table} />;
+	} else {
+		return <DataTable table={table} />;
 	}
 }

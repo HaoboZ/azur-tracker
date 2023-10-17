@@ -9,7 +9,7 @@ import AuthProvider from './auth';
 import EventsProvider from './events';
 import ModalProvider from './modal';
 import SnackbarAction from './snackbar/action';
-import ThemeProvider from './theme';
+import ThemeRegistry from './theme';
 
 // if ( typeof window !== 'undefined' ) {
 // 	defineCustomElements( window ).then();
@@ -23,7 +23,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				component(StoreProvider, { store }),
 				component(EventsProvider),
 				// styling
-				component(ThemeProvider),
+				component(ThemeRegistry),
 				// visual
 				component(SnackbarProvider, {
 					preventDuplicate: true,

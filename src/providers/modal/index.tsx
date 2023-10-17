@@ -1,7 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import { EventEmitter } from 'events';
 import { nanoid } from 'nanoid';
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { createContext, Suspense, useContext, useState } from 'react';
 
 type ModalStatus<T> = {
@@ -38,7 +38,7 @@ const ModalControlsContext = createContext<ModalControlsType>({
 });
 ModalControlsContext.displayName = 'ModalControls';
 
-export default function ModalProvider({ children }) {
+export default function ModalProvider({ children }: { children: ReactNode }) {
 	const [modals, setModals] = useState<ModalStatus<any>[]>([]);
 
 	function controls(id: string): ModalControlsType {

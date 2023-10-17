@@ -3,6 +3,7 @@ import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
 import { pick } from 'lodash';
 import { useSnackbar } from 'notistack';
+import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebaseClientApp from '../../firebase/client';
@@ -14,7 +15,7 @@ const auth = getAuth(firebaseClientApp);
 const AuthContext = createContext<Partial<User>>(undefined);
 AuthContext.displayName = 'Auth';
 
-export default function AuthProvider({ children }) {
+export default function AuthProvider({ children }: { children: ReactNode }) {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const dispatch = useAppDispatch();
 	const savedUser = useAppSelector(({ main }) => main.user);

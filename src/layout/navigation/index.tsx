@@ -1,35 +1,47 @@
 'use client';
 import { Box } from '@mui/material';
-import useWideMedia from '../../hooks/useWideMedia';
+import type { ReactNode } from 'react';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
-export default function Navigation({ children }) {
-	const wide = useWideMedia();
-
+export default function Navigation({ children }: { children: ReactNode }) {
 	return (
 		<Box>
-			{wide ? (
+			<Box
+				position='fixed'
+				top={0}
+				zIndex='appBar'
+				width='100%'
+				height='env(safe-area-inset-top)'
+				bgcolor='primary.main'
+				sx={{
+					display: {
+						xs: 'block',
+						md: 'none',
+					},
+				}}
+			/>
+			<Box
+				sx={{
+					display: {
+						xs: 'none',
+						md: 'block',
+					},
+				}}>
 				<TitleBar />
-			) : (
-				<Box
-					position='fixed'
-					top={0}
-					zIndex='appBar'
-					width='100%'
-					height='env(safe-area-inset-top)'
-					bgcolor='primary.main'
-				/>
-			)}
+			</Box>
 			<Box
 				minHeight='100vh'
 				pt='env(safe-area-inset-top)'
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
-				pb={wide ? 'env(safe-area-inset-bottom)' : 'calc(env(safe-area-inset-bottom) + 56px)'}>
+				pb={{
+					xs: 'calc(env(safe-area-inset-bottom) + 56px)',
+					md: 'env(safe-area-inset-bottom)',
+				}}>
 				{children}
 			</Box>
-			{!wide && <BottomBar />}
+			<BottomBar />
 		</Box>
 	);
 }

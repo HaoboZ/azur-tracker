@@ -30,7 +30,6 @@ import {
 	Typography,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useOnline } from 'rooks';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
 
@@ -42,24 +41,17 @@ export default function Settings() {
 	const dispatch = useAppDispatch();
 	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
-	const online = useOnline();
 	const authButton = useAuthButton();
 
 	return (
 		<Page hideBack title='Settings'>
 			<List sx={{ '.longText': { width: '80%' } }}>
-				{online ? (
-					<ListItem>
-						<ListItemText classes={{ primary: 'longText' }}>
-							{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
-						</ListItemText>
-						<ListItemSecondaryAction>{authButton}</ListItemSecondaryAction>
-					</ListItem>
-				) : (
-					<ListItem>
-						<ListItemText>Offline</ListItemText>
-					</ListItem>
-				)}
+				<ListItem>
+					<ListItemText classes={{ primary: 'longText' }}>
+						{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
+					</ListItemText>
+					<ListItemSecondaryAction>{authButton}</ListItemSecondaryAction>
+				</ListItem>
 				<ListItem>
 					<ListItemText>Automatic Cloud Sync</ListItemText>
 					<ListItemSecondaryAction>
@@ -77,9 +69,7 @@ export default function Settings() {
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
-									if (!online) {
-										enqueueSnackbar('Offline');
-									} else if (user?.emailVerified) {
+									if (user?.emailVerified) {
 										await setData(['event', 'research', 'fleet']);
 										enqueueSnackbar('Data Successfully Saved', { variant: 'success' });
 									} else {
@@ -92,9 +82,7 @@ export default function Settings() {
 								variant='outlined'
 								color='inherit'
 								onClick={async () => {
-									if (!online) {
-										enqueueSnackbar('Offline');
-									} else if (user?.emailVerified) {
+									if (user?.emailVerified) {
 										await getData(['event', 'research', 'fleet']);
 										enqueueSnackbar('Data Successfully Loaded', { variant: 'success' });
 									} else {

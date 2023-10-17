@@ -20,6 +20,10 @@ export default function BottomBar() {
 			position='fixed'
 			color='inherit'
 			sx={{
+				display: {
+					xs: 'block',
+					md: 'none',
+				},
 				top: 'auto',
 				bottom: 0,
 			}}>

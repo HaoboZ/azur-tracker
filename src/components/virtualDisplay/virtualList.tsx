@@ -15,7 +15,9 @@ import Virtualizer from '../virtualizer';
 export default function VirtualList<TData extends RowData>({ table }: { table: Table<TData> }) {
 	const [rowRef, setRowRef] = useState<HTMLTableRowElement>();
 
-	const paddingStart = rowRef?.getBoundingClientRect().top + window.scrollY || 0;
+	const paddingStart =
+		rowRef?.getBoundingClientRect().top +
+		(typeof window === 'undefined' ? 0 : window.scrollY || 0);
 
 	const {
 		rows: [firstRow, ...restRows],

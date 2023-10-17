@@ -1,15 +1,13 @@
 import StoreSync from '@/src/firebase/storeSync';
 import Navigation from '@/src/layout/navigation';
 import '@/src/layout/style.scss';
+import Providers from '@/src/providers';
 import LoginEvent from '@/src/providers/auth/loginEvent';
 import { Analytics } from '@vercel/analytics/react';
-import dynamic from 'next/dynamic';
 import { Roboto } from 'next/font/google';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../package.json';
-
-const Providers = dynamic(() => import('@/src/providers'), { ssr: false });
 
 const packageJson = _packageJson as PackageJson;
 

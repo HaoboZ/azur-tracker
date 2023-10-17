@@ -7,7 +7,7 @@ import {
 	useReactTable,
 } from '@tanstack/react-table';
 import type { ReactNode } from 'react';
-import useWideMedia from '../../hooks/useWideMedia';
+import useIsMobile from '../../hooks/useIsMobile';
 import OverflowTypography from '../overflowTypography';
 import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
@@ -75,9 +75,9 @@ export function useVirtualDisplay<TData extends RowData>({
 }
 
 export default function VirtualDisplay<TData extends RowData>({ table }: { table: Table<TData> }) {
-	if (useWideMedia() || !table.options.meta.renderRow) {
-		return <VirtualTable table={table} />;
-	} else {
+	if (useIsMobile() && table.options.meta.renderRow) {
 		return <VirtualList table={table} />;
+	} else {
+		return <VirtualTable table={table} />;
 	}
 }
