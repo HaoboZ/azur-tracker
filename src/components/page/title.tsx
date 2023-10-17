@@ -17,7 +17,7 @@ export default function PageTitle({ actions, max, ...props }: PageTitleProps) {
 			alignItems='center'
 			px={{
 				xs: 1,
-				md: 0,
+				sm: 0,
 			}}>
 			<Typography variant='h1' py={1} {...props} />
 			{Array.isArray(actions) ? <Actions items={actions} max={max} /> : actions}

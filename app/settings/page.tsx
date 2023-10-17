@@ -28,6 +28,7 @@ import {
 	ToggleButton,
 	ToggleButtonGroup,
 	Typography,
+	useColorScheme,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import type { PackageJson } from 'type-fest';
@@ -35,16 +36,16 @@ import _packageJson from '../../package.json';
 
 const packageJson = _packageJson as PackageJson;
 
-// noinspection JSUnusedGlobalSymbols
 export default function Settings() {
 	const main = useAppSelector(({ main }) => main);
 	const dispatch = useAppDispatch();
+	const { mode, setMode } = useColorScheme();
 	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
 	const authButton = useAuthButton();
 
 	return (
-		<Page hideBack title='Settings'>
+		<Page noSsr hideBack title='Settings'>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				<ListItem>
 					<ListItemText classes={{ primary: 'longText' }}>
@@ -84,7 +85,9 @@ export default function Settings() {
 								onClick={async () => {
 									if (user?.emailVerified) {
 										await getData(['event', 'research', 'fleet']);
-										enqueueSnackbar('Data Successfully Loaded', { variant: 'success' });
+										enqueueSnackbar('Data Successfully Loaded', {
+											variant: 'success',
+										});
 									} else {
 										enqueueSnackbar('Sign In to Load', { variant: 'info' });
 									}
@@ -97,20 +100,14 @@ export default function Settings() {
 				<ListItem>
 					<ListItemText>Theme</ListItemText>
 					<ListItemSecondaryAction>
-						<ToggleButtonGroup exclusive value={main.theme}>
-							<ToggleButton
-								value='default'
-								onClick={() => dispatch(mainActions.setTheme('default'))}>
+						<ToggleButtonGroup exclusive value={mode}>
+							<ToggleButton value='system' onClick={() => setMode('system')}>
 								<Brightness4Icon />
 							</ToggleButton>
-							<ToggleButton
-								value='light'
-								onClick={() => dispatch(mainActions.setTheme('light'))}>
+							<ToggleButton value='light' onClick={() => setMode('light')}>
 								<BrightnessHighIcon />
 							</ToggleButton>
-							<ToggleButton
-								value='dark'
-								onClick={() => dispatch(mainActions.setTheme('dark'))}>
+							<ToggleButton value='dark' onClick={() => setMode('dark')}>
 								<Brightness3Icon />
 							</ToggleButton>
 						</ToggleButtonGroup>

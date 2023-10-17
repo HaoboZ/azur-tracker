@@ -10,7 +10,6 @@ export const importBackup = createAction('import', (key: string, data: any) => (
 }));
 
 type State = {
-	theme: string;
 	user: Partial<User>;
 	unViewed: Record<string, boolean>;
 	autoSync: boolean;
@@ -19,7 +18,6 @@ type State = {
 };
 
 const initialState: State = {
-	theme: 'default',
 	user: null,
 	unViewed: {},
 	autoSync: true,
@@ -31,9 +29,6 @@ const mainSlice = createSlice({
 	name: 'main',
 	initialState,
 	reducers: {
-		setTheme(state, { payload }: PayloadAction<string>) {
-			state.theme = payload;
-		},
 		setUser(state, { payload }: PayloadAction<Partial<User>>) {
 			state.user = payload;
 		},

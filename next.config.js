@@ -39,5 +39,4 @@ const plugins = [
 	}),
 ];
 
-// noinspection JSUnusedGlobalSymbols
 module.exports = plugins.reduceRight((acc, plugin) => plugin(acc), nextConfig);

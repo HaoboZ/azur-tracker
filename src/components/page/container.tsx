@@ -1,11 +1,10 @@
 import type { ContainerProps } from '@mui/material';
 import { Container } from '@mui/material';
-import useIsMobile from '../../hooks/useIsMobile';
 import ScrollTop from '../scrollTop';
 
-export default function PageContainer({ children, ...props }: ContainerProps) {
+export default function PageContainer({ children, sx, ...props }: ContainerProps) {
 	return (
-		<Container disableGutters={useIsMobile()} {...props}>
+		<Container sx={{ px: 0, ...sx }} {...props}>
 			<ScrollTop />
 			{children}
 		</Container>

@@ -14,7 +14,7 @@ export default function Progress({
 }: {
 	isLoading: boolean;
 	delay?: number;
-	children: (progress) => ReactNode;
+	children: (progress: number) => ReactNode;
 }) {
 	const isAnimating = useLoading(isLoading, delay);
 	const { isFinished, progress } = useNProgress({ isAnimating });

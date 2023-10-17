@@ -5,7 +5,6 @@ import { useData } from '@/src/providers/data';
 import { Button, Grid } from '@mui/material';
 import type { TierType } from './type';
 
-// noinspection JSUnusedGlobalSymbols
 export default function Tier() {
 	const { tierTypesData } = useData<TierType>();
 

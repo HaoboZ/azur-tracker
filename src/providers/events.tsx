@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { createContext, useContext, useState } from 'react';
 
 const EventsContext = createContext<EventEmitter>(null);
@@ -15,8 +15,8 @@ export function useEvents() {
 	return useContext(EventsContext);
 }
 
-export function withEvents(Component) {
-	return (props) => (
+export function withEvents<P>(Component: ComponentType<P>) {
+	return (props: P) => (
 		<EventsContext.Consumer>
 			{(events) => <Component events={events} {...props} />}
 		</EventsContext.Consumer>

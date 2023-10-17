@@ -13,7 +13,6 @@ import getTier from './getTier';
 import type { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
-// noinspection JSUnusedGlobalSymbols
 export default function Fleet() {
 	const fleet = useAppSelector(({ fleet }) => fleet);
 	const dispatch = useAppDispatch();
@@ -61,6 +60,8 @@ export default function Fleet() {
 
 	return (
 		<Page
+			noSsr
+			hideBack
 			title='Fleet Tracker'
 			titleProps={{
 				actions: (

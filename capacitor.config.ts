@@ -9,5 +9,4 @@ const config: CapacitorConfig = {
 		url: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : undefined,
 	},
 };
-// noinspection JSUnusedGlobalSymbols
 export default config;

@@ -1,5 +1,3 @@
-// noinspection SpellCheckingInspection
-
 export type EquipType = {
 	id: number;
 	name: string;

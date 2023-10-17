@@ -50,7 +50,7 @@ export default function EquipFilter({
 						width={50}
 						className={`color-${rarityColors[option.rarity]}`}
 					/>
-					<Typography sx={{ pl: 1 }}>{option.name}</Typography>
+					<Typography pl={1}>{option.name}</Typography>
 				</li>
 			)}
 			groupBy={({ type }) => typeNames[type]}

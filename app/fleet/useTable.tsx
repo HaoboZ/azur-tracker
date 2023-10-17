@@ -13,7 +13,6 @@ import { AffinityIcons, TierIcon } from './tierIcon';
 import type { FleetType, Ship } from './type';
 
 declare module '@tanstack/table-core' {
-	// noinspection JSUnusedGlobalSymbols
 	interface FilterMeta {
 		equip: (false | { tier?; major?; minor? })[];
 	}

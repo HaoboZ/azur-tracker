@@ -49,7 +49,6 @@ export default async function Page({ params }: { params: Record<string, string> 
 	);
 }
 
-// noinspection JSUnusedGlobalSymbols
 export async function generateStaticParams() {
 	const { data } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,

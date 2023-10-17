@@ -23,7 +23,10 @@ export default function Navigation({ children }: { children: ReactNode }) {
 			/>
 			<TitleBar />
 			<Box
-				minHeight='100vh'
+				minHeight={{
+					xs: '100vh',
+					sm: 0,
+				}}
 				pt='env(safe-area-inset-top)'
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'

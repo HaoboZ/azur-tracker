@@ -14,7 +14,6 @@ import DataList from './dataList';
 import DataTable from './dataTable';
 
 declare module '@tanstack/table-core' {
-	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
 		setData?: (data: TData[]) => void;
 		renderRow?: (row: {
@@ -45,7 +44,6 @@ export type DataDisplayOptions<TData extends RowData> = {
 	renderSubComponent?: (row: Row<TData>, table: Table<TData>) => ReactNode;
 } & Partial<TableOptions<TData>>;
 
-// noinspection JSUnusedGlobalSymbols
 const defaultColumn = {
 	cell: ({ getValue }) => <OverflowTypography>{getValue()}</OverflowTypography>,
 	size: 10,

@@ -16,7 +16,6 @@ const roboto = Roboto({
 	weight: ['300', '400', '500', '700'],
 });
 
-// noinspection JSUnusedGlobalSymbols
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang='en' className={roboto.className}>

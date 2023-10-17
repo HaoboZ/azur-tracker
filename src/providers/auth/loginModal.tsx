@@ -21,7 +21,6 @@ export default function LoginModal() {
 		if (user) closeModal();
 	}, [user]);
 
-	// noinspection JSUnusedGlobalSymbols
 	return (
 		<ModalDialog title='Login' maxWidth='xs'>
 			<StyledFirebaseAuth

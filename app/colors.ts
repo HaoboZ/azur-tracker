@@ -1,5 +1,3 @@
-// noinspection SpellCheckingInspection
-
 export const rarityColors = {
 	'Decisive': 'rainbow',
 	'Ultra Rare': 'rainbow',

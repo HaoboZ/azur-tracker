@@ -49,9 +49,7 @@ export default function PageBack({
 		if (backButton) router.back();
 	};
 
-	if (!backButton) return null;
-
-	if (isMobile) {
+	if (isMobile || backButton) {
 		const path = routes.at(-2);
 		if (!path) return null;
 

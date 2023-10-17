@@ -51,6 +51,8 @@ export default function Event() {
 
 	return (
 		<Page
+			noSsr
+			hideBack
 			title='Event Tracker'
 			titleProps={{
 				actions: (

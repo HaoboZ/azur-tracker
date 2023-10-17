@@ -23,7 +23,7 @@ export default function PageSection({
 				alignItems='center'
 				px={{
 					xs: 1,
-					md: 0,
+					sm: 0,
 				}}>
 				<Typography variant='h4' py={1} {...props}>
 					{title}

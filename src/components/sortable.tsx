@@ -56,7 +56,9 @@ export default function Sortable<Item extends { id? }>({
 			}}
 			handle='.sortable-handle'
 			sx={{
-				'.sortable-ghost': { bgcolor: ({ palette }) => `${palette.primary.main} !important` },
+				'.sortable-ghost': {
+					bgcolor: ({ vars }: any) => `${vars.palette.primary.main} !important`,
+				},
 				...sx,
 			}}
 			animation={theme.transitions.duration.shorter}

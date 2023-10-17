@@ -13,7 +13,6 @@ import VirtualList from './virtualList';
 import VirtualTable from './virtualTable';
 
 declare module '@tanstack/table-core' {
-	// noinspection JSUnusedGlobalSymbols
 	interface TableMeta<TData extends RowData> {
 		setData?: (data: TData[]) => void;
 		renderRow?: (row: {
@@ -25,7 +24,6 @@ declare module '@tanstack/table-core' {
 		onRowClick?: (row: Row<TData>, table: Table<TData>) => void;
 	}
 
-	// noinspection JSUnusedGlobalSymbols
 	interface ColumnMeta<TData extends RowData, TValue> {
 		props?: (cell: Cell<TData, TValue>) => TableCellProps;
 	}
@@ -42,7 +40,6 @@ export type VirtualDisplayOptions<TData extends RowData> = {
 	onRowClick?: (row: Row<TData>, table: Table<TData>) => void;
 } & Partial<TableOptions<TData>>;
 
-// noinspection JSUnusedGlobalSymbols
 const defaultColumn = {
 	cell: ({ getValue }) => <OverflowTypography>{getValue()}</OverflowTypography>,
 	size: 10,

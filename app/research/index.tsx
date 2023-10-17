@@ -7,16 +7,15 @@ import { researchActions } from '@/src/store/reducers/researchReducer';
 import ResearchSeries from './series';
 import type { ResearchType } from './type';
 
-// noinspection JSUnusedGlobalSymbols
 export default function Research() {
 	const lastTab = useAppSelector(({ research }) => research.lastTab);
 	const dispatch = useAppDispatch();
 	const { researchData } = useData<ResearchType>();
 
 	return (
-		<Page hideBack title='Research Tracker'>
+		<Page noSsr hideBack title='Research Tracker'>
 			<SwipeableTabViews
-				sx={{ bgcolor: ({ palette }) => palette.divider }}
+				sx={{ bgcolor: ({ vars }: any) => vars.palette.divider }}
 				tab={lastTab}
 				setTab={(index) => dispatch(researchActions.setLastTab(index))}
 				renderTabs={Object.keys(researchData)}
