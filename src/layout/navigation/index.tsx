@@ -1,7 +1,6 @@
 'use client';
 import { Box } from '@mui/material';
 import type { ReactNode } from 'react';
-import NoSSR from '../noSSR';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
@@ -32,7 +31,7 @@ export default function Navigation({ children }: { children: ReactNode }) {
 					xs: 'calc(env(safe-area-inset-bottom) + 56px)',
 					sm: 'env(safe-area-inset-bottom)',
 				}}>
-				<NoSSR>{children}</NoSSR>
+				{children}
 			</Box>
 			<BottomBar />
 		</Box>

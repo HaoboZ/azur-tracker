@@ -1,4 +1,3 @@
-import Loading from '@/components/loaders/loading';
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -9,6 +8,6 @@ export default function NoSSR({ children }: { children: ReactNode }) {
 		setLoad(false);
 	}, []);
 
-	if (load) return <Loading />;
+	if (typeof window === 'undefined' || load) return null;
 	return children;
 }
