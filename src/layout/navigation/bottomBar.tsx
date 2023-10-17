@@ -22,7 +22,7 @@ export default function BottomBar() {
 			sx={{
 				display: {
 					xs: 'block',
-					md: 'none',
+					sm: 'none',
 				},
 				top: 'auto',
 				bottom: 0,

@@ -1,6 +1,7 @@
 'use client';
 import { Box } from '@mui/material';
 import type { ReactNode } from 'react';
+import NoSSR from '../noSSR';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
 
@@ -17,19 +18,11 @@ export default function Navigation({ children }: { children: ReactNode }) {
 				sx={{
 					display: {
 						xs: 'block',
-						md: 'none',
+						sm: 'none',
 					},
 				}}
 			/>
-			<Box
-				sx={{
-					display: {
-						xs: 'none',
-						md: 'block',
-					},
-				}}>
-				<TitleBar />
-			</Box>
+			<TitleBar />
 			<Box
 				minHeight='100vh'
 				pt='env(safe-area-inset-top)'
@@ -37,9 +30,9 @@ export default function Navigation({ children }: { children: ReactNode }) {
 				pr='env(safe-area-inset-right)'
 				pb={{
 					xs: 'calc(env(safe-area-inset-bottom) + 56px)',
-					md: 'env(safe-area-inset-bottom)',
+					sm: 'env(safe-area-inset-bottom)',
 				}}>
-				{children}
+				<NoSSR>{children}</NoSSR>
 			</Box>
 			<BottomBar />
 		</Box>

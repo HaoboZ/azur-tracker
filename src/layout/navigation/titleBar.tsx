@@ -39,6 +39,10 @@ export default function TitleBar() {
 			enableColorOnDark
 			position='static'
 			sx={{
+				display: {
+					xs: 'none',
+					sm: 'block',
+				},
 				pt: 'env(safe-area-inset-top)',
 				pl: 'env(safe-area-inset-left)',
 				pr: 'env(safe-area-inset-right)',
