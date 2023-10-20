@@ -2,7 +2,12 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { map } from 'lodash';
+import type { Metadata } from 'next';
 import Tier from './index';
+
+export const metadata: Metadata = {
+	title: 'Tier | Azur Lane Tracker',
+};
 
 export default async function TierPage() {
 	const { data } = await axios.get(

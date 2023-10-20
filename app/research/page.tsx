@@ -2,7 +2,12 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { groupBy, pick } from 'lodash';
+import type { Metadata } from 'next';
 import Research from './index';
+
+export const metadata: Metadata = {
+	title: 'Research | Azur Lane Tracker',
+};
 
 export default async function ResearchPage() {
 	const { data: researchCSV } = await axios.get(

@@ -8,22 +8,10 @@ import axios from 'axios';
 import Image from 'next/image';
 
 const menuItems = [
-	{
-		name: 'Event',
-		href: 'event',
-	},
-	{
-		name: 'Research',
-		href: 'research',
-	},
-	{
-		name: 'Fleet',
-		href: 'fleet',
-	},
-	{
-		name: 'Info',
-		href: 'info',
-	},
+	{ name: 'Event', href: 'event' },
+	{ name: 'Research', href: 'research' },
+	{ name: 'Fleet', href: 'fleet' },
+	{ name: 'Info', href: 'info' },
 ];
 
 export default function Main() {

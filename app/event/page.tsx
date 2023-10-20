@@ -2,7 +2,12 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { pickBy } from 'lodash';
+import type { Metadata } from 'next';
 import Event from './index';
+
+export const metadata: Metadata = {
+	title: 'Event | Azur Lane Tracker',
+};
 
 export default async function EventPage() {
 	const { data: eventCSV } = await axios.get(

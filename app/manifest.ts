@@ -1,3 +1,4 @@
+import { colors } from '@mui/material';
 import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -11,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
 		start_url: '/',
 		display: 'standalone',
 		orientation: 'portrait',
-		theme_color: '#039be5',
+		theme_color: colors.lightBlue['600'],
 		background_color: '#ffffff',
 		icons: [
 			{

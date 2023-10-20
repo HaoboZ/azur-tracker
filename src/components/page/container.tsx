@@ -1,3 +1,4 @@
+'use client';
 import type { ContainerProps } from '@mui/material';
 import { Container } from '@mui/material';
 import ScrollTop from '../scrollTop';

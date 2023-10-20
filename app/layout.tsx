@@ -3,6 +3,7 @@ import Navigation from '@/src/layout/navigation';
 import '@/src/layout/style.scss';
 import Providers from '@/src/providers';
 import LoginEvent from '@/src/providers/auth/loginEvent';
+import { colors } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
@@ -14,7 +15,7 @@ const packageJson = _packageJson as PackageJson;
 
 export const metadata: Metadata = {
 	title: 'Azur Lane Tracker',
-	themeColor: '#039be5',
+	themeColor: colors.lightBlue['600'],
 	description: packageJson.description,
 	keywords: packageJson.keywords?.join(', '),
 	authors: packageJson.author as any,

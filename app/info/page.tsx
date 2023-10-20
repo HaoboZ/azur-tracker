@@ -4,7 +4,12 @@ import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
 import { difference, groupBy, keyBy, map, mapValues, sortBy, union } from 'lodash';
+import type { Metadata } from 'next';
 import Info from './index';
+
+export const metadata: Metadata = {
+	title: 'Info | Azur Lane Tracker',
+};
 
 export default async function InfoPage() {
 	const { data: farmCSV } = await axios.get(
