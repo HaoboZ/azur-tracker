@@ -1,5 +1,4 @@
-import { Experimental_CssVarsProvider, getInitColorSchemeScript } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
+import { CssBaseline, Experimental_CssVarsProvider, getInitColorSchemeScript } from '@mui/material';
 import type { ReactNode } from 'react';
 import NextAppDirEmotionCacheProvider from './emotionCache';
 import StatusBarColor from './statusBarColor';
