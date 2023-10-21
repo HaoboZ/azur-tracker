@@ -19,14 +19,7 @@ export default function BottomBar() {
 		<AppBar
 			position='fixed'
 			color='inherit'
-			sx={{
-				display: {
-					xs: 'block',
-					sm: 'none',
-				},
-				top: 'auto',
-				bottom: 0,
-			}}>
+			sx={{ display: { xs: 'block', sm: 'none' }, top: 'auto', bottom: 0 }}>
 			<BottomNavigation
 				showLabels
 				value={index}

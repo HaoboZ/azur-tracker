@@ -16,13 +16,7 @@ export default experimental_extendTheme({
 				background: { paper: colors.grey['900'] },
 			},
 			// @ts-ignore
-			components: {
-				MuiCssBaseline: {
-					styleOverrides: {
-						body: darkScrollbar(),
-					},
-				},
-			},
+			components: { MuiCssBaseline: { styleOverrides: { body: darkScrollbar() } } },
 		},
 	},
 	typography: {
@@ -33,11 +27,5 @@ export default experimental_extendTheme({
 		h5: { fontSize: 18 },
 		h6: { fontSize: 16 },
 	},
-	components: {
-		MuiAppBar: {
-			styleOverrides: {
-				root: { backgroundImage: 'none' },
-			},
-		},
-	},
+	components: { MuiAppBar: { styleOverrides: { root: { backgroundImage: 'none' } } } },
 });

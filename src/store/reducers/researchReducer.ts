@@ -5,20 +5,12 @@ import { importBackup } from './mainReducer';
 type State = {
 	ships: Record<
 		string,
-		{
-			devLevel?: number;
-			devStage?: number;
-			fateLevel?: number;
-			fateStage?: number;
-		}
+		{ devLevel?: number; devStage?: number; fateLevel?: number; fateStage?: number }
 	>;
 	lastTab: number;
 };
 
-const initialState: State = {
-	ships: {},
-	lastTab: 0,
-};
+const initialState: State = { ships: {}, lastTab: 0 };
 
 const researchSlice = createSlice({
 	name: 'research',
@@ -33,12 +25,7 @@ const researchSlice = createSlice({
 				payload,
 			}: PayloadAction<{
 				ship: string;
-				item: {
-					devLevel?: number;
-					devStage?: number;
-					fateLevel?: number;
-					fateStage?: number;
-				};
+				item: { devLevel?: number; devStage?: number; fateLevel?: number; fateStage?: number };
 				maxDev?: number;
 			}>,
 		) {

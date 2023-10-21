@@ -1,9 +1,7 @@
 import PageContainer from '@/components/page/container';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-	title: 'Privacy | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Privacy | Azur Lane Tracker' };
 
 export default function Privacy() {
 	return (

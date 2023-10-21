@@ -37,11 +37,7 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 			farming.map((row) => {
 				const plays = Math.ceil(remainingPoints ? remainingPoints / row.points : 0),
 					cost = plays * row.oil;
-				return {
-					...row,
-					plays,
-					cost: isFinite(cost) ? cost : Infinity,
-				};
+				return { ...row, plays, cost: isFinite(cost) ? cost : Infinity };
 			}),
 		[farming, remainingPoints],
 	);
@@ -64,10 +60,7 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 							<TextField
 								{...params}
 								type='number'
-								inputProps={{
-									...params.inputProps,
-									inputMode: 'numeric',
-								}}
+								inputProps={{ ...params.inputProps, inputMode: 'numeric' }}
 							/>
 						)}
 						onChange={(e, value) =>
@@ -99,12 +92,8 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 					/>
 				),
 			}),
-			columnHelper.accessor('plays', {
-				header: 'Required Plays',
-			}),
-			columnHelper.accessor('cost', {
-				header: 'Total Oil Cost',
-			}),
+			columnHelper.accessor('plays', { header: 'Required Plays' }),
+			columnHelper.accessor('cost', { header: 'Total Oil Cost' }),
 			columnHelper.display(deleteColumn()),
 		],
 		[],
@@ -146,14 +135,7 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 						name: 'Add',
 						onClick: () =>
 							dispatch(
-								eventActions.setFarming([
-									...farming,
-									{
-										id: nanoid(),
-										points: 0,
-										oil: 0,
-									},
-								]),
+								eventActions.setFarming([...farming, { id: nanoid(), points: 0, oil: 0 }]),
 							),
 						buttonProps: { color: 'primary' },
 					},

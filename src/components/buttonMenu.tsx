@@ -8,10 +8,7 @@ export default function ButtonMenu({
 	menuProps,
 	renderMenu,
 	...props
-}: {
-	renderMenu: (closeMenu: () => void) => ReactNode;
-	menuProps?: MenuProps;
-} & ButtonProps) {
+}: { renderMenu: (closeMenu: () => void) => ReactNode; menuProps?: MenuProps } & ButtonProps) {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	return (

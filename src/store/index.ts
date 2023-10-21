@@ -7,12 +7,7 @@ import main from './reducers/mainReducer';
 import research from './reducers/researchReducer';
 
 export const store = configureStore({
-	reducer: {
-		main,
-		event,
-		research,
-		fleet,
-	},
+	reducer: { main, event, research, fleet },
 	devTools: process.env.NODE_ENV === 'development',
 	preloadedState: loadState(),
 });

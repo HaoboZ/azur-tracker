@@ -96,28 +96,13 @@ export default function DailyModal() {
 	return (
 		<ModalDialog
 			title='Daily Points'
-			onSave={() =>
-				dispatch(
-					eventActions.setDaily({
-						daily,
-						total: dailyTotal,
-					}),
-				)
-			}>
+			onSave={() => dispatch(eventActions.setDaily({ daily, total: dailyTotal }))}>
 			<ActionTitle
 				variant='h6'
 				actions={[
 					{
 						name: 'Add',
-						onClick: () =>
-							setDaily([
-								...daily,
-								{
-									id: nanoid(),
-									name: '',
-									amount: 0,
-								},
-							]),
+						onClick: () => setDaily([...daily, { id: nanoid(), name: '', amount: 0 }]),
 						buttonProps: { color: 'primary' },
 					},
 				]}>

@@ -1,5 +1,6 @@
 'use client';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
+import PageTitle from '@/components/page/title';
 import SwipeableTabViews from '@/components/swipeableTabViews';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -13,7 +14,8 @@ export default function Research() {
 	const { researchData } = useData<ResearchType>();
 
 	return (
-		<Page noSsr hideBack title='Research Tracker'>
+		<PageContainer noSsr>
+			<PageTitle>Research Tracker</PageTitle>
 			<SwipeableTabViews
 				sx={{ bgcolor: ({ vars }: any) => vars.palette.divider }}
 				tab={lastTab}
@@ -23,6 +25,6 @@ export default function Research() {
 					<ResearchSeries researchShips={Object.values(researchData)[index]} />
 				)}
 			/>
-		</Page>
+		</PageContainer>
 	);
 }

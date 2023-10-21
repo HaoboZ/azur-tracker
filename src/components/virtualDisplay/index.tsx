@@ -61,12 +61,7 @@ export function useVirtualDisplay<TData extends RowData>({
 		getCoreRowModel: getCoreRowModel(),
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
-		meta: {
-			setData,
-			renderRow,
-			onRowClick,
-			...meta,
-		},
+		meta: { setData, renderRow, onRowClick, ...meta },
 		...options,
 	});
 }

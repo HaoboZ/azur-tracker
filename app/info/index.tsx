@@ -1,15 +1,17 @@
 'use client';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
+import PageTitle from '@/components/page/title';
 import EquipDrop from './equipDrop';
 import EquipmentTier from './equipmentTier';
 import OpSiWeakness from './opSiWeakness';
 
 export default function Info() {
 	return (
-		<Page hideBack title='Info'>
+		<PageContainer>
+			<PageTitle>Info</PageTitle>
 			<OpSiWeakness />
 			<EquipmentTier />
 			<EquipDrop />
-		</Page>
+		</PageContainer>
 	);
 }

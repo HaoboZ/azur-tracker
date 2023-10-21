@@ -58,10 +58,7 @@ export default function EquipFilter({
 				<TextField
 					{...params}
 					label='Equipment'
-					InputProps={{
-						...params.InputProps,
-						startAdornment: <SearchIcon />,
-					}}
+					InputProps={{ ...params.InputProps, startAdornment: <SearchIcon /> }}
 				/>
 			)}
 			onChange={(e, newValue: EquipType) => setValue(newValue || undefined)}

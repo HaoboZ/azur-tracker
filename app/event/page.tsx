@@ -5,37 +5,20 @@ import { pickBy } from 'lodash';
 import type { Metadata } from 'next';
 import Event from './index';
 
-export const metadata: Metadata = {
-	title: 'Event | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Event | Azur Lane Tracker' };
 
 export default async function EventPage() {
 	const { data: eventCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Event',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Event', tqx: 'out:csv' } },
 	);
 	const { data: eventShopCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Event Shop',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Event Shop', tqx: 'out:csv' } },
 	);
 	const { data: eventStagesCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Event Stages',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Event Stages', tqx: 'out:csv' } },
 	);
 
 	return (

@@ -1,6 +1,7 @@
 'use client';
 import Loading from '@/components/loaders/loading';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
+import PageTitle from '@/components/page/title';
 import Sortable from '@/components/sortable';
 import firebaseClientApp from '@/src/firebase/client';
 import { useData } from '@/src/providers/data';
@@ -52,30 +53,12 @@ export default function TierType() {
 		if (loading || error) return;
 		let equipIds = map(equipData, 'id');
 		[
-			{
-				tier: tier0,
-				dataId: '0',
-			},
-			{
-				tier: tier1,
-				dataId: '1',
-			},
-			{
-				tier: tier2,
-				dataId: '2',
-			},
-			{
-				tier: tier3,
-				dataId: '3',
-			},
-			{
-				tier: tier4,
-				dataId: '4',
-			},
-			{
-				tier: tierN,
-				dataId: 'N',
-			},
+			{ tier: tier0, dataId: '0' },
+			{ tier: tier1, dataId: '1' },
+			{ tier: tier2, dataId: '2' },
+			{ tier: tier3, dataId: '3' },
+			{ tier: tier4, dataId: '4' },
+			{ tier: tierN, dataId: 'N' },
 		].map(({ tier, dataId }) => {
 			if (!data?.[dataId]) return;
 			tier[1](data[dataId].map((id) => equipIndex[id]));
@@ -103,10 +86,9 @@ export default function TierType() {
 	if (error) return <Error error={error} />;
 
 	return (
-		<Page
-			title={decodeURIComponent(params.type)}
-			titleProps={{
-				actions: [
+		<PageContainer>
+			<PageTitle
+				actions={[
 					{
 						name: 'Save',
 						onClick: async () => {
@@ -122,8 +104,9 @@ export default function TierType() {
 						},
 						buttonProps: { disabled: !changed },
 					},
-				],
-			}}>
+				]}>
+				{decodeURIComponent(params.type)}
+			</PageTitle>
 			<Grid container spacing={2}>
 				<Grid item xs={6}>
 					<Sortable<EquipType>
@@ -172,6 +155,6 @@ export default function TierType() {
 					))}
 				</Grid>
 			</Grid>
-		</Page>
+		</PageContainer>
 	);
 }

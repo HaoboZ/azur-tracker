@@ -11,8 +11,7 @@ import ModalProvider from './modal';
 import SnackbarAction from './snackbar/action';
 import ThemeRegistry from './theme';
 
-// if ( typeof window !== 'undefined' ) {
-// 	defineCustomElements( window ).then();
+// if ( typeof window !== 'undefined' ) {// 	defineCustomElements( window ).then();
 // }
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -25,10 +24,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 				// styling
 				component(ThemeRegistry),
 				// visual
-				component(SnackbarProvider, {
-					preventDuplicate: true,
-					action: SnackbarAction,
-				}),
+				component(SnackbarProvider, { preventDuplicate: true, action: SnackbarAction }),
 				component(AuthProvider),
 				component(ModalProvider),
 			]}>

@@ -21,10 +21,7 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 	const dispatch = useAppDispatch();
 
 	const [shop, setShop] = useState(() =>
-		eventShopData.map((data) => ({
-			...data,
-			wanted: _shop[data.name],
-		})),
+		eventShopData.map((data) => ({ ...data, wanted: _shop[data.name] })),
 	);
 
 	// expected cost to buy wanted items and total cost to buy everything

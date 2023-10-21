@@ -33,11 +33,7 @@ export default function PageBack({
 		return paths.reduce<{ name: string; href: string }[]>((arr, name, index) => {
 			if (paths[index]) href += `/${paths[index]}`;
 			if (pathMap?.[index] !== undefined) name = pathMap[index] as string;
-			if (name)
-				arr.push({
-					name: startCase(name),
-					href: href || '/',
-				});
+			if (name) arr.push({ name: startCase(name), href: href || '/' });
 			return arr;
 		}, []);
 	}, [pathname]);

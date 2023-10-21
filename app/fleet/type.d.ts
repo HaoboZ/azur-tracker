@@ -10,11 +10,7 @@ export type Ship = {
 	tier: number;
 	special: boolean[];
 	equipType: string[];
-} & {
-	love?: number;
-	lvl?: number;
-	equip?: [number, number, number][];
-};
+} & { love?: number; lvl?: number; equip?: [number, number, number][] };
 
 export type FleetType = {
 	fleetData: Record<string, Ship>;

@@ -154,14 +154,7 @@ export default function ShipModal({
 								onClick={() =>
 									showModal(EquipModal, {
 										id: 'equip',
-										props: {
-											info: {
-												ship,
-												index,
-											},
-											selectedEquip,
-											...data,
-										},
+										props: { info: { ship, index }, selectedEquip, ...data },
 									})
 								}>
 								<Image

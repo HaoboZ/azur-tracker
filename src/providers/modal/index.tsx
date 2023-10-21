@@ -49,10 +49,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 					const index = modals.findIndex((modal) => modal.id === id);
 					if (index === -1) return modals;
 					const newModals = [...modals];
-					newModals[index] = {
-						...newModals[index],
-						open: false,
-					};
+					newModals[index] = { ...newModals[index], open: false };
 					newModals[index].controls.events.emit('close', ...args);
 					setTimeout(
 						() => setModals((modals) => modals.filter((modal) => modal.id !== id)),
@@ -72,19 +69,10 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 						const index = modals.findIndex((modal) => modal.id === id);
 						const newModals = [...modals];
 						if (index === -1) {
-							newModals.push({
-								id,
-								open: false,
-								Component,
-								props,
-								controls: controls(id),
-							});
+							newModals.push({ id, open: false, Component, props, controls: controls(id) });
 						} else {
 							// found modal with same id
-							newModals[index] = {
-								...newModals[index],
-								props,
-							};
+							newModals[index] = { ...newModals[index], props };
 							if (newModals[index].open) return newModals;
 						}
 						setTimeout(
@@ -94,10 +82,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 									if (index === -1) return modals;
 									const newModals = [...modals];
 									newModals[index].controls.events.emit('open');
-									newModals[index] = {
-										...newModals[index],
-										open: true,
-									};
+									newModals[index] = { ...newModals[index], open: true };
 									return newModals;
 								}),
 							0,
@@ -123,10 +108,7 @@ export default function ModalProvider({ children }: { children: ReactNode }) {
 			{modals.map((modal) => (
 				<ModalControlsContext.Provider
 					key={modal.id}
-					value={{
-						...modal.controls,
-						modalStatus: modal,
-					}}>
+					value={{ ...modal.controls, modalStatus: modal }}>
 					<Suspense fallback={<CircularProgress />}>
 						<modal.Component {...modal.props} />
 					</Suspense>

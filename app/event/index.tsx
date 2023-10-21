@@ -1,6 +1,7 @@
 'use client';
 import HelpTourButton from '@/components/helpTourButton';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
+import PageTitle from '@/components/page/title';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
@@ -50,12 +51,9 @@ export default function Event() {
 		remainingPoints = Math.max(neededPoints - event.points, 0);
 
 	return (
-		<Page
-			noSsr
-			hideBack
-			title='Event Tracker'
-			titleProps={{
-				actions: (
+		<PageContainer noSsr>
+			<PageTitle
+				actions={
 					<HelpTourButton
 						steps={[
 							{
@@ -109,8 +107,9 @@ export default function Event() {
 							},
 						]}
 					/>
-				),
-			}}>
+				}>
+				Event Tracker
+			</PageTitle>
 			<Box display='flex' justifyContent='center'>
 				<Link href={eventData.href} target='_blank'>
 					<Image
@@ -118,16 +117,12 @@ export default function Event() {
 						alt='event banner'
 						width={513}
 						height={185}
-						style={{
-							objectFit: 'contain',
-							width: '100%',
-							height: 'auto',
-						}}
+						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 					/>
 				</Link>
 			</Box>
 			<EventFields time={time} neededPoints={neededPoints} />
 			<EventFarming remainingPoints={remainingPoints} />
-		</Page>
+		</PageContainer>
 	);
 }

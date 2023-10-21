@@ -23,10 +23,7 @@ export default function PageSection({
 				display='flex'
 				justifyContent='space-between'
 				alignItems='center'
-				px={{
-					xs: 1,
-					sm: 0,
-				}}>
+				px={{ xs: 1, sm: 0 }}>
 				<Typography variant='h4' py={1} {...titleProps}>
 					{title}
 				</Typography>

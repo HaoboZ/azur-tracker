@@ -1,6 +1,7 @@
 'use client';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
 import { PageLinkComponent } from '@/components/page/link';
+import PageTitle from '@/components/page/title';
 import { useData } from '@/src/providers/data';
 import { Button, Grid } from '@mui/material';
 import type { TierType } from './type';
@@ -9,7 +10,8 @@ export default function Tier() {
 	const { tierTypesData } = useData<TierType>();
 
 	return (
-		<Page hideBack title='Tier'>
+		<PageContainer>
+			<PageTitle>Tier</PageTitle>
 			<Grid container spacing={2} pt={2}>
 				{tierTypesData.map((type) => (
 					<Grid key={type} item xs={6} sm={4} md={3} lg={2}>
@@ -30,6 +32,6 @@ export default function Tier() {
 					</Grid>
 				))}
 			</Grid>
-		</Page>
+		</PageContainer>
 	);
 }

@@ -7,28 +7,16 @@ import { difference, groupBy, keyBy, map, mapValues, sortBy, union } from 'lodas
 import type { Metadata } from 'next';
 import Info from './index';
 
-export const metadata: Metadata = {
-	title: 'Info | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
 
 export default async function InfoPage() {
 	const { data: farmCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Farm',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Farm', tqx: 'out:csv' } },
 	);
 	const { data: equipCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Equip',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 	);
 
 	const farmData = sortBy(await csvtojson().fromString(farmCSV), ({ order }) => +order).map(

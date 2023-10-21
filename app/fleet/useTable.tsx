@@ -36,10 +36,7 @@ export default function useFleetTable(data) {
 
 	const columns = useMemo(
 		() => [
-			columnHelper.accessor('name', {
-				header: 'Name',
-				size: 40,
-			}),
+			columnHelper.accessor('name', { header: 'Name', size: 40 }),
 			columnHelper.accessor('rarity', {
 				header: 'Rarity',
 				size: 20,
@@ -154,32 +151,18 @@ export default function useFleetTable(data) {
 							// equip not in tier list
 							if (!newTier) return false;
 							// none equipped
-							if (!value?.[0])
-								return {
-									tier: newTier[0],
-									major: Infinity,
-								};
+							if (!value?.[0]) return { tier: newTier[0], major: Infinity };
 							// forced BiS
 							if (value[1]) return false;
 							// current equip not in tier list
-							if (!oldTier)
-								return {
-									tier: newTier[0],
-									major: Infinity,
-								};
+							if (!oldTier) return { tier: newTier[0], major: Infinity };
 							if (oldTier[0] < newTier[0]) return false;
 							// if higher tier
 							if (oldTier[0] > newTier[0])
-								return {
-									tier: newTier[0],
-									major: oldTier[0] - newTier[0],
-								};
+								return { tier: newTier[0], major: oldTier[0] - newTier[0] };
 							// if same tier but better
 							if (oldTier[1] > newTier[1])
-								return {
-									tier: newTier[0],
-									minor: oldTier[1] - newTier[1],
-								};
+								return { tier: newTier[0], minor: oldTier[1] - newTier[1] };
 							return false;
 						},
 					);
@@ -197,14 +180,8 @@ export default function useFleetTable(data) {
 		columns,
 		initialState: {
 			sorting: [
-				{
-					id: 'tier',
-					desc: false,
-				},
-				{
-					id: 'lvl',
-					desc: true,
-				},
+				{ id: 'tier', desc: false },
+				{ id: 'lvl', desc: true },
 			],
 		},
 		getRowId: ({ id }) => id,

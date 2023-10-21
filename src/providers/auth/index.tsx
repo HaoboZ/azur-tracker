@@ -21,8 +21,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 	const savedUser = useAppSelector(({ main }) => main.user);
 	const [user, loading, error] = useAuthState(auth);
 
-	// useEffect( () => auth.onIdTokenChanged( async ( user ) => {
-	// 	cookies.set( 'idToken', await user?.getIdToken() );
+	// useEffect( () => auth.onIdTokenChanged( async ( user ) => {	// 	cookies.set( 'idToken', await user?.getIdToken() );
 	// } ), [] );
 
 	useEffect(() => {

@@ -108,19 +108,9 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				totalPR += devPrints;
 				if (item.fate) totalPR += fatePrints;
 			}
-			return {
-				...item,
-				...ship,
-				devLevels,
-				devPrints,
-				fatePrints,
-			};
+			return { ...item, ...ship, devLevels, devPrints, fatePrints };
 		});
-		return {
-			shipData,
-			totalPR,
-			totalDR,
-		};
+		return { shipData, totalPR, totalDR };
 	}, [ships]);
 
 	const columns = useMemo(
@@ -129,13 +119,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				header: 'Name',
 				cell: ({ getValue, row }) => (
 					<Fragment>
-						<Avatar
-							variant='rounded'
-							src={row.original.image}
-							sx={{
-								width: 60,
-								height: 60,
-							}}>
+						<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}>
 							<Image
 								src={row.original.image}
 								alt={row.original.name}
@@ -196,10 +180,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 					/>
 				),
 			}),
-			columnHelper.accessor('devPrints', {
-				header: 'Required Prints',
-				size: 1,
-			}),
+			columnHelper.accessor('devPrints', { header: 'Required Prints', size: 1 }),
 			columnHelper.display({
 				id: 'fateLevel',
 				header: 'Fate Level',
@@ -268,11 +249,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 		enableSorting: false,
 		renderRow: ({ row }) => (
 			<Fragment>
-				<ListItemAvatar
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-					}}>
+				<ListItemAvatar sx={{ display: 'flex', alignItems: 'center' }}>
 					<Avatar variant='rounded' src={row.original.image}>
 						<Image src={row.original.image} alt={row.original.name} width={60} height={60} />
 					</Avatar>

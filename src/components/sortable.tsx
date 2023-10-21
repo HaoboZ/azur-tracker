@@ -26,10 +26,7 @@ export default function Sortable<Item extends { id? }>({
 
 	const [skip, setSkip] = useState(false);
 	const [list, setList] = useState<{ id: string; item: Item }[]>(() =>
-		items.map((item) => ({
-			id: item.id ?? nanoid(),
-			item,
-		})),
+		items.map((item) => ({ id: item.id ?? nanoid(), item })),
 	);
 
 	useEffect(() => {
@@ -37,12 +34,7 @@ export default function Sortable<Item extends { id? }>({
 			setSkip(false);
 			return;
 		}
-		setList(
-			items.map((item) => ({
-				id: item.id ?? nanoid(),
-				item,
-			})),
-		);
+		setList(items.map((item) => ({ id: item.id ?? nanoid(), item })));
 	}, [items]);
 
 	return (
@@ -65,11 +57,7 @@ export default function Sortable<Item extends { id? }>({
 			{...(props as any)}>
 			{list.map(({ id, item }, index) => (
 				<Fragment key={id}>
-					{renderItem({
-						item,
-						index,
-						handleClass: 'sortable-handle',
-					})}
+					{renderItem({ item, index, handleClass: 'sortable-handle' })}
 				</Fragment>
 			))}
 		</StyledReactSortable>

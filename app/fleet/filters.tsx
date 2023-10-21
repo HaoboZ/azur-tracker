@@ -61,10 +61,7 @@ const searchOptions = [
 	'Hololive',
 	'Venus Vacation',
 	'META',
-].map((label, id) => ({
-	id,
-	label,
-}));
+].map((label, id) => ({ id, label }));
 
 export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const { equipData } = useData<FleetType>();
@@ -113,10 +110,7 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 								inputRef={searchRef}
 								{...params}
 								label='Search'
-								InputProps={{
-									...params.InputProps,
-									startAdornment: <SearchIcon />,
-								}}
+								InputProps={{ ...params.InputProps, startAdornment: <SearchIcon /> }}
 							/>
 						)}
 						onInputChange={(e, value) => globalFilter(value)}
@@ -126,24 +120,12 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 					<Button
 						fullWidth
 						variant='contained'
-						sx={{
-							display: {
-								xs: 'none',
-								sm: 'block',
-							},
-						}}
+						sx={{ display: { xs: 'none', sm: 'block' } }}
 						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
 						More
 					</Button>
 					<IconButton
-						sx={{
-							display: {
-								xs: 'block',
-								sm: 'none',
-							},
-							width: 40,
-							height: 40,
-						}}
+						sx={{ display: { xs: 'block', sm: 'none' }, width: 40, height: 40 }}
 						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
 						<MoreVertIcon />
 					</IconButton>

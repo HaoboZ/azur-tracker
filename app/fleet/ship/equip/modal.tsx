@@ -28,10 +28,7 @@ export default function EquipModal({
 	info,
 	selectedEquip,
 	...data
-}: {
-	info: { ship: Ship; index: number };
-	selectedEquip?: EquipType;
-} & FleetType) {
+}: { info: { ship: Ship; index: number }; selectedEquip?: EquipType } & FleetType) {
 	const { closeModal, events } = useModalControls();
 	const dispatch = useAppDispatch();
 
@@ -60,10 +57,7 @@ export default function EquipModal({
 					(val) => val[1][0],
 					(val) => val[1][1],
 				),
-				(val) => ({
-					...equipIndex[val[0]],
-					tier: <TierIcon tier={val[1][0] + 1} />,
-				}),
+				(val) => ({ ...equipIndex[val[0]], tier: <TierIcon tier={val[1][0] + 1} /> }),
 			) as any[],
 		];
 	}, []);
@@ -92,12 +86,7 @@ export default function EquipModal({
 		const shipEquip = cloneDeep(info.ship.equip);
 		shipEquip[info.index] = equip ? [equip?.id, override, 6] : ([] as any);
 		getTier(data.equippableData, data.equipTierData, data.fleetData[info.ship.id], shipEquip);
-		dispatch(
-			fleetActions.setShip({
-				name: info.ship.id,
-				ship: { equip: shipEquip },
-			}),
-		);
+		dispatch(fleetActions.setShip({ name: info.ship.id, ship: { equip: shipEquip } }));
 		info.ship.equip = shipEquip;
 	});
 

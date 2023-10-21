@@ -58,10 +58,7 @@ export default function EquipDrop() {
 				defaultExpandIcon={<ChevronRightIcon />}
 				expanded={expanded}
 				selected={selected}
-				sx={{
-					[`.${treeItemClasses.content}`]: { py: 1 },
-					'img:hover': { cursor: 'pointer' },
-				}}
+				sx={{ [`.${treeItemClasses.content}`]: { py: 1 }, 'img:hover': { cursor: 'pointer' } }}
 				onNodeToggle={(e, nodeIds) => setExpanded(nodeIds)}
 				onNodeSelect={(e, nodeId) => setSelected(nodeId)}>
 				{map(stages, (value, level) => (
@@ -69,10 +66,7 @@ export default function EquipDrop() {
 						key={level}
 						nodeId={level}
 						label={level}
-						TransitionProps={{
-							mountOnEnter: true,
-							unmountOnExit: true,
-						}}>
+						TransitionProps={{ mountOnEnter: true, unmountOnExit: true }}>
 						{map(value, (value, stage) => (
 							<Box key={stage} py={1} display='flex' flexDirection='row'>
 								<Box display='flex' alignItems='center' width={150} pr={1}>

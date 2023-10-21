@@ -8,37 +8,20 @@ import type { Metadata } from 'next';
 import objectHash from 'object-hash';
 import Fleet from './index';
 
-export const metadata: Metadata = {
-	title: 'Fleet | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Fleet | Azur Lane Tracker' };
 
 export default async function FleetPage() {
 	const { data: fleetCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Fleet',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Fleet', tqx: 'out:csv' } },
 	);
 	const { data: equipCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Equip',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 	);
 	const { data: equippableCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Equippable',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Equippable', tqx: 'out:csv' } },
 	);
 
 	const db = getDatabase(firebaseServerApp);

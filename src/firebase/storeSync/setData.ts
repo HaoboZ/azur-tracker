@@ -18,10 +18,7 @@ export default async function setData(keys: string[]) {
 		(val) => compressToUTF16(JSON.stringify(val)),
 	);
 	const dataRef = ref(db, `users/${auth.currentUser.uid}`);
-	await set(dataRef, {
-		...data,
-		timestamp: state.main.timestamp,
-	});
+	await set(dataRef, { ...data, timestamp: state.main.timestamp });
 
 	store.dispatch(mainActions.setLastTimestamp(state.main.timestamp));
 }

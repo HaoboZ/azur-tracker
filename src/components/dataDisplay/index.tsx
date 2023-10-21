@@ -67,13 +67,7 @@ export function useDataDisplay<TData extends RowData>({
 		getFilteredRowModel: getFilteredRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		getExpandedRowModel: renderSubComponent ? getExpandedRowModel() : undefined,
-		meta: {
-			setData,
-			renderRow,
-			onRowClick,
-			renderSubComponent,
-			...meta,
-		},
+		meta: { setData, renderRow, onRowClick, renderSubComponent, ...meta },
 		...options,
 	});
 }

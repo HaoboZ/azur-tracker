@@ -1,6 +1,7 @@
 'use client';
 import HelpTourButton from '@/components/helpTourButton';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
+import PageTitle from '@/components/page/title';
 import VirtualDisplay from '@/components/virtualDisplay';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -59,12 +60,9 @@ export default function Fleet() {
 	}, [fleet]);
 
 	return (
-		<Page
-			noSsr
-			hideBack
-			title='Fleet Tracker'
-			titleProps={{
-				actions: (
+		<PageContainer noSsr>
+			<PageTitle
+				actions={
 					<HelpTourButton
 						steps={[
 							{
@@ -90,10 +88,11 @@ export default function Fleet() {
 							},
 						]}
 					/>
-				),
-			}}>
+				}>
+				Fleet Tracker
+			</PageTitle>
 			<FleetFilters table={table} />
 			<VirtualDisplay table={table} />
-		</Page>
+		</PageContainer>
 	);
 }

@@ -5,26 +5,16 @@ import { map } from 'lodash';
 import type { Metadata } from 'next';
 import Tier from './index';
 
-export const metadata: Metadata = {
-	title: 'Tier | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Tier | Azur Lane Tracker' };
 
 export default async function TierPage() {
 	const { data } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Tier',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Tier', tqx: 'out:csv' } },
 	);
 
 	return (
-		<DataProvider
-			data={{
-				tierTypesData: map(await csvtojson().fromString(data), 'type'),
-			}}>
+		<DataProvider data={{ tierTypesData: map(await csvtojson().fromString(data), 'type') }}>
 			<Tier />
 		</DataProvider>
 	);

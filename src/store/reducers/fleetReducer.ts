@@ -3,29 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import { importBackup } from './mainReducer';
 
 type State = {
-	ships: Record<
-		string,
-		{
-			lvl: number;
-			love: number;
-			equip: [number, number, number][]; // id, override, tier
-		}
-	>;
-	filter: {
-		levelMax: boolean;
-		equipMax: boolean;
-		level0: boolean;
-	};
+	// id, override, tier
+	ships: Record<string, { lvl: number; love: number; equip: [number, number, number][] }>;
+	filter: { levelMax: boolean; equipMax: boolean; level0: boolean };
 	version: string;
 };
 
 const initialState: State = {
 	ships: {},
-	filter: {
-		levelMax: true,
-		equipMax: true,
-		level0: true,
-	},
+	filter: { levelMax: true, equipMax: true, level0: true },
 	version: undefined,
 };
 
@@ -44,14 +30,7 @@ const fleetSlice = createSlice({
 			{
 				payload,
 			}: PayloadAction<
-				Record<
-					string,
-					{
-						lvl: number;
-						love: number;
-						equip: [number, number, number][]; // id, override, tier
-					}
-				>
+				Record<string, { lvl: number; love: number; equip: [number, number, number][] }>
 			>,
 		) {
 			state.ships = payload;
@@ -62,11 +41,7 @@ const fleetSlice = createSlice({
 				payload,
 			}: PayloadAction<{
 				name: string;
-				ship: {
-					lvl?: number;
-					love?: number;
-					equip?: [number, number, number][];
-				};
+				ship: { lvl?: number; love?: number; equip?: [number, number, number][] };
 			}>,
 		) {
 			state.ships = {
@@ -76,13 +51,7 @@ const fleetSlice = createSlice({
 		},
 		setFilter(
 			state,
-			{
-				payload,
-			}: PayloadAction<{
-				levelMax?: boolean;
-				equipMax?: boolean;
-				level0?: boolean;
-			}>,
+			{ payload }: PayloadAction<{ levelMax?: boolean; equipMax?: boolean; level0?: boolean }>,
 		) {
 			state.filter = { ...state.filter, ...payload };
 		},

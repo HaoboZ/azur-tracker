@@ -34,20 +34,10 @@ export default function VirtualList<TData extends RowData>({ table }: { table: T
 			<ListItem ref={ref} divider data-index={index} disablePadding={Boolean(onRowClick)}>
 				{onRowClick ? (
 					<ListItemButton onClick={() => onRowClick(row, table)}>
-						{renderRow({
-							cells,
-							render,
-							row,
-							table,
-						})}
+						{renderRow({ cells, render, row, table })}
 					</ListItemButton>
 				) : (
-					renderRow({
-						cells,
-						render,
-						row,
-						table,
-					})
+					renderRow({ cells, render, row, table })
 				)}
 			</ListItem>
 		);

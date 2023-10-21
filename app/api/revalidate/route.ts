@@ -15,8 +15,5 @@ export async function POST(request: NextRequest) {
 	revalidatePath('/tier');
 	revalidatePath('/tier/[type]');
 
-	return NextResponse.json({
-		revalidated: true,
-		now: Date.now(),
-	});
+	return NextResponse.json({ revalidated: true, now: Date.now() });
 }

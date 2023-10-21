@@ -1,6 +1,7 @@
 'use client';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
 import { PageLinkComponent } from '@/components/page/link';
+import PageTitle from '@/components/page/title';
 import image from '@/public/images/startScreen.jpg';
 import { useAuth } from '@/src/providers/auth';
 import { Box, Button, Grid } from '@mui/material';
@@ -18,18 +19,19 @@ export default function Main() {
 	const user = useAuth();
 
 	return (
-		<Page
-			hideBack
-			title='Azur Lane Tracker'
-			titleProps={{
-				actions: user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [
-					{
-						name: 'Revalidate',
-						onClick: () =>
-							axios.post(`api/revalidate?secret=${process.env.NEXT_PUBLIC_ADMIN_ID}`),
-					},
-				],
-			}}>
+		<PageContainer noSsr>
+			<PageTitle
+				actions={
+					user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [
+						{
+							name: 'Revalidate',
+							onClick: () =>
+								axios.post(`api/revalidate?secret=${process.env.NEXT_PUBLIC_ADMIN_ID}`),
+						},
+					]
+				}>
+				Azur Lane Tracker
+			</PageTitle>
 			<Box width='100%' height={300} position='relative' mb={2}>
 				<Image fill alt='Start Screen' src={image} style={{ objectFit: 'contain' }} />
 			</Box>
@@ -53,6 +55,6 @@ export default function Main() {
 					</Grid>
 				)}
 			</Grid>
-		</Page>
+		</PageContainer>
 	);
 }

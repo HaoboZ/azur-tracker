@@ -1,7 +1,8 @@
 'use client';
 import AsyncButton from '@/components/loaders/asyncButton';
-import Page from '@/components/page';
+import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
+import PageTitle from '@/components/page/title';
 import getData from '@/src/firebase/storeSync/getData';
 import setData from '@/src/firebase/storeSync/setData';
 import { useAuth } from '@/src/providers/auth';
@@ -45,7 +46,8 @@ export default function Settings() {
 	const authButton = useAuthButton();
 
 	return (
-		<Page noSsr hideBack title='Settings'>
+		<PageContainer noSsr>
+			<PageTitle>Settings</PageTitle>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				<ListItem>
 					<ListItemText classes={{ primary: 'longText' }}>
@@ -85,9 +87,7 @@ export default function Settings() {
 								onClick={async () => {
 									if (user?.emailVerified) {
 										await getData(['event', 'research', 'fleet']);
-										enqueueSnackbar('Data Successfully Loaded', {
-											variant: 'success',
-										});
+										enqueueSnackbar('Data Successfully Loaded', { variant: 'success' });
 									} else {
 										enqueueSnackbar('Sign In to Load', { variant: 'info' });
 									}
@@ -192,6 +192,6 @@ export default function Settings() {
 			<Typography variant='subtitle2' textAlign='right' px={2}>
 				v{packageJson.version}
 			</Typography>
-		</Page>
+		</PageContainer>
 	);
 }

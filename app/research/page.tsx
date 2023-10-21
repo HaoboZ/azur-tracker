@@ -5,19 +5,12 @@ import { groupBy, pick } from 'lodash';
 import type { Metadata } from 'next';
 import Research from './index';
 
-export const metadata: Metadata = {
-	title: 'Research | Azur Lane Tracker',
-};
+export const metadata: Metadata = { title: 'Research | Azur Lane Tracker' };
 
 export default async function ResearchPage() {
 	const { data: researchCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Research',
-				tqx: 'out:csv',
-			},
-		},
+		{ params: { sheet: 'Research', tqx: 'out:csv' } },
 	);
 
 	return (

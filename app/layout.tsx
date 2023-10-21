@@ -19,16 +19,10 @@ export const metadata: Metadata = {
 	description: packageJson.description,
 	keywords: packageJson.keywords?.join(', '),
 	authors: packageJson.author as any,
-	appleWebApp: {
-		capable: true,
-		statusBarStyle: 'black-translucent',
-	},
+	appleWebApp: { capable: true, statusBarStyle: 'black-translucent' },
 };
 
-const roboto = Roboto({
-	subsets: ['latin'],
-	weight: ['300', '400', '500', '700'],
-});
+const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (

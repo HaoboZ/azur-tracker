@@ -49,12 +49,7 @@ export default function EventFields({ time, neededPoints }: { time: Date; needed
 						endAdornment: <InputAdornment position='end'>Points</InputAdornment>,
 					}}
 					value={event.shopExpectedCost}
-					onClick={() =>
-						showModal(ShopModal, {
-							id: 'shop',
-							props: { eventShopData },
-						})
-					}
+					onClick={() => showModal(ShopModal, { id: 'shop', props: { eventShopData } })}
 				/>
 			</Grid>
 			<Grid item sm={3} xs={6}>
@@ -84,9 +79,7 @@ export default function EventFields({ time, neededPoints }: { time: Date; needed
 					label='Current Points'
 					inputMode='numeric'
 					className='numberInput'
-					InputProps={{
-						endAdornment: <InputAdornment position='end'>Points</InputAdornment>,
-					}}
+					InputProps={{ endAdornment: <InputAdornment position='end'>Points</InputAdornment> }}
 					value={event.points}
 					onChange={({ target }) => dispatch(eventActions.setPoints(parseInt(target.value)))}
 					onFocus={({ target }) => target.select()}

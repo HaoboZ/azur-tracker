@@ -3,10 +3,7 @@ import { createAction, createSlice } from '@reduxjs/toolkit';
 import type { User } from 'firebase/auth';
 
 export const importBackup = createAction('import', (key: string, data: any) => ({
-	payload: {
-		key,
-		data,
-	},
+	payload: { key, data },
 }));
 
 type State = {
@@ -33,10 +30,7 @@ const mainSlice = createSlice({
 			state.user = payload;
 		},
 		setViewed(state, { payload }: PayloadAction<string>) {
-			state.unViewed = {
-				...state.unViewed,
-				[payload]: false,
-			};
+			state.unViewed = { ...state.unViewed, [payload]: false };
 		},
 		setAutoSync(state, { payload }: PayloadAction<boolean>) {
 			state.autoSync = payload;
@@ -51,10 +45,7 @@ const mainSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(importBackup, (state: State, { payload }) => ({
 			...state,
-			unViewed: {
-				...state.unViewed,
-				[payload.key]: true,
-			},
+			unViewed: { ...state.unViewed, [payload.key]: true },
 		}));
 	},
 });

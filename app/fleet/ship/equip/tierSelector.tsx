@@ -20,12 +20,7 @@ export default function EquipTierSelector({
 			keepMounted
 			anchorEl={anchorEl}
 			open={Boolean(anchorEl)}
-			PaperProps={{
-				sx: {
-					maxHeight: 400,
-					width: 300,
-				},
-			}}
+			PaperProps={{ sx: { maxHeight: 400, width: 300 } }}
 			onClose={closeAnchor}>
 			{equipList.map((equip) => (
 				<MenuItem

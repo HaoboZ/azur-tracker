@@ -10,9 +10,7 @@ import { Fragment, useState } from 'react';
 export default function HelpTourButton({
 	buttonProps,
 	...props
-}: {
-	buttonProps?: IconButtonProps;
-} & Omit<StepsProps, 'initialStep' | 'onExit'>) {
+}: { buttonProps?: IconButtonProps } & Omit<StepsProps, 'initialStep' | 'onExit'>) {
 	const [tourOpen, setTourOpen] = useState(false);
 
 	return (
@@ -22,10 +20,7 @@ export default function HelpTourButton({
 				initialStep={0}
 				onExit={() => setTourOpen(false)}
 				{...props}
-				options={{
-					doneLabel: 'Finish',
-					...props.options,
-				}}
+				options={{ doneLabel: 'Finish', ...props.options }}
 			/>
 			<IconButton
 				id='help'

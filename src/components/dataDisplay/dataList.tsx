@@ -59,12 +59,7 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 						: (e, expanded) => row.toggleExpanded(expanded)
 				}>
 				<AccordionSummary className='listItem' expandIcon={<ExpandMoreIcon />}>
-					{renderRow({
-						cells,
-						render,
-						row,
-						table,
-					})}
+					{renderRow({ cells, render, row, table })}
 				</AccordionSummary>
 				<AccordionDetails>{renderSubComponent(row, table)}</AccordionDetails>
 			</Accordion>
@@ -72,20 +67,10 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 			<ListItem key={row.id} divider disablePadding={Boolean(onRowClick)}>
 				{onRowClick ? (
 					<ListItemButton onClick={() => onRowClick(row, table)}>
-						{renderRow({
-							cells,
-							render,
-							row,
-							table,
-						})}
+						{renderRow({ cells, render, row, table })}
 					</ListItemButton>
 				) : (
-					renderRow({
-						cells,
-						render,
-						row,
-						table,
-					})
+					renderRow({ cells, render, row, table })
 				)}
 			</ListItem>
 		);

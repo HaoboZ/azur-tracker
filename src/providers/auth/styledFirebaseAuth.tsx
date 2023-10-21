@@ -5,11 +5,7 @@ import 'firebaseui/dist/firebaseui.css';
 import { useEffect, useRef, useState } from 'react';
 import { useAsyncEffect } from 'rooks';
 
-type Props = {
-	uiConfig: auth.Config;
-	firebaseAuth: Auth;
-	uiCallback?: (ui: auth.AuthUI) => void;
-};
+type Props = { uiConfig: auth.Config; firebaseAuth: Auth; uiCallback?: (ui: auth.AuthUI) => void };
 
 export default function StyledFirebaseAuth({ uiConfig, firebaseAuth, uiCallback }: Props) {
 	const [userSignedIn, setUserSignedIn] = useState(false);

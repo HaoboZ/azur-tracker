@@ -7,16 +7,12 @@ const bundleAnalyzer = require('@next/bundle-analyzer');
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+	swcMinify: true,
 	headers: async () => [
 		{
 			// matching all API routes
 			source: '/api/:path*',
-			headers: [
-				{
-					key: 'Access-Control-Allow-Origin',
-					value: '*',
-				},
-			],
+			headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
 		},
 	],
 	images: {
