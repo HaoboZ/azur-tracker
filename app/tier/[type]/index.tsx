@@ -26,7 +26,7 @@ const SortGrid = forwardRef<HTMLDivElement, { children: ReactNode }>(({ children
 		component={Paper}
 		spacing={1}
 		overflow='hidden'
-		minHeight={110}
+		minHeight={74}
 		pb={1}
 		mb={1}>
 		{children}
@@ -119,8 +119,8 @@ export default function TierType() {
 								<Image
 									src={`https://azurlane.netojuu.com/images/${item.image}`}
 									alt={item.name}
-									width={100}
-									height={100}
+									width={50}
+									height={50}
 									className={`color-${rarityColors[item.rarity]} ${handleClass}`}
 								/>
 							</Grid>
@@ -144,8 +144,8 @@ export default function TierType() {
 										<Image
 											src={`https://azurlane.netojuu.com/images/${item.image}`}
 											alt={item.name}
-											width={100}
-											height={100}
+											width={50}
+											height={50}
 											className={`color-${rarityColors[item.rarity]} ${handleClass}`}
 										/>
 									</Grid>

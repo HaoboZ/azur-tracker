@@ -44,8 +44,8 @@ export default function EquipmentTier() {
 											key={equipId}
 											src={`https://azurlane.netojuu.com/images/${equip.image}`}
 											alt={equip.name}
-											height={40}
-											width={40}
+											height={50}
+											width={50}
 											className={`color-${rarityColors[equip.rarity]}`}
 										/>
 									</Grid>

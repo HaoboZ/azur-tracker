@@ -1,7 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const nextPWA = require('@ducanh2912/next-pwa').default;
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const bundleAnalyzer = require('@next/bundle-analyzer');
+import nextPWA from '@ducanh2912/next-pwa';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 /**
  * @type {import('next').NextConfig}
@@ -17,12 +15,7 @@ const nextConfig = {
 	],
 	images: {
 		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'azurlane.netojuu.com',
-				port: '',
-				pathname: '/images/**',
-			},
+			{ protocol: 'https', hostname: 'azurlane.netojuu.com', port: '', pathname: '/images/**' },
 		],
 	},
 };
@@ -35,4 +28,4 @@ const plugins = [
 	}),
 ];
 
-module.exports = plugins.reduceRight((acc, plugin) => plugin(acc), nextConfig);
+export default plugins.reduceRight((acc, plugin) => plugin(acc), nextConfig);
