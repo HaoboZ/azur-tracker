@@ -5,7 +5,7 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
-	"version": "8.1.4",
+	"version": "8.1.5",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -18,7 +18,7 @@
 		"icons": "cordova-res android --skip-config --copy --icon-source ./public/icon.png --splash-source ./public/splash.png",
 		"android": "cap open android"
 	},
-	"packageManager": "yarn@4.0.0-rc.53",
+	"packageManager": "yarn@4.0.0",
 	"dependencies": {
 		"@capacitor/app": "5.0.6",
 		"@capacitor/core": "5.5.0",
@@ -36,7 +36,7 @@
 		"@reduxjs/toolkit": "1.9.7",
 		"@tanem/react-nprogress": "5.0.51",
 		"@tanstack/react-table": "8.10.7",
-		"@tanstack/react-virtual": "3.0.0-beta.66",
+		"@tanstack/react-virtual": "3.0.0-beta.68",
 		"@vercel/analytics": "1.1.1",
 		"axios": "1.5.1",
 		"csvtojson": "2.0.10",
