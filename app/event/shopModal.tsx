@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
-import { keyBy, mapValues } from 'lodash';
+import { indexBy, mapObject, path } from 'rambdax';
 import { useMemo, useState } from 'react';
 import type { EventType } from './type';
 
@@ -95,7 +95,7 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 			onSave={() =>
 				dispatch(
 					eventActions.setShop({
-						shop: mapValues(keyBy(shop, 'name'), 'wanted'),
+						shop: mapObject(path('wanted'), indexBy('name', shop)),
 						total: expectedCost,
 					}),
 				)

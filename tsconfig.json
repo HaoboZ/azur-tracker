@@ -49,9 +49,9 @@
 	"include": [
 		"next-env.d.ts",
 		".next/types/**/*.ts",
-		"**/*.ts",
+		"**/*.*ts",
 		"**/*.tsx",
-		"**/*.js",
+		"**/*.*js",
 		"**/*.jsx"
 	]
 }

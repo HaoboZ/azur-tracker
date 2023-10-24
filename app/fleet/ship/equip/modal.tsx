@@ -14,8 +14,8 @@ import {
 	Switch,
 	Typography,
 } from '@mui/material';
-import { cloneDeep, keyBy, map, sortBy } from 'lodash';
 import Image from 'next/image';
+import { clone, indexBy, sortByProps } from 'rambdax';
 import { Fragment, useMemo, useState } from 'react';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
@@ -32,7 +32,7 @@ export default function EquipModal({
 	const { closeModal, events } = useModalControls();
 	const dispatch = useAppDispatch();
 
-	const equipIndex = useMemo(() => keyBy(data.equipData, 'id'), []);
+	const equipIndex = useMemo(() => indexBy('id', data.equipData), []);
 
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [equipList, equipListIndex, tierList] = useMemo(() => {
@@ -51,14 +51,10 @@ export default function EquipModal({
 				res[item.id] = item;
 				return res;
 			}, {}),
-			map(
-				sortBy(
-					Object.entries(tierList),
-					(val) => val[1][0],
-					(val) => val[1][1],
-				),
-				(val) => ({ ...equipIndex[val[0]], tier: <TierIcon tier={val[1][0] + 1} /> }),
-			) as any[],
+			sortByProps(['1.0', '1.1'], Object.entries(tierList)).map((val) => ({
+				...equipIndex[val[0]],
+				tier: <TierIcon tier={val[1][0] + 1} />,
+			})),
 		];
 	}, []);
 
@@ -83,7 +79,7 @@ export default function EquipModal({
 		)
 			return;
 
-		const shipEquip = cloneDeep(info.ship.equip);
+		const shipEquip = clone(info.ship.equip);
 		shipEquip[info.index] = equip ? [equip?.id, override, 6] : ([] as any);
 		getTier(data.equippableData, data.equipTierData, data.fleetData[info.ship.id], shipEquip);
 		dispatch(fleetActions.setShip({ name: info.ship.id, ship: { equip: shipEquip } }));

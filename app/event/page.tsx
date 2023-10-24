@@ -1,8 +1,8 @@
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { pickBy } from 'lodash';
 import type { Metadata } from 'next';
+import { filterObject } from 'rambdax';
 import Event from './index';
 
 export const metadata: Metadata = { title: 'Event | Azur Lane Tracker' };
@@ -26,9 +26,9 @@ export default async function EventPage() {
 			data={{
 				eventData: (await csvtojson().fromString(eventCSV))[0],
 				eventShopData: await csvtojson().fromString(eventShopCSV),
-				eventStagesData: pickBy(
-					(await csvtojson().fromString(eventStagesCSV))[0],
+				eventStagesData: filterObject(
 					(val) => val !== '_',
+					(await csvtojson().fromString(eventStagesCSV))[0],
 				),
 			}}>
 			<Event />

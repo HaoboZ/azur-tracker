@@ -5,14 +5,14 @@ import { Star as StarIcon } from '@mui/icons-material';
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
-import { isNumber, map, max, min } from 'lodash';
+import { path } from 'rambdax';
 import { Fragment, useMemo } from 'react';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';
 import { AffinityIcons, TierIcon } from './tierIcon';
 import type { FleetType, Ship } from './type';
 
-declare module '@tanstack/table-core' {
+declare module '@tanstack/react-table' {
 	interface FilterMeta {
 		equip: (false | { tier?; major?; minor? })[];
 	}
@@ -111,10 +111,18 @@ export default function useFleetTable(data) {
 				cell: ({ getValue, row, column }) => {
 					const value = getValue();
 					if (row.columnFiltersMeta[column.id]) {
-						const majorCount = max(map(row.columnFiltersMeta[column.id]?.equip, 'major'));
-						if (isNumber(majorCount)) return `↑${majorCount}`;
-						const minorCount = max(map(row.columnFiltersMeta[column.id]?.equip, 'minor'));
-						if (isNumber(minorCount)) return `+${minorCount}`;
+						const majors =
+							row.columnFiltersMeta[column.id]?.equip
+								.map(path<number>('major'))
+								.filter(Number.isFinite) ?? [];
+						const majorCount = Math.max(...majors);
+						if (Number.isFinite(majorCount)) return `↑${majorCount}`;
+						const minors =
+							row.columnFiltersMeta[column.id]?.equip
+								.map(path<number>('minor'))
+								.filter(Number.isFinite) ?? [];
+						const minorCount = Math.max(...minors);
+						if (Number.isFinite(minorCount)) return `+${minorCount}`;
 						return 'EQUIPPED';
 					}
 					if (!value?.some((equip) => equip[2])) return null;
@@ -122,9 +130,13 @@ export default function useFleetTable(data) {
 				},
 				meta: {
 					props: (cell) => {
-						const equip = cell.row.columnFiltersMeta[cell.column.id]?.equip;
+						const equip =
+							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(Number.isFinite) ??
+							[];
 						return {
-							className: equip ? `color-${tierColors[min(map(equip, 'tier'))]}` : undefined,
+							className: equip
+								? `color-${tierColors[Math.min(...equip.map(path<number>('tier')))]}`
+								: undefined,
 						};
 					},
 				},

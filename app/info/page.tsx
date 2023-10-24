@@ -3,8 +3,8 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
-import { difference, groupBy, keyBy, map, mapValues, sortBy, union } from 'lodash';
 import type { Metadata } from 'next';
+import { difference, groupBy, map, path, sortBy, sortByProps, union } from 'rambdax';
 import Info from './index';
 
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
@@ -19,7 +19,7 @@ export default async function InfoPage() {
 		{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 	);
 
-	const farmData = sortBy(await csvtojson().fromString(farmCSV), ({ order }) => +order).map(
+	const farmData = sortBy(({ order }) => +order, await csvtojson().fromString(farmCSV)).map(
 		({ id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, ...props }) => ({
 			...props,
 			ids: [id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10].filter(Boolean),
@@ -31,26 +31,28 @@ export default async function InfoPage() {
 	for (const type of Object.values(tiers)) {
 		for (const [tier, equips] of Object.entries(type)) {
 			if (tier === 'N') continue;
-			equipTier[tier] = union(equipTier[tier], equips);
+			equipTier[tier] = union(equipTier[tier] ?? [], equips);
 		}
 	}
-	const equipIndex = keyBy(await csvtojson().fromString(equipCSV), 'id');
 
 	let found = [];
 	return (
 		<DataProvider
 			data={{
-				farmData: mapValues(groupBy(farmData, 'origin'), (value) =>
-					mapValues(groupBy(value, 'level'), (value) =>
-						mapValues(groupBy(value, 'stage'), (value) => value[0].ids),
-					),
+				farmData: map(
+					(value: any[]) =>
+						map(
+							(value: any[]) => map((value) => value[0].ids, groupBy(path('stage'), value)),
+							groupBy(path('level'), value),
+						),
+					groupBy(path('origin'), farmData),
 				),
-				equipTier: map(equipTier, (value) => {
-					const result = sortBy(difference(value, found));
+				equipTier: equipTier.map((value) => {
+					const result = difference(value, found).sort();
 					found = union(found, value);
 					return result;
 				}),
-				equipList: sortBy(equipIndex, 'type', 'id'),
+				equipList: sortByProps(['type', 'id'], await csvtojson().fromString(equipCSV)),
 			}}>
 			<Info />
 		</DataProvider>

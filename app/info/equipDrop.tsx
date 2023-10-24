@@ -6,8 +6,8 @@ import {
 } from '@mui/icons-material';
 import { Box, Button, Stack } from '@mui/material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/x-tree-view';
-import { each, keyBy, map, mapValues } from 'lodash';
 import Image from 'next/image';
+import { forEach, indexBy, map } from 'rambdax';
 import { useEffect, useMemo, useState } from 'react';
 import { rarityColors } from '../colors';
 import EquipFilter from '../fleet/ship/equip/filter';
@@ -22,26 +22,27 @@ export default function EquipDrop() {
 
 	const [equip, setEquip] = useState<EquipType>(null);
 
-	const equipIndex = useMemo(() => keyBy(equipList, 'id'), []);
-	const treeKeys = useMemo(() => map(farmData, (_, level) => level), []);
+	const equipIndex = useMemo(() => indexBy('id', equipList), []);
 
 	const stages = useMemo(
 		() =>
-			mapValues(farmData, (value) => {
+			map((value) => {
 				const stages: Record<string, number[]> = {};
-				each(value, (value, stageMajor) =>
-					each(value, (value, stageMinor) => {
-						if (equip ? value.includes(equip.id) : true)
-							stages[`${stageMajor}${stageMinor}`] = value;
-					}),
+				forEach(
+					(value, stageMajor) =>
+						forEach((value, stageMinor) => {
+							if (equip ? value.includes(equip.id) : true)
+								stages[`${stageMajor}${stageMinor}`] = value;
+						}, value),
+					value,
 				);
-				return Object.keys(stages).length ? stages : null;
-			}),
+				return Object.keys(stages).length ? stages : {};
+			}, farmData),
 		[equip],
 	);
 
 	useEffect(() => {
-		setExpanded(equip ? treeKeys : []);
+		setExpanded(equip ? Object.keys(farmData) : []);
 	}, [equip]);
 
 	return (
@@ -50,7 +51,7 @@ export default function EquipDrop() {
 			<Button
 				fullWidth
 				variant='outlined'
-				onClick={() => setExpanded(expanded.length ? [] : treeKeys)}>
+				onClick={() => setExpanded(expanded.length ? [] : Object.keys(farmData))}>
 				{expanded.length ? 'Collapse' : 'Expand'} All
 			</Button>
 			<TreeView
@@ -61,19 +62,19 @@ export default function EquipDrop() {
 				sx={{ [`.${treeItemClasses.content}`]: { py: 1 }, 'img:hover': { cursor: 'pointer' } }}
 				onNodeToggle={(e, nodeIds) => setExpanded(nodeIds)}
 				onNodeSelect={(e, nodeId) => setSelected(nodeId)}>
-				{map(stages, (value, level) => (
+				{Object.entries(stages).map(([level, value]) => (
 					<TreeItem
 						key={level}
 						nodeId={level}
 						label={level}
 						TransitionProps={{ mountOnEnter: true, unmountOnExit: true }}>
-						{map(value, (value, stage) => (
+						{Object.entries(value).map(([stage, value]) => (
 							<Box key={stage} py={1} display='flex' flexDirection='row'>
 								<Box display='flex' alignItems='center' width={150} pr={1}>
 									{stage}
 								</Box>
 								<Stack direction='row' spacing={1}>
-									{map(value, (equipId) => {
+									{value.map((equipId) => {
 										const equip = equipIndex[equipId];
 										return (
 											<Image

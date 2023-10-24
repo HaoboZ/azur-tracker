@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { debounce } from 'lodash';
+import { debounce } from 'rambdax';
 import { loadState, saveState } from './persist';
 import event from './reducers/eventReducer';
 import fleet from './reducers/fleetReducer';
@@ -12,7 +12,7 @@ export const store = configureStore({
 	preloadedState: loadState(),
 });
 
-store.subscribe(debounce(() => saveState(store.getState()), 500));
+store.subscribe(debounce(() => saveState(store.getState()), 500) as any);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

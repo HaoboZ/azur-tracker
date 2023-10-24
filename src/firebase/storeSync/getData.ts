@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import { get, getDatabase, ref } from 'firebase/database';
-import { isEqual } from 'lodash';
 import { decompressFromUTF16 } from 'lz-string';
+import { equals } from 'rambdax';
 import { store } from '../../store';
 import { importBackup, mainActions } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';
@@ -20,7 +20,7 @@ export default async function getData(keys: string[]) {
 	const state = store.getState();
 	keys.forEach((key) => {
 		const newData = JSON.parse(decompressFromUTF16(data[key]));
-		if (!isEqual(state[key], newData)) {
+		if (!equals(state[key], newData)) {
 			store.dispatch(importBackup(key, newData));
 		}
 	});

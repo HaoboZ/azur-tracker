@@ -1,8 +1,8 @@
 import PageSection from '@/components/page/section';
 import { useData } from '@/src/providers/data';
 import { Box, Grid, Stack, TextField } from '@mui/material';
-import { keyBy, map } from 'lodash';
 import Image from 'next/image';
+import { indexBy } from 'rambdax';
 import { useMemo, useState } from 'react';
 import { rarityColors } from '../colors';
 import { TierIcon } from '../fleet/tierIcon';
@@ -13,7 +13,7 @@ export default function EquipmentTier() {
 
 	const [search, setSearch] = useState('');
 
-	const equipIndex = useMemo(() => keyBy(equipList, 'id'), []);
+	const equipIndex = useMemo(() => indexBy('id', equipList), []);
 
 	const lowercaseSearch = search.toLowerCase();
 
@@ -30,7 +30,7 @@ export default function EquipmentTier() {
 					<Box key={index}>
 						<TierIcon tier={index + 1} />
 						<Grid container spacing={1}>
-							{map(value, (equipId) => {
+							{value.map((equipId) => {
 								const equip = equipIndex[equipId];
 								if (
 									lowercaseSearch &&
@@ -39,7 +39,7 @@ export default function EquipmentTier() {
 									return;
 
 								return (
-									<Grid item>
+									<Grid key={equipId} item>
 										<Image
 											key={equipId}
 											src={`https://azurlane.netojuu.com/images/${equip.image}`}

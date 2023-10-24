@@ -1,6 +1,5 @@
 import { Checkbox, ListItemIcon } from '@mui/material';
-import type { Row } from '@tanstack/react-table';
-import type { DisplayColumnDef } from '@tanstack/table-core';
+import type { DisplayColumnDef, Row } from '@tanstack/react-table';
 
 export const selectColumn = () =>
 	({

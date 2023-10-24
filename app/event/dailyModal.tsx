@@ -9,8 +9,8 @@ import { eventActions } from '@/src/store/reducers/eventReducer';
 import { Grid, ListItemSecondaryAction } from '@mui/material';
 import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
-import { cloneDeep } from 'lodash';
 import { nanoid } from 'nanoid';
+import { clone } from 'rambdax';
 import { Fragment, useMemo, useState } from 'react';
 
 type Daily = { id: string; name: string; amount: number };
@@ -20,7 +20,7 @@ export default function DailyModal() {
 	const _daily = useAppSelector(({ event }) => event.daily);
 	const dispatch = useAppDispatch();
 
-	const [daily, setDaily] = useState(() => cloneDeep(_daily));
+	const [daily, setDaily] = useState(() => clone(_daily));
 
 	// total points gained daily
 	const dailyTotal = useMemo(
@@ -77,9 +77,9 @@ export default function DailyModal() {
 		columns,
 		getRowId: ({ id }) => id,
 		enableSorting: false,
-		renderRow: ({ cells, render, row, table }) => (
+		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
-				{sortIcon()}
+				{sortIcon(handleProps)}
 				<Grid container spacing={2}>
 					<Grid item xs={6}>
 						{render(cells.name)}

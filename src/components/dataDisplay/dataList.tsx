@@ -12,28 +12,8 @@ import {
 } from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { keyBy, map } from 'lodash';
-import type { ReactNode } from 'react';
-import { forwardRef } from 'react';
+import { indexBy, path } from 'rambdax';
 import Sortable from '../sortable';
-
-const SortList = forwardRef<HTMLUListElement, { children: ReactNode }>(
-	({ children, ...props }, ref) => (
-		<List
-			ref={ref}
-			dense
-			disablePadding
-			sx={{
-				[`.${accordionSummaryClasses.content}`]: {
-					m: '0 !important',
-					[`.${listItemSecondaryActionClasses.root}`]: { right: 36 },
-				},
-			}}
-			{...props}>
-			{children}
-		</List>
-	),
-);
 
 export default function DataList<TData extends RowData>({ table }: { table: Table<TData> }) {
 	const { rows } = table.getRowModel();
@@ -42,16 +22,17 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 
 	const { renderRow, onRowClick, renderSubComponent, setData } = table.options.meta;
 
-	const columns = keyBy(table.getAllColumns(), 'id');
+	const columns = indexBy('id', table.getAllColumns());
 
-	const renderRowItem = (row: Row<TData>) => {
-		const cells = keyBy(row.getVisibleCells(), 'column.id');
+	const renderRowItem = (row: Row<TData>, containerProps?, handleProps?) => {
+		const cells = indexBy('column.id', row.getVisibleCells());
 		const render = (cell: Cell<TData, unknown>) =>
 			flexRender(cell.column.columnDef.cell, cell.getContext()) as any;
 
 		return renderSubComponent ? (
 			<Accordion
 				key={row.id}
+				{...containerProps}
 				expanded={row.getIsExpanded()}
 				onChange={
 					onRowClick
@@ -59,31 +40,42 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 						: (e, expanded) => row.toggleExpanded(expanded)
 				}>
 				<AccordionSummary className='listItem' expandIcon={<ExpandMoreIcon />}>
-					{renderRow({ cells, render, row, table })}
+					{renderRow({ cells, render, row, table, handleProps })}
 				</AccordionSummary>
 				<AccordionDetails>{renderSubComponent(row, table)}</AccordionDetails>
 			</Accordion>
 		) : (
-			<ListItem key={row.id} divider disablePadding={Boolean(onRowClick)}>
+			<ListItem key={row.id} {...containerProps} divider disablePadding={Boolean(onRowClick)}>
 				{onRowClick ? (
 					<ListItemButton onClick={() => onRowClick(row, table)}>
-						{renderRow({ cells, render, row, table })}
+						{renderRow({ cells, render, row, table, handleProps })}
 					</ListItemButton>
 				) : (
-					renderRow({ cells, render, row, table })
+					renderRow({ cells, render, row, table, handleProps })
 				)}
 			</ListItem>
 		);
 	};
 
-	return columns._sort ? (
-		<Sortable
-			items={rows}
-			setItems={(rows) => setData(map(rows, 'original'))}
-			renderItem={({ item }) => renderRowItem(item)}
-			tag={SortList}
-		/>
-	) : (
-		<SortList>{rows.map(renderRowItem)}</SortList>
+	return (
+		<List
+			dense
+			disablePadding
+			sx={{
+				[`.${accordionSummaryClasses.content}`]: {
+					m: '0 !important',
+					[`.${listItemSecondaryActionClasses.root}`]: { right: 36 },
+				},
+			}}>
+			{columns._sort ? (
+				<Sortable
+					items={rows}
+					setItems={(rows) => setData(rows.map(path('original')))}
+					renderItem={renderRowItem}
+				/>
+			) : (
+				rows.map((row) => renderRowItem(row))
+			)}
+		</List>
 	);
 }

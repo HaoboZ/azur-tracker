@@ -105,9 +105,9 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 		columns,
 		getRowId: ({ id }) => id,
 		enableSorting: false,
-		renderRow: ({ cells, render, row, table }) => (
+		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
-				{sortIcon()}
+				{sortIcon(handleProps)}
 				<Grid container spacing={2}>
 					<Grid item xs>
 						Points/Run

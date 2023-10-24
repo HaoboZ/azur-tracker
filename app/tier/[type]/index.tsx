@@ -2,15 +2,14 @@
 import Loading from '@/components/loaders/loading';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
-import Sortable from '@/components/sortable';
+import MultiSortable from '@/components/sortable/multi';
 import firebaseClientApp from '@/src/firebase/client';
 import { useData } from '@/src/providers/data';
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Stack } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
-import { difference, keyBy, map } from 'lodash';
 import Image from 'next/image';
-import type { ReactNode } from 'react';
-import { forwardRef, useEffect, useMemo, useState } from 'react';
+import { difference, indexBy, map, omit, path } from 'rambdax';
+import { useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
 import { rarityColors } from '../../colors';
 import Error from '../../error';
@@ -19,68 +18,41 @@ import type { TierType } from '../type';
 
 const db = getDatabase(firebaseClientApp);
 
-const SortGrid = forwardRef<HTMLDivElement, { children: ReactNode }>(({ children }, ref) => (
-	<Grid
-		ref={ref}
-		container
-		component={Paper}
-		spacing={1}
-		overflow='hidden'
-		minHeight={74}
-		pb={1}
-		mb={1}>
-		{children}
-	</Grid>
-));
-
 export default function TierType() {
 	const { params, equipData } = useData<TierType>();
-	const equipIndex = useMemo(() => keyBy(equipData, 'id'), []);
+	const equipIndex = useMemo(() => indexBy('id', equipData), []);
 
 	const tierRef = ref(db, `tiers/${decodeURIComponent(params.type)}`);
 	const [data, loading, error] = useObjectVal<Record<string, number[]>>(tierRef);
 
 	const [changed, setChanged] = useState(false);
-	const [unTiered, setUnTiered] = useState([]);
-	const tier0 = useState<EquipType[]>([]);
-	const tier1 = useState<EquipType[]>([]);
-	const tier2 = useState<EquipType[]>([]);
-	const tier3 = useState<EquipType[]>([]);
-	const tier4 = useState<EquipType[]>([]);
-	const tierN = useState<EquipType[]>([]);
+	const [tiers, setTiers] = useState<Record<string, EquipType[]>>({
+		'unTiered': [],
+		'0': [],
+		'1': [],
+		'2': [],
+		'3': [],
+		'4': [],
+		'N': [],
+	});
 
 	useEffect(() => {
 		if (loading || error) return;
-		let equipIds = map(equipData, 'id');
-		[
-			{ tier: tier0, dataId: '0' },
-			{ tier: tier1, dataId: '1' },
-			{ tier: tier2, dataId: '2' },
-			{ tier: tier3, dataId: '3' },
-			{ tier: tier4, dataId: '4' },
-			{ tier: tierN, dataId: 'N' },
-		].map(({ tier, dataId }) => {
-			if (!data?.[dataId]) return;
-			tier[1](data[dataId].map((id) => equipIndex[id]));
-			equipIds = difference(equipIds, data[dataId]);
-		});
-		setUnTiered(equipIds.map((id) => equipIndex[id]));
+		const tiers = map((ids: number[]) => map((id) => equipIndex[id], ids), data);
+		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
+		setTiers(tiers);
 	}, [loading, error]);
 
-	useEffect(
-		() => () => {
-			if (!changed) return;
-			set(tierRef, {
-				0: map(tier0[0], 'id'),
-				1: map(tier1[0], 'id'),
-				2: map(tier2[0], 'id'),
-				3: map(tier3[0], 'id'),
-				4: map(tier4[0], 'id'),
-				N: map(tierN[0], 'id'),
-			}).then();
-		},
-		[],
-	);
+	// useWillUnmount(async () => {
+	// 	if (!changed) return;
+	// 	await set(
+	// 		tierRef,
+	// 		map(
+	// 			(equips) => map(path('id'), equips),
+	// 			omit<Record<string, EquipType[]>>('unTiered', tiers),
+	// 		),
+	// 	);
+	// });
 
 	if (loading) return <Loading />;
 	if (error) return <Error error={error} />;
@@ -92,14 +64,13 @@ export default function TierType() {
 					{
 						name: 'Save',
 						onClick: async () => {
-							await set(tierRef, {
-								0: map(tier0[0], 'id'),
-								1: map(tier1[0], 'id'),
-								2: map(tier2[0], 'id'),
-								3: map(tier3[0], 'id'),
-								4: map(tier4[0], 'id'),
-								N: map(tierN[0], 'id'),
-							});
+							await set(
+								tierRef,
+								map(
+									(equips) => map(path('id'), equips),
+									omit<Record<string, EquipType[]>>('unTiered', tiers),
+								),
+							);
 							setChanged(false);
 						},
 						buttonProps: { disabled: !changed },
@@ -107,54 +78,42 @@ export default function TierType() {
 				]}>
 				{decodeURIComponent(params.type)}
 			</PageTitle>
-			<Grid container spacing={2}>
-				<Grid item xs={6}>
-					<Sortable<EquipType>
-						group='tier'
-						items={unTiered}
-						setItems={setUnTiered}
-						tag={SortGrid}
-						renderItem={({ item, handleClass }) => (
-							<Grid item>
-								<Image
-									src={`https://azurlane.netojuu.com/images/${item.image}`}
-									alt={item.name}
-									width={50}
-									height={50}
-									className={`color-${rarityColors[item.rarity]} ${handleClass}`}
-								/>
-							</Grid>
-						)}
-					/>
-				</Grid>
-				<Grid item xs={6}>
-					{[tier0, tier1, tier2, tier3, tier4, tierN].map(([tier, setTier], index) => (
-						<Box key={index}>
-							<Typography mb={2}>Tier {index === 5 ? 'N' : index}</Typography>
-							<Sortable<EquipType>
-								group='tier'
-								items={tier}
-								setItems={(items) => {
-									setTier(items);
-									setChanged(true);
-								}}
-								tag={SortGrid}
-								renderItem={({ item, handleClass }) => (
-									<Grid item>
-										<Image
-											src={`https://azurlane.netojuu.com/images/${item.image}`}
-											alt={item.name}
-											width={50}
-											height={50}
-											className={`color-${rarityColors[item.rarity]} ${handleClass}`}
-										/>
-									</Grid>
-								)}
-							/>
-						</Box>
-					))}
-				</Grid>
-			</Grid>
+			<MultiSortable<EquipType>
+				groups={tiers}
+				setGroups={setTiers}
+				renderItems={(list, ref) => (
+					<Grid ref={ref} container spacing={1} minHeight={65}>
+						{list}
+					</Grid>
+				)}
+				renderItem={(item, containerProps, handleProps) => (
+					<Grid item {...containerProps} {...handleProps}>
+						<Image
+							src={`https://azurlane.netojuu.com/images/${item.image}`}
+							alt={item.name}
+							width={50}
+							height={50}
+							className={`color-${rarityColors[item.rarity]}`}
+						/>
+					</Grid>
+				)}>
+				{({ unTiered, ...tiers }) => (
+					<Grid container spacing={1}>
+						<Grid item xs={6}>
+							<Paper sx={{ p: 1 }}>{unTiered}</Paper>
+						</Grid>
+						<Grid item xs={6}>
+							<Stack spacing={1}>
+								{Object.entries(tiers).map(([group, tier]) => (
+									<Paper key={group} sx={{ p: 1 }}>
+										{tier}
+									</Paper>
+								))}
+							</Stack>
+						</Grid>
+					</Grid>
+				)}
+			</MultiSortable>
 		</PageContainer>
 	);
 }

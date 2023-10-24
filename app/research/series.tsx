@@ -11,8 +11,8 @@ import {
 	Typography,
 } from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
-import { keyBy } from 'lodash';
 import Image from 'next/image';
+import { indexBy } from 'rambdax';
 import { Fragment, useMemo } from 'react';
 import type { ResearchShipType } from './type';
 
@@ -261,7 +261,8 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 			</Fragment>
 		),
 		renderSubComponent: (row) => {
-			const cells = keyBy(row.getVisibleCells(), 'column.id');
+			const cells = indexBy('column.id', row.getVisibleCells());
+
 			return (
 				<Grid container spacing={2}>
 					<Grid item xs={6}>

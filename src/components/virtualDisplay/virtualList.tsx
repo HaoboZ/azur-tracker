@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import type { Cell, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { keyBy } from 'lodash';
+import { indexBy } from 'rambdax';
 import { Fragment, useState } from 'react';
 import Virtualizer from '../virtualizer';
 
@@ -26,7 +26,7 @@ export default function VirtualList<TData extends RowData>({ table }: { table: T
 	const { renderRow, onRowClick } = table.options.meta;
 
 	const renderBodyRow = (row, index, ref) => {
-		const cells = keyBy(row.getVisibleCells(), 'column.id');
+		const cells = indexBy<any>('column.id', row.getVisibleCells());
 		const render = (cell: Cell<TData, unknown>) =>
 			flexRender(cell.column.columnDef.cell, cell.getContext()) as any;
 

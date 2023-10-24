@@ -3,9 +3,9 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
-import { keyBy, mapValues, omit, pick, sortBy } from 'lodash';
 import type { Metadata } from 'next';
 import objectHash from 'object-hash';
+import { indexBy, map, omit, pick, sortByProps } from 'rambdax';
 import Fleet from './index';
 
 export const metadata: Metadata = { title: 'Fleet | Azur Lane Tracker' };
@@ -27,39 +27,40 @@ export default async function FleetPage() {
 	const db = getDatabase(firebaseServerApp);
 	const equipTier = (await db.ref('tiers').get()).val();
 
-	const equipTierData = mapValues(equipTier, (tiers) =>
-		Object.values(omit(tiers, 'N')).reduce((acc, equips, tier) => {
-			equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
-			return acc;
-		}, {}),
+	const equipTierData = map(
+		(tiers) =>
+			Object.values(omit('N', tiers)).reduce((acc, equips, tier) => {
+				equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
+				return acc;
+			}, {}),
+		equipTier,
 	);
 
 	return (
 		<DataProvider
 			data={{
-				fleetData: keyBy(
-					sortBy(await csvtojson().fromString(fleetCSV), ({ num }) => +num).map((val) => ({
-						...pick(val, ['id', 'name', 'rarity', 'faction', 'type']),
+				fleetData: indexBy(
+					'id',
+					(await csvtojson().fromString(fleetCSV)).map((val) => ({
+						...pick(['id', 'name', 'rarity', 'faction', 'type'], val),
 						tier: +val.tier,
 						special: JSON.parse(val.special),
 						equipType: [val.equip1, val.equip2, val.equip3, val.equip4, val.equip5],
 					})),
-					'id',
 				),
-				equipData: sortBy(
+				equipData: sortByProps(
+					['type', 'id'],
 					(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
 						id: +id,
 						...val,
 					})),
-					'type',
-					'id',
 				),
-				equippableData: keyBy(
+				equippableData: indexBy(
+					'type',
 					(await csvtojson().fromString(equippableCSV)).map((value) => ({
-						...pick(value, ['type', 'tier']),
+						...pick(['type', 'tier'], value),
 						equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
 					})),
-					'type',
 				),
 				equipTierData,
 				equipTierHash: objectHash(equipTierData),

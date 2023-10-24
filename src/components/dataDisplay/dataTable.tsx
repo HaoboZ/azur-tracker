@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { keyBy, map } from 'lodash';
+import { indexBy, path } from 'rambdax';
 import { Fragment } from 'react';
 import Sortable from '../sortable';
 
@@ -23,17 +23,21 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 
 	const { onRowClick, renderSubComponent, setData } = table.options.meta;
 
-	const columns = keyBy(table.getAllColumns(), 'id');
+	const columns = indexBy('id', table.getAllColumns());
 	const colSpan = table.getAllFlatColumns().length;
 
-	const renderRowItem = (row: Row<TData>) => (
+	const renderRowItem = (row: Row<TData>, containerProps?, handleProps?) => (
 		<Fragment key={row.id}>
 			<TableRow
+				{...containerProps}
 				hover={Boolean(onRowClick)}
 				onClick={onRowClick ? () => onRowClick(row, table) : undefined}>
 				{row.getVisibleCells().map((cell) => (
 					<TableCell key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
-						{flexRender(cell.column.columnDef.cell, cell.getContext())}
+						{flexRender(cell.column.columnDef.cell, {
+							...cell.getContext(),
+							...(cell.column.id === '_sort' ? { handleProps } : undefined),
+						})}
 					</TableCell>
 				))}
 			</TableRow>
@@ -77,16 +81,17 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 					</TableRow>
 				))}
 			</TableHead>
-			{columns._sort ? (
-				<Sortable
-					items={rows}
-					setItems={(rows) => setData(map(rows, 'original'))}
-					renderItem={({ item }) => renderRowItem(item)}
-					tag={TableBody}
-				/>
-			) : (
-				<TableBody>{rows.map(renderRowItem)}</TableBody>
-			)}
+			<TableBody>
+				{columns._sort ? (
+					<Sortable
+						items={rows}
+						setItems={(rows) => setData(rows.map(path('original')))}
+						renderItem={renderRowItem}
+					/>
+				) : (
+					rows.map((row) => renderRowItem(row))
+				)}
+			</TableBody>
 			<TableFooter>
 				{table.getFooterGroups().map((footerGroup) => (
 					<TableRow key={footerGroup.id}>

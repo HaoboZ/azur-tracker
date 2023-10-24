@@ -13,7 +13,7 @@ import OverflowTypography from '../overflowTypography';
 import DataList from './dataList';
 import DataTable from './dataTable';
 
-declare module '@tanstack/table-core' {
+declare module '@tanstack/react-table' {
 	interface TableMeta<TData extends RowData> {
 		setData?: (data: TData[]) => void;
 		renderRow?: (row: {
@@ -21,12 +21,12 @@ declare module '@tanstack/table-core' {
 			render: (cell: Cell<TData, unknown>) => any;
 			row: Row<TData>;
 			table: Table<TData>;
+			handleProps?;
 		}) => ReactNode;
 		onRowClick?: (row: Row<TData>, table: Table<TData>) => void;
 		renderSubComponent?: (row: Row<TData>, table: Table<TData>) => ReactNode;
 	}
 
-	// noinspection JSUnusedGlobalSymbols
 	interface ColumnMeta<TData extends RowData, TValue> {
 		props?: (cell: Cell<TData, TValue>) => TableCellProps;
 	}
@@ -39,6 +39,7 @@ export type DataDisplayOptions<TData extends RowData> = {
 		render: (cell: Cell<TData, unknown>) => any;
 		row: Row<TData>;
 		table: Table<TData>;
+		handleProps?;
 	}) => ReactNode;
 	onRowClick?: (row: Row<TData>, table: Table<TData>) => void;
 	renderSubComponent?: (row: Row<TData>, table: Table<TData>) => ReactNode;

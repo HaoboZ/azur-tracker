@@ -1,8 +1,8 @@
 import AsyncButton from '@/components/loaders/asyncButton';
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
-import { pick } from 'lodash';
 import { useSnackbar } from 'notistack';
+import { pick } from 'rambdax';
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -29,18 +29,21 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 		dispatch(
 			mainActions.setUser(
 				user
-					? pick(user, [
-							'apiKey',
-							'displayName',
-							'email',
-							'emailVerified',
-							'isAnonymous',
-							'phoneNumber',
-							'photoURL',
-							'providerId',
-							'uid',
-							'refreshToken',
-					  ])
+					? pick(
+							[
+								'apiKey',
+								'displayName',
+								'email',
+								'emailVerified',
+								'isAnonymous',
+								'phoneNumber',
+								'photoURL',
+								'providerId',
+								'uid',
+								'refreshToken',
+							],
+							user,
+					  )
 					: null,
 			),
 		);
