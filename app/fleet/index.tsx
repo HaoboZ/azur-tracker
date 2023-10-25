@@ -58,7 +58,7 @@ export default function Fleet() {
 				}),
 		);
 	}, [fleet]);
-	return null;
+
 	return (
 		<PageContainer noSsr>
 			<PageTitle

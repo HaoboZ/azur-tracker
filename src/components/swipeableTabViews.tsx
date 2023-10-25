@@ -3,7 +3,7 @@ import { Box, Tab, Tabs } from '@mui/material';
 import type { EmblaCarouselType } from 'embla-carousel-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { ReactNode } from 'react';
-import { useMemo } from 'react';
+import { useState } from 'react';
 import { useDidUpdate } from 'rooks';
 import useControlled from '../hooks/useControlled';
 import useEventListener from '../hooks/useEventListener';
@@ -23,7 +23,7 @@ export default function SwipeableTabViews({
 	...props
 }: SwipeableTabViewsProps) {
 	const [tabValue, setTabValue] = useControlled(tab, setTab);
-	const startIndex = useMemo(() => tab, []);
+	const [startIndex] = useState(() => tab);
 
 	const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex });
 

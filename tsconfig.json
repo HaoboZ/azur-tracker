@@ -6,27 +6,15 @@
 		"incremental": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
+		"lib": ["dom", "dom.iterable", "esnext"],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmit": true,
 		"paths": {
-			"@/src/*": [
-				"./src/*"
-			],
-			"@/components/*": [
-				"./src/components/*"
-			],
-			"@/app/*": [
-				"./app/*"
-			],
-			"@/public/*": [
-				"./public/*"
-			]
+			"@/src/*": ["./src/*"],
+			"@/components/*": ["./src/components/*"],
+			"@/app/*": ["./app/*"],
+			"@/public/*": ["./public/*"]
 		},
 		"plugins": [
 			{
@@ -39,13 +27,7 @@
 		"strictNullChecks": false,
 		"target": "esnext"
 	},
-	"exclude": [
-		"node_modules",
-		"out",
-		"android",
-		"ios",
-		"electron"
-	],
+	"exclude": ["node_modules", "out", "android", "ios", "electron"],
 	"include": [
 		"next-env.d.ts",
 		".next/types/**/*.ts",

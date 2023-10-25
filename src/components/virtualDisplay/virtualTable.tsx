@@ -12,7 +12,7 @@ import {
 import type { RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Fragment, useState } from 'react';
-import Virtualizer from '../virtualizer';
+import Virtualizer from './virtualizer';
 
 export default function VirtualTable<TData extends RowData>({ table }: { table: Table<TData> }) {
 	const [rowRef, setRowRef] = useState<HTMLTableRowElement>();

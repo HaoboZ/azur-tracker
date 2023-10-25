@@ -26,7 +26,7 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700']
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang='en' className={roboto.className}>
+		<html suppressHydrationWarning lang='en' className={roboto.className}>
 			<body>
 				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
 				<Providers>
