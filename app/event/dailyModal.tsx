@@ -10,7 +10,6 @@ import { Grid, ListItemSecondaryAction } from '@mui/material';
 import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
-import { clone } from 'rambdax';
 import { Fragment, useMemo, useState } from 'react';
 
 type Daily = { id: string; name: string; amount: number };
@@ -20,7 +19,7 @@ export default function DailyModal() {
 	const _daily = useAppSelector(({ event }) => event.daily);
 	const dispatch = useAppDispatch();
 
-	const [daily, setDaily] = useState(() => clone(_daily));
+	const [daily, setDaily] = useState(() => structuredClone(_daily));
 
 	// total points gained daily
 	const dailyTotal = useMemo(

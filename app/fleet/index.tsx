@@ -7,7 +7,6 @@ import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import { Typography } from '@mui/material';
-import { clone } from 'rambdax';
 import { Fragment, useEffect, useState } from 'react';
 import FleetFilters from './filters';
 import getTier from './getTier';
@@ -27,7 +26,7 @@ export default function Fleet() {
 	useEffect(() => {
 		if (fleet.version === equipTierHash) return;
 		if (fleet.version && !confirm('Load new tiering information?')) return;
-		const ships = clone(fleet.ships);
+		const ships = structuredClone(fleet.ships);
 		for (const name in ships) {
 			const { equip } = ships[name];
 			if (name in fleetData) getTier(equippableData, equipTierData, fleetData[name], equip);

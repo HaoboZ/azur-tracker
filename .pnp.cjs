@@ -3573,10 +3573,6 @@ const RAW_RUNTIME_STATE =
       "npm:3.4.1"\
     ],\
     [\
-      "rambdax",\
-      "npm:10.0.0"\
-    ],\
-    [\
       "randombytes",\
       "npm:2.1.0"\
     ],\
@@ -3655,6 +3651,10 @@ const RAW_RUNTIME_STATE =
     [\
       "regjsparser",\
       "npm:0.9.1"\
+    ],\
+    [\
+      "remeda",\
+      "npm:1.28.0"\
     ],\
     [\
       "require-directory",\
@@ -4461,12 +4461,12 @@ const RAW_RUNTIME_STATE =
           ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.0.1"],\
           ["object-hash", "npm:3.0.0"],\
           ["prettier", "npm:3.0.3"],\
-          ["rambdax", "npm:10.0.0"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
           ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.1.1"],\
           ["react-redux", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.1.3"],\
           ["redux", "npm:4.2.1"],\
+          ["remeda", "npm:1.28.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
           ["sass", "npm:1.69.4"],\
           ["type-fest", "npm:4.5.0"],\
@@ -11858,12 +11858,12 @@ const RAW_RUNTIME_STATE =
           ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.0.1"],\
           ["object-hash", "npm:3.0.0"],\
           ["prettier", "npm:3.0.3"],\
-          ["rambdax", "npm:10.0.0"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
           ["react-firebase-hooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.1.1"],\
           ["react-redux", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.1.3"],\
           ["redux", "npm:4.2.1"],\
+          ["remeda", "npm:1.28.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
           ["sass", "npm:1.69.4"],\
           ["type-fest", "npm:4.5.0"],\
@@ -18430,15 +18430,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["rambdax", [\
-      ["npm:10.0.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/rambdax-npm-10.0.0-d89ccb3b31-10c0.zip/node_modules/rambdax/",\
-        "packageDependencies": [\
-          ["rambdax", "npm:10.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["randombytes", [\
       ["npm:2.1.0", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/randombytes-npm-2.1.0-e3da76bccf-10c0.zip/node_modules/randombytes/",\
@@ -18748,6 +18739,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["regjsparser", "npm:0.9.1"],\
           ["jsesc", "npm:0.5.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["remeda", [\
+      ["npm:1.28.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-1.28.0-70f707d643-10c0.zip/node_modules/remeda/",\
+        "packageDependencies": [\
+          ["remeda", "npm:1.28.0"]\
         ],\
         "linkType": "HARD"\
       }]\

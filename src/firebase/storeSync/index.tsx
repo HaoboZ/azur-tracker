@@ -3,9 +3,9 @@ import { Dialog } from '@capacitor/dialog';
 import { Fade, Paper, Typography } from '@mui/material';
 import { getDatabase, ref } from 'firebase/database';
 import objectHash from 'object-hash';
-import { pick } from 'rambdax';
 import { useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
+import { pick } from 'remeda';
 import {
 	useAsyncEffect,
 	useDebouncedValue,
@@ -14,6 +14,7 @@ import {
 	useWindowEventListener,
 } from 'rooks';
 import { useAuth } from '../../providers/auth';
+import type { RootState } from '../../store';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { mainActions } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';
@@ -22,7 +23,7 @@ import setData from './setData';
 
 const db = getDatabase(firebaseClientApp);
 
-export default function StoreSync({ keys }: { keys: string[] }) {
+export default function StoreSync({ keys }: { keys: (keyof Omit<RootState, 'main'>)[] }) {
 	const user = useAuth();
 
 	if (!user?.emailVerified) return null;
@@ -30,10 +31,10 @@ export default function StoreSync({ keys }: { keys: string[] }) {
 	return <Internal keys={keys} />;
 }
 
-function Internal({ keys }: { keys: string[] }) {
+function Internal({ keys }: { keys: (keyof Omit<RootState, 'main'>)[] }) {
 	const dispatch = useAppDispatch();
 	const { main, ...state } = useAppSelector((state) => state);
-	const data = pick(keys, state);
+	const data = pick(state, keys);
 	const user = useAuth();
 	const [serverTimestamp, serverLoading] = useObjectVal<string>(
 		ref(db, `users/${user.uid}/timestamp`),

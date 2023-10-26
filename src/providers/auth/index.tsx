@@ -2,10 +2,10 @@ import AsyncButton from '@/components/loaders/asyncButton';
 import type { User } from 'firebase/auth';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
-import { pick } from 'rambdax';
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { pick } from 'remeda';
 import firebaseClientApp from '../../firebase/client';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { mainActions } from '../../store/reducers/mainReducer';
@@ -21,32 +21,26 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 	const savedUser = useAppSelector(({ main }) => main.user);
 	const [user, loading, error] = useAuthState(auth);
 
-	// useEffect( () => auth.onIdTokenChanged( async ( user ) => {	// 	cookies.set( 'idToken', await user?.getIdToken() );
-	// } ), [] );
-
 	useEffect(() => {
 		if (loading || error) return;
 		dispatch(
 			mainActions.setUser(
 				user
-					? pick(
-							[
-								'apiKey',
-								'displayName',
-								'email',
-								'emailVerified',
-								'isAnonymous',
-								'phoneNumber',
-								'photoURL',
-								'providerId',
-								'uid',
-								'refreshToken',
-							],
-							user,
-					  )
+					? pick(user, [
+							'displayName',
+							'email',
+							'emailVerified',
+							'isAnonymous',
+							'phoneNumber',
+							'photoURL',
+							'providerId',
+							'uid',
+							'refreshToken',
+					  ])
 					: null,
 			),
 		);
+
 		if (!user || user.emailVerified) return;
 		const key = enqueueSnackbar('Email Not Verified', {
 			variant: 'warning',

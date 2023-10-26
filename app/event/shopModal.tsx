@@ -5,8 +5,8 @@ import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
 import { Box, Grid, ListItemText, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
-import { indexBy, mapObject, path } from 'rambdax';
 import { useMemo, useState } from 'react';
+import { indexBy, mapValues } from 'remeda';
 import type { EventType } from './type';
 
 const columnHelper = createColumnHelper<{
@@ -95,7 +95,10 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 			onSave={() =>
 				dispatch(
 					eventActions.setShop({
-						shop: mapObject(path('wanted'), indexBy('name', shop)),
+						shop: mapValues(
+							indexBy(shop, ({ name }) => name),
+							({ wanted }) => wanted,
+						),
 						total: expectedCost,
 					}),
 				)

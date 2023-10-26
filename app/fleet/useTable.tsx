@@ -5,8 +5,8 @@ import { Star as StarIcon } from '@mui/icons-material';
 import { ListItemSecondaryAction, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
-import { path } from 'rambdax';
 import { Fragment, useMemo } from 'react';
+import { isTruthy } from 'remeda';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';
 import { AffinityIcons, TierIcon } from './tierIcon';
@@ -113,13 +113,13 @@ export default function useFleetTable(data) {
 					if (row.columnFiltersMeta[column.id]) {
 						const majors =
 							row.columnFiltersMeta[column.id]?.equip
-								.map(path<number>('major'))
+								.map((equip) => equip && equip.major)
 								.filter(Number.isFinite) ?? [];
 						const majorCount = Math.max(...majors);
 						if (Number.isFinite(majorCount)) return `↑${majorCount}`;
 						const minors =
 							row.columnFiltersMeta[column.id]?.equip
-								.map(path<number>('minor'))
+								.map((equip) => equip && equip.minor)
 								.filter(Number.isFinite) ?? [];
 						const minorCount = Math.max(...minors);
 						if (Number.isFinite(minorCount)) return `+${minorCount}`;
@@ -131,53 +131,50 @@ export default function useFleetTable(data) {
 				meta: {
 					props: (cell) => {
 						const equip =
-							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(Number.isFinite) ??
-							[];
+							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(isTruthy) ?? [];
 						return {
 							className: equip
-								? `color-${tierColors[Math.min(...equip.map(path<number>('tier')))]}`
+								? `color-${tierColors[Math.min(...equip.map(({ tier }) => tier))]}`
 								: undefined,
 						};
 					},
 				},
 				enableGlobalFilter: false,
 				filterFn: (row, columnId, filterValue, addMeta) => {
-					const equip: (false | { tier?; major?; minor? })[] = row.original.equip.map(
-						(value, index) => {
-							// ships that can equip the equipment
-							if (
-								!fleetData.equippableData[row.original.equipType[index]]?.equip.includes(
-									filterValue.type,
-								)
+					const equip = row.original.equip.map((value, index) => {
+						// ships that can equip the equipment
+						if (
+							!fleetData.equippableData[row.original.equipType[index]]?.equip.includes(
+								filterValue.type,
 							)
-								return false;
-							const tierList =
-								fleetData.equipTierData[
-									fleetData.equippableData[row.original.equipType[index]]?.tier
-								];
-							const newTier = tierList[filterValue.id],
-								oldTier = tierList[value[0]];
-
-							// is equipped already
-							if (+value?.[0] === +filterValue.id) return {};
-							// equip not in tier list
-							if (!newTier) return false;
-							// none equipped
-							if (!value?.[0]) return { tier: newTier[0], major: Infinity };
-							// forced BiS
-							if (value[1]) return false;
-							// current equip not in tier list
-							if (!oldTier) return { tier: newTier[0], major: Infinity };
-							if (oldTier[0] < newTier[0]) return false;
-							// if higher tier
-							if (oldTier[0] > newTier[0])
-								return { tier: newTier[0], major: oldTier[0] - newTier[0] };
-							// if same tier but better
-							if (oldTier[1] > newTier[1])
-								return { tier: newTier[0], minor: oldTier[1] - newTier[1] };
+						)
 							return false;
-						},
-					);
+						const tierList =
+							fleetData.equipTierData[
+								fleetData.equippableData[row.original.equipType[index]]?.tier
+							];
+						const newTier = tierList[filterValue.id],
+							oldTier = tierList[value[0]];
+
+						// is equipped already
+						if (+value?.[0] === +filterValue.id) return {};
+						// equip not in tier list
+						if (!newTier) return false;
+						// none equipped
+						if (!value?.[0]) return { tier: newTier[0], major: Infinity };
+						// forced BiS
+						if (value[1]) return false;
+						// current equip not in tier list
+						if (!oldTier) return { tier: newTier[0], major: Infinity };
+						if (oldTier[0] < newTier[0]) return false;
+						// if higher tier
+						if (oldTier[0] > newTier[0])
+							return { tier: newTier[0], major: oldTier[0] - newTier[0] };
+						// if same tier but better
+						if (oldTier[1] > newTier[1])
+							return { tier: newTier[0], minor: oldTier[1] - newTier[1] };
+						return false;
+					});
 					addMeta({ equip });
 					return equip.some(Boolean);
 				},

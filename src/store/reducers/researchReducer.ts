@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { clamp } from 'remeda';
 import { importBackup } from './mainReducer';
 
 type State = {
@@ -31,17 +32,17 @@ const researchSlice = createSlice({
 		) {
 			const { item, maxDev } = payload;
 			if ('devStage' in item) {
-				item.devStage = Math.min(Math.max(item.devStage, 0), maxDev);
+				item.devStage = clamp(item.devStage, { min: 0, max: maxDev });
 			}
 			if ('devLevel' in item) {
-				item.devLevel = Math.min(Math.max(item.devLevel, 0), 30);
+				item.devLevel = clamp(item.devLevel, { min: 0, max: 30 });
 				item.devStage = 0;
 			}
 			if ('fateLevel' in item) {
-				item.fateLevel = Math.min(Math.max(item.fateLevel, 0), 5);
+				item.fateLevel = clamp(item.fateLevel, { min: 0, max: 5 });
 				item.fateStage = 0;
 			}
-			if ('fateStage' in item) item.fateStage = Math.min(Math.max(item.fateStage, 0), 100);
+			if ('fateStage' in item) item.fateStage = clamp(item.fateStage, { min: 0, max: 100 });
 			state.ships = {
 				...state.ships,
 				[payload.ship]: { ...state.ships[payload.ship], ...payload.item },

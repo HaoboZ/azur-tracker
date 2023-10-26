@@ -12,8 +12,8 @@ import {
 } from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import Image from 'next/image';
-import { indexBy } from 'rambdax';
 import { Fragment, useMemo } from 'react';
+import { indexBy } from 'remeda';
 import type { ResearchShipType } from './type';
 
 const devLevelsIndex = [
@@ -261,7 +261,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 			</Fragment>
 		),
 		renderSubComponent: (row) => {
-			const cells = indexBy('column.id', row.getVisibleCells());
+			const cells = indexBy(row.getVisibleCells(), ({ column }) => column.id);
 
 			return (
 				<Grid container spacing={2}>

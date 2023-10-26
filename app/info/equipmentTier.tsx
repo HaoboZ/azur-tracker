@@ -2,8 +2,8 @@ import PageSection from '@/components/page/section';
 import { useData } from '@/src/providers/data';
 import { Box, Grid, Stack, TextField } from '@mui/material';
 import Image from 'next/image';
-import { indexBy } from 'rambdax';
 import { useMemo, useState } from 'react';
+import { indexBy } from 'remeda';
 import { rarityColors } from '../colors';
 import { TierIcon } from '../fleet/tierIcon';
 import type { FarmType } from './type';
@@ -13,7 +13,7 @@ export default function EquipmentTier() {
 
 	const [search, setSearch] = useState('');
 
-	const equipIndex = useMemo(() => indexBy('id', equipList), []);
+	const equipIndex = useMemo(() => indexBy(equipList, ({ id }) => id), []);
 
 	const lowercaseSearch = search.toLowerCase();
 

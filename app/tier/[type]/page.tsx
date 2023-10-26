@@ -1,7 +1,7 @@
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { pick, sortByProps } from 'rambdax';
+import { pick, sortBy } from 'remeda';
 import TierType from './index';
 
 export default async function Page({ params }: { params: Record<string, string> }) {
@@ -34,13 +34,13 @@ export default async function Page({ params }: { params: Record<string, string> 
 		<DataProvider
 			data={{
 				params,
-				equipData: sortByProps(
-					['dps', 'id'],
+				equipData: sortBy(
 					(await csvtojson().fromString(equipCSV)).map(({ id, dps, ...val }) => ({
 						id: +id,
 						dps: +dps,
 						...val,
 					})),
+					({ id }) => id,
 				).reverse(),
 			}}>
 			<TierType />
@@ -54,5 +54,5 @@ export async function generateStaticParams() {
 		{ params: { sheet: 'Tier', tqx: 'out:csv' } },
 	);
 
-	return (await csvtojson().fromString(data)).map(pick('type'));
+	return (await csvtojson().fromString(data)).map(pick(['type']));
 }

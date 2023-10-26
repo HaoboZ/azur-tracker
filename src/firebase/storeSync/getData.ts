@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import { get, getDatabase, ref } from 'firebase/database';
 import { decompressFromUTF16 } from 'lz-string';
-import { equals } from 'rambdax';
+import { equals } from 'remeda';
 import { store } from '../../store';
 import { importBackup, mainActions } from '../../store/reducers/mainReducer';
 import firebaseClientApp from '../client';

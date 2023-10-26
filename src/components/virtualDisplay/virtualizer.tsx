@@ -31,9 +31,7 @@ export default function Virtualizer<Data>({
 	const paddingTop =
 		virtualItems.length > 0 ? Math.max(0, virtualItems[0].start - paddingStart) || 0 : 0;
 	const paddingBottom =
-		virtualItems.length > 0
-			? virtualizer.getTotalSize() - (virtualItems[virtualItems.length - 1].end || 0)
-			: 0;
+		virtualItems.length > 0 ? virtualizer.getTotalSize() - (virtualItems.at(-1).end || 0) : 0;
 
 	return <Fragment>{children(virtualizer, virtualItems, paddingTop, paddingBottom)}</Fragment>;
 }

@@ -7,8 +7,8 @@ import {
 import { Box, Button, Stack } from '@mui/material';
 import { TreeItem, treeItemClasses, TreeView } from '@mui/x-tree-view';
 import Image from 'next/image';
-import { forEach, indexBy, map } from 'rambdax';
 import { useEffect, useMemo, useState } from 'react';
+import { indexBy, mapValues } from 'remeda';
 import { rarityColors } from '../colors';
 import EquipFilter from '../fleet/ship/equip/filter';
 import type { EquipType } from '../fleet/ship/equip/type';
@@ -22,22 +22,20 @@ export default function EquipDrop() {
 
 	const [equip, setEquip] = useState<EquipType>(null);
 
-	const equipIndex = useMemo(() => indexBy('id', equipList), []);
+	const equipIndex = useMemo(() => indexBy(equipList, ({ id }) => id), []);
 
 	const stages = useMemo(
 		() =>
-			map((value) => {
+			mapValues(farmData, (value) => {
 				const stages: Record<string, number[]> = {};
-				forEach(
-					(value, stageMajor) =>
-						forEach((value, stageMinor) => {
-							if (equip ? value.includes(equip.id) : true)
-								stages[`${stageMajor}${stageMinor}`] = value;
-						}, value),
-					value,
-				);
+				mapValues(value, (value, stageMajor) => {
+					mapValues(value, (value, stageMinor) => {
+						if (equip ? value.includes(equip.id) : true)
+							stages[`${stageMajor}${stageMinor}`] = value;
+					});
+				});
 				return Object.keys(stages).length ? stages : {};
-			}, farmData),
+			}),
 		[equip],
 	);
 

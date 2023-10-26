@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { indexBy, path } from 'rambdax';
 import { Fragment } from 'react';
 import Sortable from '../sortable';
 
@@ -22,8 +21,6 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 	if (!rows.length) return <Typography textAlign='center'>No Items</Typography>;
 
 	const { onRowClick, renderSubComponent, setData } = table.options.meta;
-
-	const columns = indexBy('id', table.getAllColumns());
 	const colSpan = table.getAllFlatColumns().length;
 
 	const renderRowItem = (row: Row<TData>, containerProps?, handleProps?) => (
@@ -82,10 +79,10 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 				))}
 			</TableHead>
 			<TableBody>
-				{columns._sort ? (
+				{table.getAllColumns().find(({ id }) => id === '_sort') ? (
 					<Sortable
 						items={rows}
-						setItems={(rows) => setData(rows.map(path('original')))}
+						setItems={(rows) => setData(rows.map(({ original }) => original))}
 						renderItem={renderRowItem}
 					/>
 				) : (

@@ -1,5 +1,6 @@
 import nextPWA from '@ducanh2912/next-pwa';
 import bundleAnalyzer from '@next/bundle-analyzer';
+import { pipe } from 'remeda';
 
 /**
  * @type {import('next').NextConfig}
@@ -20,12 +21,11 @@ const nextConfig = {
 	},
 };
 
-const plugins = [
-	bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }),
+export default pipe(
+	nextConfig,
 	nextPWA({
 		disable: process.env.NODE_ENV === 'development',
 		dest: 'public',
 	}),
-];
-
-export default plugins.reduceRight((acc, plugin) => plugin(acc), nextConfig);
+	bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }),
+);

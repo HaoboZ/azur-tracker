@@ -2,7 +2,7 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
-import { groupBy, path, pick } from 'rambdax';
+import { groupBy, pick } from 'remeda';
 import Research from './index';
 
 export const metadata: Metadata = { title: 'Research | Azur Lane Tracker' };
@@ -17,12 +17,12 @@ export default async function ResearchPage() {
 		<DataProvider
 			data={{
 				researchData: groupBy(
-					path('series'),
 					(await csvtojson().fromString(researchCSV)).map((val) => ({
-						...pick(['series', 'name', 'image'], val),
+						...(pick(val, ['series', 'name', 'image']) as { series; name; image }),
 						type: +val.type,
 						fate: +val.fate,
 					})),
+					({ series }) => series,
 				),
 			}}>
 			<Research />

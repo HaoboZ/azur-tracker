@@ -1,5 +1,5 @@
 import { decompressFromUTF16 } from 'lz-string';
-import { map } from 'rambdax';
+import { mapValues } from 'remeda';
 
 const KEY = 'azurlanetrackerPersist';
 
@@ -11,9 +11,8 @@ export function loadState() {
 			localStorage.setItem(
 				KEY,
 				JSON.stringify(
-					map(
-						(val: string) => JSON.parse(decompressFromUTF16(JSON.parse(val))),
-						JSON.parse(oldItem),
+					mapValues(JSON.parse(oldItem), (val: string) =>
+						JSON.parse(decompressFromUTF16(JSON.parse(val))),
 					),
 				),
 			);

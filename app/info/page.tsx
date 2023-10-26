@@ -4,7 +4,7 @@ import axios from 'axios';
 import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
 import type { Metadata } from 'next';
-import { difference, groupBy, map, path, sortBy, sortByProps, union } from 'rambdax';
+import { difference, groupBy, mapValues, pipe, sortBy, uniq } from 'remeda';
 import Info from './index';
 
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
@@ -19,19 +19,20 @@ export default async function InfoPage() {
 		{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 	);
 
-	const farmData = sortBy(({ order }) => +order, await csvtojson().fromString(farmCSV)).map(
+	const db = getDatabase(firebaseServerApp);
+	const tiers = (await db.ref('tiers').get()).val();
+
+	const farmData = sortBy(await csvtojson().fromString(farmCSV), ({ order }) => order).map(
 		({ id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, ...props }) => ({
 			...props,
 			ids: [id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10].filter(Boolean),
 		}),
 	);
-	const db = getDatabase(firebaseServerApp);
-	const tiers = (await db.ref('tiers').get()).val();
 	const equipTier: number[][] = [];
 	for (const type of Object.values(tiers)) {
 		for (const [tier, equips] of Object.entries(type)) {
 			if (tier === 'N') continue;
-			equipTier[tier] = union(equipTier[tier] ?? [], equips);
+			equipTier[tier] = uniq([...(equipTier[tier] ?? []), ...equips]);
 		}
 	}
 
@@ -39,20 +40,28 @@ export default async function InfoPage() {
 	return (
 		<DataProvider
 			data={{
-				farmData: map(
-					(value: any[]) =>
-						map(
-							(value: any[]) => map((value) => value[0].ids, groupBy(path('stage'), value)),
-							groupBy(path('level'), value),
+				farmData: mapValues(
+					groupBy(farmData, ({ origin }) => origin),
+					(value) =>
+						mapValues(
+							groupBy(value, ({ level }) => level),
+							(value) =>
+								mapValues(
+									groupBy(value, ({ stage }) => stage),
+									(value) => value[0].ids,
+								),
 						),
-					groupBy(path('origin'), farmData),
 				),
 				equipTier: equipTier.map((value) => {
-					const result = difference(value, found).sort();
-					found = union(found, value);
+					const result = difference(value, found).toSorted();
+					found = uniq([...found, ...value]);
 					return result;
 				}),
-				equipList: sortByProps(['type', 'id'], await csvtojson().fromString(equipCSV)),
+				equipList: pipe(
+					await csvtojson().fromString(equipCSV),
+					sortBy(({ id }) => id),
+					sortBy(({ type }) => type),
+				),
 			}}>
 			<Info />
 		</DataProvider>

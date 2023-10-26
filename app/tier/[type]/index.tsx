@@ -8,9 +8,9 @@ import { useData } from '@/src/providers/data';
 import { Grid, Paper, Stack } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
 import Image from 'next/image';
-import { difference, indexBy, map, omit, path } from 'rambdax';
 import { useEffect, useMemo, useState } from 'react';
 import { useObjectVal } from 'react-firebase-hooks/database';
+import { difference, indexBy, mapValues, omit } from 'remeda';
 import { rarityColors } from '../../colors';
 import Error from '../../error';
 import type { EquipType } from '../../fleet/ship/equip/type';
@@ -20,7 +20,7 @@ const db = getDatabase(firebaseClientApp);
 
 export default function TierType() {
 	const { params, equipData } = useData<TierType>();
-	const equipIndex = useMemo(() => indexBy('id', equipData), []);
+	const equipIndex = useMemo(() => indexBy(equipData, ({ id }) => id), []);
 
 	const tierRef = ref(db, `tiers/${decodeURIComponent(params.type)}`);
 	const [data, loading, error] = useObjectVal<Record<string, number[]>>(tierRef);
@@ -38,21 +38,10 @@ export default function TierType() {
 
 	useEffect(() => {
 		if (loading || error) return;
-		const tiers = map((ids: number[]) => map((id) => equipIndex[id], ids), data);
+		const tiers = mapValues(data, (ids) => ids.map((id) => equipIndex[id]));
 		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
 		setTiers(tiers);
 	}, [loading, error]);
-
-	// useWillUnmount(async () => {
-	// 	if (!changed) return;
-	// 	await set(
-	// 		tierRef,
-	// 		map(
-	// 			(equips) => map(path('id'), equips),
-	// 			omit<Record<string, EquipType[]>>('unTiered', tiers),
-	// 		),
-	// 	);
-	// });
 
 	if (loading) return <Loading />;
 	if (error) return <Error error={error} />;
@@ -66,9 +55,8 @@ export default function TierType() {
 						onClick: async () => {
 							await set(
 								tierRef,
-								map(
-									(equips) => map(path('id'), equips),
-									omit<Record<string, EquipType[]>>('unTiered', tiers),
+								mapValues(omit(tiers, ['unTiered']), (equips) =>
+									equips.map(({ id }) => id),
 								),
 							);
 							setChanged(false);

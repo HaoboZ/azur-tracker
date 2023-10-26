@@ -4782,12 +4782,12 @@ __metadata:
     notistack: "npm:3.0.1"
     object-hash: "npm:3.0.0"
     prettier: "npm:3.0.3"
-    rambdax: "npm:10.0.0"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-firebase-hooks: "npm:5.1.1"
     react-redux: "npm:8.1.3"
     redux: "npm:4.2.1"
+    remeda: "npm:1.28.0"
     rooks: "npm:7.14.1"
     sass: "npm:1.69.4"
     type-fest: "npm:4.5.0"
@@ -10350,13 +10350,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rambdax@npm:10.0.0":
-  version: 10.0.0
-  resolution: "rambdax@npm:10.0.0"
-  checksum: b0912b7814e5f8349a9478999b5c57b3f332c29f42fcc426fa6468909f48b5d0a6214222dd805140af79b5026a894d1006030c460beb4de538e1ad59cdf0d61c
-  languageName: node
-  linkType: hard
-
 "randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -10589,6 +10582,13 @@ __metadata:
   bin:
     regjsparser: bin/parser
   checksum: fe44fcf19a99fe4f92809b0b6179530e5ef313ff7f87df143b08ce9a2eb3c4b6189b43735d645be6e8f4033bfb015ed1ca54f0583bc7561bed53fd379feb8225
+  languageName: node
+  linkType: hard
+
+"remeda@npm:1.28.0":
+  version: 1.28.0
+  resolution: "remeda@npm:1.28.0"
+  checksum: 36e449c73c85e1457a6931d58695d455bc7833b7d8f35f8039c047a8d6407716a09daf5313b8da4388f8cc16896246f7dddc2f12b22a68b3b667f75f6c79c500
   languageName: node
   linkType: hard
 

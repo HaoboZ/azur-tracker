@@ -5,7 +5,7 @@ import csvtojson from 'csvtojson';
 import { getDatabase } from 'firebase-admin/database';
 import type { Metadata } from 'next';
 import objectHash from 'object-hash';
-import { indexBy, map, omit, pick, sortByProps } from 'rambdax';
+import { indexBy, mapValues, omit, pick, pipe, sortBy } from 'remeda';
 import Fleet from './index';
 
 export const metadata: Metadata = { title: 'Fleet | Azur Lane Tracker' };
@@ -27,40 +27,39 @@ export default async function FleetPage() {
 	const db = getDatabase(firebaseServerApp);
 	const equipTier = (await db.ref('tiers').get()).val();
 
-	const equipTierData = map(
-		(tiers) =>
-			Object.values(omit('N', tiers)).reduce((acc, equips, tier) => {
-				equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
-				return acc;
-			}, {}),
-		equipTier,
+	const equipTierData = mapValues(equipTier, (tiers) =>
+		Object.values(omit(tiers, ['N'])).reduce((acc, equips, tier) => {
+			equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
+			return acc;
+		}, {}),
 	);
 
 	return (
 		<DataProvider
 			data={{
 				fleetData: indexBy(
-					'id',
 					(await csvtojson().fromString(fleetCSV)).map((val) => ({
-						...pick(['id', 'name', 'rarity', 'faction', 'type'], val),
+						...(pick(val, ['id', 'name', 'rarity', 'faction', 'type']) as any),
 						tier: +val.tier,
 						special: JSON.parse(val.special),
 						equipType: [val.equip1, val.equip2, val.equip3, val.equip4, val.equip5],
 					})),
+					({ id }) => id,
 				),
-				equipData: sortByProps(
-					['type', 'id'],
+				equipData: pipe(
 					(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
 						id: +id,
 						...val,
 					})),
+					sortBy(({ id }) => id),
+					sortBy(({ type }) => type),
 				),
 				equippableData: indexBy(
-					'type',
 					(await csvtojson().fromString(equippableCSV)).map((value) => ({
-						...pick(['type', 'tier'], value),
+						...(pick(value, ['type', 'tier']) as any),
 						equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
 					})),
+					({ type }) => type,
 				),
 				equipTierData,
 				equipTierHash: objectHash(equipTierData),

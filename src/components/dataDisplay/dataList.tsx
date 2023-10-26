@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { indexBy, path } from 'rambdax';
+import { indexBy } from 'remeda';
 import Sortable from '../sortable';
 
 export default function DataList<TData extends RowData>({ table }: { table: Table<TData> }) {
@@ -22,10 +22,8 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 
 	const { renderRow, onRowClick, renderSubComponent, setData } = table.options.meta;
 
-	const columns = indexBy('id', table.getAllColumns());
-
 	const renderRowItem = (row: Row<TData>, containerProps?, handleProps?) => {
-		const cells = indexBy('column.id', row.getVisibleCells());
+		const cells = indexBy(row.getVisibleCells(), ({ column }) => column.id);
 		const render = (cell: Cell<TData, unknown>) =>
 			flexRender(cell.column.columnDef.cell, cell.getContext()) as any;
 
@@ -67,10 +65,10 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 					[`.${listItemSecondaryActionClasses.root}`]: { right: 36 },
 				},
 			}}>
-			{columns._sort ? (
+			{table.getAllColumns().find(({ id }) => id === '_sort') ? (
 				<Sortable
 					items={rows}
-					setItems={(rows) => setData(rows.map(path('original')))}
+					setItems={(rows) => setData(rows.map(({ original }) => original))}
 					renderItem={renderRowItem}
 				/>
 			) : (

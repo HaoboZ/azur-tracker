@@ -15,8 +15,8 @@ import {
 	Typography,
 } from '@mui/material';
 import Image from 'next/image';
-import { indexBy } from 'rambdax';
 import { Fragment, useMemo } from 'react';
+import { indexBy } from 'remeda';
 import { rarityColors } from '../../colors';
 import { AffinityIcons, TierIcon } from '../tierIcon';
 import type { FleetType, Ship } from '../type';
@@ -37,7 +37,7 @@ export default function ShipModal({
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
-	const equipIndex = useMemo(() => indexBy('id', data.equipData), []);
+	const equipIndex = useMemo(() => indexBy(data.equipData, ({ id }) => id), []);
 
 	// calculates tier
 	const tier = useMemo(() => {
