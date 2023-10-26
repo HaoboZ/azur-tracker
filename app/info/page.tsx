@@ -53,7 +53,7 @@ export default async function InfoPage() {
 						),
 				),
 				equipTier: equipTier.map((value) => {
-					const result = difference(value, found).toSorted();
+					const result = difference(value, found).sort();
 					found = uniq([...found, ...value]);
 					return result;
 				}),
