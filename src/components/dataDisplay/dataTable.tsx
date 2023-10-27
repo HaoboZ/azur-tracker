@@ -13,6 +13,7 @@ import {
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Fragment } from 'react';
+import pget from '../../helpers/pget';
 import Sortable from '../sortable';
 
 export default function DataTable<TData extends RowData>({ table }: { table: Table<TData> }) {
@@ -39,7 +40,7 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 				))}
 			</TableRow>
 			{row.getIsExpanded() && (
-				<TableRow sx={{ bgcolor: ({ vars }: any) => vars.palette.background.paper }}>
+				<TableRow sx={{ bgcolor: pget('vars.palette.background.paper') }}>
 					<TableCell colSpan={colSpan}>{renderSubComponent(row, table)}</TableCell>
 				</TableRow>
 			)}
@@ -64,7 +65,7 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 									width: `${header.column.columnDef.size}%`,
 									position: 'sticky',
 									top: 0,
-									bgcolor: ({ vars }: any) => vars.palette.background.paper,
+									bgcolor: pget('vars.palette.background.paper'),
 								}}>
 								<TableSortLabel
 									active={Boolean(header.column.getIsSorted())}
@@ -82,7 +83,7 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 				{table.getAllColumns().find(({ id }) => id === '_sort') ? (
 					<Sortable
 						items={rows}
-						setItems={(rows) => setData(rows.map(({ original }) => original))}
+						setItems={(rows) => setData(rows.map(pget('original')))}
 						renderItem={renderRowItem}
 					/>
 				) : (

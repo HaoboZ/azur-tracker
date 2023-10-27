@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
@@ -22,7 +23,7 @@ export default async function ResearchPage() {
 						type: +val.type,
 						fate: +val.fate,
 					})),
-					({ series }) => series,
+					pget('series'),
 				),
 			}}>
 			<Research />

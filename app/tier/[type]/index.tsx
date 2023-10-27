@@ -4,6 +4,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import MultiSortable from '@/components/sortable/multi';
 import firebaseClientApp from '@/src/firebase/client';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { Grid, Paper, Stack } from '@mui/material';
 import { getDatabase, ref, set } from 'firebase/database';
@@ -20,7 +21,7 @@ const db = getDatabase(firebaseClientApp);
 
 export default function TierType() {
 	const { params, equipData } = useData<TierType>();
-	const equipIndex = useMemo(() => indexBy(equipData, ({ id }) => id), []);
+	const equipIndex = useMemo(() => indexBy(equipData, pget('id')), []);
 
 	const tierRef = ref(db, `tiers/${decodeURIComponent(params.type)}`);
 	const [data, loading, error] = useObjectVal<Record<string, number[]>>(tierRef);
@@ -55,9 +56,7 @@ export default function TierType() {
 						onClick: async () => {
 							await set(
 								tierRef,
-								mapValues(omit(tiers, ['unTiered']), (equips) =>
-									equips.map(({ id }) => id),
-								),
+								mapValues(omit(tiers, ['unTiered']), (equips) => equips.map(pget('id'))),
 							);
 							setChanged(false);
 						},

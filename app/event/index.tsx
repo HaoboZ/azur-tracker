@@ -2,6 +2,7 @@
 import HelpTourButton from '@/components/helpTourButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
@@ -15,7 +16,7 @@ import EventFields from './fields';
 import type { EventType } from './type';
 
 export default function Event() {
-	const event = useAppSelector(({ event }) => event);
+	const event = useAppSelector(pget('event'));
 	const dispatch = useAppDispatch();
 	const { eventData, eventShopData } = useData<EventType>();
 

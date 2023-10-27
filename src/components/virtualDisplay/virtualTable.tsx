@@ -12,6 +12,7 @@ import {
 import type { RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Fragment, useState } from 'react';
+import pget from '../../helpers/pget';
 import Virtualizer from './virtualizer';
 
 export default function VirtualTable<TData extends RowData>({ table }: { table: Table<TData> }) {
@@ -62,7 +63,7 @@ export default function VirtualTable<TData extends RowData>({ table }: { table: 
 									width: `${header.column.columnDef.size}%`,
 									position: 'sticky',
 									top: 0,
-									bgcolor: ({ vars }: any) => vars.palette.background.paper,
+									bgcolor: pget('vars.palette.background.paper'),
 								}}>
 								<TableSortLabel
 									active={Boolean(header.column.getIsSorted())}

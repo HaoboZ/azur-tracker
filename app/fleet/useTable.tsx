@@ -1,4 +1,5 @@
 import { useVirtualDisplay } from '@/components/virtualDisplay';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useModal } from '@/src/providers/modal';
 import { Star as StarIcon } from '@mui/icons-material';
@@ -193,7 +194,7 @@ export default function useFleetTable(data) {
 				{ id: 'lvl', desc: true },
 			],
 		},
-		getRowId: ({ id }) => id,
+		getRowId: pget('id'),
 		onRowClick: (row, table) =>
 			showModal(ShipModal, {
 				id: 'ship',

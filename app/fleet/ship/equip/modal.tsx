@@ -1,4 +1,5 @@
 import { rarityColors } from '@/app/colors';
+import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModalControls } from '@/src/providers/modal';
 import ModalDialog from '@/src/providers/modal/dialog';
@@ -32,7 +33,7 @@ export default function EquipModal({
 	const { closeModal, events } = useModalControls();
 	const dispatch = useAppDispatch();
 
-	const equipIndex = useMemo(() => indexBy(data.equipData, ({ id }) => id), []);
+	const equipIndex = useMemo(() => indexBy(data.equipData, pget('id')), []);
 
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [equipList, equipListIndex, tierList] = useMemo(() => {
@@ -51,11 +52,7 @@ export default function EquipModal({
 				res[item.id] = item;
 				return res;
 			}, {}),
-			pipe(
-				Object.entries(tierList),
-				sortBy((val) => val[1][1]),
-				sortBy((val) => val[1][0]),
-			).map((val) => ({
+			pipe(Object.entries(tierList), sortBy(pget('1.1')), sortBy(pget('1.0'))).map((val) => ({
 				...equipIndex[val[0]],
 				tier: <TierIcon tier={val[1][0] + 1} />,
 			})),

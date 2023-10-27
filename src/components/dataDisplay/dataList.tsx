@@ -13,6 +13,7 @@ import {
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { indexBy } from 'remeda';
+import pget from '../../helpers/pget';
 import Sortable from '../sortable';
 
 export default function DataList<TData extends RowData>({ table }: { table: Table<TData> }) {
@@ -68,7 +69,7 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 			{table.getAllColumns().find(({ id }) => id === '_sort') ? (
 				<Sortable
 					items={rows}
-					setItems={(rows) => setData(rows.map(({ original }) => original))}
+					setItems={(rows) => setData(rows.map(pget('original')))}
 					renderItem={renderRowItem}
 				/>
 			) : (

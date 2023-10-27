@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
@@ -65,7 +66,7 @@ const searchOptions = [
 
 export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const { equipData } = useData<FleetType>();
-	const { filter, ships } = useAppSelector(({ fleet }) => fleet);
+	const { filter, ships } = useAppSelector(pget('fleet'));
 	const dispatch = useAppDispatch();
 
 	const globalFilter = useDebounce((value: string) => table.setGlobalFilter(value), 500);

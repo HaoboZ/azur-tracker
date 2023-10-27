@@ -2,6 +2,7 @@
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import SwipeableTabViews from '@/components/swipeableTabViews';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { researchActions } from '@/src/store/reducers/researchReducer';
@@ -9,7 +10,7 @@ import ResearchSeries from './series';
 import type { ResearchType } from './type';
 
 export default function Research() {
-	const lastTab = useAppSelector(({ research }) => research.lastTab);
+	const lastTab = useAppSelector(pget('research.lastTab'));
 	const dispatch = useAppDispatch();
 	const { researchData } = useData<ResearchType>();
 
@@ -17,7 +18,7 @@ export default function Research() {
 		<PageContainer noSsr>
 			<PageTitle>Research Tracker</PageTitle>
 			<SwipeableTabViews
-				sx={{ bgcolor: ({ vars }: any) => vars.palette.divider }}
+				sx={{ bgcolor: pget('vars.palette.divider') }}
 				tab={lastTab}
 				setTab={(index) => dispatch(researchActions.setLastTab(index))}
 				renderTabs={Object.keys(researchData)}

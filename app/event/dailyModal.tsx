@@ -1,8 +1,9 @@
 import ActionTitle from '@/components/actionTitle';
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
-import { sortIcon } from '@/components/dataDisplay/extras/sort';
+import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
+import pget from '@/src/helpers/pget';
 import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
@@ -16,7 +17,7 @@ type Daily = { id: string; name: string; amount: number };
 const columnHelper = createColumnHelper<Daily>();
 
 export default function DailyModal() {
-	const _daily = useAppSelector(({ event }) => event.daily);
+	const _daily = useAppSelector(pget('event.daily'));
 	const dispatch = useAppDispatch();
 
 	const [daily, setDaily] = useState(() => structuredClone(_daily));
@@ -40,7 +41,7 @@ export default function DailyModal() {
 
 	const columns = useMemo(
 		() => [
-			// columnHelper.display( sortColumn() ),
+			columnHelper.display(sortColumn()),
 			columnHelper.accessor('name', {
 				header: 'Name',
 				cell: ({ getValue, row }) => (
@@ -74,7 +75,7 @@ export default function DailyModal() {
 		data: daily,
 		setData: setDaily,
 		columns,
-		getRowId: ({ id }) => id,
+		getRowId: pget('id'),
 		enableSorting: false,
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>

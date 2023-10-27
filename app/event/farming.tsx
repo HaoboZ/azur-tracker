@@ -3,6 +3,7 @@ import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
 import FormattedTextField from '@/components/formattedTextField';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
@@ -28,7 +29,7 @@ const columnHelper = createColumnHelper<{
 }>();
 
 export default function EventFarming({ remainingPoints }: { remainingPoints: number }) {
-	const farming = useAppSelector(({ event }) => event.farming);
+	const farming = useAppSelector(pget('event.farming'));
 	const dispatch = useAppDispatch();
 	const { eventStagesData } = useData<EventType>();
 
@@ -103,7 +104,7 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 		data: farmingData,
 		setData: (data) => dispatch(eventActions.setFarming(data)),
 		columns,
-		getRowId: ({ id }) => id,
+		getRowId: pget('id'),
 		enableSorting: false,
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>

@@ -1,6 +1,7 @@
 import { Close as CloseIcon } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import type { DisplayColumnDef, Row, Table } from '@tanstack/react-table';
+import pget from '../../../helpers/pget';
 
 export const deleteColumn = () =>
 	({
@@ -14,7 +15,7 @@ export const deleteColumn = () =>
 						table
 							.getRowModel()
 							.rows.filter(({ id }) => id !== row.id)
-							.map(({ original }) => original),
+							.map(pget('original')),
 					);
 				}}>
 				<CloseIcon />
@@ -31,7 +32,7 @@ export function deleteIcon<TData>(row: Row<TData>, table: Table<TData>) {
 					table
 						.getRowModel()
 						.rows.filter(({ id }) => id !== row.id)
-						.map(({ original }) => original),
+						.map(pget('original')),
 				);
 			}}>
 			<CloseIcon />

@@ -7,6 +7,7 @@ import { createContext, useContext, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { pick } from 'remeda';
 import firebaseClientApp from '../../firebase/client';
+import pget from '../../helpers/pget';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { mainActions } from '../../store/reducers/mainReducer';
 
@@ -18,7 +19,7 @@ AuthContext.displayName = 'Auth';
 export default function AuthProvider({ children }: { children: ReactNode }) {
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const dispatch = useAppDispatch();
-	const savedUser = useAppSelector(({ main }) => main.user);
+	const savedUser = useAppSelector(pget('main.user'));
 	const [user, loading, error] = useAuthState(auth);
 
 	useEffect(() => {

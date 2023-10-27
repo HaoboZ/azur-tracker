@@ -1,4 +1,5 @@
 import FormattedTextField from '@/components/formattedTextField';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -10,7 +11,7 @@ import ShopModal from './shopModal';
 import type { EventType } from './type';
 
 export default function EventFields({ time, neededPoints }: { time: Date; neededPoints: number }) {
-	const event = useAppSelector(({ event }) => event);
+	const event = useAppSelector(pget('event'));
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 	const { eventData, eventShopData } = useData<EventType>();

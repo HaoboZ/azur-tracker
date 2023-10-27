@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
 import ModalDrawer from '@/src/providers/modal/drawer';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -33,11 +34,11 @@ export default function ShipModal({
 	filterMeta?: (false | { tier?; major?; minor? })[];
 	selectedEquip?: EquipType;
 } & FleetType) {
-	const ships = useAppSelector(({ fleet }) => fleet.ships);
+	const ships = useAppSelector(pget('fleet.ships'));
 	const dispatch = useAppDispatch();
 	const { showModal } = useModal();
 
-	const equipIndex = useMemo(() => indexBy(data.equipData, ({ id }) => id), []);
+	const equipIndex = useMemo(() => indexBy(data.equipData, pget('id')), []);
 
 	// calculates tier
 	const tier = useMemo(() => {

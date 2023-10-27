@@ -1,4 +1,5 @@
 import firebaseServerApp from '@/src/firebase/server';
+import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
@@ -40,17 +41,10 @@ export default async function InfoPage() {
 	return (
 		<DataProvider
 			data={{
-				farmData: mapValues(
-					groupBy(farmData, ({ origin }) => origin),
-					(value) =>
-						mapValues(
-							groupBy(value, ({ level }) => level),
-							(value) =>
-								mapValues(
-									groupBy(value, ({ stage }) => stage),
-									(value) => value[0].ids,
-								),
-						),
+				farmData: mapValues(groupBy(farmData, pget('origin')), (value) =>
+					mapValues(groupBy(value, pget('level')), (value) =>
+						mapValues(groupBy(value, pget('stage')), (value) => value[0].ids),
+					),
 				),
 				equipTier: equipTier.map((value) => {
 					const result = difference(value, found).sort();
@@ -59,8 +53,8 @@ export default async function InfoPage() {
 				}),
 				equipList: pipe(
 					await csvtojson().fromString(equipCSV),
-					sortBy(({ id }) => id),
-					sortBy(({ type }) => type),
+					sortBy(pget('id')),
+					sortBy(pget('type')),
 				),
 			}}>
 			<Info />

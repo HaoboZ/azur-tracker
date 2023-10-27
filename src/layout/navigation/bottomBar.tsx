@@ -1,12 +1,13 @@
 import { AppBar, Badge, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
+import pget from '../../helpers/pget';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { mainActions } from '../../store/reducers/mainReducer';
 import { items } from './items';
 
 export default function BottomBar() {
-	const unViewed = useAppSelector(({ main }) => main.unViewed);
+	const unViewed = useAppSelector(pget('main.unViewed'));
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const pathname = usePathname();

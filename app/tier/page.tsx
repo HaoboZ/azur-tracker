@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
@@ -14,7 +15,7 @@ export default async function TierPage() {
 
 	return (
 		<DataProvider
-			data={{ tierTypesData: (await csvtojson().fromString(data)).map(({ type }) => type) }}>
+			data={{ tierTypesData: (await csvtojson().fromString(data)).map(pget('type')) }}>
 			<Tier />
 		</DataProvider>
 	);

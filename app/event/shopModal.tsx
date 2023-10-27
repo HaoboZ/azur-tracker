@@ -1,5 +1,6 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import FormattedTextField from '@/components/formattedTextField';
+import pget from '@/src/helpers/pget';
 import ModalDialog from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
@@ -17,7 +18,7 @@ const columnHelper = createColumnHelper<{
 }>();
 
 export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopData'>) {
-	const _shop = useAppSelector(({ event }) => event.shop);
+	const _shop = useAppSelector(pget('event.shop'));
 	const dispatch = useAppDispatch();
 
 	const [shop, setShop] = useState(() =>
@@ -71,7 +72,7 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 	const table = useDataDisplay({
 		data: shop,
 		columns,
-		getRowId: ({ name }) => name,
+		getRowId: pget('name'),
 		enableSorting: false,
 		renderRow: ({ cells, render }) => (
 			<Grid container spacing={2}>
@@ -95,10 +96,7 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 			onSave={() =>
 				dispatch(
 					eventActions.setShop({
-						shop: mapValues(
-							indexBy(shop, ({ name }) => name),
-							({ wanted }) => wanted,
-						),
+						shop: mapValues(indexBy(shop, pget('name')), pget('wanted')),
 						total: expectedCost,
 					}),
 				)

@@ -1,5 +1,6 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import FormattedTextField from '@/components/formattedTextField';
+import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { researchActions } from '@/src/store/reducers/researchReducer';
 import {
@@ -72,7 +73,7 @@ const columnHelper = createColumnHelper<
 >();
 
 export default function ResearchSeries({ researchShips }: { researchShips: ResearchShipType[] }) {
-	const ships = useAppSelector(({ research }) => research.ships);
+	const ships = useAppSelector(pget('research.ships'));
 	const dispatch = useAppDispatch();
 
 	const { shipData, totalPR, totalDR } = useMemo(() => {
@@ -261,7 +262,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 			</Fragment>
 		),
 		renderSubComponent: (row) => {
-			const cells = indexBy(row.getVisibleCells(), ({ column }) => column.id);
+			const cells = indexBy(row.getVisibleCells(), pget('column.id'));
 
 			return (
 				<Grid container spacing={2}>

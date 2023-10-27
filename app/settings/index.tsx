@@ -5,6 +5,7 @@ import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
 import getData from '@/src/firebase/storeSync/getData';
 import setData from '@/src/firebase/storeSync/setData';
+import pget from '@/src/helpers/pget';
 import { useAuth } from '@/src/providers/auth';
 import useAuthButton from '@/src/providers/auth/useAuthButton';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -38,7 +39,7 @@ import _packageJson from '../../package.json';
 const packageJson = _packageJson as PackageJson;
 
 export default function Settings() {
-	const main = useAppSelector(({ main }) => main);
+	const main = useAppSelector(pget('main'));
 	const dispatch = useAppDispatch();
 	const { mode, setMode } = useColorScheme();
 	const user = useAuth();
@@ -60,7 +61,7 @@ export default function Settings() {
 					<ListItemSecondaryAction>
 						<Switch
 							checked={main.autoSync}
-							onChange={(event) => dispatch(mainActions.setAutoSync(event.target.checked))}
+							onChange={({ target }) => dispatch(mainActions.setAutoSync(target.checked))}
 						/>
 					</ListItemSecondaryAction>
 				</ListItem>

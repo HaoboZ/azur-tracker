@@ -12,6 +12,7 @@ import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { mapValues } from 'remeda';
+import pget from '../../helpers/pget';
 import SortableContainer from './sortableContainer';
 import SortableItem from './sortableItem';
 import { moveBetweenContainers } from './utils';
@@ -46,7 +47,7 @@ export default function MultiSortable<Item>({
 		if (!setA) return;
 		setSetA(false);
 		setSkipB(true);
-		setGroups(mapValues(lists, (list) => list.map(({ item }) => item)));
+		setGroups(mapValues(lists, (list) => list.map(pget('item'))));
 	}, [lists]);
 
 	useEffect(() => {

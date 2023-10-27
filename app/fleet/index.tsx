@@ -3,6 +3,7 @@ import HelpTourButton from '@/components/helpTourButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import VirtualDisplay from '@/components/virtualDisplay';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
@@ -14,7 +15,7 @@ import type { FleetType, Ship } from './type';
 import useFleetTable from './useTable';
 
 export default function Fleet() {
-	const fleet = useAppSelector(({ fleet }) => fleet);
+	const fleet = useAppSelector(pget('fleet'));
 	const dispatch = useAppDispatch();
 	const { fleetData, equippableData, equipTierData, equipTierHash } = useData<FleetType>();
 

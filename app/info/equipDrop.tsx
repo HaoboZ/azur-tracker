@@ -1,4 +1,5 @@
 import PageSection from '@/components/page/section';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import {
 	ChevronRight as ChevronRightIcon,
@@ -22,7 +23,7 @@ export default function EquipDrop() {
 
 	const [equip, setEquip] = useState<EquipType>(null);
 
-	const equipIndex = useMemo(() => indexBy(equipList, ({ id }) => id), []);
+	const equipIndex = useMemo(() => indexBy(equipList, pget('id')), []);
 
 	const stages = useMemo(
 		() =>

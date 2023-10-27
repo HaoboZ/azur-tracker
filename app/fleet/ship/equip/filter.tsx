@@ -1,4 +1,5 @@
 import { rarityColors } from '@/app/colors';
+import pget from '@/src/helpers/pget';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -38,8 +39,8 @@ export default function EquipFilter({
 		<Autocomplete<EquipType, false, false, false>
 			fullWidth
 			options={equipList}
-			getOptionLabel={({ name }: EquipType) => name}
-			isOptionEqualToValue={(option, value) => option.id === value?.id}
+			getOptionLabel={pget('name')}
+			isOptionEqualToValue={({ id }, value) => id === value?.id}
 			value={value}
 			renderOption={(props, option) => (
 				<li {...props} key={option.id}>

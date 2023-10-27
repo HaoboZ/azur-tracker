@@ -1,3 +1,4 @@
+import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
@@ -40,7 +41,7 @@ export default async function Page({ params }: { params: Record<string, string> 
 						dps: +dps,
 						...val,
 					})),
-					({ id }) => id,
+					pget('id'),
 				).reverse(),
 			}}>
 			<TierType />

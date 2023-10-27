@@ -1,4 +1,5 @@
 import PageSection from '@/components/page/section';
+import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { Box, Grid, Stack, TextField } from '@mui/material';
 import Image from 'next/image';
@@ -13,7 +14,7 @@ export default function EquipmentTier() {
 
 	const [search, setSearch] = useState('');
 
-	const equipIndex = useMemo(() => indexBy(equipList, ({ id }) => id), []);
+	const equipIndex = useMemo(() => indexBy(equipList, pget('id')), []);
 
 	const lowercaseSearch = search.toLowerCase();
 
@@ -23,7 +24,7 @@ export default function EquipmentTier() {
 				fullWidth
 				label='search'
 				value={search}
-				onChange={(e) => setSearch(e.target.value)}
+				onChange={({ target }) => setSearch(target.value)}
 			/>
 			<Stack spacing={1}>
 				{equipTier.map((value, index) => (

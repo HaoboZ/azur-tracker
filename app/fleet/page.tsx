@@ -1,4 +1,5 @@
 import firebaseServerApp from '@/src/firebase/server';
+import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
@@ -44,22 +45,22 @@ export default async function FleetPage() {
 						special: JSON.parse(val.special),
 						equipType: [val.equip1, val.equip2, val.equip3, val.equip4, val.equip5],
 					})),
-					({ id }) => id,
+					pget('id'),
 				),
 				equipData: pipe(
 					(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
 						id: +id,
 						...val,
 					})),
-					sortBy(({ id }) => id),
-					sortBy(({ type }) => type),
+					sortBy(pget('id')),
+					sortBy(pget('type')),
 				),
 				equippableData: indexBy(
 					(await csvtojson().fromString(equippableCSV)).map((value) => ({
 						...(pick(value, ['type', 'tier']) as any),
 						equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
 					})),
-					({ type }) => type,
+					pget('type'),
 				),
 				equipTierData,
 				equipTierHash: objectHash(equipTierData),
