@@ -1,61 +1,50 @@
 'use client';
-import Loading from '@/components/loaders/loading';
+import PageBack from '@/components/page/back';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import MultiSortable from '@/components/sortable/multi';
-import firebaseClientApp from '@/src/firebase/client';
 import pget from '@/src/helpers/pget';
-import { useData } from '@/src/providers/data';
 import { Grid, Paper, Stack } from '@mui/material';
-import { getDatabase, ref, set } from 'firebase/database';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
-import { useObjectVal } from 'react-firebase-hooks/database';
+import { useMemo, useState } from 'react';
 import { difference, indexBy, mapValues, omit } from 'remeda';
+import { useDidUpdate } from 'rooks';
 import { rarityColors } from '../../colors';
-import Error from '../../error';
 import type { EquipType } from '../../fleet/ship/equip/type';
-import type { TierType } from '../type';
+import { updateTier } from './updateTier';
 
-const db = getDatabase(firebaseClientApp);
-
-export default function TierType() {
-	const { params, equipData } = useData<TierType>();
+export default function TierType({
+	type,
+	equipTier,
+	equipData,
+}: {
+	type: string;
+	equipTier: Record<string, number[]>;
+	equipData: EquipType[];
+}) {
 	const equipIndex = useMemo(() => indexBy(equipData, pget('id')), []);
 
-	const tierRef = ref(db, `tiers/${decodeURIComponent(params.type)}`);
-	const [data, loading, error] = useObjectVal<Record<string, number[]>>(tierRef);
-
 	const [changed, setChanged] = useState(false);
-	const [tiers, setTiers] = useState<Record<string, EquipType[]>>({
-		'unTiered': [],
-		'0': [],
-		'1': [],
-		'2': [],
-		'3': [],
-		'4': [],
-		'N': [],
+	const [tiers, setTiers] = useState(() => {
+		const tiers = mapValues(equipTier, (ids) => ids.map((id) => equipIndex[id]));
+		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
+		return tiers;
 	});
 
-	useEffect(() => {
-		if (loading || error) return;
-		const tiers = mapValues(data, (ids) => ids.map((id) => equipIndex[id]));
-		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
-		setTiers(tiers);
-	}, [loading, error]);
-
-	if (loading) return <Loading />;
-	if (error) return <Error error={error} />;
+	useDidUpdate(() => {
+		setChanged(true);
+	}, [tiers]);
 
 	return (
 		<PageContainer>
+			<PageBack />
 			<PageTitle
 				actions={[
 					{
 						name: 'Save',
 						onClick: async () => {
-							await set(
-								tierRef,
+							await updateTier(
+								type,
 								mapValues(omit(tiers, ['unTiered']), (equips) => equips.map(pget('id'))),
 							);
 							setChanged(false);
@@ -63,7 +52,7 @@ export default function TierType() {
 						buttonProps: { disabled: !changed },
 					},
 				]}>
-				{decodeURIComponent(params.type)}
+				{type}
 			</PageTitle>
 			<MultiSortable<EquipType>
 				groups={tiers}

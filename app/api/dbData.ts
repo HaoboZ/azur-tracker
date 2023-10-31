@@ -1,0 +1,23 @@
+'use server';
+import prisma from '@/prisma/index';
+import { auth } from '@/src/auth';
+
+export async function getDBData() {
+	const session = await auth();
+	if (!session?.user) return;
+	return prisma.data.findUnique({
+		where: { userEmail: session.user.email },
+		select: { main: true, event: true, research: true, fleet: true },
+	});
+}
+
+export async function updateDBData(data) {
+	const session = await auth();
+	if (!session?.user) return;
+	await prisma.data.upsert({
+		where: { userEmail: session.user.email },
+		create: { userEmail: session.user.email, ...data },
+		update: data,
+		select: { userEmail: true },
+	});
+}

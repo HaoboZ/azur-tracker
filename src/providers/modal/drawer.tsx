@@ -19,14 +19,14 @@ export default function ModalDrawer({
 	contentProps?: DialogContentProps;
 	onSave?: () => void;
 } & Partial<Omit<SwipeableDrawerProps, 'title'>>) {
-	const { modalStatus, closeModal } = useModalControls();
+	const { modalState, closeModal } = useModalControls();
 
 	return (
 		<SwipeableDrawer
 			disableSwipeToOpen
 			disablePortal
 			closeAfterTransition
-			open={modalStatus.open}
+			open={modalState.open}
 			anchor='bottom'
 			sx={{ display: 'flex', justifyContent: 'center' }}
 			PaperProps={{

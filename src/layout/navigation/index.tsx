@@ -1,4 +1,3 @@
-'use client';
 import { Box } from '@mui/material';
 import type { ReactNode } from 'react';
 import BottomBar from './bottomBar';

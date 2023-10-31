@@ -1,12 +1,11 @@
-'use client';
 import PageContainer from '@/components/page/container';
-import { PageLinkComponent } from '@/components/page/link';
 import PageTitle from '@/components/page/title';
 import image from '@/public/images/startScreen.jpg';
-import { useAuth } from '@/src/providers/auth';
+import { auth } from '@/src/auth';
 import { Box, Button, Grid } from '@mui/material';
-import axios from 'axios';
+import { revalidatePath } from 'next/cache';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const menuItems = [
 	{ name: 'Event', href: 'event' },
@@ -15,20 +14,28 @@ const menuItems = [
 	{ name: 'Info', href: 'info' },
 ];
 
-export default function Main() {
-	const user = useAuth();
+export default async function Main() {
+	const session = await auth();
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle
 				actions={
-					user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && [
-						{
-							name: 'Revalidate',
-							onClick: () =>
-								axios.post(`api/revalidate?secret=${process.env.NEXT_PUBLIC_ADMIN_ID}`),
-						},
-					]
+					session?.user.role === 'ADMIN' && (
+						<form
+							action={async () => {
+								'use server';
+								revalidatePath('/event');
+								revalidatePath('/research');
+								revalidatePath('/fleet');
+								revalidatePath('/info');
+								revalidatePath('/tier');
+							}}>
+							<Button type='submit' variant='outlined'>
+								Revalidate
+							</Button>
+						</form>
+					)
 				}>
 				Azur Lane Tracker
 			</PageTitle>
@@ -38,18 +45,14 @@ export default function Main() {
 			<Grid container spacing={1}>
 				{menuItems.map((item) => (
 					<Grid key={item.href} item xs={12} sm={6}>
-						<Button
-							fullWidth
-							variant='outlined'
-							component={PageLinkComponent}
-							href={item.href}>
+						<Button fullWidth variant='outlined' component={Link} href={item.href}>
 							{item.name}
 						</Button>
 					</Grid>
 				))}
-				{user?.uid === process.env.NEXT_PUBLIC_ADMIN_ID && (
+				{session?.user.role === 'ADMIN' && (
 					<Grid key='tier' item xs={12}>
-						<Button fullWidth variant='outlined' component={PageLinkComponent} href='tier'>
+						<Button fullWidth variant='outlined' component={Link} href='tier'>
 							Tier
 						</Button>
 					</Grid>

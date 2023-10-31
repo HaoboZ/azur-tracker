@@ -1,15 +1,14 @@
 'use client';
-import HelpTourButton from '@/components/helpTourButton';
 import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Box, Link, Typography } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import { differenceInDays } from 'date-fns';
 import Image from 'next/image';
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIntervalWhen } from 'rooks';
 import EventFarming from './farming';
 import EventFields from './fields';
@@ -53,64 +52,7 @@ export default function Event() {
 
 	return (
 		<PageContainer noSsr>
-			<PageTitle
-				actions={
-					<HelpTourButton
-						steps={[
-							{
-								element: '#help',
-								intro: (
-									<Fragment>
-										<Typography>This page will help you</Typography>
-										<ul style={{ textAlign: 'start' }}>
-											<li>track event information</li>
-											<li>buy what you want from the shop</li>
-											<li>and farm stages</li>
-										</ul>
-										<Typography>WITHOUT creating spreadsheets</Typography>
-									</Fragment>
-								),
-							},
-							{
-								element: '#shop',
-								intro: (
-									<Fragment>
-										<Typography>
-											Open to change what you are aiming to buy from the shop.
-										</Typography>
-										<br />
-										<Typography>This shows the total amount of points needed.</Typography>
-									</Fragment>
-								),
-							},
-							{
-								element: '#daily',
-								intro: (
-									<Fragment>
-										<Typography>
-											Open to change how many points you get daily. (missions, 3x, ...)
-										</Typography>
-										<br />
-										<Typography>
-											This shows the total amount of points per day.
-										</Typography>
-									</Fragment>
-								),
-							},
-							{
-								element: '#required',
-								intro: (
-									<Typography>
-										This is the calculated value of how many points you need by the end of
-										today to get all items from shop when event ends.
-									</Typography>
-								),
-							},
-						]}
-					/>
-				}>
-				Event Tracker
-			</PageTitle>
+			<PageTitle>Event Tracker</PageTitle>
 			<Box display='flex' justifyContent='center'>
 				<Link href={eventData.href} target='_blank'>
 					<Image

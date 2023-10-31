@@ -14,7 +14,8 @@
 			"@/src/*": ["./src/*"],
 			"@/components/*": ["./src/components/*"],
 			"@/app/*": ["./app/*"],
-			"@/public/*": ["./public/*"]
+			"@/public/*": ["./public/*"],
+			"@/prisma/*": ["./prisma/*"]
 		},
 		"plugins": [
 			{

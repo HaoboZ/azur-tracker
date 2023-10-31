@@ -54,7 +54,7 @@ const researchSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(importBackup, (state, { payload }) => {
-			if (payload.key === 'research') return { ...state, ...payload.data };
+			if ('research' in payload) return { ...state, ...payload.research };
 		});
 	},
 });

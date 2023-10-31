@@ -1,15 +1,11 @@
-import { AppBar, Badge, BottomNavigation, BottomNavigationAction } from '@mui/material';
-import { usePathname, useRouter } from 'next/navigation';
+'use client';
+import { AppBar, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
-import pget from '../../helpers/pget';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { mainActions } from '../../store/reducers/mainReducer';
 import { items } from './items';
 
 export default function BottomBar() {
-	const unViewed = useAppSelector(pget('main.unViewed'));
-	const dispatch = useAppDispatch();
-	const router = useRouter();
 	const pathname = usePathname();
 
 	const index = useMemo(() => {
@@ -29,22 +25,15 @@ export default function BottomBar() {
 					pl: 'env(safe-area-inset-left)',
 					pr: 'env(safe-area-inset-right)',
 					pb: 'env(safe-area-inset-bottom)',
-				}}
-				onChange={(e, value) => {
-					const item = items[value];
-					router.push(item.href);
-					if ('store' in item) dispatch(mainActions.setViewed(item.store));
 				}}>
 				{items.map((item, index) => (
 					<BottomNavigationAction
 						key={index}
 						sx={{ minWidth: 0 }}
 						label={item.label}
-						icon={
-							<Badge color='secondary' variant='dot' invisible={!unViewed[item.store]}>
-								{item.icon}
-							</Badge>
-						}
+						icon={item.icon}
+						component={Link}
+						href={item.href}
 					/>
 				))}
 			</BottomNavigation>

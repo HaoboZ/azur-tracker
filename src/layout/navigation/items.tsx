@@ -11,12 +11,11 @@ export const items: {
 	label: string;
 	icon: ReactNode;
 	href: string;
-	store?: string;
 	hide?: boolean;
 }[] = [
-	{ label: 'Event', icon: <EventIcon />, href: '/event', store: 'event' },
-	{ label: 'Research', icon: <CameraIcon />, href: '/research', store: 'research' },
-	{ label: 'Fleet', icon: <DirectionsBoatIcon />, href: '/fleet', store: 'fleet' },
+	{ label: 'Event', icon: <EventIcon />, href: '/event' },
+	{ label: 'Research', icon: <CameraIcon />, href: '/research' },
+	{ label: 'Fleet', icon: <DirectionsBoatIcon />, href: '/fleet' },
 	{ label: 'Info', icon: <InfoIcon />, href: '/info' },
 	{ label: 'Settings', icon: <SettingsIcon />, href: '/settings', hide: true },
 ];

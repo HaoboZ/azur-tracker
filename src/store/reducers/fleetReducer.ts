@@ -58,7 +58,7 @@ const fleetSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(importBackup, (state, { payload }) => {
-			if (payload.key === 'fleet') return { ...state, ...payload.data };
+			if ('fleet' in payload) return { ...state, ...payload.fleet };
 		});
 	},
 });

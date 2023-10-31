@@ -1,18 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { debounce } from '../helpers/delay';
-import { loadState, saveState } from './persist';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import event from './reducers/eventReducer';
 import fleet from './reducers/fleetReducer';
 import main from './reducers/mainReducer';
 import research from './reducers/researchReducer';
 
-export const store = configureStore({
-	reducer: { main, event, research, fleet },
-	devTools: process.env.NODE_ENV === 'development',
-	preloadedState: loadState(),
-});
+const rootReducer = combineReducers({ main, event, research, fleet });
 
-store.subscribe(debounce(() => saveState(store.getState()), 500));
+export function createStore(preloadedState) {
+	return configureStore({
+		reducer: rootReducer,
+		devTools: process.env.NODE_ENV === 'development',
+		preloadedState,
+	});
+}
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = ReturnType<typeof createStore>['dispatch'];

@@ -3,17 +3,12 @@ import AsyncButton from '@/components/loaders/asyncButton';
 import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
-import getData from '@/src/firebase/storeSync/getData';
-import setData from '@/src/firebase/storeSync/setData';
-import pget from '@/src/helpers/pget';
-import { useAuth } from '@/src/providers/auth';
-import useAuthButton from '@/src/providers/auth/useAuthButton';
-import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import type { RootState } from '@/src/store';
+import { useAppDispatch } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
-import { mainActions } from '@/src/store/reducers/mainReducer';
+import { importBackup } from '@/src/store/reducers/mainReducer';
 import { researchActions } from '@/src/store/reducers/researchReducer';
-import { Dialog } from '@capacitor/dialog';
 import {
 	Brightness3 as Brightness3Icon,
 	Brightness4 as Brightness4Icon,
@@ -26,25 +21,28 @@ import {
 	ListItem,
 	ListItemSecondaryAction,
 	ListItemText,
-	Switch,
 	ToggleButton,
 	ToggleButtonGroup,
 	Typography,
 	useColorScheme,
 } from '@mui/material';
+import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
+import type { Session } from 'next-auth';
+import Link from 'next/link';
 import { useSnackbar } from 'notistack';
+import { useStore } from 'react-redux';
+import { mapValues, pick } from 'remeda';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
+import { getDBData, updateDBData } from '../api/dbData';
 
 const packageJson = _packageJson as PackageJson;
 
-export default function Settings() {
-	const main = useAppSelector(pget('main'));
+export default function Settings({ user }: { user: Session['user'] }) {
+	const store = useStore<RootState>();
 	const dispatch = useAppDispatch();
 	const { mode, setMode } = useColorScheme();
-	const user = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
-	const authButton = useAuthButton();
 
 	return (
 		<PageContainer noSsr>
@@ -54,50 +52,57 @@ export default function Settings() {
 					<ListItemText classes={{ primary: 'longText' }}>
 						{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
 					</ListItemText>
-					<ListItemSecondaryAction>{authButton}</ListItemSecondaryAction>
-				</ListItem>
-				<ListItem>
-					<ListItemText>Automatic Cloud Sync</ListItemText>
 					<ListItemSecondaryAction>
-						<Switch
-							checked={main.autoSync}
-							onChange={({ target }) => dispatch(mainActions.setAutoSync(target.checked))}
-						/>
+						<Button
+							variant='outlined'
+							component={Link}
+							href={`/api/auth/${user ? 'signout' : 'signin'}`}>
+							{user ? 'Sign Out' : 'Sign In'}
+						</Button>
 					</ListItemSecondaryAction>
 				</ListItem>
-				<ListItem>
-					<ListItemText>Manual Cloud Sync</ListItemText>
-					<ListItemSecondaryAction>
-						<ButtonGroup>
-							<AsyncButton
-								variant='outlined'
-								color='inherit'
-								onClick={async () => {
-									if (user?.emailVerified) {
-										await setData(['event', 'research', 'fleet']);
-										enqueueSnackbar('Data Successfully Saved', { variant: 'success' });
-									} else {
-										enqueueSnackbar('Sign In to Save', { variant: 'info' });
-									}
-								}}>
-								Save
-							</AsyncButton>
-							<AsyncButton
-								variant='outlined'
-								color='inherit'
-								onClick={async () => {
-									if (user?.emailVerified) {
-										await getData(['event', 'research', 'fleet']);
-										enqueueSnackbar('Data Successfully Loaded', { variant: 'success' });
-									} else {
-										enqueueSnackbar('Sign In to Load', { variant: 'info' });
-									}
-								}}>
-								Load
-							</AsyncButton>
-						</ButtonGroup>
-					</ListItemSecondaryAction>
-				</ListItem>
+				{user && (
+					<ListItem>
+						<ListItemText>Cloud Sync</ListItemText>
+						<ListItemSecondaryAction>
+							<ButtonGroup>
+								<AsyncButton
+									variant='outlined'
+									color='inherit'
+									onClick={async () => {
+										const state = store.getState();
+										const { main, ...others } = state;
+										await updateDBData({
+											main: pick(main, Object.keys(others)),
+											...mapValues(others, (value) =>
+												compressToUTF16(JSON.stringify(value)),
+											),
+										});
+										enqueueSnackbar('Data Saved', { variant: 'success' });
+									}}>
+									Save
+								</AsyncButton>
+								<AsyncButton
+									variant='outlined'
+									color='inherit'
+									onClick={async () => {
+										const { main, ...others } = await getDBData();
+										dispatch(
+											importBackup({
+												main,
+												...mapValues(others, (value) =>
+													JSON.parse(decompressFromUTF16(value)),
+												),
+											}),
+										);
+										enqueueSnackbar('Data Loaded', { variant: 'success' });
+									}}>
+									Load
+								</AsyncButton>
+							</ButtonGroup>
+						</ListItemSecondaryAction>
+					</ListItem>
+				)}
 				<ListItem>
 					<ListItemText>Theme</ListItemText>
 					<ListItemSecondaryAction>
@@ -129,11 +134,8 @@ export default function Settings() {
 							variant='contained'
 							color='error'
 							onClick={async () => {
-								const { value } = await Dialog.confirm({
-									title: 'Reset',
-									message: 'Are you sure you want to reset this page?',
-								});
-								if (value) dispatch(eventActions.reset());
+								if (!confirm('Are you sure you want to reset this data?')) return;
+								dispatch(eventActions.reset());
 							}}>
 							Reset
 						</Button>
@@ -154,11 +156,8 @@ export default function Settings() {
 							variant='contained'
 							color='error'
 							onClick={async () => {
-								const { value } = await Dialog.confirm({
-									title: 'Reset',
-									message: 'Are you sure you want to reset this page?',
-								});
-								if (value) dispatch(researchActions.reset());
+								if (!confirm('Are you sure you want to reset this data?')) return;
+								dispatch(researchActions.reset());
 							}}>
 							Reset
 						</Button>
@@ -179,11 +178,8 @@ export default function Settings() {
 							variant='contained'
 							color='error'
 							onClick={async () => {
-								const { value } = await Dialog.confirm({
-									title: 'Reset',
-									message: 'Are you sure you want to reset this page?',
-								});
-								if (value) dispatch(fleetActions.reset());
+								if (!confirm('Are you sure you want to reset this data?')) return;
+								dispatch(fleetActions.reset());
 							}}>
 							Reset
 						</Button>

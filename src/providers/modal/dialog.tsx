@@ -29,14 +29,14 @@ export default function ModalDialog({
 	actions?: ReactNode;
 	onSave?: () => void;
 } & Partial<DialogProps>) {
-	const { modalStatus, closeModal } = useModalControls();
+	const { modalState, closeModal } = useModalControls();
 
 	return (
 		<Dialog
 			disablePortal
 			closeAfterTransition
 			fullWidth={!autoSize}
-			open={modalStatus.open}
+			open={modalState.open}
 			maxWidth='md'
 			TransitionComponent={Grow}
 			sx={{

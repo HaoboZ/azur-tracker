@@ -1,10 +1,12 @@
 import pget from '@/src/helpers/pget';
-import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
 import { groupBy, pick } from 'remeda';
 import Research from './index';
+import type { ResearchShipType } from './type';
+
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = { title: 'Research | Azur Lane Tracker' };
 
@@ -15,18 +17,17 @@ export default async function ResearchPage() {
 	);
 
 	return (
-		<DataProvider
-			data={{
-				researchData: groupBy(
-					(await csvtojson().fromString(researchCSV)).map((val) => ({
-						...(pick(val, ['series', 'name', 'image']) as { series; name; image }),
+		<Research
+			researchData={groupBy(
+				(await csvtojson().fromString(researchCSV)).map<ResearchShipType & { series: string }>(
+					(val) => ({
+						...pick(val, ['series', 'name', 'image']),
 						type: +val.type,
-						fate: +val.fate,
-					})),
-					pget('series'),
+						fate: Boolean(+val.fate),
+					}),
 				),
-			}}>
-			<Research />
-		</DataProvider>
+				pget('series'),
+			)}
+		/>
 	);
 }

@@ -1,11 +1,12 @@
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Breadcrumbs, Button, Typography } from '@mui/material';
 import { capitalCase } from 'change-case';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEventHandler } from 'react';
 import { useMemo } from 'react';
 import useIsMobile from '../../hooks/useIsMobile';
-import PageLink, { PageLinkComponent } from './link';
+import PageLink from './link';
 
 export type PageBackProps = {
 	confirm?: boolean;
@@ -51,7 +52,7 @@ export default function PageBack({
 
 		return (
 			<Button
-				component={backButton ? undefined : PageLinkComponent}
+				component={backButton ? undefined : Link}
 				href={backButton ? undefined : path.href}
 				startIcon={<ArrowBackIcon />}
 				onClick={clickListener}>

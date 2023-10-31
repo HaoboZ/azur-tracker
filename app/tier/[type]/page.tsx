@@ -1,22 +1,31 @@
+import prisma from '@/prisma/index';
+import { auth } from '@/src/auth';
 import pget from '@/src/helpers/pget';
-import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { pick, sortBy } from 'remeda';
+import { notFound } from 'next/navigation';
+import { isEmpty, omit, pick, sortBy } from 'remeda';
 import TierType from './index';
 
 export default async function Page({ params }: { params: Record<string, string> }) {
+	const session = await auth();
+	if (session?.user.role !== 'ADMIN') notFound();
+
+	const type = decodeURIComponent(params.type);
+
 	const { data: tierTypesCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
 		{
 			params: {
 				sheet: 'Tier',
 				tqx: 'out:csv',
-				tq: `SELECT B,C WHERE A='${decodeURIComponent(params.type)}'`,
+				tq: `SELECT B,C WHERE A='${type}'`,
 			},
 		},
 	);
 	const tierTypes = JSON.parse(`[${tierTypesCSV}]`);
+	if (isEmpty(tierTypes)) return notFound();
+
 	const { data: equipCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
 		{
@@ -31,21 +40,21 @@ export default async function Page({ params }: { params: Record<string, string> 
 		},
 	);
 
+	const equipTier = await prisma.tier.findUnique({ where: { type } });
+
 	return (
-		<DataProvider
-			data={{
-				params,
-				equipData: sortBy(
-					(await csvtojson().fromString(equipCSV)).map(({ id, dps, ...val }) => ({
-						id: +id,
-						dps: +dps,
-						...val,
-					})),
-					pget('id'),
-				).reverse(),
-			}}>
-			<TierType />
-		</DataProvider>
+		<TierType
+			type={type}
+			equipTier={omit(equipTier, ['type'])}
+			equipData={sortBy(
+				(await csvtojson().fromString(equipCSV)).map(({ id, dps, ...val }) => ({
+					id: +id,
+					dps: +dps,
+					...val,
+				})),
+				pget('id'),
+			)}
+		/>
 	);
 }
 

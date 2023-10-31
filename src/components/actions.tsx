@@ -1,3 +1,4 @@
+'use client';
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
 import type { ButtonBaseTypeMap, ButtonProps, MenuItemProps } from '@mui/material';
 import { ButtonGroup, MenuList } from '@mui/material';
@@ -14,14 +15,7 @@ export type ActionProps = {
 	menuItemProps?: MenuItemProps<any>;
 } & ButtonBaseTypeMap['props'];
 
-export default function Actions({
-	items,
-	max,
-}: {
-	items: ActionProps[];
-	// max number of buttons displayed
-	max?: number;
-}) {
+export default function Actions({ items, max }: { items: ActionProps[]; max?: number }) {
 	const [buttons, menu] = useMemo(() => {
 		const filtered = items.filter(Boolean);
 		if (!max || filtered.length <= max) return [filtered, []];

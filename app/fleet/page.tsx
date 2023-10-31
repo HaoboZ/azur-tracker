@@ -1,13 +1,14 @@
-import firebaseServerApp from '@/src/firebase/server';
+import prisma from '@/prisma/index';
 import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { getDatabase } from 'firebase-admin/database';
 import type { Metadata } from 'next';
 import objectHash from 'object-hash';
 import { indexBy, mapValues, omit, pick, pipe, sortBy } from 'remeda';
 import Fleet from './index';
+
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = { title: 'Fleet | Azur Lane Tracker' };
 
@@ -25,14 +26,16 @@ export default async function FleetPage() {
 		{ params: { sheet: 'Equippable', tqx: 'out:csv' } },
 	);
 
-	const db = getDatabase(firebaseServerApp);
-	const equipTier = (await db.ref('tiers').get()).val();
+	const equipTier = indexBy(await prisma.tier.findMany(), pget('type'));
 
 	const equipTierData = mapValues(equipTier, (tiers) =>
-		Object.values(omit(tiers, ['N'])).reduce((acc, equips, tier) => {
-			equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
-			return acc;
-		}, {}),
+		Object.values(omit(tiers, ['type', 'tN'])).reduce(
+			(acc, equips, tier) => {
+				equips?.forEach((equip, index) => (acc[equip] = [tier, index]));
+				return acc;
+			},
+			{} as Record<number, [number, number]>,
+		),
 	);
 
 	return (

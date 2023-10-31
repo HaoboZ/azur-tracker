@@ -91,7 +91,7 @@ const eventSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(importBackup, (state, { payload }) => {
-			if (payload.key === 'event') return { ...state, ...payload.data };
+			if ('event' in payload) return { ...state, ...payload.event };
 		});
 	},
 });

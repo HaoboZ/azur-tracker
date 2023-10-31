@@ -8,11 +8,7 @@ import { pipe } from 'remeda';
 const nextConfig = {
 	swcMinify: true,
 	headers: async () => [
-		{
-			// matching all API routes
-			source: '/api/:path*',
-			headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
-		},
+		{ source: '/api/:path*', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] },
 	],
 	images: {
 		remotePatterns: [
@@ -23,9 +19,6 @@ const nextConfig = {
 
 export default pipe(
 	nextConfig,
-	nextPWA({
-		disable: process.env.NODE_ENV === 'development',
-		dest: 'public',
-	}),
-	bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }),
+	nextPWA({ disable: !process.env.NEXT_PUBLIC_VERCEL, dest: 'public' }),
+	bundleAnalyzer({ enabled: !process.env.VERCEL }),
 );

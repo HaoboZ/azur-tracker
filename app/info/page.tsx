@@ -1,12 +1,13 @@
-import firebaseServerApp from '@/src/firebase/server';
+import prisma from '@/prisma/index';
 import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
-import { getDatabase } from 'firebase-admin/database';
 import type { Metadata } from 'next';
-import { difference, groupBy, mapValues, pipe, sortBy, uniq } from 'remeda';
+import { difference, groupBy, mapValues, omit, pipe, sortBy, uniq } from 'remeda';
 import Info from './index';
+
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
 
@@ -20,20 +21,19 @@ export default async function InfoPage() {
 		{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 	);
 
-	const db = getDatabase(firebaseServerApp);
-	const tiers = (await db.ref('tiers').get()).val();
-
 	const farmData = sortBy(await csvtojson().fromString(farmCSV), ({ order }) => order).map(
 		({ id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, ...props }) => ({
 			...props,
 			ids: [id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10].filter(Boolean),
 		}),
 	);
-	const equipTier: number[][] = [];
-	for (const type of Object.values(tiers)) {
-		for (const [tier, equips] of Object.entries(type)) {
-			if (tier === 'N') continue;
-			equipTier[tier] = uniq([...(equipTier[tier] ?? []), ...equips]);
+
+	const equipTiers = await prisma.tier.findMany();
+	const equipTier: Record<string, number[]> = { t1: [], t2: [], t3: [], t4: [] };
+	for (const type of equipTiers) {
+		for (const [tier, equips] of Object.entries(omit(type, ['type']))) {
+			if (tier === 'tN') continue;
+			equipTier[tier] = uniq([...(equipTier[tier] ?? []), ...(equips ?? [])]);
 		}
 	}
 
@@ -46,7 +46,7 @@ export default async function InfoPage() {
 						mapValues(groupBy(value, pget('stage')), (value) => value[0].ids),
 					),
 				),
-				equipTier: equipTier.map((value) => {
+				equipTier: Object.values(equipTier).map((value) => {
 					const result = difference(value, found).sort();
 					found = uniq([...found, ...value]);
 					return result;

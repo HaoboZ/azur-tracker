@@ -1,6 +1,8 @@
 import PageContainer from '@/components/page/container';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = { title: 'Privacy | Azur Lane Tracker' };
 
 export default function Privacy() {
@@ -101,10 +103,10 @@ export default function Privacy() {
 					<p>
 						<strong>Website</strong> refers to Azur Lane Tracker, accessible from
 						<a
-							href={process.env.SITE_URL}
+							href={process.env.NEXT_PUBLIC_VERCEL_URL}
 							rel='external nofollow noopener noreferrer'
 							target='_blank'>
-							{process.env.SITE_URL}
+							{process.env.NEXT_PUBLIC_VERCEL_URL}
 						</a>
 					</p>
 				</li>

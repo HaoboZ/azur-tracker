@@ -1,6 +1,8 @@
 import PageContainer from '@/components/page/container';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = { title: 'Terms Of Service | Azur Lane Tracker' };
 
 export default function TermsOfService() {

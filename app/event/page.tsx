@@ -5,6 +5,8 @@ import type { Metadata } from 'next';
 import { pickBy } from 'remeda';
 import Event from './index';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = { title: 'Event | Azur Lane Tracker' };
 
 export default async function EventPage() {
