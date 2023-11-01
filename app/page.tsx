@@ -3,7 +3,7 @@ import PageTitle from '@/components/page/title';
 import image from '@/public/images/startScreen.jpg';
 import { auth } from '@/src/auth';
 import { Box, Button, Grid } from '@mui/material';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,11 +25,7 @@ export default async function Main() {
 						<form
 							action={async () => {
 								'use server';
-								revalidatePath('/event');
-								revalidatePath('/research');
-								revalidatePath('/fleet');
-								revalidatePath('/info');
-								revalidatePath('/tier');
+								revalidateTag('sheets');
 							}}>
 							<Button type='submit' variant='outlined'>
 								Revalidate

@@ -4,14 +4,13 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import { difference, groupBy, mapValues, omit, pipe, sortBy, uniq } from 'remeda';
 import Info from './index';
 
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
 
-export default async function InfoPage() {
+const getCachedData = unstable_cache(async () => {
 	const { data: farmCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
 		{ params: { sheet: 'Farm', tqx: 'out:csv' } },
@@ -38,25 +37,28 @@ export default async function InfoPage() {
 	}
 
 	let found = [];
+	return {
+		farmData: mapValues(groupBy(farmData, pget('origin')), (value) =>
+			mapValues(groupBy(value, pget('level')), (value) =>
+				mapValues(groupBy(value, pget('stage')), (value) => value[0].ids),
+			),
+		),
+		equipTier: Object.values(equipTier).map((value) => {
+			const result = difference(value, found).sort();
+			found = uniq([...found, ...value]);
+			return result;
+		}),
+		equipList: pipe(
+			await csvtojson().fromString(equipCSV),
+			sortBy(pget('id')),
+			sortBy(pget('type')),
+		),
+	};
+}, ['sheets']);
+
+export default async function InfoPage() {
 	return (
-		<DataProvider
-			data={{
-				farmData: mapValues(groupBy(farmData, pget('origin')), (value) =>
-					mapValues(groupBy(value, pget('level')), (value) =>
-						mapValues(groupBy(value, pget('stage')), (value) => value[0].ids),
-					),
-				),
-				equipTier: Object.values(equipTier).map((value) => {
-					const result = difference(value, found).sort();
-					found = uniq([...found, ...value]);
-					return result;
-				}),
-				equipList: pipe(
-					await csvtojson().fromString(equipCSV),
-					sortBy(pget('id')),
-					sortBy(pget('type')),
-				),
-			}}>
+		<DataProvider data={await getCachedData()}>
 			<Info />
 		</DataProvider>
 	);

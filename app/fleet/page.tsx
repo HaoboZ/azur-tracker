@@ -4,15 +4,14 @@ import DataProvider from '@/src/providers/data';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import objectHash from 'object-hash';
 import { indexBy, mapValues, omit, pick, pipe, sortBy } from 'remeda';
 import Fleet from './index';
 
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = { title: 'Fleet | Azur Lane Tracker' };
 
-export default async function FleetPage() {
+const getCachedData = unstable_cache(async () => {
 	const { data: fleetCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
 		{ params: { sheet: 'Fleet', tqx: 'out:csv' } },
@@ -38,36 +37,39 @@ export default async function FleetPage() {
 		),
 	);
 
+	return {
+		fleetData: indexBy(
+			(await csvtojson().fromString(fleetCSV)).map((val) => ({
+				...(pick(val, ['id', 'name', 'rarity', 'faction', 'type']) as any),
+				tier: +val.tier,
+				special: JSON.parse(val.special),
+				equipType: [val.equip1, val.equip2, val.equip3, val.equip4, val.equip5],
+			})),
+			pget('id'),
+		),
+		equipData: pipe(
+			(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
+				id: +id,
+				...val,
+			})),
+			sortBy(pget('id')),
+			sortBy(pget('type')),
+		),
+		equippableData: indexBy(
+			(await csvtojson().fromString(equippableCSV)).map((value) => ({
+				...(pick(value, ['type', 'tier']) as any),
+				equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
+			})),
+			pget('type'),
+		),
+		equipTierData,
+		equipTierHash: objectHash(equipTierData),
+	};
+}, ['sheets']);
+
+export default async function FleetPage() {
 	return (
-		<DataProvider
-			data={{
-				fleetData: indexBy(
-					(await csvtojson().fromString(fleetCSV)).map((val) => ({
-						...(pick(val, ['id', 'name', 'rarity', 'faction', 'type']) as any),
-						tier: +val.tier,
-						special: JSON.parse(val.special),
-						equipType: [val.equip1, val.equip2, val.equip3, val.equip4, val.equip5],
-					})),
-					pget('id'),
-				),
-				equipData: pipe(
-					(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
-						id: +id,
-						...val,
-					})),
-					sortBy(pget('id')),
-					sortBy(pget('type')),
-				),
-				equippableData: indexBy(
-					(await csvtojson().fromString(equippableCSV)).map((value) => ({
-						...(pick(value, ['type', 'tier']) as any),
-						equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
-					})),
-					pget('type'),
-				),
-				equipTierData,
-				equipTierHash: objectHash(equipTierData),
-			}}>
+		<DataProvider data={await getCachedData()}>
 			<Fleet />
 		</DataProvider>
 	);
