@@ -65,8 +65,6 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:9.0.0"],\
           ["eslint-plugin-prettier", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.1"],\
           ["events", "npm:3.3.0"],\
-          ["intro.js", "npm:7.2.0"],\
-          ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.0.0"],\
           ["lz-string", "npm:1.5.0"],\
           ["nanoid", "npm:5.0.2"],\
           ["next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:14.0.1"],\
@@ -5311,8 +5309,6 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:9.0.0"],\
           ["eslint-plugin-prettier", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.1"],\
           ["events", "npm:3.3.0"],\
-          ["intro.js", "npm:7.2.0"],\
-          ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.0.0"],\
           ["lz-string", "npm:1.5.0"],\
           ["nanoid", "npm:5.0.2"],\
           ["next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:14.0.1"],\
@@ -7871,41 +7867,6 @@ const RAW_RUNTIME_STATE =
           ["get-intrinsic", "npm:1.2.2"],\
           ["hasown", "npm:2.0.0"],\
           ["side-channel", "npm:1.0.4"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["intro.js", [\
-      ["npm:7.2.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/intro.js-npm-7.2.0-c7fd458ad8-10c0.zip/node_modules/intro.js/",\
-        "packageDependencies": [\
-          ["intro.js", "npm:7.2.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["intro.js-react", [\
-      ["npm:1.0.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/intro.js-react-npm-1.0.0-d7f3013c43-10c0.zip/node_modules/intro.js-react/",\
-        "packageDependencies": [\
-          ["intro.js-react", "npm:1.0.0"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.0.0", {\
-        "packageLocation": "./.yarn/__virtual__/intro.js-react-virtual-51c02987a9/3/AppData/Local/Yarn/Berry/cache/intro.js-react-npm-1.0.0-d7f3013c43-10c0.zip/node_modules/intro.js-react/",\
-        "packageDependencies": [\
-          ["intro.js-react", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.0.0"],\
-          ["@types/intro.js", null],\
-          ["@types/react", "npm:18.2.33"],\
-          ["intro.js", "npm:7.2.0"],\
-          ["react", "npm:18.2.0"]\
-        ],\
-        "packagePeers": [\
-          "@types/intro.js",\
-          "@types/react",\
-          "intro.js",\
-          "react"\
         ],\
         "linkType": "HARD"\
       }]\

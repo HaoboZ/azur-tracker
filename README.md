@@ -19,11 +19,13 @@ Open [localhost](http://localhost:3000) with your browser to see the result.
 	* [Prettier](https://prettier.io)
 * framework
 	* [Next.js](https://nextjs.org)
-	* [Vercel](https://vercel.com/storage)
+	* [Prisma](https://www.prisma.io)
 	* [Auth.js](https://authjs.dev)
 * component
 	* [MUI](https://mui.com)
 	* [notistack](https://notistack.com)
+	* [dnd kit](https://dndkit.com)
+	* [Embla Carousel](https://www.embla-carousel.com)
 * utility
 	* [Redux](https://redux.js.org)
 	* [Remeda](https://remedajs.com)
