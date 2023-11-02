@@ -5,7 +5,7 @@ import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import objectHash from 'object-hash';
+import hash from 'object-hash';
 import { indexBy, mapValues, omit, pick, pipe, sortBy } from 'remeda';
 import Fleet from './index';
 
@@ -63,7 +63,7 @@ const getCachedData = unstable_cache(async () => {
 			pget('type'),
 		),
 		equipTierData,
-		equipTierHash: objectHash(equipTierData),
+		equipTierHash: hash(equipTierData),
 	};
 }, ['sheets']);
 
