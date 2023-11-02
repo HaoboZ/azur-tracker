@@ -3,11 +3,12 @@ import AsyncButton from '@/components/loaders/asyncButton';
 import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
+import loadStore from '@/src/providers/syncStore/loadStore';
+import saveStore from '@/src/providers/syncStore/saveStore';
 import type { RootState } from '@/src/store';
 import { useAppDispatch } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
-import { importBackup } from '@/src/store/reducers/mainReducer';
 import { researchActions } from '@/src/store/reducers/researchReducer';
 import {
 	Brightness3 as Brightness3Icon,
@@ -26,15 +27,12 @@ import {
 	Typography,
 	useColorScheme,
 } from '@mui/material';
-import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import type { Session } from 'next-auth';
 import Link from 'next/link';
 import { useSnackbar } from 'notistack';
 import { useStore } from 'react-redux';
-import { mapValues, pick } from 'remeda';
 import type { PackageJson } from 'type-fest';
 import _packageJson from '../../package.json';
-import { getDBData, updateDBData } from '../api/dbData';
 
 const packageJson = _packageJson as PackageJson;
 
@@ -70,14 +68,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 									variant='outlined'
 									color='inherit'
 									onClick={async () => {
-										const state = store.getState();
-										const { main, ...others } = state;
-										await updateDBData({
-											main: pick(main, Object.keys(others)),
-											...mapValues(others, (value) =>
-												compressToUTF16(JSON.stringify(value)),
-											),
-										});
+										await saveStore(store);
 										enqueueSnackbar('Data Saved', { variant: 'success' });
 									}}>
 									Save
@@ -86,15 +77,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 									variant='outlined'
 									color='inherit'
 									onClick={async () => {
-										const { main, ...others } = await getDBData();
-										dispatch(
-											importBackup({
-												main,
-												...mapValues(others, (value) =>
-													JSON.parse(decompressFromUTF16(value)),
-												),
-											}),
-										);
+										await loadStore(dispatch);
 										enqueueSnackbar('Data Loaded', { variant: 'success' });
 									}}>
 									Load
