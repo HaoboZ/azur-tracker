@@ -1,16 +1,9 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
-import FormattedTextField from '@/components/formattedTextField';
+import FormattedInput from '@/components/formattedInput';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { researchActions } from '@/src/store/reducers/researchReducer';
-import {
-	Avatar,
-	Grid,
-	InputAdornment,
-	ListItemAvatar,
-	ListItemText,
-	Typography,
-} from '@mui/material';
+import { Avatar, FormLabel, Grid, ListItemContent, ListItemDecorator, Typography } from '@mui/joy';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
@@ -120,12 +113,12 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				header: 'Name',
 				cell: ({ getValue, row }) => (
 					<Fragment>
-						<Avatar variant='rounded' src={row.original.image} sx={{ width: 60, height: 60 }}>
+						<Avatar size='lg' sx={{ borderRadius: 4 }}>
 							<Image
 								src={row.original.image}
 								alt={row.original.name}
-								width={60}
-								height={60}
+								width={48}
+								height={48}
 							/>
 						</Avatar>
 						<Typography>{getValue()}</Typography>
@@ -136,19 +129,18 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				id: 'devLevel',
 				header: 'Dev Level',
 				cell: ({ row }) => (
-					<FormattedTextField
+					<FormattedInput
 						type='number'
-						size='small'
 						inputMode='numeric'
 						value={row.original.devLevel || 0}
-						onChange={({ target }) =>
+						onChange={({ target }) => {
 							dispatch(
 								researchActions.modifyShip({
 									ship: row.original.name,
 									item: { devLevel: parseInt(target.value) },
 								}),
-							)
-						}
+							);
+						}}
 					/>
 				),
 			}),
@@ -156,51 +148,43 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				id: 'devStage',
 				header: 'Dev Stage',
 				cell: ({ row }) => (
-					<FormattedTextField
+					<FormattedInput
 						type='number'
-						size='small'
 						inputMode='numeric'
 						className='numberInput'
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position='end'>
-									/{row.original.devLevels[row.original.type * 2] * 10}
-								</InputAdornment>
-							),
-						}}
+						endDecorator={`/${row.original.devLevels[row.original.type * 2] * 10}`}
 						value={row.original.devStage || 0}
-						onChange={({ target }) =>
+						onChange={({ target }) => {
 							dispatch(
 								researchActions.modifyShip({
 									ship: row.original.name,
 									item: { devStage: parseInt(target.value) },
 									maxDev: row.original.devLevels[row.original.type * 2] * 10,
 								}),
-							)
-						}
+							);
+						}}
 					/>
 				),
 			}),
-			columnHelper.accessor('devPrints', { header: 'Required Prints', size: 1 }),
+			columnHelper.accessor('devPrints', { header: 'Required Prints' }),
 			columnHelper.display({
 				id: 'fateLevel',
 				header: 'Fate Level',
 				cell: ({ row }) => {
 					if (!row.original.fate) return;
 					return (
-						<FormattedTextField
+						<FormattedInput
 							type='number'
-							size='small'
 							inputMode='numeric'
 							value={row.original.fateLevel || 0}
-							onChange={({ target }) =>
+							onChange={({ target }) => {
 								dispatch(
 									researchActions.modifyShip({
 										ship: row.original.name,
 										item: { fateLevel: parseInt(target.value) },
 									}),
-								)
-							}
+								);
+							}}
 						/>
 					);
 				},
@@ -211,30 +195,26 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				cell: ({ row }) => {
 					if (!row.original.fate) return;
 					return (
-						<FormattedTextField
+						<FormattedInput
 							type='number'
-							size='small'
 							inputMode='numeric'
 							className='numberInput'
-							InputProps={{
-								endAdornment: <InputAdornment position='end'>%</InputAdornment>,
-							}}
+							endDecorator='%'
 							value={row.original.fateStage || 0}
-							onChange={({ target }) =>
+							onChange={({ target }) => {
 								dispatch(
 									researchActions.modifyShip({
 										ship: row.original.name,
 										item: { fateStage: parseInt(target.value) },
 									}),
-								)
-							}
+								);
+							}}
 						/>
 					);
 				},
 			}),
 			columnHelper.accessor('fatePrints', {
 				header: 'Required Prints',
-				size: 1,
 				cell: ({ row, getValue }) => {
 					if (!row.original.fate) return;
 					return getValue();
@@ -250,41 +230,49 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 		enableSorting: false,
 		renderRow: ({ row }) => (
 			<Fragment>
-				<ListItemAvatar sx={{ display: 'flex', alignItems: 'center' }}>
-					<Avatar variant='rounded' src={row.original.image}>
-						<Image src={row.original.image} alt={row.original.name} width={60} height={60} />
+				<ListItemDecorator>
+					<Avatar size='lg' sx={{ borderRadius: 4 }}>
+						<Image src={row.original.image} alt={row.original.name} width={48} height={48} />
 					</Avatar>
-				</ListItemAvatar>
-				<ListItemText
-					primary={row.original.name}
-					secondary={`Needs: ${row.original.devPrints + row.original.fatePrints} Prints`}
-				/>
+				</ListItemDecorator>
+				<ListItemContent>
+					<Typography>{row.original.name}</Typography>
+					<Typography level='body-sm'>
+						Needs: {row.original.devPrints + row.original.fatePrints} Prints
+					</Typography>
+				</ListItemContent>
 			</Fragment>
 		),
 		renderSubComponent: (row) => {
 			const cells = indexBy(row.getVisibleCells(), pget('column.id'));
 
 			return (
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						Dev Level:{' '}
+				<Grid container spacing={1}>
+					<Grid xs={6}>
+						<FormLabel>Dev Level</FormLabel>
 						{flexRender(cells.devLevel.column.columnDef.cell, cells.devLevel.getContext())}
-						Dev Stage:{' '}
+					</Grid>
+					<Grid xs={6}>
+						<FormLabel>Dev Stage</FormLabel>
 						{flexRender(cells.devStage.column.columnDef.cell, cells.devStage.getContext())}
 					</Grid>
 					{Boolean(row.original.fate) && (
-						<Grid item xs={6}>
-							Fate Level:{' '}
-							{flexRender(
-								cells.fateLevel.column.columnDef.cell,
-								cells.fateLevel.getContext(),
-							)}
-							Fate Stage:{' '}
-							{flexRender(
-								cells.fateStage.column.columnDef.cell,
-								cells.fateStage.getContext(),
-							)}
-						</Grid>
+						<Fragment>
+							<Grid xs={6}>
+								<FormLabel>Fate Level</FormLabel>
+								{flexRender(
+									cells.fateLevel.column.columnDef.cell,
+									cells.fateLevel.getContext(),
+								)}
+							</Grid>
+							<Grid xs={6}>
+								<FormLabel>Fate Stage</FormLabel>
+								{flexRender(
+									cells.fateStage.column.columnDef.cell,
+									cells.fateStage.getContext(),
+								)}
+							</Grid>
+						</Fragment>
 					)}
 				</Grid>
 			);

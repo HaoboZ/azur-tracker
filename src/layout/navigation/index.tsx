@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box } from '@mui/joy';
 import type { ReactNode } from 'react';
 import BottomBar from './bottomBar';
 import TitleBar from './titleBar';
@@ -22,7 +22,7 @@ export default function Navigation({ children }: { children: ReactNode }) {
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
 				pb={{
-					xs: 'calc(env(safe-area-inset-bottom) + 56px)',
+					xs: 'calc(env(safe-area-inset-bottom) + 60px)',
 					sm: 'env(safe-area-inset-bottom)',
 				}}>
 				{children}

@@ -1,20 +1,13 @@
-import ActionTitle from '@/components/actionTitle';
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
-import FormattedTextField from '@/components/formattedTextField';
+import FormattedInput from '@/components/formattedInput';
+import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import {
-	Autocomplete,
-	Grid,
-	ListItemSecondaryAction,
-	MenuItem,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Autocomplete, FormLabel, Grid, Typography } from '@mui/joy';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo } from 'react';
@@ -49,53 +42,47 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 			columnHelper.accessor('points', {
 				header: 'Points/Run',
 				cell: ({ getValue, row }) => (
-					<Autocomplete<string, false, false, true>
+					<Autocomplete
 						freeSolo
 						autoSelect
+						disableClearable
+						multiple={false}
 						value={getValue().toString()}
 						options={Object.keys(eventStagesData).reverse()}
-						renderOption={(props, option) => (
-							<MenuItem {...props}>{eventStagesData[option]}</MenuItem>
-						)}
-						renderInput={(params) => (
-							<TextField
-								{...params}
-								type='number'
-								inputProps={{ ...params.inputProps, inputMode: 'numeric' }}
-							/>
-						)}
-						onChange={(e, value) =>
+						getOptionLabel={(option) => eventStagesData[option] ?? option}
+						inputMode='numeric'
+						onChange={(_, value) => {
 							dispatch(
 								eventActions.modifyFarming({
 									id: row.original.id,
 									points: parseInt(value),
 								}),
-							)
-						}
+							);
+						}}
 					/>
 				),
 			}),
 			columnHelper.accessor('oil', {
 				header: 'Oil Cost/Run',
 				cell: ({ getValue, row }) => (
-					<FormattedTextField
+					<FormattedInput
 						type='number'
-						inputProps={{ inputMode: 'numeric' }}
+						inputMode='numeric'
 						value={getValue()}
-						onChange={({ target }) =>
+						onChange={({ target }) => {
 							dispatch(
 								eventActions.modifyFarming({
 									id: row.original.id,
 									oil: parseInt(target.value),
 								}),
-							)
-						}
+							);
+						}}
 					/>
 				),
 			}),
 			columnHelper.accessor('plays', { header: 'Required Plays' }),
 			columnHelper.accessor('cost', { header: 'Total Oil Cost' }),
-			columnHelper.display(deleteColumn()),
+			columnHelper.display(deleteColumn(3)),
 		],
 		[],
 	);
@@ -109,41 +96,40 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
 				{sortIcon(handleProps)}
-				<Grid container spacing={2}>
-					<Grid item xs>
-						Points/Run
+				<Grid container spacing={1}>
+					<Grid xs>
+						<FormLabel>Points/Run</FormLabel>
 						{render(cells.points)}
 					</Grid>
-					<Grid item xs>
-						Oil/Run
+					<Grid xs>
+						<FormLabel>Oil/Run</FormLabel>
 						{render(cells.oil)}
 					</Grid>
-					<Grid item xs={5} display='flex' flexDirection='column' justifyContent='center'>
+					<Grid xs={5} display='flex' flexDirection='column' justifyContent='center'>
 						<Typography>{cells.plays.getValue<string>()} Plays</Typography>
 						<Typography>{cells.cost.getValue<string>()} Oil Cost</Typography>
 					</Grid>
 				</Grid>
-				<ListItemSecondaryAction>{deleteIcon(row, table)}</ListItemSecondaryAction>
+				{deleteIcon(row, table)}
 			</Fragment>
 		),
 	});
 
 	return (
-		<Fragment>
-			<ActionTitle
-				actions={[
-					{
-						name: 'Add',
-						onClick: () =>
-							dispatch(
-								eventActions.setFarming([...farming, { id: nanoid(), points: 0, oil: 0 }]),
-							),
-						buttonProps: { color: 'primary' },
+		<PageSection
+			title='Farming'
+			actions={[
+				{
+					name: 'Add',
+					onClick: () => {
+						dispatch(
+							eventActions.setFarming([...farming, { id: nanoid(), points: 0, oil: 0 }]),
+						);
 					},
-				]}>
-				Farming
-			</ActionTitle>
+					buttonProps: { color: 'primary' },
+				},
+			]}>
 			<DataDisplay table={table} />
-		</Fragment>
+		</PageSection>
 	);
 }

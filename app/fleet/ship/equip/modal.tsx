@@ -2,21 +2,23 @@ import { rarityColors } from '@/app/colors';
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModalControls } from '@/src/providers/modal';
-import ModalDialog from '@/src/providers/modal/dialog';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import {
 	Alert,
-	Box,
 	Button,
-	FormControlLabel,
+	DialogActions,
+	DialogTitle,
 	Grid,
 	Link,
+	ModalClose,
+	ModalDialog,
 	Switch,
 	Typography,
-} from '@mui/material';
+} from '@mui/joy';
 import Image from 'next/image';
-import { Fragment, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { indexBy, pipe, sortBy } from 'remeda';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
@@ -37,13 +39,13 @@ export default function EquipModal({
 
 	// list of equips that can go in slot, dictionary of equips list, list of equips by tier
 	const [equipList, equipListIndex, tierList] = useMemo(() => {
-		const equipType = data.equippableData[info?.ship.equipType[info.index]]?.equip;
+		const equipType = data.equippableData[info.ship.equipType[info.index]]?.equip;
 		const equipList = equipType
 			? data.equipData.filter(({ type }) => equipType.includes(type))
 			: [];
 		const tierList =
 			(equipType &&
-				data.equipTierData[data.equippableData[info?.ship.equipType[info.index]]?.tier]) ??
+				data.equipTierData[data.equippableData[info.ship.equipType[info.index]]?.tier]) ??
 			{};
 
 		return [
@@ -60,25 +62,19 @@ export default function EquipModal({
 	}, []);
 
 	// equipment currently in that slot
-	const currentEquip = equipIndex[info?.ship.equip[info.index]?.[0]];
+	const currentEquip = equipIndex[info.ship.equip[info.index]?.[0]];
 	// equipment that will go in slot
 	const [equip, setEquip] = useState<EquipType>(() => {
 		if (selectedEquip?.id && equipListIndex[selectedEquip.id]) return selectedEquip;
 		else if (currentEquip) return currentEquip;
 		else return null;
 	});
-	const [override, setOverride] = useState(() => info?.ship.equip[info.index]?.[1] || 0);
-	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
+	const [override, setOverride] = useState(() => info.ship.equip[info.index]?.[1] || 0);
 
 	// saves info on close
 	useEventListener(events, 'close', (cancel) => {
-		setAnchorEl(null);
-		if (cancel) return;
-		if (
-			info?.ship.equip[info.index]?.[0] === equip?.id &&
-			info?.ship.equip[info.index]?.[1] === override
-		)
-			return;
+		const _equip = info.ship.equip[info.index];
+		if (cancel || (_equip?.[0] === equip?.id && _equip?.[1] === override)) return;
 
 		const shipEquip = structuredClone(info.ship.equip);
 		shipEquip[info.index] = equip ? [equip?.id, override, 6] : ([] as any);
@@ -88,110 +84,89 @@ export default function EquipModal({
 	});
 
 	return (
-		<ModalDialog
-			title='Switch Equipment'
-			maxWidth='xs'
-			actions={
-				<Fragment>
-					<FormControlLabel
-						control={
-							<Switch
-								checked={Boolean(override)}
-								onChange={({ target }) => setOverride(+target.checked)}
-							/>
-						}
-						label='Force BiS'
-						labelPlacement='start'
-						sx={{ mr: 2 }}
-					/>
-					<Button variant='contained' onClick={() => closeModal()}>
-						Close
-					</Button>
-					<Button variant='contained' color='error' onClick={() => closeModal(true)}>
+		<ModalWrapper
+			sx={{ 'display': 'flex', 'justifyContent': 'center', '--ModalDialog-maxWidth': '500px' }}>
+			<ModalDialog>
+				<DialogTitle>Switch Equipment</DialogTitle>
+				<ModalClose />
+				<Grid container spacing={1}>
+					{info.ship.special[info.index] ? (
+						<Grid xs={12}>
+							<Alert variant='solid' color='warning'>
+								Special Equip Slot (Check Skills & Equipment)
+							</Alert>
+						</Grid>
+					) : undefined}
+					<Grid xs={5} display='flex' flexDirection='column' alignItems='center'>
+						<Image
+							src={
+								currentEquip?.image
+									? `https://azurlane.netojuu.com/images/${currentEquip.image}`
+									: '/images/emptyEquip.png'
+							}
+							alt={currentEquip?.name ?? 'empty'}
+							height={128}
+							width={128}
+							className={`color-${rarityColors[currentEquip?.rarity]}`}
+						/>
+						{currentEquip && (
+							<Link
+								target='_blank'
+								href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
+								variant='plain'
+								color='neutral'>
+								{currentEquip.name}
+							</Link>
+						)}
+					</Grid>
+					<Grid xs={2} display='flex' justifyContent='center' alignItems='center'>
+						<Typography level='h4'>⇒</Typography>
+					</Grid>
+					<Grid xs={5} display='flex' flexDirection='column' alignItems='center'>
+						<Image
+							src={
+								equip?.image
+									? `https://azurlane.netojuu.com/images/${equip.image}`
+									: '/images/emptyEquip.png'
+							}
+							alt={equip?.name ?? 'empty'}
+							height={128}
+							width={128}
+							className={`color-${rarityColors[equip?.rarity]}`}
+							onClick={() => setEquip(null)}
+						/>
+						{equip && (
+							<Link
+								target='_blank'
+								href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
+								variant='plain'
+								color='neutral'>
+								{equip.name}
+							</Link>
+						)}
+					</Grid>
+					<Grid xs={12} md={6}>
+						<EquipTierSelector
+							equipList={tierList}
+							setEquip={(id) => setEquip(equipListIndex[id])}
+						/>
+					</Grid>
+					<Grid xs={12} md={6}>
+						<EquipFilter equipList={equipList} value={equip} setValue={setEquip} />
+					</Grid>
+				</Grid>
+				<DialogActions>
+					<Button onClick={() => closeModal()}>Close</Button>
+					<Button variant='plain' color='neutral' onClick={() => closeModal(true)}>
 						Cancel
 					</Button>
-				</Fragment>
-			}>
-			<Grid container alignItems='center' justifyContent='center'>
-				{info?.ship.special[info.index] ? (
-					<Grid item xs={12} component={Box} pb={2}>
-						<Alert severity='warning' variant='filled'>
-							Special Equip Slot (Check Skills & Equipment)
-						</Alert>
-					</Grid>
-				) : undefined}
-				<Grid item container xs={5} justifyContent='center'>
-					<Image
-						src={
-							currentEquip?.image
-								? `https://azurlane.netojuu.com/images/${currentEquip.image}`
-								: '/images/emptyEquip.png'
-						}
-						alt={currentEquip?.name}
-						height={128}
-						width={128}
-						className={`color-${rarityColors[currentEquip?.rarity]}`}
+					<Switch
+						startDecorator='Force BiS'
+						checked={Boolean(override)}
+						onChange={({ target }) => setOverride(+target.checked)}
 					/>
-				</Grid>
-				<Grid item xs={2}>
-					<Typography variant='h4' align='center'>
-						⇒
-					</Typography>
-				</Grid>
-				<Grid item container xs={5} justifyContent='center'>
-					<Image
-						src={
-							equip?.image
-								? `https://azurlane.netojuu.com/images/${equip.image}`
-								: '/images/emptyEquip.png'
-						}
-						alt={equip?.name}
-						height={128}
-						width={128}
-						className={`color-${rarityColors[equip?.rarity]}`}
-						onClick={() => setEquip(null)}
-					/>
-				</Grid>
-				<Grid item container xs={5} justifyContent='center'>
-					{currentEquip && (
-						<Link
-							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
-							align='center'
-							color='textPrimary'>
-							{currentEquip.name}
-						</Link>
-					)}
-				</Grid>
-				<Grid item xs={2} />
-				<Grid item container xs={5} justifyContent='center'>
-					{equip && (
-						<Link
-							target='_blank'
-							href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
-							align='center'
-							color='textPrimary'>
-							{equip.name}
-						</Link>
-					)}
-				</Grid>
-				<Grid item container xs={12} md={6} justifyContent='center'>
-					<Button
-						variant='outlined'
-						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
-						Equipment Tier
-					</Button>
-					<EquipTierSelector
-						anchorEl={anchorEl}
-						closeAnchor={() => setAnchorEl(null)}
-						equipList={tierList}
-						setEquip={(id) => setEquip(equipListIndex[id])}
-					/>
-				</Grid>
-				<Grid item xs={12} md={6}>
-					<EquipFilter equipList={equipList} value={equip} setValue={setEquip} />
-				</Grid>
-			</Grid>
-		</ModalDialog>
+				</DialogActions>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

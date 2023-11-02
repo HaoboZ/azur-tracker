@@ -1,9 +1,9 @@
-import type { LoadingButtonProps } from '@mui/lab';
-import { LoadingButton } from '@mui/lab';
+import type { ButtonProps } from '@mui/joy';
+import { Button } from '@mui/joy';
 import useAsyncLoading from './useAsyncLoading';
 
-export default function AsyncButton({ onClick, ...props }: LoadingButtonProps) {
+export default function AsyncButton({ onClick, ...props }: ButtonProps) {
 	const [loading, onClickLoading] = useAsyncLoading();
 
-	return <LoadingButton loading={loading} onClick={onClickLoading(onClick)} {...props} />;
+	return <Button loading={loading} onClick={onClickLoading(onClick)} {...props} />;
 }

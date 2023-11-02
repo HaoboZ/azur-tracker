@@ -1,10 +1,22 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
-import FormattedTextField from '@/components/formattedTextField';
+import FormattedInput from '@/components/formattedInput';
+import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
-import ModalDialog from '@/src/providers/modal/dialog';
+import { useModalControls } from '@/src/providers/modal';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Box, Grid, ListItemText, Typography } from '@mui/material';
+import {
+	Button,
+	DialogActions,
+	DialogTitle,
+	FormLabel,
+	Grid,
+	ListItemContent,
+	ModalClose,
+	ModalDialog,
+	Typography,
+} from '@mui/joy';
 import { createColumnHelper } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 import { indexBy, mapValues } from 'remeda';
@@ -20,6 +32,7 @@ const columnHelper = createColumnHelper<{
 export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopData'>) {
 	const _shop = useAppSelector(pget('event.shop'));
 	const dispatch = useAppDispatch();
+	const { closeModal } = useModalControls();
 
 	const [shop, setShop] = useState(() =>
 		eventShopData.map((data) => ({ ...data, wanted: _shop[data.name] })),
@@ -40,18 +53,18 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 
 	const columns = useMemo(
 		() => [
-			columnHelper.accessor('name', { header: 'Name' }),
+			columnHelper.accessor('name', { header: 'Name', size: 30 }),
 			columnHelper.accessor('cost', { header: 'Cost' }),
 			columnHelper.accessor('amount', { header: 'Amount' }),
 			columnHelper.accessor('wanted', {
 				header: 'Wanted',
 				cell: ({ getValue, row }) => (
-					<FormattedTextField
+					<FormattedInput
 						key='name'
 						type='number'
 						placeholder='0'
 						value={getValue() || 0}
-						onChange={({ target }) =>
+						onChange={({ target }) => {
 							setShop((shop) => {
 								const index = shop.findIndex(({ name }) => name === row.id);
 								if (index !== -1)
@@ -60,8 +73,8 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 										row.original.amount,
 									);
 								return [...shop];
-							})
-						}
+							});
+						}}
 					/>
 				),
 			}),
@@ -75,15 +88,17 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 		getRowId: pget('name'),
 		enableSorting: false,
 		renderRow: ({ cells, render }) => (
-			<Grid container spacing={2}>
-				<Grid item xs={8} display='flex' alignItems='center'>
-					<ListItemText
-						primary={cells.name.getValue<string>()}
-						secondary={`cost: ${cells.cost.getValue()} amount: ${cells.amount.getValue()}`}
-					/>
+			<Grid container spacing={1}>
+				<Grid xs={8}>
+					<ListItemContent>
+						<Typography>{cells.name.getValue<string>()}</Typography>
+						<Typography level='body-sm'>
+							cost: {cells.cost.getValue<string>()} amount: {cells.amount.getValue<string>()}
+						</Typography>
+					</ListItemContent>
 				</Grid>
-				<Grid item xs={4}>
-					Wanted
+				<Grid xs={4}>
+					<FormLabel>Wanted</FormLabel>
 					{render(cells.wanted)}
 				</Grid>
 			</Grid>
@@ -91,27 +106,33 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 	});
 
 	return (
-		<ModalDialog
-			title='Shop Items'
-			onSave={() =>
-				dispatch(
-					eventActions.setShop({
-						shop: mapValues(indexBy(shop, pget('name')), pget('wanted')),
-						total: expectedCost,
-					}),
-				)
-			}>
-			<Box mx={2} mt={2}>
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						<Typography>Buyout Price: {buyoutCost}</Typography>
-					</Grid>
-					<Grid item xs={6}>
-						<Typography>Expected Price: {expectedCost}</Typography>
-					</Grid>
-				</Grid>
-			</Box>
-			<DataDisplay table={table} />
-		</ModalDialog>
+		<ModalWrapper>
+			<ModalDialog minWidth='sm'>
+				<DialogTitle>Shop Items</DialogTitle>
+				<ModalClose />
+				<PageSection
+					title={`Expected / All: ${expectedCost} / ${buyoutCost}`}
+					sx={{ overflowY: 'auto' }}>
+					<DataDisplay table={table} />
+				</PageSection>
+				<DialogActions>
+					<Button
+						onClick={() => {
+							dispatch(
+								eventActions.setShop({
+									shop: mapValues(indexBy(shop, pget('name')), pget('wanted')),
+									total: expectedCost,
+								}),
+							);
+							closeModal();
+						}}>
+						Save
+					</Button>
+					<Button variant='plain' color='neutral' onClick={closeModal}>
+						Cancel
+					</Button>
+				</DialogActions>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

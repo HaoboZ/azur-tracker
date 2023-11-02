@@ -1,9 +1,9 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/joy';
 import { useNProgress } from '@tanem/react-nprogress';
 import type { ReactNode } from 'react';
 import useLoading from '../../hooks/useLoading';
 
-export default function Progress({
+export default function DelayedProgress({
 	isLoading,
 	delay,
 	children = (progress) => (
@@ -23,7 +23,7 @@ export default function Progress({
 		<Box
 			sx={{
 				opacity: isFinished ? 0 : 1,
-				transition: ({ transitions }) => transitions.create('opacity'),
+				transition: 'opacity 0.3s',
 			}}>
 			{children(progress)}
 		</Box>

@@ -7,12 +7,7 @@ import {
 } from '@mui/icons-material';
 import type { ReactNode } from 'react';
 
-export const items: {
-	label: string;
-	icon: ReactNode;
-	href: string;
-	hide?: boolean;
-}[] = [
+export const items: { label: string; icon: ReactNode; href: string; hide?: boolean }[] = [
 	{ label: 'Event', icon: <EventIcon />, href: '/event' },
 	{ label: 'Research', icon: <CameraIcon />, href: '/research' },
 	{ label: 'Fleet', icon: <DirectionsBoatIcon />, href: '/fleet' },

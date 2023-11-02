@@ -1,13 +1,14 @@
-import ActionTitle from '@/components/actionTitle';
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
-import FormattedTextField from '@/components/formattedTextField';
+import FormattedInput from '@/components/formattedInput';
+import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
-import ModalDialog from '@/src/providers/modal/dialog';
+import { useModalControls } from '@/src/providers/modal';
+import ModalWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Grid, ListItemSecondaryAction } from '@mui/material';
+import { Button, DialogActions, DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
 import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
@@ -19,6 +20,7 @@ const columnHelper = createColumnHelper<Daily>();
 export default function DailyModal() {
 	const _daily = useAppSelector(pget('event.daily'));
 	const dispatch = useAppDispatch();
+	const { closeModal } = useModalControls();
 
 	const [daily, setDaily] = useState(() => structuredClone(_daily));
 
@@ -45,8 +47,7 @@ export default function DailyModal() {
 			columnHelper.accessor('name', {
 				header: 'Name',
 				cell: ({ getValue, row }) => (
-					<FormattedTextField
-						key='name'
+					<FormattedInput
 						fullWidth
 						type='text'
 						value={getValue()}
@@ -57,8 +58,7 @@ export default function DailyModal() {
 			columnHelper.accessor('amount', {
 				header: 'Amount',
 				cell: ({ getValue, row }) => (
-					<FormattedTextField
-						key='amount'
+					<FormattedInput
 						type='number'
 						placeholder='0'
 						value={getValue()}
@@ -77,38 +77,49 @@ export default function DailyModal() {
 		columns,
 		getRowId: pget('id'),
 		enableSorting: false,
+		onRowClick: () => null,
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
 				{sortIcon(handleProps)}
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						{render(cells.name)}
-					</Grid>
-					<Grid item xs={4}>
-						{render(cells.amount)}
-					</Grid>
+				<Grid container spacing={1}>
+					<Grid xs={7}>{render(cells.name)}</Grid>
+					<Grid xs={5}>{render(cells.amount)}</Grid>
 				</Grid>
-				<ListItemSecondaryAction>{deleteIcon(row, table)}</ListItemSecondaryAction>
+				{deleteIcon(row, table)}
 			</Fragment>
 		),
 	});
 
 	return (
-		<ModalDialog
-			title='Daily Points'
-			onSave={() => dispatch(eventActions.setDaily({ daily, total: dailyTotal }))}>
-			<ActionTitle
-				variant='h6'
-				actions={[
-					{
-						name: 'Add',
-						onClick: () => setDaily([...daily, { id: nanoid(), name: '', amount: 0 }]),
-						buttonProps: { color: 'primary' },
-					},
-				]}>
-				Total Daily: {dailyTotal}
-			</ActionTitle>
-			<DataDisplay table={table} />
-		</ModalDialog>
+		<ModalWrapper>
+			<ModalDialog minWidth='sm'>
+				<DialogTitle>Daily Points</DialogTitle>
+				<ModalClose />
+				<PageSection
+					title={`Total Daily: ${dailyTotal}`}
+					actions={[
+						{
+							name: 'Add',
+							onClick: () => setDaily([...daily, { id: nanoid(), name: '', amount: 0 }]),
+							buttonProps: { color: 'primary' },
+						},
+					]}
+					sx={{ overflowY: 'auto' }}>
+					<DataDisplay table={table} />
+				</PageSection>
+				<DialogActions>
+					<Button
+						onClick={() => {
+							dispatch(eventActions.setDaily({ daily, total: dailyTotal }));
+							closeModal();
+						}}>
+						Save
+					</Button>
+					<Button variant='plain' color='neutral' onClick={closeModal}>
+						Cancel
+					</Button>
+				</DialogActions>
+			</ModalDialog>
+		</ModalWrapper>
 	);
 }

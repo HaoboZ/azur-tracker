@@ -1,41 +1,33 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { Box, Button, IconButton, Stack, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { items } from './items';
 
 export default function TitleBar() {
 	return (
-		<AppBar
-			enableColorOnDark
-			position='static'
-			sx={{
-				display: { xs: 'none', sm: 'block' },
-				pt: 'env(safe-area-inset-top)',
-				pl: 'env(safe-area-inset-left)',
-				pr: 'env(safe-area-inset-right)',
-			}}>
-			<Toolbar>
-				<Typography
-					component={Link}
-					href='/'
-					color='inherit'
-					variant='h3'
-					mr={3}
-					sx={{ textDecoration: 'none' }}>
+		<Box
+			component='nav'
+			display={{ xs: 'none', sm: 'block' }}
+			bgcolor='primary.solidBg'
+			pt='env(safe-area-inset-top)'
+			pl='env(safe-area-inset-left)'
+			pr='env(safe-area-inset-right)'>
+			<Stack direction='row' p={1} alignItems='center'>
+				<Typography component={Link} href='/' level='h4' mr={3} sx={{ textDecoration: 'none' }}>
 					Azur Lane Tracker
 				</Typography>
 				{items
 					.filter(({ hide }) => !hide)
 					.map((item) => (
-						<Button key={item.label} component={Link} href={item.href} color='inherit'>
+						<Button key={item.label} component={Link} href={item.href}>
 							{item.label}
 						</Button>
 					))}
 				<Box flexGrow={1} />
-				<IconButton component={Link} href='/settings' color='inherit'>
+				<IconButton component={Link} href='/settings' variant='solid' color='primary'>
 					<SettingsIcon />
 				</IconButton>
-			</Toolbar>
-		</AppBar>
+			</Stack>
+		</Box>
 	);
 }

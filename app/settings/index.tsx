@@ -1,5 +1,6 @@
 'use client';
 import AsyncButton from '@/components/loaders/asyncButton';
+import OverflowTypography from '@/components/overflowTypography';
 import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
@@ -18,15 +19,14 @@ import {
 import {
 	Button,
 	ButtonGroup,
+	IconButton,
 	List,
 	ListItem,
-	ListItemSecondaryAction,
-	ListItemText,
-	ToggleButton,
+	ListItemContent,
 	ToggleButtonGroup,
 	Typography,
 	useColorScheme,
-} from '@mui/material';
+} from '@mui/joy';
 import type { Session } from 'next-auth';
 import Link from 'next/link';
 import { useSnackbar } from 'notistack';
@@ -43,133 +43,102 @@ export default function Settings({ user }: { user: Session['user'] }) {
 	const { enqueueSnackbar } = useSnackbar();
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Settings</PageTitle>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				<ListItem>
-					<ListItemText classes={{ primary: 'longText' }}>
+					<ListItemContent>
 						{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
-					</ListItemText>
-					<ListItemSecondaryAction>
-						<Button
-							variant='outlined'
-							component={Link}
-							href={`/api/auth/${user ? 'signout' : 'signin'}`}>
-							{user ? 'Sign Out' : 'Sign In'}
-						</Button>
-					</ListItemSecondaryAction>
+					</ListItemContent>
+					<Button component={Link} href={`/api/auth/${user ? 'signout' : 'signin'}`}>
+						{user ? 'Sign Out' : 'Sign In'}
+					</Button>
 				</ListItem>
 				{user && (
 					<ListItem>
-						<ListItemText>Cloud Sync</ListItemText>
-						<ListItemSecondaryAction>
-							<ButtonGroup>
-								<AsyncButton
-									variant='outlined'
-									color='inherit'
-									onClick={async () => {
-										await saveStore(store);
-										enqueueSnackbar('Data Saved', { variant: 'success' });
-									}}>
-									Save
-								</AsyncButton>
-								<AsyncButton
-									variant='outlined'
-									color='inherit'
-									onClick={async () => {
-										await loadStore(dispatch);
-										enqueueSnackbar('Data Loaded', { variant: 'success' });
-									}}>
-									Load
-								</AsyncButton>
-							</ButtonGroup>
-						</ListItemSecondaryAction>
+						<ListItemContent>Cloud Sync</ListItemContent>
+						<ButtonGroup>
+							<AsyncButton
+								onClick={async () => {
+									await saveStore(store);
+									enqueueSnackbar('Data Saved', { variant: 'success' });
+								}}>
+								Save
+							</AsyncButton>
+							<AsyncButton
+								onClick={async () => {
+									await loadStore(dispatch);
+									enqueueSnackbar('Data Loaded', { variant: 'success' });
+								}}>
+								Load
+							</AsyncButton>
+						</ButtonGroup>
 					</ListItem>
 				)}
 				<ListItem>
-					<ListItemText>Theme</ListItemText>
-					<ListItemSecondaryAction>
-						<ToggleButtonGroup exclusive value={mode}>
-							<ToggleButton value='system' onClick={() => setMode('system')}>
-								<Brightness4Icon />
-							</ToggleButton>
-							<ToggleButton value='light' onClick={() => setMode('light')}>
-								<BrightnessHighIcon />
-							</ToggleButton>
-							<ToggleButton value='dark' onClick={() => setMode('dark')}>
-								<Brightness3Icon />
-							</ToggleButton>
-						</ToggleButtonGroup>
-					</ListItemSecondaryAction>
+					<ListItemContent>Theme</ListItemContent>
+					<ToggleButtonGroup value={mode}>
+						<IconButton value='system' onClick={() => setMode('system')}>
+							<Brightness4Icon />
+						</IconButton>
+						<IconButton value='light' onClick={() => setMode('light')}>
+							<BrightnessHighIcon />
+						</IconButton>
+						<IconButton value='dark' onClick={() => setMode('dark')}>
+							<Brightness3Icon />
+						</IconButton>
+					</ToggleButtonGroup>
 				</ListItem>
 				<ListItem>
-					<ListItemText
-						primary={
-							<PageLink href='/event' underline='always'>
-								Event Tracker
-							</PageLink>
-						}
-						secondary='calculates farming runs for any stage until you reach your target points'
-						classes={{ secondary: 'longText' }}
-					/>
-					<ListItemSecondaryAction>
-						<Button
-							variant='contained'
-							color='error'
-							onClick={async () => {
-								if (!confirm('Are you sure you want to reset this data?')) return;
-								dispatch(eventActions.reset());
-							}}>
-							Reset
-						</Button>
-					</ListItemSecondaryAction>
+					<ListItemContent>
+						<PageLink href='/event'>Event Tracker</PageLink>
+						<OverflowTypography level='body-sm'>
+							calculates farming runs for any stage until you reach your target points
+						</OverflowTypography>
+					</ListItemContent>
+					<Button
+						color='danger'
+						onClick={async () => {
+							if (!confirm('Are you sure you want to reset this data?')) return;
+							dispatch(eventActions.reset());
+						}}>
+						Reset
+					</Button>
 				</ListItem>
 				<ListItem>
-					<ListItemText
-						primary={
-							<PageLink href='/research' underline='always'>
-								Research Tracker
-							</PageLink>
-						}
-						secondary='calculates number of strengthening units for pr ships until max'
-						classes={{ secondary: 'longText' }}
-					/>
-					<ListItemSecondaryAction>
-						<Button
-							variant='contained'
-							color='error'
-							onClick={async () => {
-								if (!confirm('Are you sure you want to reset this data?')) return;
-								dispatch(researchActions.reset());
-							}}>
-							Reset
-						</Button>
-					</ListItemSecondaryAction>
+					<ListItemContent>
+						<PageLink href='/event'>Research Tracker</PageLink>
+						<OverflowTypography level='body-sm'>
+							calculates number of strengthening units for pr ships until max
+						</OverflowTypography>
+					</ListItemContent>
+					<Button
+						color='danger'
+						onClick={async () => {
+							if (!confirm('Are you sure you want to reset this data?')) return;
+							dispatch(researchActions.reset());
+						}}>
+						Reset
+					</Button>
 				</ListItem>
 				<ListItem>
-					<ListItemText
-						primary={
-							<PageLink href='/fleet' underline='always'>
-								Fleet Tracker
-							</PageLink>
-						}
-						secondary='for those who want a fully leveled, fully equipped fleet'
-						classes={{ secondary: 'longText' }}
-					/>
-					<ListItemSecondaryAction>
-						<Button
-							variant='contained'
-							color='error'
-							onClick={async () => {
-								if (!confirm('Are you sure you want to reset this data?')) return;
-								dispatch(fleetActions.reset());
-							}}>
-							Reset
-						</Button>
-					</ListItemSecondaryAction>
+					<ListItemContent>
+						<PageLink href='/event'>Fleet Tracker</PageLink>
+						<OverflowTypography level='body-sm'>
+							for those who want a fully leveled, fully equipped fleet
+						</OverflowTypography>
+					</ListItemContent>
+					<Button
+						color='danger'
+						onClick={async () => {
+							if (!confirm('Are you sure you want to reset this data?')) return;
+							dispatch(fleetActions.reset());
+						}}>
+						Reset
+					</Button>
 				</ListItem>
 			</List>
-			<Typography variant='subtitle2' textAlign='right' px={2}>
+			<Typography level='body-xs' textAlign='right' px={2}>
 				v{packageJson.version}
 			</Typography>
 		</PageContainer>

@@ -1,20 +1,20 @@
 import pget from '@/src/helpers/pget';
 import { useModal } from '@/src/providers/modal';
-import ModalDrawer from '@/src/providers/modal/drawer';
+import DrawerWrapper from '@/src/providers/modal/drawer';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import {
 	Box,
 	DialogTitle,
-	FormControl,
+	drawerClasses,
+	FormLabel,
 	Grid,
-	InputLabel,
 	Link,
-	MenuItem,
+	Option,
 	Select,
 	Typography,
-} from '@mui/material';
+} from '@mui/joy';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { indexBy } from 'remeda';
@@ -55,89 +55,75 @@ export default function ShipModal({
 	}, [ship.tier]);
 
 	return (
-		<ModalDrawer
-			autoSize
-			title={
+		<DrawerWrapper
+			anchor='bottom'
+			sx={{
+				height: 'unset',
+				display: 'flex',
+				justifyContent: 'center',
+				[`.${drawerClasses.content}`]: { overflow: 'hidden', maxWidth: 800 },
+			}}>
+			<DialogTitle>
 				<Link
 					href={`https://azurlane.koumakan.jp/wiki/${ship.id}`}
 					target='_blank'
-					color='textPrimary'>
-					<DialogTitle>{ship.name}</DialogTitle>
+					variant='plain'
+					color='neutral'>
+					{ship.name}
 				</Link>
-			}>
-			<Grid container spacing={2} alignItems='center'>
-				<Grid item xs={4}>
-					<InputLabel shrink>Rarity</InputLabel>
+			</DialogTitle>
+			<Grid container spacing={1} alignItems='center' p={2}>
+				<Grid xs={4}>
+					<FormLabel>Rarity</FormLabel>
 					<Typography>{ship.rarity}</Typography>
 				</Grid>
-				<Grid item xs={4}>
-					<InputLabel shrink>Faction</InputLabel>
+				<Grid xs={4}>
+					<FormLabel>Faction</FormLabel>
 					<Typography>{ship.faction}</Typography>
 				</Grid>
-				<Grid item xs={4}>
-					<InputLabel shrink>Type</InputLabel>
+				<Grid xs={4}>
+					<FormLabel>Type</FormLabel>
 					<Typography>{ship.type}</Typography>
 				</Grid>
-				<Grid item xs={3}>
+				<Grid xs={4}>
 					<Typography>Tier: {tier}</Typography>
 				</Grid>
-				<Grid item xs>
-					<FormControl fullWidth>
-						<InputLabel>Love</InputLabel>
-						<Select
-							fullWidth
-							label='Love'
-							value={ships[ship.id]?.love || 0}
-							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={({ target }) =>
-								dispatch(
-									fleetActions.setShip({
-										name: ship.id,
-										ship: { love: target.value as number },
-									}),
-								)
-							}>
-							{AffinityIcons.map((icon, i) => (
-								<MenuItem key={i} value={i}>
-									{icon}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
+				<Grid xs={4}>
+					<FormLabel>Love</FormLabel>
+					<Select
+						value={ships[ship.id]?.love || 0}
+						renderValue={({ value }) => AffinityIcons[value]}
+						onChange={(_, value) => {
+							dispatch(fleetActions.setShip({ name: ship.id, ship: { love: value } }));
+						}}>
+						{AffinityIcons.map((icon, i) => (
+							<Option key={i} value={i}>
+								{icon}
+							</Option>
+						))}
+					</Select>
 				</Grid>
-				<Grid item xs>
-					<FormControl fullWidth>
-						<InputLabel>Max Level</InputLabel>
-						<Select
-							fullWidth
-							label='Max Level'
-							value={ships[ship.id]?.lvl || 0}
-							SelectDisplayProps={{ style: { textAlign: 'center' } }}
-							onChange={({ target }) =>
-								dispatch(
-									fleetActions.setShip({
-										name: ship.id,
-										ship: { lvl: target.value as number },
-									}),
-								)
-							}>
-							<MenuItem value={0}>0</MenuItem>
-							<MenuItem value={70}>70</MenuItem>
-							<MenuItem value={80}>80</MenuItem>
-							<MenuItem value={90}>90</MenuItem>
-							<MenuItem value={100}>100</MenuItem>
-							<MenuItem value={105}>105</MenuItem>
-							<MenuItem value={110}>110</MenuItem>
-							<MenuItem value={115}>115</MenuItem>
-							<MenuItem value={120}>120</MenuItem>
-							<MenuItem value={125}>125</MenuItem>
-							<MenuItem value={126}>
-								<StarIcon fontSize='small' />
-							</MenuItem>
-						</Select>
-					</FormControl>
+				<Grid xs={4}>
+					<FormLabel>Max Level</FormLabel>
+					<Select
+						value={ships[ship.id]?.lvl || 0}
+						renderValue={({ value }) =>
+							value === 126 ? <StarIcon sx={{ fontSize: 'inherit' }} /> : value
+						}
+						onChange={(_, value) => {
+							dispatch(fleetActions.setShip({ name: ship.id, ship: { lvl: value } }));
+						}}>
+						{[0, 70, 80, 90, 100, 105, 110, 115, 120, 125].map((value) => (
+							<Option key={value} value={value}>
+								{value}
+							</Option>
+						))}
+						<Option value={126}>
+							<StarIcon />
+						</Option>
+					</Select>
 				</Grid>
-				<Grid item container xs={12} alignItems='center' justifyContent='center'>
+				<Grid container xs={12} alignItems='center' justifyContent='center'>
 					{[...Array(5)].map((_, index) => {
 						const val = ship.equip[index];
 						const equip = equipIndex[val?.[0]];
@@ -145,19 +131,18 @@ export default function ShipModal({
 						return (
 							<Grid
 								key={index}
-								item
 								sm
 								xs={4}
 								p={1}
 								display='flex'
 								flexDirection='column'
 								alignItems='center'
-								onClick={() =>
+								onClick={() => {
 									showModal(EquipModal, {
 										id: 'equip',
 										props: { info: { ship, index }, selectedEquip, ...data },
-									})
-								}>
+									});
+								}}>
 								<Image
 									src={
 										equip?.image
@@ -173,7 +158,7 @@ export default function ShipModal({
 									<TierIcon tier={val?.[2]} />
 									{meta ? (
 										<Fragment>
-											<ArrowForwardIcon fontSize='inherit' />
+											<ArrowForwardIcon />
 											<TierIcon tier={meta.tier + 1 || val?.[2]} />
 										</Fragment>
 									) : undefined}
@@ -183,6 +168,6 @@ export default function ShipModal({
 					})}
 				</Grid>
 			</Grid>
-		</ModalDrawer>
+		</DrawerWrapper>
 	);
 }

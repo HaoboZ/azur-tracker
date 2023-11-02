@@ -1,6 +1,1 @@
-export type ResearchShipType = {
-	name: string;
-	type: number;
-	fate: boolean;
-	image: string;
-};
+export type ResearchShipType = { name: string; type: number; fate: boolean; image: string };

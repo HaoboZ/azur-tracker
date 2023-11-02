@@ -1,15 +1,5 @@
-import {
-	Table as MuiTable,
-	TableBody,
-	TableCell,
-	tableCellClasses,
-	TableFooter,
-	TableHead,
-	TableRow,
-	tableRowClasses,
-	TableSortLabel,
-	Typography,
-} from '@mui/material';
+import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
+import { Link, Table as JoyTable, Typography } from '@mui/joy';
 import type { Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Fragment } from 'react';
@@ -26,60 +16,65 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 
 	const renderRowItem = (row: Row<TData>, containerProps?, handleProps?) => (
 		<Fragment key={row.id}>
-			<TableRow
-				{...containerProps}
-				hover={Boolean(onRowClick)}
-				onClick={onRowClick ? () => onRowClick(row, table) : undefined}>
+			<tr {...containerProps} onClick={onRowClick ? () => onRowClick(row, table) : undefined}>
 				{row.getVisibleCells().map((cell) => (
-					<TableCell key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
+					<td key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
 						{flexRender(cell.column.columnDef.cell, {
 							...cell.getContext(),
 							...(cell.column.id === '_sort' ? { handleProps } : undefined),
 						})}
-					</TableCell>
+					</td>
 				))}
-			</TableRow>
+			</tr>
 			{row.getIsExpanded() && (
-				<TableRow sx={{ bgcolor: pget('vars.palette.background.paper') }}>
-					<TableCell colSpan={colSpan}>{renderSubComponent(row, table)}</TableCell>
-				</TableRow>
+				<tr>
+					<td colSpan={colSpan}>{renderSubComponent(row, table)}</td>
+				</tr>
 			)}
 		</Fragment>
 	);
 
 	return (
-		<MuiTable
-			size='small'
-			sx={{
-				[`.${tableCellClasses.root}`]: { whiteSpace: 'nowrap' },
-				[`.${tableRowClasses.hover}:hover`]: onRowClick ? { cursor: 'pointer' } : undefined,
-			}}>
-			<TableHead>
+		<JoyTable stickyHeader>
+			<thead>
 				{table.getHeaderGroups().map((headerGroup) => (
-					<TableRow key={headerGroup.id}>
+					<tr key={headerGroup.id}>
 						{headerGroup.headers.map((header) => (
-							<TableCell
+							<th
 								key={header.id}
 								colSpan={header.colSpan}
-								sx={{
-									width: `${header.column.columnDef.size}%`,
-									position: 'sticky',
-									top: 0,
-									bgcolor: pget('vars.palette.background.paper'),
-								}}>
-								<TableSortLabel
-									active={Boolean(header.column.getIsSorted())}
-									hideSortIcon={!header.column.getCanSort()}
-									direction={header.column.getIsSorted() || undefined}
-									onClick={header.column.getToggleSortingHandler()}>
-									{flexRender(header.column.columnDef.header, header.getContext())}
-								</TableSortLabel>
-							</TableCell>
+								style={{ width: `${header.column.columnDef.size}%` }}>
+								{header.isPlaceholder ? null : (
+									<Link
+										underline='none'
+										color='neutral'
+										disabled={!header.column.getCanSort()}
+										startDecorator={
+											header.column.getCanSort() && (
+												<ArrowDownwardIcon
+													sx={{ opacity: header.column.getIsSorted() ? 1 : 0 }}
+												/>
+											)
+										}
+										sx={{
+											'& svg': {
+												transition: '0.2s',
+												transform:
+													header.column.getIsSorted() === 'desc'
+														? 'rotate(0deg)'
+														: 'rotate(180deg)',
+											},
+										}}
+										onClick={header.column.getToggleSortingHandler()}>
+										{flexRender(header.column.columnDef.header, header.getContext())}
+									</Link>
+								)}
+							</th>
 						))}
-					</TableRow>
+					</tr>
 				))}
-			</TableHead>
-			<TableBody>
+			</thead>
+			<tbody>
 				{table.getAllColumns().find(({ id }) => id === '_sort') ? (
 					<Sortable
 						items={rows}
@@ -89,22 +84,24 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 				) : (
 					rows.map((row) => renderRowItem(row))
 				)}
-			</TableBody>
-			<TableFooter>
-				{table.getFooterGroups().map((footerGroup) => (
-					<TableRow key={footerGroup.id}>
-						{footerGroup.headers.map((header) => (
-							<TableCell
-								key={header.id}
-								sx={{ borderBottom: header.column.columnDef.footer ? undefined : 'unset' }}>
-								{header.isPlaceholder
-									? null
-									: flexRender(header.column.columnDef.footer, header.getContext())}
-							</TableCell>
-						))}
-					</TableRow>
-				))}
-			</TableFooter>
-		</MuiTable>
+			</tbody>
+			<tfoot>
+				{table.getFooterGroups().map((footerGroup) => {
+					if (!footerGroup.headers.map(pget('column.columnDef.footer')).some(Boolean))
+						return null;
+					return (
+						<tr key={footerGroup.id}>
+							{footerGroup.headers.map((footer) => (
+								<td key={footer.id}>
+									{footer.isPlaceholder
+										? null
+										: flexRender(footer.column.columnDef.footer, footer.getContext())}
+								</td>
+							))}
+						</tr>
+					);
+				})}
+			</tfoot>
+		</JoyTable>
 	);
 }

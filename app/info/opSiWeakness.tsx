@@ -1,13 +1,5 @@
 import PageSection from '@/components/page/section';
-import {
-	Paper,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-} from '@mui/material';
+import { Table } from '@mui/joy';
 import Image from 'next/image';
 
 const opSiWeakness: [string, string, string][] = [
@@ -21,34 +13,32 @@ const opSiWeakness: [string, string, string][] = [
 export default function OpSiWeakness() {
 	return (
 		<PageSection title='Operation Siren Weakness'>
-			<TableContainer component={Paper}>
-				<Table size='small'>
-					<TableHead>
-						<TableRow>
-							<TableCell />
-							<TableCell>Ship</TableCell>
-							<TableCell>Weakness</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{opSiWeakness.map(([image, ship, weakness], index) => (
-							<TableRow key={index}>
-								<TableCell>
-									<Image
-										src={`https://azurlane.netojuu.com/images/${image}`}
-										alt={ship}
-										width={64}
-										height={64}
-										style={{ objectFit: 'contain' }}
-									/>
-								</TableCell>
-								<TableCell>{ship}</TableCell>
-								<TableCell>{weakness}</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<Table sx={{ 'th:nth-child(1)': { width: 67 } }}>
+				<thead>
+					<tr>
+						<th />
+						<th>Ship</th>
+						<th>Weakness</th>
+					</tr>
+				</thead>
+				<tbody>
+					{opSiWeakness.map(([image, ship, weakness], index) => (
+						<tr key={index}>
+							<td>
+								<Image
+									src={`https://azurlane.netojuu.com/images/${image}`}
+									alt={ship}
+									width={48}
+									height={48}
+									style={{ objectFit: 'contain' }}
+								/>
+							</td>
+							<td>{ship}</td>
+							<td>{weakness}</td>
+						</tr>
+					))}
+				</tbody>
+			</Table>
 		</PageSection>
 	);
 }

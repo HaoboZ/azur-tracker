@@ -1,12 +1,12 @@
 import { Close as CloseIcon } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { IconButton } from '@mui/joy';
 import type { DisplayColumnDef, Row, Table } from '@tanstack/react-table';
 import pget from '../../../helpers/pget';
 
-export const deleteColumn = () =>
+export const deleteColumn = (size = 2) =>
 	({
 		id: '_delete',
-		size: 0,
+		size,
 		cell: ({ row, table }) => (
 			<IconButton
 				onClick={(e) => {

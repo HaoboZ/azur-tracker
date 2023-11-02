@@ -5,7 +5,7 @@ import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Box, Link } from '@mui/material';
+import { Link, Stack, Typography } from '@mui/joy';
 import { differenceInDays } from 'date-fns';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -53,17 +53,18 @@ export default function Event() {
 	return (
 		<PageContainer noSsr>
 			<PageTitle>Event Tracker</PageTitle>
-			<Box display='flex' justifyContent='center'>
+			<Stack display='flex' justifyContent='center' alignItems='center'>
 				<Link href={eventData.href} target='_blank'>
 					<Image
 						src={eventData.image}
 						alt='event banner'
-						width={513}
-						height={185}
+						width={600}
+						height={200}
 						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 					/>
 				</Link>
-			</Box>
+				<Typography level='title-lg'>{eventData.name}</Typography>
+			</Stack>
 			<EventFields time={time} neededPoints={neededPoints} />
 			<EventFarming remainingPoints={remainingPoints} />
 		</PageContainer>

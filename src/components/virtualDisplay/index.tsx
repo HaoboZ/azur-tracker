@@ -1,4 +1,3 @@
-import type { TableCellProps } from '@mui/material';
 import type { Cell, Row, RowData, Table, TableOptions } from '@tanstack/react-table';
 import {
 	getCoreRowModel,
@@ -6,7 +5,7 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from '@tanstack/react-table';
-import type { ReactNode } from 'react';
+import type { ReactNode, TdHTMLAttributes } from 'react';
 import useIsMobile from '../../hooks/useIsMobile';
 import OverflowTypography from '../overflowTypography';
 import VirtualList from './virtualList';
@@ -26,7 +25,7 @@ declare module '@tanstack/react-table' {
 	}
 
 	interface ColumnMeta<TData extends RowData, TValue> {
-		props?: (cell: Cell<TData, TValue>) => TableCellProps;
+		props?: (cell: Cell<TData, TValue>) => TdHTMLAttributes<any>;
 	}
 }
 

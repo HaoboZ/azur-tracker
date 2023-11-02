@@ -1,28 +1,14 @@
-'use client';
-import type { ContainerProps } from '@mui/material';
-import { Container, NoSsr } from '@mui/material';
-import ScrollTop from '../scrollTop';
+import type { ContainerProps } from '@mui/joy';
+import { Container } from '@mui/joy';
+import NoSsr from '../noSsr';
 
-export default function PageContainer({
-	noSsr,
-	children,
-	sx,
-	...props
-}: { noSsr?: boolean } & ContainerProps) {
+export default function PageContainer({ noSsr, ...props }: { noSsr?: boolean } & ContainerProps) {
 	if (noSsr)
 		return (
 			<NoSsr>
-				<Container sx={{ px: 0, ...sx }} {...props}>
-					<ScrollTop />
-					{children}
-				</Container>
+				<Container {...props} />
 			</NoSsr>
 		);
 
-	return (
-		<Container sx={{ px: 0, ...sx }} {...props}>
-			<ScrollTop />
-			{children}
-		</Container>
-	);
+	return <Container {...props} />;
 }

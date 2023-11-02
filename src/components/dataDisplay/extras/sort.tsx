@@ -1,5 +1,5 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { ListItemIcon } from '@mui/material';
+import { ListItemDecorator } from '@mui/joy';
 import type { DisplayColumnDef, RowData } from '@tanstack/react-table';
 
 declare module '@tanstack/react-table' {
@@ -9,10 +9,10 @@ declare module '@tanstack/react-table' {
 	}
 }
 
-export const sortColumn = () =>
+export const sortColumn = (size = 2) =>
 	({
 		id: '_sort',
-		size: 0,
+		size,
 		cell: ({ handleProps }) => {
 			return <MenuIcon {...handleProps} />;
 		},
@@ -20,8 +20,8 @@ export const sortColumn = () =>
 
 export function sortIcon(handle) {
 	return (
-		<ListItemIcon sx={{ alignItems: 'center' }}>
+		<ListItemDecorator>
 			<MenuIcon {...handle} />
-		</ListItemIcon>
+		</ListItemDecorator>
 	);
 }

@@ -1,10 +1,10 @@
-import FormattedTextField from '@/components/formattedTextField';
+import FormattedInput from '@/components/formattedInput';
 import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useModal } from '@/src/providers/modal';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Box, Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material';
+import { Box, FormLabel, Grid, Input, Typography } from '@mui/joy';
 import { format, formatDistanceToNow, isBefore } from 'date-fns';
 import DailyModal from './dailyModal';
 import ShopModal from './shopModal';
@@ -19,68 +19,61 @@ export default function EventFields({ time, neededPoints }: { time: Date; needed
 	const endDate = new Date(eventData.endDate);
 
 	return (
-		<Grid container spacing={2} px={2} sx={{ '.rightInput': { textAlign: 'right' } }}>
-			<Grid item container xs={12} justifyContent='center'>
-				<Typography variant='h3' color='textPrimary'>
-					{eventData.name}
-				</Typography>
-			</Grid>
-			<Grid item sm={4} xs={6}>
-				<InputLabel shrink>Current Date</InputLabel>
+		<Grid container spacing={1} p={2}>
+			<Grid sm={4} xs={6}>
+				<FormLabel>Current Date</FormLabel>
 				<Typography>{format(time, 'PPp')}</Typography>
 			</Grid>
-			<Grid item sm={4} xs={6}>
-				<InputLabel shrink>End Date</InputLabel>
+			<Grid sm={4} xs={6}>
+				<FormLabel>End Date</FormLabel>
 				<Typography>{format(endDate, 'PPp')}</Typography>
 			</Grid>
-			<Grid item container sm={4} xs={12} justifyContent='center' alignItems='center'>
+			<Grid container sm={4} xs={12} justifyContent='center' alignItems='center'>
 				<Typography>
 					End{isBefore(time, endDate) ? 's' : 'ed'}{' '}
 					{formatDistanceToNow(endDate, { addSuffix: true })}
 				</Typography>
 			</Grid>
-			<Grid item sm={3} xs={6}>
-				<FormattedTextField
-					id='shop'
-					type='text'
-					label='Shop Cost'
-					inputProps={{ className: 'rightInput' }}
-					InputProps={{
-						readOnly: true,
-						endAdornment: <InputAdornment position='end'>Points</InputAdornment>,
-					}}
+			<Grid sm={3} xs={6}>
+				<FormLabel>Shop Cost</FormLabel>
+				<Input
+					readOnly
+					className='numberInput'
+					endDecorator='Points'
 					value={event.shopExpectedCost}
 					onClick={() => showModal(ShopModal, { id: 'shop', props: { eventShopData } })}
 				/>
 			</Grid>
-			<Grid item sm={3} xs={6}>
-				<TextField
-					id='daily'
-					type='text'
-					label='Daily Points'
-					inputProps={{ className: 'rightInput' }}
-					InputProps={{
-						readOnly: true,
-						endAdornment: <InputAdornment position='end'>Points</InputAdornment>,
-					}}
+			<Grid sm={3} xs={6}>
+				<FormLabel>Daily Points</FormLabel>
+				<Input
+					readOnly
+					className='numberInput'
+					endDecorator='Points'
 					value={event.dailyExpected}
 					onClick={() => showModal(DailyModal, { id: 'daily' })}
 				/>
 			</Grid>
-			<Grid item sm={3} xs={6}>
-				<Box id='required'>
-					<InputLabel shrink>Required Points</InputLabel>
-					<Typography>{neededPoints} Points</Typography>
+			<Grid sm={3} xs={6}>
+				<Box>
+					<FormLabel>Required Points</FormLabel>
+					<Input
+						readOnly
+						variant='plain'
+						className='numberInput'
+						endDecorator='Points'
+						sx={{ pointerEvents: 'none', bgcolor: 'background.body' }}
+						value={neededPoints}
+					/>
 				</Box>
 			</Grid>
-			<Grid item sm={3} xs={6}>
-				<FormattedTextField
-					id='current'
+			<Grid sm={3} xs={6}>
+				<FormLabel>Current Points</FormLabel>
+				<FormattedInput
 					type='number'
-					label='Current Points'
 					inputMode='numeric'
 					className='numberInput'
-					InputProps={{ endAdornment: <InputAdornment position='end'>Points</InputAdornment> }}
+					endDecorator='Points'
 					value={event.points}
 					onChange={({ target }) => dispatch(eventActions.setPoints(parseInt(target.value)))}
 					onFocus={({ target }) => target.select()}

@@ -5,7 +5,7 @@ import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import { difference, groupBy, mapValues, omit, pipe, sortBy, uniq } from 'remeda';
+import { difference, groupBy, indexBy, mapValues, omit, pipe, sortBy, uniq } from 'remeda';
 import Info from './index';
 
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
@@ -21,7 +21,7 @@ const getCachedData = unstable_cache(
 			{ params: { sheet: 'Equip', tqx: 'out:csv' } },
 		);
 
-		const farmData = sortBy(await csvtojson().fromString(farmCSV), ({ order }) => order).map(
+		const farmData = (await csvtojson().fromString(farmCSV)).map(
 			({ id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, ...props }) => ({
 				...props,
 				ids: [id0, id1, id2, id3, id4, id5, id6, id7, id8, id9, id10].filter(Boolean),
@@ -40,8 +40,9 @@ const getCachedData = unstable_cache(
 		let found = [];
 		return {
 			farmData: mapValues(groupBy(farmData, pget('origin')), (value) =>
-				mapValues(groupBy(value, pget('level')), (value) =>
-					mapValues(groupBy(value, pget('stage')), (value) => value[0].ids),
+				mapValues(
+					indexBy(value, ({ level, stage }) => `${level}${stage}`),
+					pget('ids'),
 				),
 			),
 			equipTier: Object.values(equipTier).map((value) => {

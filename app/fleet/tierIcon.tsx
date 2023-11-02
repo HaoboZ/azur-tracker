@@ -4,8 +4,8 @@ import {
 	FavoriteBorder as FavoriteBorderIcon,
 	Star as StarIcon,
 } from '@mui/icons-material';
-import type { SvgIconProps } from '@mui/material';
-import { SvgIcon } from '@mui/material';
+import type { SvgIconProps } from '@mui/joy';
+import { SvgIcon } from '@mui/joy';
 import { Fragment } from 'react';
 
 function RingIcon(props: SvgIconProps) {
@@ -20,22 +20,22 @@ export function TierIcon({ tier }) {
 	return (
 		[
 			undefined,
-			<StarIcon key='diamondStar' fontSize='small' htmlColor='turquoise' />,
-			<StarIcon key='goldStar' fontSize='small' htmlColor='gold' />,
-			<StarIcon key='silverStar' fontSize='small' htmlColor='silver' />,
-			<StarIcon key='bronzeStar' fontSize='small' htmlColor='chocolate' />,
-			<StarIcon key='tanStar' fontSize='small' htmlColor='tan' />,
-			<CircleOutlinedIcon key='circle' fontSize='small' />,
-		][tier] || <SvgIcon key='empty' fontSize='small' />
+			<StarIcon key='diamondStar' htmlColor='turquoise' sx={{ fontSize: 'inherit' }} />,
+			<StarIcon key='goldStar' htmlColor='gold' sx={{ fontSize: 'inherit' }} />,
+			<StarIcon key='silverStar' htmlColor='silver' sx={{ fontSize: 'inherit' }} />,
+			<StarIcon key='bronzeStar' htmlColor='chocolate' sx={{ fontSize: 'inherit' }} />,
+			<StarIcon key='tanStar' htmlColor='tan' sx={{ fontSize: 'inherit' }} />,
+			<CircleOutlinedIcon key='circle' sx={{ fontSize: 'inherit' }} />,
+		][tier] || <SvgIcon key='empty' sx={{ fontSize: 'inherit' }} />
 	);
 }
 
 export const AffinityIcons = [
-	<FavoriteBorderIcon key='none' fontSize='small' />,
-	<FavoriteIcon key='love' fontSize='small' />,
-	<RingIcon key='married' fontSize='small' />,
+	<FavoriteBorderIcon key='none' sx={{ fontSize: 'inherit' }} />,
+	<FavoriteIcon key='love' sx={{ fontSize: 'inherit' }} />,
+	<RingIcon key='married' sx={{ fontSize: 'inherit' }} />,
 	<Fragment key='max'>
-		<RingIcon fontSize='small' />
-		<FavoriteIcon fontSize='small' />
+		<RingIcon sx={{ fontSize: 'inherit' }} />
+		<FavoriteIcon sx={{ fontSize: 'inherit' }} />
 	</Fragment>,
 ];

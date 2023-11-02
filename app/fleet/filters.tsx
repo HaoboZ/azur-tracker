@@ -2,21 +2,10 @@ import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
-import { MoreVert as MoreVertIcon, Search as SearchIcon } from '@mui/icons-material';
-import {
-	Autocomplete,
-	Box,
-	Button,
-	Checkbox,
-	FormControlLabel,
-	Grid,
-	IconButton,
-	Menu,
-	MenuItem,
-	TextField,
-} from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+import { Autocomplete, Box, Checkbox, Dropdown, ListItem, Menu, MenuButton, Stack } from '@mui/joy';
 import type { Table } from '@tanstack/react-table';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDebounce, useWindowEventListener } from 'rooks';
 import EquipFilter from './ship/equip/filter';
 import type { FleetType, Ship } from './type';
@@ -62,7 +51,7 @@ const searchOptions = [
 	'Hololive',
 	'Venus Vacation',
 	'META',
-].map((label, id) => ({ id, label }));
+];
 
 export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const { equipData } = useData<FleetType>();
@@ -71,7 +60,6 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 
 	const globalFilter = useDebounce((value: string) => table.setGlobalFilter(value), 500);
 
-	const [anchorEl, setAnchorEl] = useState<HTMLElement>(null);
 	const searchRef = useRef<HTMLInputElement>();
 
 	// keydown listener for search
@@ -94,89 +82,52 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 
 	return (
 		<Box mx={2} mb={2}>
-			<Grid container spacing={2}>
-				<Grid item md xs={12}>
-					<EquipFilter
-						equipList={equipData}
-						setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
-					/>
-				</Grid>
-				<Grid item md xs={10}>
-					<Autocomplete
-						fullWidth
-						freeSolo
-						options={searchOptions}
-						renderInput={(params) => (
-							<TextField
-								inputRef={searchRef}
-								{...params}
-								label='Search'
-								InputProps={{ ...params.InputProps, startAdornment: <SearchIcon /> }}
-							/>
-						)}
-						onInputChange={(e, value) => globalFilter(value)}
-					/>
-				</Grid>
-				<Grid item container xs={2} alignContent='center'>
-					<Button
-						fullWidth
-						variant='contained'
-						sx={{ display: { xs: 'none', sm: 'block' } }}
-						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
-						More
-					</Button>
-					<IconButton
-						sx={{ display: { xs: 'block', sm: 'none' }, width: 40, height: 40 }}
-						onClick={({ currentTarget }) => setAnchorEl(currentTarget)}>
-						<MoreVertIcon />
-					</IconButton>
-				</Grid>
-			</Grid>
-			<Menu
-				keepMounted
-				anchorEl={anchorEl}
-				open={Boolean(anchorEl)}
-				onClose={() => setAnchorEl(null)}>
-				<MenuItem>
-					<FormControlLabel
-						control={
+			<Stack direction='row' spacing={1}>
+				<EquipFilter
+					equipList={equipData}
+					setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
+				/>
+				<Autocomplete
+					freeSolo
+					options={searchOptions}
+					placeholder='Search'
+					startDecorator={<SearchIcon />}
+					sx={{ flex: 1 }}
+					onInputChange={(_, value) => globalFilter(value)}
+				/>
+				<Dropdown>
+					<MenuButton>Filter</MenuButton>
+					<Menu>
+						<ListItem>
 							<Checkbox
+								label='Maxed Level'
 								checked={filter.levelMax}
-								onChange={({ target }) =>
-									dispatch(fleetActions.setFilter({ levelMax: target.checked }))
-								}
+								onChange={({ target }) => {
+									dispatch(fleetActions.setFilter({ levelMax: target.checked }));
+								}}
 							/>
-						}
-						label='Maxed Level'
-					/>
-				</MenuItem>
-				<MenuItem>
-					<FormControlLabel
-						control={
+						</ListItem>
+						<ListItem>
 							<Checkbox
+								label='Maxed Equip'
 								checked={filter.equipMax}
-								onChange={({ target }) =>
-									dispatch(fleetActions.setFilter({ equipMax: target.checked }))
-								}
+								onChange={({ target }) => {
+									dispatch(fleetActions.setFilter({ equipMax: target.checked }));
+								}}
 							/>
-						}
-						label='Maxed Equip'
-					/>
-				</MenuItem>
-				<MenuItem>
-					<FormControlLabel
-						control={
+						</ListItem>
+						<ListItem>
 							<Checkbox
+								label='0 Level'
 								checked={filter.level0}
-								onChange={({ target }) =>
-									dispatch(fleetActions.setFilter({ level0: target.checked }))
-								}
+								onChange={({ target }) => {
+									dispatch(fleetActions.setFilter({ level0: target.checked }));
+								}}
 							/>
-						}
-						label='0 Level'
-					/>
-				</MenuItem>
-			</Menu>
+						</ListItem>
+					</Menu>
+				</Dropdown>
+			</Stack>
 		</Box>
 	);
 }

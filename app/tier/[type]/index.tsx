@@ -4,7 +4,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import MultiSortable from '@/components/sortable/multi';
 import pget from '@/src/helpers/pget';
-import { Grid, Paper, Stack } from '@mui/material';
+import { Grid, Sheet, Stack } from '@mui/joy';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { difference, indexBy, mapValues, omit } from 'remeda';
@@ -31,9 +31,7 @@ export default function TierType({
 		return tiers;
 	});
 
-	useDidUpdate(() => {
-		setChanged(true);
-	}, [tiers]);
+	useDidUpdate(() => setChanged(true), [tiers]);
 
 	return (
 		<PageContainer>
@@ -67,23 +65,25 @@ export default function TierType({
 						<Image
 							src={`https://azurlane.netojuu.com/images/${item.image}`}
 							alt={item.name}
-							width={50}
-							height={50}
+							width={48}
+							height={48}
 							className={`color-${rarityColors[item.rarity]}`}
 						/>
 					</Grid>
 				)}>
 				{({ unTiered, ...tiers }) => (
 					<Grid container spacing={1}>
-						<Grid item xs={6}>
-							<Paper sx={{ p: 1 }}>{unTiered}</Paper>
+						<Grid xs={6}>
+							<Sheet variant='outlined' sx={{ p: 1 }}>
+								{unTiered}
+							</Sheet>
 						</Grid>
-						<Grid item xs={6}>
+						<Grid xs={6}>
 							<Stack spacing={1}>
 								{Object.entries(tiers).map(([group, tier]) => (
-									<Paper key={group} sx={{ p: 1 }}>
+									<Sheet key={group} variant='outlined' sx={{ p: 1 }}>
 										{tier}
-									</Paper>
+									</Sheet>
 								))}
 							</Stack>
 						</Grid>

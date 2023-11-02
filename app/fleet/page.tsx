@@ -49,10 +49,7 @@ const getCachedData = unstable_cache(
 				pget('id'),
 			),
 			equipData: pipe(
-				(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({
-					id: +id,
-					...val,
-				})),
+				(await csvtojson().fromString(equipCSV)).map(({ id, ...val }) => ({ id: +id, ...val })),
 				sortBy(pget('id')),
 				sortBy(pget('type')),
 			),

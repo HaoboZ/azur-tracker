@@ -1,10 +1,10 @@
-import { Checkbox, ListItemIcon } from '@mui/material';
+import { Checkbox, ListItemDecorator } from '@mui/joy';
 import type { DisplayColumnDef, Row } from '@tanstack/react-table';
 
-export const selectColumn = () =>
+export const selectColumn = (size = 2) =>
 	({
 		id: '_select',
-		size: 0,
+		size,
 		header: ({ table }) => (
 			<Checkbox
 				checked={table.getIsAllRowsSelected()}
@@ -24,13 +24,13 @@ export const selectColumn = () =>
 
 export function selectIcon<TData>(row: Row<TData>) {
 	return (
-		<ListItemIcon>
+		<ListItemDecorator>
 			<Checkbox
 				checked={row.getIsSelected()}
 				indeterminate={row.getIsSomeSelected()}
 				onClick={(e) => e.stopPropagation()}
 				onChange={row.getToggleSelectedHandler()}
 			/>
-		</ListItemIcon>
+		</ListItemDecorator>
 	);
 }

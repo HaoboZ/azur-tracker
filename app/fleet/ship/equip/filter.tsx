@@ -1,7 +1,8 @@
 import { rarityColors } from '@/app/colors';
 import pget from '@/src/helpers/pget';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { Autocomplete, TextField, Typography } from '@mui/material';
+import type { AutocompleteProps } from '@mui/joy';
+import { Autocomplete, AutocompleteOption, ListItemContent, ListItemDecorator } from '@mui/joy';
 import Image from 'next/image';
 import type { EquipType } from './type';
 
@@ -30,39 +31,38 @@ export default function EquipFilter({
 	equipList,
 	value,
 	setValue,
-}: {
-	equipList: EquipType[];
-	value?: EquipType;
-	setValue: (value: EquipType) => void;
-}) {
+	...props
+}: { equipList: EquipType[]; value?: EquipType; setValue: (value: EquipType) => void } & Partial<
+	AutocompleteProps<EquipType, false, false, false>
+>) {
 	return (
-		<Autocomplete<EquipType, false, false, false>
-			fullWidth
+		<Autocomplete
+			sx={{ flex: 1 }}
+			multiple={false}
 			options={equipList}
 			getOptionLabel={pget('name')}
 			isOptionEqualToValue={({ id }, value) => id === value?.id}
 			value={value}
 			renderOption={(props, option) => (
-				<li {...props} key={option.id}>
-					<Image
-						src={`https://azurlane.netojuu.com/images/${option.image}`}
-						alt={option.name}
-						height={50}
-						width={50}
-						className={`color-${rarityColors[option.rarity]}`}
-					/>
-					<Typography pl={1}>{option.name}</Typography>
-				</li>
+				<AutocompleteOption {...props} key={option.id}>
+					<ListItemDecorator sx={{ pr: 1 }}>
+						<Image
+							src={`https://azurlane.netojuu.com/images/${option.image}`}
+							alt={option.name}
+							height={48}
+							width={48}
+							style={{ borderRadius: 4 }}
+							className={`color-${rarityColors[option.rarity]}`}
+						/>
+					</ListItemDecorator>
+					<ListItemContent>{option.name}</ListItemContent>
+				</AutocompleteOption>
 			)}
 			groupBy={({ type }) => typeNames[type]}
-			renderInput={(params) => (
-				<TextField
-					{...params}
-					label='Equipment'
-					InputProps={{ ...params.InputProps, startAdornment: <SearchIcon /> }}
-				/>
-			)}
-			onChange={(e, newValue: EquipType) => setValue(newValue || undefined)}
+			placeholder='Equipment'
+			startDecorator={<SearchIcon />}
+			onChange={(_, newValue: EquipType) => setValue(newValue || undefined)}
+			{...props}
 		/>
 	);
 }

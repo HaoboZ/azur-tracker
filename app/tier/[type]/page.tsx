@@ -15,13 +15,7 @@ export default async function Page({ params }: { params: Record<string, string> 
 
 	const { data: tierTypesCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
-		{
-			params: {
-				sheet: 'Tier',
-				tqx: 'out:csv',
-				tq: `SELECT B,C WHERE A='${type}'`,
-			},
-		},
+		{ params: { sheet: 'Tier', tqx: 'out:csv', tq: `SELECT B,C WHERE A='${type}'` } },
 	);
 	const tierTypes = JSON.parse(`[${tierTypesCSV}]`);
 	if (isEmpty(tierTypes)) return notFound();

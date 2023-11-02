@@ -22,9 +22,7 @@ export const metadata: Metadata = {
 	appleWebApp: { capable: true, statusBarStyle: 'black-translucent' },
 };
 
-export const viewport: Viewport = {
-	themeColor: '#039be5',
-};
+export const viewport: Viewport = { themeColor: '#039be5' };
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] });
 

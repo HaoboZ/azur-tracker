@@ -3,11 +3,10 @@ import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useModal } from '@/src/providers/modal';
 import { Star as StarIcon } from '@mui/icons-material';
-import { ListItemSecondaryAction, ListItemText } from '@mui/material';
+import { Box, ListItemContent, Typography } from '@mui/joy';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { Fragment, useMemo } from 'react';
-import { isTruthy } from 'remeda';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';
 import { AffinityIcons, TierIcon } from './tierIcon';
@@ -31,16 +30,18 @@ const Rarity = {
 
 const columnHelper = createColumnHelper<Ship>();
 
+const className = (cell: Cell<Ship, unknown>) =>
+	cell.column.columnDef.meta?.props?.(cell)?.className;
+
 export default function useFleetTable(data) {
 	const { showModal } = useModal();
 	const fleetData = useData<FleetType>();
 
 	const columns = useMemo(
 		() => [
-			columnHelper.accessor('name', { header: 'Name', size: 40 }),
+			columnHelper.accessor('name', { header: 'Name', size: 15 }),
 			columnHelper.accessor('rarity', {
 				header: 'Rarity',
-				size: 20,
 				meta: {
 					props: ({ getValue }: Cell<any, any>) => {
 						const value = getValue();
@@ -53,7 +54,6 @@ export default function useFleetTable(data) {
 			}),
 			columnHelper.accessor('faction', {
 				header: 'Faction',
-				size: 20,
 				meta: {
 					props: ({ getValue }: Cell<any, any>) => {
 						const value = getValue();
@@ -63,7 +63,6 @@ export default function useFleetTable(data) {
 			}),
 			columnHelper.accessor('type', {
 				header: 'Type',
-				size: 20,
 				meta: {
 					props: ({ getValue }: Cell<any, any>) => {
 						const value = getValue();
@@ -73,7 +72,7 @@ export default function useFleetTable(data) {
 			}),
 			columnHelper.accessor('tier', {
 				header: 'Tier',
-				size: 10,
+				size: 5,
 				cell: ({ getValue }) => {
 					const value = getValue();
 					switch (value) {
@@ -91,24 +90,25 @@ export default function useFleetTable(data) {
 			}),
 			columnHelper.accessor('love', {
 				header: 'Love',
-				size: 10,
+				size: 5,
 				cell: ({ getValue }) => AffinityIcons[getValue() as number],
+				meta: { props: () => ({ style: { fontSize: 18 } }) },
 				enableGlobalFilter: false,
 				sortDescFirst: true,
 			}),
 			columnHelper.accessor('lvl', {
 				header: 'Level',
-				size: 10,
+				size: 6,
 				cell: ({ getValue }) => {
 					const value = getValue();
-					return value === 126 ? <StarIcon fontSize='small' /> : value;
+					return value === 126 ? <StarIcon sx={{ fontSize: 'inherit' }} /> : value;
 				},
+				meta: { props: () => ({ style: { fontSize: 18 } }) },
 				enableGlobalFilter: false,
 				sortDescFirst: true,
 			}),
 			columnHelper.accessor('equip', {
 				header: 'Equips',
-				size: 25,
 				cell: ({ getValue, row, column }) => {
 					const value = getValue();
 					if (row.columnFiltersMeta[column.id]) {
@@ -132,10 +132,11 @@ export default function useFleetTable(data) {
 				meta: {
 					props: (cell) => {
 						const equip =
-							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(isTruthy) ?? [];
+							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(Boolean) ?? [];
 						return {
+							style: { fontSize: 18 },
 							className: equip
-								? `color-${tierColors[Math.min(...equip.map(({ tier }) => tier))]}`
+								? `color-${tierColors[Math.min(...equip.map(pget('tier')))]}`
 								: undefined,
 						};
 					},
@@ -195,7 +196,7 @@ export default function useFleetTable(data) {
 			],
 		},
 		getRowId: pget('id'),
-		onRowClick: (row, table) =>
+		onRowClick: (row, table) => {
 			showModal(ShipModal, {
 				id: 'ship',
 				props: {
@@ -204,31 +205,22 @@ export default function useFleetTable(data) {
 					selectedEquip: table.getColumn('equip').getFilterValue() as any,
 					...fleetData,
 				},
-			}),
-		renderRow: ({ cells, render }) => {
-			const className = (cell) => cell.column.columnDef.meta?.className?.(cell);
-
-			return (
-				<Fragment>
-					<ListItemText
-						primary={
-							<Fragment>
-								{cells.name.getValue()}
-								{' - Tier: '}
-								{render(cells.tier)}
-								{' - '}
-								{render(cells.lvl)}
-								{' / '}
-								{render(cells.love)}
-							</Fragment>
-						}
-						secondary={`${cells.rarity.getValue()} - ${cells.faction.getValue()} - ${cells.type.getValue()}`}
-					/>
-					<ListItemSecondaryAction className={className(cells.equip)}>
-						{render(cells.equip)}
-					</ListItemSecondaryAction>
-				</Fragment>
-			);
+			});
 		},
+		renderRow: ({ cells, render }) => (
+			<Fragment>
+				<ListItemContent>
+					<Typography>
+						{cells.name.getValue()} - Tier: {render(cells.tier)} - {render(cells.lvl)} /{' '}
+						{render(cells.love)}
+					</Typography>
+					<Typography level='body-sm'>
+						{cells.rarity.getValue<string>()} - {cells.faction.getValue<string>()} -{' '}
+						{cells.type.getValue<string>()}
+					</Typography>
+				</ListItemContent>
+				<Box className={className(cells.equip)}>{render(cells.equip)}</Box>
+			</Fragment>
+		),
 	});
 }

@@ -1,5 +1,5 @@
 'use client';
-import { AppBar, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { Tab, TabList, Tabs, Typography } from '@mui/joy';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
@@ -13,30 +13,30 @@ export default function BottomBar() {
 	}, [pathname]);
 
 	return (
-		<AppBar
-			position='fixed'
-			color='inherit'
-			sx={{ display: { xs: 'block', sm: 'none' }, top: 'auto', bottom: 0 }}>
-			<BottomNavigation
-				showLabels
-				value={index}
-				sx={{
-					height: 'calc(env(safe-area-inset-bottom) + 56px)',
-					pl: 'env(safe-area-inset-left)',
-					pr: 'env(safe-area-inset-right)',
-					pb: 'env(safe-area-inset-bottom)',
-				}}>
+		<Tabs
+			value={index}
+			component='nav'
+			sx={{
+				display: { xs: 'block', sm: 'none' },
+				position: 'fixed',
+				top: 'auto',
+				bottom: 0,
+				width: '100%',
+			}}>
+			<TabList disableUnderline sx={{ '--ListItem-gap': 0, 'height': 60 }}>
 				{items.map((item, index) => (
-					<BottomNavigationAction
+					<Tab
 						key={index}
-						sx={{ minWidth: 0 }}
-						label={item.label}
-						icon={item.icon}
+						disableIndicator
 						component={Link}
 						href={item.href}
-					/>
+						orientation='vertical'
+						sx={{ flex: 1, pt: 1, pb: 'calc(env(safe-area-inset-bottom) + 8px)' }}>
+						{item.icon}
+						<Typography>{item.label}</Typography>
+					</Tab>
 				))}
-			</BottomNavigation>
-		</AppBar>
+			</TabList>
+		</Tabs>
 	);
 }

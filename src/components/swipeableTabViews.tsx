@@ -1,5 +1,5 @@
-import type { TabsProps } from '@mui/material';
-import { Box, Tab, Tabs } from '@mui/material';
+import type { TabsProps } from '@mui/joy';
+import { Box, Tab, TabList, Tabs } from '@mui/joy';
 import type { EmblaCarouselType } from 'embla-carousel-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { ReactNode } from 'react';
@@ -38,13 +38,20 @@ export default function SwipeableTabViews({
 	return (
 		<Box>
 			<Tabs
-				variant='scrollable'
 				value={tabValue}
-				onChange={(e, index) => setTabValue(index)}
-				{...props}>
-				{renderTabs.map((label, index) => (
-					<Tab key={index} label={label} />
-				))}
+				onChange={(_, index: number) => setTabValue(index)}
+				{...props}
+				sx={{
+					'overflow': 'auto',
+					'scrollSnapType': 'x mandatory',
+					'&::-webkit-scrollbar': { display: 'none' },
+					...props.sx,
+				}}>
+				<TabList>
+					{renderTabs.map((text, index) => (
+						<Tab key={index}>{text}</Tab>
+					))}
+				</TabList>
 			</Tabs>
 			<Box ref={emblaRef} overflow='hidden'>
 				<Box display='flex'>

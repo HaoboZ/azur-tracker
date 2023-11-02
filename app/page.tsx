@@ -2,7 +2,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import image from '@/public/images/startScreen.jpg';
 import { auth } from '@/src/auth';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/joy';
 import { revalidateTag } from 'next/cache';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -40,14 +40,14 @@ export default async function Main() {
 			</Box>
 			<Grid container spacing={1}>
 				{menuItems.map((item) => (
-					<Grid key={item.href} item xs={12} sm={6}>
+					<Grid key={item.href} xs={12} sm={6}>
 						<Button fullWidth variant='outlined' component={Link} href={item.href}>
 							{item.name}
 						</Button>
 					</Grid>
 				))}
 				{session?.user.role === 'ADMIN' && (
-					<Grid key='tier' item xs={12}>
+					<Grid key='tier' xs={12}>
 						<Button fullWidth variant='outlined' component={Link} href='tier'>
 							Tier
 						</Button>
