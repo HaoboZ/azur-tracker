@@ -92,7 +92,6 @@ export default function useFleetTable(data) {
 				header: 'Love',
 				size: 5,
 				cell: ({ getValue }) => AffinityIcons[getValue() as number],
-				meta: { props: () => ({ style: { fontSize: 18 } }) },
 				enableGlobalFilter: false,
 				sortDescFirst: true,
 			}),
@@ -101,9 +100,8 @@ export default function useFleetTable(data) {
 				size: 6,
 				cell: ({ getValue }) => {
 					const value = getValue();
-					return value === 126 ? <StarIcon sx={{ fontSize: 'inherit' }} /> : value;
+					return value === 126 ? <StarIcon fontSize='xl' /> : value;
 				},
-				meta: { props: () => ({ style: { fontSize: 18 } }) },
 				enableGlobalFilter: false,
 				sortDescFirst: true,
 			}),
@@ -134,7 +132,6 @@ export default function useFleetTable(data) {
 						const equip =
 							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(Boolean) ?? [];
 						return {
-							style: { fontSize: 18 },
 							className: equip
 								? `color-${tierColors[Math.min(...equip.map(pget('tier')))]}`
 								: undefined,

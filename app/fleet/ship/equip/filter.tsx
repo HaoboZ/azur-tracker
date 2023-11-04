@@ -1,4 +1,5 @@
 import { rarityColors } from '@/app/colors';
+import VirtualAutocompleteListbox from '@/components/virtualAutocompleteListbox';
 import pget from '@/src/helpers/pget';
 import { Search as SearchIcon } from '@mui/icons-material';
 import type { AutocompleteProps } from '@mui/joy';
@@ -37,9 +38,9 @@ export default function EquipFilter({
 >) {
 	return (
 		<Autocomplete
-			sx={{ flex: 1 }}
 			multiple={false}
 			options={equipList}
+			slots={{ listbox: VirtualAutocompleteListbox }}
 			getOptionLabel={pget('name')}
 			isOptionEqualToValue={({ id }, value) => id === value?.id}
 			value={value}

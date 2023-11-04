@@ -84,6 +84,7 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 		<Box mx={2} mb={2}>
 			<Stack direction='row' spacing={1}>
 				<EquipFilter
+					sx={{ flex: 1 }}
 					equipList={equipData}
 					setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
 				/>

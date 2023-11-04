@@ -107,9 +107,7 @@ export default function ShipModal({
 					<FormLabel>Max Level</FormLabel>
 					<Select
 						value={ships[ship.id]?.lvl || 0}
-						renderValue={({ value }) =>
-							value === 126 ? <StarIcon sx={{ fontSize: 'inherit' }} /> : value
-						}
+						renderValue={({ value }) => (value === 126 ? <StarIcon fontSize='xl' /> : value)}
 						onChange={(_, value) => {
 							dispatch(fleetActions.setShip({ name: ship.id, ship: { lvl: value } }));
 						}}>

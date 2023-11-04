@@ -1,38 +1,34 @@
 import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
 import { Link, Table as JoyTable } from '@mui/joy';
-import type { Row, RowData, Table } from '@tanstack/react-table';
+import type { RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
-import { Fragment, useState } from 'react';
+import { TableVirtuoso } from 'react-virtuoso';
 import pget from '../../helpers/pget';
-import Virtualizer from './virtualizer';
 
 export default function VirtualTable<TData extends RowData>({ table }: { table: Table<TData> }) {
-	const [rowRef, setRowRef] = useState<HTMLTableRowElement>();
-
-	const {
-		rows: [firstRow, ...restRows],
-	} = table.getRowModel();
-	const colSpan = table.getAllFlatColumns().length;
+	const { rows } = table.getRowModel();
 
 	const { onRowClick } = table.options.meta;
 
-	const renderRowItem = (row: Row<TData>, index, ref) => (
-		<tr
-			ref={ref}
-			data-index={index}
-			onClick={onRowClick ? () => onRowClick(row, table) : undefined}>
-			{row.getVisibleCells().map((cell) => (
-				<td key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
-					{flexRender(cell.column.columnDef.cell, cell.getContext())}
-				</td>
-			))}
-		</tr>
-	);
-
 	return (
-		<JoyTable stickyHeader>
-			<thead>
-				{table.getHeaderGroups().map((headerGroup) => (
+		<TableVirtuoso
+			useWindowScroll
+			components={{
+				Table: (props) => (
+					<JoyTable
+						sx={{ 'tbody tr': onRowClick ? { cursor: 'pointer' } : undefined }}
+						{...props}
+					/>
+				),
+				TableRow: ({ item, children, ...props }) => (
+					<tr onClick={onRowClick ? () => onRowClick(item, table) : undefined} {...props}>
+						{children}
+					</tr>
+				),
+			}}
+			data={rows}
+			fixedHeaderContent={() =>
+				table.getHeaderGroups().map((headerGroup) => (
 					<tr key={headerGroup.id}>
 						{headerGroup.headers.map((header) => (
 							<th
@@ -67,45 +63,17 @@ export default function VirtualTable<TData extends RowData>({ table }: { table: 
 							</th>
 						))}
 					</tr>
-				))}
-			</thead>
-			<tbody>
-				{firstRow && renderRowItem(firstRow, 0, setRowRef)}
-				{rowRef && (
-					<Virtualizer
-						rows={restRows}
-						estimateSize={rowRef.clientHeight}
-						paddingStart={
-							rowRef?.getBoundingClientRect().top +
-							(typeof window === 'undefined' ? 0 : window?.scrollY || 0)
-						}>
-						{(virtualizer, virtualItems, paddingTop, paddingBottom) => (
-							<Fragment>
-								{paddingTop > 0 && (
-									<tr>
-										<td style={{ height: paddingTop }} colSpan={colSpan} />
-									</tr>
-								)}
-								{virtualItems.map(({ index }) => {
-									const row = restRows[index];
-									return (
-										<Fragment key={row.id}>
-											{renderRowItem(row, index, virtualizer.measureElement)}
-										</Fragment>
-									);
-								})}
-								{paddingBottom > 0 && (
-									<tr>
-										<td style={{ height: paddingBottom }} colSpan={colSpan} />
-									</tr>
-								)}
-							</Fragment>
-						)}
-					</Virtualizer>
-				)}
-			</tbody>
-			<tfoot>
-				{table.getFooterGroups().map((footerGroup) => {
+				))
+			}
+			itemContent={(index, row) =>
+				row.getVisibleCells().map((cell) => (
+					<td key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
+						{flexRender(cell.column.columnDef.cell, cell.getContext())}
+					</td>
+				))
+			}
+			fixedFooterContent={() =>
+				table.getFooterGroups().map((footerGroup) => {
 					if (!footerGroup.headers.map(pget('column.columnDef.footer')).some(Boolean))
 						return null;
 					return (
@@ -119,8 +87,8 @@ export default function VirtualTable<TData extends RowData>({ table }: { table: 
 							))}
 						</tr>
 					);
-				})}
-			</tfoot>
-		</JoyTable>
+				})
+			}
+		/>
 	);
 }

@@ -20,22 +20,22 @@ export function TierIcon({ tier }) {
 	return (
 		[
 			undefined,
-			<StarIcon key='diamondStar' htmlColor='turquoise' sx={{ fontSize: 'inherit' }} />,
-			<StarIcon key='goldStar' htmlColor='gold' sx={{ fontSize: 'inherit' }} />,
-			<StarIcon key='silverStar' htmlColor='silver' sx={{ fontSize: 'inherit' }} />,
-			<StarIcon key='bronzeStar' htmlColor='chocolate' sx={{ fontSize: 'inherit' }} />,
-			<StarIcon key='tanStar' htmlColor='tan' sx={{ fontSize: 'inherit' }} />,
-			<CircleOutlinedIcon key='circle' sx={{ fontSize: 'inherit' }} />,
-		][tier] || <SvgIcon key='empty' sx={{ fontSize: 'inherit' }} />
+			<StarIcon key='diamondStar' htmlColor='turquoise' fontSize='xl' />,
+			<StarIcon key='goldStar' htmlColor='gold' fontSize='xl' />,
+			<StarIcon key='silverStar' htmlColor='silver' fontSize='xl' />,
+			<StarIcon key='bronzeStar' htmlColor='chocolate' fontSize='xl' />,
+			<StarIcon key='tanStar' htmlColor='tan' fontSize='xl' />,
+			<CircleOutlinedIcon key='circle' fontSize='xl' />,
+		][tier] || <SvgIcon key='empty' fontSize='xl' />
 	);
 }
 
 export const AffinityIcons = [
-	<FavoriteBorderIcon key='none' sx={{ fontSize: 'inherit' }} />,
-	<FavoriteIcon key='love' sx={{ fontSize: 'inherit' }} />,
-	<RingIcon key='married' sx={{ fontSize: 'inherit' }} />,
+	<FavoriteBorderIcon key='none' fontSize='xl' />,
+	<FavoriteIcon key='love' fontSize='xl' />,
+	<RingIcon key='married' fontSize='xl' />,
 	<Fragment key='max'>
-		<RingIcon sx={{ fontSize: 'inherit' }} />
-		<FavoriteIcon sx={{ fontSize: 'inherit' }} />
+		<RingIcon fontSize='xl' />
+		<FavoriteIcon fontSize='xl' />
 	</Fragment>,
 ];
