@@ -51,10 +51,9 @@ export default function Sortable<Item>({
 
 	const container = useMemo(
 		() =>
-			list.map(({ id, item }) => {
-				console.log(id);
-				return <SortableItem key={id} id={id} item={item} renderItem={renderItem} />;
-			}),
+			list.map(({ id, item }) => (
+				<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
+			)),
 		[list, ...dependencies],
 	);
 
