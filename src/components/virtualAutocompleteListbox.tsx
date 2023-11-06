@@ -1,3 +1,4 @@
+'use client';
 import { Popper } from '@mui/base';
 import type { AutocompleteListboxProps } from '@mui/joy';
 import { AutocompleteListbox, ListSubheader, Sheet } from '@mui/joy';
@@ -25,7 +26,7 @@ const components: (other) => Components<any, any> = (other) => ({
 	)),
 	Group: ListSubheader,
 	// @ts-ignore
-	Item: ({ item, children, onMouseDown, ...props }) =>
+	Item: ({ item, children, ...props }) =>
 		cloneElement(children as any, { ...props, onMouseDown: (e) => e.preventDefault() }),
 });
 
@@ -40,7 +41,7 @@ export default forwardRef<
 	const items = ownerState.groupBy
 		? children[0].flatMap(({ props }) => props.children[1].props.children)
 		: children[0];
-	console.log(other);
+
 	return (
 		<Popper
 			ref={ref}

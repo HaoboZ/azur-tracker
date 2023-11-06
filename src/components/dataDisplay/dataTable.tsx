@@ -1,3 +1,4 @@
+'use client';
 import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
 import { Link, Table as JoyTable, Typography } from '@mui/joy';
 import type { Row, RowData, Table } from '@tanstack/react-table';
@@ -21,7 +22,7 @@ export default function DataTable<TData extends RowData>({ table }: { table: Tab
 					<td key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
 						{flexRender(cell.column.columnDef.cell, {
 							...cell.getContext(),
-							...(cell.column.id === '_sort' ? { handleProps } : undefined),
+							handleProps: cell.column.id === '_sort' ? handleProps : undefined,
 						})}
 					</td>
 				))}

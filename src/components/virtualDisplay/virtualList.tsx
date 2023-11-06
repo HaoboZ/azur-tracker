@@ -1,3 +1,4 @@
+'use client';
 import { List, ListDivider, ListItem, ListItemButton } from '@mui/joy';
 import type { Cell, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';

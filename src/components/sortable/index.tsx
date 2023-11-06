@@ -7,7 +7,7 @@ import {
 	useSensor,
 	useSensors,
 } from '@dnd-kit/core';
-import { arrayMove, SortableContext } from '@dnd-kit/sortable';
+import { arrayMove } from '@dnd-kit/sortable';
 import { nanoid } from 'nanoid';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
@@ -46,14 +46,15 @@ export default function Sortable<Item>({
 
 	useEffect(() => {
 		if (skipB) return setSkipB(false);
-		setList(items.map((item) => ({ id: nanoid(), item })));
+		setList(items.map((item, index) => ({ id: list[index].id ?? nanoid(), item })));
 	}, [items]);
 
 	const container = useMemo(
 		() =>
-			list.map(({ id, item }) => (
-				<SortableItem key={id} id={id} item={item} renderItem={renderItem} />
-			)),
+			list.map(({ id, item }) => {
+				console.log(id);
+				return <SortableItem key={id} id={id} item={item} renderItem={renderItem} />;
+			}),
 		[list, ...dependencies],
 	);
 
@@ -71,7 +72,7 @@ export default function Sortable<Item>({
 				setActive(null);
 			}}
 			onDragCancel={() => setActive(null)}>
-			<SortableContext items={list}>{container}</SortableContext>
+			{container}
 			<DragOverlay
 				dropAnimation={{
 					sideEffects: defaultDropAnimationSideEffects({

@@ -1,3 +1,4 @@
+'use client';
 import type { TabsProps } from '@mui/joy';
 import { Box, Tab, TabList, Tabs } from '@mui/joy';
 import type { EmblaCarouselType } from 'embla-carousel-react';

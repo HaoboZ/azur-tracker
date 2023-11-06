@@ -1,3 +1,4 @@
+'use client';
 import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
 import { Link, Table as JoyTable } from '@mui/joy';
 import type { RowData, Table } from '@tanstack/react-table';
