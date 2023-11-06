@@ -3379,7 +3379,7 @@ __metadata:
     react-redux: "npm:8.1.3"
     react-virtuoso: "npm:4.6.2"
     redux: "npm:4.2.1"
-    remeda: "npm:1.28.0"
+    remeda: "npm:1.29.0"
     rooks: "npm:7.14.1"
     sass: "npm:1.69.5"
     type-fest: "npm:4.6.0"
@@ -7304,10 +7304,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remeda@npm:1.28.0":
-  version: 1.28.0
-  resolution: "remeda@npm:1.28.0"
-  checksum: 36e449c73c85e1457a6931d58695d455bc7833b7d8f35f8039c047a8d6407716a09daf5313b8da4388f8cc16896246f7dddc2f12b22a68b3b667f75f6c79c500
+"remeda@npm:1.29.0":
+  version: 1.29.0
+  resolution: "remeda@npm:1.29.0"
+  checksum: 7f653e1591362063ac2a402f4b1cb85f0ac42434276893fd1671699304a8318f97dd4bdf3570ed376176de86bbec551d3dacf82879d0f19bd44fd9364ce64edb
   languageName: node
   linkType: hard
 
