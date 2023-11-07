@@ -1,10 +1,10 @@
-import { rarityColors } from '@/app/colors';
 import VirtualAutocompleteListbox from '@/components/virtualAutocompleteListbox';
 import pget from '@/src/helpers/pget';
 import { Search as SearchIcon } from '@mui/icons-material';
 import type { AutocompleteProps } from '@mui/joy';
 import { Autocomplete, AutocompleteOption, ListItemContent, ListItemDecorator } from '@mui/joy';
 import Image from 'next/image';
+import { rarityColors } from '../../../colors';
 import type { EquipType } from './type';
 
 const typeNames = {

@@ -1,4 +1,3 @@
-import { rarityColors } from '@/app/colors';
 import {
 	Dropdown,
 	ListItemContent,
@@ -10,6 +9,7 @@ import {
 } from '@mui/joy';
 import Image from 'next/image';
 import type { ReactElement } from 'react';
+import { rarityColors } from '../../../colors';
 import type { EquipType } from './type';
 
 export default function EquipTierSelector({

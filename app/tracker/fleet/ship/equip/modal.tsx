@@ -1,4 +1,3 @@
-import { rarityColors } from '@/app/colors';
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModalControls } from '@/src/providers/modal';
@@ -20,6 +19,7 @@ import {
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { indexBy, pipe, sortBy } from 'remeda';
+import { rarityColors } from '../../../colors';
 import getTier from '../../getTier';
 import { TierIcon } from '../../tierIcon';
 import type { FleetType, Ship } from '../../type';

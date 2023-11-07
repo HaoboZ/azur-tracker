@@ -13,7 +13,12 @@ export default function TitleBar() {
 			pl='env(safe-area-inset-left)'
 			pr='env(safe-area-inset-right)'>
 			<Stack direction='row' p={1} alignItems='center'>
-				<Typography component={Link} href='/' level='h4' mr={3} sx={{ textDecoration: 'none' }}>
+				<Typography
+					component={Link}
+					href='/tracker'
+					level='h4'
+					mr={3}
+					sx={{ textDecoration: 'none' }}>
 					Azur Lane Tracker
 				</Typography>
 				{items
@@ -24,7 +29,7 @@ export default function TitleBar() {
 						</Button>
 					))}
 				<Box flexGrow={1} />
-				<IconButton component={Link} href='/settings' variant='solid' color='primary'>
+				<IconButton component={Link} href='/tracker/settings' variant='solid' color='primary'>
 					<SettingsIcon />
 				</IconButton>
 			</Stack>

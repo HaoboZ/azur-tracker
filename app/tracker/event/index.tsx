@@ -40,8 +40,6 @@ export default function Event() {
 
 	useIntervalWhen(() => setTime(new Date()), 15 * 1000);
 
-	if (event.name !== eventData.name) return null;
-
 	// number of days until end of event
 	const remainingDays = Math.max(differenceInDays(new Date(eventData.endDate), time), 0);
 
