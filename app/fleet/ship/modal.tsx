@@ -58,9 +58,10 @@ export default function ShipModal({
 		<DrawerWrapper
 			anchor='bottom'
 			sx={{
-				height: 'unset',
-				display: 'flex',
-				justifyContent: 'center',
+				'height': 'unset',
+				'display': 'flex',
+				'justifyContent': 'center',
+				'--Drawer-verticalSize': 0,
 				[`.${drawerClasses.content}`]: { overflow: 'hidden', maxWidth: 800 },
 			}}>
 			<DialogTitle>
