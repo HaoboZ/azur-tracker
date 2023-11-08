@@ -81,7 +81,7 @@ const RAW_RUNTIME_STATE =
           ["react-redux", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.1.3"],\
           ["react-virtuoso", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.6.2"],\
           ["redux", "npm:4.2.1"],\
-          ["remeda", "npm:1.28.0"],\
+          ["remeda", "npm:1.29.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
           ["sass", "npm:1.69.5"],\
           ["type-fest", "npm:4.6.0"],\
@@ -5146,7 +5146,7 @@ const RAW_RUNTIME_STATE =
           ["react-redux", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.1.3"],\
           ["react-virtuoso", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.6.2"],\
           ["redux", "npm:4.2.1"],\
-          ["remeda", "npm:1.28.0"],\
+          ["remeda", "npm:1.29.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
           ["sass", "npm:1.69.5"],\
           ["type-fest", "npm:4.6.0"],\
@@ -9867,10 +9867,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["remeda", [\
-      ["npm:1.28.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-1.28.0-70f707d643-10c0.zip/node_modules/remeda/",\
+      ["npm:1.29.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/remeda-npm-1.29.0-94ee04c6d1-10c0.zip/node_modules/remeda/",\
         "packageDependencies": [\
-          ["remeda", "npm:1.28.0"]\
+          ["remeda", "npm:1.29.0"]\
         ],\
         "linkType": "HARD"\
       }]\

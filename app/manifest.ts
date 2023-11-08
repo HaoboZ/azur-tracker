@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
 		description: 'Tracks Azur Lane Events, Research, and Ship Collection',
 		categories: ['games', 'utilities'],
 		scope: '/',
-		start_url: '/tracker',
+		start_url: '/z',
 		display: 'standalone',
 		orientation: 'portrait',
 		theme_color: '#039be5',

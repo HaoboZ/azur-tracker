@@ -1,14 +1,10 @@
-[data-nextjs-scroll-focus-boundary] {
-	display : contents;
-}
-
 .numberInput input {
 	-moz-appearance : textfield;
 	text-align      : right;
 	
 	::-webkit-outer-spin-button, ::-webkit-inner-spin-button {
-		margin             : 0;
 		-webkit-appearance : none;
+		margin             : 0;
 	}
 }
 

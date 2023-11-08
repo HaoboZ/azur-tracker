@@ -91,7 +91,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/tracker/event'>Event Tracker</PageLink>
+						<PageLink href='/z/event'>Event Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							calculates farming runs for any stage until you reach your target points
 						</OverflowTypography>
@@ -107,7 +107,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/tracker/research'>Research Tracker</PageLink>
+						<PageLink href='/z/research'>Research Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							calculates number of strengthening units for pr ships until max
 						</OverflowTypography>
@@ -123,7 +123,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/tracker/fleet'>Fleet Tracker</PageLink>
+						<PageLink href='/z/fleet'>Fleet Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							for those who want a fully leveled, fully equipped fleet
 						</OverflowTypography>

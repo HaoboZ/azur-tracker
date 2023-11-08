@@ -8,10 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const menuItems = [
-	{ name: 'Event', href: '/tracker/event' },
-	{ name: 'Research', href: '/tracker/research' },
-	{ name: 'Fleet', href: '/tracker/fleet' },
-	{ name: 'Info', href: '/tracker/info' },
+	{ name: 'Event', href: '/z/event' },
+	{ name: 'Research', href: '/z/research' },
+	{ name: 'Fleet', href: '/z/fleet' },
+	{ name: 'Info', href: '/z/info' },
 ];
 
 export default async function Main() {
@@ -48,7 +48,7 @@ export default async function Main() {
 				))}
 				{session?.user.role === 'ADMIN' && (
 					<Grid key='tier' xs={12}>
-						<Button fullWidth variant='outlined' component={Link} href='/tracker/tier'>
+						<Button fullWidth variant='outlined' component={Link} href='/z/tier'>
 							Tier
 						</Button>
 					</Grid>

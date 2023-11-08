@@ -15,7 +15,7 @@ export default function TitleBar() {
 			<Stack direction='row' p={1} alignItems='center'>
 				<Typography
 					component={Link}
-					href='/tracker'
+					href='/z'
 					level='h4'
 					mr={3}
 					sx={{ textDecoration: 'none' }}>
@@ -29,7 +29,7 @@ export default function TitleBar() {
 						</Button>
 					))}
 				<Box flexGrow={1} />
-				<IconButton component={Link} href='/tracker/settings' variant='solid' color='primary'>
+				<IconButton component={Link} href='/z/settings' variant='solid' color='primary'>
 					<SettingsIcon />
 				</IconButton>
 			</Stack>
