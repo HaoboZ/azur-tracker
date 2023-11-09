@@ -34,7 +34,8 @@ export default function MultiSortable<Item>({
 	const [setA, setSetA] = useState(false);
 	const [skipB, setSkipB] = useState(true);
 	const [lists, setLists] = useState<Record<string, { id: string; item: Item }[]>>(() =>
-		mapValues(groups, (items) => items.map((item) => ({ id: nanoid(), item }))),
+		// @ts-ignore
+		mapValues(groups, (items) => items.map((item) => ({ id: item.id ?? nanoid(), item }))),
 	);
 	const [active, setActive] = useState<Active>(null);
 
@@ -55,7 +56,11 @@ export default function MultiSortable<Item>({
 		if (skipB) return setSkipB(false);
 		setLists(
 			mapValues(groups, (items, group) =>
-				items.map((item, index) => ({ id: lists[group][index].id ?? nanoid(), item })),
+				items.map((item, index) => ({
+					// @ts-ignore
+					id: item.id ?? lists[group][index]?.id ?? nanoid(),
+					item,
+				})),
 			),
 		);
 	}, [groups]);

@@ -13,9 +13,7 @@ export const sortColumn = (size = 2) =>
 	({
 		id: '_sort',
 		size,
-		cell: ({ handleProps }) => {
-			return <MenuIcon {...handleProps} />;
-		},
+		cell: ({ handleProps }) => <MenuIcon {...handleProps} />,
 	}) as DisplayColumnDef<any>;
 
 export function sortIcon(handle) {
