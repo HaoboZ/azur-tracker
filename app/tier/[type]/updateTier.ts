@@ -5,5 +5,10 @@ import { auth } from '@/src/auth';
 export async function updateTier(type: string, tier: Record<string, number[]>) {
 	const session = await auth();
 	if (session?.user.role !== 'ADMIN') throw new Error('Authentication Required');
-	await prisma.tier.update({ where: { type }, data: tier });
+	await prisma.tier.upsert({
+		where: { type },
+		create: { type, ...tier },
+		update: tier,
+		select: { type: true },
+	});
 }
