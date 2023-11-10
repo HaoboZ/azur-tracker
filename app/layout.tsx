@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html suppressHydrationWarning lang='en'>
 			<body>
-				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
+				{process.env.NEXT_PUBLIC_VERCEL_ENV && <Analytics />}
 				<Providers>{children}</Providers>
 			</body>
 		</html>

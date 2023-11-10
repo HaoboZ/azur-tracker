@@ -19,6 +19,8 @@ const nextConfig = {
 
 export default pipe(
 	nextConfig,
-	nextPWA({ disable: !process.env.NEXT_PUBLIC_VERCEL, dest: 'public' }),
-	bundleAnalyzer({ enabled: !process.env.VERCEL && process.env.NODE_ENV !== 'development' }),
+	nextPWA({ disable: !process.env.NEXT_PUBLIC_VERCEL_ENV, dest: 'public' }),
+	bundleAnalyzer({
+		enabled: !process.env.NEXT_PUBLIC_VERCEL_ENV && process.env.NODE_ENV !== 'development',
+	}),
 );
