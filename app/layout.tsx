@@ -1,9 +1,8 @@
+import _packageJson from '@/package.json';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import type { PackageJson } from 'type-fest';
-import _packageJson from '../package.json';
-import Navigation from './_layout/navigation';
 import Providers from './_layout/providers';
 import './_layout/style.scss';
 
@@ -24,9 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		<html suppressHydrationWarning lang='en'>
 			<body>
 				{process.env.NEXT_PUBLIC_VERCEL && <Analytics />}
-				<Providers>
-					<Navigation>{children}</Navigation>
-				</Providers>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

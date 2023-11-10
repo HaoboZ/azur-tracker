@@ -4,6 +4,7 @@ import OverflowTypography from '@/components/overflowTypography';
 import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
+import _packageJson from '@/package.json';
 import loadStore from '@/src/providers/syncStore/loadStore';
 import saveStore from '@/src/providers/syncStore/saveStore';
 import type { RootState } from '@/src/store';
@@ -32,7 +33,6 @@ import Link from 'next/link';
 import { useSnackbar } from 'notistack';
 import { useStore } from 'react-redux';
 import type { PackageJson } from 'type-fest';
-import _packageJson from '../../../package.json';
 
 const packageJson = _packageJson as PackageJson;
 
@@ -91,7 +91,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/z/event'>Event Tracker</PageLink>
+						<PageLink href='/event'>Event Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							calculates farming runs for any stage until you reach your target points
 						</OverflowTypography>
@@ -107,7 +107,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/z/research'>Research Tracker</PageLink>
+						<PageLink href='/research'>Research Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							calculates number of strengthening units for pr ships until max
 						</OverflowTypography>
@@ -123,7 +123,7 @@ export default function Settings({ user }: { user: Session['user'] }) {
 				</ListItem>
 				<ListItem>
 					<ListItemContent>
-						<PageLink href='/z/fleet'>Fleet Tracker</PageLink>
+						<PageLink href='/fleet'>Fleet Tracker</PageLink>
 						<OverflowTypography level='body-sm'>
 							for those who want a fully leveled, fully equipped fleet
 						</OverflowTypography>
