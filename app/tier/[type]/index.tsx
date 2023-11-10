@@ -4,7 +4,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import MultiSortable from '@/components/sortable/multi';
 import pget from '@/src/helpers/pget';
-import { Grid, Sheet, Stack } from '@mui/joy';
+import { Grid, Sheet, Stack, Tooltip } from '@mui/joy';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { difference, indexBy, mapValues, omit } from 'remeda';
@@ -27,6 +27,7 @@ export default function TierType({
 	const [changed, setChanged] = useState(false);
 	const [tiers, setTiers] = useState(() => {
 		const tiers = mapValues(equipTier, (ids) => ids.map((id) => equipIndex[id]));
+
 		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
 		return tiers;
 	});
@@ -61,14 +62,16 @@ export default function TierType({
 					</Grid>
 				)}
 				renderItem={(item, containerProps, handleProps) => (
-					<Grid item {...containerProps} {...handleProps}>
-						<Image
-							src={`https://azurlane.netojuu.com/images/${item.image}`}
-							alt={item.name}
-							width={48}
-							height={48}
-							className={`color-${rarityColors[item.rarity]}`}
-						/>
+					<Grid {...containerProps} {...handleProps}>
+						<Tooltip title={item.name}>
+							<Image
+								src={`https://azurlane.netojuu.com/images/${item.image}`}
+								alt={item.name}
+								width={48}
+								height={48}
+								className={`color-${rarityColors[item.rarity]}`}
+							/>
+						</Tooltip>
 					</Grid>
 				)}>
 				{({ unTiered, ...tiers }) => (

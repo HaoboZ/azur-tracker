@@ -39,7 +39,9 @@ export default async function Page({ params }: { params: Record<string, string> 
 	return (
 		<TierType
 			type={type}
-			equipTier={omit(equipTier, ['type'])}
+			equipTier={omit(equipTier ?? ({ t0: [], t1: [], t2: [], t3: [], t4: [], tN: [] } as any), [
+				'type',
+			])}
 			equipData={sortBy(
 				(await csvtojson().fromString(equipCSV)).map(({ id, dps, ...val }) => ({
 					id: +id,
