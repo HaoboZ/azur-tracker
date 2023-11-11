@@ -11,7 +11,7 @@ const packageJson = _packageJson as PackageJson;
 export const metadata: Metadata = {
 	title: 'Azur Lane Tracker',
 	description: packageJson.description,
-	keywords: packageJson.keywords?.join(', '),
+	keywords: packageJson.keywords,
 	authors: packageJson.author as any,
 	appleWebApp: { capable: true, statusBarStyle: 'black-translucent' },
 };

@@ -16,7 +16,7 @@ export default function Privacy() {
 			<p>
 				We use Your Personal data to provide and improve the Service. By using the Service, You
 				agree to the collection and use of information in accordance with this Privacy Policy.
-				This Privacy Policy has been created with the help of the
+				This Privacy Policy has been created with the help of the{' '}
 				<a href='src/temp/privacy/page' target='_blank' rel='noreferrer'>
 					Privacy Policy Generator
 				</a>
@@ -99,12 +99,12 @@ export default function Privacy() {
 				</li>
 				<li>
 					<p>
-						<strong>Website</strong> refers to Azur Lane Tracker, accessible from
+						<strong>Website</strong> refers to Azur Lane Tracker, accessible from{' '}
 						<a
-							href={process.env.NEXT_PUBLIC_VERCEL_URL}
+							href={process.env.NEXT_PUBLIC_URL}
 							rel='external nofollow noopener noreferrer'
 							target='_blank'>
-							{process.env.NEXT_PUBLIC_VERCEL_URL}
+							{process.env.NEXT_PUBLIC_URL}
 						</a>
 					</p>
 				</li>
@@ -175,7 +175,7 @@ export default function Privacy() {
 					Your activity on our Service. Flash Cookies are not managed by the same browser
 					settings as those used for Browser Cookies. For more information on how You can
 					delete Flash Cookies, please read &quot;Where can I change the settings for
-					disabling, or deleting local shared objects?&quot; available at
+					disabling, or deleting local shared objects?&quot; available at{' '}
 					<a
 						href='https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_theActions.settings_for_disabling__or_deleting_local_shared_objects_'
 						rel='external nofollow noopener noreferrer'
@@ -196,7 +196,7 @@ export default function Privacy() {
 				Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies
 				remain on Your personal computer or mobile device when You go offline, while Session
 				Cookies are deleted as soon as You close Your web browser. You can learn more about
-				cookies here:
+				cookies here:{' '}
 				<a href='src/temp/privacy/page' target='_blank' rel='noreferrer'>
 					All About Cookies by TermsFeed
 				</a>

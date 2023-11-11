@@ -5,6 +5,10 @@
 		"name": "Haobo Zhang",
 		"email": "haobozhang9081@gmail.com"
 	},
+	"keywords": [
+		"azur lane",
+		"tracker"
+	],
 	"version": "10.1.0",
 	"private": true,
 	"scripts": {
