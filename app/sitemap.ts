@@ -3,53 +3,53 @@ import { headers } from 'next/headers';
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const headersList = headers();
-	const url = headersList.get('host');
+	const url = `https://${headersList.get('host')}`;
 
 	return [
 		{
-			url: `https://${url}`,
+			url,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 1,
 		},
 		{
-			url: `https://${url}/event`,
+			url: `${url}/event`,
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 0.7,
 		},
 		{
-			url: `https://${url}/research`,
+			url: `${url}/research`,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.7,
 		},
 		{
-			url: `https://${url}/fleet`,
+			url: `${url}/fleet`,
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 0.7,
 		},
 		{
-			url: `https://${url}/info`,
+			url: `${url}/info`,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.7,
 		},
 		{
-			url: `https://${url}/settings`,
+			url: `${url}/settings`,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.7,
 		},
 		{
-			url: `https://${url}/privacy`,
+			url: `${url}/privacy`,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.3,
 		},
 		{
-			url: `https://${url}/tos`,
+			url: `${url}/tos`,
 			lastModified: new Date(),
 			changeFrequency: 'yearly',
 			priority: 0.3,

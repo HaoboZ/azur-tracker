@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: 'Privacy | Azur Lane Tracker' };
 
 export default function Privacy() {
 	const headersList = headers();
-	const url = headersList.get('host');
+	const url = `https://${headersList.get('host')}`;
 
 	return (
 		<PageContainer>

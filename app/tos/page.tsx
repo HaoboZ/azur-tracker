@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: 'Terms Of Service | Azur Lane Tracker
 
 export default function TermsOfService() {
 	const headersList = headers();
-	const url = headersList.get('host');
+	const url = `https://${headersList.get('host')}`;
 
 	return (
 		<PageContainer>
@@ -14,10 +14,10 @@ export default function TermsOfService() {
 
 			<h2>1. Terms</h2>
 			<p>
-				By accessing this Website, accessible from https://{url}, you are agreeing to be bound
-				by these Website Terms and Conditions of Use and agree that you are responsible for the
-				agreement with any applicable local laws. If you disagree with any of these terms, you
-				are prohibited from accessing this site. The materials contained in this Website are
+				By accessing this Website, accessible from {url}, you are agreeing to be bound by these
+				Website Terms and Conditions of Use and agree that you are responsible for the agreement
+				with any applicable local laws. If you disagree with any of these terms, you are
+				prohibited from accessing this site. The materials contained in this Website are
 				protected by copyright and trade mark law.
 			</p>
 
