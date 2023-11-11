@@ -1,9 +1,13 @@
 import PageContainer from '@/components/page/container';
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 
 export const metadata: Metadata = { title: 'Privacy | Azur Lane Tracker' };
 
 export default function Privacy() {
+	const headersList = headers();
+	const url = headersList.get('host');
+
 	return (
 		<PageContainer>
 			<h1>Privacy Policy</h1>
@@ -100,11 +104,8 @@ export default function Privacy() {
 				<li>
 					<p>
 						<strong>Website</strong> refers to Azur Lane Tracker, accessible from{' '}
-						<a
-							href={process.env.NEXT_PUBLIC_URL}
-							rel='external nofollow noopener noreferrer'
-							target='_blank'>
-							{process.env.NEXT_PUBLIC_URL}
+						<a href={url} rel='external nofollow noopener noreferrer' target='_blank'>
+							{url}
 						</a>
 					</p>
 				</li>
