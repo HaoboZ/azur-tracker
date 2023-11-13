@@ -1,5 +1,5 @@
 'use client';
-import { updateDBData } from '@/app/api/dbData';
+import { updateDBData } from '@/api/dbData';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo } from 'react';
@@ -14,7 +14,7 @@ import ConflictDialog from './conflictDialog';
 
 const cookies = new Cookies();
 
-export default function ClientStoreProvider({
+export default function StoreProvider({
 	children,
 	serverData,
 }: {

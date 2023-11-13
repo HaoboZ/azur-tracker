@@ -1,3 +1,7 @@
+import { useTheme } from '@mui/joy';
+import { useMediaMatch } from 'rooks';
+
 export default function useIsMobile() {
-	return false; // useMediaQuery<Theme>(({ breakpoints }) => breakpoints.down('sm'));
+	const theme = useTheme();
+	return useMediaMatch(`(max-width:${theme.breakpoints.values.sm - 0.05}px)`);
 }

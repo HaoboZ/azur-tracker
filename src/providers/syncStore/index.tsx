@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import type { ReactNode } from 'react';
 import { mapValues } from 'remeda';
 import { auth } from '../../auth';
-import ClientStoreProvider from './clientStoreProvider';
+import StoreProvider from './provider';
 
 export default async function SyncStoreProvider({ children }: { children: ReactNode }) {
 	const session = await auth();
@@ -31,5 +31,5 @@ export default async function SyncStoreProvider({ children }: { children: ReactN
 		}
 	}
 
-	return <ClientStoreProvider serverData={serverData}>{children}</ClientStoreProvider>;
+	return <StoreProvider serverData={serverData}>{children}</StoreProvider>;
 }
