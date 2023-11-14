@@ -22,7 +22,7 @@ export default function Navigation({ children }: { children: ReactNode }) {
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
 				pb={{
-					xs: 'calc(env(safe-area-inset-bottom) + 60px)',
+					xs: 'calc(max(env(safe-area-inset-bottom), 20px) + 60px)',
 					sm: 'env(safe-area-inset-bottom)',
 				}}>
 				{children}

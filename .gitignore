@@ -37,8 +37,8 @@ yarn-error.log*
 .firebase
 
 # SEO
-/public/sw.js
-/public/workbox-*.js
+/public/sw.js*
+/public/workbox-*.js*
 
 # Prisma
 prisma/client

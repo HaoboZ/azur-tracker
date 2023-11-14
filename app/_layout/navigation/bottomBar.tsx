@@ -25,7 +25,10 @@ export default function BottomBar() {
 			}}>
 			<TabList
 				disableUnderline
-				sx={{ '--ListItem-gap': 0, 'height': 'calc(env(safe-area-inset-bottom) + 60px)' }}>
+				sx={{
+					'--ListItem-gap': 0,
+					'height': 'calc(min(env(safe-area-inset-bottom), 16px) + 60px)',
+				}}>
 				{items.map((item, index) => (
 					<Tab
 						key={index}
@@ -33,7 +36,7 @@ export default function BottomBar() {
 						component={Link}
 						href={item.href}
 						orientation='vertical'
-						sx={{ flex: 1, pt: 1, pb: 'calc(env(safe-area-inset-bottom) + 8px)' }}>
+						sx={{ flex: 1, pt: 1, pb: 'calc(min(env(safe-area-inset-bottom), 16px) + 8px)' }}>
 						{item.icon}
 						<Typography>{item.label}</Typography>
 					</Tab>

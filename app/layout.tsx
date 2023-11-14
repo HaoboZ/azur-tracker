@@ -16,7 +16,11 @@ export const metadata: Metadata = {
 	appleWebApp: { capable: true, statusBarStyle: 'black-translucent' },
 };
 
-export const viewport: Viewport = { themeColor: '#039be5', viewportFit: 'cover' };
+export const viewport: Viewport = {
+	themeColor: '#039be5',
+	viewportFit: 'cover',
+	userScalable: false,
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
