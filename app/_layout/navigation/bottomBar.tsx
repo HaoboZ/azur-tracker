@@ -23,7 +23,9 @@ export default function BottomBar() {
 				bottom: 0,
 				width: '100%',
 			}}>
-			<TabList disableUnderline sx={{ '--ListItem-gap': 0, 'height': 60 }}>
+			<TabList
+				disableUnderline
+				sx={{ '--ListItem-gap': 0, 'height': 'calc(env(safe-area-inset-bottom) + 60px)' }}>
 				{items.map((item, index) => (
 					<Tab
 						key={index}
