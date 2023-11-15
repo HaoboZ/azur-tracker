@@ -35,6 +35,7 @@ const searchOptions = [
 	'Submarine Carrier',
 	'Repair Ship',
 	'Munition Ship',
+	'Sailing Frigate',
 	// nations
 	'Universal',
 	'Eagle Union',
@@ -51,6 +52,9 @@ const searchOptions = [
 	'Hololive',
 	'Venus Vacation',
 	'META',
+	'SSSS',
+	'Tempesta',
+	'Atelier Ryza',
 ];
 
 export default function FleetFilters({ table }: { table: Table<Ship> }) {

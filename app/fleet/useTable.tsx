@@ -193,6 +193,17 @@ export default function useFleetTable(data) {
 			],
 		},
 		getRowId: pget('id'),
+		globalFilterFn: (row, columnId, filterValue) => {
+			const search = filterValue.toLowerCase();
+			return Boolean(
+				row
+					.getValue<string | null>(columnId)
+					.toLowerCase()
+					.normalize('NFD')
+					.replaceAll(/[\u0300-\u036f]/g, '')
+					.includes(search),
+			);
+		},
 		onRowClick: (row, table) => {
 			showModal(ShipModal, {
 				id: 'ship',
