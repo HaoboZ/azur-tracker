@@ -22,8 +22,8 @@ export default function Navigation({ children }: { children: ReactNode }) {
 				pl='env(safe-area-inset-left)'
 				pr='env(safe-area-inset-right)'
 				pb={{
-					xs: 'calc(max(env(safe-area-inset-bottom), 20px) + 60px)',
-					sm: 'env(safe-area-inset-bottom)',
+					xs: 'calc(min(env(safe-area-inset-bottom), 16px) + 60px)',
+					sm: 'min(env(safe-area-inset-bottom), 16px)',
 				}}>
 				{children}
 			</Box>

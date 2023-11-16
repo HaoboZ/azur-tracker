@@ -20,7 +20,7 @@ const mainSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(importBackup, (state, { payload }) => {
-				if ('main' in payload) return payload.main;
+				if ('main' in payload) return { ...state, ...payload.main };
 			})
 			.addMatcher(
 				({ type }) => !type.includes('@@redux') && !type.includes('main'),

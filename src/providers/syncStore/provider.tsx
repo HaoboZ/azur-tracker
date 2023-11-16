@@ -1,8 +1,9 @@
 'use client';
 import { updateDBData } from '@/api/dbData';
+import { Sheet, Typography } from '@mui/joy';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import type { ReactNode } from 'react';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Cookies } from 'react-cookie';
 import { Provider } from 'react-redux';
 import { mapValues, pick, pickBy } from 'remeda';
@@ -21,6 +22,9 @@ export default function StoreProvider({
 	children: ReactNode;
 	serverData: { main?: Record<string, string>; data?: Record<string, string> };
 }) {
+	const [saved, setSaved] = useState(false);
+	const [loaded, setLoaded] = useState(false);
+
 	const [store, problems] = useMemo(() => {
 		let state = loadState();
 		let problems = null;
@@ -34,14 +38,18 @@ export default function StoreProvider({
 						local: getMax(main[key], problems?.local),
 						server: getMax(serverTimestamp, problems?.server),
 					};
-				if ((main[key] ?? '') < serverTimestamp && serverData.data?.[key]) {
+				else if ((main[key] ?? '') < serverTimestamp && serverData.data?.[key]) {
+					setLoaded(true);
 					main[key] = serverTimestamp;
+					const cookies = new Cookies();
 					cookies.set(`timestamp.${key}`, serverTimestamp);
 					return JSON.parse(decompressFromUTF16(serverData.data[key]));
 				}
 				return value;
 			});
 			state.main = main;
+			setTimeout(() => setLoaded(false), 2000);
+			saveState(state).then();
 		} else if (serverData.main) {
 			state = {
 				main: serverData.main,
@@ -55,6 +63,8 @@ export default function StoreProvider({
 		() =>
 			store.subscribe(
 				debounce(async () => {
+					setSaved(true);
+					setTimeout(() => setSaved(false), 2000);
 					const state = store.getState();
 					await saveState(state);
 					const { main, ...others } = state;
@@ -67,7 +77,11 @@ export default function StoreProvider({
 						}),
 						(_, key) => compressToUTF16(JSON.stringify(others[key])),
 					);
-					await updateDBData({ main: pick(main, Object.keys(others)), ...toSave });
+					try {
+						await updateDBData({ main: pick(main, Object.keys(others)), ...toSave });
+					} catch (e) {
+						setSaved(false);
+					}
 				}, 500),
 			),
 		[],
@@ -77,6 +91,22 @@ export default function StoreProvider({
 		<Provider store={store}>
 			{children}
 			{problems && <ConflictDialog problems={problems} />}
+			{(loaded || saved) && (
+				<Sheet
+					sx={{
+						px: 1,
+						opacity: 0.5,
+						position: 'fixed',
+						zIndex: 'tooltip',
+						bottom: {
+							xs: 'calc(min(env(safe-area-inset-bottom), 16px) + 70px)',
+							sm: 'calc(min(env(safe-area-inset-bottom), 16px) + 10px)',
+						},
+						right: 'calc(env(safe-area-inset-right) + 10px)',
+					}}>
+					<Typography>{loaded ? 'Loaded' : 'Saved'}</Typography>
+				</Sheet>
+			)}
 		</Provider>
 	);
 }
