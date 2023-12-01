@@ -7,6 +7,7 @@ import { Box, ListItemContent, Typography } from '@mui/joy';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { Fragment, useMemo } from 'react';
+import { isDefined } from 'remeda';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
 import ShipModal from './ship/modal';
 import { AffinityIcons, TierIcon } from './tierIcon';
@@ -111,10 +112,13 @@ export default function useFleetTable(data) {
 					const value = getValue();
 					if (row.columnFiltersMeta[column.id]) {
 						const majors =
-							row.columnFiltersMeta[column.id]?.equip.map((equip) => equip && equip.major) ??
-							[];
-						const majorCount = Math.max(...majors);
-						if (!isNaN(majorCount)) return `↑${majorCount}`;
+							row.columnFiltersMeta[column.id]?.equip
+								.map((equip) => equip && equip.major)
+								.filter(Boolean) ?? [];
+						if (majors.length) {
+							const majorCount = Math.max(...majors);
+							if (!isNaN(majorCount)) return `↑${majorCount}`;
+						}
 						const minors =
 							row.columnFiltersMeta[column.id]?.equip
 								.map((equip) => equip && equip.minor)
@@ -127,13 +131,12 @@ export default function useFleetTable(data) {
 					return value.map((equip, i) => <TierIcon key={i} tier={equip[2]} />);
 				},
 				meta: {
-					props: (cell) => {
+					props: ({ row, column }) => {
 						const equip =
-							cell.row.columnFiltersMeta[cell.column.id]?.equip.filter(Boolean) ?? [];
+							row.columnFiltersMeta[column.id]?.equip.map(pget('tier')).filter(isDefined) ??
+							[];
 						return {
-							className: equip
-								? `color-${tierColors[Math.min(...equip.map(pget('tier')))]}`
-								: undefined,
+							className: equip ? `color-${tierColors[Math.min(...equip)]}` : undefined,
 						};
 					},
 				},
