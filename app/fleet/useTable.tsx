@@ -111,11 +111,10 @@ export default function useFleetTable(data) {
 					const value = getValue();
 					if (row.columnFiltersMeta[column.id]) {
 						const majors =
-							row.columnFiltersMeta[column.id]?.equip
-								.map((equip) => equip && equip.major)
-								.filter(Number.isFinite) ?? [];
+							row.columnFiltersMeta[column.id]?.equip.map((equip) => equip && equip.major) ??
+							[];
 						const majorCount = Math.max(...majors);
-						if (Number.isFinite(majorCount)) return `↑${majorCount}`;
+						if (!isNaN(majorCount)) return `↑${majorCount}`;
 						const minors =
 							row.columnFiltersMeta[column.id]?.equip
 								.map((equip) => equip && equip.minor)
