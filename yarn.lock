@@ -1436,12 +1436,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ducanh2912/next-pwa@npm:9.7.2":
-  version: 9.7.2
-  resolution: "@ducanh2912/next-pwa@npm:9.7.2"
+"@ducanh2912/next-pwa@npm:10.0.0":
+  version: 10.0.0
+  resolution: "@ducanh2912/next-pwa@npm:10.0.0"
   dependencies:
     clean-webpack-plugin: "npm:4.0.0"
-    fast-glob: "npm:3.3.1"
+    fast-glob: "npm:3.3.2"
     semver: "npm:7.5.4"
     terser-webpack-plugin: "npm:5.3.9"
     workbox-build: "npm:7.0.0"
@@ -1449,9 +1449,9 @@ __metadata:
     workbox-webpack-plugin: "npm:7.0.0"
     workbox-window: "npm:7.0.0"
   peerDependencies:
-    next: ">=11.0.0"
+    next: ">=14.0.0"
     webpack: ">=5.9.0"
-  checksum: 7296a67f7db04cbf4ab0d91de006a99583444517a876aebc80d32ecab687ea418ce1f93ec2457c975a325e73c93bb8a3cf421a31efc95ed1f80f3732cb313081
+  checksum: 048923b673a3b7cf41ef602e4e199873e61f24374887c6bf0adc2e3e5e6ac388d516e5a4c90ad90d03a02c331e0b4e78228fa27d305e22ac53dd18e5c8af9702
   languageName: node
   linkType: hard
 
@@ -3577,7 +3577,7 @@ __metadata:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@dnd-kit/utilities": "npm:3.2.2"
-    "@ducanh2912/next-pwa": "npm:9.7.2"
+    "@ducanh2912/next-pwa": "npm:10.0.0"
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
@@ -4985,20 +4985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:3.3.1":
-  version: 3.3.1
-  resolution: "fast-glob@npm:3.3.1"
-  dependencies:
-    "@nodelib/fs.stat": "npm:^2.0.2"
-    "@nodelib/fs.walk": "npm:^1.2.3"
-    glob-parent: "npm:^5.1.2"
-    merge2: "npm:^1.3.0"
-    micromatch: "npm:^4.0.4"
-  checksum: b68431128fb6ce4b804c5f9622628426d990b66c75b21c0d16e3d80e2d1398bf33f7e1724e66a2e3f299285dcf5b8d745b122d0304e7dd66f5231081f33ec67c
-  languageName: node
-  linkType: hard
-
-"fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
+"fast-glob@npm:3.3.2, fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
