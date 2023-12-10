@@ -1,5 +1,5 @@
-import nextPWA from '@ducanh2912/next-pwa';
 import bundleAnalyzer from '@next/bundle-analyzer';
+import withSerwistInit from '@serwist/next';
 import { pipe } from 'remeda';
 
 /**
@@ -19,7 +19,12 @@ const nextConfig = {
 
 export default pipe(
 	nextConfig,
-	nextPWA({ disable: !process.env.NEXT_PUBLIC_VERCEL_ENV, dest: 'public' }),
+	withSerwistInit({
+		disable: !process.env.NEXT_PUBLIC_VERCEL_ENV,
+		cacheOnFrontEndNav: true,
+		swSrc: 'app/sw.ts',
+		swDest: 'public/sw.js',
+	}),
 	bundleAnalyzer({
 		enabled: !process.env.NEXT_PUBLIC_VERCEL_ENV && process.env.NODE_ENV !== 'development',
 	}),
