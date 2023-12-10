@@ -93,7 +93,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 								fateLevels[1] -
 								Math.ceil((fateLevels[0] * (ship.fateStage || 0)) / 100),
 						),
-				  );
+					);
 
 			if (item.type) {
 				totalDR += devPrints;
