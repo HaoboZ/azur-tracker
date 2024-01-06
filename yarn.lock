@@ -1473,17 +1473,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:0.6.0":
+"@types/cookie@npm:0.6.0, @types/cookie@npm:^0.6.0":
   version: 0.6.0
   resolution: "@types/cookie@npm:0.6.0"
   checksum: 5b326bd0188120fb32c0be086b141b1481fec9941b76ad537f9110e10d61ee2636beac145463319c71e4be67a17e85b81ca9e13ceb6e3bb63b93d16824d6c149
-  languageName: node
-  linkType: hard
-
-"@types/cookie@npm:^0.5.1":
-  version: 0.5.4
-  resolution: "@types/cookie@npm:0.5.4"
-  checksum: c5111f8c71fedabf0ccdfdf183676fc3aa89e146653e9ed87e5ea3780f33a46dde1ace06bf04374dcc363a0ef8db91e41060e9861199226c9a4deaa27fde03ba
   languageName: node
   linkType: hard
 
@@ -2602,7 +2595,7 @@ __metadata:
     prettier: "npm:3.1.1"
     prisma: "npm:5.7.1"
     react: "npm:18.2.0"
-    react-cookie: "npm:6.1.3"
+    react-cookie: "npm:7.0.1"
     react-dom: "npm:18.2.0"
     react-redux: "npm:9.0.4"
     react-virtuoso: "npm:4.6.2"
@@ -3017,17 +3010,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.6.0":
+"cookie@npm:0.6.0, cookie@npm:^0.6.0":
   version: 0.6.0
   resolution: "cookie@npm:0.6.0"
   checksum: f2318b31af7a31b4ddb4a678d024514df5e705f9be5909a192d7f116cfb6d45cbacf96a473fa733faa95050e7cff26e7832bb3ef94751592f1387b71c8956686
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "cookie@npm:0.5.0"
-  checksum: c01ca3ef8d7b8187bae434434582288681273b5a9ed27521d4d7f9f7928fe0c920df0decd9f9d3bbd2d14ac432b8c8cf42b98b3bdd5bfe0e6edddeebebe8b61d
   languageName: node
   linkType: hard
 
@@ -6133,16 +6119,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-cookie@npm:6.1.3":
-  version: 6.1.3
-  resolution: "react-cookie@npm:6.1.3"
+"react-cookie@npm:7.0.1":
+  version: 7.0.1
+  resolution: "react-cookie@npm:7.0.1"
   dependencies:
     "@types/hoist-non-react-statics": "npm:^3.3.5"
     hoist-non-react-statics: "npm:^3.3.2"
-    universal-cookie: "npm:^6.0.0"
+    universal-cookie: "npm:^7.0.0"
   peerDependencies:
     react: ">= 16.3.0"
-  checksum: b99ac11ae266302b36f1da0be674127b7ff03d31878dd2c6a87ccd5c313f991725654185b7ba79b569f4628823f31572e5d166a2d14a60aa5d780df9f610bd58
+  checksum: 38b6ef68f0e8e4fc4e0fa1f0b8a4a10c21ce764410f042a7ee0d383b97d49423e2f365f8179edde0c882fef2b1c6b43fdd2081b725bc4d52b1aa9d466f96db5d
   languageName: node
   linkType: hard
 
@@ -7281,13 +7267,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-cookie@npm:^6.0.0":
-  version: 6.1.1
-  resolution: "universal-cookie@npm:6.1.1"
+"universal-cookie@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "universal-cookie@npm:7.0.1"
   dependencies:
-    "@types/cookie": "npm:^0.5.1"
-    cookie: "npm:^0.5.0"
-  checksum: e44c8b3cda7f705ca5c50cd7090eacdf2f15147d895284a09bfef503e98582206607bb0e28624418d6be715072158d196cbfdc75fd65f8f5245ab8900fa72640
+    "@types/cookie": "npm:^0.6.0"
+    cookie: "npm:^0.6.0"
+  checksum: 5b6dd9d8f327b1a52b24a0661a69b19521d9c58ecaf82d9b2b953564f1c8883bae72f7916459678d33ba3c6b1d9281b347a5ccd61ed1e5d4b0b664fc1ccd25b8
   languageName: node
   linkType: hard
 
