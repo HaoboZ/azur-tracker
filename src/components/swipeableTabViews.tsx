@@ -1,7 +1,7 @@
 'use client';
 import type { TabsProps } from '@mui/joy';
 import { Box, Tab, TabList, Tabs } from '@mui/joy';
-import type { EmblaCarouselType } from 'embla-carousel-react';
+import type { UseEmblaCarouselType } from 'embla-carousel-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ export default function SwipeableTabViews({
 
 	const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex });
 
-	useEventListener(emblaApi, 'select', (emblaApi: EmblaCarouselType) => {
+	useEventListener(emblaApi, 'select', (emblaApi: UseEmblaCarouselType[1]) => {
 		setTabValue(emblaApi.selectedScrollSnap());
 	});
 
