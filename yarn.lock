@@ -1032,38 +1032,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/background-sync@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/background-sync@npm:8.4.1"
+"@serwist/background-sync@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/background-sync@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
+    "@serwist/core": "npm:8.4.2"
     idb: "npm:8.0.0"
-  checksum: cb2f7ec439dadcef2e9e21ace8ef4eb8f926a4facda98204eb61abc0558e67b9dba8abc88384f9ba237eda47cad02dc3a5d6eca05cde3072398f7f0f3c2e5d90
+  checksum: 8261c471441c2948f4b888298f3c3357787223b173f917694a71a6e721d3326710c0a3eaf8d7a455c0a188d19b9736f33dfdd4bb57cee1c316936aa23059c713
   languageName: node
   linkType: hard
 
-"@serwist/broadcast-update@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/broadcast-update@npm:8.4.1"
+"@serwist/broadcast-update@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/broadcast-update@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 080836bd75a98d1f9548b2c395bc646a839b5e61b1e33a8a9847f470ed0b6cf09381a237a1fa89a56b6f4223f821f7d8bccb51464f8e851a3638c83f362f5d88
+    "@serwist/core": "npm:8.4.2"
+  checksum: 6bbee35481eb031a20e71570aaa63f709718ff3d3f4df533d36b7bef5194fceeabaa841faa15c19029b14e914378dac343c6b80cf7437efd4abce533e159b49f
   languageName: node
   linkType: hard
 
-"@serwist/build@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/build@npm:8.4.1"
+"@serwist/build@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/build@npm:8.4.2"
   dependencies:
     "@apideck/better-ajv-errors": "npm:0.3.6"
-    "@serwist/background-sync": "npm:8.4.1"
-    "@serwist/broadcast-update": "npm:8.4.1"
-    "@serwist/cacheable-response": "npm:8.4.1"
-    "@serwist/core": "npm:8.4.1"
-    "@serwist/expiration": "npm:8.4.1"
-    "@serwist/google-analytics": "npm:8.4.1"
-    "@serwist/precaching": "npm:8.4.1"
-    "@serwist/routing": "npm:8.4.1"
+    "@serwist/background-sync": "npm:8.4.2"
+    "@serwist/broadcast-update": "npm:8.4.2"
+    "@serwist/cacheable-response": "npm:8.4.2"
+    "@serwist/core": "npm:8.4.2"
+    "@serwist/expiration": "npm:8.4.2"
+    "@serwist/google-analytics": "npm:8.4.2"
+    "@serwist/precaching": "npm:8.4.2"
+    "@serwist/routing": "npm:8.4.2"
     ajv: "npm:8.12.0"
     common-tags: "npm:1.8.2"
     fast-json-stable-stringify: "npm:2.1.0"
@@ -1072,150 +1072,150 @@ __metadata:
     rollup: "npm:4.9.1"
     source-map: "npm:0.8.0-beta.0"
     upath: "npm:2.0.1"
-  checksum: d0c71f227850f0c34d286c0a3a91886f2d629732bfdf4bdd35af56b909938ce9c20821f2601914b8aead3c8ffd37ac88db2b222af5982d5169b9896593adac5a
+  checksum: e63ada6854cbe8e50f9b4fb9f10c5b345c56f0b28611d01dabe4795d8667dd8fb702cd0e50683e13b7dd0a806425446beda0e06ad96c19d37cb382f224ca5fc7
   languageName: node
   linkType: hard
 
-"@serwist/cacheable-response@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/cacheable-response@npm:8.4.1"
+"@serwist/cacheable-response@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/cacheable-response@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 807741027ec97470e589c1a44412e9a2a6bed7c5f83ccd9a60983e9eb1c8876adab19f886944685fd4525dffd863c70e765b1f32cd2373b2888a21095318a106
+    "@serwist/core": "npm:8.4.2"
+  checksum: 36d2163f75525f1b56586d7338fdb81f2dcd953b031f4a6afe3dcfcadd85a4f9ac464c258644504cd22a9ef1e3aee0b7a5820397097ca560dea957ae1230916a
   languageName: node
   linkType: hard
 
-"@serwist/core@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/core@npm:8.4.1"
-  checksum: 184d25944e3edb8df238b62395e77bcd958251948b0fb9d9cab3336c42e282b545c40bb24a0f74422c0272e666654ab033ef060b460875913d4356b24fa0d807
+"@serwist/core@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/core@npm:8.4.2"
+  checksum: 9c913e67474ca6122156ee926fa0639cc9415bbd0e0315447afe75b3f092fefc077f58e4925b546c2c9ae0bff0a3356b11cb28bcbec9cf0ed6a211ef9f7bfb74
   languageName: node
   linkType: hard
 
-"@serwist/expiration@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/expiration@npm:8.4.1"
+"@serwist/expiration@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/expiration@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
+    "@serwist/core": "npm:8.4.2"
     idb: "npm:8.0.0"
-  checksum: bab8470218013fe9d9de37de4356db90238ec8f8c1723973ec07eb5ea6fb740d42a32185bad3285268e0e73e8fe91ac6ca31f06e25a5570c9c7a784365b1fdc1
+  checksum: 4e61f314dfaf8fea47b3415a14c7cf0f1579fe754dd7b31bf717fd8a6191a9e355de28af44610976339d9a2f80de89418bffdae4e2267642b48fa250465b7686
   languageName: node
   linkType: hard
 
-"@serwist/google-analytics@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/google-analytics@npm:8.4.1"
+"@serwist/google-analytics@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/google-analytics@npm:8.4.2"
   dependencies:
-    "@serwist/background-sync": "npm:8.4.1"
-    "@serwist/core": "npm:8.4.1"
-    "@serwist/routing": "npm:8.4.1"
-    "@serwist/strategies": "npm:8.4.1"
-  checksum: 85e37dd83c686ca860e6d479fd10f0fe01beab3a3464d7f48a58d22d9b908c22eafa22048b6c5d4e80f779bc43ee1fa2c7e1222870c66f1c9468d3b96f1723f4
+    "@serwist/background-sync": "npm:8.4.2"
+    "@serwist/core": "npm:8.4.2"
+    "@serwist/routing": "npm:8.4.2"
+    "@serwist/strategies": "npm:8.4.2"
+  checksum: 7c6a8bb46c2cabfb7ca8c8c08df893106a3cbee9fb22125fec7c6e32f4d4b638e4b18c8ac98e6118636aefaec881d5e19a5cde95fac1dae3bfd09f128a1780ec
   languageName: node
   linkType: hard
 
-"@serwist/navigation-preload@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/navigation-preload@npm:8.4.1"
+"@serwist/navigation-preload@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/navigation-preload@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 3cbb53717d774a57e062d71704b7c628765bebc882b64183da96e59e75e82c5cc33e9bfa20d1fe7b00781f25828278a0554f8536cb40ce20079529cc8069543a
+    "@serwist/core": "npm:8.4.2"
+  checksum: 14ce04ccfd4b707f6eb07fc08aa30e8e665885dd42d6dcbad6d7ea67e8767ec2590aab0cfa60872df0feef277f79a9ed433807a57bab004b83de0ed273a188ed
   languageName: node
   linkType: hard
 
-"@serwist/next@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/next@npm:8.4.1"
+"@serwist/next@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/next@npm:8.4.2"
   dependencies:
-    "@serwist/build": "npm:8.4.1"
-    "@serwist/webpack-plugin": "npm:8.4.1"
-    "@serwist/window": "npm:8.4.1"
+    "@serwist/build": "npm:8.4.2"
+    "@serwist/webpack-plugin": "npm:8.4.2"
+    "@serwist/window": "npm:8.4.2"
     clean-webpack-plugin: "npm:4.0.0"
     fast-glob: "npm:3.3.2"
   peerDependencies:
     next: ">=14.0.0"
     webpack: ">=5.9.0"
-  checksum: 419a947854f7db5eb9f3f2da9bd5c5a4ea99dc477a3f902bcc93cc69806dc4c97cbd25f25d7ea0a963274704bd9bb6229a38f59a14e23ed516c546ab30f2bfa6
+  checksum: b4e7fa4a77dd14e308cf178a82a2ceea3ff140bdbc17f30b60fba33812f90069a5864d86f33ef6988640790bdc41125ce59304e5e80f90b9d9fd553bed4d7208
   languageName: node
   linkType: hard
 
-"@serwist/precaching@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/precaching@npm:8.4.1"
+"@serwist/precaching@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/precaching@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-    "@serwist/routing": "npm:8.4.1"
-    "@serwist/strategies": "npm:8.4.1"
-  checksum: 5b5e3ee7e137b6d18db3ea4e9dabd1e369439b29a0917305078d644bcbb4218b81e84330fa3ae7612ea4abe1af16cbdcf99ef5a25530cde2c61537870bc1bb93
+    "@serwist/core": "npm:8.4.2"
+    "@serwist/routing": "npm:8.4.2"
+    "@serwist/strategies": "npm:8.4.2"
+  checksum: f1516902155f9890355a5e79d2b24c7f6ba09864878c1e66ca805914f4b467bc0d515afcc22a18ea06d8ae16563008414416ea8ff37750abcc7df1f4e8acbec4
   languageName: node
   linkType: hard
 
-"@serwist/range-requests@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/range-requests@npm:8.4.1"
+"@serwist/range-requests@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/range-requests@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 5181895e21de355c108d741425291ffe6b05d2767094065a0351597a752f6522ba51c0414fa292f055ceead7029794e50c8e7d6d99b52f47bf6e59ae794e0182
+    "@serwist/core": "npm:8.4.2"
+  checksum: c902dde37421368abf68696a8f36f90f01735af3aa939befc551630a3520656c84a6cba016fc9d5e33f9a21b93cce7fac10c25072f332350289c8b8a7dc620d5
   languageName: node
   linkType: hard
 
-"@serwist/routing@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/routing@npm:8.4.1"
+"@serwist/routing@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/routing@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 7b85adf6f79aa2309eb8bdf9719a2e93ddbc4b4ee872026abedbfa0c83884b1f55085d55eb37ae3789421d099e624527f693bbc8ea2c7d0e84179c3b29f869b3
+    "@serwist/core": "npm:8.4.2"
+  checksum: 47c0386ddcb7227cde0031b55ba5256a6fd1520b38b63e8d80a6cd7543833041fa18b1ef4cbdab0fb9280a32d057c311fdcc43a3a8c4150e345417c400df5eaa
   languageName: node
   linkType: hard
 
-"@serwist/strategies@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/strategies@npm:8.4.1"
+"@serwist/strategies@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/strategies@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
-  checksum: 2a43e9df0ee1e06afd99f80a1607d7747dba669f4a365501045b8544f333ec2685c93b01abcfc7d52ac7c8c10037a7ef11e9b21cb12dde76565c0e27b73a7ef6
+    "@serwist/core": "npm:8.4.2"
+  checksum: 7aecf7811ae5b29347dffd8d7f45b95d7675a02157b3286ac3c288a134b18e3d99f82cd2e96d9e7ed3c13a03f8c1400b12df908fe5a3f1c7e242b76534746b36
   languageName: node
   linkType: hard
 
-"@serwist/sw@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/sw@npm:8.4.1"
+"@serwist/sw@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/sw@npm:8.4.2"
   dependencies:
-    "@serwist/background-sync": "npm:8.4.1"
-    "@serwist/broadcast-update": "npm:8.4.1"
-    "@serwist/cacheable-response": "npm:8.4.1"
-    "@serwist/core": "npm:8.4.1"
-    "@serwist/expiration": "npm:8.4.1"
-    "@serwist/google-analytics": "npm:8.4.1"
-    "@serwist/navigation-preload": "npm:8.4.1"
-    "@serwist/precaching": "npm:8.4.1"
-    "@serwist/range-requests": "npm:8.4.1"
-    "@serwist/routing": "npm:8.4.1"
-    "@serwist/strategies": "npm:8.4.1"
-  checksum: cf5fc54e3699bb6a6980a3fd95f23429fbc412b5b84a88877e89f5f10e6e8be585ea2eb1e8134c0b488597b33e98204b48dd86ff526d2d07e114c9f86731cda4
+    "@serwist/background-sync": "npm:8.4.2"
+    "@serwist/broadcast-update": "npm:8.4.2"
+    "@serwist/cacheable-response": "npm:8.4.2"
+    "@serwist/core": "npm:8.4.2"
+    "@serwist/expiration": "npm:8.4.2"
+    "@serwist/google-analytics": "npm:8.4.2"
+    "@serwist/navigation-preload": "npm:8.4.2"
+    "@serwist/precaching": "npm:8.4.2"
+    "@serwist/range-requests": "npm:8.4.2"
+    "@serwist/routing": "npm:8.4.2"
+    "@serwist/strategies": "npm:8.4.2"
+  checksum: 48dac324ae82ba6a6e7e51eaac9484e4b9ca57da2b4db1aceb5cff7daa06adac2b051b2f71d578ce8ab70b9fa38eb9f962eb9a748c303e7d1e220d5f3c7813c9
   languageName: node
   linkType: hard
 
-"@serwist/webpack-plugin@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/webpack-plugin@npm:8.4.1"
+"@serwist/webpack-plugin@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/webpack-plugin@npm:8.4.2"
   dependencies:
-    "@serwist/build": "npm:8.4.1"
+    "@serwist/build": "npm:8.4.2"
     fast-json-stable-stringify: "npm:2.1.0"
     upath: "npm:2.0.1"
   peerDependencies:
     webpack: 4.4.0 || ^5.9.0
-  checksum: ecc61efb018ad591a81ffee84d2dad8dc82833929c74ffb21b27218c9cb74061b361ceb8f3f4b9e298bebfe5117cabbc25f951f3a09aaaa43d1c52ef41b40354
+  checksum: 500133dfa9c783a75b2256cf4737c964f7b4a8c653f3bc3ee293a9d3551e05b18b56da477ad5c2ff471ddfe668d8681aa111410ecdb5c8ab5e58dbfe532e418c
   languageName: node
   linkType: hard
 
-"@serwist/window@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@serwist/window@npm:8.4.1"
+"@serwist/window@npm:8.4.2":
+  version: 8.4.2
+  resolution: "@serwist/window@npm:8.4.2"
   dependencies:
-    "@serwist/core": "npm:8.4.1"
+    "@serwist/core": "npm:8.4.2"
     "@types/trusted-types": "npm:2.0.7"
-  checksum: 022923e703f7e22f7f3cbe165ee54203fbf18638f52158bc47ecaa8375edf9946fdb289fe5639902c9b93accf393cea52f5d8f846a7730cfdfb685cfe1d31dfe
+  checksum: f708ff867f37ec857f523078e9ba9eda5e7e861792f7b371208ff06dc06bb67d7e86721026afffc8dfdb9cefb8ca52265134fc6058bce6b772bf5b43aa6a0af1
   languageName: node
   linkType: hard
 
@@ -1257,22 +1257,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-table@npm:8.11.3":
-  version: 8.11.3
-  resolution: "@tanstack/react-table@npm:8.11.3"
+"@tanstack/react-table@npm:8.11.6":
+  version: 8.11.6
+  resolution: "@tanstack/react-table@npm:8.11.6"
   dependencies:
-    "@tanstack/table-core": "npm:8.11.3"
+    "@tanstack/table-core": "npm:8.11.6"
   peerDependencies:
     react: ">=16"
     react-dom: ">=16"
-  checksum: ada1d757f62b91d7158b359a5e03df2dcca96a25237e9b9d9a50480bd82250949c0bfcf89869d5d5e28b4507700b4574df86ffceabd4cecf80c40f92934f1baa
+  checksum: e7e2bc63040212152840176927f17cf1b4f5606304e56c37674da32bb8e6817550312399e9fcbda3aca0155e85682a5a6ada42ab80f377a74faad51c64b0341b
   languageName: node
   linkType: hard
 
-"@tanstack/table-core@npm:8.11.3":
-  version: 8.11.3
-  resolution: "@tanstack/table-core@npm:8.11.3"
-  checksum: 9eab26d0519de8fe48af304cfc12f6ccb6c13f8d581ae73083fb30bb1a801f63e77f048b9e7ae1ed1cf6297ff37706ba8b24090f6c19bcd4ec94435ae9979250
+"@tanstack/table-core@npm:8.11.6":
+  version: 8.11.6
+  resolution: "@tanstack/table-core@npm:8.11.6"
+  checksum: 03554157fa3663ca7916255cb547773a66900efbf4c113d6501f6fd4e721fa8ba6edcdc5e13075c6a18a8232998412791dcbd76d231afc89a2174de7f2bf1c94
   languageName: node
   linkType: hard
 
@@ -1312,13 +1312,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:*, @types/eslint@npm:8.56.1":
+"@types/eslint@npm:*":
   version: 8.56.1
   resolution: "@types/eslint@npm:8.56.1"
   dependencies:
     "@types/estree": "npm:*"
     "@types/json-schema": "npm:*"
   checksum: a2aa5e2ec16f07944a60b825d6447d66f83369783e31c014ccf582fa92df963aa8d62c447a8fdc4fbfcd7299ad74ed1a753e06e560ce184eab4efceccfa66262
+  languageName: node
+  linkType: hard
+
+"@types/eslint@npm:8.56.2":
+  version: 8.56.2
+  resolution: "@types/eslint@npm:8.56.2"
+  dependencies:
+    "@types/estree": "npm:*"
+    "@types/json-schema": "npm:*"
+  checksum: e33ca87a30a9454ba9943e1270ac759996f5fe598a1c1afbaec1d1e7346a339e20bf2a9d81f177067116bbaa6cfa4f748993cb338f57978ae862ad38ffae56fe
   languageName: node
   linkType: hard
 
@@ -1393,12 +1403,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.10.8":
+"@types/node@npm:*":
   version: 20.10.8
   resolution: "@types/node@npm:20.10.8"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 93268c33c3bf0194427d696658160c77ab8661aa57107df5b248ff952898a372bf92cf0ba7fc07788fa35e59c69b6619cce63d45e4e67fca806e37da7ea42512
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:20.11.0":
+  version: 20.11.0
+  resolution: "@types/node@npm:20.11.0"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 560aa850dfccb83326f9cba125459f6c3fb0c71ec78f22c61e4d248f1df78bd25fd6792cef573dfbdc49c882f8e38bb1a82ca87e0e28ff2513629c704c2b02af
   languageName: node
   linkType: hard
 
@@ -2277,13 +2296,13 @@ __metadata:
     "@next/bundle-analyzer": "npm:14.0.4"
     "@prisma/client": "npm:5.8.0"
     "@reduxjs/toolkit": "npm:2.0.1"
-    "@serwist/next": "npm:8.4.1"
-    "@serwist/sw": "npm:8.4.1"
+    "@serwist/next": "npm:8.4.2"
+    "@serwist/sw": "npm:8.4.2"
     "@tanem/react-nprogress": "npm:5.0.51"
-    "@tanstack/react-table": "npm:8.11.3"
-    "@types/eslint": "npm:8.56.1"
+    "@tanstack/react-table": "npm:8.11.6"
+    "@types/eslint": "npm:8.56.2"
     "@types/events": "npm:3.0.3"
-    "@types/node": "npm:20.10.8"
+    "@types/node": "npm:20.11.0"
     "@types/object-hash": "npm:3.0.6"
     "@types/react": "npm:18.2.47"
     "@types/react-redux": "npm:7.1.33"
@@ -2292,7 +2311,7 @@ __metadata:
     "@vercel/analytics": "npm:1.1.1"
     "@yarnpkg/pnpify": "npm:4.0.1"
     axios: "npm:1.6.5"
-    change-case: "npm:5.4.0"
+    change-case: "npm:5.4.2"
     csvtojson: "npm:2.0.10"
     date-fns: "npm:3.2.0"
     embla-carousel-react: "npm:8.0.0-rc19"
@@ -2307,12 +2326,12 @@ __metadata:
     next-auth: "npm:5.0.0-beta.4"
     notistack: "npm:3.0.1"
     object-hash: "npm:3.0.0"
-    prettier: "npm:3.1.1"
+    prettier: "npm:3.2.2"
     prisma: "npm:5.8.0"
     react: "npm:18.2.0"
     react-cookie: "npm:7.0.1"
     react-dom: "npm:18.2.0"
-    react-redux: "npm:9.0.4"
+    react-redux: "npm:9.1.0"
     react-virtuoso: "npm:4.6.2"
     remeda: "npm:1.36.0"
     rooks: "npm:7.14.1"
@@ -2518,10 +2537,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"change-case@npm:5.4.0":
-  version: 5.4.0
-  resolution: "change-case@npm:5.4.0"
-  checksum: 1e0bf7beb6d2f902bea9da3e86ab2d7c8bf38098dfbafea52fb80333184f83b339c939655b5ad4f878cb9931f1476a176ffed6ca5c5451aa2fc63256fbf42e94
+"change-case@npm:5.4.2":
+  version: 5.4.2
+  resolution: "change-case@npm:5.4.2"
+  checksum: eb108f1de84dae1f9b7e2eb4050be8a964f0c57a92b0be656fc3a0e4df49d743251f310a3f7a8978373e87559bb5a99b73999a29d9342a23d1eaf8d4b7344afc
   languageName: node
   linkType: hard
 
@@ -5463,12 +5482,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.1.1":
-  version: 3.1.1
-  resolution: "prettier@npm:3.1.1"
+"prettier@npm:3.2.2":
+  version: 3.2.2
+  resolution: "prettier@npm:3.2.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: facc944ba20e194ff4db765e830ffbcb642803381f0d2033ed397e79904fa4ccc877dc25ad68f42d36985c01d051c990ca1b905fb83d2d7d65fe69e4386fa1a3
+  checksum: e84d0d2a4ce2b88ee1636904effbdf68b59da63d9f887128f2ed5382206454185432e7c0a9578bc4308bc25d099cfef47fd0b9c211066777854e23e65e34044d
   languageName: node
   linkType: hard
 
@@ -5613,9 +5632,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:9.0.4":
-  version: 9.0.4
-  resolution: "react-redux@npm:9.0.4"
+"react-redux@npm:9.1.0":
+  version: 9.1.0
+  resolution: "react-redux@npm:9.1.0"
   dependencies:
     "@types/use-sync-external-store": "npm:^0.0.3"
     use-sync-external-store: "npm:^1.0.0"
@@ -5631,7 +5650,7 @@ __metadata:
       optional: true
     redux:
       optional: true
-  checksum: 23af10014b129aeb051de729bde01de21175170b860deefb7ad83483feab5816253f770a4cea93333fc22a53ac9ac699b27f5c3705c388dab53dbcb2906a571a
+  checksum: 53161b5dc4d109020fbc42d26906ace92fed9ba1d7ab6274af60e9c0684583d20d1c8ec6d58601ac7b833c6468a652bbf3d4a102149d1793cb8a28b05b042f73
   languageName: node
   linkType: hard
 
