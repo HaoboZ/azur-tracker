@@ -11,6 +11,7 @@ export const { handlers, auth } = NextAuth({
 		GitHub({ allowDangerousEmailAccountLinking: true }),
 	],
 	callbacks: {
+		// @ts-ignore
 		session({ session, user }) {
 			session.user.role = user.role;
 			return session;
