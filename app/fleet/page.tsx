@@ -56,7 +56,14 @@ const getCachedData = unstable_cache(
 			equippableData: indexBy(
 				(await csvtojson().fromString(equippableCSV)).map((value) => ({
 					...(pick(value, ['type', 'tier']) as any),
-					equip: [value.equip1, value.equip2, value.equip3].filter(Boolean),
+					equip: [
+						value.equip1,
+						value.equip2,
+						value.equip3,
+						value.equip4,
+						value.equip5,
+						value.equip6,
+					].filter(Boolean),
 				})),
 				pget('type'),
 			),
