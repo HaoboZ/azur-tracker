@@ -42,7 +42,7 @@ const RAW_RUNTIME_STATE =
             "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.0-beta.28"\
           ]],\
           ["@next/bundle-analyzer", "npm:14.1.0"],\
-          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.0"],\
+          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.1"],\
           ["@reduxjs/toolkit", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.2.1"],\
           ["@serwist/next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.4.4"],\
           ["@serwist/sw", "npm:8.4.4"],\
@@ -75,7 +75,7 @@ const RAW_RUNTIME_STATE =
           ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.0.1"],\
           ["object-hash", "npm:3.0.0"],\
           ["prettier", "npm:3.2.5"],\
-          ["prisma", "npm:5.10.0"],\
+          ["prisma", "npm:5.10.1"],\
           ["react", "npm:18.2.0"],\
           ["react-cookie", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.0.2"],\
           ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
@@ -83,7 +83,7 @@ const RAW_RUNTIME_STATE =
           ["react-virtuoso", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.7.0"],\
           ["remeda", "npm:1.43.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
-          ["sass", "npm:1.71.0"],\
+          ["sass", "npm:1.71.1"],\
           ["type-fest", "npm:4.10.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["webpack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.90.3"]\
@@ -185,7 +185,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@auth/prisma-adapter", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:1.4.0"],\
           ["@auth/core", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:0.27.0"],\
-          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.0"],\
+          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.1"],\
           ["@types/prisma__client", null]\
         ],\
         "packagePeers": [\
@@ -1289,19 +1289,19 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@prisma/client", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-1864022842/node_modules/@prisma/client/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-b32e6cd011/node_modules/@prisma/client/",\
         "packageDependencies": [\
-          ["@prisma/client", "npm:5.10.0"]\
+          ["@prisma/client", "npm:5.10.1"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.0", {\
-        "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-1864022842/node_modules/@prisma/client/",\
+      ["virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.1", {\
+        "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-b32e6cd011/node_modules/@prisma/client/",\
         "packageDependencies": [\
-          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.0"],\
+          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.1"],\
           ["@types/prisma", null],\
-          ["prisma", "npm:5.10.0"]\
+          ["prisma", "npm:5.10.1"]\
         ],\
         "packagePeers": [\
           "@types/prisma",\
@@ -1311,23 +1311,23 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@prisma/debug", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-debug-npm-5.10.0-a90f1cbb23-10c0.zip/node_modules/@prisma/debug/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-debug-npm-5.10.1-e4f27d1707-10c0.zip/node_modules/@prisma/debug/",\
         "packageDependencies": [\
-          ["@prisma/debug", "npm:5.10.0"]\
+          ["@prisma/debug", "npm:5.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
     ]],\
     ["@prisma/engines", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-5.10.0-ca1ceb4e42/node_modules/@prisma/engines/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-5.10.1-02ff753657/node_modules/@prisma/engines/",\
         "packageDependencies": [\
-          ["@prisma/engines", "npm:5.10.0"],\
-          ["@prisma/debug", "npm:5.10.0"],\
+          ["@prisma/engines", "npm:5.10.1"],\
+          ["@prisma/debug", "npm:5.10.1"],\
           ["@prisma/engines-version", "npm:5.10.0-34.5a9203d0590c951969e85a7d07215503f4672eb9"],\
-          ["@prisma/fetch-engine", "npm:5.10.0"],\
-          ["@prisma/get-platform", "npm:5.10.0"]\
+          ["@prisma/fetch-engine", "npm:5.10.1"],\
+          ["@prisma/get-platform", "npm:5.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1342,23 +1342,23 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@prisma/fetch-engine", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-fetch-engine-npm-5.10.0-58cc5747fd-10c0.zip/node_modules/@prisma/fetch-engine/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-fetch-engine-npm-5.10.1-074d2edd26-10c0.zip/node_modules/@prisma/fetch-engine/",\
         "packageDependencies": [\
-          ["@prisma/fetch-engine", "npm:5.10.0"],\
-          ["@prisma/debug", "npm:5.10.0"],\
+          ["@prisma/fetch-engine", "npm:5.10.1"],\
+          ["@prisma/debug", "npm:5.10.1"],\
           ["@prisma/engines-version", "npm:5.10.0-34.5a9203d0590c951969e85a7d07215503f4672eb9"],\
-          ["@prisma/get-platform", "npm:5.10.0"]\
+          ["@prisma/get-platform", "npm:5.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
     ]],\
     ["@prisma/get-platform", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-get-platform-npm-5.10.0-7fbaf7efdf-10c0.zip/node_modules/@prisma/get-platform/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@prisma-get-platform-npm-5.10.1-422423b554-10c0.zip/node_modules/@prisma/get-platform/",\
         "packageDependencies": [\
-          ["@prisma/get-platform", "npm:5.10.0"],\
-          ["@prisma/debug", "npm:5.10.0"]\
+          ["@prisma/get-platform", "npm:5.10.1"],\
+          ["@prisma/debug", "npm:5.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3202,7 +3202,7 @@ const RAW_RUNTIME_STATE =
             "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.0.0-beta.28"\
           ]],\
           ["@next/bundle-analyzer", "npm:14.1.0"],\
-          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.0"],\
+          ["@prisma/client", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.10.1"],\
           ["@reduxjs/toolkit", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:2.2.1"],\
           ["@serwist/next", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:8.4.4"],\
           ["@serwist/sw", "npm:8.4.4"],\
@@ -3235,7 +3235,7 @@ const RAW_RUNTIME_STATE =
           ["notistack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:3.0.1"],\
           ["object-hash", "npm:3.0.0"],\
           ["prettier", "npm:3.2.5"],\
-          ["prisma", "npm:5.10.0"],\
+          ["prisma", "npm:5.10.1"],\
           ["react", "npm:18.2.0"],\
           ["react-cookie", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.0.2"],\
           ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
@@ -3243,7 +3243,7 @@ const RAW_RUNTIME_STATE =
           ["react-virtuoso", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:4.7.0"],\
           ["remeda", "npm:1.43.0"],\
           ["rooks", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:7.14.1"],\
-          ["sass", "npm:1.71.0"],\
+          ["sass", "npm:1.71.1"],\
           ["type-fest", "npm:4.10.2"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
           ["webpack", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:5.90.3"]\
@@ -6529,7 +6529,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.4.31"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:0803681d7e5570b9ddf60a5cad666f75ee002f3da8e2f91ca5e7432066dda065e90fe9a33df9ee6c8580c5ad7c3ef6caf6f2085db14fadd30932e597919b273c#npm:18.2.0"],\
-          ["sass", "npm:1.71.0"],\
+          ["sass", "npm:1.71.1"],\
           ["styled-jsx", "virtual:75a2e4f8bad99cc5f777fbd117b3bc9b7f95fec2ea4bad35d66598c071bb27d1e88597ab6e88f05f04651088154b0aece1f7639d6cf02149f25cd50cb52c28f7#npm:5.1.1"]\
         ],\
         "packagePeers": [\
@@ -7125,11 +7125,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prisma", [\
-      ["npm:5.10.0", {\
-        "packageLocation": "./.yarn/unplugged/prisma-npm-5.10.0-fd650e5d80/node_modules/prisma/",\
+      ["npm:5.10.1", {\
+        "packageLocation": "./.yarn/unplugged/prisma-npm-5.10.1-df2656d5d6/node_modules/prisma/",\
         "packageDependencies": [\
-          ["prisma", "npm:5.10.0"],\
-          ["@prisma/engines", "npm:5.10.0"]\
+          ["prisma", "npm:5.10.1"],\
+          ["@prisma/engines", "npm:5.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7682,10 +7682,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["sass", [\
-      ["npm:1.71.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/sass-npm-1.71.0-38088726c4-10c0.zip/node_modules/sass/",\
+      ["npm:1.71.1", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/sass-npm-1.71.1-3aced13991-10c0.zip/node_modules/sass/",\
         "packageDependencies": [\
-          ["sass", "npm:1.71.0"],\
+          ["sass", "npm:1.71.1"],\
           ["chokidar", "npm:3.6.0"],\
           ["immutable", "npm:4.3.5"],\
           ["source-map-js", "npm:1.0.2"]\
