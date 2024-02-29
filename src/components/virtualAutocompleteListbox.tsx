@@ -8,12 +8,14 @@ import { GroupedVirtuoso, Virtuoso } from 'react-virtuoso';
 import { isEmpty } from 'remeda';
 
 const components: (other) => Components<any, any> = (other) => ({
+	// @ts-ignore
 	Scroller: forwardRef(({ children, ...props }, ref) => (
 		<Sheet ref={ref} variant='outlined' sx={{ borderRadius: 6 }} {...props}>
 			{children}
 		</Sheet>
 	)),
 	TopItemList: ({ style, ...props }) => <div style={{ ...style, zIndex: 1001 }} {...props} />,
+	// @ts-ignore
 	List: forwardRef(({ style, ...props }, ref) => (
 		<AutocompleteListbox
 			ref={ref as any}
