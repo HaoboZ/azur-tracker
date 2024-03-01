@@ -16,6 +16,7 @@ export default function VirtualList<TData extends RowData>({ table }: { table: T
 		<Virtuoso
 			useWindowScroll
 			components={{
+				// @ts-ignore
 				List: forwardRef(({ style, ...props }, ref) => (
 					<List
 						ref={ref}
