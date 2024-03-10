@@ -8,8 +8,8 @@ import { GroupedVirtuoso, Virtuoso } from 'react-virtuoso';
 import { isEmpty } from 'remeda';
 
 const components: (other) => Components<any, any> = (other) => ({
-	// @ts-ignore
 	Scroller: forwardRef(({ children, ...props }, ref) => (
+		// @ts-ignore
 		<Sheet ref={ref} variant='outlined' sx={{ borderRadius: 6 }} {...props}>
 			{children}
 		</Sheet>
