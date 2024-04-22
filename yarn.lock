@@ -1308,15 +1308,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/navigation-preload@npm:8.4.4":
-  version: 8.4.4
-  resolution: "@serwist/navigation-preload@npm:8.4.4"
-  dependencies:
-    "@serwist/core": "npm:8.4.4"
-  checksum: 10c0/6a8c2f652f9b0797831d0abd64f39cca2d9e8f65807b376156e167c778b569e957eedebab5b32a0ecc6b834a149852645ddce252cab1cb81800f7f31474ab729
-  languageName: node
-  linkType: hard
-
 "@serwist/next@npm:8.4.4":
   version: 8.4.4
   resolution: "@serwist/next@npm:8.4.4"
@@ -1344,15 +1335,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/range-requests@npm:8.4.4":
-  version: 8.4.4
-  resolution: "@serwist/range-requests@npm:8.4.4"
-  dependencies:
-    "@serwist/core": "npm:8.4.4"
-  checksum: 10c0/c26aef6a4d72662168a2abd799f8444fd9942647802f41f18f6b45f8cb940619ae9552f2b9cb77b7c82bbd373bb7973925fbcf5ec4f29ed0febc31abba569eb2
-  languageName: node
-  linkType: hard
-
 "@serwist/routing@npm:8.4.4":
   version: 8.4.4
   resolution: "@serwist/routing@npm:8.4.4"
@@ -1371,22 +1353,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/sw@npm:8.4.4":
-  version: 8.4.4
-  resolution: "@serwist/sw@npm:8.4.4"
+"@serwist/sw@npm:9.0.1":
+  version: 9.0.1
+  resolution: "@serwist/sw@npm:9.0.1"
   dependencies:
-    "@serwist/background-sync": "npm:8.4.4"
-    "@serwist/broadcast-update": "npm:8.4.4"
-    "@serwist/cacheable-response": "npm:8.4.4"
-    "@serwist/core": "npm:8.4.4"
-    "@serwist/expiration": "npm:8.4.4"
-    "@serwist/google-analytics": "npm:8.4.4"
-    "@serwist/navigation-preload": "npm:8.4.4"
-    "@serwist/precaching": "npm:8.4.4"
-    "@serwist/range-requests": "npm:8.4.4"
-    "@serwist/routing": "npm:8.4.4"
-    "@serwist/strategies": "npm:8.4.4"
-  checksum: 10c0/326973bb34f11d092bc77ae412041d88de1b7486fe00280c34590ee61c197236c9e88cd222f5cf78b452df75be9d18df901468af8fd7776de62bd90560a576f3
+    serwist: "npm:9.0.0"
+  peerDependencies:
+    typescript: ">=5.0.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/dca06b358437dad3a6a14689ed25f8613bd0497ebd8a06adedd18e7c500548036072994d139d3823203c261412fe3b41c5062be6bcef007f067152b4ab256047
   languageName: node
   linkType: hard
 
@@ -2590,7 +2567,7 @@ __metadata:
     "@prisma/client": "npm:5.12.1"
     "@reduxjs/toolkit": "npm:2.2.3"
     "@serwist/next": "npm:8.4.4"
-    "@serwist/sw": "npm:8.4.4"
+    "@serwist/sw": "npm:9.0.1"
     "@tanem/react-nprogress": "npm:5.0.51"
     "@tanstack/react-table": "npm:8.16.0"
     "@types/eslint": "npm:8.56.10"
@@ -6414,6 +6391,20 @@ __metadata:
   version: 0.0.1
   resolution: "server-only@npm:0.0.1"
   checksum: 10c0/4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
+  languageName: node
+  linkType: hard
+
+"serwist@npm:9.0.0":
+  version: 9.0.0
+  resolution: "serwist@npm:9.0.0"
+  dependencies:
+    idb: "npm:8.0.0"
+  peerDependencies:
+    typescript: ">=5.0.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/c985fa179d107162e30acf1a74690414af1f3525feb9b5bee9e411438b85427aaf83ec9edb84686b39263cf9d05fce893bde8424fcd27cd17a08df0ecbfcb2cd
   languageName: node
   linkType: hard
 
