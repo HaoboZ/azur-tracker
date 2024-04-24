@@ -22,7 +22,7 @@ export default pipe(
 	nextConfig,
 	withSerwistInit({
 		disable: !process.env.NEXT_PUBLIC_VERCEL_ENV,
-		cacheOnFrontEndNav: true,
+		cacheOnNavigation: true,
 		swSrc: 'app/sw.ts',
 		swDest: 'public/sw.js',
 	}),
