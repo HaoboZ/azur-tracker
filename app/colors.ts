@@ -50,5 +50,6 @@ export const factionColors = {
 	'META': 'meta',
 	'Tempesta': 'tempesta',
 	'Atelier Ryza': 'atelier',
+	'Senran Kagura': 'senran',
 };
 export const tierColors = ['rainbow', 'yellow', 'purple', 'blue', 'gray'];

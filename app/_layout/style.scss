@@ -49,7 +49,8 @@ $colors : (
 	'ssss' : #6b6c65,
 	'meta' : #222222,
 	'tempesta' : #89bf8e,
-	'atelier' : linear-gradient(45deg, #ffd089, #ffd575, #ffb763, #ffaf52)
+	'atelier' : linear-gradient(45deg, #ffd089, #ffd575, #ffb763, #ffaf52),
+	'senran' : linear-gradient(45deg, #daac7b, #e8a271, #e6896a, #d76857)
 );
 
 @each $color, $value in $colors {

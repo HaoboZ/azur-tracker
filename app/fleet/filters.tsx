@@ -55,6 +55,7 @@ const searchOptions = [
 	'SSSS',
 	'Tempesta',
 	'Atelier Ryza',
+	'Senran Kagura',
 ];
 
 export default function FleetFilters({ table }: { table: Table<Ship> }) {
