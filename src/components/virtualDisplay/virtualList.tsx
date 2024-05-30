@@ -34,7 +34,7 @@ export default function VirtualList<TData extends RowData>({ table }: { table: T
 			}}
 			data={rows}
 			itemContent={(_, row) => {
-				const cells = indexBy<any>(row.getVisibleCells(), pget('column.id'));
+				const cells = indexBy<any, string>(row.getVisibleCells(), pget('column.id'));
 				const render = (cell: Cell<TData, unknown>) =>
 					flexRender(cell.column.columnDef.cell, cell.getContext()) as any;
 
