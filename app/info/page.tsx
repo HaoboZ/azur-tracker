@@ -5,7 +5,18 @@ import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
 import { unstable_cache } from 'next/cache';
-import { difference, groupBy, indexBy, mapValues, omit, pipe, sortBy, uniq } from 'remeda';
+import {
+	filter,
+	groupBy,
+	indexBy,
+	isIncludedIn,
+	isNot,
+	mapValues,
+	omit,
+	pipe,
+	sortBy,
+	unique,
+} from 'remeda';
 import Info from './index';
 
 export const metadata: Metadata = { title: 'Info | Azur Lane Tracker' };
@@ -35,7 +46,7 @@ const getCachedData = unstable_cache(
 		for (const type of equipTiers) {
 			for (const [tier, equips] of Object.entries(omit(type, ['type']))) {
 				if (tier === 'tN') continue;
-				equipTier[tier] = uniq([...(equipTier[tier] ?? []), ...(equips ?? [])]);
+				equipTier[tier] = unique([...(equipTier[tier] ?? []), ...(equips ?? [])]);
 			}
 		}
 
@@ -48,8 +59,8 @@ const getCachedData = unstable_cache(
 				),
 			),
 			equipTier: Object.values(equipTier).map((value) => {
-				const result = difference(value, found).sort();
-				found = uniq([...found, ...value]);
+				const result = filter(value, isNot(isIncludedIn(found))).sort();
+				found = unique([...found, ...value]);
 				return result;
 			}),
 			equipList: pipe(

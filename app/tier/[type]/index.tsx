@@ -7,7 +7,7 @@ import pget from '@/src/helpers/pget';
 import { Grid, Sheet, Stack, Tooltip } from '@mui/joy';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { difference, indexBy, mapValues, omit } from 'remeda';
+import { filter, indexBy, isIncludedIn, isNot, mapValues, omit } from 'remeda';
 import { useDidUpdate } from 'rooks';
 import { rarityColors } from '../../colors';
 import type { EquipType } from '../../fleet/ship/equip/type';
@@ -28,7 +28,7 @@ export default function TierType({
 	const [tiers, setTiers] = useState(() => {
 		const tiers = mapValues(equipTier, (ids) => ids.map((id) => equipIndex[id]));
 
-		tiers.unTiered = difference(equipData, Object.values(tiers).flat());
+		tiers.unTiered = filter(equipData, isNot(isIncludedIn(Object.values(tiers).flat())));
 		return tiers;
 	});
 
