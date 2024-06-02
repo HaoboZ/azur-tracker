@@ -1,4 +1,4 @@
-import prisma from '@/prisma/index';
+import prisma from '@/prisma';
 import pget from '@/src/helpers/pget';
 import DataProvider from '@/src/providers/data';
 import axios from 'axios';

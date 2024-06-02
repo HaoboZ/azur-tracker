@@ -1,5 +1,5 @@
 'use server';
-import prisma from '@/prisma/index';
+import prisma from '@/prisma';
 import { auth } from '@/src/auth';
 
 export async function updateTier(type: string, tier: Record<string, number[]>) {

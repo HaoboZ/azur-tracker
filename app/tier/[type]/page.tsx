@@ -1,4 +1,4 @@
-import prisma from '@/prisma/index';
+import prisma from '@/prisma';
 import { auth } from '@/src/auth';
 import pget from '@/src/helpers/pget';
 import axios from 'axios';

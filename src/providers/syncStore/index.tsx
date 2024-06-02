@@ -1,4 +1,4 @@
-import prisma from '@/prisma/index';
+import prisma from '@/prisma';
 import { cookies } from 'next/headers';
 import type { ReactNode } from 'react';
 import { mapValues } from 'remeda';
