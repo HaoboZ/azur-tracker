@@ -62,7 +62,7 @@
 	"devDependencies": {
 		"@next/bundle-analyzer": "14.2.5",
 		"@serwist/next": "9.0.5",
-		"@types/eslint": "8.56.11",
+		"@types/eslint": "9.6.0",
 		"@types/events": "3.0.3",
 		"@types/node": "20.14.14",
 		"@types/object-hash": "3.0.6",
