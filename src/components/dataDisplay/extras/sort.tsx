@@ -1,5 +1,4 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { ListItemDecorator } from '@mui/joy';
 import type { DisplayColumnDef, RowData } from '@tanstack/react-table';
 
 declare module '@tanstack/react-table' {
@@ -17,9 +16,5 @@ export const sortColumn = (size = 2) =>
 	}) as DisplayColumnDef<any>;
 
 export function sortIcon(handle) {
-	return (
-		<ListItemDecorator>
-			<MenuIcon {...handle} />
-		</ListItemDecorator>
-	);
+	return <MenuIcon sx={{ mx: 1 }} {...handle} />;
 }

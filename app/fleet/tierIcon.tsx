@@ -4,8 +4,8 @@ import {
 	FavoriteBorder as FavoriteBorderIcon,
 	Star as StarIcon,
 } from '@mui/icons-material';
-import type { SvgIconProps } from '@mui/joy';
-import { SvgIcon } from '@mui/joy';
+import type { SvgIconProps } from '@mui/material';
+import { SvgIcon } from '@mui/material';
 import { Fragment } from 'react';
 
 function RingIcon(props: SvgIconProps) {
@@ -20,22 +20,22 @@ export function TierIcon({ tier }) {
 	return (
 		[
 			undefined,
-			<StarIcon key='diamondStar' htmlColor='turquoise' fontSize='xl' />,
-			<StarIcon key='goldStar' htmlColor='gold' fontSize='xl' />,
-			<StarIcon key='silverStar' htmlColor='silver' fontSize='xl' />,
-			<StarIcon key='bronzeStar' htmlColor='chocolate' fontSize='xl' />,
-			<StarIcon key='tanStar' htmlColor='tan' fontSize='xl' />,
-			<CircleOutlinedIcon key='circle' fontSize='xl' />,
-		][tier] || <SvgIcon key='empty' fontSize='xl' />
+			<StarIcon key='diamondStar' htmlColor='turquoise' fontSize='small' />,
+			<StarIcon key='goldStar' htmlColor='gold' fontSize='small' />,
+			<StarIcon key='silverStar' htmlColor='silver' fontSize='small' />,
+			<StarIcon key='bronzeStar' htmlColor='chocolate' fontSize='small' />,
+			<StarIcon key='tanStar' htmlColor='tan' fontSize='small' />,
+			<CircleOutlinedIcon key='circle' fontSize='small' />,
+		][tier] || <SvgIcon key='empty' fontSize='small' />
 	);
 }
 
 export const AffinityIcons = [
-	<FavoriteBorderIcon key='none' fontSize='xl' />,
-	<FavoriteIcon key='love' fontSize='xl' />,
-	<RingIcon key='married' fontSize='xl' />,
+	<FavoriteBorderIcon key='none' fontSize='small' />,
+	<FavoriteIcon key='love' fontSize='small' />,
+	<RingIcon key='married' fontSize='small' />,
 	<Fragment key='max'>
-		<RingIcon fontSize='xl' />
-		<FavoriteIcon fontSize='xl' />
+		<RingIcon fontSize='small' />
+		<FavoriteIcon fontSize='small' />
 	</Fragment>,
 ];

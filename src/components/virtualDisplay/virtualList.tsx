@@ -1,5 +1,5 @@
 'use client';
-import { List, ListItem, ListItemButton, listItemClasses } from '@mui/joy';
+import { List, ListItem, ListItemButton, listItemClasses } from '@mui/material';
 import type { Cell, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { forwardRef } from 'react';

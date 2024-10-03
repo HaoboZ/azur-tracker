@@ -57,7 +57,7 @@ export default function Fleet() {
 	}, [fleet]);
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Fleet Tracker</PageTitle>
 			<FleetFilters table={table} />
 			<VirtualDisplay table={table} />

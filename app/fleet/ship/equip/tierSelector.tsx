@@ -1,12 +1,5 @@
-import {
-	Dropdown,
-	ListItemContent,
-	ListItemDecorator,
-	Menu,
-	MenuButton,
-	MenuItem,
-	Typography,
-} from '@mui/joy';
+import Dropdown from '@/components/dropdown';
+import { ListItemAvatar, ListItemText, MenuItem } from '@mui/material';
 import Image from 'next/image';
 import type { ReactElement } from 'react';
 import { rarityColors } from '../../../colors';
@@ -20,25 +13,30 @@ export default function EquipTierSelector({
 	setEquip: (id: number) => void;
 }) {
 	return (
-		<Dropdown>
-			<MenuButton fullWidth>Equipment Tier</MenuButton>
-			<Menu disablePortal placement='top' sx={{ maxHeight: 400 }}>
-				{equipList.map((equip) => (
-					<MenuItem key={equip.id} onClick={() => setEquip(equip.id)}>
-						<ListItemDecorator sx={{ mr: 1 }}>
-							{equip.tier && <Typography>{equip.tier}</Typography>}
+		<Dropdown fullWidth button='Equipment Tier'>
+			{(closeMenu) =>
+				equipList.map((equip) => (
+					<MenuItem
+						key={equip.id}
+						onClick={() => {
+							setEquip(equip.id);
+							closeMenu();
+						}}>
+						<ListItemAvatar sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
+							{equip.tier}
 							<Image
 								src={`https://azurlane.netojuu.com/images/${equip.image}`}
 								alt={equip.name}
 								height={48}
 								width={48}
 								className={`color-${rarityColors[equip.rarity]}`}
+								style={{ marginLeft: 4 }}
 							/>
-						</ListItemDecorator>
-						<ListItemContent>{equip.name}</ListItemContent>
+						</ListItemAvatar>
+						<ListItemText>{equip.name}</ListItemText>
 					</MenuItem>
-				))}
-			</Menu>
+				))
+			}
 		</Dropdown>
 	);
 }

@@ -1,6 +1,15 @@
 'use client';
 import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
-import { Link, Table as JoyTable } from '@mui/joy';
+import {
+	Box,
+	Table as MuiTable,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableFooter,
+	TableHead,
+	TableRow,
+} from '@mui/material';
 import type { RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { TableVirtuoso } from 'react-virtuoso';
@@ -16,61 +25,66 @@ export default function VirtualTable<TData extends RowData>({ table }: { table: 
 			useWindowScroll
 			components={{
 				Table: (props) => (
-					<JoyTable
-						sx={{ 'tbody tr': onRowClick ? { cursor: 'pointer' } : undefined }}
-						{...props}
-					/>
+					<TableContainer>
+						<MuiTable
+							sx={{
+								'tbody tr': onRowClick ? { cursor: 'pointer' } : undefined,
+								'tableLayout': 'fixed',
+							}}
+							{...props}
+						/>
+					</TableContainer>
 				),
+				TableHead,
+				TableBody: TableBody as any,
+				TableFoot: TableFooter,
 				TableRow: ({ item, children, ...props }) => (
-					<tr onClick={onRowClick ? () => onRowClick(item, table) : undefined} {...props}>
+					<TableRow
+						onClick={onRowClick ? () => onRowClick(item, table) : undefined}
+						{...props}>
 						{children}
-					</tr>
+					</TableRow>
 				),
 			}}
 			data={rows}
 			fixedHeaderContent={() =>
 				table.getHeaderGroups().map((headerGroup) => (
-					<tr key={headerGroup.id}>
+					<TableRow key={headerGroup.id}>
 						{headerGroup.headers.map((header) => (
-							<th
+							<TableCell
 								key={header.id}
 								colSpan={header.colSpan}
-								style={{ width: `${header.column.columnDef.size}%` }}>
+								sx={{ width: `${header.column.columnDef.size}%` }}>
 								{header.isPlaceholder ? null : (
-									<Link
-										underline='none'
-										color='neutral'
-										disabled={!header.column.getCanSort()}
-										startDecorator={
-											header.column.getCanSort() && (
-												<ArrowDownwardIcon
-													sx={{ opacity: header.column.getIsSorted() ? 1 : 0 }}
-												/>
-											)
-										}
-										sx={{
-											'& svg': {
-												transition: '0.2s',
-												transform:
-													header.column.getIsSorted() === 'asc'
-														? 'rotate(180deg)'
-														: 'rotate(0deg)',
-											},
-										}}
+									<Box
+										sx={{ display: 'flex', cursor: 'pointer' }}
 										onClick={header.column.getToggleSortingHandler()}>
 										{flexRender(header.column.columnDef.header, header.getContext())}
-									</Link>
+										{header.column.getCanSort() && (
+											<ArrowDownwardIcon
+												sx={{
+													ml: 1,
+													opacity: header.column.getIsSorted() ? 1 : 0,
+													transition: '0.2s',
+													transform:
+														header.column.getIsSorted() !== 'desc'
+															? 'rotate(0deg)'
+															: 'rotate(180deg)',
+												}}
+											/>
+										)}
+									</Box>
 								)}
-							</th>
+							</TableCell>
 						))}
-					</tr>
+					</TableRow>
 				))
 			}
 			itemContent={(index, row) =>
 				row.getVisibleCells().map((cell) => (
-					<td key={cell.id} {...cell.column.columnDef.meta?.props?.(cell)}>
+					<TableCell key={cell.id} {...(cell.column.columnDef.meta?.props?.(cell) as any)}>
 						{flexRender(cell.column.columnDef.cell, cell.getContext())}
-					</td>
+					</TableCell>
 				))
 			}
 			fixedFooterContent={() =>
@@ -78,15 +92,15 @@ export default function VirtualTable<TData extends RowData>({ table }: { table: 
 					if (!footerGroup.headers.map(pget('column.columnDef.footer')).some(Boolean))
 						return null;
 					return (
-						<tr key={footerGroup.id}>
+						<TableRow key={footerGroup.id}>
 							{footerGroup.headers.map((footer) => (
-								<td key={footer.id}>
+								<TableCell key={footer.id}>
 									{footer.isPlaceholder
 										? null
 										: flexRender(footer.column.columnDef.footer, footer.getContext())}
-								</td>
+								</TableCell>
 							))}
-						</tr>
+						</TableRow>
 					);
 				})
 			}

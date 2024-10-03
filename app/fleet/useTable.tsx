@@ -3,13 +3,13 @@ import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useModal } from '@/src/providers/modal';
 import { Star as StarIcon } from '@mui/icons-material';
-import { Box, ListItemContent, Typography } from '@mui/joy';
+import { Box, ListItemText } from '@mui/material';
 import type { Cell } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { Fragment, useMemo } from 'react';
 import { isDefined } from 'remeda';
 import { factionColors, rarityColors, tierColors, typeColors } from '../colors';
-import ShipModal from './ship/modal';
+import ShipDrawer from './ship/drawer';
 import { AffinityIcons, TierIcon } from './tierIcon';
 import type { FleetType, Ship } from './type';
 
@@ -91,7 +91,7 @@ export default function useFleetTable(data) {
 			}),
 			columnHelper.accessor('love', {
 				header: 'Love',
-				size: 5,
+				size: 6,
 				cell: ({ getValue }) => AffinityIcons[getValue() as number],
 				enableGlobalFilter: false,
 				sortDescFirst: true,
@@ -101,13 +101,14 @@ export default function useFleetTable(data) {
 				size: 6,
 				cell: ({ getValue }) => {
 					const value = getValue();
-					return value === 126 ? <StarIcon fontSize='xl' /> : value;
+					return value === 126 ? <StarIcon fontSize='small' /> : value;
 				},
 				enableGlobalFilter: false,
 				sortDescFirst: true,
 			}),
 			columnHelper.accessor('equip', {
 				header: 'Equips',
+				size: 11,
 				cell: ({ getValue, row, column }) => {
 					const value = getValue();
 					if (row.columnFiltersMeta[column.id]) {
@@ -207,7 +208,7 @@ export default function useFleetTable(data) {
 			);
 		},
 		onRowClick: (row, table) => {
-			showModal(ShipModal, {
+			showModal(ShipDrawer, {
 				id: 'ship',
 				props: {
 					ship: row.original,
@@ -219,16 +220,11 @@ export default function useFleetTable(data) {
 		},
 		renderRow: ({ cells, render }) => (
 			<Fragment>
-				<ListItemContent>
-					<Typography>
-						{cells.name.getValue()} - Tier: {render(cells.tier)} - {render(cells.lvl)} /{' '}
-						{render(cells.love)}
-					</Typography>
-					<Typography level='body-sm'>
-						{cells.rarity.getValue<string>()} - {cells.faction.getValue<string>()} -{' '}
-						{cells.type.getValue<string>()}
-					</Typography>
-				</ListItemContent>
+				<ListItemText
+					secondary={`${cells.rarity.getValue<string>()} - ${cells.faction.getValue<string>()} - ${cells.type.getValue<string>()}`}>
+					{cells.name.getValue()} - Tier: {render(cells.tier)} - {render(cells.lvl)} /{' '}
+					{render(cells.love)}
+				</ListItemText>
 				<Box className={className(cells.equip)}>{render(cells.equip)}</Box>
 			</Fragment>
 		),

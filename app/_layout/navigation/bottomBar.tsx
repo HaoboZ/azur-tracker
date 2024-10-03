@@ -1,47 +1,33 @@
 'use client';
-import { Tab, TabList, Tabs, Typography } from '@mui/joy';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
 import { items } from './items';
 
 export default function BottomBar() {
 	const pathname = usePathname();
 
-	const index = useMemo(() => {
-		for (let i = 0; i < items.length; ++i) if (items[i].href === pathname) return i;
-	}, [pathname]);
-
 	return (
-		<Tabs
-			value={index}
-			component='nav'
+		<BottomNavigation
+			showLabels
+			value={pathname}
 			sx={{
-				display: { xs: 'block', sm: 'none' },
-				position: 'fixed',
-				top: 'auto',
-				bottom: 0,
+				display: { xs: 'flex', sm: 'none' },
+				height: 'unset',
 				width: '100%',
+				position: 'fixed',
+				bottom: 0,
 			}}>
-			<TabList
-				disableUnderline
-				sx={{
-					'--ListItem-gap': 0,
-					'height': 'calc(min(env(safe-area-inset-bottom), 16px) + 60px)',
-				}}>
-				{items.map((item, index) => (
-					<Tab
-						key={index}
-						disableIndicator
-						component={Link}
-						href={item.href}
-						orientation='vertical'
-						sx={{ flex: 1, pt: 1, pb: 'calc(min(env(safe-area-inset-bottom), 16px) + 8px)' }}>
-						{item.icon}
-						<Typography>{item.label}</Typography>
-					</Tab>
-				))}
-			</TabList>
-		</Tabs>
+			{items.map((item, index) => (
+				<BottomNavigationAction
+					key={index}
+					label={item.label}
+					icon={item.icon}
+					component={Link}
+					href={item.href}
+					sx={{ pt: 1, pb: 'calc(min(env(safe-area-inset-bottom), 16px) + 8px)' }}
+				/>
+			))}
+		</BottomNavigation>
 	);
 }

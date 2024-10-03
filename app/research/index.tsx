@@ -17,7 +17,7 @@ export default function Research({
 	const dispatch = useAppDispatch();
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Research Tracker</PageTitle>
 			<SwipeableTabViews
 				sx={{ bgcolor: pget('vars.palette.divider') }}

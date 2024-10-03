@@ -1,5 +1,5 @@
 'use client';
-import { Box, Button, Typography } from '@mui/joy';
+import { Box, Button, Typography } from '@mui/material';
 
 export default function Error({
 	error,
@@ -9,9 +9,9 @@ export default function Error({
 	reset?: () => void;
 }) {
 	return (
-		<Box textAlign='center' pt={10}>
-			<Typography level='h1'>{error.message}</Typography>
-			{error.digest && <Typography level='h4'>digest: {error.digest}</Typography>}
+		<Box sx={{ textAlign: 'center', pt: 10 }}>
+			<Typography variant='h2'>{error.message}</Typography>
+			{error.digest && <Typography variant='h4'>digest: {error.digest}</Typography>}
 			<Button onClick={reset}>Retry</Button>
 		</Box>
 	);

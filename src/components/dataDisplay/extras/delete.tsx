@@ -1,5 +1,5 @@
 import { Close as CloseIcon } from '@mui/icons-material';
-import { IconButton } from '@mui/joy';
+import { IconButton } from '@mui/material';
 import type { DisplayColumnDef, Row, Table } from '@tanstack/react-table';
 import pget from '../../../helpers/pget';
 

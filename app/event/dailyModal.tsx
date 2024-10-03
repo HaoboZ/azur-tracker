@@ -1,14 +1,14 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Button, DialogActions, DialogTitle, Grid, ModalClose, ModalDialog } from '@mui/joy';
+import { Button, DialogActions, DialogContent, DialogTitle, Grid2 } from '@mui/material';
 import type { Row } from '@tanstack/react-table';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
@@ -47,7 +47,7 @@ export default function DailyModal() {
 			columnHelper.accessor('name', {
 				header: 'Name',
 				cell: ({ getValue, row }) => (
-					<FormattedInput
+					<FormattedTextField
 						fullWidth
 						type='text'
 						value={getValue()}
@@ -58,7 +58,7 @@ export default function DailyModal() {
 			columnHelper.accessor('amount', {
 				header: 'Amount',
 				cell: ({ getValue, row }) => (
-					<FormattedInput
+					<FormattedTextField
 						type='number'
 						placeholder='0'
 						value={getValue()}
@@ -81,45 +81,45 @@ export default function DailyModal() {
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
 				{sortIcon(handleProps)}
-				<Grid container spacing={1}>
-					<Grid xs={7}>{render(cells.name)}</Grid>
-					<Grid xs={5}>{render(cells.amount)}</Grid>
-				</Grid>
+				<Grid2 container spacing={1}>
+					<Grid2 size={7}>{render(cells.name)}</Grid2>
+					<Grid2 size={5}>{render(cells.amount)}</Grid2>
+				</Grid2>
 				{deleteIcon(row, table)}
 			</Fragment>
 		),
 	});
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='sm'>
-				<DialogTitle>Daily Points</DialogTitle>
-				<ModalClose />
+		<DialogWrapper>
+			<DialogTitle>Daily Points</DialogTitle>
+			<DialogContent>
 				<PageSection
 					title={`Total Daily: ${dailyTotal}`}
+					titleProps={{ variant: 'body1' }}
 					actions={[
 						{
 							name: 'Add',
 							onClick: () => setDaily([...daily, { id: nanoid(), name: '', amount: 0 }]),
 							buttonProps: { color: 'primary' },
 						},
-					]}
-					sx={{ overflowY: 'auto' }}>
+					]}>
 					<DataDisplay table={table} />
 				</PageSection>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							dispatch(eventActions.setDaily({ daily, total: dailyTotal }));
-							closeModal();
-						}}>
-						Save
-					</Button>
-					<Button variant='plain' color='neutral' onClick={closeModal}>
-						Cancel
-					</Button>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+			</DialogContent>
+			<DialogActions>
+				<Button
+					variant='contained'
+					onClick={() => {
+						dispatch(eventActions.setDaily({ daily, total: dailyTotal }));
+						closeModal();
+					}}>
+					Save
+				</Button>
+				<Button color='error' onClick={closeModal}>
+					Cancel
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

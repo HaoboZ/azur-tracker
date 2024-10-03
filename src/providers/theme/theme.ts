@@ -1,33 +1,28 @@
-import { extendTheme } from '@mui/joy';
-import { Inter, Source_Code_Pro } from 'next/font/google';
+'use client';
+import { colors, createTheme } from '@mui/material';
 
-const inter = Inter({
-	subsets: ['latin'],
-	adjustFontFallback: false,
-	fallback: ['var(--joy-fontFamily-fallback)'],
-	display: 'swap',
-});
-
-const sourceCodePro = Source_Code_Pro({
-	subsets: ['latin'],
-	adjustFontFallback: false,
-	fallback: [
-		'ui-monospace',
-		'SFMono-Regular',
-		'Menlo',
-		'Monaco',
-		'Consolas',
-		'Liberation Mono',
-		'Courier New',
-		'monospace',
-	],
-	display: 'swap',
-});
-
-export default extendTheme({
-	fontFamily: {
-		body: inter.style.fontFamily,
-		display: inter.style.fontFamily,
-		code: sourceCodePro.style.fontFamily,
+export default createTheme({
+	cssVariables: { colorSchemeSelector: 'class' },
+	colorSchemes: {
+		light: {
+			palette: { primary: { main: colors.blue[700] }, background: { paper: colors.grey[100] } },
+		},
+		dark: {
+			palette: { primary: { main: colors.blue[700] }, background: { paper: colors.grey[900] } },
+		},
+	},
+	typography: {
+		h1: { fontSize: 28, fontWeight: 'bold' },
+		h2: { fontSize: 26 },
+		h3: { fontSize: 24 },
+		h4: { fontSize: 22 },
+		h5: { fontSize: 20 },
+		h6: { fontSize: 18 },
+		fontFamily: 'var(--font-roboto)',
+	},
+	components: {
+		MuiTextField: { defaultProps: { size: 'small', fullWidth: true } },
+		MuiTable: { defaultProps: { size: 'small' } },
+		MuiFormControl: { defaultProps: { fullWidth: true } },
 	},
 });

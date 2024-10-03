@@ -1,13 +1,3 @@
-.numberInput input {
-	-moz-appearance : textfield;
-	text-align      : right;
-	
-	::-webkit-outer-spin-button, ::-webkit-inner-spin-button {
-		-webkit-appearance : none;
-		margin             : 0;
-	}
-}
-
 @function get-contrast($background-color) {
 	@if type-of($background-color) != color {
 		@return black;

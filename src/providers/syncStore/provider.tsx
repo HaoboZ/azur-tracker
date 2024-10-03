@@ -1,6 +1,6 @@
 'use client';
 import { updateDBData } from '@/api/dbData';
-import { Sheet, Typography } from '@mui/joy';
+import { Paper, Typography } from '@mui/material';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
@@ -17,9 +17,11 @@ const cookies = new Cookies();
 
 export default function StoreProvider({
 	children,
+	authenticated,
 	serverData,
 }: {
 	children: ReactNode;
+	authenticated: boolean;
 	serverData: { main?: Record<string, string>; data?: Record<string, string> };
 }) {
 	const [saved, setSaved] = useState(false);
@@ -78,8 +80,9 @@ export default function StoreProvider({
 						(_, key) => compressToUTF16(JSON.stringify(others[key])),
 					);
 					try {
-						await updateDBData({ main: pick(main, Object.keys(others)), ...toSave });
-					} catch (e) {
+						if (authenticated)
+							await updateDBData({ main: pick(main, Object.keys(others)), ...toSave });
+					} catch {
 						setSaved(false);
 					}
 				}, 500),
@@ -92,7 +95,7 @@ export default function StoreProvider({
 			{children}
 			{problems && <ConflictDialog problems={problems} />}
 			{(loaded || saved) && (
-				<Sheet
+				<Paper
 					sx={{
 						px: 1,
 						opacity: 0.5,
@@ -105,7 +108,7 @@ export default function StoreProvider({
 						right: 'calc(env(safe-area-inset-right) + 10px)',
 					}}>
 					<Typography>{loaded ? 'Loaded' : 'Saved'}</Typography>
-				</Sheet>
+				</Paper>
 			)}
 		</Provider>
 	);

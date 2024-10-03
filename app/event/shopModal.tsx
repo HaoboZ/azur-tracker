@@ -1,22 +1,20 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
 import {
 	Button,
 	DialogActions,
+	DialogContent,
 	DialogTitle,
-	FormLabel,
-	Grid,
-	ListItemContent,
-	ModalClose,
-	ModalDialog,
+	Grid2,
+	ListItemText,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 import { indexBy, mapValues } from 'remeda';
@@ -59,7 +57,7 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 			columnHelper.accessor('wanted', {
 				header: 'Wanted',
 				cell: ({ getValue, row }) => (
-					<FormattedInput
+					<FormattedTextField
 						key='name'
 						type='number'
 						placeholder='0'
@@ -88,51 +86,49 @@ export default function ShopModal({ eventShopData }: Pick<EventType, 'eventShopD
 		getRowId: pget('name'),
 		enableSorting: false,
 		renderRow: ({ cells, render }) => (
-			<Grid container spacing={1}>
-				<Grid xs={8}>
-					<ListItemContent>
-						<Typography>{cells.name.getValue<string>()}</Typography>
-						<Typography level='body-sm'>
-							cost: {cells.cost.getValue<string>()} amount: {cells.amount.getValue<string>()}
-						</Typography>
-					</ListItemContent>
-				</Grid>
-				<Grid xs={4}>
-					<FormLabel>Wanted</FormLabel>
+			<Grid2 container spacing={1}>
+				<Grid2 size={8}>
+					<ListItemText
+						secondary={`cost: ${cells.cost.getValue<string>()} amount: ${cells.amount.getValue<string>()}`}>
+						{cells.name.getValue<string>()}
+					</ListItemText>
+				</Grid2>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Wanted</Typography>
 					{render(cells.wanted)}
-				</Grid>
-			</Grid>
+				</Grid2>
+			</Grid2>
 		),
 	});
 
 	return (
-		<ModalWrapper>
-			<ModalDialog minWidth='sm'>
-				<DialogTitle>Shop Items</DialogTitle>
-				<ModalClose />
+		<DialogWrapper>
+			<DialogTitle>Shop Items</DialogTitle>
+			<DialogContent>
 				<PageSection
 					title={`Expected / All: ${expectedCost} / ${buyoutCost}`}
-					sx={{ overflowY: 'auto' }}>
+					titleProps={{ variant: 'body1' }}>
 					<DataDisplay table={table} />
 				</PageSection>
-				<DialogActions>
-					<Button
-						onClick={() => {
-							dispatch(
-								eventActions.setShop({
-									shop: mapValues(indexBy(shop, pget('name')), pget('wanted')),
-									total: expectedCost,
-								}),
-							);
-							closeModal();
-						}}>
-						Save
-					</Button>
-					<Button variant='plain' color='neutral' onClick={closeModal}>
-						Cancel
-					</Button>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+			</DialogContent>
+			<DialogActions>
+				<Button
+					variant='contained'
+					onClick={() => {
+						dispatch(
+							eventActions.setShop({
+								shop: mapValues(indexBy(shop, pget('name')), pget('wanted')),
+								total: expectedCost,
+							}),
+						);
+						closeModal();
+					}}>
+					Save
+				</Button>
+				<Button color='error' onClick={closeModal}>
+					Cancel
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

@@ -1,9 +1,10 @@
 'use client';
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material';
-import type { ButtonProps, MenuItemProps } from '@mui/joy';
-import { ButtonGroup, Dropdown, Menu, MenuButton } from '@mui/joy';
+import type { ButtonProps, MenuItemProps } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 import type { MouseEventHandler, ReactNode } from 'react';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
+import Dropdown from './dropdown';
 import AsyncButton from './loaders/asyncButton';
 import AsyncMenuItem from './loaders/asyncMenuItem';
 
@@ -30,24 +31,25 @@ export default function Actions({ items, max }: { items: ActionProps[]; max?: nu
 		</AsyncButton>
 	));
 
-	if (menu.length) buttonElements.push(<ButtonMenu key={-1} menu={menu} />);
+	if (menu.length)
+		buttonElements.push(
+			<Dropdown key={-1} button={<MoreHorizIcon />}>
+				{(closeMenu) =>
+					menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
+						<AsyncMenuItem
+							key={index}
+							onClick={(event) => {
+								onClick(event);
+								closeMenu();
+							}}
+							{...menuItemProps}
+							{...props}>
+							{name}
+						</AsyncMenuItem>
+					))
+				}
+			</Dropdown>,
+		);
 
 	return <ButtonGroup>{buttonElements}</ButtonGroup>;
 }
-
-const ButtonMenu = forwardRef<HTMLButtonElement, { menu: ActionProps[] }>(function ({ menu }, ref) {
-	return (
-		<Dropdown>
-			<MenuButton ref={ref} data-last-child>
-				<MoreHorizIcon />
-			</MenuButton>
-			<Menu>
-				{menu.map(({ name, onClick, menuItemProps, ...props }, index) => (
-					<AsyncMenuItem key={index} onClick={onClick} {...menuItemProps} {...props}>
-						{name}
-					</AsyncMenuItem>
-				))}
-			</Menu>
-		</Dropdown>
-	);
-});

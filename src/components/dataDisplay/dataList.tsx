@@ -2,14 +2,14 @@
 import {
 	Accordion,
 	AccordionDetails,
-	AccordionGroup,
 	AccordionSummary,
+	Divider,
 	List,
-	ListDivider,
 	ListItem,
 	ListItemButton,
+	Stack,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import type { Cell, Row, RowData, Table } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Fragment } from 'react';
@@ -20,7 +20,7 @@ import Sortable from '../sortable';
 export default function DataList<TData extends RowData>({ table }: { table: Table<TData> }) {
 	const { rows } = table.getRowModel();
 
-	if (!rows.length) return <Typography textAlign='center'>No Items</Typography>;
+	if (!rows.length) return <Typography sx={{ textAlign: 'center' }}>No Items</Typography>;
 
 	const { renderRow, onRowClick, renderSubComponent, setData } = table.options.meta;
 
@@ -32,6 +32,7 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 		return renderSubComponent ? (
 			<Accordion
 				key={row.id}
+				elevation={0}
 				{...containerProps}
 				expanded={row.getIsExpanded()}
 				onChange={
@@ -55,7 +56,7 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 						renderRow({ cells, render, row, table, handleProps })
 					)}
 				</ListItem>
-				<ListDivider />
+				<Divider />
 			</Fragment>
 		);
 	};
@@ -70,9 +71,5 @@ export default function DataList<TData extends RowData>({ table }: { table: Tabl
 		rows.map((row) => renderRowItem(row))
 	);
 
-	return renderSubComponent ? (
-		<AccordionGroup size='sm'>{content}</AccordionGroup>
-	) : (
-		<List size='sm'>{content}</List>
-	);
+	return renderSubComponent ? <Stack>{content}</Stack> : <List>{content}</List>;
 }

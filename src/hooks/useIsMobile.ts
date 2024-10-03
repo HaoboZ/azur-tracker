@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/joy';
+import { useTheme } from '@mui/material';
 import { useMediaMatch } from 'rooks';
 
 export default function useIsMobile() {

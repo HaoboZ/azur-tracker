@@ -8,13 +8,12 @@ import {
 	Box,
 	DialogTitle,
 	drawerClasses,
-	FormLabel,
-	Grid,
+	Grid2,
 	Link,
-	Option,
+	MenuItem,
 	Select,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
 import { indexBy } from 'remeda';
@@ -24,7 +23,7 @@ import type { FleetType, Ship } from '../type';
 import EquipModal from './equip/modal';
 import type { EquipType } from './equip/type';
 
-export default function ShipModal({
+export default function ShipDrawer({
 	ship,
 	filterMeta,
 	selectedEquip,
@@ -58,84 +57,97 @@ export default function ShipModal({
 		<DrawerWrapper
 			anchor='bottom'
 			sx={{
-				'height': 'unset',
-				'display': 'flex',
-				'justifyContent': 'center',
-				'--Drawer-verticalSize': 0,
-				[`.${drawerClasses.content}`]: { overflow: 'hidden', maxWidth: 800 },
+				[`.${drawerClasses.paper}`]: {
+					justifySelf: 'center',
+					maxWidth: 800,
+					borderRadius: '16px 16px 0 0',
+				},
 			}}>
 			<DialogTitle>
 				<Link
 					href={`https://azurlane.koumakan.jp/wiki/${ship.id}`}
 					target='_blank'
-					variant='plain'
-					color='neutral'>
+					underline='none'
+					color='textPrimary'>
 					{ship.name}
 				</Link>
 			</DialogTitle>
-			<Grid container spacing={1} alignItems='center' p={2}>
-				<Grid xs={4}>
-					<FormLabel>Rarity</FormLabel>
+			<Grid2 container spacing={1} sx={{ alignItems: 'center', p: 2 }}>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Rarity</Typography>
 					<Typography>{ship.rarity}</Typography>
-				</Grid>
-				<Grid xs={4}>
-					<FormLabel>Faction</FormLabel>
+				</Grid2>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Faction</Typography>
 					<Typography>{ship.faction}</Typography>
-				</Grid>
-				<Grid xs={4}>
-					<FormLabel>Type</FormLabel>
+				</Grid2>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Type</Typography>
 					<Typography>{ship.type}</Typography>
-				</Grid>
-				<Grid xs={4}>
+				</Grid2>
+				<Grid2 size={4}>
 					<Typography>Tier: {tier}</Typography>
-				</Grid>
-				<Grid xs={4}>
-					<FormLabel>Love</FormLabel>
+				</Grid2>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Love</Typography>
 					<Select
+						fullWidth
 						value={ships[ship.id]?.love || 0}
-						renderValue={({ value }) => AffinityIcons[value]}
-						onChange={(_, value) => {
-							dispatch(fleetActions.setShip({ name: ship.id, ship: { love: value } }));
+						renderValue={(value) => AffinityIcons[value]}
+						onChange={({ target }) => {
+							dispatch(
+								fleetActions.setShip({
+									name: ship.id,
+									ship: { love: target.value as number },
+								}),
+							);
 						}}>
 						{AffinityIcons.map((icon, i) => (
-							<Option key={i} value={i}>
+							<MenuItem key={i} value={i}>
 								{icon}
-							</Option>
+							</MenuItem>
 						))}
 					</Select>
-				</Grid>
-				<Grid xs={4}>
-					<FormLabel>Max Level</FormLabel>
+				</Grid2>
+				<Grid2 size={4}>
+					<Typography variant='subtitle2'>Max Level</Typography>
 					<Select
+						fullWidth
 						value={ships[ship.id]?.lvl || 0}
-						renderValue={({ value }) => (value === 126 ? <StarIcon fontSize='xl' /> : value)}
-						onChange={(_, value) => {
-							dispatch(fleetActions.setShip({ name: ship.id, ship: { lvl: value } }));
+						renderValue={(value) => (value === 126 ? <StarIcon fontSize='small' /> : value)}
+						onChange={({ target }) => {
+							dispatch(
+								fleetActions.setShip({
+									name: ship.id,
+									ship: { lvl: target.value as number },
+								}),
+							);
 						}}>
 						{[0, 70, 80, 90, 100, 105, 110, 115, 120, 125].map((value) => (
-							<Option key={value} value={value}>
+							<MenuItem key={value} value={value}>
 								{value}
-							</Option>
+							</MenuItem>
 						))}
-						<Option value={126}>
+						<MenuItem value={126}>
 							<StarIcon />
-						</Option>
+						</MenuItem>
 					</Select>
-				</Grid>
-				<Grid container xs={12} alignItems='center' justifyContent='center'>
+				</Grid2>
+				<Grid2 container size={12} sx={{ alignItems: 'center', justifyContent: 'center' }}>
 					{[...Array(5)].map((_, index) => {
 						const val = ship.equip[index];
 						const equip = equipIndex[val?.[0]];
 						const meta = filterMeta?.[index];
 						return (
-							<Grid
+							<Grid2
 								key={index}
-								sm
-								xs={4}
-								p={1}
-								display='flex'
-								flexDirection='column'
-								alignItems='center'
+								size={{ xs: 4, sm: 'grow' }}
+								sx={{
+									p: 1,
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+								}}
 								onClick={() => {
 									showModal(EquipModal, {
 										id: 'equip',
@@ -153,7 +165,7 @@ export default function ShipModal({
 									width={128}
 									className={`color-${rarityColors[equip?.rarity]}`}
 								/>
-								<Box display='flex' alignItems='center'>
+								<Box sx={{ display: 'flex', alignItems: 'center' }}>
 									<TierIcon tier={val?.[2]} />
 									{meta ? (
 										<Fragment>
@@ -162,11 +174,11 @@ export default function ShipModal({
 										</Fragment>
 									) : undefined}
 								</Box>
-							</Grid>
+							</Grid2>
 						);
 					})}
-				</Grid>
-			</Grid>
+				</Grid2>
+			</Grid2>
 		</DrawerWrapper>
 	);
 }

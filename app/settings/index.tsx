@@ -1,6 +1,5 @@
 'use client';
 import AsyncButton from '@/components/loaders/asyncButton';
-import OverflowTypography from '@/components/overflowTypography';
 import PageContainer from '@/components/page/container';
 import PageLink from '@/components/page/link';
 import PageTitle from '@/components/page/title';
@@ -20,14 +19,14 @@ import {
 import {
 	Button,
 	ButtonGroup,
-	IconButton,
 	List,
 	ListItem,
-	ListItemContent,
+	ListItemText,
+	ToggleButton,
 	ToggleButtonGroup,
 	Typography,
 	useColorScheme,
-} from '@mui/joy';
+} from '@mui/material';
 import type { Session } from 'next-auth';
 import Link from 'next/link';
 import { useSnackbar } from 'notistack';
@@ -47,16 +46,19 @@ export default function Settings({ user }: { user: Session['user'] }) {
 			<PageTitle>Settings</PageTitle>
 			<List sx={{ '.longText': { width: '80%' } }}>
 				<ListItem>
-					<ListItemContent>
+					<ListItemText>
 						{user ? `Account: ${user.email}` : 'Sign in for Cloud Save'}
-					</ListItemContent>
-					<Button component={Link} href={`/api/auth/${user ? 'signout' : 'signin'}`}>
+					</ListItemText>
+					<Button
+						variant='contained'
+						component={Link}
+						href={`/api/auth/${user ? 'signout' : 'signin'}`}>
 						{user ? 'Sign Out' : 'Sign In'}
 					</Button>
 				</ListItem>
 				{user && (
 					<ListItem>
-						<ListItemContent>Cloud Sync</ListItemContent>
+						<ListItemText>Cloud Sync</ListItemText>
 						<ButtonGroup>
 							<AsyncButton
 								onClick={async () => {
@@ -76,28 +78,28 @@ export default function Settings({ user }: { user: Session['user'] }) {
 					</ListItem>
 				)}
 				<ListItem>
-					<ListItemContent>Theme</ListItemContent>
+					<ListItemText>Theme</ListItemText>
 					<ToggleButtonGroup value={mode}>
-						<IconButton value='system' onClick={() => setMode('system')}>
+						<ToggleButton value='system' onClick={() => setMode('system')}>
 							<Brightness4Icon />
-						</IconButton>
-						<IconButton value='light' onClick={() => setMode('light')}>
+						</ToggleButton>
+						<ToggleButton value='light' onClick={() => setMode('light')}>
 							<BrightnessHighIcon />
-						</IconButton>
-						<IconButton value='dark' onClick={() => setMode('dark')}>
+						</ToggleButton>
+						<ToggleButton value='dark' onClick={() => setMode('dark')}>
 							<Brightness3Icon />
-						</IconButton>
+						</ToggleButton>
 					</ToggleButtonGroup>
 				</ListItem>
 				<ListItem>
-					<ListItemContent>
-						<PageLink href='/event'>Event Tracker</PageLink>
-						<OverflowTypography level='body-sm'>
-							calculates farming runs for any stage until you reach your target points
-						</OverflowTypography>
-					</ListItemContent>
+					<ListItemText secondary='calculates farming runs for any stage until you reach your target points'>
+						<PageLink href='/event' underline='hover'>
+							Event Tracker
+						</PageLink>
+					</ListItemText>
 					<Button
-						color='danger'
+						color='error'
+						variant='contained'
 						onClick={async () => {
 							if (!confirm('Are you sure you want to reset this data?')) return;
 							dispatch(eventActions.reset());
@@ -106,14 +108,14 @@ export default function Settings({ user }: { user: Session['user'] }) {
 					</Button>
 				</ListItem>
 				<ListItem>
-					<ListItemContent>
-						<PageLink href='/research'>Research Tracker</PageLink>
-						<OverflowTypography level='body-sm'>
-							calculates number of strengthening units for pr ships until max
-						</OverflowTypography>
-					</ListItemContent>
+					<ListItemText secondary='calculates number of strengthening units for pr ships until max'>
+						<PageLink href='/research' underline='hover'>
+							Research Tracker
+						</PageLink>
+					</ListItemText>
 					<Button
-						color='danger'
+						color='error'
+						variant='contained'
 						onClick={async () => {
 							if (!confirm('Are you sure you want to reset this data?')) return;
 							dispatch(researchActions.reset());
@@ -122,14 +124,14 @@ export default function Settings({ user }: { user: Session['user'] }) {
 					</Button>
 				</ListItem>
 				<ListItem>
-					<ListItemContent>
-						<PageLink href='/fleet'>Fleet Tracker</PageLink>
-						<OverflowTypography level='body-sm'>
-							for those who want a fully leveled, fully equipped fleet
-						</OverflowTypography>
-					</ListItemContent>
+					<ListItemText secondary='for those who want a fully leveled, fully equipped fleet'>
+						<PageLink href='/fleet' underline='hover'>
+							Fleet Tracker
+						</PageLink>
+					</ListItemText>
 					<Button
-						color='danger'
+						color='error'
+						variant='contained'
 						onClick={async () => {
 							if (!confirm('Are you sure you want to reset this data?')) return;
 							dispatch(fleetActions.reset());
@@ -138,7 +140,10 @@ export default function Settings({ user }: { user: Session['user'] }) {
 					</Button>
 				</ListItem>
 			</List>
-			<Typography level='body-xs' textAlign='right' px={2}>
+			<Typography
+				variant='caption'
+				color='textDisabled'
+				sx={{ display: 'block', textAlign: 'right', px: 2 }}>
 				v{packageJson.version}
 			</Typography>
 		</PageContainer>

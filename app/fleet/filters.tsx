@@ -1,9 +1,10 @@
+import Dropdown from '@/components/dropdown';
 import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { Autocomplete, Box, Checkbox, Dropdown, ListItem, Menu, MenuButton, Stack } from '@mui/joy';
+import { Autocomplete, Checkbox, ListItem, ListItemText, Stack, TextField } from '@mui/material';
 import type { Table } from '@tanstack/react-table';
 import { useEffect, useRef } from 'react';
 import { useDebounce, useWindowEventListener } from 'rooks';
@@ -86,54 +87,50 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	}, [ships]);
 
 	return (
-		<Box mx={2} mb={2}>
-			<Stack direction='row' spacing={1}>
-				<EquipFilter
-					sx={{ flex: 1 }}
-					equipList={equipData}
-					setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
-				/>
-				<Autocomplete
-					freeSolo
-					options={searchOptions}
-					placeholder='Search'
-					startDecorator={<SearchIcon />}
-					sx={{ flex: 1 }}
-					onInputChange={(_, value) => globalFilter(value)}
-				/>
-				<Dropdown>
-					<MenuButton>Filter</MenuButton>
-					<Menu>
-						<ListItem>
-							<Checkbox
-								label='Maxed Level'
-								checked={filter.levelMax}
-								onChange={({ target }) => {
-									dispatch(fleetActions.setFilter({ levelMax: target.checked }));
-								}}
-							/>
-						</ListItem>
-						<ListItem>
-							<Checkbox
-								label='Maxed Equip'
-								checked={filter.equipMax}
-								onChange={({ target }) => {
-									dispatch(fleetActions.setFilter({ equipMax: target.checked }));
-								}}
-							/>
-						</ListItem>
-						<ListItem>
-							<Checkbox
-								label='0 Level'
-								checked={filter.level0}
-								onChange={({ target }) => {
-									dispatch(fleetActions.setFilter({ level0: target.checked }));
-								}}
-							/>
-						</ListItem>
-					</Menu>
-				</Dropdown>
-			</Stack>
-		</Box>
+		<Stack direction='row' spacing={1}>
+			<EquipFilter
+				equipList={equipData}
+				setValue={(equip) => table.getColumn('equip').setFilterValue(equip)}
+			/>
+			<Autocomplete
+				fullWidth
+				freeSolo
+				options={searchOptions}
+				renderInput={(params) => {
+					params.InputProps.startAdornment = <SearchIcon />;
+					return <TextField label='Search' {...params} />;
+				}}
+				onInputChange={(_, value) => globalFilter(value)}
+			/>
+			<Dropdown button='Filter'>
+				<ListItem>
+					<Checkbox
+						checked={filter.levelMax}
+						onChange={({ target }) => {
+							dispatch(fleetActions.setFilter({ levelMax: target.checked }));
+						}}
+					/>
+					<ListItemText>Maxed Level</ListItemText>
+				</ListItem>
+				<ListItem>
+					<Checkbox
+						checked={filter.equipMax}
+						onChange={({ target }) => {
+							dispatch(fleetActions.setFilter({ equipMax: target.checked }));
+						}}
+					/>
+					<ListItemText>Maxed Equip</ListItemText>
+				</ListItem>
+				<ListItem>
+					<Checkbox
+						checked={filter.level0}
+						onChange={({ target }) => {
+							dispatch(fleetActions.setFilter({ level0: target.checked }));
+						}}
+					/>
+					<ListItemText>0 Level</ListItemText>
+				</ListItem>
+			</Dropdown>
+		</Stack>
 	);
 }

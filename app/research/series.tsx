@@ -1,9 +1,16 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import pget from '@/src/helpers/pget';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { researchActions } from '@/src/store/reducers/researchReducer';
-import { Avatar, FormLabel, Grid, ListItemContent, ListItemDecorator, Typography } from '@mui/joy';
+import {
+	Avatar,
+	Grid2,
+	inputBaseClasses,
+	ListItemAvatar,
+	ListItemText,
+	Typography,
+} from '@mui/material';
 import { createColumnHelper, flexRender } from '@tanstack/react-table';
 import Image from 'next/image';
 import { Fragment, useMemo } from 'react';
@@ -113,7 +120,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				header: 'Name',
 				cell: ({ getValue, row }) => (
 					<Fragment>
-						<Avatar size='lg' sx={{ borderRadius: 4 }}>
+						<Avatar variant='rounded'>
 							<Image
 								src={row.original.image}
 								alt={row.original.name}
@@ -129,7 +136,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				id: 'devLevel',
 				header: 'Dev Level',
 				cell: ({ row }) => (
-					<FormattedInput
+					<FormattedTextField
 						type='number'
 						inputMode='numeric'
 						value={row.original.devLevel || 0}
@@ -148,11 +155,15 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				id: 'devStage',
 				header: 'Dev Stage',
 				cell: ({ row }) => (
-					<FormattedInput
+					<FormattedTextField
 						type='number'
 						inputMode='numeric'
-						className='numberInput'
-						endDecorator={`/${row.original.devLevels[row.original.type * 2] * 10}`}
+						slotProps={{
+							input: {
+								endAdornment: `/${row.original.devLevels[row.original.type * 2] * 10}`,
+							},
+						}}
+						sx={{ [`.${inputBaseClasses.input}`]: { textAlign: 'right', pr: 1 } }}
 						value={row.original.devStage || 0}
 						onChange={({ target }) => {
 							dispatch(
@@ -173,7 +184,7 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				cell: ({ row }) => {
 					if (!row.original.fate) return;
 					return (
-						<FormattedInput
+						<FormattedTextField
 							type='number'
 							inputMode='numeric'
 							value={row.original.fateLevel || 0}
@@ -195,11 +206,11 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 				cell: ({ row }) => {
 					if (!row.original.fate) return;
 					return (
-						<FormattedInput
+						<FormattedTextField
 							type='number'
 							inputMode='numeric'
-							className='numberInput'
-							endDecorator='%'
+							slotProps={{ input: { endAdornment: '%' } }}
+							sx={{ [`.${inputBaseClasses.input}`]: { textAlign: 'right', pr: 1 } }}
 							value={row.original.fateStage || 0}
 							onChange={({ target }) => {
 								dispatch(
@@ -230,51 +241,49 @@ export default function ResearchSeries({ researchShips }: { researchShips: Resea
 		enableSorting: false,
 		renderRow: ({ row }) => (
 			<Fragment>
-				<ListItemDecorator>
-					<Avatar size='lg' sx={{ borderRadius: 4 }}>
+				<ListItemAvatar>
+					<Avatar variant='rounded'>
 						<Image src={row.original.image} alt={row.original.name} width={48} height={48} />
 					</Avatar>
-				</ListItemDecorator>
-				<ListItemContent>
-					<Typography>{row.original.name}</Typography>
-					<Typography level='body-sm'>
-						Needs: {row.original.devPrints + row.original.fatePrints} Prints
-					</Typography>
-				</ListItemContent>
+				</ListItemAvatar>
+				<ListItemText
+					secondary={`Needs: ${row.original.devPrints + row.original.fatePrints} Prints`}>
+					{row.original.name}
+				</ListItemText>
 			</Fragment>
 		),
 		renderSubComponent: (row) => {
 			const cells = indexBy(row.getVisibleCells(), pget('column.id'));
 
 			return (
-				<Grid container spacing={1}>
-					<Grid xs={6}>
-						<FormLabel>Dev Level</FormLabel>
+				<Grid2 container spacing={1}>
+					<Grid2 size={6}>
+						<Typography variant='subtitle2'>Dev Level</Typography>
 						{flexRender(cells.devLevel.column.columnDef.cell, cells.devLevel.getContext())}
-					</Grid>
-					<Grid xs={6}>
-						<FormLabel>Dev Stage</FormLabel>
+					</Grid2>
+					<Grid2 size={6}>
+						<Typography variant='subtitle2'>Dev Stage</Typography>
 						{flexRender(cells.devStage.column.columnDef.cell, cells.devStage.getContext())}
-					</Grid>
+					</Grid2>
 					{Boolean(row.original.fate) && (
 						<Fragment>
-							<Grid xs={6}>
-								<FormLabel>Fate Level</FormLabel>
+							<Grid2 size={6}>
+								<Typography variant='subtitle2'>Fate Level</Typography>
 								{flexRender(
 									cells.fateLevel.column.columnDef.cell,
 									cells.fateLevel.getContext(),
 								)}
-							</Grid>
-							<Grid xs={6}>
-								<FormLabel>Fate Stage</FormLabel>
+							</Grid2>
+							<Grid2 size={6}>
+								<Typography variant='subtitle2'>Fate Stage</Typography>
 								{flexRender(
 									cells.fateStage.column.columnDef.cell,
 									cells.fateStage.getContext(),
 								)}
-							</Grid>
+							</Grid2>
 						</Fragment>
 					)}
-				</Grid>
+				</Grid2>
 			);
 		},
 	});

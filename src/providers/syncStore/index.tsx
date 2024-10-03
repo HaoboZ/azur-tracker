@@ -31,5 +31,9 @@ export default async function SyncStoreProvider({ children }: { children: ReactN
 		}
 	}
 
-	return <StoreProvider serverData={serverData}>{children}</StoreProvider>;
+	return (
+		<StoreProvider authenticated={Boolean(session?.user)} serverData={serverData}>
+			{children}
+		</StoreProvider>
+	);
 }

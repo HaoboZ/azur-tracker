@@ -5,7 +5,7 @@ import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Link, Stack, Typography } from '@mui/joy';
+import { Link, Stack, Typography } from '@mui/material';
 import { differenceInDays } from 'date-fns';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -49,9 +49,9 @@ export default function Event() {
 		remainingPoints = Math.max(neededPoints - event.points, 0);
 
 	return (
-		<PageContainer noSsr>
+		<PageContainer>
 			<PageTitle>Event Tracker</PageTitle>
-			<Stack display='flex' justifyContent='center' alignItems='center'>
+			<Stack sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 				<Link href={eventData.href} target='_blank'>
 					<Image
 						src={eventData.image}
@@ -61,7 +61,7 @@ export default function Event() {
 						style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
 					/>
 				</Link>
-				<Typography level='title-lg'>{eventData.name}</Typography>
+				<Typography variant='h3'>{eventData.name}</Typography>
 			</Stack>
 			<EventFields time={time} neededPoints={neededPoints} />
 			<EventFarming remainingPoints={remainingPoints} />

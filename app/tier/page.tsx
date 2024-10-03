@@ -2,7 +2,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import { auth } from '@/src/auth';
 import pget from '@/src/helpers/pget';
-import { Button, Grid } from '@mui/joy';
+import { Button, Grid2 } from '@mui/material';
 import axios from 'axios';
 import csvtojson from 'csvtojson';
 import type { Metadata } from 'next';
@@ -23,15 +23,15 @@ export default async function TierPage() {
 	return (
 		<PageContainer>
 			<PageTitle>Tier</PageTitle>
-			<Grid container spacing={1} pt={2}>
+			<Grid2 container spacing={1} sx={{ pt: 2 }}>
 				{(await csvtojson().fromString(data)).map(pget('type')).map((type) => (
-					<Grid key={type} xs={6} sm={4} md={3}>
-						<Button fullWidth component={Link} href={`/tier/${type}`}>
+					<Grid2 key={type} size={{ xs: 6, sm: 4, md: 3 }}>
+						<Button fullWidth variant='contained' component={Link} href={`/tier/${type}`}>
 							{type}
 						</Button>
-					</Grid>
+					</Grid2>
 				))}
-			</Grid>
+			</Grid2>
 		</PageContainer>
 	);
 }

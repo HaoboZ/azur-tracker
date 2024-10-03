@@ -1,8 +1,8 @@
-import VirtualAutocompleteListbox from '@/components/virtualAutocompleteListbox';
+import { VirtualGroupedListbox } from '@/components/virtualListbox';
 import pget from '@/src/helpers/pget';
 import { Search as SearchIcon } from '@mui/icons-material';
-import type { AutocompleteProps } from '@mui/joy';
-import { Autocomplete, AutocompleteOption, ListItemContent, ListItemDecorator } from '@mui/joy';
+import type { AutocompleteProps } from '@mui/material';
+import { Autocomplete, ListItem, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
 import { rarityColors } from '../../../colors';
 import type { EquipType } from './type';
@@ -38,30 +38,31 @@ export default function EquipFilter({
 >) {
 	return (
 		<Autocomplete
-			multiple={false}
+			fullWidth
+			slots={{ listbox: VirtualGroupedListbox }}
 			options={equipList}
-			slots={{ listbox: VirtualAutocompleteListbox }}
+			getOptionKey={pget('id')}
 			getOptionLabel={pget('name')}
 			isOptionEqualToValue={({ id }, value) => id === value?.id}
 			value={value}
+			renderInput={(params) => {
+				params.InputProps.startAdornment = <SearchIcon />;
+				return <TextField label='Equipment' {...params} />;
+			}}
 			renderOption={(props, option) => (
-				<AutocompleteOption {...props} key={option.id}>
-					<ListItemDecorator sx={{ pr: 1 }}>
-						<Image
-							src={`https://azurlane.netojuu.com/images/${option.image}`}
-							alt={option.name}
-							height={48}
-							width={48}
-							style={{ borderRadius: 4 }}
-							className={`color-${rarityColors[option.rarity]}`}
-						/>
-					</ListItemDecorator>
-					<ListItemContent>{option.name}</ListItemContent>
-				</AutocompleteOption>
+				<ListItem {...props} key={props.id}>
+					<Image
+						src={`https://azurlane.netojuu.com/images/${option.image}`}
+						alt={option.name}
+						height={48}
+						width={48}
+						style={{ borderRadius: 4 }}
+						className={`color-${rarityColors[option.rarity]}`}
+					/>
+					<Typography sx={{ pl: 1 }}>{option.name}</Typography>
+				</ListItem>
 			)}
 			groupBy={({ type }) => typeNames[type]}
-			placeholder='Equipment'
-			startDecorator={<SearchIcon />}
 			onChange={(_, newValue: EquipType) => setValue(newValue || undefined)}
 			{...props}
 		/>

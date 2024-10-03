@@ -1,21 +1,21 @@
 import pget from '@/src/helpers/pget';
 import useEventListener from '@/src/hooks/useEventListener';
 import { useModalControls } from '@/src/providers/modal';
-import ModalWrapper from '@/src/providers/modal/dialog';
+import DialogWrapper from '@/src/providers/modal/dialog';
 import { useAppDispatch } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import {
 	Alert,
 	Button,
 	DialogActions,
+	DialogContent,
 	DialogTitle,
-	Grid,
+	FormControlLabel,
+	Grid2,
 	Link,
-	ModalClose,
-	ModalDialog,
 	Switch,
 	Typography,
-} from '@mui/joy';
+} from '@mui/material';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { indexBy, pipe, sortBy } from 'remeda';
@@ -72,9 +72,9 @@ export default function EquipModal({
 	const [override, setOverride] = useState(() => info.ship.equip[info.index]?.[1] || 0);
 
 	// saves info on close
-	useEventListener(events, 'close', (cancel) => {
+	useEventListener(events, 'close', (close) => {
 		const _equip = info.ship.equip[info.index];
-		if (cancel || (_equip?.[0] === equip?.id && _equip?.[1] === override)) return;
+		if (!close || (_equip?.[0] === equip?.id && _equip?.[1] === override)) return;
 
 		const shipEquip = structuredClone(info.ship.equip);
 		shipEquip[info.index] = equip ? [equip?.id, override, 6] : ([] as any);
@@ -84,20 +84,20 @@ export default function EquipModal({
 	});
 
 	return (
-		<ModalWrapper
-			sx={{ 'display': 'flex', 'justifyContent': 'center', '--ModalDialog-maxWidth': '500px' }}>
-			<ModalDialog>
-				<DialogTitle>Switch Equipment</DialogTitle>
-				<ModalClose />
-				<Grid container spacing={1}>
+		<DialogWrapper maxWidth='sm'>
+			<DialogTitle>Switch Equipment</DialogTitle>
+			<DialogContent>
+				<Grid2 container spacing={1}>
 					{info.ship.special[info.index] ? (
-						<Grid xs={12}>
-							<Alert variant='solid' color='warning'>
+						<Grid2 size={12}>
+							<Alert variant='filled' color='warning'>
 								Special Equip Slot (Check Skills & Equipment)
 							</Alert>
-						</Grid>
+						</Grid2>
 					) : undefined}
-					<Grid xs={5} display='flex' flexDirection='column' alignItems='center'>
+					<Grid2
+						size={5}
+						sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
 						<Image
 							src={
 								currentEquip?.image
@@ -113,16 +113,21 @@ export default function EquipModal({
 							<Link
 								target='_blank'
 								href={`https://azurlane.koumakan.jp/wiki/${currentEquip.href}`}
-								variant='plain'
-								color='neutral'>
+								underline='none'
+								color='textPrimary'
+								sx={{ textAlign: 'center' }}>
 								{currentEquip.name}
 							</Link>
 						)}
-					</Grid>
-					<Grid xs={2} display='flex' justifyContent='center' alignItems='center'>
-						<Typography level='h4'>⇒</Typography>
-					</Grid>
-					<Grid xs={5} display='flex' flexDirection='column' alignItems='center'>
+					</Grid2>
+					<Grid2
+						size={2}
+						sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+						<Typography variant='h4'>⇒</Typography>
+					</Grid2>
+					<Grid2
+						size={5}
+						sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
 						<Image
 							src={
 								equip?.image
@@ -139,34 +144,41 @@ export default function EquipModal({
 							<Link
 								target='_blank'
 								href={`https://azurlane.koumakan.jp/wiki/${equip.href}`}
-								variant='plain'
-								color='neutral'>
+								underline='none'
+								color='textPrimary'
+								sx={{ textAlign: 'center' }}>
 								{equip.name}
 							</Link>
 						)}
-					</Grid>
-					<Grid xs={12} md={6}>
+					</Grid2>
+					<Grid2 size={{ xs: 12, md: 6 }}>
 						<EquipTierSelector
 							equipList={tierList}
 							setEquip={(id) => setEquip(equipListIndex[id])}
 						/>
-					</Grid>
-					<Grid xs={12} md={6}>
+					</Grid2>
+					<Grid2 size={{ xs: 12, md: 6 }}>
 						<EquipFilter equipList={equipList} value={equip} setValue={setEquip} />
-					</Grid>
-				</Grid>
-				<DialogActions>
-					<Button onClick={() => closeModal()}>Close</Button>
-					<Button variant='plain' color='neutral' onClick={() => closeModal(true)}>
-						Cancel
-					</Button>
-					<Switch
-						startDecorator='Force BiS'
-						checked={Boolean(override)}
-						onChange={({ target }) => setOverride(+target.checked)}
-					/>
-				</DialogActions>
-			</ModalDialog>
-		</ModalWrapper>
+					</Grid2>
+				</Grid2>
+			</DialogContent>
+			<DialogActions>
+				<FormControlLabel
+					label='Force BiS'
+					control={
+						<Switch
+							checked={Boolean(override)}
+							onChange={({ target }) => setOverride(+target.checked)}
+						/>
+					}
+				/>
+				<Button variant='contained' onClick={() => closeModal(true)}>
+					Close
+				</Button>
+				<Button color='error' onClick={() => closeModal()}>
+					Cancel
+				</Button>
+			</DialogActions>
+		</DialogWrapper>
 	);
 }

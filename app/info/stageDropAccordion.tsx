@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Table } from '@mui/joy';
+import { Accordion, AccordionDetails, AccordionSummary, Table } from '@mui/material';
 import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';

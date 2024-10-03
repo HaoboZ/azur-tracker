@@ -4,7 +4,7 @@ import PageContainer from '@/components/page/container';
 import PageTitle from '@/components/page/title';
 import MultiSortable from '@/components/sortable/multi';
 import pget from '@/src/helpers/pget';
-import { Grid, Sheet, Stack, Tooltip } from '@mui/joy';
+import { Grid2, Paper, Stack, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, isIncludedIn, isNot, mapValues, omit } from 'remeda';
@@ -57,12 +57,12 @@ export default function TierType({
 				groups={tiers}
 				setGroups={setTiers}
 				renderItems={(list, ref) => (
-					<Grid ref={ref} container spacing={1} minHeight={65}>
+					<Grid2 ref={ref} container spacing={1} sx={{ minHeight: 65 }}>
 						{list}
-					</Grid>
+					</Grid2>
 				)}
 				renderItem={(item, containerProps, handleProps) => (
-					<Grid {...containerProps} {...handleProps}>
+					<Grid2 {...containerProps} {...handleProps}>
 						<Tooltip title={item.name}>
 							<Image
 								src={`https://azurlane.netojuu.com/images/${item.image}`}
@@ -72,25 +72,25 @@ export default function TierType({
 								className={`color-${rarityColors[item.rarity]}`}
 							/>
 						</Tooltip>
-					</Grid>
+					</Grid2>
 				)}>
 				{({ unTiered, ...tiers }) => (
-					<Grid container spacing={1}>
-						<Grid xs={6}>
-							<Sheet variant='outlined' sx={{ p: 1 }}>
+					<Grid2 container spacing={1}>
+						<Grid2 size={6}>
+							<Paper variant='outlined' sx={{ p: 1 }}>
 								{unTiered}
-							</Sheet>
-						</Grid>
-						<Grid xs={6}>
+							</Paper>
+						</Grid2>
+						<Grid2 size={6}>
 							<Stack spacing={1}>
 								{Object.entries(tiers).map(([group, tier]) => (
-									<Sheet key={group} variant='outlined' sx={{ p: 1 }}>
+									<Paper key={group} variant='outlined' sx={{ p: 1 }}>
 										{tier}
-									</Sheet>
+									</Paper>
 								))}
 							</Stack>
-						</Grid>
-					</Grid>
+						</Grid2>
+					</Grid2>
 				)}
 			</MultiSortable>
 		</PageContainer>

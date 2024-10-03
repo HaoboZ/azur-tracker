@@ -1,13 +1,13 @@
 import DataDisplay, { useDataDisplay } from '@/components/dataDisplay';
 import { deleteColumn, deleteIcon } from '@/components/dataDisplay/extras/delete';
 import { sortColumn, sortIcon } from '@/components/dataDisplay/extras/sort';
-import FormattedInput from '@/components/formattedInput';
+import FormattedTextField from '@/components/formattedTextField';
 import PageSection from '@/components/page/section';
 import pget from '@/src/helpers/pget';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { eventActions } from '@/src/store/reducers/eventReducer';
-import { Autocomplete, FormLabel, Grid, Typography } from '@mui/joy';
+import { Autocomplete, Grid2, TextField, Typography } from '@mui/material';
 import { createColumnHelper } from '@tanstack/react-table';
 import { nanoid } from 'nanoid';
 import { Fragment, useMemo } from 'react';
@@ -46,18 +46,21 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 						freeSolo
 						autoSelect
 						disableClearable
-						multiple={false}
 						value={getValue().toString()}
 						options={Object.keys(eventStagesData).reverse()}
 						getOptionLabel={(option) => eventStagesData[option] ?? option}
 						inputMode='numeric'
+						renderInput={(params) => <TextField {...params} />}
 						onChange={(_, value) => {
-							dispatch(
-								eventActions.modifyFarming({
-									id: row.original.id,
-									points: parseInt(value),
-								}),
-							);
+							const points = parseInt(value);
+							if (points) {
+								dispatch(
+									eventActions.modifyFarming({
+										id: row.original.id,
+										points: parseInt(value),
+									}),
+								);
+							}
 						}}
 					/>
 				),
@@ -65,7 +68,7 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 			columnHelper.accessor('oil', {
 				header: 'Oil Cost/Run',
 				cell: ({ getValue, row }) => (
-					<FormattedInput
+					<FormattedTextField
 						type='number'
 						inputMode='numeric'
 						value={getValue()}
@@ -96,20 +99,22 @@ export default function EventFarming({ remainingPoints }: { remainingPoints: num
 		renderRow: ({ cells, render, row, table, handleProps }) => (
 			<Fragment>
 				{sortIcon(handleProps)}
-				<Grid container spacing={1}>
-					<Grid xs>
-						<FormLabel>Points/Run</FormLabel>
+				<Grid2 container spacing={1}>
+					<Grid2 size='grow'>
+						<Typography variant='subtitle2'>Points/Run</Typography>
 						{render(cells.points)}
-					</Grid>
-					<Grid xs>
-						<FormLabel>Oil/Run</FormLabel>
+					</Grid2>
+					<Grid2 size='grow'>
+						<Typography variant='subtitle2'>Oil/Run</Typography>
 						{render(cells.oil)}
-					</Grid>
-					<Grid xs={5} display='flex' flexDirection='column' justifyContent='center'>
+					</Grid2>
+					<Grid2
+						size={5}
+						sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 						<Typography>{cells.plays.getValue<string>()} Plays</Typography>
 						<Typography>{cells.cost.getValue<string>()} Oil Cost</Typography>
-					</Grid>
-				</Grid>
+					</Grid2>
+				</Grid2>
 				{deleteIcon(row, table)}
 			</Fragment>
 		),

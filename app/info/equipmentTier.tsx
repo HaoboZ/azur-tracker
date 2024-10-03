@@ -1,6 +1,6 @@
 import PageSection from '@/components/page/section';
 import { useData } from '@/src/providers/data';
-import { Box, Grid, Input, Stack } from '@mui/joy';
+import { Box, Grid2, Stack, TextField } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 import { rarityColors } from '../colors';
@@ -16,8 +16,9 @@ export default function EquipmentTier({ equipIndex }: { equipIndex: Record<strin
 
 	return (
 		<PageSection title='Equipment Tier'>
-			<Input
-				placeholder='Search'
+			<TextField
+				fullWidth
+				label='Search'
 				value={search}
 				onChange={({ target }) => setSearch(target.value)}
 			/>
@@ -26,7 +27,7 @@ export default function EquipmentTier({ equipIndex }: { equipIndex: Record<strin
 					{equipTier.map((value, index) => (
 						<Box key={index}>
 							<TierIcon tier={index + 1} />
-							<Grid container spacing={1}>
+							<Grid2 container spacing={1}>
 								{value.map((equipId) => {
 									const equip = equipIndex[equipId];
 									if (
@@ -36,7 +37,7 @@ export default function EquipmentTier({ equipIndex }: { equipIndex: Record<strin
 										return;
 
 									return (
-										<Grid key={equipId}>
+										<Grid2 key={equipId}>
 											<Image
 												key={equipId}
 												src={`https://azurlane.netojuu.com/images/${equip.image}`}
@@ -45,10 +46,10 @@ export default function EquipmentTier({ equipIndex }: { equipIndex: Record<strin
 												width={48}
 												className={`color-${rarityColors[equip.rarity]}`}
 											/>
-										</Grid>
+										</Grid2>
 									);
 								})}
-							</Grid>
+							</Grid2>
 						</Box>
 					))}
 				</Stack>

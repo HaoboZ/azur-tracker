@@ -1,6 +1,6 @@
 import PageSection from '@/components/page/section';
 import { useData } from '@/src/providers/data';
-import { AccordionGroup, Button } from '@mui/joy';
+import { Box, Button } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { mapValues, pickBy } from 'remeda';
 import EquipFilter from '../fleet/ship/equip/filter';
@@ -30,7 +30,7 @@ export default function StageDrop({ equipIndex }: { equipIndex: Record<string, E
 			<Button fullWidth variant='outlined' onClick={() => setExpanded(!expanded)}>
 				{expanded ? 'Collapse' : 'Expand'} All
 			</Button>
-			<AccordionGroup>
+			<Box>
 				{Object.entries(stages).map(([stage, levels]) => (
 					<StageDropAccordion
 						key={stage}
@@ -41,7 +41,7 @@ export default function StageDrop({ equipIndex }: { equipIndex: Record<string, E
 						setEquip={setEquip}
 					/>
 				))}
-			</AccordionGroup>
+			</Box>
 		</PageSection>
 	);
 }
