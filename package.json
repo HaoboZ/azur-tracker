@@ -9,7 +9,7 @@
 		"azur lane",
 		"tracker"
 	],
-	"version": "10.2.3",
+	"version": "10.2.4",
 	"private": true,
 	"scripts": {
 		"postinstall": "yarn pnpify prisma generate",
@@ -56,7 +56,7 @@
 		"react-dom": "18.3.1",
 		"react-redux": "9.1.2",
 		"react-virtuoso": "4.12.0",
-		"remeda": "2.15.2",
+		"remeda": "2.16.0",
 		"rooks": "7.14.1"
 	},
 	"devDependencies": {
@@ -82,7 +82,7 @@
 		"serwist": "9.0.9",
 		"type-fest": "4.26.1",
 		"typescript": "5.6.3",
-		"typescript-eslint": "8.10.0",
+		"typescript-eslint": "8.11.0",
 		"webpack": "5.95.0"
 	}
 }
