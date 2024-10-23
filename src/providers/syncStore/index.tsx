@@ -17,7 +17,7 @@ export default async function SyncStoreProvider({ children }: { children: ReactN
 
 		if (timestamps) {
 			serverData.main = timestamps.main;
-			const cookieStore = cookies();
+			const cookieStore = await cookies();
 			const select = mapValues({ event: true, research: true, fleet: true }, (value, key) => {
 				const cookie = cookieStore.get(`timestamp.${key}`)?.value;
 				return (!cookie && Boolean(timestamps.main[key])) || timestamps.main[key] > cookie;

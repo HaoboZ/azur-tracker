@@ -4,8 +4,8 @@ import { headers } from 'next/headers';
 
 export const metadata: Metadata = { title: 'Terms Of Service | Azur Lane Tracker' };
 
-export default function TermsOfService() {
-	const headersList = headers();
+export default async function TermsOfService() {
+	const headersList = await headers();
 	const url = `https://${headersList.get('host')}`;
 
 	return (

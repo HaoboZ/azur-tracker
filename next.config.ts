@@ -1,12 +1,9 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import withSerwistInit from '@serwist/next';
+import type { NextConfig } from 'next';
 import { pipe } from 'remeda';
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
-	swcMinify: true,
+const nextConfig: NextConfig = {
 	headers: async () => [
 		{ source: '/api/:path*', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] },
 	],

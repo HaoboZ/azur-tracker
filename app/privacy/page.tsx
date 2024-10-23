@@ -4,8 +4,8 @@ import { headers } from 'next/headers';
 
 export const metadata: Metadata = { title: 'Privacy | Azur Lane Tracker' };
 
-export default function Privacy() {
-	const headersList = headers();
+export default async function Privacy() {
+	const headersList = await headers();
 	const url = `https://${headersList.get('host')}`;
 
 	return (

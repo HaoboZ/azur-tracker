@@ -7,11 +7,11 @@ import { notFound } from 'next/navigation';
 import { isEmpty, omit, pick, sortBy } from 'remeda';
 import TierType from './index';
 
-export default async function Page({ params }: { params: Record<string, string> }) {
+export default async function Page({ params }: { params: Promise<Record<string, string>> }) {
 	const session = await auth();
 	if (session?.user.role !== 'ADMIN') notFound();
 
-	const type = decodeURIComponent(params.type);
+	const type = decodeURIComponent((await params).type);
 
 	const { data: tierTypesCSV } = await axios.get(
 		`https://docs.google.com/spreadsheets/d/${process.env.SHEETS}/gviz/tq`,
