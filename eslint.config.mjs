@@ -1,8 +1,8 @@
 import eslint from '@eslint/js';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
-import tseslint from 'typescript-eslint';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
 	eslint.configs.recommended,
@@ -58,6 +58,7 @@ export default tseslint.config(
 			'@typescript-eslint/no-empty-interface': ['warn', { allowSingleExtends: true }],
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/no-unsafe-function-type': 'off',
 			'@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
 			// typescript extensions
 			'@typescript-eslint/dot-notation': 'warn',
