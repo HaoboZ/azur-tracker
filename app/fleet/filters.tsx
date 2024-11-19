@@ -1,13 +1,14 @@
 import Dropdown from '@/components/dropdown';
 import pget from '@/src/helpers/pget';
+import useEventListener from '@/src/hooks/useEventListener';
 import { useData } from '@/src/providers/data';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { fleetActions } from '@/src/store/reducers/fleetReducer';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Checkbox, ListItem, ListItemText, Stack, TextField } from '@mui/material';
 import type { Table } from '@tanstack/react-table';
+import { useDebounce } from '@uidotdev/usehooks';
 import { useEffect, useRef } from 'react';
-import { useDebounce, useWindowEventListener } from 'rooks';
 import EquipFilter from './ship/equip/filter';
 import type { FleetType, Ship } from './type';
 
@@ -69,7 +70,7 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const searchRef = useRef<HTMLInputElement>();
 
 	// keydown listener for search
-	useWindowEventListener('keydown', (e: KeyboardEvent) => {
+	useEventListener(window, 'keydown', (e: KeyboardEvent) => {
 		if (!searchRef.current) return;
 		if (e.ctrlKey && e.key === 'f') {
 			if (document.activeElement === searchRef.current) {

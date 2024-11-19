@@ -1,7 +1,6 @@
-import { useTheme } from '@mui/material';
-import { useMediaMatch } from 'rooks';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 export default function useIsMobile() {
 	const theme = useTheme();
-	return useMediaMatch(`(max-width:${theme.breakpoints.values.sm - 0.05}px)`);
+	return useMediaQuery(`(max-width:${theme.breakpoints.values.sm - 0.05}px)`);
 }

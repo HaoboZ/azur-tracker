@@ -8,7 +8,7 @@ import { Grid2, Paper, Stack, Tooltip } from '@mui/material';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { filter, indexBy, isIncludedIn, isNot, mapValues, omit } from 'remeda';
-import { useDidUpdate } from 'rooks';
+import useEffectAfter from '../../../src/hooks/useEffectAfter';
 import { rarityColors } from '../../colors';
 import type { EquipType } from '../../fleet/ship/equip/type';
 import { updateTier } from './updateTier';
@@ -32,7 +32,7 @@ export default function TierType({
 		return tiers;
 	});
 
-	useDidUpdate(() => setChanged(true), [tiers]);
+	useEffectAfter(() => setChanged(true), [tiers]);
 
 	return (
 		<PageContainer>

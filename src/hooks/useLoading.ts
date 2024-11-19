@@ -1,6 +1,6 @@
-import { useDebouncedValue } from 'rooks';
+import { useDebounce } from '@uidotdev/usehooks';
 
-export default function useLoading(isLoading?: boolean, delay = 500) {
-	const [isLoadingDebounced] = useDebouncedValue(isLoading, delay);
+export default function useLoading(isLoading?: boolean, delay = 250) {
+	const isLoadingDebounced = useDebounce(isLoading, delay);
 	return isLoading && isLoadingDebounced;
 }

@@ -5,8 +5,8 @@ import type { UseEmblaCarouselType } from 'embla-carousel-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
-import { useDidUpdate } from 'rooks';
 import useControlled from '../hooks/useControlled';
+import useEffectAfter from '../hooks/useEffectAfter';
 import useEventListener from '../hooks/useEventListener';
 
 type SwipeableTabViewsProps = {
@@ -32,7 +32,7 @@ export default function SwipeableTabViews({
 		setTabValue(emblaApi.selectedScrollSnap());
 	});
 
-	useDidUpdate(() => {
+	useEffectAfter(() => {
 		emblaApi.scrollTo(tabValue);
 	}, [tabValue]);
 
