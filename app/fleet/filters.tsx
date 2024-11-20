@@ -8,7 +8,7 @@ import { Search as SearchIcon } from '@mui/icons-material';
 import { Autocomplete, Checkbox, ListItem, ListItemText, Stack, TextField } from '@mui/material';
 import type { Table } from '@tanstack/react-table';
 import { useDebounce } from '@uidotdev/usehooks';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import EquipFilter from './ship/equip/filter';
 import type { FleetType, Ship } from './type';
 
@@ -65,7 +65,12 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 	const { filter, ships } = useAppSelector(pget('fleet'));
 	const dispatch = useAppDispatch();
 
-	const globalFilter = useDebounce((value: string) => table.setGlobalFilter(value), 500);
+	const [search, setSearch] = useState('');
+	const debouncedSearch = useDebounce(search, 500);
+
+	useEffect(() => {
+		table.setGlobalFilter(debouncedSearch);
+	}, [debouncedSearch]);
 
 	const searchRef = useRef<HTMLInputElement>();
 
@@ -101,7 +106,7 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 					params.InputProps.startAdornment = <SearchIcon />;
 					return <TextField label='Search' {...params} />;
 				}}
-				onInputChange={(_, value) => globalFilter(value)}
+				onInputChange={(_, value) => setSearch(value)}
 			/>
 			<Dropdown button='Filter'>
 				<ListItem>
