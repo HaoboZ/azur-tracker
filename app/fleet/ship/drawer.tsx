@@ -160,7 +160,7 @@ export default function ShipDrawer({
 											? `https://azurlane.netojuu.com/images/${equip.image}`
 											: '/images/emptyEquip.png'
 									}
-									alt={equip?.name}
+									alt={equip?.name ?? 'Empty'}
 									height={128}
 									width={128}
 									className={`color-${rarityColors[equip?.rarity]}`}
