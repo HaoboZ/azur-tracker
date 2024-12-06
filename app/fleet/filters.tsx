@@ -72,7 +72,7 @@ export default function FleetFilters({ table }: { table: Table<Ship> }) {
 		table.setGlobalFilter(debouncedSearch);
 	}, [debouncedSearch]);
 
-	const searchRef = useRef<HTMLInputElement>();
+	const searchRef = useRef<HTMLInputElement>(undefined);
 
 	// keydown listener for search
 	useEventListener(window, 'keydown', (e: KeyboardEvent) => {
