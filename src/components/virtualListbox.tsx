@@ -72,19 +72,20 @@ export const VirtualListbox = forwardRef<HTMLDivElement, { children: ReactNode[]
 	),
 );
 
-export const VirtualGroupedListbox = forwardRef<HTMLDivElement, { children: ReactElement[] }>(
-	({ children }, ref) => {
-		const items = children.flatMap(({ props }) => props.children[1].props.children);
+export const VirtualGroupedListbox = forwardRef<
+	HTMLDivElement,
+	{ children: ReactElement<{ children: ReactElement }>[] }
+>(({ children }, ref) => {
+	const items = children.flatMap(({ props }) => props.children[1].props.children);
 
-		return (
-			<Listbox ref={ref}>
-				<GroupedVirtuoso
-					style={{ height: '40vh' }}
-					groupCounts={children.map(({ props }) => props.children[1].props.children.length)}
-					groupContent={(index) => children[index].props.children[0]}
-					itemContent={(index) => items[index]}
-				/>
-			</Listbox>
-		);
-	},
-);
+	return (
+		<Listbox ref={ref}>
+			<GroupedVirtuoso
+				style={{ height: '40vh' }}
+				groupCounts={children.map(({ props }) => props.children[1].props.children.length)}
+				groupContent={(index) => children[index].props.children[0]}
+				itemContent={(index) => items[index]}
+			/>
+		</Listbox>
+	);
+});
