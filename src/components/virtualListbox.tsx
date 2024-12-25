@@ -65,8 +65,8 @@ const Listbox = styled('div')(({ theme }) => ({
 }));
 
 export const VirtualListbox = forwardRef<HTMLDivElement, { children: ReactNode[] }>(
-	({ children }, ref) => (
-		<Listbox ref={ref}>
+	({ children, ...props }, ref) => (
+		<Listbox ref={ref} {...props}>
 			<Virtuoso style={{ height: '40vh' }} data={children} itemContent={(_, item) => item} />
 		</Listbox>
 	),
@@ -75,11 +75,10 @@ export const VirtualListbox = forwardRef<HTMLDivElement, { children: ReactNode[]
 export const VirtualGroupedListbox = forwardRef<
 	HTMLDivElement,
 	{ children: ReactElement<{ children: ReactElement }>[] }
->(({ children }, ref) => {
+>(({ children, ...props }, ref) => {
 	const items = children.flatMap(({ props }) => props.children[1].props.children);
-
 	return (
-		<Listbox ref={ref}>
+		<Listbox ref={ref} {...props}>
 			<GroupedVirtuoso
 				style={{ height: '40vh' }}
 				groupCounts={children.map(({ props }) => props.children[1].props.children.length)}
