@@ -3,11 +3,31 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import Image from 'next/image';
 
 const opSiWeakness: [string, string, string][] = [
-	['f/f1/Enforcer_VIII_Determination.png', 'Determination', 'Airstrikes'],
-	['e/eb/Enforcer_IX_Exploration.png', 'Exploration', 'Airstrikes'],
-	['1/14/Enforcer_IX_Concealment.png', 'Concealment', 'Shelling'],
-	['9/9e/Enforcer_XIV_Equilibrium.png', 'Equilibrium', 'Shelling'],
-	['4/45/Enforcer_XIV_Harmony.png', 'Harmony', 'Torpedoes'],
+	[
+		'thumb/9/9f/Enforcer_VIII_DeterminationChibi.png/250px-Enforcer_VIII_DeterminationChibi.png',
+		'Determination',
+		'Airstrikes',
+	],
+	[
+		'thumb/7/78/Enforcer_IX_ExplorationChibi.png/250px-Enforcer_IX_ExplorationChibi.png',
+		'Exploration',
+		'Airstrikes',
+	],
+	[
+		'thumb/1/12/Enforcer_IX_ConcealmentChibi.png/250px-Enforcer_IX_ConcealmentChibi.png',
+		'Concealment',
+		'Shelling',
+	],
+	[
+		'thumb/e/eb/Enforcer_XIV_EquilibriumChibi.png/182px-Enforcer_XIV_EquilibriumChibi.png',
+		'Equilibrium',
+		'Shelling',
+	],
+	[
+		'6/67/Enforcer_XIV_HarmonyChibi.png/222px-Enforcer_XIV_HarmonyChibi.png',
+		'Harmony',
+		'Torpedoes',
+	],
 ];
 
 export default function OpSiWeakness() {
