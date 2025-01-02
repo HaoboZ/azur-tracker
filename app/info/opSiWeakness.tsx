@@ -24,7 +24,7 @@ const opSiWeakness: [string, string, string][] = [
 		'Shelling',
 	],
 	[
-		'6/67/Enforcer_XIV_HarmonyChibi.png/222px-Enforcer_XIV_HarmonyChibi.png',
+		'thumb/6/67/Enforcer_XIV_HarmonyChibi.png/222px-Enforcer_XIV_HarmonyChibi.png',
 		'Harmony',
 		'Torpedoes',
 	],
