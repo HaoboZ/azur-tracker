@@ -1518,15 +1518,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint__js@npm:8.42.3":
-  version: 8.42.3
-  resolution: "@types/eslint__js@npm:8.42.3"
-  dependencies:
-    "@types/eslint": "npm:*"
-  checksum: 10c0/ccc5180b92155929a089ffb03ed62625216dcd5e46dd3197c6f82370ce8b52c7cb9df66c06b0a3017995409e023bc9eafe5a3f009e391960eacefaa1b62d9a56
-  languageName: node
-  linkType: hard
-
 "@types/estree@npm:*":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
@@ -2501,7 +2492,6 @@ __metadata:
     "@tanem/react-nprogress": "npm:5.0.55"
     "@tanstack/react-table": "npm:8.21.2"
     "@types/eslint": "npm:9.6.1"
-    "@types/eslint__js": "npm:8.42.3"
     "@types/events": "npm:3.0.3"
     "@types/node": "npm:22.13.4"
     "@types/object-hash": "npm:3.0.6"
@@ -2520,7 +2510,7 @@ __metadata:
     eslint-plugin-prettier: "npm:5.2.3"
     eslint-plugin-react: "npm:7.37.4"
     events: "npm:3.3.0"
-    globals: "npm:15.15.0"
+    globals: "npm:16.0.0"
     lz-string: "npm:1.5.0"
     nanoid: "npm:5.1.0"
     next: "npm:15.1.7"
@@ -4230,10 +4220,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:15.15.0":
-  version: 15.15.0
-  resolution: "globals@npm:15.15.0"
-  checksum: 10c0/f9ae80996392ca71316495a39bec88ac43ae3525a438b5626cd9d5ce9d5500d0a98a266409605f8cd7241c7acf57c354a48111ea02a767ba4f374b806d6861fe
+"globals@npm:16.0.0":
+  version: 16.0.0
+  resolution: "globals@npm:16.0.0"
+  checksum: 10c0/8906d5f01838df64a81d6c2a7b7214312e2216cf65c5ed1546dc9a7d0febddf55ffa906cf04efd5b01eec2534d6f14859a89535d1a68241832810e41ef3fd5bb
   languageName: node
   linkType: hard
 
