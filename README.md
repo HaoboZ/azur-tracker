@@ -1,5 +1,7 @@
 # Azur Lane Tracker
 
+https://azurlanetracker.vercel.app
+
 ## Getting Started
 
 First, run the development server:
