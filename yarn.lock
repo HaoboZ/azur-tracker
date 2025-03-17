@@ -1791,13 +1791,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hoist-non-react-statics@npm:^3.3.0, @types/hoist-non-react-statics@npm:^3.3.5":
+"@types/hoist-non-react-statics@npm:^3.3.0":
   version: 3.3.5
   resolution: "@types/hoist-non-react-statics@npm:3.3.5"
   dependencies:
     "@types/react": "npm:*"
     hoist-non-react-statics: "npm:^3.3.0"
   checksum: 10c0/2a3b64bf3d9817d7830afa60ee314493c475fb09570a64e7737084cd482d2177ebdddf888ce837350bac51741278b077683facc9541f052d4bbe8487b4e3e618
+  languageName: node
+  linkType: hard
+
+"@types/hoist-non-react-statics@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "@types/hoist-non-react-statics@npm:3.3.6"
+  dependencies:
+    "@types/react": "npm:*"
+    hoist-non-react-statics: "npm:^3.3.0"
+  checksum: 10c0/149a4c217d81f21f8a1e152160a59d5b99b6a9aa6d354385d5f5bc02760cbf1e170a8442ba92eb653befff44b0c5bc2234bb77ce33e0d11a65f779e8bab5c321
   languageName: node
   linkType: hard
 
@@ -2915,7 +2925,7 @@ __metadata:
     prettier: "npm:3.5.3"
     prisma: "npm:6.5.0"
     react: "npm:19.0.0"
-    react-cookie: "npm:7.2.2"
+    react-cookie: "npm:8.0.0"
     react-dom: "npm:19.0.0"
     react-redux: "npm:9.2.0"
     react-virtuoso: "npm:4.12.5"
@@ -7046,16 +7056,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-cookie@npm:7.2.2":
-  version: 7.2.2
-  resolution: "react-cookie@npm:7.2.2"
+"react-cookie@npm:8.0.0":
+  version: 8.0.0
+  resolution: "react-cookie@npm:8.0.0"
   dependencies:
-    "@types/hoist-non-react-statics": "npm:^3.3.5"
+    "@types/hoist-non-react-statics": "npm:^3.3.6"
     hoist-non-react-statics: "npm:^3.3.2"
     universal-cookie: "npm:^7.0.0"
   peerDependencies:
     react: ">= 16.3.0"
-  checksum: 10c0/22948a42b986e22dad0817ffbad72fe52c907a9cd09c82e683807e21eb85ec82adb7b5121f9869bae418d589a05570a1e1043b3c930c293e3d94ddeaa98602e0
+  checksum: 10c0/d64bef1e0208e480afda50a4e8a676183d9760f806a62fe672efc0a44e2840deb6445f6ac6fac43a5015c5d3403d947563569b36723dd4f7282dc30d1ce829da
   languageName: node
   linkType: hard
 
