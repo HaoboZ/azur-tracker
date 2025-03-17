@@ -23,19 +23,19 @@ export default function Event() {
 
 	// resets event
 	useEffect(() => {
-		if (event.name !== eventData.name)
-			dispatch(
-				eventActions.newEvent({
-					...event,
-					name: eventData.name,
-					shopExpectedCost: eventShopData.reduce(
-						(total, item) =>
-							total + item.cost * Math.min(item.amount, event.shop[item.name] || 0),
-						0,
-					),
-					points: 0,
-				}),
-			);
+		if (event.name === eventData.name) return;
+		dispatch(
+			eventActions.newEvent({
+				...event,
+				name: eventData.name,
+				shopExpectedCost: eventShopData.reduce(
+					(total, item) =>
+						total + item.cost * Math.min(item.amount, event.shop[item.name] || 0),
+					0,
+				),
+				points: 0,
+			}),
+		);
 	}, []);
 
 	useInterval(() => setTime(new Date()), 15 * 1000);
