@@ -22,6 +22,7 @@ import {
 	List,
 	ListItem,
 	ListItemText,
+	Stack,
 	ToggleButton,
 	ToggleButtonGroup,
 	Typography,
@@ -139,13 +140,26 @@ export default function Settings({ user }: { user: Session['user'] }) {
 						Reset
 					</Button>
 				</ListItem>
+				<ListItem></ListItem>
+				<Typography
+					variant='caption'
+					color='textDisabled'
+					sx={{ display: 'block', textAlign: 'right', px: 2 }}>
+					v{packageJson.version}
+				</Typography>
 			</List>
-			<Typography
-				variant='caption'
-				color='textDisabled'
-				sx={{ display: 'block', textAlign: 'right', px: 2 }}>
-				v{packageJson.version}
-			</Typography>
+			<Stack>
+				<PageLink href='/privacy' underline='hover'>
+					Privacy
+				</PageLink>
+				<PageLink href='/privacy' underline='hover'>
+					TOS
+				</PageLink>
+				<Typography>
+					I've abandoned this site, if anyone wants to take it over, contact me at
+					haobozhang9081@gmail.com
+				</Typography>
+			</Stack>
 		</PageContainer>
 	);
 }

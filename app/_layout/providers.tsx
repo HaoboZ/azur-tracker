@@ -4,7 +4,7 @@ import ModalProvider from '@/src/providers/modal';
 import ClientSnackbarProvider from '@/src/providers/snackbar';
 import SyncStoreProvider from '@/src/providers/syncStore';
 import ThemeProvider from '@/src/providers/theme';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { ReactNode } from 'react';
 import { Suspense } from 'react';
 import Loading from '../loading';
